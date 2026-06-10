@@ -10,6 +10,10 @@ Live deployment:
 
 - https://elegant-developer-studio.vercel.app
 
+Repository:
+
+- https://github.com/njueeRay/elegant-developer-studio
+
 Implemented:
 
 - Developer Atelier homepage direction.

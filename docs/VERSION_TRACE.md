@@ -8,6 +8,7 @@ Vercel deployment: `dpl_2ZjdT9MsLJRd8CJH7CvyqJsbcGNF`
 Production alias: `https://elegant-developer-studio.vercel.app`
 Deployment URL: `https://elegant-developer-studio-1txtubuvl.vercel.app`
 Inspect URL: `https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/2ZjdT9MsLJRd8CJH7CvyqJsbcGNF`
+GitHub repository: `https://github.com/njueeRay/elegant-developer-studio`
 
 Scope:
 
