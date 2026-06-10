@@ -6,6 +6,10 @@ A refined personal homepage for a design-oriented engineer. The first build focu
 
 `v0.1.0` - Phase 1 Visual Foundation
 
+Live deployment:
+
+- https://elegant-developer-studio.vercel.app
+
 Implemented:
 
 - Developer Atelier homepage direction.

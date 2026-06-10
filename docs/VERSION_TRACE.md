@@ -3,6 +3,11 @@
 ## v0.1.0 - Phase 1 Visual Foundation
 
 Date: 2026-06-11
+Commit: `2efc984`
+Vercel deployment: `dpl_2ZjdT9MsLJRd8CJH7CvyqJsbcGNF`
+Production alias: `https://elegant-developer-studio.vercel.app`
+Deployment URL: `https://elegant-developer-studio-1txtubuvl.vercel.app`
+Inspect URL: `https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/2ZjdT9MsLJRd8CJH7CvyqJsbcGNF`
 
 Scope:
 
