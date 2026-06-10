@@ -1,0 +1,442 @@
+"use client";
+
+import Image from "next/image";
+import {
+  ArrowRight,
+  BookOpenText,
+  CheckCircle2,
+  Code2,
+  Command,
+  FileText,
+  Mail,
+  Moon,
+  Music2,
+  Pause,
+  Play,
+  Search,
+  Send,
+  Sun,
+  Wrench,
+} from "lucide-react";
+import { useEffect, useState, type ComponentType } from "react";
+import {
+  highlights,
+  knowledgeItems,
+  navItems,
+  socialLinks,
+  workbenchItems,
+  type Highlight,
+  type HighlightKind,
+  type WorkbenchItem,
+} from "@/data/home";
+
+const iconByKind: Record<HighlightKind, ComponentType<{ size?: number }>> = {
+  writing: FileText,
+  work: Code2,
+  media: Music2,
+};
+
+const commandItems = [
+  "Open latest essay",
+  "View selected work",
+  "Browse knowledge base",
+  "Play studio mix",
+  "Send a note",
+];
+
+function getInitialTheme() {
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  const stored = window.localStorage.getItem("studio-theme");
+  if (stored === "dark" || stored === "light") {
+    return stored;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+export function StudioHome() {
+  const [theme, setTheme] = useState<"light" | "dark">(getInitialTheme);
+  const [commandOpen, setCommandOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("studio-theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setCommandOpen((open) => !open);
+      }
+
+      if (event.key === "Escape") {
+        setCommandOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  return (
+    <main className="studio-shell">
+      <div className="ambient-grid" aria-hidden="true" />
+      <Header
+        theme={theme}
+        onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")}
+      />
+
+      <section className="hero-section" aria-label="Ray Studio overview">
+        <div className="line-index" aria-hidden="true">
+          {["01", "02", "03", "04", "05", "06"].map((line) => (
+            <span key={line}>{line}</span>
+          ))}
+        </div>
+
+        <div className="hero-copy">
+          <h1>Ray Studio</h1>
+          <p className="hero-title">
+            Design Engineer building precise, humane software.
+          </p>
+          <p className="hero-body">
+            I design systems that compose, interfaces that respect, essays that
+            clarify, and experiments that explore the edge of ideas and tools.
+          </p>
+          <div className="status-badge">
+            <span className="status-dot" />
+            Shipping: personal design system, writing, and tools
+          </div>
+          <button
+            className="command-strip"
+            type="button"
+            onClick={() => setCommandOpen(true)}
+          >
+            <Command size={18} />
+            <span>Search or open...</span>
+            <kbd>Cmd K</kbd>
+          </button>
+          <SocialLinks />
+        </div>
+
+        <WorkbenchPanel />
+      </section>
+
+      <section className="highlight-rail" aria-label="Featured studio modules">
+        {highlights.map((highlight) => (
+          <HighlightCard
+            key={highlight.title}
+            highlight={highlight}
+            isPlaying={isPlaying}
+            onTogglePlay={() => setIsPlaying((playing) => !playing)}
+          />
+        ))}
+      </section>
+
+      <section className="studio-lower-grid">
+        <article className="knowledge-panel" id="knowledge">
+          <div>
+            <p className="section-kicker">Knowledge</p>
+            <h2>Working knowledge & snippets</h2>
+            <p>
+              Shortform references, interface decisions, code snippets, and
+              learning logs that should stay useful.
+            </p>
+          </div>
+          <ul>
+            {knowledgeItems.map((item) => (
+              <li key={item}>
+                <BookOpenText size={16} />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/knowledge" className="text-link">
+            Browse knowledge <ArrowRight size={16} />
+          </a>
+        </article>
+
+        <article className="lab-panel" id="lab">
+          <div>
+            <p className="section-kicker blue">Lab</p>
+            <h2>Experiments & prototypes</h2>
+            <p>
+              Small interface experiments, AI workflows, and components in
+              progress. The lab becomes its own surface in Phase 5.
+            </p>
+          </div>
+          <div className="lab-list">
+            <span>Notebook UI exploration</span>
+            <span>Agent loop playground</span>
+          </div>
+          <a href="/lab" className="text-link blue">
+            See experiments <ArrowRight size={16} />
+          </a>
+        </article>
+
+        <article className="contact-panel">
+          <div>
+            <p className="section-kicker rust">Let&apos;s connect</p>
+            <h2>Say hello</h2>
+            <p>
+              Open to discussions about design engineering, thoughtful products,
+              and systems that make complex work feel calm.
+            </p>
+          </div>
+          <a href="mailto:hello@ray.studio" className="primary-link">
+            <Mail size={16} />
+            hello@ray.studio
+          </a>
+        </article>
+      </section>
+
+      <section className="latest-section" id="writing">
+        <div className="section-heading">
+          <h2>Latest from the studio</h2>
+          <a href="/blog" className="text-link rust">
+            View all writing <ArrowRight size={16} />
+          </a>
+        </div>
+        <div className="latest-grid">
+          <Image
+            src="/assets/morning-studio-desk.png"
+            alt="Notebook, coffee, and keyboard on a warm studio desk"
+            width={900}
+            height={675}
+            className="latest-image"
+          />
+          <div className="latest-list">
+            {["Designing calm interfaces", "Shell scripts I keep using"].map(
+              (title, index) => (
+                <a href="/blog" key={title} className="latest-row">
+                  <span>
+                    <FileText size={18} />
+                    {title}
+                  </span>
+                  <span>{index === 0 ? "6 min read" : "4 min read"}</span>
+                </a>
+              ),
+            )}
+          </div>
+        </div>
+      </section>
+
+      <CommandPalette
+        open={commandOpen}
+        items={commandItems}
+        onClose={() => setCommandOpen(false)}
+      />
+
+    </main>
+  );
+}
+
+function Header({
+  theme,
+  onToggleTheme,
+}: {
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
+}) {
+  return (
+    <header className="site-header">
+      <a href="#" className="brand-mark" aria-label="Ray Studio home">
+        Ray Studio
+      </a>
+      <nav aria-label="Main navigation">
+        {navItems.map((item) => (
+          <a key={item.label} href={item.href}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <div className="header-actions">
+        <button
+          type="button"
+          className="icon-button"
+          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+          onClick={onToggleTheme}
+        >
+          {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+        <a href="mailto:hello@ray.studio" className="contact-button">
+          <Mail size={16} />
+          Contact
+        </a>
+      </div>
+    </header>
+  );
+}
+
+function WorkbenchPanel() {
+  return (
+    <aside className="workbench-panel" aria-label="Current workbench">
+      <div className="panel-title">
+        <Wrench size={24} />
+        <h2>Workbench</h2>
+      </div>
+      {workbenchItems.map((item) => (
+        <WorkbenchRow key={item.title} item={item} />
+      ))}
+    </aside>
+  );
+}
+
+function WorkbenchRow({ item }: { item: WorkbenchItem }) {
+  return (
+    <a href="/projects" className="workbench-row">
+      <div className={`workbench-icon ${item.status}`}>
+        {item.status === "healthy" ? <Code2 size={24} /> : null}
+        {item.status === "progress" ? <FileText size={24} /> : null}
+        {item.status === "queued" ? <Music2 size={24} /> : null}
+      </div>
+      <div>
+        <p>{item.label}</p>
+        <h3>{item.title}</h3>
+        <span>{item.detail}</span>
+        <small>
+          {item.status === "healthy" ? <CheckCircle2 size={14} /> : null}
+          {item.meta}
+        </small>
+      </div>
+      <ArrowRight className="row-arrow" size={20} />
+    </a>
+  );
+}
+
+function HighlightCard({
+  highlight,
+  isPlaying,
+  onTogglePlay,
+}: {
+  highlight: Highlight;
+  isPlaying: boolean;
+  onTogglePlay: () => void;
+}) {
+  const Icon = iconByKind[highlight.kind];
+  const content = (
+    <>
+      <div className="highlight-icon">
+        <Icon size={24} />
+      </div>
+      <div className="highlight-body">
+        <p className={`section-kicker ${highlight.kind === "work" ? "blue" : ""}`}>
+          {highlight.eyebrow}
+        </p>
+        <h2>{highlight.title}</h2>
+        <p>{highlight.description}</p>
+        {highlight.tags ? (
+          <div className="tag-row">
+            {highlight.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        ) : null}
+        <small>{highlight.meta}</small>
+      </div>
+      {highlight.image ? (
+        <Image
+          src={highlight.image}
+          alt=""
+          width={360}
+          height={270}
+          className="highlight-image"
+        />
+      ) : (
+        <div className="paper-ghost" aria-hidden="true" />
+      )}
+      <ArrowRight className="card-arrow" size={22} />
+    </>
+  );
+
+  if (highlight.kind === "media") {
+    return (
+      <article className="highlight-card media-card">
+        {content}
+        <button type="button" className="play-button" onClick={onTogglePlay}>
+          {isPlaying ? <Pause size={15} /> : <Play size={15} />}
+          {isPlaying ? "Pause" : "Play"}
+        </button>
+      </article>
+    );
+  }
+
+  return (
+    <a
+      href={highlight.href}
+      className="highlight-card"
+      id={highlight.kind === "work" ? "work" : undefined}
+    >
+      {content}
+    </a>
+  );
+}
+
+function SocialLinks() {
+  const icons = {
+    GitHub: Code2,
+    X: Send,
+    LinkedIn: BookOpenText,
+    Email: Mail,
+  } as const;
+
+  return (
+    <div className="social-links" aria-label="Social links">
+      {socialLinks.map((link) => {
+        const Icon = icons[link.label];
+        return (
+          <a key={link.label} href={link.href} aria-label={link.label}>
+            <Icon size={21} />
+            <span>{link.label}</span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+function CommandPalette({
+  open,
+  items,
+  onClose,
+}: {
+  open: boolean;
+  items: string[];
+  onClose: () => void;
+}) {
+  if (!open) {
+    return null;
+  }
+
+  return (
+    <div className="command-backdrop" onMouseDown={onClose}>
+      <div
+        className="command-palette"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Command menu"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <div className="command-input">
+          <Search size={18} />
+          <input autoFocus placeholder="Search writing, work, knowledge..." />
+          <kbd>Esc</kbd>
+        </div>
+        <div className="command-results">
+          {items.map((item) => (
+            <button type="button" key={item} onClick={onClose}>
+              <span>{item}</span>
+              <ArrowRight size={16} />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
