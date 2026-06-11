@@ -39,7 +39,8 @@ Known limitations:
 ## v0.1.1 - Project Tracking Map
 
 Date: 2026-06-11
-Commit: `8423229`
+Primary commit: `0c3b4da`
+Tag: `v0.1.1`
 
 Scope:
 
