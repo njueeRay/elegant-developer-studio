@@ -107,6 +107,10 @@ Screenshots:
 
 Next:
 
-- Deploy v0.2.0 to Vercel.
 - Sync Phase 2 docs to Feishu.
 - Move to Phase 3 media model planning.
+
+Deployment:
+
+- Production alias: `https://elegant-developer-studio.vercel.app`
+- Deployment URL: `https://elegant-developer-studio-ai7ak3mvh.vercel.app`
