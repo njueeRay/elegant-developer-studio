@@ -36,8 +36,11 @@ Open `http://localhost:3000`.
 
 - `docs/PRD.md`
 - `docs/ROADMAP.md`
+- `docs/PROJECT_MAP.md`
 - `docs/INFORMATION_ARCHITECTURE.md`
 - `docs/DESIGN_SYSTEM.md`
+- `docs/DECISIONS.md`
+- `docs/PROGRESS_LOG.md`
 - `docs/VERSION_TRACE.md`
 
 ## Architecture

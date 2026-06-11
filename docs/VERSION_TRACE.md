@@ -35,4 +35,21 @@ Known limitations:
 - Social URLs are placeholders.
 - Blog/project/knowledge route links are future routes.
 - Media player is an interaction stub, not real audio playback.
-- GitHub remote creation depends on available GitHub creation credentials/tooling.
+
+## v0.1.1 - Project Tracking Map
+
+Date: 2026-06-11
+Commit: `8423229`
+
+Scope:
+
+- Added a comprehensive project map.
+- Added chronological progress log.
+- Added decision log.
+- Added GitHub milestones for Phase 2-5 and interaction research.
+- Assigned existing GitHub issues to milestones.
+- Updated README documentation index.
+
+Purpose:
+
+- Make future work traceable by phase, route, component, issue, milestone, and deployment.
