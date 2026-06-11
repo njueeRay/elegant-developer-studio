@@ -29,6 +29,10 @@ function extractText(value: unknown): string {
 export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
   const [copied, setCopied] = useState(false);
   const text = useMemo(() => extractText(children).trim(), [children]);
+  const lineCount = useMemo(
+    () => (text ? text.split(/\r?\n/).length : 0),
+    [text],
+  );
 
   async function copyCode() {
     if (!text) {
@@ -43,7 +47,10 @@ export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
   return (
     <div className="code-frame">
       <div className="code-frame-toolbar">
-        <span>snippet</span>
+        <span>
+          snippet
+          <small>{lineCount} lines</small>
+        </span>
         <button type="button" onClick={copyCode} aria-label="Copy code">
           {copied ? <Check size={14} /> : <Copy size={14} />}
           {copied ? "Copied" : "Copy"}

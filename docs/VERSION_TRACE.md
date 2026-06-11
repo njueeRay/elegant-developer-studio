@@ -102,3 +102,30 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - GitHub issue `#1` 已关闭。
 - GitHub milestone `Phase 2: Content Core` 已关闭。
+
+## Unreleased - 第三阶段媒体层首个切片
+
+日期：2026-06-12
+Primary commit：待提交
+
+范围：
+
+- 添加 `/photos`。
+- 添加 `/music`。
+- 添加媒体数据模型：`Photo`、`Track`、`Mix`。
+- 添加 `PhotoGrid`、`PhotoLightbox`、`MiniPlayer`、`TrackList`、`NowPlaying`。
+- 首页媒体入口指向 `/music`。
+- sitemap 增加 `/photos` 和 `/music`。
+- 博客文章页新增 reader mode 提示、鼠标跟随阅读微光。
+- 代码块工具栏新增行数信息。
+
+产品判断：
+
+- 博客正文不放宠物或强装饰，避免污染阅读。
+- 程序员风格互动优先服务阅读、状态可见性和可操作反馈。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 浏览器 QA：照片灯箱、音乐播放器、博客 reader mode、移动端无横向溢出均通过。

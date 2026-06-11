@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { ArticleInteractions } from "@/components/content/article-interactions";
 import { ReadingProgress } from "@/components/content/reading-progress";
 import { TableOfContents } from "@/components/content/table-of-contents";
 import { formatDate, getAllPosts, getPost } from "@/lib/content";
@@ -48,6 +49,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <main className="studio-shell content-shell article-shell">
       <ReadingProgress />
+      <ArticleInteractions />
       <div className="ambient-grid" aria-hidden="true" />
       <article className="article-layout">
         <aside className="metadata-rail">

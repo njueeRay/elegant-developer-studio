@@ -85,7 +85,7 @@ export const highlights: Highlight[] = [
     title: "Morning light, notes, coffee",
     description: "A quiet mix and a small frame from the studio desk.",
     meta: "Tycho - A Walk / 02:31",
-    href: "/music/studio-mix-06",
+    href: "/music",
     image: "/assets/morning-studio-desk.png",
   },
 ];

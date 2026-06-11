@@ -58,14 +58,18 @@ Phase 2 已实现：
 - `CodeBlock`
 - `MetadataRail`
 
-后续保留：
+Phase 3 已实现首版：
 
 - `PhotoGrid`
 - `PhotoLightbox`
-- `AlbumCard`
 - `MiniPlayer`
 - `TrackList`
 - `NowPlaying`
+- `ArticleInteractions`
+
+后续保留：
+
+- `AlbumCard`
 - `GlobalSearch`
 - `ComponentPreview`
 
@@ -74,8 +78,17 @@ Phase 2 已实现：
 - 标签筛选使用低 chrome 圆角控件，有明确 active 状态，不使用厚重 tabs 容器。
 - 阅读进度使用顶部 3px 细线，只负责定位，不喧宾夺主。
 - 代码块包含紧凑工具栏和复制反馈。
+- 代码块显示行数，增强工程阅读质感，但不增加复杂编辑器 chrome。
 - 文章标题锚点在桌面端 hover 后才显露，保持阅读安静。
+- 文章 reader mode 提示必须可关闭，鼠标跟随微光必须避开正文并尊重 `prefers-reduced-motion`。
 - 移动端代码块自动换行，避免看起来像被截断。
+
+## Phase 3 交互细节
+
+- 照片网格使用稳定列布局，不追求复杂瀑布流。
+- 灯箱支持关闭、上一张、下一张和键盘操作。
+- 迷你播放器使用真实本地状态，不伪装成真实音频流。
+- 播放器保留曲目上下文、状态、进度和音量，体现程序员式可观察状态。
 
 ## 素材规则
 
