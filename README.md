@@ -4,7 +4,7 @@ A refined personal homepage for a design-oriented engineer. The first build focu
 
 ## Current Version
 
-`v0.1.0` - Phase 1 Visual Foundation
+`v0.1.2` - Feishu Knowledge Base
 
 Live deployment:
 
@@ -41,6 +41,7 @@ Open `http://localhost:3000`.
 - `docs/DESIGN_SYSTEM.md`
 - `docs/DECISIONS.md`
 - `docs/PROGRESS_LOG.md`
+- `docs/FEISHU_SYNC.md`
 - `docs/VERSION_TRACE.md`
 
 ## Architecture

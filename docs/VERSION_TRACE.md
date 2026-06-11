@@ -54,3 +54,19 @@ Scope:
 Purpose:
 
 - Make future work traceable by phase, route, component, issue, milestone, and deployment.
+
+## v0.1.2 - Feishu Knowledge Base
+
+Date: 2026-06-12
+Commit: pending
+
+Scope:
+
+- Created Feishu Wiki space: `Elegant Developer Studio｜个人主页项目知识库`.
+- Published project navigation, project map, PRD, roadmap, IA, design system, progress log, ADR, version trace, design QA, assets, and execution review.
+- Inserted key visual assets into the Feishu assets page.
+- Added repeatable sync map in `docs/FEISHU_SYNC.md`.
+
+Feishu root:
+
+- `https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb`

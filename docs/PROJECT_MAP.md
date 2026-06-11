@@ -19,12 +19,13 @@ The site must avoid three failure modes:
 
 ## 2. Current State
 
-Version: `v0.1.0`
+Version: `v0.1.2`
 
 Live:
 
 - Production: `https://elegant-developer-studio.vercel.app`
 - Repository: `https://github.com/njueeRay/elegant-developer-studio`
+- Feishu Wiki: `https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb`
 
 Implemented:
 
@@ -160,6 +161,7 @@ docs/
   DESIGN_SYSTEM.md               Visual tokens and component inventory
   DECISIONS.md                   Architecture/product decision log
   PROGRESS_LOG.md                Stage-by-stage progress ledger
+  FEISHU_SYNC.md                 Feishu Wiki sync map and node tokens
   VERSION_TRACE.md               Release, deployment, and commit trace
 
 public/
@@ -239,6 +241,7 @@ Every meaningful stage must update four places:
 2. `docs/PROGRESS_LOG.md`.
 3. `docs/VERSION_TRACE.md` when deployed or released.
 4. `docs/DECISIONS.md` when a durable product or architecture decision is made.
+5. Feishu Wiki after local documentation changes are committed.
 
 Every implementation PR or commit should state:
 

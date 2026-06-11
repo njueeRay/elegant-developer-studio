@@ -49,7 +49,7 @@ Open tracking:
 
 ### Project Map Setup
 
-Status: in progress.
+Status: complete.
 
 Completed:
 
@@ -58,6 +58,9 @@ Completed:
 - Added `docs/DECISIONS.md`.
 - Created GitHub milestones for Phase 2-5 and interaction research.
 - Assigned existing issues `#1` through `#5` to milestones.
+- Created Feishu Wiki space for cloud maintenance and comments.
+- Published core project documents into Feishu Wiki.
+- Inserted Phase 1 visual reference and generated assets into the Feishu assets page.
 
 Next:
 
