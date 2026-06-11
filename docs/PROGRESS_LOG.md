@@ -121,7 +121,7 @@
 
 ### 第三阶段：媒体层首个实现切片
 
-状态：已完成本地实现，待部署。
+状态：已部署。
 
 完成：
 
@@ -148,3 +148,6 @@
 - 浏览器验证 `/music`：播放按钮切换为暂停，下一首切到 `Quiet refactor`，进度控件存在。
 - 浏览器验证博客文章：reader mode 可关闭并折叠为小按钮。
 - 移动端 390px：`/photos` 与 `/music` 无横向溢出。
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Deployment URL：`https://elegant-developer-studio-mb5qmmyhg.vercel.app`
+- Production fetch：`/photos` 与 `/music` 均返回 `200`。

@@ -107,6 +107,11 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-06-12
 Primary commit：`1146723`
+Deployment record commit：待提交
+Vercel deployment：`dpl_E1t2f8VZKqCD3Kx9iBtMP72ZfJ17`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-mb5qmmyhg.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/E1t2f8VZKqCD3Kx9iBtMP72ZfJ17`
 
 范围：
 
@@ -129,3 +134,4 @@ Primary commit：`1146723`
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - 浏览器 QA：照片灯箱、音乐播放器、博客 reader mode、移动端无横向溢出均通过。
+- Production fetch：`/photos` 和 `/music` 均返回 `200`。
