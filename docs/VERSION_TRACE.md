@@ -75,8 +75,8 @@ Feishu root:
 ## v0.2.0 - Content Core
 
 Date: 2026-06-12
-Commit: pending
-Tag: pending
+Primary commit: `8aab6cb`
+Tag: `v0.2.0`
 
 Scope:
 
