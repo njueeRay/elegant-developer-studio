@@ -58,7 +58,8 @@ Purpose:
 ## v0.1.2 - Feishu Knowledge Base
 
 Date: 2026-06-12
-Commit: pending
+Primary commit: `65f74de`
+Tag: `v0.1.2`
 
 Scope:
 
