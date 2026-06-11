@@ -1,43 +1,44 @@
-# Execution Review
+# 执行复核
 
-This page checks whether prior user suggestions were actually implemented.
+本页用于核对用户此前提出的建议是否已经真实执行，而不是只停留在口头计划。
 
-## Summary
+## 总结
 
-Most major suggestions have been implemented. The remaining work is not about setup anymore; it is about staged product development and deeper interaction research.
+主要基础设施已经完成。当前项目不再卡在“如何开头”，而是进入按阶段推进产品能力的状态。
 
-## Review Matrix
+## 复核矩阵
 
-| User suggestion | Execution status | Evidence |
+| 用户建议 | 执行状态 | 证据 |
 | --- | --- | --- |
-| Replace `notes` with `knowledge` | Done | `docs/INFORMATION_ARCHITECTURE.md`, `docs/PROJECT_MAP.md`, homepage nav and command copy |
-| Do not build a dense console-style site | Done | Phase 1 homepage uses Developer Atelier visual direction; QA in `design-qa.md` |
-| Build Phase 1 first, keep later features staged | Done | `docs/ROADMAP.md`, GitHub milestones Phase 2-5 |
-| Generate and use high-quality visual assets | Done | `public/assets/lumen-design-system.png`, `public/assets/morning-studio-desk.png` |
-| Preserve selected visual direction | Done | `public/references/developer-atelier-reference.png` |
-| Establish GitHub repo | Done | `https://github.com/njueeRay/elegant-developer-studio` |
-| Deploy to Vercel | Done | `https://elegant-developer-studio.vercel.app` |
-| Establish version planning and traceability | Done | `docs/VERSION_TRACE.md`, tag `v0.1.1` |
-| Establish complete project map | Done | `docs/PROJECT_MAP.md` |
-| Track progress by stage | Done | `docs/PROGRESS_LOG.md`, GitHub milestones and issues |
-| Prepare for programmer-style micro-interactions | Started | GitHub issue `#5`, `docs/PROJECT_MAP.md` interaction map |
-| Create cloud-maintained Feishu knowledge base | Done in this sync | This Wiki space and sync map |
+| 将 `notes` 替换为 `knowledge` | 已完成 | `docs/INFORMATION_ARCHITECTURE.md`、`docs/PROJECT_MAP.md`、首页导航和命令文案 |
+| 不做高密度控制台风格 | 已完成 | Phase 1 使用 Developer Atelier 方向，QA 记录在 `design-qa.md` |
+| 先做 Phase 1，后续分阶段 | 已完成 | `docs/ROADMAP.md`、GitHub milestones |
+| 使用高质量视觉资产 | 已完成 | `public/assets/lumen-design-system.png`、`public/assets/morning-studio-desk.png` |
+| 保存已选视觉方向 | 已完成 | `public/references/developer-atelier-reference.png` |
+| 建立 GitHub repo | 已完成 | `https://github.com/njueeRay/elegant-developer-studio` |
+| 部署到 Vercel | 已完成 | `https://elegant-developer-studio.vercel.app` |
+| 建立版本规划和追溯 | 已完成 | `docs/VERSION_TRACE.md`、`v0.1.1`、`v0.2.0` |
+| 建立完整项目地图 | 已完成 | `docs/PROJECT_MAP.md` |
+| 按阶段记录进度 | 已完成 | `docs/PROGRESS_LOG.md`、GitHub milestones 和 issues |
+| 为程序员风格微交互做准备 | 已启动 | GitHub issue `#5`、`docs/PROJECT_MAP.md` 交互地图 |
+| 建立可云端维护的飞书知识库 | 已完成 | 本 Wiki 空间和 `docs/FEISHU_SYNC.md` |
+| Phase 2 内容核心 | 已完成 | `/blog`、`/blog/[slug]`、`/projects`、`/projects/[slug]`、MDX、RSS、sitemap |
 
-## Gaps And Next Work
+## 下一步缺口
 
-The project should not jump directly into visual gimmicks. The next high-leverage work is:
+现在不应该直接堆视觉花活。最有价值的下一步是：
 
-1. Define Phase 2 content schema.
-2. Build `/blog`, `/blog/[slug]`, and `/projects`.
-3. Research programmer-style micro-interactions in parallel.
-4. Convert validated interaction ideas into reusable components later.
+1. 复盘 Phase 2，确认内容系统是否足够可维护。
+2. 调研 Phase 3 媒体层，明确照片和音乐的真实角色。
+3. 定义照片/音乐的内容 schema。
+4. 再进入 `/photos`、`/music` 和 mini player 实现。
 
-## Quality Bar Going Forward
+## 后续质量规则
 
-Every future feature should update:
+每个未来功能都必须更新：
 
-- GitHub issue or milestone.
-- `docs/PROJECT_MAP.md` when scope or structure changes.
-- `docs/PROGRESS_LOG.md` when progress changes.
-- `docs/DECISIONS.md` when a durable decision is made.
-- Feishu Wiki after local docs are committed.
+- GitHub issue 或 milestone。
+- `docs/PROJECT_MAP.md`。
+- `docs/PROGRESS_LOG.md`。
+- `docs/DECISIONS.md`，如果出现长期决策。
+- 飞书 Wiki。

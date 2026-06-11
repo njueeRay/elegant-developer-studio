@@ -1,87 +1,99 @@
-# Elegant Developer Studio PRD
+# Elegant Developer Studio 产品需求文档
 
-## 1. Product Positioning
+## 1. 产品定位
 
-Elegant Developer Studio is a personal site for a design-oriented engineer. It is not a resume template, GitHub clone, dense dashboard, or generic portfolio landing page. The site should feel like a calm studio: writing, selected work, knowledge, photos/music, and small experiments all have clear places to grow.
+Elegant Developer Studio 是一个面向设计型工程师的个人站。它不是简历模板、GitHub 克隆、高密度控制台，也不是泛泛的作品集落地页。它应该像一个安静但有技术气质的个人工作室：写作、精选作品、知识、照片/音乐和实验都有清晰的生长位置。
 
-Primary audience:
+主要受众：
 
-- People evaluating the owner as a design engineer.
-- Readers who come for technical essays and product thinking.
-- Collaborators who want to inspect projects, taste, working style, and credibility.
+- 评估站点拥有者设计工程能力的人。
+- 阅读技术文章和产品思考的人。
+- 想了解项目、审美、工作方式和可信度的潜在合作者。
 
-Core thesis:
+核心判断：
 
-- First impression should communicate taste, engineering identity, and restraint.
-- The site must stay extensible across content, media, interaction, and portfolio operating-system phases.
-- Components should be reusable and scenario-appropriate, not one-off ornament.
+- 第一印象必须同时传达审美、工程身份和克制。
+- 站点要能在内容、媒体、交互和个人操作系统方向上持续扩展。
+- 组件必须可复用、符合真实场景，而不是一次性装饰。
 
-## 2. Design Direction
+## 2. 设计方向
 
-Selected visual direction: Developer Atelier.
+已选视觉方向：`Developer Atelier`。
 
-Style blend:
+风格组合：
 
-- Claude Warm AI: warm reading mood, human tone, restrained surfaces.
-- Primer Developer Platform: developer semantics, workbench language, status and code cues.
-- Linear: small command-first affordances and efficient structure without dashboard density.
-- Apple: polished motion, careful media framing, limited translucent chrome.
+- `Claude Warm AI`：温暖阅读气质、人味和克制表面。
+- `Primer Developer Platform`：开发者语义、工作台语言、状态和代码线索。
+- `Linear`：少量命令优先交互和高效结构，但不做仪表盘密度。
+- `Apple`：细腻动效、媒体 framing、少量半透明 chrome。
 
-Mandatory IA correction:
+强制 IA 修正：
 
-- Use `knowledge`, not `notes`, as the long-term information architecture label.
+- 长期信息架构使用 `knowledge`，不使用 `notes`。
 
-## 3. Phase 1 Scope
+语言规则：
 
-Phase 1 builds one high-fidelity interactive homepage.
+- 飞书知识库首选语言为中文。
+- 英文只保留在品牌名、代码路径、API 名称、组件名和必要专有名词中。
 
-Included:
+## 3. 已完成范围
 
-- Hero with name, identity, short intro, current status, and command entry.
-- Navigation and theme toggle.
-- Workbench panel with three realistic current-state items.
-- Featured modules: writing, work, media.
-- Knowledge, lab, and contact preview panels.
-- Generated visual assets for project and media cards.
-- Local PRD, roadmap, IA, design-system, and version trace documents.
+Phase 1：视觉基础
 
-Not included:
+- 首页首屏、状态、命令入口和工作台。
+- 导航、主题切换、社交链接。
+- 写作、作品、媒体精选模块。
+- Knowledge、Lab、Contact 预览面板。
+- 生成项目/媒体视觉资产。
+- PRD、路线图、IA、设计系统、版本追溯。
 
-- Real blog routes.
-- MDX content pipeline.
-- Search index.
-- Photo gallery.
-- Real audio playback.
-- CMS or admin.
+Phase 2：内容核心
 
-## 4. Functional Requirements
+- `/blog`。
+- `/blog/[slug]`。
+- `/projects`。
+- `/projects/[slug]`。
+- MDX 内容结构。
+- 标签筛选、阅读进度、目录、代码复制。
+- SEO metadata、RSS、sitemap、robots。
+- 首页接入真实内容 metadata。
 
-- Theme toggle changes light/dark presentation and persists preference locally.
-- Command menu opens through button click and `Cmd/Ctrl + K`; closes through backdrop, command selection, or `Esc`.
-- Media play button toggles visible play/pause state.
-- Navigation anchors scroll to homepage sections.
-- Cards use realistic links that match future route architecture.
-- Homepage remains responsive across desktop and mobile.
+## 4. 后续范围
 
-## 5. Non-Functional Requirements
+Phase 3：媒体层
 
-- The homepage must not rely on external image URLs.
-- Generated assets used by the UI must live in `public/assets`.
-- The accepted visual reference must be preserved in `public/references`.
-- Build must pass before deployment.
-- Documentation must explain what Phase 1 is and is not.
+- `/photos` 相册页。
+- 精选照片、照片网格、灯箱浏览。
+- `/music` 或首页音乐模块扩展。
+- 精致 mini player，支持基础播放控制和当前曲目信息。
 
-## 6. Acceptance Criteria
+Phase 4：交互层
 
-- The first viewport feels elegant, developer-specific, and low-to-medium density.
-- `Knowledge` appears consistently where the older plan said `Notes`.
-- Components are named around reusable intent: status badge, workbench, highlight card, command palette, media/player, knowledge panel.
-- Desktop and mobile layouts do not overflow or clip primary content.
-- The app can be deployed to Vercel with the repository state intact.
+- 全站命令面板。
+- 全站搜索。
+- 文章、项目、照片、知识筛选。
+- 状态面板和快捷入口。
 
-## 7. Open Decisions
+Phase 5：Portfolio OS
 
-- Real owner profile data: name, biography, email, social URLs, and location.
-- Whether Phase 2 should use filesystem MDX, remote CMS, or hybrid content.
-- Whether music should become a real audio feature or remain a curated now-playing surface.
-- Whether `knowledge` should be public evergreen notes, private/public bookmarks, or structured learning logs.
+- `/lab`。
+- `/about`。
+- `/uses`。
+- `/knowledge`。
+- 可选 analytics、reactions、联系表单和后台内容管理。
+
+## 5. 非功能要求
+
+- UI 使用的生成素材必须进入 `public/assets`。
+- 视觉参考进入 `public/references`。
+- 本地仓库是事实源，飞书是云端协作层。
+- 每个阶段必须可构建、可验证、可追溯。
+- 桌面和移动端不得有横向溢出或核心内容遮挡。
+
+## 6. 验收标准
+
+- 首页不像模板站，不像 GitHub 克隆，不靠满屏信息制造专业感。
+- `Knowledge` 在 IA、文档和 UI 中一致。
+- Phase 2 内容系统可以通过新增 MDX 文件持续维护。
+- 飞书知识库以中文为主，且能从本地文档稳定同步。
+- 每个阶段都有 Git commit、版本追溯、进度记录和质量验证。

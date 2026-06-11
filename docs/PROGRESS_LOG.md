@@ -1,118 +1,116 @@
-# Progress Log
+# 进度日志
 
-This is the chronological ledger for project execution. It records what changed, where it is tracked, and what remains.
+本文件是项目执行时间账本，记录做了什么、在哪里追踪、还剩什么。
 
 ## 2026-06-11
 
-### Phase 1: Visual Foundation
+### Phase 1：视觉基础
 
-Status: complete.
+状态：完成。
 
-Completed:
+已完成：
 
-- Created Next.js App Router project.
-- Implemented the first homepage.
-- Selected and implemented the Developer Atelier direction.
-- Replaced `Notes` with `Knowledge`.
-- Added generated media/project assets.
-- Added PRD, roadmap, IA, design system seed, version trace, and design QA.
-- Deployed to Vercel.
-- Created GitHub repository and pushed `main`.
+- 创建 Next.js App Router 项目。
+- 实现第一版首页。
+- 选择并实现 Developer Atelier 方向。
+- 将 `Notes` 替换为 `Knowledge`。
+- 加入生成媒体/项目素材。
+- 添加 PRD、路线图、IA、设计系统、版本追溯和设计 QA。
+- 部署到 Vercel。
+- 创建 GitHub repository 并推送 `main`。
 
-Verification:
+验证：
 
-- `npm run lint`: passed.
-- `npm run build`: passed.
-- Desktop visual QA: passed at 1440 x 1024.
-- Mobile visual QA: passed at 390 x 844.
-- Vercel fetch: returned `200 OK`.
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 桌面视觉 QA：1440 x 1024 通过。
+- 移动端视觉 QA：390 x 844 通过。
+- Vercel fetch：返回 `200 OK`。
 
-Artifacts:
+产物：
 
-- GitHub repo: `https://github.com/njueeRay/elegant-developer-studio`
-- Vercel production: `https://elegant-developer-studio.vercel.app`
-- QA report: `design-qa.md`
+- GitHub：`https://github.com/njueeRay/elegant-developer-studio`
+- Vercel：`https://elegant-developer-studio.vercel.app`
+- QA：`design-qa.md`
 
-Commits:
+提交：
 
 - `2efc984` - `feat: scaffold elegant developer studio`
 - `e93429d` - `docs: record vercel deployment`
 - `b6d30c6` - `docs: record github repository`
 
-Open tracking:
+### 项目地图和飞书知识库
 
-- `#1` Phase 2: Content Core
-- `#2` Phase 3: Media Layer
-- `#3` Phase 4: Interaction Layer
-- `#4` Phase 5: Portfolio OS
-- `#5` Research: programmer-style micro-interactions
+状态：完成。
 
-### Project Map Setup
+已完成：
 
-Status: complete.
-
-Completed:
-
-- Added `docs/PROJECT_MAP.md`.
-- Added `docs/PROGRESS_LOG.md`.
-- Added `docs/DECISIONS.md`.
-- Created GitHub milestones for Phase 2-5 and interaction research.
-- Assigned existing issues `#1` through `#5` to milestones.
-- Created Feishu Wiki space for cloud maintenance and comments.
-- Published core project documents into Feishu Wiki.
-- Inserted Phase 1 visual reference and generated assets into the Feishu assets page.
-
-Next:
-
-- Use `PROJECT_MAP.md` as the mandatory reference before each phase.
-- Start Phase 2 by defining the content schema and MDX file layout.
+- 添加 `docs/PROJECT_MAP.md`。
+- 添加 `docs/PROGRESS_LOG.md`。
+- 添加 `docs/DECISIONS.md`。
+- 创建 GitHub milestones。
+- 将 issues `#1` 到 `#5` 分配到 milestones。
+- 创建飞书 Wiki 空间。
+- 发布核心项目文档到飞书。
+- 将 Phase 1 视觉参考和生成素材插入飞书素材页。
 
 ## 2026-06-12
 
-### Phase 2: Content Core
+### Phase 2：内容核心
 
-Status: complete.
+状态：完成。
 
-Completed:
+已完成：
 
-- Added `@next/mdx` and MDX content support.
-- Added MDX posts under `src/content/posts`.
-- Added MDX project case studies under `src/content/projects`.
-- Added content registry and metadata helpers in `src/lib/content.ts`.
-- Implemented `/blog`, `/blog/[slug]`, `/projects`, and `/projects/[slug]`.
-- Implemented `PostCard`, `ProjectCard`, `TagFilter`, `ReadingProgress`, `TableOfContents`, `CodeBlock`, and metadata rail styling.
-- Connected homepage latest writing and selected work to real content metadata.
-- Added RSS, sitemap, robots, and metadata base.
-- Added Phase 2 research/review document.
-- Closed GitHub issue `#1`.
-- Closed GitHub milestone `Phase 2: Content Core`.
+- 添加 `@next/mdx` 和 MDX 内容支持。
+- 添加 `src/content/posts` 下的 MDX 文章。
+- 添加 `src/content/projects` 下的 MDX 项目 case study。
+- 添加 `src/lib/content.ts` 内容注册表和 metadata 工具。
+- 实现 `/blog`、`/blog/[slug]`、`/projects`、`/projects/[slug]`。
+- 实现 `PostCard`、`ProjectCard`、`TagFilter`、`ReadingProgress`、`TableOfContents`、`CodeBlock` 和 metadata rail 样式。
+- 首页 latest writing 和 selected work 接入真实内容 metadata。
+- 添加 RSS、sitemap、robots、metadata base。
+- 添加 Phase 2 调研/复盘文档。
+- 关闭 GitHub issue `#1`。
+- 关闭 GitHub milestone `Phase 2: Content Core`。
 
-Verification:
+验证：
 
-- `npm run lint`: passed.
-- `npm run build`: passed.
-- Production browser QA via Playwright:
-  - `/blog` desktop: no horizontal overflow.
-  - `/blog/interface-is-a-promise` desktop: no horizontal overflow.
-  - `/projects` desktop: no horizontal overflow.
-  - `/blog/interface-is-a-promise` mobile: no horizontal overflow.
-- Tag filter interaction: `Interaction` filter returned one post.
-- Code copy interaction: copied TypeScript snippet and showed `Copied`.
-- RSS route contained `Ray Studio Writing`.
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Playwright production QA：
+  - `/blog` 桌面：无横向溢出。
+  - `/blog/interface-is-a-promise` 桌面：无横向溢出。
+  - `/projects` 桌面：无横向溢出。
+  - `/blog/interface-is-a-promise` 移动端：无横向溢出。
+- 标签筛选：点击 `Interaction` 后返回 1 篇文章。
+- 代码复制：复制 TypeScript snippet，并显示 `Copied`。
+- RSS：包含 `Ray Studio Writing`。
 
-Screenshots:
+截图：
 
 - `output/playwright/phase2-production/blog-desktop.png`
 - `output/playwright/phase2-production/article-desktop.png`
 - `output/playwright/phase2-production/projects-desktop.png`
 - `output/playwright/phase2-production/article-mobile-final.png`
 
-Next:
+部署：
 
-- Sync Phase 2 docs to Feishu.
-- Move to Phase 3 media model planning.
+- Production alias：`https://elegant-developer-studio.vercel.app`
+- Deployment URL：`https://elegant-developer-studio-ai7ak3mvh.vercel.app`
 
-Deployment:
+下一步：
 
-- Production alias: `https://elegant-developer-studio.vercel.app`
-- Deployment URL: `https://elegant-developer-studio-ai7ak3mvh.vercel.app`
+- 复盘 Phase 2。
+- 统一飞书知识库首选语言为中文。
+- 准备 Phase 3 媒体层调研和 schema。
+
+### 飞书中文化
+
+状态：进行中。
+
+目标：
+
+- 飞书知识库首选语言统一为中文。
+- 英文只保留在代码路径、组件名、API、品牌名和必要专有名词中。
+- 本地 Markdown 源同步中文化，避免未来覆盖飞书。

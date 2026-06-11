@@ -1,78 +1,89 @@
-# Phase 2 Review And Research
+# 第二阶段：内容核心复盘与调研
 
-Date: 2026-06-12
-Phase: Content Core
+日期：2026-06-12
+阶段：内容核心
 
-## Phase 1 And Setup Review
+## 第一阶段与基础设施复盘
 
-Phase 1 did the right thing by keeping the homepage sparse. The strongest choice was not adding every planned component early. The homepage now has enough identity, but the project needed a real content backbone before adding more visual surface.
+Phase 1 的正确选择是保持首页克制，没有提前塞满全部规划组件。首页已经建立身份、气质和视觉方向；真正需要补的不是更多装饰，而是内容骨架。
 
-Details worth preserving:
+值得保留的细节：
 
-- `Knowledge` is a better IA label than `Notes` because it can hold durable references, snippets, learning logs, and later public memory.
-- The homepage should remain a curated studio entry, not a dense index.
-- The workbench panel is useful because it gives programmer texture without turning the site into a fake terminal.
-- Visual assets should stay role-based: references in `public/references`, production assets in `public/assets`.
-- Feishu is the collaboration layer, not the source of truth. Local Markdown and Git remain authoritative.
+- `Knowledge` 比 `Notes` 更适合作为顶层 IA，因为它能承载长期引用、片段、学习记录和公开记忆。
+- 首页应该继续作为精选工作室入口，而不是完整索引。
+- 工作台面板有价值，因为它给出程序员语义，但没有把页面变成假终端。
+- 素材必须有角色：参考图放 `public/references`，生产素材放 `public/assets`。
+- 飞书是协作层，不是事实源；本地 Markdown 和 Git 仍然是事实源。
 
-## Research References
+## 调研参考
 
-References checked during Phase 2:
+Phase 2 调研参考：
 
-- Next.js MDX guide: `https://nextjs.org/docs/app/guides/mdx`
-- Vercel portfolio starter repository: `https://github.com/vercel/nextjs-portfolio-starter`
-- Lee Robinson personal site: `https://leerob.com/`
-- Josh W. Comeau personal site: `https://www.joshwcomeau.com/`
+- Next.js MDX Guide：`https://nextjs.org/docs/app/guides/mdx`
+- Vercel Portfolio Starter：`https://github.com/vercel/nextjs-portfolio-starter`
+- Lee Robinson 个人站：`https://leerob.com/`
+- Josh W. Comeau 个人站：`https://www.joshwcomeau.com/`
 
-## Extracted Patterns
+## 提炼出的模式
 
-High-value patterns:
+高价值模式：
 
-- Keep content in the repository so publishing is versioned and reviewable.
-- Use MDX for long-form writing because it supports prose, code, and custom components in one content format.
-- Treat RSS, sitemap, and metadata as part of the content system, not as launch polish.
-- Use tags as navigational scope, not as decorative chips.
-- Give code snippets real utility: copy feedback, readable mono type, and mobile-safe wrapping.
-- Add reading progress only when the article is long enough to benefit from orientation.
+- 内容放在仓库中，发布过程可版本化、可审查。
+- 用 MDX 承载长文，因为它同时支持 prose、代码和自定义组件。
+- RSS、sitemap、metadata 是内容系统的一部分，不是上线后补丁。
+- 标签用于导航范围，不做装饰 chips。
+- 代码片段要有真实效用：复制反馈、可读 mono 字体、移动端可读。
+- 阅读进度只在长文中承担定位功能，不能变成视觉噱头。
 
-Patterns rejected:
+拒绝的模式：
 
-- Dense dashboard-style blog indexes.
-- Fake terminal surfaces.
-- Heavy card grids for every content type.
-- Decorative command menus without actual routing or action value.
+- 高密度 dashboard 式博客首页。
+- 假终端。
+- 所有内容都套成厚重卡片网格。
+- 没有真实动作价值的命令菜单。
 
-## Phase 2 Implementation Notes
+## 第二阶段实现记录
 
-Built:
+已完成：
 
 - `/blog`
 - `/blog/[slug]`
 - `/projects`
 - `/projects/[slug]`
-- MDX content registry.
-- Post and project metadata contracts.
-- Tag filtering.
-- Reading progress.
-- Table of contents.
-- Code copy interaction.
-- SEO metadata, sitemap, robots, RSS.
-- Homepage content connected to real content metadata.
+- MDX 内容注册表。
+- 文章和项目 metadata 合约。
+- 标签筛选。
+- 阅读进度。
+- 文章目录。
+- 代码复制交互。
+- SEO metadata、sitemap、robots、RSS。
+- 首页接入真实内容 metadata。
 
-Intentional limitation:
+有意保留的限制：
 
-- Reading time is stored in metadata for now. This is acceptable while the content set is small. If the project grows beyond roughly 20 essays, computed reading time should replace manual values.
+- 阅读时间目前手写在 metadata 中。当前内容规模小，这是可接受的。超过约 20 篇文章后，应改为自动计算。
 
-## Next Design Questions
+## 对第二阶段的补充判断
 
-Before Phase 3:
+Phase 2 当前已经完成“内容系统骨架”。不建议在此阶段继续增加复杂搜索、评论、reactions 或 CMS，因为这些属于 Phase 4/Phase 5 的问题。
 
-- Decide whether photos are primarily memory, process documentation, or visual portfolio.
-- Decide whether music is an ambient studio layer or a full archive.
-- Define how media metadata should connect back to essays and projects.
+可以补充但不急于实现的内容：
 
-Before Phase 4:
+- 文章封面系统。
+- 更完整的 project case study 模板。
+- 文章之间的相关链接。
+- `knowledge` 与文章之间的反向链接。
 
-- Research command palette ranking.
-- Decide whether search indexes all MDX content or only metadata at first.
-- Decide how much keyboard grammar the site should expose without feeling like a developer toy.
+## 进入第三阶段前的问题
+
+照片：
+
+- 照片是生活记忆、创作过程，还是视觉作品集？
+- 首页只展示精选照片，还是展示最近照片？
+- 是否需要 EXIF、地点、设备、主题标签？
+
+音乐：
+
+- 音乐是氛围层，还是完整听歌档案？
+- 是否需要真实音频，还是先做 now-playing 状态？
+- 音乐和写作、照片、项目之间是否要建立关联？

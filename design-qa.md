@@ -1,48 +1,47 @@
-# Design QA
+# 设计 QA
 
-Final result: passed
+最终结果：通过。
 
-## Reference
+## 参考
 
-- Accepted concept: `public/references/developer-atelier-reference.png`
-- Implemented desktop capture: `output/playwright/home-desktop-final.png`
-- Implemented command capture: `output/playwright/home-command-final.png`
-- Implemented mobile capture: `output/playwright/home-mobile-final.png`
+- 已采纳概念图：`public/references/developer-atelier-reference.png`
+- 桌面实现截图：`output/playwright/home-desktop-final.png`
+- 命令面板截图：`output/playwright/home-command-final.png`
+- 移动端实现截图：`output/playwright/home-mobile-final.png`
 
-## Method
+## 方法
 
-- Local URL: `http://localhost:3000`
-- Browser verification fallback: Playwright Chromium via node API because the in-app Browser navigation/screenshot tool was not exposed in the active toolset.
-- Viewports checked:
-  - Desktop: 1440 x 1024
-  - Mobile: 390 x 844
+- 本地 URL：`http://localhost:3000`
+- 浏览器验证方式：由于当前工具集未暴露 in-app Browser 导航/截图工具，使用 Playwright Chromium 作为 fallback。
+- 检查视口：
+  - 桌面：1440 x 1024
+  - 移动端：390 x 844
 
-## Checks
+## 检查项
 
-1. First viewport structure: passed.
-   - Hero, status, command entry, social links, and workbench are visible without crowding.
+1. 首屏结构：通过。
+   - Hero、状态、命令入口、社交链接和工作台都可见，且不过载。
 
-2. Information architecture: passed.
-   - `Notes` was intentionally replaced by `Knowledge` in navigation, command search copy, homepage section, docs, and route naming.
+2. 信息架构：通过。
+   - `Notes` 已替换为 `Knowledge`，覆盖导航、命令搜索文案、首页 section、文档和路由命名。
 
-3. Visual fidelity: passed with intentional deviation.
-   - Reference direction is preserved: serif studio identity, warm background, developer workbench, restrained rust/blue accents, low-to-medium density.
-   - Intentional deviation: the implementation uses `Knowledge` instead of the reference image's `Notes`.
+3. 视觉一致性：通过，有一个有意偏差。
+   - 保留参考方向：serif 工作室身份、温暖背景、开发者工作台、克制 rust/blue accent、中低信息密度。
+   - 有意偏差：实现中使用 `Knowledge`，不使用参考图里的 `Notes`。
 
-4. Layout QA: passed.
-   - Desktop horizontal overflow: `scrollWidth 1440`, `clientWidth 1440`.
-   - Mobile horizontal overflow: `scrollWidth 390`, `clientWidth 390`.
-   - Fixed issue: desktop H1 originally wrapped into two lines because stale `.next` CSS was served; clearing `.next` and restarting confirmed `white-space: nowrap`.
-   - Fixed issue: floating player overlapped featured content; removed it and kept media-card playback state.
+4. 布局 QA：通过。
+   - 桌面横向溢出：`scrollWidth 1440`，`clientWidth 1440`。
+   - 移动端横向溢出：`scrollWidth 390`，`clientWidth 390`。
+   - 已修复：桌面 H1 因 stale `.next` CSS 导致换行；清理 `.next` 并重启后确认 `white-space: nowrap`。
+   - 已修复：浮动播放器与 featured 内容重叠；移除浮动播放器，保留 media card playback state。
 
-5. Interaction QA: passed.
-   - Theme toggle changes document theme to `dark`.
-   - Media card button changes from `Play` to `Pause`.
-   - `Meta+K` opens the command palette.
+5. 交互 QA：通过。
+   - 主题切换能将 document theme 改为 `dark`。
+   - 媒体卡片按钮能从 `Play` 变为 `Pause`。
+   - `Meta+K` 能打开命令面板。
 
-## Residual P3 Notes
+## 剩余 P3 备注
 
-- Social URLs are placeholders.
-- `/blog`, `/projects`, `/knowledge`, `/media`, and `/lab` are future routes.
-- Media playback is a stateful UI stub, not real audio.
-- The article card's paper thumbnail is intentionally abstract in Phase 1 and can be replaced by generated editorial art in Phase 2.
+- 社交 URL 仍是占位。
+- 媒体播放仍是 UI 状态，不是真实音频。
+- Phase 3 需要为照片和音乐建立真实内容模型。

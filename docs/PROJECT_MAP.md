@@ -1,204 +1,201 @@
-# Project Map
+# 项目地图
 
-This document is the operating map for Elegant Developer Studio. It defines what exists, what is planned, where work belongs, and how progress is traced.
+本文件是 Elegant Developer Studio 的操作地图，定义当前已有内容、后续规划、目录结构、阶段追踪和质量门禁。
 
-## 1. North Star
+## 1. 北极星
 
-Build a personal site that feels like an elegant developer studio:
+构建一个像“优雅开发者工作室”的个人站：
 
-- Editorial enough for writing.
-- Technical enough for engineering credibility.
-- Visual enough for photos, music, and portfolio work.
-- Structured enough to become a personal operating system over time.
+- 有编辑气质，适合写作。
+- 有技术语义，能体现工程可信度。
+- 有视觉空间，能承载照片、音乐和作品。
+- 有结构能力，能逐步扩展成个人操作系统。
 
-The site must avoid three failure modes:
+必须避免三种失败：
 
-- Generic portfolio template.
-- Dense SaaS dashboard.
-- Decorative terminal gimmick.
+- 泛泛的作品集模板。
+- 高密度 SaaS dashboard。
+- 装饰性假终端。
 
-## 2. Current State
+## 2. 当前状态
 
-Version: `v0.2.0`
+版本：`v0.2.0`
 
-Live:
+线上：
 
-- Production: `https://elegant-developer-studio.vercel.app`
-- Repository: `https://github.com/njueeRay/elegant-developer-studio`
-- Feishu Wiki: `https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb`
+- Production：`https://elegant-developer-studio.vercel.app`
+- GitHub：`https://github.com/njueeRay/elegant-developer-studio`
+- 飞书知识库：`https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb`
 
-Implemented:
+已实现：
 
-- Phase 1 homepage.
-- Developer Atelier visual direction.
-- `Knowledge` information architecture.
-- Theme toggle.
-- Command palette.
-- Workbench panel.
-- Writing, work, media, knowledge, lab, and contact homepage modules.
-- Phase 2 content core: blog, post detail, projects, project detail, MDX registry, RSS, sitemap, robots.
-- Generated project/media assets.
-- PRD, roadmap, IA, design-system seed, version trace, and design QA.
+- Phase 1 首页。
+- Developer Atelier 视觉方向。
+- `Knowledge` 信息架构。
+- 主题切换。
+- 命令面板。
+- 工作台面板。
+- 首页写作、作品、媒体、Knowledge、Lab、Contact 模块。
+- Phase 2 内容核心：blog、文章详情、projects、项目详情、MDX 注册表、RSS、sitemap、robots。
+- 生成项目/媒体素材。
+- PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
-## 3. Product Surface Map
+## 3. 产品表面地图
 
-| Surface | Route | Phase | Status | Purpose |
+| 表面 | 路由 | 阶段 | 状态 | 作用 |
 | --- | --- | --- | --- | --- |
-| Home | `/` | 1 | Implemented | First impression and curated studio entry |
-| Blog Index | `/blog` | 2 | Implemented | Long-form essays and writing archive |
-| Blog Detail | `/blog/[slug]` | 2 | Implemented | MDX essay reading experience |
-| Projects | `/projects` | 2 | Implemented | Selected work and case studies |
-| Project Detail | `/projects/[slug]` | 2 | Implemented | MDX project case-study surface |
-| RSS | `/rss.xml` | 2 | Implemented | Feed for writing |
-| Sitemap | `/sitemap.xml` | 2 | Implemented | Search crawler route map |
-| Knowledge | `/knowledge` | 5 | Planned | Evergreen references, snippets, learning logs |
-| Photos | `/photos` | 3 | Planned | Visual archive and lightbox |
-| Music | `/music` | 3 | Planned | Studio mixes and listening context |
-| Lab | `/lab` | 5 | Planned | Experiments, prototypes, component previews |
-| About | `/about` | 5 | Planned | Biography, timeline, principles |
-| Uses | `/uses` | 5 | Planned | Tools, stack, workflow |
+| 首页 | `/` | 1 | 已实现 | 第一印象和精选工作室入口 |
+| 博客列表 | `/blog` | 2 | 已实现 | 长文和写作归档 |
+| 文章详情 | `/blog/[slug]` | 2 | 已实现 | MDX 阅读体验 |
+| 项目列表 | `/projects` | 2 | 已实现 | 精选作品和 case study |
+| 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
+| RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
+| Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
+| Knowledge | `/knowledge` | 5 | 规划中 | 长期知识、片段、学习记录 |
+| Photos | `/photos` | 3 | 准备中 | 照片档案和灯箱 |
+| Music | `/music` | 3 | 准备中 | 工作室 mix 和收听状态 |
+| Lab | `/lab` | 5 | 规划中 | 实验、原型、组件预览 |
+| About | `/about` | 5 | 规划中 | 个人介绍、时间线、原则 |
+| Uses | `/uses` | 5 | 规划中 | 工具、技术栈、工作流 |
 
-## 4. Phase Map
+## 4. 阶段地图
 
-### Phase 1: Visual Foundation
+### Phase 1：视觉基础
 
-Status: complete.
+状态：完成。
 
-Tracking:
+追踪：
 
-- Commit: `2efc984`
-- Deployment record: `docs/VERSION_TRACE.md`
-- QA record: `design-qa.md`
+- Commit：`2efc984`
+- 部署记录：`docs/VERSION_TRACE.md`
+- QA：`design-qa.md`
 
-Definition of done:
+完成标准：
 
-- Homepage works on desktop and mobile.
-- First screen establishes taste and identity.
-- Core components are reusable enough to survive later phases.
-- Visual QA and build checks pass.
+- 首页桌面和移动端可用。
+- 首屏建立审美和身份。
+- 核心组件能延续到后续阶段。
+- 构建和视觉 QA 通过。
 
-### Phase 2: Content Core
+### Phase 2：内容核心
 
-Status: complete.
+状态：完成。
 
-Tracking:
+追踪：
 
-- GitHub issue: `#1`
-- Milestone: `https://github.com/njueeRay/elegant-developer-studio/milestone/1`
+- GitHub issue：`#1`，已关闭。
+- Milestone：`Phase 2: Content Core`，已关闭。
+- 版本：`v0.2.0`
 
-Scope:
+完成内容：
 
-- `/blog`
-- `/blog/[slug]`
-- `/projects`
-- MDX content source
-- tags, reading time, code highlighting, TOC
-- SEO and RSS
+- MDX 内容注册表。
+- 3 篇 starter posts。
+- 2 个 starter project case studies。
+- 标签筛选。
+- 阅读进度。
+- 文章目录。
+- 代码复制交互。
+- Metadata rail。
+- RSS、sitemap、robots、metadata base。
+- 首页接入真实内容 metadata。
 
-Completed in v0.2.0:
+主要风险：
 
-- MDX content registry.
-- 3 starter posts.
-- 2 starter project case studies.
-- Tag filtering.
-- Reading progress.
-- Table of contents.
-- Code copy interaction.
-- Metadata rail.
-- RSS, sitemap, robots, and metadata base.
-- Homepage content wired to content metadata.
+- 后续新增内容时破坏 schema 纪律。新增内容必须遵守 MDX metadata 合约。
 
-Main risk:
+### Phase 3：媒体层
 
-- Adding content volume without preserving schema discipline. New content should follow the MDX metadata contract.
+状态：准备中。
 
-### Phase 3: Media Layer
+追踪：
 
-Tracking:
+- GitHub issue：`#2`
+- Milestone：`https://github.com/njueeRay/elegant-developer-studio/milestone/2`
 
-- GitHub issue: `#2`
-- Milestone: `https://github.com/njueeRay/elegant-developer-studio/milestone/2`
-
-Scope:
+范围：
 
 - `/photos`
-- photo grid and lightbox
-- `/music` or expanded music surface
-- mini player with real controls
+- 照片网格和灯箱。
+- `/music` 或扩展音乐表面。
+- mini player 和真实控制。
 
-Main risk:
+主要风险：
 
-- Media becoming decorative. Photos and music must express memory, process, and taste, not filler.
+- 媒体变成装饰。照片和音乐必须表达记忆、过程和审美，而不是填充页面。
 
-### Phase 4: Interaction Layer
+### Phase 4：交互层
 
-Tracking:
+状态：规划中。
 
-- GitHub issue: `#3`
-- Research issue: `#5`
-- Milestone: `https://github.com/njueeRay/elegant-developer-studio/milestone/3`
+追踪：
 
-Scope:
+- GitHub issue：`#3`
+- Research issue：`#5`
 
-- global command menu
-- global search
-- filters
-- quick actions
-- status panel
+范围：
 
-Main risk:
+- 全站命令菜单。
+- 全站搜索。
+- 筛选。
+- 快捷动作。
+- 状态面板。
 
-- Adding clever interactions without workflow value. Each interaction must reduce navigation cost or reveal useful context.
+主要风险：
 
-### Phase 5: Portfolio OS
+- 交互聪明但无用。每个交互必须减少导航成本或揭示有用上下文。
 
-Tracking:
+### Phase 5：Portfolio OS
 
-- GitHub issue: `#4`
-- Milestone: `https://github.com/njueeRay/elegant-developer-studio/milestone/4`
+状态：规划中。
 
-Scope:
+追踪：
+
+- GitHub issue：`#4`
+
+范围：
 
 - `/lab`
 - `/about`
 - `/uses`
 - `/knowledge`
-- optional analytics, reactions, contact form, admin
+- 可选 analytics、reactions、联系表单、admin。
 
-Main risk:
+主要风险：
 
-- Expanding into many half-finished pages. Phase 5 should be built as a system of stable primitives.
+- 扩展成大量半成品页面。Phase 5 应该基于稳定 primitives 扩展。
 
-## 5. Repository Map
+## 5. 仓库地图
 
 ```text
 docs/
-  PRD.md                         Product requirements
-  ROADMAP.md                     Phase plan and component backlog
-  PROJECT_MAP.md                 Operating map for product, repo, phases, tracking
-  INFORMATION_ARCHITECTURE.md    Navigation and route structure
-  DESIGN_SYSTEM.md               Visual tokens and component inventory
-  DECISIONS.md                   Architecture/product decision log
-  PROGRESS_LOG.md                Stage-by-stage progress ledger
-  PHASE2_RESEARCH.md             Phase 2 review, research references, and extracted patterns
-  FEISHU_SYNC.md                 Feishu Wiki sync map and node tokens
-  VERSION_TRACE.md               Release, deployment, and commit trace
+  PRD.md                         产品需求文档
+  ROADMAP.md                     阶段计划和组件 backlog
+  PROJECT_MAP.md                 产品、仓库、阶段、追踪总地图
+  INFORMATION_ARCHITECTURE.md    导航、路由和命名决策
+  DESIGN_SYSTEM.md               视觉 tokens 和组件库存
+  DECISIONS.md                   产品/架构决策记录
+  PROGRESS_LOG.md                阶段进度账本
+  PHASE2_RESEARCH.md             Phase 2 复盘和调研
+  PHASE3_RESEARCH.md             Phase 3 媒体层调研和计划
+  FEISHU_SYNC.md                 飞书同步地图和节点 token
+  VERSION_TRACE.md               版本、部署、commit 追溯
 
 public/
-  assets/                        Project-bound generated images
-  references/                    Accepted visual references
+  assets/                        生产 UI 使用的生成素材
+  references/                    已采纳视觉参考
 
 src/
-  app/                           Next.js App Router entry points
-  components/                    Reusable interactive UI components
-  content/                       MDX posts and project case studies
-  data/                          Mock content and future content contracts
-  lib/                           Content registry and helpers
+  app/                           Next.js App Router 入口
+  components/                    可复用交互组件
+  content/                       MDX 文章和项目 case study
+  data/                          首页 mock 和未来数据契约
+  lib/                           内容注册表和工具函数
 ```
 
-## 6. Component Map
+## 6. 组件地图
 
-Implemented:
+已实现：
 
 - `StudioHome`
 - `Header`
@@ -207,7 +204,6 @@ Implemented:
 - `HighlightCard`
 - `SocialLinks`
 - `CommandPalette`
-- homepage knowledge, lab, contact, latest sections
 - `PostCard`
 - `ProjectCard`
 - `TagFilter`
@@ -216,84 +212,91 @@ Implemented:
 - `CodeBlock`
 - `MetadataRail`
 
-Next component targets:
+下一批目标：
 
+- `PhotoGrid`
+- `PhotoLightbox`
+- `AlbumCard`
 - `MiniPlayer`
+- `TrackList`
+- `NowPlaying`
 - `GlobalSearch`
 - `StatusPanel`
 
-Component rule:
+组件规则：
 
-Every new component must answer two questions before implementation:
+每个新组件实现前必须回答两个问题：
 
-- Which route or workflow uses it now?
-- Which later phase can reuse it without rewriting?
+- 当前由哪个路由或工作流使用？
+- 后续哪个阶段能复用，而不是重写？
 
-## 7. Interaction Map
+## 7. 交互地图
 
-Current interactions:
+当前交互：
 
-- Theme toggle.
-- Command palette open/close.
-- Media play/pause state.
-- Anchor navigation.
-- Card hover states.
-- Tag filtering.
-- Reading progress.
-- Code copy feedback.
-- Article heading anchor links.
+- 主题切换。
+- 命令面板打开/关闭。
+- 媒体 play/pause 状态。
+- 锚点导航。
+- 卡片 hover。
+- 标签筛选。
+- 阅读进度。
+- 代码复制反馈。
+- 文章标题锚点。
 
-Research track:
+研究轨道：
 
-- Command palette with scoped actions.
-- Project cards with deploy, version, commit, and changelog affordances.
-- Reading progress that borrows build-pipeline semantics.
-- Knowledge cards with copy, backlinks, and related links.
-- Lab cards with status, last run, branch, preview URL.
-- Keyboard-first focus states and shortcut grammar.
+- 带上下文排名的命令面板。
+- 项目卡片的 deploy、version、commit、changelog affordances。
+- 类似 build pipeline 的阅读进度语义。
+- Knowledge 卡片的复制、反向链接、关联链接。
+- Lab 卡片的状态、最近运行、branch、preview URL。
+- 键盘优先 focus state 和快捷键语法。
 
-Non-goals:
+非目标：
 
-- Fake terminals.
-- Random typing effects.
-- Decorative code rain.
-- High-density dashboards on the homepage.
+- 假终端。
+- 随机打字效果。
+- code rain。
+- 首页高密度 dashboard。
 
-## 8. Progress Tracking Protocol
+## 8. 进度追踪协议
 
-Every meaningful stage must update four places:
+每个有意义阶段必须更新：
 
-1. GitHub issue or milestone.
-2. `docs/PROGRESS_LOG.md`.
-3. `docs/VERSION_TRACE.md` when deployed or released.
-4. `docs/DECISIONS.md` when a durable product or architecture decision is made.
-5. Feishu Wiki after local documentation changes are committed.
+1. GitHub issue 或 milestone。
+2. `docs/PROGRESS_LOG.md`。
+3. 有部署或 release 时更新 `docs/VERSION_TRACE.md`。
+4. 有长期决策时更新 `docs/DECISIONS.md`。
+5. 同步飞书 Wiki。
 
-Every implementation PR or commit should state:
+每次实现提交应说明：
 
-- Phase.
-- Scope.
-- Files changed.
-- Tests or QA performed.
-- Known limitations.
+- 阶段。
+- 范围。
+- 改动文件。
+- 测试或 QA。
+- 已知限制。
 
-## 9. Quality Gates
+## 9. 质量门禁
 
-Before a phase is considered done:
+阶段完成前必须确认：
 
-- `npm run lint` passes.
-- `npm run build` passes.
-- Desktop and mobile layout are visually checked.
-- No horizontal overflow.
-- Core interactions are verified.
-- Project map and progress log are updated.
-- GitHub issue state matches actual repo state.
+- `npm run lint` 通过。
+- `npm run build` 通过。
+- 桌面和移动端视觉检查完成。
+- 无横向溢出。
+- 核心交互已验证。
+- 项目地图和进度日志已更新。
+- GitHub issue/milestone 状态与仓库一致。
+- 飞书知识库已同步，且使用中文为主。
 
-## 10. Immediate Next Step
+## 10. 下一步
 
-The next substantive work should be Phase 3 media model planning:
+下一步是 Phase 3 媒体层准备：
 
-1. Decide photo and music content schemas.
-2. Define `/photos` and `/music` route shape.
-3. Design media components without turning the site into a gallery template.
-4. Continue programmer-style micro-interaction research for Phase 4.
+1. 复盘 Phase 2，确认是否需要补充内容核心细节。
+2. 调研优秀照片/音乐/媒体个人站。
+3. 定义照片和音乐的内容 schema。
+4. 设计 `/photos`、`/music` 的信息架构。
+5. 继续为 Phase 4 程序员风格微交互做并行研究。

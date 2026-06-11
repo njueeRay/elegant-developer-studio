@@ -1,60 +1,60 @@
-# Assets And References
+# 素材与参考
 
-## Current Visual Direction
+## 当前视觉方向
 
-Selected direction:
+已采用方向：
 
-- Developer Atelier.
+- `Developer Atelier`
 
-Style blend:
+风格组合：
 
-- Claude Warm AI for warm editorial tone.
-- Primer for developer semantics.
-- Linear for command and structure discipline.
-- Apple for restrained polish and media treatment.
+- `Claude Warm AI`：负责温暖、安静、适合阅读的主气质。
+- `Primer Developer Platform`：负责开发者语义、状态、工作台和代码感。
+- `Linear`：负责结构效率和命令感，但不引入高密度控制台。
+- `Apple`：负责细腻动效、媒体展示和局部半透明 chrome。
 
-Reference image:
+参考图：
 
 - `public/references/developer-atelier-reference.png`
 
-## Project-Bound Assets
+## 项目内素材
 
-| Asset | Local path | Role |
+| 素材 | 本地路径 | 用途 |
 | --- | --- | --- |
-| Developer Atelier reference | `public/references/developer-atelier-reference.png` | Accepted visual target for Phase 1 |
-| Lumen design system thumbnail | `public/assets/lumen-design-system.png` | Project card image |
-| Morning studio desk | `public/assets/morning-studio-desk.png` | Media and latest-section image |
+| Developer Atelier 参考图 | `public/references/developer-atelier-reference.png` | Phase 1 已采纳视觉目标 |
+| Lumen 设计系统缩略图 | `public/assets/lumen-design-system.png` | 项目卡片图 |
+| 清晨工作室桌面图 | `public/assets/morning-studio-desk.png` | 媒体入口和最新内容配图 |
 
-## Asset Rules
+## 素材规则
 
-- Production UI assets must live in `public/assets`.
-- Accepted visual references live in `public/references`.
-- Temporary generated images under Codex storage must not be referenced by app code.
-- Low-density screenshots should not enter the active reference set.
-- Future media work should attach images to this Feishu page only after they have a clear role.
+- 生产 UI 使用的素材放在 `public/assets`。
+- 已采纳视觉参考放在 `public/references`。
+- Codex 临时目录中的生成图不能被应用代码直接引用。
+- 信息密度低、无法指导设计的截图不进入正式参考集。
+- 后续新增媒体素材前，必须先明确它服务哪个页面、组件或叙事目标。
 
-## Future Asset Needs
+## 后续素材需求
 
-Phase 2:
+Phase 2：
 
-- Essay cover system.
-- Project case-study thumbnails.
-- Code block and diagram visual treatments.
+- 文章封面体系。
+- 项目 case study 缩略图。
+- 代码块和技术图示视觉处理。
 
-Phase 3:
+Phase 3：
 
-- Photo album sample set.
-- Music cover or mix artwork.
-- Lightbox image treatment.
+- 示例相册素材。
+- 音乐封面或 mix artwork。
+- 灯箱浏览所需图片处理。
 
-Phase 4:
+Phase 4：
 
-- Command palette state references.
-- Interaction state screenshots.
-- Search/filter result examples.
+- 命令面板状态参考。
+- 搜索和筛选结果状态截图。
+- 交互状态说明图。
 
-Phase 5:
+Phase 5：
 
-- Lab experiment previews.
-- Component preview screenshots.
-- About/timeline media.
+- Lab 实验预览图。
+- 组件预览截图。
+- About/timeline 媒体素材。

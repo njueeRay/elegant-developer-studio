@@ -1,47 +1,47 @@
-# Information Architecture
+# 信息架构
 
-## Top-Level Navigation
+## 顶层导航
 
-- `/` - Studio homepage.
-- `/blog` - Long-form essays and technical writing.
-- `/projects` - Selected work, case studies, shipped tools.
-- `/knowledge` - Evergreen working knowledge, references, snippets, learning logs.
-- `/photos` - Photo archive and visual field notes.
-- `/music` - Studio mixes and now-playing history.
-- `/lab` - Experiments, prototypes, components, AI workflows.
-- `/about` - Biography, principles, timeline, contact.
-- `/uses` - Tools, stack, workspace, workflows.
+- `/`：工作室首页。
+- `/blog`：长文、技术写作和产品思考。
+- `/projects`：精选作品、案例研究和已交付工具。
+- `/knowledge`：长期知识、引用、代码片段和学习记录。
+- `/photos`：照片档案和视觉现场笔记。
+- `/music`：工作室 mix 和 now-playing 记录。
+- `/lab`：实验、原型、组件和 AI 工作流。
+- `/about`：个人介绍、原则、经历、联系方式。
+- `/uses`：工具、技术栈、工作区和工作流。
 
-## Homepage Section Model
+## 首页内容模型
 
-The homepage should remain a curated studio entry, not an exhaustive archive.
+首页应保持“精选工作室入口”，不是完整档案馆。
 
-Required first-screen hierarchy:
+首屏层级：
 
-1. Name and identity.
-2. One-sentence positioning.
-3. Short body intro.
-4. Current status.
-5. Command entry.
-6. Workbench or selected highlights.
+1. 姓名和身份。
+2. 一句话定位。
+3. 简短介绍。
+4. 当前状态。
+5. 命令入口。
+6. 工作台或精选亮点。
 
-Required below-fold hierarchy:
+首屏以下层级：
 
-1. Featured essay.
-2. Selected work.
-3. Media note.
-4. Knowledge preview.
-5. Lab preview.
-6. Contact.
+1. 精选文章。
+2. 精选作品。
+3. 媒体入口。
+4. Knowledge 预览。
+5. Lab 预览。
+6. 联系入口。
 
-## Naming Decision
+## 命名决策
 
-`Knowledge` replaces `Notes`.
+`Knowledge` 替代 `Notes`。
 
-Reasoning:
+理由：
 
-- `Notes` sounds temporary, private, and low-confidence.
-- `Knowledge` can contain notes, bookmarks, snippets, references, and evergreen learning without becoming a junk drawer.
-- The word scales better for a design engineer who wants a public memory system, not just a notebook.
+- `Notes` 暗示临时、私人、低置信度。
+- `Knowledge` 可以容纳笔记、书签、片段、引用和长期学习。
+- 对一个设计型工程师来说，它更像公开记忆系统，而不是随手笔记本。
 
-Confidence: high.
+置信度：高。
