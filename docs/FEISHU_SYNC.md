@@ -51,9 +51,9 @@
 
 | 页面 | 素材 | Block ID | File token | 备注 |
 | --- | --- | --- | --- | --- |
-| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcnZpg0lEWd60pKkRLyozv7bf` | `Pn2Qb798goaiIFxoHtccg2rJnXe` | Phase 1 已采纳视觉参考 |
-| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcnor85y2bJLAbM8k0dhpv6Ue` | `ULLPb75utoRZ4exkaDNczOzsnJf` | 项目卡片图 |
-| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcnpVSVo25Wu3GsYr5BTCnPIc` | `AlUtb2trAoNofoxqrKbca3imnHh` | 媒体图 |
+| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcnMA9oOPlNIH2ymTMLNAubag` | `WBscbat2roMNiNxYLfYcsquHnNd` | 第一阶段已采纳视觉参考 |
+| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcnlEBiq8yslx7yH5fvRHvpU9` | `R1vjboQ1voj8joxHQgtcpMVLnkb` | 项目卡片图 |
+| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcnr8hrYbPGMZJbPFATrY2gMj` | `ChG7bkELko3JhCxmO5pcqND8nuh` | 媒体图 |
 
 重要：
 
