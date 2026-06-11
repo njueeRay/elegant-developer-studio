@@ -19,7 +19,7 @@ The site must avoid three failure modes:
 
 ## 2. Current State
 
-Version: `v0.1.2`
+Version: `v0.2.0`
 
 Live:
 
@@ -36,6 +36,7 @@ Implemented:
 - Command palette.
 - Workbench panel.
 - Writing, work, media, knowledge, lab, and contact homepage modules.
+- Phase 2 content core: blog, post detail, projects, project detail, MDX registry, RSS, sitemap, robots.
 - Generated project/media assets.
 - PRD, roadmap, IA, design-system seed, version trace, and design QA.
 
@@ -44,9 +45,12 @@ Implemented:
 | Surface | Route | Phase | Status | Purpose |
 | --- | --- | --- | --- | --- |
 | Home | `/` | 1 | Implemented | First impression and curated studio entry |
-| Blog Index | `/blog` | 2 | Planned | Long-form essays and writing archive |
-| Blog Detail | `/blog/[slug]` | 2 | Planned | MDX essay reading experience |
-| Projects | `/projects` | 2 | Planned | Selected work and case studies |
+| Blog Index | `/blog` | 2 | Implemented | Long-form essays and writing archive |
+| Blog Detail | `/blog/[slug]` | 2 | Implemented | MDX essay reading experience |
+| Projects | `/projects` | 2 | Implemented | Selected work and case studies |
+| Project Detail | `/projects/[slug]` | 2 | Implemented | MDX project case-study surface |
+| RSS | `/rss.xml` | 2 | Implemented | Feed for writing |
+| Sitemap | `/sitemap.xml` | 2 | Implemented | Search crawler route map |
 | Knowledge | `/knowledge` | 5 | Planned | Evergreen references, snippets, learning logs |
 | Photos | `/photos` | 3 | Planned | Visual archive and lightbox |
 | Music | `/music` | 3 | Planned | Studio mixes and listening context |
@@ -75,6 +79,8 @@ Definition of done:
 
 ### Phase 2: Content Core
 
+Status: complete.
+
 Tracking:
 
 - GitHub issue: `#1`
@@ -89,9 +95,22 @@ Scope:
 - tags, reading time, code highlighting, TOC
 - SEO and RSS
 
+Completed in v0.2.0:
+
+- MDX content registry.
+- 3 starter posts.
+- 2 starter project case studies.
+- Tag filtering.
+- Reading progress.
+- Table of contents.
+- Code copy interaction.
+- Metadata rail.
+- RSS, sitemap, robots, and metadata base.
+- Homepage content wired to content metadata.
+
 Main risk:
 
-- Building a nice blog shell without a maintainable content model. The content schema must come before visual polish.
+- Adding content volume without preserving schema discipline. New content should follow the MDX metadata contract.
 
 ### Phase 3: Media Layer
 
@@ -161,6 +180,7 @@ docs/
   DESIGN_SYSTEM.md               Visual tokens and component inventory
   DECISIONS.md                   Architecture/product decision log
   PROGRESS_LOG.md                Stage-by-stage progress ledger
+  PHASE2_RESEARCH.md             Phase 2 review, research references, and extracted patterns
   FEISHU_SYNC.md                 Feishu Wiki sync map and node tokens
   VERSION_TRACE.md               Release, deployment, and commit trace
 
@@ -171,7 +191,9 @@ public/
 src/
   app/                           Next.js App Router entry points
   components/                    Reusable interactive UI components
+  content/                       MDX posts and project case studies
   data/                          Mock content and future content contracts
+  lib/                           Content registry and helpers
 ```
 
 ## 6. Component Map
@@ -186,9 +208,6 @@ Implemented:
 - `SocialLinks`
 - `CommandPalette`
 - homepage knowledge, lab, contact, latest sections
-
-Next component targets:
-
 - `PostCard`
 - `ProjectCard`
 - `TagFilter`
@@ -196,6 +215,9 @@ Next component targets:
 - `TableOfContents`
 - `CodeBlock`
 - `MetadataRail`
+
+Next component targets:
+
 - `MiniPlayer`
 - `GlobalSearch`
 - `StatusPanel`
@@ -216,6 +238,10 @@ Current interactions:
 - Media play/pause state.
 - Anchor navigation.
 - Card hover states.
+- Tag filtering.
+- Reading progress.
+- Code copy feedback.
+- Article heading anchor links.
 
 Research track:
 
@@ -265,9 +291,9 @@ Before a phase is considered done:
 
 ## 10. Immediate Next Step
 
-The next substantive work should be Phase 2 planning and research:
+The next substantive work should be Phase 3 media model planning:
 
-1. Define the content schema.
-2. Decide MDX file layout.
-3. Design blog/project route structure.
-4. Research programmer-style micro-interactions for Phase 4 while Phase 2 is being built.
+1. Decide photo and music content schemas.
+2. Define `/photos` and `/music` route shape.
+3. Design media components without turning the site into a gallery template.
+4. Continue programmer-style micro-interaction research for Phase 4.

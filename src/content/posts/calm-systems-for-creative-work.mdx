@@ -1,0 +1,48 @@
+export const meta = {
+  slug: "calm-systems-for-creative-work",
+  title: "Calm Systems for Creative Work",
+  subtitle: "How to design personal software that helps you think without turning every surface into a productivity dashboard.",
+  date: "2026-04-28",
+  updated: "2026-06-12",
+  status: "Draft",
+  readingTime: "6 min read",
+  tags: ["Systems", "Writing", "Personal OS"],
+  featured: true,
+  summary:
+    "A personal studio should preserve attention, memory, and momentum. This note sketches the operating principles behind the site roadmap.",
+  toc: [
+    { id: "make-memory-addressable", title: "Make memory addressable" },
+    { id: "reduce-ceremony", title: "Reduce ceremony" },
+    { id: "let-beauty-do-work", title: "Let beauty do work" },
+  ],
+};
+
+# Calm Systems for Creative Work
+
+The point of a personal site is not to publish everything. The point is to keep important work findable, contextual, and alive.
+
+## Make memory addressable
+
+Writing, projects, photos, code snippets, and decisions should all have stable homes. A good structure is not bureaucracy; it is a way to make past thinking reusable.
+
+<InsightCard title="Studio principle" tone="blue">
+  If a thought might shape future work, it deserves a durable address.
+</InsightCard>
+
+## Reduce ceremony
+
+Systems fail when they require too much maintenance. The content model should make the common path boring: add a file, write metadata, publish.
+
+```ts
+export const contentContract = {
+  source: "mdx",
+  ownership: "repository",
+  syncTarget: "feishu",
+};
+```
+
+The fancy part should be in the reading experience and retrieval layer, not in the act of adding one more useful note.
+
+## Let beauty do work
+
+Beauty is not decoration here. It is a compression layer for confidence. When the page feels composed, the reader assumes the system underneath has been considered too.

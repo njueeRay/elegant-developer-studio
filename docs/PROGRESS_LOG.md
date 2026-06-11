@@ -66,3 +66,47 @@ Next:
 
 - Use `PROJECT_MAP.md` as the mandatory reference before each phase.
 - Start Phase 2 by defining the content schema and MDX file layout.
+
+## 2026-06-12
+
+### Phase 2: Content Core
+
+Status: complete.
+
+Completed:
+
+- Added `@next/mdx` and MDX content support.
+- Added MDX posts under `src/content/posts`.
+- Added MDX project case studies under `src/content/projects`.
+- Added content registry and metadata helpers in `src/lib/content.ts`.
+- Implemented `/blog`, `/blog/[slug]`, `/projects`, and `/projects/[slug]`.
+- Implemented `PostCard`, `ProjectCard`, `TagFilter`, `ReadingProgress`, `TableOfContents`, `CodeBlock`, and metadata rail styling.
+- Connected homepage latest writing and selected work to real content metadata.
+- Added RSS, sitemap, robots, and metadata base.
+- Added Phase 2 research/review document.
+
+Verification:
+
+- `npm run lint`: passed.
+- `npm run build`: passed.
+- Production browser QA via Playwright:
+  - `/blog` desktop: no horizontal overflow.
+  - `/blog/interface-is-a-promise` desktop: no horizontal overflow.
+  - `/projects` desktop: no horizontal overflow.
+  - `/blog/interface-is-a-promise` mobile: no horizontal overflow.
+- Tag filter interaction: `Interaction` filter returned one post.
+- Code copy interaction: copied TypeScript snippet and showed `Copied`.
+- RSS route contained `Ray Studio Writing`.
+
+Screenshots:
+
+- `output/playwright/phase2-production/blog-desktop.png`
+- `output/playwright/phase2-production/article-desktop.png`
+- `output/playwright/phase2-production/projects-desktop.png`
+- `output/playwright/phase2-production/article-mobile-final.png`
+
+Next:
+
+- Deploy v0.2.0 to Vercel.
+- Sync Phase 2 docs to Feishu.
+- Move to Phase 3 media model planning.

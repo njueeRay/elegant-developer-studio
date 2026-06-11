@@ -2,6 +2,29 @@
 
 Durable product and architecture decisions live here. Record decisions when changing route structure, content model, deployment strategy, interaction patterns, or design-system direction.
 
+## ADR-0005: Use MDX Registry For Content Core
+
+Date: 2026-06-12
+
+Decision:
+
+- Use `@next/mdx` with a static content registry in `src/lib/content.ts`.
+- Store posts in `src/content/posts`.
+- Store project case studies in `src/content/projects`.
+- Export metadata from each MDX file instead of introducing frontmatter parsing.
+
+Reasoning:
+
+- The content set is small and curated.
+- Static imports keep build-time routing explicit and type-checkable.
+- MDX supports prose, code, and custom article components without adding a CMS.
+- Feishu remains the collaboration layer; the repository remains the source of truth.
+
+Consequences:
+
+- Adding a new post requires adding it to the registry.
+- This is acceptable until the content volume justifies filesystem discovery or a CMS.
+
 ## ADR-0001: Use Next.js App Router
 
 Date: 2026-06-11

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BookOpenText,
@@ -29,6 +30,7 @@ import {
   type HighlightKind,
   type WorkbenchItem,
 } from "@/data/home";
+import type { PostMeta, ProjectMeta } from "@/lib/content";
 
 const iconByKind: Record<HighlightKind, ComponentType<{ size?: number }>> = {
   writing: FileText,
@@ -37,12 +39,12 @@ const iconByKind: Record<HighlightKind, ComponentType<{ size?: number }>> = {
 };
 
 const commandItems = [
-  "Open latest essay",
-  "View selected work",
-  "Browse knowledge base",
-  "Play studio mix",
-  "Send a note",
-];
+  { label: "Open latest essay", href: "/blog/interface-is-a-promise" },
+  { label: "View selected work", href: "/projects" },
+  { label: "Browse knowledge base", href: "/knowledge" },
+  { label: "Play studio mix", href: "/music" },
+  { label: "Send a note", href: "mailto:hello@ray.studio" },
+] as const;
 
 function getInitialTheme() {
   if (typeof window === "undefined") {
@@ -59,7 +61,13 @@ function getInitialTheme() {
     : "light";
 }
 
-export function StudioHome() {
+export function StudioHome({
+  featuredPosts,
+  featuredProjects,
+}: {
+  featuredPosts: PostMeta[];
+  featuredProjects: ProjectMeta[];
+}) {
   const [theme, setTheme] = useState<"light" | "dark">(getInitialTheme);
   const [commandOpen, setCommandOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -133,6 +141,7 @@ export function StudioHome() {
           <HighlightCard
             key={highlight.title}
             highlight={highlight}
+            featuredProject={featuredProjects[0]}
             isPlaying={isPlaying}
             onTogglePlay={() => setIsPlaying((playing) => !playing)}
           />
@@ -199,9 +208,9 @@ export function StudioHome() {
       <section className="latest-section" id="writing">
         <div className="section-heading">
           <h2>Latest from the studio</h2>
-          <a href="/blog" className="text-link rust">
+          <Link href="/blog" className="text-link rust">
             View all writing <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
         <div className="latest-grid">
           <Image
@@ -212,17 +221,19 @@ export function StudioHome() {
             className="latest-image"
           />
           <div className="latest-list">
-            {["Designing calm interfaces", "Shell scripts I keep using"].map(
-              (title, index) => (
-                <a href="/blog" key={title} className="latest-row">
-                  <span>
-                    <FileText size={18} />
-                    {title}
-                  </span>
-                  <span>{index === 0 ? "6 min read" : "4 min read"}</span>
-                </a>
-              ),
-            )}
+            {featuredPosts.map((post) => (
+              <Link
+                href={`/blog/${post.slug}`}
+                key={post.slug}
+                className="latest-row"
+              >
+                <span>
+                  <FileText size={18} />
+                  {post.title}
+                </span>
+                <span>{post.readingTime}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -290,7 +301,7 @@ function WorkbenchPanel() {
 
 function WorkbenchRow({ item }: { item: WorkbenchItem }) {
   return (
-    <a href="/projects" className="workbench-row">
+    <Link href="/projects" className="workbench-row">
       <div className={`workbench-icon ${item.status}`}>
         {item.status === "healthy" ? <Code2 size={24} /> : null}
         {item.status === "progress" ? <FileText size={24} /> : null}
@@ -306,20 +317,40 @@ function WorkbenchRow({ item }: { item: WorkbenchItem }) {
         </small>
       </div>
       <ArrowRight className="row-arrow" size={20} />
-    </a>
+    </Link>
   );
 }
 
 function HighlightCard({
   highlight,
+  featuredProject,
   isPlaying,
   onTogglePlay,
 }: {
   highlight: Highlight;
+  featuredProject?: ProjectMeta;
   isPlaying: boolean;
   onTogglePlay: () => void;
 }) {
   const Icon = iconByKind[highlight.kind];
+  const href = highlight.kind === "work" && featuredProject
+    ? `/projects/${featuredProject.slug}`
+    : highlight.href;
+  const title = highlight.kind === "work" && featuredProject
+    ? featuredProject.title
+    : highlight.title;
+  const description = highlight.kind === "work" && featuredProject
+    ? featuredProject.summary
+    : highlight.description;
+  const meta = highlight.kind === "work" && featuredProject
+    ? `${featuredProject.role} / ${featuredProject.status}`
+    : highlight.meta;
+  const image = highlight.kind === "work" && featuredProject
+    ? featuredProject.image
+    : highlight.image;
+  const tags = highlight.kind === "work" && featuredProject
+    ? featuredProject.stack
+    : highlight.tags;
   const content = (
     <>
       <div className="highlight-icon">
@@ -329,20 +360,20 @@ function HighlightCard({
         <p className={`section-kicker ${highlight.kind === "work" ? "blue" : ""}`}>
           {highlight.eyebrow}
         </p>
-        <h2>{highlight.title}</h2>
-        <p>{highlight.description}</p>
-        {highlight.tags ? (
+        <h2>{title}</h2>
+        <p>{description}</p>
+        {tags ? (
           <div className="tag-row">
-            {highlight.tags.map((tag) => (
+            {tags.map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
           </div>
         ) : null}
-        <small>{highlight.meta}</small>
+        <small>{meta}</small>
       </div>
-      {highlight.image ? (
+      {image ? (
         <Image
-          src={highlight.image}
+          src={image}
           alt=""
           width={360}
           height={270}
@@ -368,13 +399,13 @@ function HighlightCard({
   }
 
   return (
-    <a
-      href={highlight.href}
+    <Link
+      href={href}
       className="highlight-card"
       id={highlight.kind === "work" ? "work" : undefined}
     >
       {content}
-    </a>
+    </Link>
   );
 }
 
@@ -407,7 +438,7 @@ function CommandPalette({
   onClose,
 }: {
   open: boolean;
-  items: string[];
+  items: typeof commandItems;
   onClose: () => void;
 }) {
   if (!open) {
@@ -430,10 +461,10 @@ function CommandPalette({
         </div>
         <div className="command-results">
           {items.map((item) => (
-            <button type="button" key={item} onClick={onClose}>
-              <span>{item}</span>
+            <a href={item.href} key={item.label} onClick={onClose}>
+              <span>{item.label}</span>
               <ArrowRight size={16} />
-            </button>
+            </a>
           ))}
         </div>
       </div>

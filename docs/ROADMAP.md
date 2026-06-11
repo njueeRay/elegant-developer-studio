@@ -37,6 +37,14 @@ Components:
 - `CodeBlock`
 - `MetadataRail`
 
+Status: implemented in v0.2.0.
+
+Remaining refinement:
+
+- Add more real essays and case studies.
+- Add stronger search in Phase 4.
+- Replace manual reading-time metadata with computed reading time if content volume grows.
+
 ## Phase 3: Media Layer
 
 Goal: add life, memory, and taste beyond text and project proof.

@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://elegant-developer-studio.vercel.app"),
   title: "Ray Studio - Elegant Developer Studio",
   description:
     "A warm, precise personal homepage for a design engineer: writing, work, knowledge, media, and lab experiments.",

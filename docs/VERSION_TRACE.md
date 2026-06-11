@@ -71,3 +71,25 @@ Scope:
 Feishu root:
 
 - `https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb`
+
+## v0.2.0 - Content Core
+
+Date: 2026-06-12
+Commit: pending
+Tag: pending
+
+Scope:
+
+- Added MDX-powered writing and project content.
+- Added `/blog`, `/blog/[slug]`, `/projects`, and `/projects/[slug]`.
+- Added reusable content components: `PostCard`, `ProjectCard`, `TagFilter`, `ReadingProgress`, `TableOfContents`, `CodeBlock`, and metadata rail styling.
+- Added RSS, sitemap, robots, and metadata base.
+- Connected homepage content to real content metadata.
+- Added `docs/PHASE2_RESEARCH.md`.
+
+Verification:
+
+- `npm run lint`: passed.
+- `npm run build`: passed.
+- Production Playwright QA: desktop and mobile pages had no horizontal overflow.
+- Tag filtering, code copy, and RSS checks passed.

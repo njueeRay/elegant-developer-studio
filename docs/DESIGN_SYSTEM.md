@@ -48,7 +48,7 @@ Implemented in Phase 1:
 - `LabPanel`
 - `ContactPanel`
 
-Reserved for later:
+Implemented in Phase 2:
 
 - `PostCard`
 - `ProjectCard`
@@ -57,10 +57,21 @@ Reserved for later:
 - `TableOfContents`
 - `CodeBlock`
 - `MetadataRail`
+
+Reserved for later:
+
 - `PhotoGrid`
 - `MiniPlayer`
 - `GlobalSearch`
 - `ComponentPreview`
+
+## Phase 2 Interaction Details
+
+- Tag filters use low-chrome rounded controls with active state and no heavy tab container.
+- Reading progress is a 3px top rail, visible enough to orient but not enough to dominate.
+- Code blocks include a compact toolbar and copy feedback.
+- Article headings expose anchor links only on hover on desktop, keeping reading flow quiet.
+- Mobile code blocks wrap long lines to avoid visually clipped snippets.
 
 ## Asset Rules
 

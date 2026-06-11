@@ -4,7 +4,7 @@ A refined personal homepage for a design-oriented engineer. The first build focu
 
 ## Current Version
 
-`v0.1.2` - Feishu Knowledge Base
+`v0.2.0` - Content Core
 
 Live deployment:
 
@@ -39,6 +39,7 @@ Open `http://localhost:3000`.
 - `docs/PROJECT_MAP.md`
 - `docs/INFORMATION_ARCHITECTURE.md`
 - `docs/DESIGN_SYSTEM.md`
+- `docs/PHASE2_RESEARCH.md`
 - `docs/DECISIONS.md`
 - `docs/PROGRESS_LOG.md`
 - `docs/FEISHU_SYNC.md`
@@ -49,7 +50,9 @@ Open `http://localhost:3000`.
 ```text
 src/app             Next.js App Router entry
 src/components      Homepage components and interactive UI
+src/content         MDX posts and project case studies
 src/data            Mock content and IA data
+src/lib             Content registry and helpers
 public/assets       Project-bound generated images
 public/references   Accepted visual references
 docs                Product, roadmap, IA, and trace documents

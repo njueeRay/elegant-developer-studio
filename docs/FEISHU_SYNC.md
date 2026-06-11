@@ -29,6 +29,7 @@ This file records the Feishu Wiki space and node mapping for repeatable sync.
 | 10｜素材与参考 Assets | `docs/ASSETS_REFERENCE.md` | `BTdhw9uB9iLBuik767Gcjiv7nUb` | `XrE5d5QQIonKp3xVXrrcdsskneg` | https://scnlb1lk96sb.feishu.cn/wiki/BTdhw9uB9iLBuik767Gcjiv7nUb |
 | 11｜执行复核 Review | `docs/EXECUTION_REVIEW.md` | `VkYEwYWeli09ZTkDtxYchYyHn1f` | `O55Hd84DUoYCq2xMKNJcbQTBnmd` | https://scnlb1lk96sb.feishu.cn/wiki/VkYEwYWeli09ZTkDtxYchYyHn1f |
 | 12｜同步协议 Sync Map | `docs/FEISHU_SYNC.md` | `KJT5wmMo7iWpInk2XgMcw9NhnXe` | `OboHdJiORoKPqvxS0HOcaoDLn5f` | https://scnlb1lk96sb.feishu.cn/wiki/KJT5wmMo7iWpInk2XgMcw9NhnXe |
+| 13｜Phase 2 Review | `docs/PHASE2_RESEARCH.md` | `BewGwyWMriSmq6ksOTGcCFGinke` | `EdiAdmxVcochuCxGknMcbLGanTb` | https://scnlb1lk96sb.feishu.cn/wiki/BewGwyWMriSmq6ksOTGcCFGinke |
 
 ## Sync Protocol
 

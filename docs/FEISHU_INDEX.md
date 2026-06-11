@@ -18,12 +18,13 @@
 | 素材参考 | [10｜素材与参考 Assets](https://scnlb1lk96sb.feishu.cn/wiki/BTdhw9uB9iLBuik767Gcjiv7nUb) | 视觉参考、生成资产、后续素材策略 |
 | 执行复核 | [11｜执行复核 Review](https://scnlb1lk96sb.feishu.cn/wiki/VkYEwYWeli09ZTkDtxYchYyHn1f) | 用户建议与实际执行证据对照 |
 | 同步协议 | [12｜同步协议 Sync Map](https://scnlb1lk96sb.feishu.cn/wiki/KJT5wmMo7iWpInk2XgMcw9NhnXe) | 飞书节点、文档 token、媒体插入和同步命令 |
+| Phase 2 复盘 | [13｜Phase 2 Review](https://scnlb1lk96sb.feishu.cn/wiki/BewGwyWMriSmq6ksOTGcCFGinke) | 内容核心阶段复盘、调研参考和后续问题 |
 
 ## 当前项目状态
 
 | 项 | 当前值 |
 | --- | --- |
-| 当前版本 | `v0.1.2` |
+| 当前版本 | `v0.2.0` |
 | GitHub | `https://github.com/njueeRay/elegant-developer-studio` |
 | Vercel | `https://elegant-developer-studio.vercel.app` |
 | 主追踪文档 | `docs/PROJECT_MAP.md` |

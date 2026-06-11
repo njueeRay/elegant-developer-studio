@@ -1,0 +1,42 @@
+export const meta = {
+  slug: "commands-that-respect-attention",
+  title: "Commands That Respect Attention",
+  subtitle: "Small interaction patterns for command menus, quick actions, and keyboard-first personal software.",
+  date: "2026-03-19",
+  updated: "2026-06-12",
+  status: "Published",
+  readingTime: "5 min read",
+  tags: ["Command UI", "Micro-interactions", "Research"],
+  featured: false,
+  summary:
+    "Command palettes should compress intent, not show off. The useful details are ranking, recovery, provenance, and keyboard rhythm.",
+  toc: [
+    { id: "rank-by-intent", title: "Rank by intent" },
+    { id: "show-the-next-state", title: "Show the next state" },
+    { id: "give-power-a-soft-edge", title: "Give power a soft edge" },
+  ],
+};
+
+# Commands That Respect Attention
+
+Command palettes are easy to imitate and hard to make useful. The visual shell is only a small part of the pattern. The value lives in action ranking, predictable recovery, and clear consequences.
+
+## Rank by intent
+
+The first results should match the most likely job, not the most recently added feature. A personal site can use route intent, current page context, and content type as ranking signals.
+
+## Show the next state
+
+Before executing a command, reveal enough context: destination, content type, status, or shortcut. The user should never wonder whether a command opens, copies, filters, or mutates.
+
+```tsx
+const action = {
+  label: "Open latest essay",
+  target: "/blog/interface-is-a-promise",
+  effect: "navigate",
+};
+```
+
+## Give power a soft edge
+
+Keyboard-first interfaces do not need to feel harsh. Good focus states, gentle motion, and reversible actions can keep the interaction technical without making it brittle.
