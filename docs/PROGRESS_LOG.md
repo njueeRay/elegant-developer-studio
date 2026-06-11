@@ -84,6 +84,8 @@ Completed:
 - Connected homepage latest writing and selected work to real content metadata.
 - Added RSS, sitemap, robots, and metadata base.
 - Added Phase 2 research/review document.
+- Closed GitHub issue `#1`.
+- Closed GitHub milestone `Phase 2: Content Core`.
 
 Verification:
 
