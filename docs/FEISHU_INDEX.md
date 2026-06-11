@@ -10,13 +10,13 @@
 | --- | --- | --- |
 | 项目地图 | [01｜项目地图](https://scnlb1lk96sb.feishu.cn/wiki/PG7ew3DRviyumekYTSec9n4znWf) | 项目总地图：产品、路由、阶段、组件、质量门禁 |
 | PRD | [02｜PRD 与产品定义](https://scnlb1lk96sb.feishu.cn/wiki/K71jwiNDeiq1WBkmAxfcQkDKnWe) | 产品目标、范围、验收标准 |
-| 路线图 | [03｜路线图与阶段计划](https://scnlb1lk96sb.feishu.cn/wiki/TwvowNrUpiTyFekUU5mcJ4vBn2f) | Phase 1-5 的交付计划 |
+| 路线图 | [03｜路线图与阶段计划](https://scnlb1lk96sb.feishu.cn/wiki/TwvowNrUpiTyFekUU5mcJ4vBn2f) | 第一至第五阶段的交付计划 |
 | 信息架构 | [04｜信息架构 IA](https://scnlb1lk96sb.feishu.cn/wiki/H8O7wIK0pibqivk6SIAcp72Xnob) | 顶层导航、路由、命名决策 |
 | 设计系统 | [05｜设计系统](https://scnlb1lk96sb.feishu.cn/wiki/HrgcweuFCiL5E8kOdQPcOsXtnyg) | 视觉 tokens、组件库存、资产规则 |
 | 开发进度 | [06｜开发进度](https://scnlb1lk96sb.feishu.cn/wiki/CKEKwH6vriYZMOkyPnDcDMvYn1d) | 每阶段进展、验证、提交记录 |
 | 决策记录 | [07｜决策记录 ADR](https://scnlb1lk96sb.feishu.cn/wiki/D67twGhp5izbt1kk7olc6TyunZf) | 长期产品/架构决策 |
 | 版本追溯 | [08｜版本追溯](https://scnlb1lk96sb.feishu.cn/wiki/G8nwwns5ii1JZtkw77GcB5Y0nob) | 版本、部署、commit、tag |
-| 质量验收 | [09｜质量验收 Design QA](https://scnlb1lk96sb.feishu.cn/wiki/HLO5waemhiXD24kyfuXc7WXFnGe) | QA 方法、截图、交互验证 |
+| 质量验收 | [09｜质量验收](https://scnlb1lk96sb.feishu.cn/wiki/HLO5waemhiXD24kyfuXc7WXFnGe) | 质量检查方法、截图、交互验证 |
 | 素材参考 | [10｜素材与参考](https://scnlb1lk96sb.feishu.cn/wiki/BTdhw9uB9iLBuik767Gcjiv7nUb) | 视觉参考、生成资产、后续素材策略 |
 | 执行复核 | [11｜执行复核](https://scnlb1lk96sb.feishu.cn/wiki/VkYEwYWeli09ZTkDtxYchYyHn1f) | 用户建议与实际执行证据对照 |
 | 同步协议 | [12｜同步协议](https://scnlb1lk96sb.feishu.cn/wiki/KJT5wmMo7iWpInk2XgMcw9NhnXe) | 飞书节点、文档 token、媒体插入和同步命令 |
@@ -51,4 +51,4 @@
   - `PROGRESS_LOG.md`
   - `VERSION_TRACE.md`
   - 对应阶段页面或 issue
-- durable decision 必须写入 `DECISIONS.md`。
+- 长期决策必须写入 `DECISIONS.md`。

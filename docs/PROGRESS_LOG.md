@@ -4,7 +4,7 @@
 
 ## 2026-06-11
 
-### Phase 1：视觉基础
+### 第一阶段：视觉基础
 
 状态：完成。
 
@@ -52,11 +52,11 @@
 - 将 issues `#1` 到 `#5` 分配到 milestones。
 - 创建飞书 Wiki 空间。
 - 发布核心项目文档到飞书。
-- 将 Phase 1 视觉参考和生成素材插入飞书素材页。
+- 将第一阶段视觉参考和生成素材插入飞书素材页。
 
 ## 2026-06-12
 
-### Phase 2：内容核心
+### 第二阶段：内容核心
 
 状态：完成。
 
@@ -70,7 +70,7 @@
 - 实现 `PostCard`、`ProjectCard`、`TagFilter`、`ReadingProgress`、`TableOfContents`、`CodeBlock` 和 metadata rail 样式。
 - 首页 latest writing 和 selected work 接入真实内容 metadata。
 - 添加 RSS、sitemap、robots、metadata base。
-- 添加 Phase 2 调研/复盘文档。
+- 添加第二阶段调研/复盘文档。
 - 关闭 GitHub issue `#1`。
 - 关闭 GitHub milestone `Phase 2: Content Core`。
 

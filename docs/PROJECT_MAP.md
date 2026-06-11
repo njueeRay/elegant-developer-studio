@@ -29,14 +29,14 @@
 
 已实现：
 
-- Phase 1 首页。
+- 第一阶段首页。
 - Developer Atelier 视觉方向。
 - `Knowledge` 信息架构。
 - 主题切换。
 - 命令面板。
 - 工作台面板。
 - 首页写作、作品、媒体、Knowledge、Lab、Contact 模块。
-- Phase 2 内容核心：blog、文章详情、projects、项目详情、MDX 注册表、RSS、sitemap、robots。
+- 第二阶段内容核心：blog、文章详情、projects、项目详情、MDX 注册表、RSS、sitemap、robots。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -53,14 +53,14 @@
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
 | Knowledge | `/knowledge` | 5 | 规划中 | 长期知识、片段、学习记录 |
 | Photos | `/photos` | 3 | 准备中 | 照片档案和灯箱 |
-| Music | `/music` | 3 | 准备中 | 工作室 mix 和收听状态 |
+| Music | `/music` | 3 | 准备中 | 工作室歌单和收听状态 |
 | Lab | `/lab` | 5 | 规划中 | 实验、原型、组件预览 |
 | About | `/about` | 5 | 规划中 | 个人介绍、时间线、原则 |
 | Uses | `/uses` | 5 | 规划中 | 工具、技术栈、工作流 |
 
 ## 4. 阶段地图
 
-### Phase 1：视觉基础
+### 第一阶段：视觉基础
 
 状态：完成。
 
@@ -77,7 +77,7 @@
 - 核心组件能延续到后续阶段。
 - 构建和视觉 QA 通过。
 
-### Phase 2：内容核心
+### 第二阶段：内容核心
 
 状态：完成。
 
@@ -104,7 +104,7 @@
 
 - 后续新增内容时破坏 schema 纪律。新增内容必须遵守 MDX metadata 合约。
 
-### Phase 3：媒体层
+### 第三阶段：媒体层
 
 状态：准备中。
 
@@ -124,7 +124,7 @@
 
 - 媒体变成装饰。照片和音乐必须表达记忆、过程和审美，而不是填充页面。
 
-### Phase 4：交互层
+### 第四阶段：交互层
 
 状态：规划中。
 
@@ -145,7 +145,7 @@
 
 - 交互聪明但无用。每个交互必须减少导航成本或揭示有用上下文。
 
-### Phase 5：Portfolio OS
+### 第五阶段：个人工作室操作系统
 
 状态：规划中。
 
@@ -163,7 +163,7 @@
 
 主要风险：
 
-- 扩展成大量半成品页面。Phase 5 应该基于稳定 primitives 扩展。
+- 扩展成大量半成品页面。第五阶段应该基于稳定基础组件扩展。
 
 ## 5. 仓库地图
 
@@ -176,8 +176,8 @@ docs/
   DESIGN_SYSTEM.md               视觉 tokens 和组件库存
   DECISIONS.md                   产品/架构决策记录
   PROGRESS_LOG.md                阶段进度账本
-  PHASE2_RESEARCH.md             Phase 2 复盘和调研
-  PHASE3_RESEARCH.md             Phase 3 媒体层调研和计划
+  PHASE2_RESEARCH.md             第二阶段复盘和调研
+  PHASE3_RESEARCH.md             第三阶段媒体层调研和计划
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -293,10 +293,10 @@ src/
 
 ## 10. 下一步
 
-下一步是 Phase 3 媒体层准备：
+下一步是第三阶段媒体层准备：
 
-1. 复盘 Phase 2，确认是否需要补充内容核心细节。
+1. 复盘第二阶段，确认是否需要补充内容核心细节。
 2. 调研优秀照片/音乐/媒体个人站。
 3. 定义照片和音乐的内容 schema。
 4. 设计 `/photos`、`/music` 的信息架构。
-5. 继续为 Phase 4 程序员风格微交互做并行研究。
+5. 继续为第四阶段程序员风格微交互做并行研究。
