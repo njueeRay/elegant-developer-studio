@@ -39,6 +39,8 @@
 | 14｜第三阶段媒体层调研 | `docs/PHASE3_RESEARCH.md` | `BhgywbF5DiIe5ykU8ZCcERVvnTc` | `KxW0d5jnuo6WhXxquXAcEHzSnpe` | https://scnlb1lk96sb.feishu.cn/wiki/BhgywbF5DiIe5ykU8ZCcERVvnTc |
 | 15｜第三阶段媒体层复盘 | `docs/PHASE3_REVIEW.md` | `N4WYw8QoGiDgUYkmND3ciyABnUe` | `WTzxdQ8NpovvYOxSxt8cD1p0nhc` | https://scnlb1lk96sb.feishu.cn/wiki/N4WYw8QoGiDgUYkmND3ciyABnUe |
 | 16｜第四阶段交互层调研 | `docs/PHASE4_RESEARCH.md` | `QdfcwcOfKisB4zka199cKxq8nng` | `KoEqdCDW8oZxTNxD6Lacoh0nnLg` | https://scnlb1lk96sb.feishu.cn/wiki/QdfcwcOfKisB4zka199cKxq8nng |
+| 17｜第四阶段首个切片复盘 | `docs/PHASE4_REVIEW.md` | `CcyowMf7DisJvUkKtd2cI9NFnVb` | `CDrtdXtCKoABJDxVbH9csu2fnxf` | https://scnlb1lk96sb.feishu.cn/wiki/CcyowMf7DisJvUkKtd2cI9NFnVb |
+| 18｜第四阶段键盘与搜索增强调研 | `docs/PHASE4_KEYBOARD_RESEARCH.md` | `CLi2wbbW5iR0yMkWURFcDljGnkI` | `OD8hdzxruoa6NBxLumhcIKMXn9d` | https://scnlb1lk96sb.feishu.cn/wiki/CLi2wbbW5iR0yMkWURFcDljGnkI |
 
 ## 同步协议
 

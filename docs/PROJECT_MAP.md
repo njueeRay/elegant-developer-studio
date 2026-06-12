@@ -165,6 +165,11 @@
 - 文章、项目、照片、音乐和快捷动作搜索
 - 结果点击导航
 - Command Center z-index 高于 reader mode
+- 键盘上下选择结果
+- `Enter` 打开 active result
+- 最近访问分组
+- 搜索结果类型分组
+- 标题和描述命中高亮
 
 主要风险：
 
@@ -206,6 +211,8 @@ docs/
   PHASE3_RESEARCH.md             第三阶段媒体层调研和计划
   PHASE3_REVIEW.md               第三阶段媒体层复盘
   PHASE4_RESEARCH.md             第四阶段交互层调研和计划
+  PHASE4_REVIEW.md               第四阶段首个切片复盘
+  PHASE4_KEYBOARD_RESEARCH.md    第四阶段键盘与搜索增强调研
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -232,6 +239,7 @@ src/
 - `HighlightCard`
 - `SocialLinks`
 - `CommandPalette`
+- `GlobalCommandMenu`
 - `PostCard`
 - `ProjectCard`
 - `TagFilter`
@@ -239,17 +247,20 @@ src/
 - `TableOfContents`
 - `CodeBlock`
 - `MetadataRail`
-
-下一批目标：
-
 - `PhotoGrid`
 - `PhotoLightbox`
-- `AlbumCard`
 - `MiniPlayer`
 - `TrackList`
 - `NowPlaying`
+- `ArticleInteractions`
+
+下一批目标：
+
+- `AlbumCard`
 - `GlobalSearch`
 - `StatusPanel`
+- `QuickAction`
+- `KeyboardHint`
 
 组件规则：
 
@@ -271,6 +282,7 @@ src/
 - 阅读进度。
 - 代码复制反馈。
 - 文章标题锚点。
+- 全站 Command Center 键盘选择、Enter 打开、最近访问、分组和高亮。
 
 研究轨道：
 
@@ -321,10 +333,10 @@ src/
 
 ## 10. 下一步
 
-下一步是第三阶段媒体层继续打磨：
+下一步是第四阶段交互层继续打磨：
 
-1. 为 Command Center 增加键盘上下选择和回车打开。
-2. 为搜索结果增加高亮和最近访问。
-3. 决定是否引入真实音频文件。
-4. 补充照片素材质量和 attribution 策略。
+1. 为 Command Center 增加当前路由上下文排序。
+2. 增加空状态建议，例如搜索 `knowledge` 时提示该路由仍在第五阶段。
+3. 评估全站搜索是否需要全文索引。
+4. 第三阶段并行决定是否引入真实音频文件。
 5. 继续打磨灯箱移动端手势和焦点管理。

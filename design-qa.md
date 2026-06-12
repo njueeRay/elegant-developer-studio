@@ -111,3 +111,50 @@
 
 6. 移动端布局：通过。
    - 首页 390px：`scrollWidth 390`，`clientWidth 390`。
+
+## 第四阶段键盘与搜索增强 QA
+
+结果：通过。
+
+方法：
+
+- 本地 URL：`http://127.0.0.1:3000`
+- 浏览器验证方式：使用 in-app Browser。
+- 检查视口：
+  - 桌面：1280 x 720。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 页面身份和基础健康：通过。
+   - `/blog/interface-is-a-promise` 标题为 `The Interface is a Promise - Ray Studio`。
+   - 页面包含文章正文。
+   - 无相关 runtime error。
+
+2. 键盘打开：通过。
+   - 在文章页按 `Cmd K` 打开 `Global command center`。
+
+3. 键盘选择：通过。
+   - 初始 active result 为 `Open studio home`。
+   - 按 `ArrowDown` 后 active result 变为 `Browse writing`。
+
+4. 搜索分组：通过。
+   - 输入 `music` 后出现 `Music` 分组。
+   - 结果包含 `Play studio mix`。
+
+5. 命中高亮：通过。
+   - 输入 `studio` 后可见命中词出现高亮。
+
+6. Enter 打开：通过。
+   - 搜索 `music` 后按 `Enter` 跳转 `/music`。
+
+7. 最近访问：通过。
+   - 再次打开 Command Center 后出现 `Recent` 分组。
+   - `Recent` 中包含 `Play studio mix`。
+
+8. 桌面布局：通过。
+   - 1280px：`scrollWidth 1280`，`clientWidth 1280`。
+
+9. 移动端布局：通过。
+   - 390px：`scrollWidth 390`，`clientWidth 390`。
+   - Command Center 底部仍在 844px 视口内。

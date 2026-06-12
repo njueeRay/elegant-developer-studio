@@ -24,6 +24,8 @@
 | 第三阶段调研 | [14｜第三阶段媒体层调研](https://scnlb1lk96sb.feishu.cn/wiki/BhgywbF5DiIe5ykU8ZCcERVvnTc) | 媒体层调研、产品判断、组件进入计划 |
 | 第三阶段复盘 | [15｜第三阶段媒体层复盘](https://scnlb1lk96sb.feishu.cn/wiki/N4WYw8QoGiDgUYkmND3ciyABnUe) | 媒体层首个切片复盘和剩余风险 |
 | 第四阶段调研 | [16｜第四阶段交互层调研](https://scnlb1lk96sb.feishu.cn/wiki/QdfcwcOfKisB4zka199cKxq8nng) | 交互层调研、Command Center 计划和验收 |
+| 第四阶段复盘 | [17｜第四阶段首个切片复盘](https://scnlb1lk96sb.feishu.cn/wiki/CcyowMf7DisJvUkKtd2cI9NFnVb) | Command Center 首个切片复盘和第二切片判断 |
+| 键盘搜索调研 | [18｜第四阶段键盘与搜索增强调研](https://scnlb1lk96sb.feishu.cn/wiki/CLi2wbbW5iR0yMkWURFcDljGnkI) | 键盘选择、最近访问、分组和高亮调研 |
 
 ## 当前项目状态
 

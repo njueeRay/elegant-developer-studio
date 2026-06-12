@@ -168,3 +168,30 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - `npm run build`：通过。
 - 浏览器 QA：`Cmd K`、搜索 `music`、结果跳转、首页按钮、移动端无横向溢出均通过。
 - Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含全站 `GlobalCommandMenu` 和音乐、文章、项目入口。
+
+## Unreleased - 第四阶段键盘与搜索增强切片
+
+日期：2026-06-13
+Primary commit：待提交
+
+范围：
+
+- Command Center 支持 `ArrowDown` / `ArrowUp` / `Home` / `End` 选择结果。
+- Command Center 支持 `Enter` 打开 active result。
+- 增加 `Recent` 分组和 localStorage 最近访问记录。
+- 搜索结果按类型分组。
+- 标题和描述中的可见命中词高亮。
+- 增加底部键盘提示。
+- `<html>` 增加 `data-scroll-behavior="smooth"`。
+- 添加 `docs/PHASE4_REVIEW.md` 和 `docs/PHASE4_KEYBOARD_RESEARCH.md`。
+
+产品判断：
+
+- 第四阶段第二个切片先打磨 Command Center 手感，不急于扩展状态面板。
+- 程序员风格优先体现在键盘效率、可解释结果和状态记忆，而不是装饰性特效。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 浏览器 QA：键盘选择、`Enter` 打开、最近访问、分组、高亮、桌面和移动端无横向溢出均通过。

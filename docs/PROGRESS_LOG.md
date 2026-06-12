@@ -184,3 +184,42 @@
 - Vercel production：`https://elegant-developer-studio.vercel.app`
 - Deployment URL：`https://elegant-developer-studio-3xlszryku.vercel.app`
 - Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含全站 `GlobalCommandMenu` 和音乐、文章、项目入口。
+
+### 第四阶段：键盘与搜索增强切片
+
+状态：已完成本地实现，待部署。
+
+完成：
+
+- Command Center 支持 `ArrowDown` / `ArrowUp` 移动 active result。
+- Command Center 支持 `Home` / `End` 移动到首尾结果。
+- Command Center 支持 `Enter` 打开 active result。
+- 输入框增加 `aria-activedescendant`，结果使用 `role="listbox"` / `role="option"`。
+- 无查询时展示 `Recent`、`Quick actions`、`Writing`、`Projects` 分组。
+- 搜索结果按类型分组。
+- 打开结果后记录最近访问。
+- 标题和描述中的可见命中词高亮。
+- 底部增加低调键盘提示。
+- `<html>` 增加 `data-scroll-behavior="smooth"`，消除 Next.js smooth-scroll 警告。
+- 添加 `docs/PHASE4_REVIEW.md` 和 `docs/PHASE4_KEYBOARD_RESEARCH.md`。
+
+调研依据：
+
+- Raycast：统一入口必须快速、可靠、keyboard first。
+- VS Code Command Palette：命令面板可以统一命令、文件、符号和常用动作。
+- WAI-ARIA Combobox Pattern：输入保持焦点，方向键移动 active option，`Enter` 接受选项，`Escape` 关闭。
+- Apple HIG：键盘快捷键需要映射到清晰命令，并保持可预测焦点和退出路径。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 浏览器验证：文章页 `Cmd K` 可打开全站菜单。
+- 浏览器验证：初始 active result 为 `Open studio home`。
+- 浏览器验证：`ArrowDown` 后 active result 变为 `Browse writing`。
+- 浏览器验证：输入 `music` 后出现 `Music` 分组和 `Play studio mix`。
+- 浏览器验证：输入 `studio` 后出现命中高亮。
+- 浏览器验证：`Enter` 跳转 `/music`。
+- 浏览器验证：再次打开 Command Center 后出现 `Recent` 分组。
+- 桌面 1280px：无横向溢出。
+- 移动端 390 x 844：Command Center 在视口内，且无横向溢出。
