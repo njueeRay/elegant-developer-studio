@@ -139,7 +139,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第四阶段交互层首个切片
 
 日期：2026-06-12
-Primary commit：待提交
+Primary commit：`4d020e3`
+Deployment record commit：待提交
+Vercel deployment：`dpl_7Zcx4NVajfhYSfhdcxnRbT5VJwE5`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-3xlszryku.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/7Zcx4NVajfhYSfhdcxnRbT5VJwE5`
 
 范围：
 
@@ -162,3 +167,4 @@ Primary commit：待提交
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - 浏览器 QA：`Cmd K`、搜索 `music`、结果跳转、首页按钮、移动端无横向溢出均通过。
+- Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含全站 `GlobalCommandMenu` 和音乐、文章、项目入口。

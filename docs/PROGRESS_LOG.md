@@ -154,7 +154,7 @@
 
 ### 第四阶段：交互层首个实现切片
 
-状态：已完成本地实现，待部署。
+状态：已部署。
 
 完成：
 
@@ -181,3 +181,6 @@
 - 浏览器验证：点击结果跳转 `/music`。
 - 浏览器验证：首页命令按钮打开同一个全站菜单。
 - 移动端 390px：首页无横向溢出。
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Deployment URL：`https://elegant-developer-studio-3xlszryku.vercel.app`
+- Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含全站 `GlobalCommandMenu` 和音乐、文章、项目入口。
