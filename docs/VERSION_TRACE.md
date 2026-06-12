@@ -173,6 +173,11 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-06-13
 Primary commit：`b854f1d`
+Deployment record commit：待提交
+Vercel deployment：`dpl_3Rvw9VxDNvNwSdRumbhuy6HEUaNq`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-9wopzkbv8.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/3Rvw9VxDNvNwSdRumbhuy6HEUaNq`
 
 范围：
 
@@ -195,3 +200,4 @@ Primary commit：`b854f1d`
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - 浏览器 QA：键盘选择、`Enter` 打开、最近访问、分组、高亮、桌面和移动端无横向溢出均通过。
+- Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。

@@ -187,7 +187,7 @@
 
 ### 第四阶段：键盘与搜索增强切片
 
-状态：已完成本地实现，待部署。
+状态：已部署。
 
 完成：
 
@@ -223,3 +223,6 @@
 - 浏览器验证：再次打开 Command Center 后出现 `Recent` 分组。
 - 桌面 1280px：无横向溢出。
 - 移动端 390 x 844：Command Center 在视口内，且无横向溢出。
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Deployment URL：`https://elegant-developer-studio-9wopzkbv8.vercel.app`
+- Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。
