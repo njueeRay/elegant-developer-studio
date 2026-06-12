@@ -43,6 +43,8 @@
 | 18｜第四阶段键盘与搜索增强调研 | `docs/PHASE4_KEYBOARD_RESEARCH.md` | `CLi2wbbW5iR0yMkWURFcDljGnkI` | `OD8hdzxruoa6NBxLumhcIKMXn9d` | https://scnlb1lk96sb.feishu.cn/wiki/CLi2wbbW5iR0yMkWURFcDljGnkI |
 | 19｜第四阶段键盘增强复盘 | `docs/PHASE4_KEYBOARD_REVIEW.md` | `XUVSw3yvhipy2gkoiRPc5xgAnUe` | `Bky3dnCLjoIN4Nx7I3GcJQDMnbR` | https://scnlb1lk96sb.feishu.cn/wiki/XUVSw3yvhipy2gkoiRPc5xgAnUe |
 | 20｜第四阶段上下文搜索调研 | `docs/PHASE4_CONTEXT_RESEARCH.md` | `Bh2NwYQ8xigOoJkT1VWc0cpYnac` | `Xzl9drVe3oeHfUxBcYLcwPdQnMg` | https://scnlb1lk96sb.feishu.cn/wiki/Bh2NwYQ8xigOoJkT1VWc0cpYnac |
+| 21｜第四阶段上下文搜索复盘 | `docs/PHASE4_CONTEXT_REVIEW.md` | `JbkzwpGGDi1qb0klokDcR2T0n0b` | `Pzwgd1CFWoB7vmxyAQMcF0QNnng` | https://scnlb1lk96sb.feishu.cn/wiki/JbkzwpGGDi1qb0klokDcR2T0n0b |
+| 22｜第四阶段状态面板与筛选调研 | `docs/PHASE4_STATUS_FILTER_RESEARCH.md` | `K5rQw97FZiSMCvkiIYFceAY7nzf` | `BwCidz10Mold36xqKGBcBfzXnHh` | https://scnlb1lk96sb.feishu.cn/wiki/K5rQw97FZiSMCvkiIYFceAY7nzf |
 
 ## 同步协议
 

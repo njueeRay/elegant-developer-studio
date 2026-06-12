@@ -28,6 +28,8 @@
 | 键盘搜索调研 | [18｜第四阶段键盘与搜索增强调研](https://scnlb1lk96sb.feishu.cn/wiki/CLi2wbbW5iR0yMkWURFcDljGnkI) | 键盘选择、最近访问、分组和高亮调研 |
 | 键盘增强复盘 | [19｜第四阶段键盘增强复盘](https://scnlb1lk96sb.feishu.cn/wiki/XUVSw3yvhipy2gkoiRPc5xgAnUe) | 第二切片复盘、暴露问题和上下文搜索进入标准 |
 | 上下文搜索调研 | [20｜第四阶段上下文搜索调研](https://scnlb1lk96sb.feishu.cn/wiki/Bh2NwYQ8xigOoJkT1VWc0cpYnac) | 当前路由上下文、规划页面提示和空状态恢复调研 |
+| 上下文搜索复盘 | [21｜第四阶段上下文搜索复盘](https://scnlb1lk96sb.feishu.cn/wiki/JbkzwpGGDi1qb0klokDcR2T0n0b) | 上下文搜索切片完成复盘和状态筛选进入标准 |
+| 状态筛选调研 | [22｜第四阶段状态面板与筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/K5rQw97FZiSMCvkiIYFceAY7nzf) | 首页状态面板、可复用筛选条和本轮验收 |
 
 ## 当前项目状态
 

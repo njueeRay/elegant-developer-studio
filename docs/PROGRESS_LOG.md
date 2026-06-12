@@ -334,7 +334,13 @@
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/49mRxU3AwqpJZQViZHqicg5D1mD8`
 - Production fetch：首页、`/blog`、`/projects` 均返回新内容。
 
+飞书同步：
+
+- 21｜第四阶段上下文搜索复盘：`https://scnlb1lk96sb.feishu.cn/wiki/JbkzwpGGDi1qb0klokDcR2T0n0b`
+- 22｜第四阶段状态面板与筛选调研：`https://scnlb1lk96sb.feishu.cn/wiki/K5rQw97FZiSMCvkiIYFceAY7nzf`
+- 已更新导航、项目地图、路线图、设计系统、进度、版本追溯、QA、同步协议。
+
 下一步：
 
-- 同步 GitHub issue 和飞书知识库。
-- 回填飞书节点。
+- 同步 GitHub issue。
+- 评估 `GlobalSearch` 是否需要从 Command Center 中抽象。
