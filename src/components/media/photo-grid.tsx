@@ -3,12 +3,44 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Expand, MapPin, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { FilterBar } from "@/components/content/filter-bar";
 import type { Photo } from "@/data/media";
 
 export function PhotoGrid({ photos }: { photos: Photo[] }) {
+  const [activeFilter, setActiveFilter] = useState("All");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const activePhoto = activeIndex === null ? null : photos[activeIndex];
-  const featured = useMemo(() => photos.filter((photo) => photo.featured), [photos]);
+  const filterItems = useMemo(
+    () => [
+      "All",
+      "Featured",
+      ...Array.from(new Set(photos.flatMap((photo) => photo.tags))).sort(),
+    ],
+    [photos],
+  );
+  const filteredPhotos = useMemo(() => {
+    if (activeFilter === "All") {
+      return photos;
+    }
+
+    if (activeFilter === "Featured") {
+      return photos.filter((photo) => photo.featured);
+    }
+
+    return photos.filter((photo) => photo.tags.includes(activeFilter));
+  }, [activeFilter, photos]);
+  const activePhoto = activeIndex === null ? null : filteredPhotos[activeIndex];
+  const highlights = useMemo(() => {
+    if (activeFilter === "All") {
+      return photos.filter((photo) => photo.featured);
+    }
+
+    return filteredPhotos.slice(0, 2);
+  }, [activeFilter, filteredPhotos, photos]);
+
+  function handleFilterChange(filter: string) {
+    setActiveFilter(filter);
+    setActiveIndex(null);
+  }
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -22,13 +54,15 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
 
       if (event.key === "ArrowRight") {
         setActiveIndex((index) =>
-          index === null ? index : (index + 1) % photos.length,
+          index === null ? index : (index + 1) % filteredPhotos.length,
         );
       }
 
       if (event.key === "ArrowLeft") {
         setActiveIndex((index) =>
-          index === null ? index : (index - 1 + photos.length) % photos.length,
+          index === null
+            ? index
+            : (index - 1 + filteredPhotos.length) % filteredPhotos.length,
         );
       }
     };
@@ -40,37 +74,51 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
       window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-  }, [activeIndex, photos.length]);
+  }, [activeIndex, filteredPhotos.length]);
 
   return (
     <>
-      <section className="photo-feature-band" aria-label="Featured photos">
-        {featured.map((photo, index) => (
-          <button
-            key={photo.slug}
-            type="button"
-            className="photo-feature-card"
-            onClick={() => setActiveIndex(photos.indexOf(photo))}
-          >
-            <Image
-              src={photo.image}
-              alt={photo.alt}
-              width={1100}
-              height={760}
-              className="photo-feature-image"
-              unoptimized={photo.image.startsWith("http")}
-              priority={index === 0}
-            />
-            <span>
-              <small>{photo.mood}</small>
-              <strong>{photo.title}</strong>
-            </span>
-          </button>
-        ))}
+      <section className="photo-explorer" aria-label="Photo explorer">
+        <FilterBar
+          label="Filter photos"
+          active={activeFilter}
+          items={filterItems}
+          onChange={handleFilterChange}
+          resultCount={filteredPhotos.length}
+          totalCount={photos.length}
+          noun="frames"
+        />
       </section>
 
+      {highlights.length > 0 ? (
+        <section className="photo-feature-band" aria-label="Featured photos">
+          {highlights.map((photo, index) => (
+            <button
+              key={photo.slug}
+              type="button"
+              className="photo-feature-card"
+              onClick={() => setActiveIndex(filteredPhotos.indexOf(photo))}
+            >
+              <Image
+                src={photo.image}
+                alt={photo.alt}
+                width={1100}
+                height={760}
+                className="photo-feature-image"
+                unoptimized={photo.image.startsWith("http")}
+                priority={activeFilter === "All" && index === 0}
+              />
+              <span>
+                <small>{photo.mood}</small>
+                <strong>{photo.title}</strong>
+              </span>
+            </button>
+          ))}
+        </section>
+      ) : null}
+
       <section className="photo-grid" aria-label="Photo notes">
-        {photos.map((photo, index) => (
+        {filteredPhotos.map((photo, index) => (
           <button
             key={photo.slug}
             type="button"
@@ -120,7 +168,9 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
             aria-label="Previous photo"
             onClick={() =>
               setActiveIndex((index) =>
-                index === null ? index : (index - 1 + photos.length) % photos.length,
+                index === null
+                  ? index
+                  : (index - 1 + filteredPhotos.length) % filteredPhotos.length,
               )
             }
           >
@@ -151,7 +201,7 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
             aria-label="Next photo"
             onClick={() =>
               setActiveIndex((index) =>
-                index === null ? index : (index + 1) % photos.length,
+                index === null ? index : (index + 1) % filteredPhotos.length,
               )
             }
           >

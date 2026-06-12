@@ -41,6 +41,7 @@
 - 第四阶段交互层首版：全站 Command Center。
 - 第四阶段交互层增强：键盘选择、最近访问、上下文排序、规划页面提示、空状态建议。
 - 第四阶段交互层状态与筛选切片：`StatusPanel`、可复用 `FilterBar`、结果数量和筛选清除。
+- 第四阶段照片筛选切片：`/photos` 复用 `FilterBar`，筛选联动精选、网格和灯箱。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -225,6 +226,8 @@ docs/
   PHASE4_CONTEXT_RESEARCH.md     第四阶段上下文搜索调研和计划
   PHASE4_CONTEXT_REVIEW.md       第四阶段上下文搜索复盘
   PHASE4_STATUS_FILTER_RESEARCH.md 第四阶段状态面板与筛选调研
+  PHASE4_STATUS_FILTER_REVIEW.md  第四阶段状态面板与筛选复盘
+  PHASE4_PHOTO_FILTER_RESEARCH.md 第四阶段照片筛选调研
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -255,6 +258,7 @@ src/
 - `GlobalCommandMenu` 上下文排序、规划提示、空状态建议
 - `StatusPanel`
 - `FilterBar`
+- `PhotoGrid` 筛选联动
 - `PostCard`
 - `ProjectCard`
 - `ReadingProgress`
@@ -299,6 +303,7 @@ src/
 - 全站 Command Center 当前路由上下文排序、规划页面提示和空状态建议。
 - 首页状态面板：最近在写、最近在做、最近在听。
 - 博客和项目列表筛选：结果数量、active filter、清除动作。
+- 照片筛选：`Featured` 和 tags，精选区、网格、灯箱跟随当前结果。
 
 研究轨道：
 
@@ -348,10 +353,10 @@ src/
 
 ## 10. 下一步
 
-下一步是第四阶段交互层继续打磨：
+下一步是第四阶段交互层继续收束：
 
-1. 增加 `StatusPanel`：最近在写、最近在做、最近在听。
-2. 抽象 `FilterBar`：统一写作、项目、照片筛选模式。
-3. 评估全站搜索是否需要全文索引。
+1. 评估 `/knowledge` 的内容模型和标签体系。
+2. 判断 `FilterBar` 是否需要支持单选/多选模式。
+3. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
 4. 第三阶段并行决定是否引入真实音频文件。
 5. 继续打磨灯箱移动端手势和焦点管理。

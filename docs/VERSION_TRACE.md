@@ -278,3 +278,33 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Vercel inspect：deployment 状态 `Ready`。
 - Production fetch：首页返回 `200`，页面数据包含 `studio-status-panel`、`Current loops`、`Atelier - late night`。
 - Production fetch：`/blog` 包含 `Filter writing` 和 `3 / 3 essays`；`/projects` 包含 `Filter work` 和 `2 / 2 projects`。
+
+## Unreleased - 第四阶段照片筛选切片
+
+日期：2026-06-13
+Primary commit：待回填
+Deployment record commit：待回填
+Vercel deployment：待回填
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待回填
+Inspect URL：待回填
+
+范围：
+
+- `/photos` 接入可复用 `FilterBar`。
+- 增加 `Featured` 特殊筛选。
+- 使用照片 tags 自动生成筛选项。
+- 筛选后精选区域、照片网格和灯箱导航都基于当前结果。
+- 添加 `docs/PHASE4_STATUS_FILTER_REVIEW.md` 和 `docs/PHASE4_PHOTO_FILTER_RESEARCH.md`。
+
+产品判断：
+
+- 先验证 `FilterBar` 在媒体场景的复用能力，不急于抽象 `GlobalSearch`。
+- 当前照片量不需要多维 faceted navigation。
+- 灯箱必须跟随当前筛选结果，避免用户在筛选状态下跳回全量照片。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser QA：照片筛选、灯箱联动、清除筛选、桌面和移动端无横向溢出均通过。

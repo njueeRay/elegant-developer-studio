@@ -248,3 +248,55 @@
 备注：
 
 - in-app Browser 的 CDP `Page.captureScreenshot` 本轮超时；交互和布局验证已通过，截图由本地 Playwright 补充。
+
+## 第四阶段照片筛选 QA
+
+结果：通过。
+
+方法：
+
+- 本地 URL：`http://127.0.0.1:3000`
+- 浏览器验证方式：使用 in-app Browser。
+- 检查视口：
+  - 桌面：1280 x 720。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 页面身份：通过。
+   - `/photos` 标题为 `Photos - Ray Studio`。
+   - 页面包含照片 header、事实标签、筛选条和照片网格。
+
+2. 初始状态：通过。
+   - active filter 为 `All`。
+   - 结果数量显示 `6 / 6 frames`。
+   - 网格 6 张，精选 2 张。
+
+3. 标签筛选：通过。
+   - 点击 `Music` 后 active filter 为 `Music`。
+   - 结果数量显示 `1 / 6 frames`。
+   - 网格 1 张，精选 1 张。
+   - 结果标题为 `Listening corner`。
+
+4. 灯箱联动：通过。
+   - 打开筛选后的照片，灯箱标题为 `Listening corner`。
+   - 点击 `Next photo` 后仍为 `Listening corner`，说明只在当前筛选结果内循环。
+   - 灯箱打开时 body overflow 为 `hidden`。
+
+5. 清除筛选：通过。
+   - 点击 `Clear` 后 active filter 恢复 `All`。
+   - 结果数量恢复 `6 / 6 frames`。
+   - 清除按钮禁用。
+
+6. 移动端布局：通过。
+   - 390 x 844 下无页面级横向溢出。
+   - `FilterBar` 使用内部横向滚动承载标签。
+
+截图：
+
+- Browser 截图：桌面 `Music` 筛选状态。
+- Browser 截图：移动端 `/photos` 首屏。
+
+备注：
+
+- Browser 运行时出现一条 ChatGPT/Statsig 网络超时噪声；页面应用控制台 `error/warn` 为空。

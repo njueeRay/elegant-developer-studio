@@ -1785,12 +1785,21 @@ kbd {
 }
 
 .photo-feature-band,
+.photo-explorer,
 .photo-grid,
 .music-console {
   position: relative;
   z-index: 1;
   width: min(100%, 1180px);
   margin: 0 auto;
+}
+
+.photo-explorer {
+  padding-top: 30px;
+}
+
+.photo-explorer .filter-toolbar {
+  margin-bottom: 0;
 }
 
 .photo-feature-band {

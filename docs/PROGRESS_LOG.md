@@ -344,3 +344,48 @@
 
 - 同步 GitHub issue。
 - 评估 `GlobalSearch` 是否需要从 Command Center 中抽象。
+
+### 第四阶段：照片筛选切片
+
+状态：本地实现完成，待部署回填。
+
+复盘：
+
+- 上一切片已经证明 `FilterBar` 可服务文章和项目列表。
+- 仍需要验证 `FilterBar` 是否能服务媒体浏览，而不是只适合文字列表。
+- `/photos` 有 tags、featured、grid、lightbox，是最合适的复用压力测试。
+
+调研依据：
+
+- NN/g：当前照片数量不需要完整 faceted navigation，单选 filters 足够。
+- NN/g：筛选值必须可预测，优先使用已有 tags。
+- Baymard：已应用筛选需要集中展示，并提供清除路径。
+- Baymard：移动端可以提升常用筛选，避免藏进复杂抽屉。
+- Carbon：selectable tags 需要明确状态和语义。
+
+完成：
+
+- `/photos` 接入可复用 `FilterBar`。
+- 增加 `Featured` 特殊筛选。
+- 使用照片 tags 自动生成筛选项。
+- 筛选后精选区域、照片网格和灯箱导航都基于当前结果。
+- 切换筛选时关闭当前灯箱，避免 active photo 和结果集合不一致。
+- 添加 `docs/PHASE4_STATUS_FILTER_REVIEW.md` 和 `docs/PHASE4_PHOTO_FILTER_RESEARCH.md`。
+- 更新项目地图、路线图、设计系统和 QA 文档。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser 验证：`/photos` 初始状态显示 `6 / 6 frames`，网格 6 张，精选 2 张。
+- Browser 验证：点击 `Music` 后显示 `1 / 6 frames`，网格 1 张，精选 1 张。
+- Browser 验证：打开 `Listening corner` 灯箱后，点击下一张仍停留在当前筛选结果内。
+- Browser 验证：点击 `Clear` 后恢复 `6 / 6 frames`。
+- Browser 验证：移动端 390 x 844 无页面级横向溢出。
+- Browser 截图：桌面 `Music` 筛选状态和移动端 `/photos` 首屏。
+
+下一步：
+
+- 部署到 Vercel。
+- 同步 GitHub issue 和飞书知识库。
+- 回填 deployment、commit 和飞书节点。
