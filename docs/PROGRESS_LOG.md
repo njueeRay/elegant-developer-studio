@@ -347,7 +347,7 @@
 
 ### 第四阶段：照片筛选切片
 
-状态：本地实现完成，待部署回填。
+状态：已部署，待飞书和 GitHub 追溯回填。
 
 复盘：
 
@@ -386,6 +386,14 @@
 
 下一步：
 
-- 部署到 Vercel。
 - 同步 GitHub issue 和飞书知识库。
-- 回填 deployment、commit 和飞书节点。
+- 回填飞书节点。
+- 下一切片建议进入 `Knowledge` 信息架构和筛选模式，而不是立刻堆全站搜索。
+
+部署：
+
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Vercel deployment：`https://elegant-developer-studio-qhfkj8vir.vercel.app`
+- Deployment id：`dpl_Fkvk14f2WagC9TGJDcz5DCSP1jiu`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Fkvk14f2WagC9TGJDcz5DCSP1jiu`
+- Production fetch：`/photos` 返回 `200 OK`，并包含本轮照片筛选内容。

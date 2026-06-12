@@ -282,12 +282,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第四阶段照片筛选切片
 
 日期：2026-06-13
-Primary commit：待回填
+Primary commit：`57675ac`
 Deployment record commit：待回填
-Vercel deployment：待回填
+Vercel deployment：`dpl_Fkvk14f2WagC9TGJDcz5DCSP1jiu`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待回填
-Inspect URL：待回填
+Deployment URL：`https://elegant-developer-studio-qhfkj8vir.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Fkvk14f2WagC9TGJDcz5DCSP1jiu`
 
 范围：
 
@@ -308,3 +308,5 @@ Inspect URL：待回填
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - Browser QA：照片筛选、灯箱联动、清除筛选、桌面和移动端无横向溢出均通过。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production fetch：`/photos` 返回 `200 OK`，并包含 `photo-explorer`、`Filter photos`、`6 / 6 frames`、`Featured`、`Music`、`Listening corner`。
