@@ -194,3 +194,7 @@
    - `/music` 390 x 844：默认显示 `Music context`。
    - `scrollWidth 390`，`clientWidth 390`。
    - Command Center 底部在 844px 视口内。
+
+6. 代码块 hydration：通过。
+   - 修复后文章页代码块显示 `5 lines`。
+   - 浏览器控制台 warn/error 为空。

@@ -266,13 +266,17 @@
 - 浏览器验证：搜索 `uses` 显示 `Uses is planned` 和建议词。
 - 浏览器验证：点击 `writing` 建议词后恢复结果列表。
 - 移动端 390 x 844：`/music` 默认出现 `Music context`，无横向溢出。
+- 追加修复：`CodeBlock` 行数从真实 `<pre>` DOM 读取，消除服务端 5 行、客户端 0 行的 hydration mismatch。
+- 追加浏览器验证：文章页代码块显示 `5 lines`，控制台 warn/error 为空。
 
 部署：
 
 - Production alias：`https://elegant-developer-studio.vercel.app`
-- Deployment URL：`https://elegant-developer-studio-n49bqn9bo.vercel.app`
-- Vercel deployment：`dpl_Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
-- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+- Context deployment URL：`https://elegant-developer-studio-n49bqn9bo.vercel.app`
+- Context deployment：`dpl_Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+- Final hotfix deployment URL：`https://elegant-developer-studio-eta61h964.vercel.app`
+- Final hotfix deployment：`dpl_4EwLqMkgPKgDqiVcU26ipnbKDFd1`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/4EwLqMkgPKgDqiVcU26ipnbKDFd1`
 - Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。
 
 下一步：

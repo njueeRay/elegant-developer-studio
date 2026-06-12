@@ -207,10 +207,13 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 日期：2026-06-13
 Primary commit：`732cd49`
 Deployment record commit：`1dbfd55`
-Vercel deployment：`dpl_Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+Context deployment：`dpl_Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+Hotfix commit：`dff8d6f`
+Final deployment：`dpl_4EwLqMkgPKgDqiVcU26ipnbKDFd1`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：`https://elegant-developer-studio-n49bqn9bo.vercel.app`
-Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+Context deployment URL：`https://elegant-developer-studio-n49bqn9bo.vercel.app`
+Final deployment URL：`https://elegant-developer-studio-eta61h964.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/4EwLqMkgPKgDqiVcU26ipnbKDFd1`
 
 范围：
 
@@ -224,6 +227,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - 修复最近访问吞掉当前页面上下文的问题。
 - 添加 `docs/PHASE4_KEYBOARD_REVIEW.md` 和 `docs/PHASE4_CONTEXT_RESEARCH.md`。
 - README 改为中文入口，并补齐当前阶段索引。
+- 追加修复 `CodeBlock` hydration mismatch：代码块行数和复制文本在挂载后从真实 `<pre>` DOM 读取。
 
 产品判断：
 
@@ -235,5 +239,6 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - 浏览器 QA：文章页上下文、`knowledge` 规划提示、`uses` 空状态、建议词恢复、移动端 `/music` 上下文均通过。
-- Vercel inspect：deployment 状态 `Ready`。
+- 浏览器 QA：文章页代码块显示 `5 lines`，控制台 warn/error 为空。
+- Vercel inspect：final deployment 状态 `Ready`。
 - Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。
