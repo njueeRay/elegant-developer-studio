@@ -172,7 +172,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第四阶段键盘与搜索增强切片
 
 日期：2026-06-13
-Primary commit：待提交
+Primary commit：`b854f1d`
 
 范围：
 
