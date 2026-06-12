@@ -201,3 +201,39 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - `npm run build`：通过。
 - 浏览器 QA：键盘选择、`Enter` 打开、最近访问、分组、高亮、桌面和移动端无横向溢出均通过。
 - Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。
+
+## Unreleased - 第四阶段上下文搜索与空状态恢复切片
+
+日期：2026-06-13
+Primary commit：`732cd49`
+Deployment record commit：`pending`
+Vercel deployment：`dpl_Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-n49bqn9bo.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+
+范围：
+
+- `GlobalCommandMenu` 增加当前路径感知。
+- `/blog`、`/projects`、`/photos`、`/music` 默认提升对应上下文。
+- 查询评分增加 context boost。
+- 搜索 `knowledge` 时保留真实项目结果，同时显示 `Knowledge is planned`。
+- 搜索 `uses` 等无结果词时显示规划说明和建议词。
+- 建议词支持点击恢复查询。
+- 无 option 时结果容器不再声明 `role="listbox"`。
+- 修复最近访问吞掉当前页面上下文的问题。
+- 添加 `docs/PHASE4_KEYBOARD_REVIEW.md` 和 `docs/PHASE4_CONTEXT_RESEARCH.md`。
+- README 改为中文入口，并补齐当前阶段索引。
+
+产品判断：
+
+- 当前内容规模还不需要完整全文搜索库。
+- 程序员风格继续优先体现在命令效率、上下文意识、可恢复路径和状态解释，而不是装饰性终端效果。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 浏览器 QA：文章页上下文、`knowledge` 规划提示、`uses` 空状态、建议词恢复、移动端 `/music` 上下文均通过。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。

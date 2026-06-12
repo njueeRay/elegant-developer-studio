@@ -229,7 +229,7 @@
 
 ### 第四阶段：上下文搜索与空状态恢复切片
 
-状态：本地验证完成，待部署。
+状态：已部署。
 
 复盘：
 
@@ -267,8 +267,14 @@
 - 浏览器验证：点击 `writing` 建议词后恢复结果列表。
 - 移动端 390 x 844：`/music` 默认出现 `Music context`，无横向溢出。
 
+部署：
+
+- Production alias：`https://elegant-developer-studio.vercel.app`
+- Deployment URL：`https://elegant-developer-studio-n49bqn9bo.vercel.app`
+- Vercel deployment：`dpl_Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Fn8nL7aj37UiEsbu7Yvzq4LPD8dT`
+- Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。
+
 下一步：
 
-- 部署到 Vercel。
-- 同步飞书知识库。
 - 进入 `StatusPanel` 和 `FilterBar` 切片。
