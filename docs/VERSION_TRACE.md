@@ -246,12 +246,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第四阶段状态面板与筛选切片
 
 日期：2026-06-13
-Primary commit：待回填
+Primary commit：`53a77f3`
 Deployment record commit：待回填
-Vercel deployment：待回填
+Vercel deployment：`dpl_49mRxU3AwqpJZQViZHqicg5D1mD8`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待回填
-Inspect URL：待回填
+Deployment URL：`https://elegant-developer-studio-2lkoc4zhl.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/49mRxU3AwqpJZQViZHqicg5D1mD8`
 
 范围：
 
@@ -275,3 +275,6 @@ Inspect URL：待回填
 - `npm run build`：通过。
 - Browser QA：首页状态面板、博客筛选、项目筛选、桌面和移动端无横向溢出均通过。
 - 本地 Playwright QA：生成状态面板、博客筛选条和移动端首页截图。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production fetch：首页返回 `200`，页面数据包含 `studio-status-panel`、`Current loops`、`Atelier - late night`。
+- Production fetch：`/blog` 包含 `Filter writing` 和 `3 / 3 essays`；`/projects` 包含 `Filter work` 和 `2 / 2 projects`。

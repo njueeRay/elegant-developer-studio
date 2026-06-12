@@ -285,7 +285,7 @@
 
 ### 第四阶段：状态面板与筛选切片
 
-状态：本地实现完成，待部署回填。
+状态：已部署。
 
 复盘：
 
@@ -326,6 +326,15 @@
 
 下一步：
 
-- 部署到 Vercel。
+部署：
+
+- Production alias：`https://elegant-developer-studio.vercel.app`
+- Deployment URL：`https://elegant-developer-studio-2lkoc4zhl.vercel.app`
+- Deployment：`dpl_49mRxU3AwqpJZQViZHqicg5D1mD8`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/49mRxU3AwqpJZQViZHqicg5D1mD8`
+- Production fetch：首页、`/blog`、`/projects` 均返回新内容。
+
+下一步：
+
 - 同步 GitHub issue 和飞书知识库。
-- 回填 deployment、commit 和飞书节点。
+- 回填飞书节点。
