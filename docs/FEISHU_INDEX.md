@@ -30,6 +30,8 @@
 | 上下文搜索调研 | [20｜第四阶段上下文搜索调研](https://scnlb1lk96sb.feishu.cn/wiki/Bh2NwYQ8xigOoJkT1VWc0cpYnac) | 当前路由上下文、规划页面提示和空状态恢复调研 |
 | 上下文搜索复盘 | [21｜第四阶段上下文搜索复盘](https://scnlb1lk96sb.feishu.cn/wiki/JbkzwpGGDi1qb0klokDcR2T0n0b) | 上下文搜索切片完成复盘和状态筛选进入标准 |
 | 状态筛选调研 | [22｜第四阶段状态面板与筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/K5rQw97FZiSMCvkiIYFceAY7nzf) | 首页状态面板、可复用筛选条和本轮验收 |
+| 状态筛选复盘 | [23｜第四阶段状态面板与筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/A4FFwPC4qiod5lkcPascxE4KnHc) | 状态面板和筛选条切片复盘、风险和下一步 |
+| 照片筛选调研 | [24｜第四阶段照片筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/JA2jw4JSHiZWHnkMHfXc7Zamnlh) | 照片筛选、灯箱联动和媒体浏览模式调研 |
 
 ## 当前项目状态
 

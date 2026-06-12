@@ -283,7 +283,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-06-13
 Primary commit：`57675ac`
-Deployment record commit：待回填
+Deployment record commit：`c268b46`
 Vercel deployment：`dpl_Fkvk14f2WagC9TGJDcz5DCSP1jiu`
 Production alias：`https://elegant-developer-studio.vercel.app`
 Deployment URL：`https://elegant-developer-studio-qhfkj8vir.vercel.app`
@@ -310,3 +310,5 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Browser QA：照片筛选、灯箱联动、清除筛选、桌面和移动端无横向溢出均通过。
 - Vercel inspect：deployment 状态 `Ready`。
 - Production fetch：`/photos` 返回 `200 OK`，并包含 `photo-explorer`、`Filter photos`、`6 / 6 frames`、`Featured`、`Music`、`Listening corner`。
+- Feishu：`23｜第四阶段状态面板与筛选复盘`、`24｜第四阶段照片筛选调研`。
+- Feishu fetch：导航页包含 23/24；照片筛选调研页包含 `Music`、`1 / 6 frames`、`Listening corner`。

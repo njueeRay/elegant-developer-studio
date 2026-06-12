@@ -347,7 +347,7 @@
 
 ### 第四阶段：照片筛选切片
 
-状态：已部署，待飞书和 GitHub 追溯回填。
+状态：已部署，已同步飞书，待 GitHub 追溯回填。
 
 复盘：
 
@@ -386,8 +386,7 @@
 
 下一步：
 
-- 同步 GitHub issue 和飞书知识库。
-- 回填飞书节点。
+- 同步 GitHub issue。
 - 下一切片建议进入 `Knowledge` 信息架构和筛选模式，而不是立刻堆全站搜索。
 
 部署：
@@ -397,3 +396,9 @@
 - Deployment id：`dpl_Fkvk14f2WagC9TGJDcz5DCSP1jiu`
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Fkvk14f2WagC9TGJDcz5DCSP1jiu`
 - Production fetch：`/photos` 返回 `200 OK`，并包含本轮照片筛选内容。
+
+飞书：
+
+- [23｜第四阶段状态面板与筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/A4FFwPC4qiod5lkcPascxE4KnHc)
+- [24｜第四阶段照片筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/JA2jw4JSHiZWHnkMHfXc7Zamnlh)
+- 验证：导航页包含 23/24；照片筛选调研页包含 `Music`、`1 / 6 frames`、`Listening corner`。

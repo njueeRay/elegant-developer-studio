@@ -45,6 +45,8 @@
 | 20｜第四阶段上下文搜索调研 | `docs/PHASE4_CONTEXT_RESEARCH.md` | `Bh2NwYQ8xigOoJkT1VWc0cpYnac` | `Xzl9drVe3oeHfUxBcYLcwPdQnMg` | https://scnlb1lk96sb.feishu.cn/wiki/Bh2NwYQ8xigOoJkT1VWc0cpYnac |
 | 21｜第四阶段上下文搜索复盘 | `docs/PHASE4_CONTEXT_REVIEW.md` | `JbkzwpGGDi1qb0klokDcR2T0n0b` | `Pzwgd1CFWoB7vmxyAQMcF0QNnng` | https://scnlb1lk96sb.feishu.cn/wiki/JbkzwpGGDi1qb0klokDcR2T0n0b |
 | 22｜第四阶段状态面板与筛选调研 | `docs/PHASE4_STATUS_FILTER_RESEARCH.md` | `K5rQw97FZiSMCvkiIYFceAY7nzf` | `BwCidz10Mold36xqKGBcBfzXnHh` | https://scnlb1lk96sb.feishu.cn/wiki/K5rQw97FZiSMCvkiIYFceAY7nzf |
+| 23｜第四阶段状态面板与筛选复盘 | `docs/PHASE4_STATUS_FILTER_REVIEW.md` | `A4FFwPC4qiod5lkcPascxE4KnHc` | `B9pRdCkdjotIv8xKhoIcEmBKnrg` | https://scnlb1lk96sb.feishu.cn/wiki/A4FFwPC4qiod5lkcPascxE4KnHc |
+| 24｜第四阶段照片筛选调研 | `docs/PHASE4_PHOTO_FILTER_RESEARCH.md` | `JA2jw4JSHiZWHnkMHfXc7Zamnlh` | `RqxIdk7I2o1T9ax3SiTcvSsWnde` | https://scnlb1lk96sb.feishu.cn/wiki/JA2jw4JSHiZWHnkMHfXc7Zamnlh |
 
 ## 同步协议
 
