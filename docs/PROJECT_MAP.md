@@ -39,6 +39,7 @@
 - 第二阶段内容核心：blog、文章详情、projects、项目详情、MDX 注册表、RSS、sitemap、robots。
 - 第三阶段媒体层首版：photos、music、灯箱、迷你播放器。
 - 第四阶段交互层首版：全站 Command Center。
+- 第四阶段交互层增强：键盘选择、最近访问、上下文排序、规划页面提示、空状态建议。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -170,6 +171,9 @@
 - 最近访问分组
 - 搜索结果类型分组
 - 标题和描述命中高亮
+- 当前路由上下文分组：`Writing context`、`Project context`、`Photo context`、`Music context`
+- `knowledge`、`lab`、`uses`、`about` 规划页面提示
+- 无结果恢复建议词
 
 主要风险：
 
@@ -213,6 +217,8 @@ docs/
   PHASE4_RESEARCH.md             第四阶段交互层调研和计划
   PHASE4_REVIEW.md               第四阶段首个切片复盘
   PHASE4_KEYBOARD_RESEARCH.md    第四阶段键盘与搜索增强调研
+  PHASE4_KEYBOARD_REVIEW.md      第四阶段键盘与搜索增强复盘
+  PHASE4_CONTEXT_RESEARCH.md     第四阶段上下文搜索调研和计划
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -240,6 +246,7 @@ src/
 - `SocialLinks`
 - `CommandPalette`
 - `GlobalCommandMenu`
+- `GlobalCommandMenu` 上下文排序、规划提示、空状态建议
 - `PostCard`
 - `ProjectCard`
 - `TagFilter`
@@ -283,10 +290,11 @@ src/
 - 代码复制反馈。
 - 文章标题锚点。
 - 全站 Command Center 键盘选择、Enter 打开、最近访问、分组和高亮。
+- 全站 Command Center 当前路由上下文排序、规划页面提示和空状态建议。
 
 研究轨道：
 
-- 带上下文排名的命令面板。
+- 状态面板和过滤器的组合模式。
 - 项目卡片的 deploy、version、commit、changelog affordances。
 - 类似 build pipeline 的阅读进度语义。
 - Knowledge 卡片的复制、反向链接、关联链接。
@@ -335,8 +343,8 @@ src/
 
 下一步是第四阶段交互层继续打磨：
 
-1. 为 Command Center 增加当前路由上下文排序。
-2. 增加空状态建议，例如搜索 `knowledge` 时提示该路由仍在第五阶段。
+1. 增加 `StatusPanel`：最近在写、最近在做、最近在听。
+2. 抽象 `FilterBar`：统一写作、项目、照片筛选模式。
 3. 评估全站搜索是否需要全文索引。
 4. 第三阶段并行决定是否引入真实音频文件。
 5. 继续打磨灯箱移动端手势和焦点管理。

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ArrowRight,
   Camera,
@@ -72,6 +72,46 @@ type CommandSection = {
   items: CommandItem[];
 };
 
+type DefaultCommandSection = CommandSection & {
+  kind: CommandKind;
+};
+
+type PlannedSuggestion = {
+  id: string;
+  title: string;
+  description: string;
+  query: string;
+};
+
+const plannedSuggestions: PlannedSuggestion[] = [
+  {
+    id: "planned-knowledge",
+    title: "Knowledge is planned",
+    description: "The public knowledge base belongs to Phase 5. Try writing or projects for now.",
+    query: "writing",
+  },
+  {
+    id: "planned-lab",
+    title: "Lab is planned",
+    description: "The component lab will arrive after the interaction layer is stable.",
+    query: "projects",
+  },
+  {
+    id: "planned-uses",
+    title: "Uses is planned",
+    description: "Tools and workflows belong to the Portfolio OS stage.",
+    query: "projects",
+  },
+  {
+    id: "planned-about",
+    title: "About is planned",
+    description: "The resume and experience page is reserved for Phase 5.",
+    query: "contact",
+  },
+];
+
+const fallbackSuggestions = ["writing", "projects", "photos", "music"];
+
 function normalize(value: string) {
   return value.toLowerCase().trim();
 }
@@ -80,21 +120,72 @@ function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function scoreItem(item: CommandItem, query: string) {
+function getContextKinds(pathname: string): CommandKind[] {
+  if (pathname.startsWith("/blog")) {
+    return ["post", "action"];
+  }
+
+  if (pathname.startsWith("/projects")) {
+    return ["project", "action"];
+  }
+
+  if (pathname.startsWith("/photos")) {
+    return ["photo", "action"];
+  }
+
+  if (pathname.startsWith("/music")) {
+    return ["music", "action"];
+  }
+
+  return ["action", "post", "project", "photo", "music"];
+}
+
+function getContextLabel(pathname: string) {
+  if (pathname.startsWith("/blog")) {
+    return "Writing context";
+  }
+
+  if (pathname.startsWith("/projects")) {
+    return "Project context";
+  }
+
+  if (pathname.startsWith("/photos")) {
+    return "Photo context";
+  }
+
+  if (pathname.startsWith("/music")) {
+    return "Music context";
+  }
+
+  return "Studio context";
+}
+
+function getContextBoost(item: CommandItem, contextKinds: CommandKind[]) {
+  const index = contextKinds.indexOf(item.kind);
+
+  if (index === -1) {
+    return 0;
+  }
+
+  return Math.max(1, contextKinds.length - index);
+}
+
+function scoreItem(item: CommandItem, query: string, contextKinds: CommandKind[]) {
   const haystack = normalize(
     [item.title, item.description, item.meta, item.kind, ...item.keywords].join(" "),
   );
+  const contextBoost = getContextBoost(item, contextKinds);
 
   if (!query) {
-    return 1;
+    return 1 + contextBoost;
   }
 
   if (normalize(item.title).includes(query)) {
-    return 4;
+    return 40 + contextBoost;
   }
 
   if (haystack.includes(query)) {
-    return 2;
+    return 20 + contextBoost;
   }
 
   return 0;
@@ -161,12 +252,21 @@ function highlightText(text: string, query: string): ReactNode {
   });
 }
 
+function getPlannedSuggestion(query: string) {
+  const normalizedQuery = normalize(query);
+
+  return plannedSuggestions.find((suggestion) => normalizedQuery.includes(suggestion.id.replace("planned-", "")));
+}
+
 export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const [recentCommands, setRecentCommands] = useState<RecentCommand[]>(readRecentCommands);
+  const contextKinds = useMemo(() => getContextKinds(pathname), [pathname]);
+  const contextLabel = useMemo(() => getContextLabel(pathname), [pathname]);
 
   const closeCommand = useCallback(() => {
     setOpen(false);
@@ -225,12 +325,14 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
     const normalizedQuery = normalize(query);
 
     return items
-      .map((item) => ({ item, score: scoreItem(item, normalizedQuery) }))
+      .map((item) => ({ item, score: scoreItem(item, normalizedQuery, contextKinds) }))
       .filter(({ score }) => score > 0)
       .sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title))
       .slice(0, 9)
       .map(({ item }) => item);
-  }, [items, query]);
+  }, [contextKinds, items, query]);
+
+  const plannedSuggestion = useMemo(() => getPlannedSuggestion(query), [query]);
 
   const sections = useMemo<CommandSection[]>(() => {
     const normalizedQuery = normalize(query);
@@ -251,40 +353,75 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
       }));
     }
 
-    const recentIds = new Set(recentItems.map((item) => item.id));
-    const quickActions = items
-      .filter((item) => item.kind === "action" && !recentIds.has(item.id))
-      .slice(0, 4);
-    const writing = items.filter((item) => item.kind === "post" && !recentIds.has(item.id)).slice(0, 2);
-    const projects = items
-      .filter((item) => item.kind === "project" && !recentIds.has(item.id))
-      .slice(0, 2);
-
-    return [
-      recentItems.length > 0
-        ? {
-            id: "recent",
-            label: "Recent",
-            items: recentItems,
-          }
-        : null,
+    const primaryContextKind = contextKinds[0];
+    const visibleRecentItems =
+      primaryContextKind === "action"
+        ? recentItems
+        : recentItems.filter((item) => item.kind !== primaryContextKind);
+    const recentIds = new Set(visibleRecentItems.map((item) => item.id));
+    const availableItems = items.filter((item) => !recentIds.has(item.id));
+    const sectionByKind = (kind: CommandKind, limit: number) =>
+      availableItems.filter((item) => item.kind === kind).slice(0, limit);
+    const contextSections = contextKinds
+      .filter((kind) => kind !== "contact")
+      .map((kind) => ({
+        id: `context-${kind}`,
+        label: kind === contextKinds[0] ? contextLabel : labelByKind[kind],
+        items: sectionByKind(kind, kind === "action" ? 4 : 3),
+      }));
+    const contextKindSet = new Set(contextKinds);
+    const rawDefaultSections: DefaultCommandSection[] = [
       {
         id: "quick-actions",
+        kind: "action",
         label: "Quick actions",
-        items: quickActions,
+        items: sectionByKind("action", 4),
       },
       {
         id: "writing",
+        kind: "post",
         label: "Writing",
-        items: writing,
+        items: sectionByKind("post", 2),
       },
       {
         id: "projects",
+        kind: "project",
         label: "Projects",
-        items: projects,
+        items: sectionByKind("project", 2),
       },
+      {
+        id: "photos",
+        kind: "photo",
+        label: "Photos",
+        items: sectionByKind("photo", 2),
+      },
+      {
+        id: "music",
+        kind: "music",
+        label: "Music",
+        items: sectionByKind("music", 1),
+      },
+    ];
+    const defaultSections = rawDefaultSections
+      .filter((section) => !contextKindSet.has(section.kind))
+      .map((section) => ({
+        id: section.id,
+        label: section.label,
+        items: section.items,
+      }));
+
+    return [
+      visibleRecentItems.length > 0
+        ? {
+            id: "recent",
+            label: "Recent",
+            items: visibleRecentItems,
+          }
+        : null,
+      ...contextSections,
+      ...defaultSections,
     ].filter((section): section is CommandSection => Boolean(section && section.items.length));
-  }, [filteredItems, items, query, recentItems]);
+  }, [contextKinds, contextLabel, filteredItems, items, query, recentItems]);
 
   const indexedSections = useMemo(() => {
     let index = 0;
@@ -407,49 +544,85 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
           />
           <kbd>Esc</kbd>
         </div>
-        <div className="command-results global-command-results" id="global-command-results" role="listbox">
+        <div
+          className="command-results global-command-results"
+          id="global-command-results"
+          role={flatItems.length > 0 ? "listbox" : undefined}
+        >
           {flatItems.length > 0 ? (
-            indexedSections.map((section) => (
-              <div className="command-section" key={section.id} role="group" aria-label={section.label}>
-                <p className="command-section-label">{section.label}</p>
-                {section.items.map(({ item, index }) => {
-                  const Icon = iconByKind[item.kind];
-                  const isActive = index === safeActiveIndex;
+            <>
+              {plannedSuggestion ? (
+                <div className="command-planned-note">
+                  <strong>{plannedSuggestion.title}</strong>
+                  <span>{plannedSuggestion.description}</span>
+                </div>
+              ) : null}
+              {indexedSections.map((section) => (
+                <div className="command-section" key={section.id} role="group" aria-label={section.label}>
+                  <p className="command-section-label">{section.label}</p>
+                  {section.items.map(({ item, index }) => {
+                    const Icon = iconByKind[item.kind];
+                    const isActive = index === safeActiveIndex;
 
-                  return (
-                    <Link
-                      aria-selected={isActive}
-                      className={isActive ? "command-result-active" : undefined}
-                      href={item.href}
-                      id={getResultId(item.id)}
-                      key={item.id}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        openItem(item);
-                      }}
-                      onMouseEnter={() => setActiveIndex(index)}
-                      role="option"
-                    >
-                      <span className="command-result-icon">
-                        <Icon size={17} />
-                      </span>
-                      <span className="command-result-copy">
-                        <strong>{highlightText(item.title, query)}</strong>
-                        <small>{highlightText(item.description, query)}</small>
-                      </span>
-                      <span className="command-result-meta">
-                        {labelByKind[item.kind]} / {item.meta}
-                      </span>
-                      <ArrowRight size={16} />
-                    </Link>
-                  );
-                })}
-              </div>
-            ))
+                    return (
+                      <Link
+                        aria-selected={isActive}
+                        className={isActive ? "command-result-active" : undefined}
+                        href={item.href}
+                        id={getResultId(item.id)}
+                        key={item.id}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          openItem(item);
+                        }}
+                        onMouseEnter={() => setActiveIndex(index)}
+                        role="option"
+                      >
+                        <span className="command-result-icon">
+                          <Icon size={17} />
+                        </span>
+                        <span className="command-result-copy">
+                          <strong>{highlightText(item.title, query)}</strong>
+                          <small>{highlightText(item.description, query)}</small>
+                        </span>
+                        <span className="command-result-meta">
+                          {labelByKind[item.kind]} / {item.meta}
+                        </span>
+                        <ArrowRight size={16} />
+                      </Link>
+                    );
+                  })}
+                </div>
+              ))}
+            </>
           ) : (
-            <p className="command-empty">
-              No exact match. Try writing, photos, music, projects, or contact.
-            </p>
+            <div className="command-empty">
+              <strong>No exact match for “{query}”.</strong>
+              {plannedSuggestion ? (
+                <p>
+                  {plannedSuggestion.title}. {plannedSuggestion.description}
+                </p>
+              ) : (
+                <p>Try a broader route or one of the active areas below.</p>
+              )}
+              <div className="command-suggestions" aria-label="Search suggestions">
+                {(plannedSuggestion ? [plannedSuggestion.query, ...fallbackSuggestions] : fallbackSuggestions)
+                  .filter((suggestion, index, suggestions) => suggestions.indexOf(suggestion) === index)
+                  .slice(0, 4)
+                  .map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      type="button"
+                      onClick={() => {
+                        setQuery(suggestion);
+                        setActiveIndex(0);
+                      }}
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+              </div>
+            </div>
           )}
         </div>
         <div className="command-footer" aria-hidden="true">

@@ -158,3 +158,39 @@
 9. 移动端布局：通过。
    - 390px：`scrollWidth 390`，`clientWidth 390`。
    - Command Center 底部仍在 844px 视口内。
+
+## 第四阶段上下文搜索 QA
+
+结果：通过。
+
+方法：
+
+- 本地 URL：`http://127.0.0.1:3000`
+- 浏览器验证方式：使用 in-app Browser。
+- 检查视口：
+  - 桌面：1280 x 720。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 文章页上下文：通过。
+   - `/blog/interface-is-a-promise` 按 `Cmd K` 后出现 `Writing context`。
+   - 1280px：`scrollWidth 1280`，`clientWidth 1280`。
+
+2. 规划页面提示：通过。
+   - 搜索 `knowledge` 时显示真实项目 `Studio Knowledge Base`。
+   - 同时显示 `Knowledge is planned`，说明公开知识库属于 Phase 5。
+
+3. 无结果恢复：通过。
+   - 搜索 `uses` 后显示 `Uses is planned`。
+   - 建议词包含 `projects`、`writing`、`photos`、`music`。
+   - 无 option 时结果容器不再声明 `role="listbox"`。
+
+4. 建议词恢复：通过。
+   - 点击 `writing` 后查询变为 `writing`。
+   - 结果区恢复为 listbox，并展示可打开结果。
+
+5. 移动端上下文：通过。
+   - `/music` 390 x 844：默认显示 `Music context`。
+   - `scrollWidth 390`，`clientWidth 390`。
+   - Command Center 底部在 844px 视口内。

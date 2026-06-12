@@ -226,3 +226,49 @@
 - Vercel production：`https://elegant-developer-studio.vercel.app`
 - Deployment URL：`https://elegant-developer-studio-9wopzkbv8.vercel.app`
 - Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。
+
+### 第四阶段：上下文搜索与空状态恢复切片
+
+状态：本地验证完成，待部署。
+
+复盘：
+
+- 上一个键盘增强切片已经让 Command Center 具备基础效率。
+- 仍缺少当前页面上下文意识。
+- 搜索 `knowledge`、`lab`、`uses`、`about` 这类规划页面时，需要解释路线图状态。
+- 无结果状态不能是死胡同，必须提供可执行建议。
+
+调研依据：
+
+- Raycast：命令入口应快速、可靠，并支持用户以别名或短语表达意图。
+- Algolia Query Suggestions：建议词能减少输入成本并降低无结果概率。
+- NN/g：空状态要说明系统状态、提供学习线索和直接路径。
+- Carbon：empty state 是产品状态的一部分，不是临时文案。
+
+完成：
+
+- `GlobalCommandMenu` 增加当前路径感知。
+- `/blog`、`/projects`、`/photos`、`/music` 默认提升对应上下文。
+- 查询评分增加 context boost。
+- 搜索 `knowledge` 时保留真实项目结果，同时显示 `Knowledge is planned`。
+- 搜索 `uses` 等无结果词时显示规划说明和建议词。
+- 建议词支持点击恢复查询。
+- 无 option 时结果容器不再声明 `role="listbox"`。
+- 修复最近访问吞掉当前页面上下文的问题。
+- 添加 `docs/PHASE4_KEYBOARD_REVIEW.md` 和 `docs/PHASE4_CONTEXT_RESEARCH.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 浏览器验证：文章页 `Cmd K` 后出现 `Writing context`。
+- 浏览器验证：搜索 `knowledge` 显示 `Knowledge is planned` 与真实项目结果。
+- 浏览器验证：搜索 `uses` 显示 `Uses is planned` 和建议词。
+- 浏览器验证：点击 `writing` 建议词后恢复结果列表。
+- 移动端 390 x 844：`/music` 默认出现 `Music context`，无横向溢出。
+
+下一步：
+
+- 部署到 Vercel。
+- 同步飞书知识库。
+- 进入 `StatusPanel` 和 `FilterBar` 切片。

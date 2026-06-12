@@ -41,6 +41,8 @@
 | 16｜第四阶段交互层调研 | `docs/PHASE4_RESEARCH.md` | `QdfcwcOfKisB4zka199cKxq8nng` | `KoEqdCDW8oZxTNxD6Lacoh0nnLg` | https://scnlb1lk96sb.feishu.cn/wiki/QdfcwcOfKisB4zka199cKxq8nng |
 | 17｜第四阶段首个切片复盘 | `docs/PHASE4_REVIEW.md` | `CcyowMf7DisJvUkKtd2cI9NFnVb` | `CDrtdXtCKoABJDxVbH9csu2fnxf` | https://scnlb1lk96sb.feishu.cn/wiki/CcyowMf7DisJvUkKtd2cI9NFnVb |
 | 18｜第四阶段键盘与搜索增强调研 | `docs/PHASE4_KEYBOARD_RESEARCH.md` | `CLi2wbbW5iR0yMkWURFcDljGnkI` | `OD8hdzxruoa6NBxLumhcIKMXn9d` | https://scnlb1lk96sb.feishu.cn/wiki/CLi2wbbW5iR0yMkWURFcDljGnkI |
+| 19｜第四阶段键盘增强复盘 | `docs/PHASE4_KEYBOARD_REVIEW.md` | `XUVSw3yvhipy2gkoiRPc5xgAnUe` | `Bky3dnCLjoIN4Nx7I3GcJQDMnbR` | https://scnlb1lk96sb.feishu.cn/wiki/XUVSw3yvhipy2gkoiRPc5xgAnUe |
+| 20｜第四阶段上下文搜索调研 | `docs/PHASE4_CONTEXT_RESEARCH.md` | `Bh2NwYQ8xigOoJkT1VWc0cpYnac` | `Xzl9drVe3oeHfUxBcYLcwPdQnMg` | https://scnlb1lk96sb.feishu.cn/wiki/Bh2NwYQ8xigOoJkT1VWc0cpYnac |
 
 ## 同步协议
 

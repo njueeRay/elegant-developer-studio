@@ -1,38 +1,38 @@
 # Elegant Developer Studio
 
-A refined personal homepage for a design-oriented engineer. The first build focuses on Phase 1: visual foundation, information architecture, reusable homepage components, and a clear path toward a full content/media/portfolio operating system.
+一个面向设计型工程师的优雅个人主页。当前重点是把首页、内容、媒体和交互层逐步沉淀成可追溯、可扩展的个人工作室系统。
 
-## Current Version
+## 当前版本
 
-`v0.2.0` - Content Core
+`v0.2.0` - Content Core，第四阶段交互层仍在 Unreleased 切片中推进。
 
-Live deployment:
+线上地址：
 
 - https://elegant-developer-studio.vercel.app
 
-Repository:
+仓库：
 
 - https://github.com/njueeRay/elegant-developer-studio
 
-Implemented:
+已实现：
 
-- Developer Atelier homepage direction.
-- `Knowledge` IA replacing the earlier `Notes` concept.
-- Theme toggle, command menu, workbench panel, highlight cards, media play state.
-- Generated project and media assets in `public/assets`.
-- Selected visual reference in `public/references`.
-- PRD, roadmap, IA, design-system seed, and version trace in `docs`.
+- Developer Atelier 首页方向。
+- `Knowledge` 信息架构，替代早期 `Notes` 概念。
+- `/blog`、`/blog/[slug]`、`/projects`、`/projects/[slug]`。
+- `/photos`、`/music`、照片灯箱和迷你播放器。
+- 全站 `Cmd K` Command Center，支持键盘选择、最近访问、分组、高亮、上下文排序和空状态建议。
+- PRD、路线图、IA、设计系统、项目地图、版本追溯和飞书同步文档。
 
-## Run Locally
+## 本地运行
 
 ```bash
 npm install --cache .npm-cache
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+打开 `http://localhost:3000`。
 
-## Project Docs
+## 项目文档
 
 - `docs/PRD.md`
 - `docs/ROADMAP.md`
@@ -40,27 +40,32 @@ Open `http://localhost:3000`.
 - `docs/INFORMATION_ARCHITECTURE.md`
 - `docs/DESIGN_SYSTEM.md`
 - `docs/PHASE2_RESEARCH.md`
+- `docs/PHASE3_RESEARCH.md`
+- `docs/PHASE3_REVIEW.md`
+- `docs/PHASE4_RESEARCH.md`
+- `docs/PHASE4_REVIEW.md`
+- `docs/PHASE4_KEYBOARD_RESEARCH.md`
+- `docs/PHASE4_KEYBOARD_REVIEW.md`
+- `docs/PHASE4_CONTEXT_RESEARCH.md`
 - `docs/DECISIONS.md`
 - `docs/PROGRESS_LOG.md`
 - `docs/FEISHU_SYNC.md`
 - `docs/VERSION_TRACE.md`
 
-## Architecture
+## 目录结构
 
 ```text
-src/app             Next.js App Router entry
-src/components      Homepage components and interactive UI
-src/content         MDX posts and project case studies
-src/data            Mock content and IA data
-src/lib             Content registry and helpers
-public/assets       Project-bound generated images
-public/references   Accepted visual references
-docs                Product, roadmap, IA, and trace documents
+src/app             Next.js App Router 入口
+src/components      可复用组件和交互 UI
+src/content         MDX 文章和项目 case study
+src/data            首页、媒体和 IA 数据
+src/lib             内容注册表和工具函数
+public/assets       项目使用的生成图片
+public/references   已采纳视觉参考
+docs                产品、路线图、IA、追溯和阶段文档
 ```
 
-## Next Phases
+## 下一阶段
 
-- Phase 2: blog, projects, MDX, tags, SEO, RSS.
-- Phase 3: photos, music, lightbox, mini player.
-- Phase 4: global search, command layer, filtering.
-- Phase 5: lab, about, uses, knowledge base, reactions, admin options.
+- 第四阶段继续：`StatusPanel`、`FilterBar`、更强的全站搜索判断。
+- 第五阶段：`/lab`、`/about`、`/uses`、`/knowledge`、reactions、联系和可选后台。

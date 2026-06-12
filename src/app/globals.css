@@ -822,9 +822,63 @@ kbd {
   color: var(--foreground);
 }
 
+.command-planned-note {
+  display: grid;
+  gap: 3px;
+  margin: 6px 6px 4px;
+  border: 1px solid color-mix(in srgb, var(--rust), transparent 72%);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--rust), transparent 94%);
+  color: var(--muted);
+  padding: 10px 12px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.command-planned-note strong {
+  color: var(--foreground);
+  font-size: 0.82rem;
+}
+
 .command-empty {
+  display: grid;
+  gap: 10px;
   margin: 0;
   padding: 18px 12px;
+}
+
+.command-empty strong {
+  color: var(--foreground);
+  font-size: 0.9rem;
+}
+
+.command-empty p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.command-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.command-suggestions button {
+  min-height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface-strong), #fff 8%);
+  color: var(--foreground);
+  cursor: pointer;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  padding: 0 10px;
+}
+
+.command-suggestions button:hover {
+  border-color: color-mix(in srgb, var(--rust), transparent 48%);
+  color: var(--rust);
 }
 
 .command-footer {

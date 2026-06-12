@@ -26,6 +26,8 @@
 | 第四阶段调研 | [16｜第四阶段交互层调研](https://scnlb1lk96sb.feishu.cn/wiki/QdfcwcOfKisB4zka199cKxq8nng) | 交互层调研、Command Center 计划和验收 |
 | 第四阶段复盘 | [17｜第四阶段首个切片复盘](https://scnlb1lk96sb.feishu.cn/wiki/CcyowMf7DisJvUkKtd2cI9NFnVb) | Command Center 首个切片复盘和第二切片判断 |
 | 键盘搜索调研 | [18｜第四阶段键盘与搜索增强调研](https://scnlb1lk96sb.feishu.cn/wiki/CLi2wbbW5iR0yMkWURFcDljGnkI) | 键盘选择、最近访问、分组和高亮调研 |
+| 键盘增强复盘 | [19｜第四阶段键盘增强复盘](https://scnlb1lk96sb.feishu.cn/wiki/XUVSw3yvhipy2gkoiRPc5xgAnUe) | 第二切片复盘、暴露问题和上下文搜索进入标准 |
+| 上下文搜索调研 | [20｜第四阶段上下文搜索调研](https://scnlb1lk96sb.feishu.cn/wiki/Bh2NwYQ8xigOoJkT1VWc0cpYnac) | 当前路由上下文、规划页面提示和空状态恢复调研 |
 
 ## 当前项目状态
 
