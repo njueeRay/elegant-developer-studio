@@ -198,3 +198,53 @@
 6. 代码块 hydration：通过。
    - 修复后文章页代码块显示 `5 lines`。
    - 浏览器控制台 warn/error 为空。
+
+## 第四阶段状态面板与筛选 QA
+
+结果：通过。
+
+方法：
+
+- 本地 URL：`http://127.0.0.1:3000`
+- 浏览器验证方式：使用 in-app Browser。
+- 补充截图方式：本地 Playwright。
+- 检查视口：
+  - 桌面：默认 1280 x 720 与 1440 x 1024 截图。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 首页状态面板：通过。
+   - `.studio-status-panel` 存在。
+   - 3 张状态卡分别链接到文章、项目、音乐。
+   - 桌面无横向溢出。
+
+2. 博客筛选：通过。
+   - 点击 `Interaction` 后 active filter 为 `Interaction`。
+   - 结果数量显示 `1 / 3 essays`。
+   - 卡片数为 1。
+   - 清除按钮可用。
+
+3. 博客清除：通过。
+   - 点击 `Clear` 后 active filter 恢复 `All`。
+   - 结果数量显示 `3 / 3 essays`。
+   - 清除按钮禁用。
+
+4. 项目筛选：通过。
+   - 点击 `React` 后 active filter 为 `React`。
+   - 结果数量显示 `1 / 2 projects`。
+
+5. 移动端布局：通过。
+   - 首页 390 x 844：无页面级横向溢出。
+   - 博客 390 x 844：无页面级横向溢出。
+   - `FilterBar` 在移动端使用内部横向滚动承载标签。
+
+截图：
+
+- `output/phase4-status-filter/status-panel.png`
+- `output/phase4-status-filter/blog-filter.png`
+- `output/phase4-status-filter/mobile-home.png`
+
+备注：
+
+- in-app Browser 的 CDP `Page.captureScreenshot` 本轮超时；交互和布局验证已通过，截图由本地 Playwright 补充。

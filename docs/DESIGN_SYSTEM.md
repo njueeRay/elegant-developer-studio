@@ -72,12 +72,13 @@ Phase 4 已实现首版：
 - `GlobalCommandMenu`
 - `GlobalCommandMenu` 键盘选择、结果分组、最近访问和命中高亮
 - `GlobalCommandMenu` 当前路由上下文排序、规划页面提示和空状态建议
+- `StatusPanel`
+- `FilterBar`
 
 后续保留：
 
 - `AlbumCard`
 - `GlobalSearch`
-- `StatusPanel`
 - `QuickAction`
 - `KeyboardHint`
 - `ComponentPreview`
@@ -116,6 +117,10 @@ Phase 4 已实现首版：
 - 搜索规划中页面时必须解释路线图状态，例如 `Knowledge is planned`、`Uses is planned`。
 - 无结果状态必须给出可点击建议词，不能只显示失败文本。
 - 无结果时结果容器不能声明为 `listbox`，除非内部确实有可选择 option。
+- `StatusPanel` 只表达当前三类状态：写作、建设、收听；不扩展成首页 dashboard。
+- `StatusPanel` 每张卡必须链接到真实页面，不能只是展示文本。
+- `FilterBar` 必须显示结果数量、active 状态和清除动作。
+- `FilterBar` 移动端允许控件内部横向滚动，但页面本身不能横向溢出。
 
 ## 素材规则
 

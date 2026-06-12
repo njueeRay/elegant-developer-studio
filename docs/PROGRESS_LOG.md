@@ -282,3 +282,50 @@
 下一步：
 
 - 进入 `StatusPanel` 和 `FilterBar` 切片。
+
+### 第四阶段：状态面板与筛选切片
+
+状态：本地实现完成，待部署回填。
+
+复盘：
+
+- 上一个上下文搜索切片已经让 Command Center 理解当前页面。
+- 仍缺少首页当前状态表达，以及内容列表筛选反馈。
+- 下一步不应继续堆搜索功能，而应把状态和筛选沉淀成可复用组件。
+
+调研依据：
+
+- Raycast：常用入口应快速、可靠，并映射到真实动作。
+- Linear：筛选需要轻量、可扫读、可恢复。
+- GitHub Issues：标签和状态筛选需要长期可追踪。
+- Carbon：状态和标签必须有清晰语义，而不是只靠颜色。
+
+完成：
+
+- 新增 `src/components/status-panel.tsx`。
+- 首页接入 `StatusPanel`：最近在写、最近在做、最近在听。
+- 新增 `src/components/content/filter-bar.tsx`。
+- `/blog` 和 `/projects` 接入新版 `FilterBar`。
+- 筛选条增加结果数量、active 状态和显性清除动作。
+- 增加筛选空状态。
+- 添加 `docs/PHASE4_CONTEXT_REVIEW.md` 和 `docs/PHASE4_STATUS_FILTER_RESEARCH.md`。
+- 更新项目地图、路线图、设计系统和 QA 文档。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser 验证：首页存在 3 张状态卡，分别链接文章、项目、音乐。
+- Browser 验证：博客点击 `Interaction` 后显示 `1 / 3 essays`，清除后恢复 `3 / 3 essays`。
+- Browser 验证：项目点击 `React` 后显示 `1 / 2 projects`。
+- Browser 验证：桌面与移动端均无页面级横向溢出。
+- 本地 Playwright 生成截图：
+  - `output/phase4-status-filter/status-panel.png`
+  - `output/phase4-status-filter/blog-filter.png`
+  - `output/phase4-status-filter/mobile-home.png`
+
+下一步：
+
+- 部署到 Vercel。
+- 同步 GitHub issue 和飞书知识库。
+- 回填 deployment、commit 和飞书节点。

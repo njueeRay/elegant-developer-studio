@@ -40,6 +40,7 @@
 - 第三阶段媒体层首版：photos、music、灯箱、迷你播放器。
 - 第四阶段交互层首版：全站 Command Center。
 - 第四阶段交互层增强：键盘选择、最近访问、上下文排序、规划页面提示、空状态建议。
+- 第四阶段交互层状态与筛选切片：`StatusPanel`、可复用 `FilterBar`、结果数量和筛选清除。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -174,6 +175,9 @@
 - 当前路由上下文分组：`Writing context`、`Project context`、`Photo context`、`Music context`
 - `knowledge`、`lab`、`uses`、`about` 规划页面提示
 - 无结果恢复建议词
+- 首页 `StatusPanel`
+- 可复用 `FilterBar`
+- 筛选结果数量和显性清除动作
 
 主要风险：
 
@@ -219,6 +223,8 @@ docs/
   PHASE4_KEYBOARD_RESEARCH.md    第四阶段键盘与搜索增强调研
   PHASE4_KEYBOARD_REVIEW.md      第四阶段键盘与搜索增强复盘
   PHASE4_CONTEXT_RESEARCH.md     第四阶段上下文搜索调研和计划
+  PHASE4_CONTEXT_REVIEW.md       第四阶段上下文搜索复盘
+  PHASE4_STATUS_FILTER_RESEARCH.md 第四阶段状态面板与筛选调研
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -247,9 +253,10 @@ src/
 - `CommandPalette`
 - `GlobalCommandMenu`
 - `GlobalCommandMenu` 上下文排序、规划提示、空状态建议
+- `StatusPanel`
+- `FilterBar`
 - `PostCard`
 - `ProjectCard`
-- `TagFilter`
 - `ReadingProgress`
 - `TableOfContents`
 - `CodeBlock`
@@ -265,7 +272,6 @@ src/
 
 - `AlbumCard`
 - `GlobalSearch`
-- `StatusPanel`
 - `QuickAction`
 - `KeyboardHint`
 
@@ -291,10 +297,11 @@ src/
 - 文章标题锚点。
 - 全站 Command Center 键盘选择、Enter 打开、最近访问、分组和高亮。
 - 全站 Command Center 当前路由上下文排序、规划页面提示和空状态建议。
+- 首页状态面板：最近在写、最近在做、最近在听。
+- 博客和项目列表筛选：结果数量、active filter、清除动作。
 
 研究轨道：
 
-- 状态面板和过滤器的组合模式。
 - 项目卡片的 deploy、version、commit、changelog affordances。
 - 类似 build pipeline 的阅读进度语义。
 - Knowledge 卡片的复制、反向链接、关联链接。

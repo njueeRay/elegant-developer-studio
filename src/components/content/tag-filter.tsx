@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { FilterBar } from "@/components/content/filter-bar";
 import { PostCard } from "@/components/content/post-card";
 import { ProjectCard } from "@/components/content/project-card";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
@@ -28,11 +29,16 @@ export function PostExplorer({
         active={activeTag}
         items={["All", ...tags]}
         onChange={setActiveTag}
+        resultCount={filtered.length}
+        totalCount={posts.length}
+        noun="essays"
       />
       <div className="post-list">
-        {filtered.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
+        {filtered.length > 0 ? (
+          filtered.map((post) => <PostCard key={post.slug} post={post} />)
+        ) : (
+          <EmptyFilterState label="No essays match this filter yet." />
+        )}
       </div>
     </section>
   );
@@ -61,40 +67,27 @@ export function ProjectExplorer({
         active={activeTag}
         items={["All", ...tags]}
         onChange={setActiveTag}
+        resultCount={filtered.length}
+        totalCount={projects.length}
+        noun="projects"
       />
       <div className="project-grid">
-        {filtered.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+        {filtered.length > 0 ? (
+          filtered.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))
+        ) : (
+          <EmptyFilterState label="No projects match this filter yet." />
+        )}
       </div>
     </section>
   );
 }
 
-function FilterBar({
-  label,
-  active,
-  items,
-  onChange,
-}: {
-  label: string;
-  active: string;
-  items: string[];
-  onChange: (item: string) => void;
-}) {
+function EmptyFilterState({ label }: { label: string }) {
   return (
-    <div className="filter-bar" aria-label={label}>
-      {items.map((item) => (
-        <button
-          key={item}
-          type="button"
-          className={active === item ? "active" : ""}
-          aria-pressed={active === item}
-          onClick={() => onChange(item)}
-        >
-          {item}
-        </button>
-      ))}
+    <div className="filter-empty" role="status">
+      <span>{label}</span>
     </div>
   );
 }

@@ -19,6 +19,8 @@ import {
   Wrench,
 } from "lucide-react";
 import { useEffect, useState, type ComponentType } from "react";
+import { StatusPanel } from "@/components/status-panel";
+import { currentMix } from "@/data/media";
 import {
   highlights,
   knowledgeItems,
@@ -109,6 +111,12 @@ export function StudioHome({
 
         <WorkbenchPanel />
       </section>
+
+      <StatusPanel
+        post={featuredPosts[0]}
+        project={featuredProjects[0]}
+        mix={currentMix}
+      />
 
       <section className="highlight-rail" aria-label="Featured studio modules">
         {highlights.map((highlight) => (

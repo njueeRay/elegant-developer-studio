@@ -242,3 +242,36 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - 浏览器 QA：文章页代码块显示 `5 lines`，控制台 warn/error 为空。
 - Vercel inspect：final deployment 状态 `Ready`。
 - Production fetch：`/blog/interface-is-a-promise` 返回 `200`，页面数据包含 `data-scroll-behavior="smooth"` 和全站 `GlobalCommandMenu`。
+
+## Unreleased - 第四阶段状态面板与筛选切片
+
+日期：2026-06-13
+Primary commit：待回填
+Deployment record commit：待回填
+Vercel deployment：待回填
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待回填
+Inspect URL：待回填
+
+范围：
+
+- 新增 `StatusPanel`。
+- 首页增加最近在写、最近在做、最近在听状态面板。
+- 新增可复用 `FilterBar`。
+- `/blog` 和 `/projects` 接入新版筛选条。
+- 筛选条显示结果数量、active 状态和清除动作。
+- 增加筛选空状态。
+- 添加 `docs/PHASE4_CONTEXT_REVIEW.md` 和 `docs/PHASE4_STATUS_FILTER_RESEARCH.md`。
+
+产品判断：
+
+- Command Center 已经稳定，下一步应把页面表面的状态和筛选反馈补齐。
+- 状态面板不能扩展成高密度 dashboard，只保留三类当前状态。
+- 筛选条必须可复用到后续 `/knowledge`、`/photos`、`/lab`，不能是博客列表的一次性控件。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser QA：首页状态面板、博客筛选、项目筛选、桌面和移动端无横向溢出均通过。
+- 本地 Playwright QA：生成状态面板、博客筛选条和移动端首页截图。
