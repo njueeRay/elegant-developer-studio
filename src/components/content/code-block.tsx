@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Copy } from "lucide-react";
-import { useMemo, useState, type ComponentProps } from "react";
+import { useEffect, useRef, useState, type ComponentProps } from "react";
 
 function extractText(value: unknown): string {
   if (typeof value === "string") {
@@ -28,18 +28,23 @@ function extractText(value: unknown): string {
 
 export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
   const [copied, setCopied] = useState(false);
-  const text = useMemo(() => extractText(children).trim(), [children]);
-  const lineCount = useMemo(
-    () => (text ? text.split(/\r?\n/).length : 0),
-    [text],
-  );
+  const [codeText, setCodeText] = useState("");
+  const [lineCount, setLineCount] = useState(0);
+  const preRef = useRef<HTMLPreElement>(null);
+
+  useEffect(() => {
+    const nextText = (preRef.current?.innerText ?? extractText(children)).trim();
+
+    setCodeText(nextText);
+    setLineCount(nextText ? nextText.split(/\r?\n/).length : 0);
+  }, [children]);
 
   async function copyCode() {
-    if (!text) {
+    if (!codeText) {
       return;
     }
 
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(codeText);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1400);
   }
@@ -56,7 +61,9 @@ export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre {...props}>{children}</pre>
+      <pre {...props} ref={preRef}>
+        {children}
+      </pre>
     </div>
   );
 }
