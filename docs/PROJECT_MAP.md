@@ -37,6 +37,8 @@
 - 工作台面板。
 - 首页写作、作品、媒体、Knowledge、Lab、Contact 模块。
 - 第二阶段内容核心：blog、文章详情、projects、项目详情、MDX 注册表、RSS、sitemap、robots。
+- 第三阶段媒体层首版：photos、music、灯箱、迷你播放器。
+- 第四阶段交互层首版：全站 Command Center。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -140,7 +142,7 @@
 
 ### 第四阶段：交互层
 
-状态：规划中。
+状态：进行中。
 
 追踪：
 
@@ -155,9 +157,19 @@
 - 快捷动作。
 - 状态面板。
 
+已实现：
+
+- `GlobalCommandMenu`
+- 全站 `Cmd K`
+- 首页命令按钮触发全站菜单
+- 文章、项目、照片、音乐和快捷动作搜索
+- 结果点击导航
+- Command Center z-index 高于 reader mode
+
 主要风险：
 
 - 交互聪明但无用。每个交互必须减少导航成本或揭示有用上下文。
+- 搜索变成假入口。结果必须来自真实站点内容或真实动作。
 
 ### 第五阶段：个人工作室操作系统
 
@@ -192,6 +204,8 @@ docs/
   PROGRESS_LOG.md                阶段进度账本
   PHASE2_RESEARCH.md             第二阶段复盘和调研
   PHASE3_RESEARCH.md             第三阶段媒体层调研和计划
+  PHASE3_REVIEW.md               第三阶段媒体层复盘
+  PHASE4_RESEARCH.md             第四阶段交互层调研和计划
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -309,8 +323,8 @@ src/
 
 下一步是第三阶段媒体层继续打磨：
 
-1. 决定是否引入真实音频文件。
-2. 补充照片素材质量和 attribution 策略。
-3. 继续打磨灯箱移动端手势和焦点管理。
-4. 评估博客互动是否应沉淀为 `ReaderMode` 组件。
-5. 继续为第四阶段程序员风格微交互做并行研究。
+1. 为 Command Center 增加键盘上下选择和回车打开。
+2. 为搜索结果增加高亮和最近访问。
+3. 决定是否引入真实音频文件。
+4. 补充照片素材质量和 attribution 策略。
+5. 继续打磨灯箱移动端手势和焦点管理。

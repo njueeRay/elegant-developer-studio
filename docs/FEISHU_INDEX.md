@@ -22,6 +22,8 @@
 | 同步协议 | [12｜同步协议](https://scnlb1lk96sb.feishu.cn/wiki/KJT5wmMo7iWpInk2XgMcw9NhnXe) | 飞书节点、文档 token、媒体插入和同步命令 |
 | 第二阶段复盘 | [13｜第二阶段复盘](https://scnlb1lk96sb.feishu.cn/wiki/BewGwyWMriSmq6ksOTGcCFGinke) | 内容核心阶段复盘、调研参考和后续问题 |
 | 第三阶段调研 | [14｜第三阶段媒体层调研](https://scnlb1lk96sb.feishu.cn/wiki/BhgywbF5DiIe5ykU8ZCcERVvnTc) | 媒体层调研、产品判断、组件进入计划 |
+| 第三阶段复盘 | [15｜第三阶段媒体层复盘](https://scnlb1lk96sb.feishu.cn/wiki/N4WYw8QoGiDgUYkmND3ciyABnUe) | 媒体层首个切片复盘和剩余风险 |
+| 第四阶段调研 | [16｜第四阶段交互层调研](https://scnlb1lk96sb.feishu.cn/wiki/QdfcwcOfKisB4zka199cKxq8nng) | 交互层调研、Command Center 计划和验收 |
 
 ## 当前项目状态
 

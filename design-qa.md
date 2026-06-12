@@ -79,3 +79,35 @@
 4. 移动端布局：通过。
    - `/photos`：`scrollWidth 390`，`clientWidth 390`。
    - `/music`：`scrollWidth 390`，`clientWidth 390`。
+
+## 第四阶段首个切片 QA
+
+结果：通过。
+
+方法：
+
+- 本地 URL：`http://127.0.0.1:3000`
+- 浏览器验证方式：使用 in-app Browser。
+- 检查视口：
+  - 桌面：默认 1280 x 720。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 全站快捷键：通过。
+   - 在文章详情页按 `Cmd K` 打开 `Global command center`。
+
+2. 搜索：通过。
+   - 输入 `music` 返回 `Play studio mix`。
+
+3. 导航：通过。
+   - 点击 `/music` 结果后进入音乐页。
+
+4. 首页入口：通过。
+   - 首页 `Search or open...` 按钮打开同一个全站菜单。
+
+5. 浮层层级：通过。
+   - Command Center z-index 高于 reader mode。
+
+6. 移动端布局：通过。
+   - 首页 390px：`scrollWidth 390`，`clientWidth 390`。

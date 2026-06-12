@@ -151,3 +151,33 @@
 - Vercel production：`https://elegant-developer-studio.vercel.app`
 - Deployment URL：`https://elegant-developer-studio-mb5qmmyhg.vercel.app`
 - Production fetch：`/photos` 与 `/music` 均返回 `200`。
+
+### 第四阶段：交互层首个实现切片
+
+状态：已完成本地实现，待部署。
+
+完成：
+
+- 添加 `GlobalCommandMenu`。
+- 在 `RootLayout` 接入全站命令菜单。
+- 全站支持 `Cmd K` 打开，`Esc` 关闭。
+- 首页命令按钮改为打开全站菜单。
+- 搜索文章、项目、照片、音乐和快捷动作。
+- 点击搜索结果可直接导航。
+- 修复 Command Center 与 reader mode 的 z-index 冲突。
+
+调研依据：
+
+- Raycast：keyboard first、快速可靠的统一入口。
+- VS Code：命令面板统一命令和搜索。
+- Apple HIG：键盘交互需要清晰焦点和可退出路径。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 浏览器验证：文章页 `Cmd K` 可打开全站菜单。
+- 浏览器验证：搜索 `music` 返回 studio mix。
+- 浏览器验证：点击结果跳转 `/music`。
+- 浏览器验证：首页命令按钮打开同一个全站菜单。
+- 移动端 390px：首页无横向溢出。

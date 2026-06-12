@@ -14,7 +14,6 @@ import {
   Music2,
   Pause,
   Play,
-  Search,
   Send,
   Sun,
   Wrench,
@@ -37,14 +36,6 @@ const iconByKind: Record<HighlightKind, ComponentType<{ size?: number }>> = {
   work: Code2,
   media: Music2,
 };
-
-const commandItems = [
-  { label: "Open latest essay", href: "/blog/interface-is-a-promise" },
-  { label: "View selected work", href: "/projects" },
-  { label: "Browse knowledge base", href: "/knowledge" },
-  { label: "Play studio mix", href: "/music" },
-  { label: "Send a note", href: "mailto:hello@ray.studio" },
-] as const;
 
 function getInitialTheme() {
   if (typeof window === "undefined") {
@@ -69,29 +60,12 @@ export function StudioHome({
   featuredProjects: ProjectMeta[];
 }) {
   const [theme, setTheme] = useState<"light" | "dark">(getInitialTheme);
-  const [commandOpen, setCommandOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem("studio-theme", theme);
   }, [theme]);
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        setCommandOpen((open) => !open);
-      }
-
-      if (event.key === "Escape") {
-        setCommandOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
 
   return (
     <main className="studio-shell">
@@ -124,7 +98,7 @@ export function StudioHome({
           <button
             className="command-strip"
             type="button"
-            onClick={() => setCommandOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent("studio:open-command"))}
           >
             <Command size={18} />
             <span>Search or open...</span>
@@ -237,12 +211,6 @@ export function StudioHome({
           </div>
         </div>
       </section>
-
-      <CommandPalette
-        open={commandOpen}
-        items={commandItems}
-        onClose={() => setCommandOpen(false)}
-      />
 
     </main>
   );
@@ -428,46 +396,6 @@ function SocialLinks() {
           </a>
         );
       })}
-    </div>
-  );
-}
-
-function CommandPalette({
-  open,
-  items,
-  onClose,
-}: {
-  open: boolean;
-  items: typeof commandItems;
-  onClose: () => void;
-}) {
-  if (!open) {
-    return null;
-  }
-
-  return (
-    <div className="command-backdrop" onMouseDown={onClose}>
-      <div
-        className="command-palette"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Command menu"
-        onMouseDown={(event) => event.stopPropagation()}
-      >
-        <div className="command-input">
-          <Search size={18} />
-          <input autoFocus placeholder="Search writing, work, knowledge..." />
-          <kbd>Esc</kbd>
-        </div>
-        <div className="command-results">
-          {items.map((item) => (
-            <a href={item.href} key={item.label} onClick={onClose}>
-              <span>{item.label}</span>
-              <ArrowRight size={16} />
-            </a>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

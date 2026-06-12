@@ -135,3 +135,30 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - `npm run build`：通过。
 - 浏览器 QA：照片灯箱、音乐播放器、博客 reader mode、移动端无横向溢出均通过。
 - Production fetch：`/photos` 和 `/music` 均返回 `200`。
+
+## Unreleased - 第四阶段交互层首个切片
+
+日期：2026-06-12
+Primary commit：待提交
+
+范围：
+
+- 添加 `GlobalCommandMenu`。
+- 在 `RootLayout` 接入全站命令菜单。
+- 全站支持 `Cmd K` 打开，`Esc` 关闭。
+- 首页命令按钮改为触发全站菜单。
+- 搜索文章、项目、照片、音乐和快捷动作。
+- 点击结果直接导航。
+- 修复 Command Center 与 reader mode 的浮层层级冲突。
+- 添加 `docs/PHASE3_REVIEW.md` 和 `docs/PHASE4_RESEARCH.md`。
+
+产品判断：
+
+- 第四阶段优先做降低导航成本的交互，不做装饰性动效。
+- Command Center 作为全站动作层，承接程序员风格和可探索性。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- 浏览器 QA：`Cmd K`、搜索 `music`、结果跳转、首页按钮、移动端无横向溢出均通过。

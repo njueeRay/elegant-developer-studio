@@ -67,10 +67,17 @@ Phase 3 已实现首版：
 - `NowPlaying`
 - `ArticleInteractions`
 
+Phase 4 已实现首版：
+
+- `GlobalCommandMenu`
+
 后续保留：
 
 - `AlbumCard`
 - `GlobalSearch`
+- `StatusPanel`
+- `QuickAction`
+- `KeyboardHint`
 - `ComponentPreview`
 
 ## Phase 2 交互细节
@@ -89,6 +96,14 @@ Phase 3 已实现首版：
 - 灯箱支持关闭、上一张、下一张和键盘操作。
 - 迷你播放器使用真实本地状态，不伪装成真实音频流。
 - 播放器保留曲目上下文、状态、进度和音量，体现程序员式可观察状态。
+
+## Phase 4 交互细节
+
+- 全站 Command Center 使用 `Cmd K` 打开，`Esc` 关闭。
+- 首页命令按钮只触发全站菜单，不再维护局部命令面板。
+- 搜索结果来自真实站点内容和真实动作。
+- 弹层 z-index 必须高于 reader mode、灯箱以外的普通浮层。
+- 结果区内部滚动，避免小屏高度溢出。
 
 ## 素材规则
 
