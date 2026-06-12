@@ -347,7 +347,7 @@
 
 ### 第四阶段：照片筛选切片
 
-状态：已部署，已同步飞书，待 GitHub 追溯回填。
+状态：已部署，已同步飞书和 GitHub。
 
 复盘：
 
@@ -386,7 +386,6 @@
 
 下一步：
 
-- 同步 GitHub issue。
 - 下一切片建议进入 `Knowledge` 信息架构和筛选模式，而不是立刻堆全站搜索。
 
 部署：
@@ -402,3 +401,8 @@
 - [23｜第四阶段状态面板与筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/A4FFwPC4qiod5lkcPascxE4KnHc)
 - [24｜第四阶段照片筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/JA2jw4JSHiZWHnkMHfXc7Zamnlh)
 - 验证：导航页包含 23/24；照片筛选调研页包含 `Music`、`1 / 6 frames`、`Listening corner`。
+
+GitHub：
+
+- Issue `#3` 追加 Phase 4 照片筛选交付记录：comment `4694227104`。
+- Issue `#5` 追加照片筛选调研记录：comment `4694228454`。

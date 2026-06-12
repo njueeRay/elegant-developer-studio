@@ -312,3 +312,4 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Production fetch：`/photos` 返回 `200 OK`，并包含 `photo-explorer`、`Filter photos`、`6 / 6 frames`、`Featured`、`Music`、`Listening corner`。
 - Feishu：`23｜第四阶段状态面板与筛选复盘`、`24｜第四阶段照片筛选调研`。
 - Feishu fetch：导航页包含 23/24；照片筛选调研页包含 `Music`、`1 / 6 frames`、`Listening corner`。
+- GitHub：issue `#3` comment `4694227104`；issue `#5` comment `4694228454`。
