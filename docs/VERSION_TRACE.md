@@ -319,12 +319,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第五阶段 Knowledge 首个切片
 
 日期：2026-06-13
-Primary commit：待回填
+Primary commit：`6cc9fda`
 Deployment record commit：待回填
-Vercel deployment：待回填
+Vercel deployment：`dpl_8F8o7UHhon7spUfpzVtoLn1e217i`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待回填
-Inspect URL：待回填
+Deployment URL：`https://elegant-developer-studio-j4uvj1xbl.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/8F8o7UHhon7spUfpzVtoLn1e217i`
 
 范围：
 
@@ -348,3 +348,8 @@ Inspect URL：待回填
 
 - `npm run lint`：通过。
 - `npm run build`：通过。
+- Browser QA：`/knowledge` 页面身份、初始状态、无覆盖层和无横向溢出通过。
+- Playwright QA：知识类型筛选、复制引用、Command Center 搜索和移动端布局通过。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production fetch：`/knowledge` 返回 `200 OK`，并包含 `Knowledge - Ray Studio`、`Filter knowledge`、`5 / 5 entries`、`Copy ref`、`Filters before full search`。
+- Production sitemap：包含 `/knowledge`。

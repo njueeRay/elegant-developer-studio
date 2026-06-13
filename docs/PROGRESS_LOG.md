@@ -409,7 +409,7 @@ GitHub：
 
 ### 第五阶段：Knowledge 首个切片
 
-状态：本地实现完成，待浏览器 QA、部署、飞书和 GitHub 回填。
+状态：已部署，待飞书和 GitHub 回填。
 
 复盘：
 
@@ -451,5 +451,13 @@ GitHub：
 
 下一步：
 
-- 部署到 Vercel。
 - 同步飞书知识库和 GitHub issue。
+
+部署：
+
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Vercel deployment：`https://elegant-developer-studio-j4uvj1xbl.vercel.app`
+- Deployment id：`dpl_8F8o7UHhon7spUfpzVtoLn1e217i`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/8F8o7UHhon7spUfpzVtoLn1e217i`
+- Production fetch：`/knowledge` 返回 `200 OK`，并包含本轮 Knowledge 内容。
+- Production sitemap：包含 `/knowledge`。
