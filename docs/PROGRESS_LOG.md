@@ -476,7 +476,7 @@ GitHub：
 
 ### 第五阶段：Uses 首个切片
 
-状态：本地完成，待部署、飞书和 GitHub 回填。
+状态：已部署，已创建飞书页面，待飞书同步和 GitHub 回填。
 
 复盘：
 
@@ -526,6 +526,19 @@ GitHub：
 
 下一步：
 
-- 部署 Vercel。
 - 创建飞书页面并同步。
 - 同步 GitHub issue。
+
+部署：
+
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Vercel deployment：`https://elegant-developer-studio-egeyv7n0r.vercel.app`
+- Deployment id：`dpl_53zPmqkRZvhssJURGiHE1PrWWy8y`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/53zPmqkRZvhssJURGiHE1PrWWy8y`
+- Production fetch：`/uses` 返回 `200 OK`，并包含本轮 Uses 内容。
+- Production sitemap：包含 `/uses`。
+
+飞书：
+
+- [27｜第五阶段 Knowledge 复盘](https://scnlb1lk96sb.feishu.cn/wiki/Vl0twcEuYi0aBHk5FIOcu6W3nVf)
+- [28｜第五阶段 Uses 调研](https://scnlb1lk96sb.feishu.cn/wiki/ZuFswpj8ci6SmFksRrSckuaNnVc)

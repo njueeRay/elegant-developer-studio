@@ -363,12 +363,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第五阶段 Uses 首个切片
 
 日期：2026-06-13
-Primary commit：待回填
+Primary commit：`070b9f5`
 Deployment record commit：待回填
-Vercel deployment：待回填
+Vercel deployment：`dpl_53zPmqkRZvhssJURGiHE1PrWWy8y`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待回填
-Inspect URL：待回填
+Deployment URL：`https://elegant-developer-studio-egeyv7n0r.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/53zPmqkRZvhssJURGiHE1PrWWy8y`
 
 范围：
 
@@ -396,3 +396,7 @@ Inspect URL：待回填
 - `npm run build`：通过。
 - Browser QA：`/uses` 页面身份、工具筛选、复制反馈、Command Center 搜索和移动端布局通过。
 - 视觉 QA：参考图和 1440 x 1200 实现截图对照通过；已修复工具卡底部重叠。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production fetch：`/uses` 返回 `200 OK`，并包含 `Uses - Ray Studio`、`Filter tools`、`12 / 12 tools`、`Open Command Center`、`Workspace rhythm`、`Publishing pipeline`。
+- Production sitemap：包含 `/uses`。
+- Feishu：`27｜第五阶段 Knowledge 复盘`、`28｜第五阶段 Uses 调研`。

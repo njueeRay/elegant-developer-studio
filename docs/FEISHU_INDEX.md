@@ -34,6 +34,8 @@
 | 照片筛选调研 | [24｜第四阶段照片筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/JA2jw4JSHiZWHnkMHfXc7Zamnlh) | 照片筛选、灯箱联动和媒体浏览模式调研 |
 | 照片筛选复盘 | [25｜第四阶段照片筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/RaP7wMXZxiELyvkTSg5cZmh3nlc) | 照片筛选完成复盘和 Knowledge 进入标准 |
 | Knowledge 调研 | [26｜第五阶段 Knowledge 调研](https://scnlb1lk96sb.feishu.cn/wiki/QLohw7hBqi5CYpkIe6PciYhdnDv) | Knowledge 首个切片调研、内容模型和验收 |
+| Knowledge 复盘 | [27｜第五阶段 Knowledge 复盘](https://scnlb1lk96sb.feishu.cn/wiki/Vl0twcEuYi0aBHk5FIOcu6W3nVf) | Knowledge 首个切片完成复盘和 Uses 进入标准 |
+| Uses 调研 | [28｜第五阶段 Uses 调研](https://scnlb1lk96sb.feishu.cn/wiki/ZuFswpj8ci6SmFksRrSckuaNnVc) | Uses 工具书架调研、实现范围和验收 |
 
 ## 当前项目状态
 

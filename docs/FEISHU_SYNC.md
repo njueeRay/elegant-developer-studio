@@ -49,6 +49,8 @@
 | 24｜第四阶段照片筛选调研 | `docs/PHASE4_PHOTO_FILTER_RESEARCH.md` | `JA2jw4JSHiZWHnkMHfXc7Zamnlh` | `RqxIdk7I2o1T9ax3SiTcvSsWnde` | https://scnlb1lk96sb.feishu.cn/wiki/JA2jw4JSHiZWHnkMHfXc7Zamnlh |
 | 25｜第四阶段照片筛选复盘 | `docs/PHASE4_PHOTO_FILTER_REVIEW.md` | `RaP7wMXZxiELyvkTSg5cZmh3nlc` | `BiqKdhOF1owuT5xLh86cHhHfnFg` | https://scnlb1lk96sb.feishu.cn/wiki/RaP7wMXZxiELyvkTSg5cZmh3nlc |
 | 26｜第五阶段 Knowledge 调研 | `docs/PHASE5_KNOWLEDGE_RESEARCH.md` | `QLohw7hBqi5CYpkIe6PciYhdnDv` | `PFVrdLJgsookfnxuPizc5LkTnad` | https://scnlb1lk96sb.feishu.cn/wiki/QLohw7hBqi5CYpkIe6PciYhdnDv |
+| 27｜第五阶段 Knowledge 复盘 | `docs/PHASE5_KNOWLEDGE_REVIEW.md` | `Vl0twcEuYi0aBHk5FIOcu6W3nVf` | `N0mmdfc1eoeWSQx2TnccSe21nae` | https://scnlb1lk96sb.feishu.cn/wiki/Vl0twcEuYi0aBHk5FIOcu6W3nVf |
+| 28｜第五阶段 Uses 调研 | `docs/PHASE5_USES_RESEARCH.md` | `ZuFswpj8ci6SmFksRrSckuaNnVc` | `LQvwdAtBmofdgRxC0g9cZmQOnFd` | https://scnlb1lk96sb.feishu.cn/wiki/ZuFswpj8ci6SmFksRrSckuaNnVc |
 
 ## 同步协议
 
