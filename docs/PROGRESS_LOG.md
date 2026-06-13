@@ -611,7 +611,7 @@ GitHub：
 
 ### 第五阶段：Lab 首个切片
 
-状态：本地实现完成，待部署、飞书同步和 GitHub 追踪。
+状态：已部署，待飞书同步和 GitHub 追踪。
 
 复盘：
 
@@ -656,7 +656,12 @@ GitHub：
 
 部署：
 
-- 待 Vercel production 部署。
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Vercel deployment：`https://elegant-developer-studio-57vn0qx3p.vercel.app`
+- Deployment id：`dpl_FRvaS6k35CWuuYShEvxS6eDgFgbN`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/FRvaS6k35CWuuYShEvxS6eDgFgbN`
+- Production fetch：`/lab` 返回页面内容，包含 `Lab - Ray Studio`、`Filter components`、`GlobalCommandMenu` 和 `Quality gates`。
+- Production sitemap：包含 `/lab`。
 
 飞书：
 

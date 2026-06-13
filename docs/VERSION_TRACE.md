@@ -450,13 +450,13 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第五阶段 Lab 首个切片
 
 日期：2026-06-13
-Primary commit：待提交
+Primary commit：`4c4ec8a`
 Deployment record commit：待提交
 GitHub trace commit：待提交
-Vercel deployment：待部署
+Vercel deployment：`dpl_FRvaS6k35CWuuYShEvxS6eDgFgbN`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待部署
-Inspect URL：待部署
+Deployment URL：`https://elegant-developer-studio-57vn0qx3p.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/FRvaS6k35CWuuYShEvxS6eDgFgbN`
 
 范围：
 
@@ -483,3 +483,6 @@ Inspect URL：待部署
 - Browser QA：组件筛选、复制 import、Command Center 搜索、桌面和移动端无横向溢出均通过。
 - 已修复移动端 grid 被长内容撑宽的问题。
 - 已修复预览长组件名断裂问题。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production fetch：`/lab` 返回页面内容，包含 `Lab - Ray Studio`、`Filter components`、`GlobalCommandMenu` 和 `Quality gates`。
+- Production sitemap：包含 `/lab`。
