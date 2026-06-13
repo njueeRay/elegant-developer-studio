@@ -45,6 +45,8 @@
 | 可达性复盘 | [35｜第六阶段可达性复盘](https://scnlb1lk96sb.feishu.cn/wiki/G47Bwwl2FiuJsYkQtZKcEpgtn4c) | 第六阶段完成复盘、验证和部署记录 |
 | Contact 调研 | [36｜第七阶段 Contact 调研](https://scnlb1lk96sb.feishu.cn/wiki/XAwGwIpJ2iVUE8k4Mjfcmw6yn8e) | Contact 公开信任层调研、外部参考和产品判断 |
 | Contact 复盘 | [37｜第七阶段 Contact 复盘](https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb) | Contact 页面交付、验证、部署和后续建议 |
+| Issue Template 调研 | [38｜第八阶段 Issue Template 调研](https://scnlb1lk96sb.feishu.cn/wiki/Jtp4wmyfhiHqXQkHbzXcFeEZncb) | 公开协作、GitHub Issue Forms 和模板配置调研 |
+| Issue Template 复盘 | [39｜第八阶段 Issue Template 复盘](https://scnlb1lk96sb.feishu.cn/wiki/RbuowE2dtizYYokv8hwcU1tOn3d) | Issue template 交付、验证、部署和后续建议 |
 
 ## 当前项目状态
 

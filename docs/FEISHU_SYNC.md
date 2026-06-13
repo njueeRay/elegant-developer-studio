@@ -60,6 +60,8 @@
 | 35｜第六阶段可达性复盘 | `docs/PHASE6_ACCESSIBILITY_REVIEW.md` | `G47Bwwl2FiuJsYkQtZKcEpgtn4c` | `B6bodAsS7oH4hexz5YJcExRunwf` | https://scnlb1lk96sb.feishu.cn/wiki/G47Bwwl2FiuJsYkQtZKcEpgtn4c |
 | 36｜第七阶段 Contact 调研 | `docs/PHASE7_CONTACT_RESEARCH.md` | `XAwGwIpJ2iVUE8k4Mjfcmw6yn8e` | `CZWCd6uuJoDINWxs4nzcCBbAn9z` | https://scnlb1lk96sb.feishu.cn/wiki/XAwGwIpJ2iVUE8k4Mjfcmw6yn8e |
 | 37｜第七阶段 Contact 复盘 | `docs/PHASE7_CONTACT_REVIEW.md` | `QiYew1iOhic5YkkZ6KicjZ4OnAb` | `DUJCdM2ZpomufKxDL67cvNBBnGe` | https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb |
+| 38｜第八阶段 Issue Template 调研 | `docs/PHASE8_ISSUE_TEMPLATE_RESEARCH.md` | `Jtp4wmyfhiHqXQkHbzXcFeEZncb` | `MjxHd6ejAoV1yrxmHgPcbrIonph` | https://scnlb1lk96sb.feishu.cn/wiki/Jtp4wmyfhiHqXQkHbzXcFeEZncb |
+| 39｜第八阶段 Issue Template 复盘 | `docs/PHASE8_ISSUE_TEMPLATE_REVIEW.md` | `RbuowE2dtizYYokv8hwcU1tOn3d` | `MdV9dQGheokYcQxPtK8cAv1RnJS` | https://scnlb1lk96sb.feishu.cn/wiki/RbuowE2dtizYYokv8hwcU1tOn3d |
 
 ## 同步协议
 

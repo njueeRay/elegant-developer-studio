@@ -782,7 +782,7 @@ GitHub：
 
 ### 第八阶段：公开协作与 Issue Template 层
 
-状态：已部署，待外部同步。
+状态：已部署，已同步 GitHub 和飞书。
 
 复盘：
 
@@ -821,4 +821,11 @@ GitHub：
 
 剩余：
 
-- GitHub issue 和飞书同步。
+- 后续可新增 `CONTRIBUTING.md` 与公开协作规则。
+
+外部同步：
+
+- GitHub issue `#4` comment `4699301750`。
+- GitHub issue `#5` comment `4699302265`。
+- 飞书：[38｜第八阶段 Issue Template 调研](https://scnlb1lk96sb.feishu.cn/wiki/Jtp4wmyfhiHqXQkHbzXcFeEZncb)。
+- 飞书：[39｜第八阶段 Issue Template 复盘](https://scnlb1lk96sb.feishu.cn/wiki/RbuowE2dtizYYokv8hwcU1tOn3d)。
