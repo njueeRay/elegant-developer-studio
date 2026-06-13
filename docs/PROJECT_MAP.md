@@ -43,6 +43,7 @@
 - 第四阶段交互层状态与筛选切片：`StatusPanel`、可复用 `FilterBar`、结果数量和筛选清除。
 - 第四阶段照片筛选切片：`/photos` 复用 `FilterBar`，筛选联动精选、网格和灯箱。
 - 第五阶段 Knowledge 首个切片：`/knowledge` 公开索引、知识类型筛选、可复制引用和 Command Center 知识结果。
+- 第五阶段 Uses 首个切片：`/uses` 工具书架、工具筛选、复制引用、工作流和发布管线。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -62,7 +63,7 @@
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
 | Lab | `/lab` | 5 | 规划中 | 实验、原型、组件预览 |
 | About | `/about` | 5 | 规划中 | 个人介绍、时间线、原则 |
-| Uses | `/uses` | 5 | 规划中 | 工具、技术栈、工作流 |
+| Uses | `/uses` | 5 | 已实现首版 | 工具、技术栈、工作流 |
 
 ## 4. 阶段地图
 
@@ -206,13 +207,23 @@
 已实现：
 
 - `/knowledge`
+- `/uses`
 - `src/data/knowledge.ts`
+- `src/data/uses.ts`
 - `KnowledgeExplorer`
 - `KnowledgeCard`
+- `UsesExplorer`
+- `UsesShelf`
+- `ToolCard`
+- `WorkflowRail`
+- `PublishingPipeline`
 - 知识类型筛选：`Pattern`、`Snippet`、`Decision`、`Reference`
 - 可复制知识引用
 - Command Center 真实知识结果和 `Knowledge context`
+- Uses 工具分类筛选、复制引用和 `Copy all`
+- Command Center 真实 Uses 结果和 `Uses context`
 - sitemap 收录 `/knowledge`
+- sitemap 收录 `/uses`
 
 主要风险：
 
@@ -242,7 +253,9 @@ docs/
   PHASE4_STATUS_FILTER_REVIEW.md  第四阶段状态面板与筛选复盘
   PHASE4_PHOTO_FILTER_RESEARCH.md 第四阶段照片筛选调研
   PHASE4_PHOTO_FILTER_REVIEW.md 第四阶段照片筛选复盘
+  PHASE5_KNOWLEDGE_REVIEW.md    第五阶段 Knowledge 首个切片复盘
   PHASE5_KNOWLEDGE_RESEARCH.md  第五阶段 Knowledge 首个切片调研
+  PHASE5_USES_RESEARCH.md       第五阶段 Uses 调研与首个切片
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -276,6 +289,11 @@ src/
 - `PhotoGrid` 筛选联动
 - `KnowledgeExplorer`
 - `KnowledgeCard`
+- `UsesExplorer`
+- `UsesShelf`
+- `ToolCard`
+- `WorkflowRail`
+- `PublishingPipeline`
 - `PostCard`
 - `ProjectCard`
 - `ReadingProgress`
@@ -322,6 +340,7 @@ src/
 - 博客和项目列表筛选：结果数量、active filter、清除动作。
 - 照片筛选：`Featured` 和 tags，精选区、网格、灯箱跟随当前结果。
 - Knowledge 筛选：类型筛选、结果数量、关联链接、复制引用反馈。
+- Uses 筛选：工具分类筛选、复制引用、工作流展示和 Command Center 入口。
 
 研究轨道：
 
@@ -373,8 +392,8 @@ src/
 
 下一步是第五阶段 Portfolio OS 继续推进：
 
-1. 复盘 `/knowledge` 首版是否足够清晰、可引用、可筛选。
-2. 决定下一切片是 `/uses`、`/about` 还是 `/lab`。
+1. 复盘 `/uses` 工具书架和工作流模型。
+2. 下一切片优先考虑 `/about`，补上个人经历、原则和能力边界。
 3. 判断 `Knowledge` 是否需要详情页或 URL query 筛选。
 4. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
 5. 第三阶段并行决定是否引入真实音频文件。

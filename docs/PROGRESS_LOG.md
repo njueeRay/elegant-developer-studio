@@ -473,3 +473,59 @@ GitHub：
 
 - Issue `#4` 追加 Phase 5 Knowledge 交付记录：comment `4697691422`。
 - Issue `#5` 追加 Phase 5 Knowledge 调研记录：comment `4697691502`。
+
+### 第五阶段：Uses 首个切片
+
+状态：本地完成，待部署、飞书和 GitHub 回填。
+
+复盘：
+
+- `/knowledge` 已证明第五阶段应该优先打开真实表面，而不是堆规划入口。
+- `/uses` 比 `/lab` 更适合当前阶段，因为它能表达工具、工作流、审美和发布习惯。
+- `/lab` 需要更多成熟组件库存后再做，否则容易变成空展厅。
+
+调研依据：
+
+- uses.tech：`/uses` 是开发者个人站中成熟的信息形态。
+- Raycast Manual：优秀工具入口应强调 keyboard-first 和快速进入工作流。
+- Raycast Quicklinks：工具页可以展示深链、项目路径和搜索入口，而不是只展示软件名。
+- Raycast Script Commands：automation shelf 应展示可重复动作，而不是假终端。
+
+完成：
+
+- 新增 `/uses` 页面。
+- 新增 `src/data/uses.ts` 工具、工作流和发布管线模型。
+- 新增 `UsesExplorer`。
+- 新增 `UsesShelf`、`ToolCard`、`WorkflowRail`、`PublishingPipeline`、`AutomationShelf` 这一组页面构件。
+- `FilterBar` 复用到工具分类筛选。
+- 工具支持 `Copy ref`，工具列表支持 `Copy all`。
+- `Open Command Center` 触发全站命令面板。
+- Command Center 新增 `uses` 类型、真实工具结果、工作流结果和 `Uses context`。
+- 移除 `Uses is planned` 状态。
+- sitemap 增加 `/uses`。
+- 保存视觉参考：`public/references/uses-page-reference.png`。
+- 添加 `docs/PHASE5_KNOWLEDGE_REVIEW.md` 和 `docs/PHASE5_USES_RESEARCH.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser 验证：`/uses` 标题为 `Uses - Ray Studio`，初始状态显示 `12 / 12 tools`。
+- Browser 验证：点击 `Automation` 后显示 `4 / 12 tools`，结果为 `Vercel`、`Raycast`、`Linear`、`Playwright`。
+- Browser 验证：点击 `Copy Raycast reference` 后显示 `Copied`。
+- Browser 验证：Command Center 搜索 `uses` 不再出现 `Uses is planned`，并显示真实 Uses 结果。
+- Browser 验证：移动端 390 x 844 无页面级横向溢出。
+- 视觉复核：1440 x 1200 下工具卡文案与 `Copy ref` 不重叠。
+
+截图：
+
+- `/tmp/uses-desktop.png`
+- `/tmp/uses-desktop-1440-fixed.png`
+- `/tmp/uses-mobile.png`
+- `/tmp/uses-command.png`
+
+下一步：
+
+- 部署 Vercel。
+- 创建飞书页面并同步。
+- 同步 GitHub issue。

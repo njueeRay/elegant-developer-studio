@@ -15,10 +15,12 @@
 ## 当前实现状态
 
 - `/knowledge` 已进入第五阶段首个切片。
+- `/uses` 已进入第五阶段首个切片。
 - 首版采用公开索引页，而不是详情页集合。
 - 内容模型包含 `Pattern`、`Snippet`、`Decision`、`Reference`。
 - 每条知识需要有稳定 slug、summary、signal、状态、标签、来源和关联链接。
 - `notes` 不作为顶层路由；未来可作为 `Knowledge` 内部 entry kind 或标签。
+- `/uses` 不是工具清单页，而是工具、工作流、自动化和发布管线的工作室表面。
 
 ## 首页内容模型
 

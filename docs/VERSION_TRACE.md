@@ -359,3 +359,40 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Feishu：`25｜第四阶段照片筛选复盘`、`26｜第五阶段 Knowledge 调研`。
 - Feishu fetch：导航页包含 25/26；Knowledge 调研页包含 `Copy ref`、`5 / 5 entries`、`Decision`、`Knowledge is planned` 变更记录。
 - GitHub：issue `#4` comment `4697691422`；issue `#5` comment `4697691502`。
+
+## Unreleased - 第五阶段 Uses 首个切片
+
+日期：2026-06-13
+Primary commit：待回填
+Deployment record commit：待回填
+Vercel deployment：待回填
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待回填
+Inspect URL：待回填
+
+范围：
+
+- 新增 `/uses` 页面。
+- 新增 `src/data/uses.ts`。
+- 新增 `UsesExplorer`。
+- 新增工具书架、工具卡、工作流、发布管线和自动化 shelf。
+- `FilterBar` 复用到工具分类筛选。
+- 工具支持 `Copy ref`，工具列表支持 `Copy all`。
+- Command Center 新增 `uses` 类型、真实工具结果、工作流结果和 `Uses context`。
+- 移除 `Uses is planned` 状态。
+- sitemap 增加 `/uses`。
+- 添加 `docs/PHASE5_KNOWLEDGE_REVIEW.md` 和 `docs/PHASE5_USES_RESEARCH.md`。
+- 保存视觉参考：`public/references/uses-page-reference.png`。
+
+产品判断：
+
+- `/uses` 是工具书架，不是 Logo 墙。
+- 本轮重点展示工具、角色、信号、工作流和发布管线。
+- 下一切片优先考虑 `/about`，暂不做 `/lab`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser QA：`/uses` 页面身份、工具筛选、复制反馈、Command Center 搜索和移动端布局通过。
+- 视觉 QA：参考图和 1440 x 1200 实现截图对照通过；已修复工具卡底部重叠。

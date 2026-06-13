@@ -361,3 +361,63 @@
 备注：
 
 - 使用 `127.0.0.1` 访问 Next dev server 会触发 Next 16 的 dev resource cross-origin 限制，导致部分客户端岛未正常工作；QA 改用 `localhost:3000` 后通过。
+
+## 第五阶段 Uses 首个切片 QA
+
+结果：通过。
+
+方法：
+
+- 本地 URL：`http://localhost:3000/uses`
+- 浏览器验证方式：in-app Browser。
+- 检查视口：
+  - 默认桌面：1280 x 720。
+  - 概念图尺寸：1440 x 1200。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 页面身份：通过。
+   - `/uses` 标题为 `Uses - Ray Studio`。
+   - 首屏 H1 为 `Uses`。
+   - 页面包含状态条、工具筛选、工作台 shelf、工具卡、工作流和发布管线。
+
+2. 初始状态：通过。
+   - 结果数量显示 `12 / 12 tools`。
+   - 工具卡片数为 12。
+   - 无页面级横向溢出。
+
+3. 工具筛选：通过。
+   - 点击 `Automation` 后显示 `4 / 12 tools`。
+   - 结果为 `Vercel`、`Raycast`、`Linear`、`Playwright`。
+   - 清除按钮可用。
+
+4. 复制引用：通过。
+   - 点击 `Copy Raycast reference` 后按钮显示 `Copied`。
+   - 修复了 Clipboard API 存在但拒绝写入时不进入 fallback 的问题。
+
+5. Command Center：通过。
+   - 点击 `Open Command Center` 后打开全站命令面板。
+   - 搜索 `uses` 不再出现 `Uses is planned`。
+   - 搜索结果包含 `Open uses`、工具条目和工作流条目。
+
+6. 移动端布局：通过。
+   - 390 x 844 下无页面级横向溢出。
+   - 筛选条保持内部横向滚动。
+   - 首屏文字、状态条和命令入口不遮挡。
+
+7. 视觉复核：通过。
+   - 参考图：`public/references/uses-page-reference.png`。
+   - 桌面实现：`/tmp/uses-desktop-1440-fixed.png`。
+   - 修复了 `TypeScript` 工具卡文案与 `Copy ref` 按钮重叠问题。
+
+截图：
+
+- `/tmp/uses-desktop.png`
+- `/tmp/uses-desktop-1440-fixed.png`
+- `/tmp/uses-mobile.png`
+- `/tmp/uses-command.png`
+
+备注：
+
+- Browser 运行时出现一条 ChatGPT/Statsig 网络超时噪声；页面应用控制台没有相关错误。

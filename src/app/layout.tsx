@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { GlobalCommandMenu, type CommandItem } from "@/components/global-command-menu";
 import { knowledgeEntries } from "@/data/knowledge";
 import { currentMix, photos } from "@/data/media";
+import { useTools, useWorkflows } from "@/data/uses";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
 import "./globals.css";
 
@@ -75,6 +76,15 @@ function getCommandItems(): CommandItem[] {
       keywords: ["projects", "work", "case study"],
     },
     {
+      id: "action-uses",
+      kind: "uses",
+      title: "Open uses",
+      description: "Browse the studio tools, workflows, and publishing pipeline.",
+      href: "/uses",
+      meta: `${useTools.length} tools`,
+      keywords: ["uses", "tools", "stack", "workflow", "setup"],
+    },
+    {
       id: "action-knowledge",
       kind: "knowledge",
       title: "Browse knowledge",
@@ -142,6 +152,26 @@ function getCommandItems(): CommandItem[] {
     keywords: [entry.kind, entry.status, entry.source, ...entry.tags],
   }));
 
+  const usesItems = useTools.map<CommandItem>((tool) => ({
+    id: `uses-${tool.slug}`,
+    kind: "uses",
+    title: tool.name,
+    description: tool.description,
+    href: `/uses#${tool.slug}`,
+    meta: tool.category,
+    keywords: [tool.category, tool.role, tool.signal],
+  }));
+
+  const workflowItems = useWorkflows.map<CommandItem>((workflow) => ({
+    id: `uses-workflow-${workflow.step}`,
+    kind: "uses",
+    title: workflow.title,
+    description: workflow.description,
+    href: "/uses#workspace-rhythm",
+    meta: "Workflow",
+    keywords: ["uses", "workflow", "rhythm", workflow.time],
+  }));
+
   const photoItems = photos
     .filter((photo) => photo.featured)
     .map<CommandItem>((photo) => ({
@@ -154,5 +184,13 @@ function getCommandItems(): CommandItem[] {
       keywords: photo.tags,
     }));
 
-  return [...quickActions, ...postItems, ...projectItems, ...knowledgeItems, ...photoItems];
+  return [
+    ...quickActions,
+    ...postItems,
+    ...projectItems,
+    ...knowledgeItems,
+    ...usesItems,
+    ...workflowItems,
+    ...photoItems,
+  ];
 }

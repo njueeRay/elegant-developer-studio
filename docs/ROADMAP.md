@@ -148,7 +148,7 @@
 
 目标：扩展成完整个人操作系统。
 
-状态：进行中。首个 Knowledge 切片已完成本地实现。
+状态：进行中。Knowledge 首个切片和 Uses 首个切片已完成。
 
 交付：
 
@@ -161,18 +161,28 @@
 已完成切片：
 
 - `/knowledge` 公开知识索引。
+- `/uses` 工具书架和工作流页面。
 - 知识内容模型：`Pattern`、`Snippet`、`Decision`、`Reference`。
+- Uses 内容模型：工具、分类、工作流、发布管线。
 - `KnowledgeExplorer` 和 `KnowledgeCard`。
+- `UsesExplorer`、`UsesShelf`、`ToolCard`、`WorkflowRail`、`PublishingPipeline`。
 - `FilterBar` 复用到知识类型筛选。
+- `FilterBar` 复用到工具分类筛选。
 - 每条知识支持稳定锚点和 `Copy ref`。
+- 每个工具支持 `Copy ref`，工具列表支持 `Copy all`。
 - Command Center 新增 `knowledge` 类型、真实结果和 `Knowledge context`。
+- Command Center 新增 `uses` 类型、真实工具和工作流结果、`Uses context`。
 - sitemap 收录 `/knowledge`。
+- sitemap 收录 `/uses`。
 
 组件：
 
 - `Timeline`
 - `SkillMatrix`
 - `UsesShelf`
+- `ToolCard`
+- `WorkflowRail`
+- `PublishingPipeline`
 - `KnowledgeCard`
 - `KnowledgeExplorer`
 - `ReactionBar`
@@ -181,6 +191,7 @@
 
 下一片重点：
 
-- 判断 `/uses`、`/about`、`/lab` 哪个最能扩展个人工作室 OS。
+- 复盘 `/uses` 工具书架、复制引用和工作流模型。
+- 判断 `/about` 是否应作为下一切片，用来补上人的经历、原则和联系方式。
 - 评估 `Knowledge` 是否需要详情页、反向链接和 local graph。
 - 暂不做后台 CMS，继续用本地数据模型保证结构清晰。
