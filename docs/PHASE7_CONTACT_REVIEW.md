@@ -93,6 +93,14 @@ Constraints: timeline, references, blockers, or quality bar.
 - `npm run build`：通过。
 - `npm run test:e2e`：58 passed。
 
+生产验证：
+
+- Vercel deployment：`dpl_GTGZWzVKHkSaXt2R9TsBbrfjVcRk`。
+- Deployment URL：`https://elegant-developer-studio-kjne04d8h.vercel.app`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/GTGZWzVKHkSaXt2R9TsBbrfjVcRk`。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：58 passed。
+
 Browser QA：
 
 - URL：`http://localhost:3100/contact`

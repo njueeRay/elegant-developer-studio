@@ -728,7 +728,7 @@ GitHub：
 
 ### 第七阶段：Contact 与公开信任层
 
-状态：本地完成，待部署和外部同步。
+状态：已部署，待外部同步。
 
 复盘：
 
@@ -763,9 +763,13 @@ GitHub：
 - Browser QA：`/contact` URL、title、唯一 H1、GitHub Issues 链接、复制反馈、控制台健康通过。
 - 移动端 `390 x 844`：`scrollWidth 390`，无横向溢出。
 - 截图：`/tmp/contact-desktop-1440.png`、`/tmp/contact-mobile-390.png`。
+- Vercel deployment：`dpl_GTGZWzVKHkSaXt2R9TsBbrfjVcRk`。
+- Deployment URL：`https://elegant-developer-studio-kjne04d8h.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/GTGZWzVKHkSaXt2R9TsBbrfjVcRk`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，58 passed。
 
 剩余：
 
-- 尚未部署到 Vercel production。
 - 尚未同步 GitHub issue 和飞书。
 - 后续可新增 GitHub issue template 与私密联系渠道。

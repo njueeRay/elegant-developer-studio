@@ -533,10 +533,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第七阶段 Contact 与公开信任层
 
 日期：2026-06-14
-Primary commit：待提交
-Deployment record commit：待提交
-Vercel deployment：待部署
+Primary commit：`1e61b5e`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_GTGZWzVKHkSaXt2R9TsBbrfjVcRk`
 Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-kjne04d8h.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/GTGZWzVKHkSaXt2R9TsBbrfjVcRk`
 
 范围：
 
@@ -559,5 +561,8 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - `npm run test:e2e`：58 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：58 passed。
 - Browser QA：页面身份、唯一 H1、真实 GitHub Issues 链接、复制反馈、控制台健康通过。
 - 移动端无横向溢出：`scrollWidth 390`，`clientWidth 390`。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production alias 已指向本阶段部署。
