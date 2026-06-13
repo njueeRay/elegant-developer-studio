@@ -572,6 +572,7 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
           <Search size={18} />
           <input
             autoFocus
+            data-testid="global-command-search"
             value={query}
             placeholder="Search writing, work, knowledge, lab, uses, about..."
             role="searchbox"
@@ -609,6 +610,7 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
                       <Link
                         aria-selected={isActive}
                         className={isActive ? "command-result-active" : undefined}
+                        data-testid={`command-result-${item.id}`}
                         href={item.href}
                         id={getResultId(item.id)}
                         key={item.id}

@@ -674,3 +674,44 @@ GitHub：
 
 - Issue `#4` 追加 Phase 5 Lab 交付记录：comment `4697990453`。
 - Issue `#5` 追加 Phase 5 Lab 调研记录：comment `4697991038`。
+
+### 第六阶段：可达性与交互契约
+
+状态：本地完成，待部署和外部同步。
+
+复盘：
+
+- 全站审计确认页面已完整，但占位链接和复制反馈存在信任风险。
+- 本阶段优先修复“看起来能点但无法到达真实目标”的问题。
+
+调研依据：
+
+- W3C WCAG 2.2：链接目的、键盘可操作、可访问名称。
+- W3C Link Purpose：用户需要理解点击后的结果。
+- web.dev / MDN Clipboard API：剪贴板写入受权限和安全上下文影响，需要 fallback。
+- Playwright Locator：重复文案下需要稳定 locator 和测试契约。
+
+完成：
+
+- 首页社交链接改为真实 repo、issues 和 About contact。
+- Contact 从未知邮箱改为 `/about#contact` 和 GitHub Issues。
+- 首页 Logo 改为真实 `/` 链接。
+- 首页 `Media` 锚点修复。
+- 新增共享剪贴板工具。
+- CodeBlock、Knowledge、Uses、About、Lab 复制逻辑统一。
+- 增加命令面板、筛选、复制按钮的 `data-testid`。
+- 新增 Playwright e2e 配置、`test:e2e` 脚本和 52 个测试结果。
+- 新增 `docs/SITE_AUDIT_2026_06_13.md`、`docs/PHASE6_ACCESSIBILITY_RESEARCH.md`、`docs/PHASE6_ACCESSIBILITY_REVIEW.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：52 passed。
+- 生产模式本地截图：桌面首页、移动首页、About contact 通过视觉复核。
+
+剩余：
+
+- 待部署到 Vercel。
+- 待同步 GitHub issue 和飞书。
+- 可考虑新增 `/contact` 页面。

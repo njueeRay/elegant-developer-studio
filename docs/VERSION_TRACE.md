@@ -489,3 +489,29 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Feishu：`31｜第五阶段 About 复盘`、`32｜第五阶段 Lab 调研`。
 - Feishu fetch：导航页包含 31/32；Lab 调研页包含 `Storybook Showcase`、`shadcn/ui Registry Directory` 和 `390px 移动端`；素材页包含 `lab-page-reference.png`。
 - GitHub：issue `#4` comment `4697990453`；issue `#5` comment `4697991038`。
+
+## Unreleased - 第六阶段可达性与交互契约
+
+日期：2026-06-13
+Primary commit：待提交
+Deployment record commit：待部署
+
+范围：
+
+- 修复首页占位社交链接、占位邮箱、品牌 `#` 链接和 `#media` 缺失。
+- 新增共享剪贴板 fallback 工具。
+- 统一 CodeBlock、Knowledge、Uses、About、Lab 复制反馈。
+- 增加命令面板、筛选器和复制交互的稳定测试锚点。
+- 新增 Playwright e2e 配置和 `test:e2e` 脚本。
+- 新增全站审计、Phase 6 调研和 Phase 6 复盘文档。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：52 passed。
+- 本地生产模式截图复核：首页桌面、首页移动端、About contact。
+
+部署：
+
+- 待部署。

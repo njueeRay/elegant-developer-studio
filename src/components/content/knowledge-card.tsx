@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BookOpenText, Braces, Check, Copy, GitBranch, Lightbulb, Waypoints } from "lucide-react";
 import { useState } from "react";
 import type { KnowledgeEntry, KnowledgeKind } from "@/data/knowledge";
+import { writeToClipboard } from "@/lib/clipboard";
 
 const iconByKind: Record<KnowledgeKind, typeof Lightbulb> = {
   Pattern: Waypoints,
@@ -16,42 +17,20 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
   const [copied, setCopied] = useState(false);
   const Icon = iconByKind[entry.kind];
 
-  const copyWithFallback = (value: string) => {
-    const textarea = document.createElement("textarea");
-    textarea.value = value;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "fixed";
-    textarea.style.top = "-9999px";
-    document.body.append(textarea);
-    textarea.select();
-    const didCopy = document.execCommand("copy");
-    textarea.remove();
-
-    return didCopy;
-  };
-
   const copyRef = async () => {
     const path = `/knowledge#${entry.slug}`;
     const value =
       typeof window === "undefined" ? path : `${window.location.origin}${path}`;
 
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(value);
-      } else if (!copyWithFallback(value)) {
-        throw new Error("Copy fallback failed");
-      }
+    const didCopy = await writeToClipboard(value);
+
+    if (didCopy) {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1600);
-    } catch {
-      if (copyWithFallback(value)) {
-        setCopied(true);
-        window.setTimeout(() => setCopied(false), 1600);
-        return;
-      }
-
-      setCopied(false);
+      return;
     }
+
+    setCopied(false);
   };
 
   return (
@@ -95,6 +74,7 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
       <button
         type="button"
         className="knowledge-copy"
+        data-testid={`knowledge-copy-${entry.slug}`}
         aria-label={`Copy reference for ${entry.title}`}
         onClick={copyRef}
       >

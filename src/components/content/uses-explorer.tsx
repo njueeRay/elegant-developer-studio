@@ -15,6 +15,7 @@ import {
 import { useMemo, useState } from "react";
 import { FilterBar } from "@/components/content/filter-bar";
 import type { PipelineStep, UseTool, UseWorkflow } from "@/data/uses";
+import { writeToClipboard } from "@/lib/clipboard";
 
 type UsesExplorerProps = {
   tools: UseTool[];
@@ -29,33 +30,6 @@ const categoryIcon = {
   Writing: Clipboard,
   Automation: Workflow,
 } as const;
-
-function writeWithTextarea(value: string) {
-  const textarea = document.createElement("textarea");
-  textarea.value = value;
-  textarea.setAttribute("readonly", "true");
-  textarea.style.position = "absolute";
-  textarea.style.left = "-9999px";
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  document.body.removeChild(textarea);
-
-  return Promise.resolve();
-}
-
-async function writeToClipboard(value: string) {
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(value);
-      return;
-    }
-  } catch {
-    // Clipboard can be blocked in preview browsers; the visible UI feedback should still work.
-  }
-
-  await writeWithTextarea(value);
-}
 
 function getToolRef(tool: UseTool) {
   return `uses:${tool.slug} | ${tool.name} | ${tool.category} | ${tool.role}`;
@@ -111,6 +85,7 @@ export function UsesExplorer({ tools, categories, workflows, pipeline }: UsesExp
           <button
             type="button"
             className="uses-command-button"
+            data-testid="uses-command-trigger"
             onClick={() => window.dispatchEvent(new Event("studio:open-command"))}
           >
             <Command size={17} />
@@ -152,6 +127,7 @@ export function UsesExplorer({ tools, categories, workflows, pipeline }: UsesExp
         </div>
         <button
           type="button"
+          data-testid="uses-copy-stack"
           onClick={() => copyValue("stack", tools.map(getToolRef).join("\n"))}
         >
           {copied === "stack" ? <Check size={15} /> : <Copy size={15} />}
@@ -181,6 +157,7 @@ export function UsesExplorer({ tools, categories, workflows, pipeline }: UsesExp
               <button
                 type="button"
                 className="uses-tool-copy-button"
+                data-testid={`uses-copy-${tool.slug}`}
                 aria-label={`Copy ${tool.name} reference`}
                 onClick={() => copyValue(tool.slug, getToolRef(tool))}
               >

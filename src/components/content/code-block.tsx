@@ -2,6 +2,7 @@
 
 import { Check, Copy } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps } from "react";
+import { writeToClipboard } from "@/lib/clipboard";
 
 function extractText(value: unknown): string {
   if (typeof value === "string") {
@@ -44,9 +45,12 @@ export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
       return;
     }
 
-    await navigator.clipboard.writeText(codeText);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1400);
+    const didCopy = await writeToClipboard(codeText);
+
+    if (didCopy) {
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1400);
+    }
   }
 
   return (
@@ -56,7 +60,12 @@ export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
           snippet
           <small>{lineCount} lines</small>
         </span>
-        <button type="button" onClick={copyCode} aria-label="Copy code">
+        <button
+          type="button"
+          data-testid="code-copy"
+          onClick={copyCode}
+          aria-label="Copy code"
+        >
           {copied ? <Check size={14} /> : <Copy size={14} />}
           {copied ? "Copied" : "Copy"}
         </button>

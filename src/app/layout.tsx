@@ -139,11 +139,11 @@ function getCommandItems(): CommandItem[] {
     {
       id: "action-contact",
       kind: "contact",
-      title: "Send a note",
-      description: "Start an email conversation.",
-      href: "mailto:hello@ray.studio",
-      meta: "Email",
-      keywords: ["contact", "email", "hello"],
+      title: "Open contact routes",
+      description: "Open the public contact section and project discussion route.",
+      href: "/about#contact",
+      meta: "About",
+      keywords: ["contact", "github", "issues", "about"],
     },
   ];
 

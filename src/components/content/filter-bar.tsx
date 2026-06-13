@@ -12,6 +12,10 @@ type FilterBarProps = {
   noun: string;
 };
 
+function toTestId(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 export function FilterBar({
   label,
   active,
@@ -42,6 +46,7 @@ export function FilterBar({
           <button
             key={item}
             type="button"
+            data-testid={`filter-${toTestId(label)}-${toTestId(item)}`}
             className={active === item ? "active" : ""}
             aria-pressed={active === item}
             onClick={() => onChange(item)}
@@ -54,6 +59,7 @@ export function FilterBar({
       <button
         type="button"
         className="filter-reset"
+        data-testid={`filter-${toTestId(label)}-clear`}
         disabled={!hasFilter}
         aria-label={hasFilter ? `Clear ${active} filter` : "No active filter"}
         title={hasFilter ? `Clear ${active} filter` : "No active filter"}

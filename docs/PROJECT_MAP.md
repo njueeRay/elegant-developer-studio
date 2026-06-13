@@ -358,6 +358,7 @@ src/
 - Uses 筛选：工具分类筛选、复制引用、工作流展示和 Command Center 入口。
 - About 交互：原则选择、时间线聚焦、复制简介、Command Center 入口和 About 结果搜索。
 - Lab 交互：组件分类筛选、组件预览选择、复制 import、复制 registry、Command Center 真实 Lab 结果。
+- 第六阶段交互契约：全站路由 e2e、占位链接防回归、Command Center 真实跳转、复制反馈、筛选反馈和音乐状态均纳入 Playwright 测试。
 
 研究轨道：
 
@@ -407,10 +408,11 @@ src/
 
 ## 10. 下一步
 
-下一步是第五阶段 Portfolio OS 继续推进：
+下一步是第六阶段之后的 Portfolio OS 继续推进：
 
-1. 复盘 `/lab` 的组件注册表、复制交互和质量门禁。
-2. 判断 `ComponentPreview` 是否需要进入下一切片。
-3. 判断 `Knowledge` 是否需要详情页或 URL query 筛选。
-4. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
-5. 第三阶段并行决定是否引入真实音频文件。
+1. 部署并追踪可达性修复，确保生产环境没有占位链接回归。
+2. 判断是否新增 `/contact` 页面，替代临时 GitHub Issues 联系方案。
+3. 判断 `ComponentPreview` 是否需要进入下一切片。
+4. 判断 `Knowledge` 是否需要详情页或 URL query 筛选。
+5. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
+6. 第三阶段并行决定是否引入真实音频文件。

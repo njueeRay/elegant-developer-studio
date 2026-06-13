@@ -27,6 +27,7 @@ import {
   type LabQualityGate,
   type LabStatus,
 } from "@/data/lab";
+import { writeToClipboard } from "@/lib/clipboard";
 
 type LabExplorerProps = {
   components: LabComponent[];
@@ -48,33 +49,6 @@ const statusLabel: Record<LabStatus, string> = {
   Iterating: "Iterating",
   Planned: "Planned",
 };
-
-function writeWithTextarea(value: string) {
-  const textarea = document.createElement("textarea");
-  textarea.value = value;
-  textarea.setAttribute("readonly", "true");
-  textarea.style.position = "fixed";
-  textarea.style.top = "-9999px";
-  document.body.append(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  textarea.remove();
-
-  return Promise.resolve();
-}
-
-async function writeToClipboard(value: string) {
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(value);
-      return;
-    }
-  } catch {
-    // Clipboard permissions vary in preview browsers; the fallback keeps the UI useful.
-  }
-
-  await writeWithTextarea(value);
-}
 
 function getImportSnippet(component: LabComponent) {
   return `import { ${component.name} } from "${component.importPath}";`;
@@ -141,6 +115,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
             <button
               type="button"
               className="lab-command-button"
+              data-testid="lab-command-trigger"
               onClick={() => window.dispatchEvent(new Event("studio:open-command"))}
             >
               <Command size={17} />
@@ -150,6 +125,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
             <button
               type="button"
               className="lab-copy-button"
+              data-testid="lab-copy-registry"
               onClick={() => copyValue("registry", getLabRegistryReference(components))}
             >
               {copied === "registry" ? <Check size={15} /> : <Copy size={15} />}
@@ -190,6 +166,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
             <button
               type="button"
               className="lab-import-button"
+              data-testid="lab-copy-import"
               onClick={() => copyValue(selectedComponent.slug, getImportSnippet(selectedComponent))}
             >
               {copied === selectedComponent.slug ? <Check size={15} /> : <Copy size={15} />}

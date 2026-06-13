@@ -14,7 +14,6 @@ import {
   Music2,
   Pause,
   Play,
-  Send,
   Sun,
   Wrench,
 } from "lucide-react";
@@ -99,6 +98,7 @@ export function StudioHome({
           </div>
           <button
             className="command-strip"
+            data-testid="home-command-trigger"
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent("studio:open-command"))}
           >
@@ -171,7 +171,7 @@ export function StudioHome({
           </a>
         </article>
 
-        <article className="contact-panel">
+        <article className="contact-panel" id="contact">
           <div>
             <p className="section-kicker rust">Let&apos;s connect</p>
             <h2>Say hello</h2>
@@ -180,9 +180,12 @@ export function StudioHome({
               and systems that make complex work feel calm.
             </p>
           </div>
-          <a href="mailto:hello@ray.studio" className="primary-link">
-            <Mail size={16} />
-            hello@ray.studio
+          <a
+            href="https://github.com/njueeRay/elegant-developer-studio/issues"
+            className="primary-link"
+          >
+            <Code2 size={16} />
+            Open a GitHub issue
           </a>
         </article>
       </section>
@@ -233,9 +236,9 @@ function Header({
 }) {
   return (
     <header className="site-header">
-      <a href="#" className="brand-mark" aria-label="Ray Studio home">
+      <Link href="/" className="brand-mark" aria-label="Ray Studio home">
         Ray Studio
-      </a>
+      </Link>
       <nav aria-label="Main navigation">
         {navItems.map((item) => (
           <a key={item.label} href={item.href}>
@@ -252,10 +255,10 @@ function Header({
         >
           {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <a href="mailto:hello@ray.studio" className="contact-button">
+        <Link href="/about#contact" className="contact-button">
           <Mail size={16} />
           Contact
-        </a>
+        </Link>
       </div>
     </header>
   );
@@ -364,9 +367,14 @@ function HighlightCard({
 
   if (highlight.kind === "media") {
     return (
-      <article className="highlight-card media-card">
+      <article className="highlight-card media-card" id="media">
         {content}
-        <button type="button" className="play-button" onClick={onTogglePlay}>
+        <button
+          type="button"
+          className="play-button"
+          data-testid="home-media-play"
+          onClick={onTogglePlay}
+        >
           {isPlaying ? <Pause size={15} /> : <Play size={15} />}
           {isPlaying ? "Pause" : "Play"}
         </button>
@@ -388,19 +396,32 @@ function HighlightCard({
 function SocialLinks() {
   const icons = {
     GitHub: Code2,
-    X: Send,
-    LinkedIn: BookOpenText,
-    Email: Mail,
+    Issues: Code2,
+    About: BookOpenText,
   } as const;
 
   return (
     <div className="social-links" aria-label="Social links">
       {socialLinks.map((link) => {
         const Icon = icons[link.label];
-        return (
-          <a key={link.label} href={link.href} aria-label={link.label}>
+        const content = (
+          <>
             <Icon size={21} />
             <span>{link.label}</span>
+          </>
+        );
+
+        if (link.href.startsWith("/")) {
+          return (
+            <Link key={link.label} href={link.href} aria-label={link.label}>
+              {content}
+            </Link>
+          );
+        }
+
+        return (
+          <a key={link.label} href={link.href} aria-label={link.label}>
+            {content}
           </a>
         );
       })}

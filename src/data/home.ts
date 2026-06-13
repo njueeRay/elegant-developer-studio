@@ -28,10 +28,15 @@ export const navItems = [
 ] as const;
 
 export const socialLinks = [
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "X", href: "https://x.com/" },
-  { label: "LinkedIn", href: "https://linkedin.com/" },
-  { label: "Email", href: "mailto:hello@ray.studio" },
+  {
+    label: "GitHub",
+    href: "https://github.com/njueeRay/elegant-developer-studio",
+  },
+  {
+    label: "Issues",
+    href: "https://github.com/njueeRay/elegant-developer-studio/issues",
+  },
+  { label: "About", href: "/about#contact" },
 ] as const;
 
 export const workbenchItems: WorkbenchItem[] = [

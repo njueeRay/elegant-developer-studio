@@ -7,7 +7,7 @@ import {
   Clock3,
   Command,
   Copy,
-  Mail,
+  GitBranch,
   MapPin,
   Sparkles,
 } from "lucide-react";
@@ -22,33 +22,7 @@ import {
   getAboutReference,
   workingAgreements,
 } from "@/data/about";
-
-function writeWithTextarea(value: string) {
-  const textarea = document.createElement("textarea");
-  textarea.value = value;
-  textarea.setAttribute("readonly", "true");
-  textarea.style.position = "absolute";
-  textarea.style.left = "-9999px";
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand("copy");
-  document.body.removeChild(textarea);
-
-  return Promise.resolve();
-}
-
-async function writeToClipboard(value: string) {
-  try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(value);
-      return;
-    }
-  } catch {
-    // Clipboard can be blocked in previews; the visible state still confirms intent.
-  }
-
-  await writeWithTextarea(value);
-}
+import { writeToClipboard } from "@/lib/clipboard";
 
 export function AboutProfile() {
   const [activePrinciple, setActivePrinciple] = useState(aboutPrinciples[0].slug);
@@ -88,13 +62,19 @@ export function AboutProfile() {
             <button
               type="button"
               className="about-command-button"
+              data-testid="about-command-trigger"
               onClick={() => window.dispatchEvent(new Event("studio:open-command"))}
             >
               <Command size={17} />
               Open Command Center
               <kbd>⌘ K</kbd>
             </button>
-            <button type="button" className="about-copy-button" onClick={copyIntro}>
+            <button
+              type="button"
+              className="about-copy-button"
+              data-testid="about-copy-intro"
+              onClick={copyIntro}
+            >
               {copied ? <Check size={16} /> : <Copy size={16} />}
               {copied ? "Copied" : "Copy intro"}
             </button>
@@ -211,14 +191,18 @@ export function AboutProfile() {
         </section>
       </div>
 
-      <section className="about-contact-band" aria-label="Contact and routes">
+      <section
+        className="about-contact-band"
+        id="contact"
+        aria-label="Contact and routes"
+      >
         <div>
           <p className="section-kicker rust">Contact</p>
           <h2>Let’s build something with intention.</h2>
           <p>{aboutProfile.availability}</p>
-          <a href={`mailto:${aboutProfile.email}`}>
-            <Mail size={16} />
-            {aboutProfile.email}
+          <a href={aboutProfile.contactHref}>
+            <GitBranch size={16} />
+            {aboutProfile.contactLabel}
           </a>
         </div>
         <div className="about-command-routes">
