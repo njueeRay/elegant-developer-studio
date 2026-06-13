@@ -611,7 +611,7 @@ GitHub：
 
 ### 第五阶段：Lab 首个切片
 
-状态：已部署，待飞书同步和 GitHub 追踪。
+状态：已部署，已同步飞书，待 GitHub 追踪。
 
 复盘：
 
@@ -665,8 +665,10 @@ GitHub：
 
 飞书：
 
-- 待创建 `31｜第五阶段 About 复盘`。
-- 待创建 `32｜第五阶段 Lab 调研`。
+- [31｜第五阶段 About 复盘](https://scnlb1lk96sb.feishu.cn/wiki/EBUawLknuizjB2k73ORcGAhlnBg)
+- [32｜第五阶段 Lab 调研](https://scnlb1lk96sb.feishu.cn/wiki/VcJLwI0mLinio6kuJ1xchFt9nEd)
+- 已覆盖同步正文和素材页，并重新插入 `lab-page-reference.png`。
+- 验证：导航页包含 31/32；Lab 调研页包含 `Storybook Showcase`、`shadcn/ui Registry Directory` 和 `390px 移动端`；素材页包含 `lab-page-reference.png`。
 
 GitHub：
 

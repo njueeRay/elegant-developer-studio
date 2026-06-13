@@ -486,3 +486,5 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Vercel inspect：deployment 状态 `Ready`。
 - Production fetch：`/lab` 返回页面内容，包含 `Lab - Ray Studio`、`Filter components`、`GlobalCommandMenu` 和 `Quality gates`。
 - Production sitemap：包含 `/lab`。
+- Feishu：`31｜第五阶段 About 复盘`、`32｜第五阶段 Lab 调研`。
+- Feishu fetch：导航页包含 31/32；Lab 调研页包含 `Storybook Showcase`、`shadcn/ui Registry Directory` 和 `390px 移动端`；素材页包含 `lab-page-reference.png`。

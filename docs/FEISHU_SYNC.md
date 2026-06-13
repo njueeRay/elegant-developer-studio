@@ -53,6 +53,8 @@
 | 28｜第五阶段 Uses 调研 | `docs/PHASE5_USES_RESEARCH.md` | `ZuFswpj8ci6SmFksRrSckuaNnVc` | `LQvwdAtBmofdgRxC0g9cZmQOnFd` | https://scnlb1lk96sb.feishu.cn/wiki/ZuFswpj8ci6SmFksRrSckuaNnVc |
 | 29｜第五阶段 Uses 复盘 | `docs/PHASE5_USES_REVIEW.md` | `A0i0wPS74i4WyjkKO0RcOMWKngd` | `J3ufdkNWionJsaxkRxrcHBXxnXe` | https://scnlb1lk96sb.feishu.cn/wiki/A0i0wPS74i4WyjkKO0RcOMWKngd |
 | 30｜第五阶段 About 调研 | `docs/PHASE5_ABOUT_RESEARCH.md` | `TAWHwObsji30i1kaJmfc3Wylnne` | `FHkMdJTIYoy3adxFvh1czyTZnHb` | https://scnlb1lk96sb.feishu.cn/wiki/TAWHwObsji30i1kaJmfc3Wylnne |
+| 31｜第五阶段 About 复盘 | `docs/PHASE5_ABOUT_REVIEW.md` | `EBUawLknuizjB2k73ORcGAhlnBg` | `EzLudI2PDoFiYhxZsD8cbulfn2d` | https://scnlb1lk96sb.feishu.cn/wiki/EBUawLknuizjB2k73ORcGAhlnBg |
+| 32｜第五阶段 Lab 调研 | `docs/PHASE5_LAB_RESEARCH.md` | `VcJLwI0mLinio6kuJ1xchFt9nEd` | `VHp6diXUmoIFzoxMFWjcoB9Lnu1` | https://scnlb1lk96sb.feishu.cn/wiki/VcJLwI0mLinio6kuJ1xchFt9nEd |
 
 ## 同步协议
 
@@ -67,11 +69,12 @@
 
 | 页面 | 素材 | Block ID | File token | 备注 |
 | --- | --- | --- | --- | --- |
-| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcn6lPINZ5kXNDn31Q5S7G6hf` | `ZHGDbA0H3oEikOxbz6hcKQrCnSh` | 第一阶段已采纳视觉参考 |
-| 10｜素材与参考 | `public/references/uses-page-reference.png` | `doxcnvIu4k3XXuIfXvi67IGEmbe` | `ALynbMVmEoEFdrxPIF3cdihqnrg` | 第五阶段 Uses 视觉参考 |
-| 10｜素材与参考 | `public/references/about-page-reference.png` | `doxcnbg0KwPQtorIymT7tBwWHph` | `Epg8boKIgoagswxnGFJcrXEinvf` | 第五阶段 About 视觉参考 |
-| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcn4br4mY7aRJNRfnkXe9zYvf` | `QI80bHUtCoveLKx24UDcKG9wnMg` | 项目卡片图 |
-| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcnqMWRj7tqghDNDIxbIhNdAf` | `TnBabgJyHoicxExSXomczp14nDq` | 媒体图 |
+| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcnxZKNqyNkxFB265Eaim2ZJe` | `ReYvbmYoxoMz6exxaj5cw8IfnLf` | 第一阶段已采纳视觉参考 |
+| 10｜素材与参考 | `public/references/uses-page-reference.png` | `doxcnvCZS6jeYHMoUb2JT3F6j9e` | `LYD9b5Sb2o2DRjxaBbYchJ3cnre` | 第五阶段 Uses 视觉参考 |
+| 10｜素材与参考 | `public/references/about-page-reference.png` | `doxcnw66y31XezjHS60DOqPdHFb` | `UDAxbLFL6o8hKax7hSYcz9ponOg` | 第五阶段 About 视觉参考 |
+| 10｜素材与参考 | `public/references/lab-page-reference.png` | `doxcnGH1gfeAbLcotHd7g5ff2hb` | `NSpsbVZoXo80LSxUFobc2jJxn1f` | 第五阶段 Lab 视觉参考 |
+| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcnNNzTJ4EiL0cI7NbSIoUNI3` | `MyoYbmUHWo1bpgxmAx9cu30Onnb` | 项目卡片图 |
+| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcneYJ6jIntPwkw4EbvCHFIue` | `AZ8YbvNC9o5gPMx4ARGc2B82n1e` | 媒体图 |
 
 重要：
 
