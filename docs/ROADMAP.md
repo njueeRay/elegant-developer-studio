@@ -148,7 +148,7 @@
 
 目标：扩展成完整个人操作系统。
 
-状态：进行中。Knowledge、Uses 和 About 首个切片已完成。
+状态：进行中。Knowledge、Uses、About 和 Lab 首个切片已完成。
 
 交付：
 
@@ -156,6 +156,7 @@
 - `/about` Studio Profile、原则、能力边界和经历入口。
 - `/uses` 工具与工作流。
 - `/knowledge` 公开知识库。
+- `/lab` 组件注册表和实验室。
 - 可选访问统计、文章 reactions、联系表单、后台内容管理。
 
 已完成切片：
@@ -163,6 +164,7 @@
 - `/knowledge` 公开知识索引。
 - `/uses` 工具书架和工作流页面。
 - `/about` Studio Profile。
+- `/lab` 组件注册表。
 - 知识内容模型：`Pattern`、`Snippet`、`Decision`、`Reference`。
 - Uses 内容模型：工具、分类、工作流、发布管线。
 - About 内容模型：个人介绍、原则、时间线、能力、工作约定。
@@ -176,9 +178,11 @@
 - Command Center 新增 `knowledge` 类型、真实结果和 `Knowledge context`。
 - Command Center 新增 `uses` 类型、真实工具和工作流结果、`Uses context`。
 - Command Center 新增 `about` 类型、真实原则、时间线和能力结果、`About context`。
+- Command Center 新增 `lab` 类型、真实组件和实验结果、`Lab context`。
 - sitemap 收录 `/knowledge`。
 - sitemap 收录 `/uses`。
 - sitemap 收录 `/about`。
+- sitemap 收录 `/lab`。
 
 组件：
 
@@ -194,13 +198,16 @@
 - `WorkingAgreement`
 - `KnowledgeCard`
 - `KnowledgeExplorer`
+- `LabExplorer`
+- `ComponentRegistry`
+- `ExperimentTimeline`
 - `ReactionBar`
 - `ContactPanel`
 - `ComponentPreview`
 
 下一片重点：
 
-- 复盘 `/about` 的 Studio Profile、原则交互、能力矩阵和 Contact band。
-- 判断 `/lab` 是否应作为下一切片，用来展示已沉淀组件和交互实验。
+- 复盘 `/lab` 的组件注册表、复制交互、质量门禁和实验时间线。
+- 判断是否需要进入 `ComponentPreview` 或 `ReactionBar` 切片。
 - 评估 `Knowledge` 是否需要详情页、反向链接和 local graph。
 - 暂不做后台 CMS，继续用本地数据模型保证结构清晰。

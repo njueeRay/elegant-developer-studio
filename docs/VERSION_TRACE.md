@@ -446,3 +446,40 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Feishu：`29｜第五阶段 Uses 复盘`、`30｜第五阶段 About 调研`。
 - Feishu fetch：导航页包含 29/30；About 调研页包含 `Copy intro`、`About is planned` 变更记录和 `scrollWidth 390`；素材页包含 `about-page-reference.png`。
 - GitHub：issue `#4` comment `4697902514`；issue `#5` comment `4697902594`。
+
+## Unreleased - 第五阶段 Lab 首个切片
+
+日期：2026-06-13
+Primary commit：待提交
+Deployment record commit：待提交
+GitHub trace commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待部署
+Inspect URL：待部署
+
+范围：
+
+- 新增 `/lab` 页面。
+- 新增 `src/data/lab.ts`。
+- 新增 `LabExplorer`。
+- 实现组件注册表、组件筛选、精选预览、复制 import、复制 registry、实验时间线和质量门禁。
+- Command Center 新增 `lab` 类型、真实组件和实验结果、`Lab context`。
+- 移除 `Lab is planned` 状态。
+- sitemap 增加 `/lab`。
+- 保存视觉参考：`public/references/lab-page-reference.png`。
+- 添加 `docs/PHASE5_ABOUT_REVIEW.md` 和 `docs/PHASE5_LAB_RESEARCH.md`。
+
+产品判断：
+
+- `/lab` 是 Portfolio OS 的组件注册表，不是 Storybook 克隆或空白组件画廊。
+- 程序员风格体现在源码路径、import 复制、registry 复制、质量门禁和命令入口。
+- `ComponentPreview` 暂不实现；等真实示例超过静态 metadata 表达能力后再做。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser QA：组件筛选、复制 import、Command Center 搜索、桌面和移动端无横向溢出均通过。
+- 已修复移动端 grid 被长内容撑宽的问题。
+- 已修复预览长组件名断裂问题。

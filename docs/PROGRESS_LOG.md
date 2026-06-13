@@ -608,3 +608,62 @@ GitHub：
 
 - Issue `#4` 追加 Phase 5 About 交付记录：comment `4697902514`。
 - Issue `#5` 追加 Phase 5 About 调研记录：comment `4697902594`。
+
+### 第五阶段：Lab 首个切片
+
+状态：本地实现完成，待部署、飞书同步和 GitHub 追踪。
+
+复盘：
+
+- `/about` 已补齐信任层，但组件和交互证据缺少统一公开索引。
+- 下一步不应继续堆页面，而应先把已沉淀组件做成可浏览、可复制、可追溯的 Lab。
+
+调研依据：
+
+- Storybook Showcase：组件应可被单独看见、验证和比较。
+- shadcn/ui Registry Directory：组件目录的价值在可发现、可复制、可分发。
+- Vercel Geist：开发者产品应保持清晰、克制和语义一致。
+- Atlassian Design Components：成熟设计系统会把组件、模式和基础设施组织成可浏览目录。
+
+完成：
+
+- 新增 `/lab` 页面。
+- 新增 `src/data/lab.ts` 组件注册表、实验时间线和质量门禁模型。
+- 新增 `LabExplorer`。
+- 实现状态条、组件分类筛选、精选组件预览、组件清单、复制 import、复制 registry、实验时间线和质量门禁。
+- Command Center 新增 `lab` 类型、真实组件结果、实验结果和 `Lab context`。
+- 移除 `Lab is planned` 状态。
+- sitemap 增加 `/lab`。
+- 保存视觉参考：`public/references/lab-page-reference.png`。
+- 添加 `docs/PHASE5_ABOUT_REVIEW.md` 和 `docs/PHASE5_LAB_RESEARCH.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser QA：`/lab` 页面身份、组件筛选、复制 import、Command Center 搜索和移动端布局通过。
+- 点击 `System` 后显示 `2 / 9 components`，结果为 `FilterBar` 和 `StatusPanel`。
+- 点击 `Copy import` 后显示 `Copied import`。
+- Command Center 搜索 `lab` 出现真实 Lab 结果，不再出现 `Lab is planned`。
+- 移动端 390 x 844：已修复组件列表被长内容撑宽的问题，最终 `scrollWidth 390`，`clientWidth 390`。
+- 桌面 1440 x 1200：无页面级横向溢出。
+- 视觉复核：已修复 `GlobalCommandMenu` 在预览标题中断成 `Me / nu` 的问题，预览标题改为可读名称 `Global Command Menu`，列表仍保留代码标识 `GlobalCommandMenu`。
+
+截图：
+
+- `/tmp/lab-desktop-1440.png`
+- `/tmp/lab-mobile-390.png`
+
+部署：
+
+- 待 Vercel production 部署。
+
+飞书：
+
+- 待创建 `31｜第五阶段 About 复盘`。
+- 待创建 `32｜第五阶段 Lab 调研`。
+
+GitHub：
+
+- 待追加 issue `#4` 交付记录。
+- 待追加 issue `#5` 调研记录。

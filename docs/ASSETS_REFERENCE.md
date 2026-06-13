@@ -18,6 +18,7 @@
 - `public/references/developer-atelier-reference.png`
 - `public/references/uses-page-reference.png`
 - `public/references/about-page-reference.png`
+- `public/references/lab-page-reference.png`
 
 ## 项目内素材
 
@@ -26,6 +27,7 @@
 | Developer Atelier 参考图 | `public/references/developer-atelier-reference.png` | Phase 1 已采纳视觉目标 |
 | Uses 页面参考图 | `public/references/uses-page-reference.png` | Phase 5 `/uses` 工具书架视觉参考 |
 | About 页面参考图 | `public/references/about-page-reference.png` | Phase 5 `/about` Studio Profile 视觉参考 |
+| Lab 页面参考图 | `public/references/lab-page-reference.png` | Phase 5 `/lab` 组件注册表视觉参考 |
 | Lumen 设计系统缩略图 | `public/assets/lumen-design-system.png` | 项目卡片图 |
 | 清晨工作室桌面图 | `public/assets/morning-studio-desk.png` | 媒体入口和最新内容配图 |
 
@@ -59,7 +61,7 @@ Phase 4：
 
 Phase 5：
 
-- Lab 实验预览图。
+- Lab 实验预览图已完成首版，后续补组件隔离预览图。
 - 组件预览截图。
 - About/timeline 媒体素材。
 - Uses 后续如需真实设备照片，应先判断是否比当前代码原生工作台意象更有信息价值。

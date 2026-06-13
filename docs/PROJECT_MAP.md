@@ -45,6 +45,7 @@
 - 第五阶段 Knowledge 首个切片：`/knowledge` 公开索引、知识类型筛选、可复制引用和 Command Center 知识结果。
 - 第五阶段 Uses 首个切片：`/uses` 工具书架、工具筛选、复制引用、工作流和发布管线。
 - 第五阶段 About 首个切片：`/about` Studio Profile、原则选择、时间线聚焦、能力矩阵、协作约定和 Contact band。
+- 第五阶段 Lab 首个切片：`/lab` 组件注册表、组件筛选、精选预览、复制 import、实验时间线和质量门禁。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -62,7 +63,7 @@
 | Knowledge | `/knowledge` | 5 | 已实现首版 | 长期知识、片段、学习记录 |
 | Photos | `/photos` | 3 | 已实现首版 | 照片档案和灯箱 |
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
-| Lab | `/lab` | 5 | 规划中 | 实验、原型、组件预览 |
+| Lab | `/lab` | 5 | 已实现首版 | 实验、原型、组件注册表和质量门禁 |
 | About | `/about` | 5 | 已实现首版 | 个人介绍、时间线、原则、能力与联系方式 |
 | Uses | `/uses` | 5 | 已实现首版 | 工具、技术栈、工作流 |
 
@@ -178,7 +179,7 @@
 - 标题和描述命中高亮
 - 当前路由上下文分组：`Writing context`、`Project context`、`Photo context`、`Music context`
 - 当前路由上下文分组新增：`Knowledge context`
-- `lab`、`uses`、`about` 规划页面提示
+- 历史规划页面提示；`knowledge`、`uses`、`about`、`lab` 已陆续升级为真实结果
 - 无结果恢复建议词
 - 首页 `StatusPanel`
 - 可复用 `FilterBar`
@@ -209,8 +210,10 @@
 
 - `/knowledge`
 - `/uses`
+- `/lab`
 - `src/data/knowledge.ts`
 - `src/data/uses.ts`
+- `src/data/lab.ts`
 - `KnowledgeExplorer`
 - `KnowledgeCard`
 - `UsesExplorer`
@@ -223,13 +226,19 @@
 - `SkillMatrix` 首版模式
 - `WorkingAgreement`
 - `ContactPanel` 深色 CTA 变体
+- `LabExplorer`
+- `ComponentRegistry` 首版模式
+- `ExperimentTimeline`
+- `QualityGateList`
 - 知识类型筛选：`Pattern`、`Snippet`、`Decision`、`Reference`
 - 可复制知识引用
 - Command Center 真实知识结果和 `Knowledge context`
 - Uses 工具分类筛选、复制引用和 `Copy all`
 - Command Center 真实 Uses 结果和 `Uses context`
+- Command Center 真实 Lab 结果和 `Lab context`
 - sitemap 收录 `/knowledge`
 - sitemap 收录 `/uses`
+- sitemap 收录 `/lab`
 
 主要风险：
 
@@ -348,6 +357,7 @@ src/
 - Knowledge 筛选：类型筛选、结果数量、关联链接、复制引用反馈。
 - Uses 筛选：工具分类筛选、复制引用、工作流展示和 Command Center 入口。
 - About 交互：原则选择、时间线聚焦、复制简介、Command Center 入口和 About 结果搜索。
+- Lab 交互：组件分类筛选、组件预览选择、复制 import、复制 registry、Command Center 真实 Lab 结果。
 
 研究轨道：
 
@@ -399,8 +409,8 @@ src/
 
 下一步是第五阶段 Portfolio OS 继续推进：
 
-1. 复盘 `/about` 的 Studio Profile、原则选择和能力矩阵。
-2. 下一切片优先考虑 `/lab`，把已沉淀组件变成可浏览的组件实验室。
+1. 复盘 `/lab` 的组件注册表、复制交互和质量门禁。
+2. 判断 `ComponentPreview` 是否需要进入下一切片。
 3. 判断 `Knowledge` 是否需要详情页或 URL query 筛选。
 4. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
 5. 第三阶段并行决定是否引入真实音频文件。

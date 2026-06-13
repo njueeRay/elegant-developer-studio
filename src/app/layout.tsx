@@ -8,6 +8,7 @@ import {
   aboutTimeline,
 } from "@/data/about";
 import { knowledgeEntries } from "@/data/knowledge";
+import { labComponents, labExperiments } from "@/data/lab";
 import { currentMix, photos } from "@/data/media";
 import { useTools, useWorkflows } from "@/data/uses";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
@@ -109,6 +110,15 @@ function getCommandItems(): CommandItem[] {
       keywords: ["knowledge", "notes", "snippets", "references", "decisions"],
     },
     {
+      id: "action-lab",
+      kind: "lab",
+      title: "Open component lab",
+      description: "Browse reusable patterns, interaction proofs, and quality gates.",
+      href: "/lab",
+      meta: `${labComponents.length} components`,
+      keywords: ["lab", "components", "registry", "patterns", "quality"],
+    },
+    {
       id: "action-photos",
       kind: "photo",
       title: "Open photos",
@@ -187,6 +197,32 @@ function getCommandItems(): CommandItem[] {
     keywords: ["uses", "workflow", "rhythm", workflow.time],
   }));
 
+  const labItems = labComponents.map<CommandItem>((component) => ({
+    id: `lab-${component.slug}`,
+    kind: "lab",
+    title: component.name,
+    description: component.description,
+    href: `/lab#${component.slug}`,
+    meta: component.status,
+    keywords: [
+      "lab",
+      component.category,
+      component.component,
+      component.source,
+      ...component.reusableFor,
+    ],
+  }));
+
+  const labExperimentItems = labExperiments.map<CommandItem>((experiment) => ({
+    id: `lab-experiment-${experiment.step}`,
+    kind: "lab",
+    title: experiment.title,
+    description: experiment.description,
+    href: "/lab#lab-experiment-title",
+    meta: experiment.status,
+    keywords: ["lab", "experiment", experiment.status],
+  }));
+
   const aboutItems: CommandItem[] = [
     ...aboutPrinciples.map<CommandItem>((principle) => ({
       id: `about-principle-${principle.slug}`,
@@ -236,6 +272,8 @@ function getCommandItems(): CommandItem[] {
     ...knowledgeItems,
     ...usesItems,
     ...workflowItems,
+    ...labItems,
+    ...labExperimentItems,
     ...aboutItems,
     ...photoItems,
   ];

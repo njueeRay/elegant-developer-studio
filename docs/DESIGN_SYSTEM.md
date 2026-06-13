@@ -89,6 +89,10 @@ Phase 5 已实现首版：
 - `SkillMatrix` 首版模式
 - `WorkingAgreement`
 - `ContactPanel` 深色 CTA 变体
+- `LabExplorer`
+- `ComponentRegistry` 首版模式
+- `ExperimentTimeline`
+- `QualityGateList`
 
 后续保留：
 
@@ -129,7 +133,7 @@ Phase 5 已实现首版：
 - 底部键盘提示保持低调，不能抢占结果列表注意力。
 - 默认分组必须理解当前路由：文章页优先写作，项目页优先项目，照片页优先照片，音乐页优先音乐。
 - 最近访问不能吞掉当前页面上下文分组。
-- 搜索规划中页面时必须解释路线图状态，例如 `Lab is planned`。
+- 搜索规划中页面时必须解释路线图状态。`Lab` 已经是正式路由，不再显示 planned 状态。
 - `Knowledge` 已经是正式路由，不再显示 planned 状态。
 - `Uses` 已经是正式路由，不再显示 planned 状态。
 - 无结果状态必须给出可点击建议词，不能只显示失败文本。
@@ -157,6 +161,11 @@ Phase 5 已实现首版：
 - `/about` 的 Command Center 结果必须来自真实原则、时间线和能力数据，不再显示 planned 状态。
 - `SkillMatrix` 只能表达能力边界和证据，不做游戏化评分或夸张数值。
 - Contact band 可以使用深色 CTA，但不能与全站温暖纸感割裂。
+- `Lab` 首版是组件注册表，不是 Storybook 克隆或空白 gallery。
+- `LabExplorer` 必须显示组件状态、来源文件、使用路由、质量证据和可复制 import。
+- `Lab` 组件列表中的代码标识可保留 PascalCase；预览标题可用可读名称避免长单词断裂。
+- `Lab` 移动端遇到长组件名时必须断词或切换为块级布局，页面级 `scrollWidth` 不得超过 `clientWidth`。
+- `ComponentPreview` 只有在真实示例超过静态 metadata 表达能力后再实现。
 
 ## 素材规则
 

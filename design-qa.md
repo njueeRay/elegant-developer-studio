@@ -462,3 +462,46 @@
 - `/tmp/about-desktop-1440.png`
 - `/tmp/about-command.png`
 - `/tmp/about-mobile-prod-fixed.png`
+
+## 第五阶段 Lab 首个切片 QA
+
+结果：通过。
+
+方法：
+
+- 本地开发 URL：`http://localhost:3000/lab`
+- 浏览器验证方式：使用 in-app Browser。
+- 检查视口：
+  - 桌面：1440 x 1200。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 页面身份：通过。
+   - `/lab` 标题为 `Lab - Ray Studio`。
+   - 页面包含状态条、组件筛选、精选预览、组件清单、实验时间线和质量门禁。
+
+2. 组件筛选：通过。
+   - 点击 `System` 后显示 `2 / 9 components`。
+   - 结果为 `FilterBar` 和 `StatusPanel`。
+   - 预览自动切换到当前筛选结果内的组件。
+
+3. 复制交互：通过。
+   - 点击 `Copy import` 后按钮显示 `Copied import`。
+   - `Copy registry` 保留为全量组件引用复制入口。
+
+4. Command Center：通过。
+   - 点击 `Open Command Center` 后打开全站命令面板。
+   - 搜索 `lab` 出现 `Open component lab`、`GlobalCommandMenu` 等真实结果。
+   - 不再出现 `Lab is planned`。
+
+5. 布局 QA：通过。
+   - 桌面 1440px：无页面级横向溢出。
+   - 移动端 390px：最终 `scrollWidth 390`，`clientWidth 390`。
+   - 已修复：移动端 `lab-layout` 的 grid track 被组件清单长内容撑到 579px。
+   - 已修复：`GlobalCommandMenu` 预览标题在桌面断成 `Me / nu`，改为预览使用可读名称 `Global Command Menu`，列表保留代码标识。
+
+截图：
+
+- `/tmp/lab-desktop-1440.png`
+- `/tmp/lab-mobile-390.png`

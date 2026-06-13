@@ -7,6 +7,7 @@ import {
   Camera,
   Code2,
   FileText,
+  FlaskConical,
   LibraryBig,
   Mail,
   Music2,
@@ -30,6 +31,7 @@ export type CommandKind =
   | "post"
   | "project"
   | "knowledge"
+  | "lab"
   | "uses"
   | "about"
   | "photo"
@@ -51,6 +53,7 @@ const iconByKind: Record<CommandKind, ComponentType<{ size?: number }>> = {
   post: FileText,
   project: Code2,
   knowledge: LibraryBig,
+  lab: FlaskConical,
   uses: Wrench,
   about: UserRound,
   photo: Camera,
@@ -63,6 +66,7 @@ const labelByKind: Record<CommandKind, string> = {
   post: "Writing",
   project: "Projects",
   knowledge: "Knowledge",
+  lab: "Lab",
   uses: "Uses",
   about: "About",
   photo: "Photos",
@@ -95,16 +99,9 @@ type PlannedSuggestion = {
   query: string;
 };
 
-const plannedSuggestions: PlannedSuggestion[] = [
-  {
-    id: "planned-lab",
-    title: "Lab is planned",
-    description: "The component lab will arrive after the interaction layer is stable.",
-    query: "projects",
-  },
-];
+const plannedSuggestions: PlannedSuggestion[] = [];
 
-const fallbackSuggestions = ["writing", "projects", "photos", "music"];
+const fallbackSuggestions = ["writing", "projects", "lab", "photos", "music"];
 
 function normalize(value: string) {
   return value.toLowerCase().trim();
@@ -129,6 +126,10 @@ function getContextKinds(pathname: string): CommandKind[] {
 
   if (pathname.startsWith("/uses")) {
     return ["uses", "action", "knowledge", "project"];
+  }
+
+  if (pathname.startsWith("/lab")) {
+    return ["lab", "action", "knowledge", "project"];
   }
 
   if (pathname.startsWith("/about")) {
@@ -161,6 +162,10 @@ function getContextLabel(pathname: string) {
 
   if (pathname.startsWith("/uses")) {
     return "Uses context";
+  }
+
+  if (pathname.startsWith("/lab")) {
+    return "Lab context";
   }
 
   if (pathname.startsWith("/about")) {
@@ -408,6 +413,12 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
         items: sectionByKind("project", 2),
       },
       {
+        id: "lab",
+        kind: "lab",
+        label: "Lab",
+        items: sectionByKind("lab", 3),
+      },
+      {
         id: "uses",
         kind: "uses",
         label: "Uses",
@@ -562,7 +573,7 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
           <input
             autoFocus
             value={query}
-            placeholder="Search writing, work, knowledge, uses, about..."
+            placeholder="Search writing, work, knowledge, lab, uses, about..."
             role="searchbox"
             aria-controls="global-command-results"
             aria-activedescendant={activeItem ? getResultId(activeItem.id) : undefined}
