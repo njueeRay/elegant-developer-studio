@@ -403,3 +403,44 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Feishu：`27｜第五阶段 Knowledge 复盘`、`28｜第五阶段 Uses 调研`。
 - Feishu fetch：导航页包含 27/28；Uses 调研页包含 `12 / 12 tools`、`Copy Raycast reference`、`Uses is planned` 变更记录。
 - GitHub：issue `#4` comment `4697820505`；issue `#5` comment `4697820783`。
+
+## Unreleased - 第五阶段 About 首个切片
+
+日期：2026-06-13
+Primary commit：待提交
+Deployment record commit：待提交
+GitHub trace commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待部署
+Inspect URL：待部署
+
+范围：
+
+- 新增 `/about` 页面。
+- 新增 `src/data/about.ts`。
+- 新增 `AboutProfile`。
+- 实现 Studio Profile、状态条、时间线聚焦、原则选择、能力矩阵、协作约定和 Contact band。
+- 添加 `Copy intro`，复制稳定 About 引用。
+- Command Center 新增 `about` 类型、真实原则/时间线/能力结果和 `About context`。
+- 移除 `About is planned` 状态。
+- sitemap 增加 `/about`。
+- 保存视觉参考：`public/references/about-page-reference.png`。
+- 添加 `docs/PHASE5_USES_REVIEW.md` 和 `docs/PHASE5_ABOUT_RESEARCH.md`。
+
+产品判断：
+
+- `/about` 应该先表达个人判断系统和合作边界，而不是做高密度简历。
+- 程序员风格用原则选择、复制简介、时间线聚焦和 Command Center 结果表达，不用假终端或宠物。
+- 下一切片优先考虑 `/lab`，把已沉淀组件变成可浏览实验室。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser QA：`/about` 页面身份、原则选择、复制简介、Command Center 搜索和移动端布局通过。
+- 生产构建移动端 390 x 844：`scrollWidth 390`，`clientWidth 390`。
+- Production fetch：待部署后补充。
+- Production sitemap：待部署后补充。
+- Feishu：待同步。
+- GitHub：待评论。

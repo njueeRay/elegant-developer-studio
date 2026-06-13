@@ -84,6 +84,11 @@ Phase 5 已实现首版：
 - `ToolCard`
 - `WorkflowRail`
 - `PublishingPipeline`
+- `AboutProfile`
+- `Timeline` 首版模式
+- `SkillMatrix` 首版模式
+- `WorkingAgreement`
+- `ContactPanel` 深色 CTA 变体
 
 后续保留：
 
@@ -124,7 +129,7 @@ Phase 5 已实现首版：
 - 底部键盘提示保持低调，不能抢占结果列表注意力。
 - 默认分组必须理解当前路由：文章页优先写作，项目页优先项目，照片页优先照片，音乐页优先音乐。
 - 最近访问不能吞掉当前页面上下文分组。
-- 搜索规划中页面时必须解释路线图状态，例如 `About is planned`。
+- 搜索规划中页面时必须解释路线图状态，例如 `Lab is planned`。
 - `Knowledge` 已经是正式路由，不再显示 planned 状态。
 - `Uses` 已经是正式路由，不再显示 planned 状态。
 - 无结果状态必须给出可点击建议词，不能只显示失败文本。
@@ -147,6 +152,11 @@ Phase 5 已实现首版：
 - `Uses` 工具卡必须支持稳定引用，服务 GitHub、飞书和后续文档评论。
 - `UsesShelf` 可以有工作台意象，但不能变成不可维护的装饰图。
 - `/uses` 的命令入口必须触发全站 Command Center，而不是维护局部命令面板。
+- `About` 不是传统简历页，应优先表达原则、能力边界、时间线和协作方式。
+- `AboutProfile` 的交互必须服务可信度：原则选择、时间线聚焦和复制简介都要能解释页面内容。
+- `/about` 的 Command Center 结果必须来自真实原则、时间线和能力数据，不再显示 planned 状态。
+- `SkillMatrix` 只能表达能力边界和证据，不做游戏化评分或夸张数值。
+- Contact band 可以使用深色 CTA，但不能与全站温暖纸感割裂。
 
 ## 素材规则
 

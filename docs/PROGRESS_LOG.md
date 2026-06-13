@@ -543,3 +543,48 @@ GitHub：
 
 - Issue `#4` 追加 Phase 5 Uses 交付记录：comment `4697820505`。
 - Issue `#5` 追加 Phase 5 Uses 调研记录：comment `4697820783`。
+
+### 第五阶段：About 首个切片
+
+状态：已完成本地实现，待部署、飞书同步和 GitHub 追踪评论。
+
+复盘：
+
+- `/uses` 已经说明工具和工作流，但还缺“人如何判断、适合怎样合作”的入口。
+- 继续做 `/lab` 会需要更多组件库存；先做 `/about` 能补齐个人站的信任层。
+- About 不应做传统简历页，而应做 Studio Profile。
+
+调研依据：
+
+- NN/g：About 内容应清晰、真实、透明，帮助建立信任。
+- NN/g：顶层 About 应先讲清故事，不应只堆组织或个人信息。
+- Lee Robinson：个人站可以把职业身份、写作、生活兴趣和最近状态放在同一语境中。
+- Josh Comeau：优秀技术个人站可以把设计、MDX、互动组件和实现细节结合。
+- Apple HIG：布局应适配不同上下文并保持一致性。
+
+完成：
+
+- 新增 `/about` 页面。
+- 新增 `src/data/about.ts`。
+- 新增 `AboutProfile`。
+- 实现 Studio Profile、状态条、命令入口、复制简介。
+- 实现时间线聚焦、原则选择、能力矩阵、工作约定和 Contact band。
+- Command Center 新增 `about` 类型、真实结果和 `About context`。
+- 移除 `About is planned` 状态。
+- sitemap 增加 `/about`。
+- 保存视觉参考：`public/references/about-page-reference.png`。
+- 添加 `docs/PHASE5_USES_REVIEW.md` 和 `docs/PHASE5_ABOUT_RESEARCH.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser QA：`/about` 页面身份、原则选择、复制简介、Command Center 搜索通过。
+- 生产构建移动端 390 x 844：无横向溢出。
+- 桌面 1440 x 1200：首屏成立，低到中等信息密度。
+
+截图：
+
+- `/tmp/about-desktop-1440.png`
+- `/tmp/about-command.png`
+- `/tmp/about-mobile-prod-fixed.png`

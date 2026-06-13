@@ -148,12 +148,12 @@
 
 目标：扩展成完整个人操作系统。
 
-状态：进行中。Knowledge 首个切片和 Uses 首个切片已完成。
+状态：进行中。Knowledge、Uses 和 About 首个切片已完成。
 
 交付：
 
 - `/lab` 组件实验室。
-- `/about` 简历和经历页。
+- `/about` Studio Profile、原则、能力边界和经历入口。
 - `/uses` 工具与工作流。
 - `/knowledge` 公开知识库。
 - 可选访问统计、文章 reactions、联系表单、后台内容管理。
@@ -162,18 +162,23 @@
 
 - `/knowledge` 公开知识索引。
 - `/uses` 工具书架和工作流页面。
+- `/about` Studio Profile。
 - 知识内容模型：`Pattern`、`Snippet`、`Decision`、`Reference`。
 - Uses 内容模型：工具、分类、工作流、发布管线。
+- About 内容模型：个人介绍、原则、时间线、能力、工作约定。
 - `KnowledgeExplorer` 和 `KnowledgeCard`。
 - `UsesExplorer`、`UsesShelf`、`ToolCard`、`WorkflowRail`、`PublishingPipeline`。
+- `AboutProfile`、原则选择、时间线聚焦、能力矩阵、协作约定、Contact band。
 - `FilterBar` 复用到知识类型筛选。
 - `FilterBar` 复用到工具分类筛选。
 - 每条知识支持稳定锚点和 `Copy ref`。
 - 每个工具支持 `Copy ref`，工具列表支持 `Copy all`。
 - Command Center 新增 `knowledge` 类型、真实结果和 `Knowledge context`。
 - Command Center 新增 `uses` 类型、真实工具和工作流结果、`Uses context`。
+- Command Center 新增 `about` 类型、真实原则、时间线和能力结果、`About context`。
 - sitemap 收录 `/knowledge`。
 - sitemap 收录 `/uses`。
+- sitemap 收录 `/about`。
 
 组件：
 
@@ -183,6 +188,10 @@
 - `ToolCard`
 - `WorkflowRail`
 - `PublishingPipeline`
+- `AboutProfile`
+- `Timeline`
+- `SkillMatrix`
+- `WorkingAgreement`
 - `KnowledgeCard`
 - `KnowledgeExplorer`
 - `ReactionBar`
@@ -191,7 +200,7 @@
 
 下一片重点：
 
-- 复盘 `/uses` 工具书架、复制引用和工作流模型。
-- 判断 `/about` 是否应作为下一切片，用来补上人的经历、原则和联系方式。
+- 复盘 `/about` 的 Studio Profile、原则交互、能力矩阵和 Contact band。
+- 判断 `/lab` 是否应作为下一切片，用来展示已沉淀组件和交互实验。
 - 评估 `Knowledge` 是否需要详情页、反向链接和 local graph。
 - 暂不做后台 CMS，继续用本地数据模型保证结构清晰。

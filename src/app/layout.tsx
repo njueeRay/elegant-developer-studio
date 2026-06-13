@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GlobalCommandMenu, type CommandItem } from "@/components/global-command-menu";
+import {
+  aboutCapabilities,
+  aboutPrinciples,
+  aboutProfile,
+  aboutTimeline,
+} from "@/data/about";
 import { knowledgeEntries } from "@/data/knowledge";
 import { currentMix, photos } from "@/data/media";
 import { useTools, useWorkflows } from "@/data/uses";
@@ -74,6 +80,15 @@ function getCommandItems(): CommandItem[] {
       href: "/projects",
       meta: "Portfolio",
       keywords: ["projects", "work", "case study"],
+    },
+    {
+      id: "action-about",
+      kind: "about",
+      title: "Meet Ray",
+      description: "Open the studio profile, principles, timeline, and contact routes.",
+      href: "/about",
+      meta: aboutProfile.role,
+      keywords: ["about", "profile", "principles", "timeline", "capabilities"],
     },
     {
       id: "action-uses",
@@ -172,6 +187,36 @@ function getCommandItems(): CommandItem[] {
     keywords: ["uses", "workflow", "rhythm", workflow.time],
   }));
 
+  const aboutItems: CommandItem[] = [
+    ...aboutPrinciples.map<CommandItem>((principle) => ({
+      id: `about-principle-${principle.slug}`,
+      kind: "about",
+      title: principle.title,
+      description: principle.summary,
+      href: "/about#principles",
+      meta: "Principle",
+      keywords: ["about", "principle", principle.accent],
+    })),
+    ...aboutTimeline.map<CommandItem>((item) => ({
+      id: `about-timeline-${item.year}`,
+      kind: "about",
+      title: item.title,
+      description: item.detail,
+      href: "/about#timeline",
+      meta: item.year,
+      keywords: ["about", "timeline", item.role],
+    })),
+    ...aboutCapabilities.map<CommandItem>((capability) => ({
+      id: `about-capability-${capability.name}`,
+      kind: "about",
+      title: capability.name,
+      description: capability.proof,
+      href: "/about#capabilities",
+      meta: capability.label,
+      keywords: ["about", "capability", capability.label],
+    })),
+  ];
+
   const photoItems = photos
     .filter((photo) => photo.featured)
     .map<CommandItem>((photo) => ({
@@ -191,6 +236,7 @@ function getCommandItems(): CommandItem[] {
     ...knowledgeItems,
     ...usesItems,
     ...workflowItems,
+    ...aboutItems,
     ...photoItems,
   ];
 }

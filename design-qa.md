@@ -421,3 +421,44 @@
 备注：
 
 - Browser 运行时出现一条 ChatGPT/Statsig 网络超时噪声；页面应用控制台没有相关错误。
+
+## 第五阶段 About 首个切片 QA
+
+结果：通过。
+
+方法：
+
+- 本地开发 URL：`http://localhost:3000/about`
+- 本地生产 URL：`http://localhost:3001/about`
+- 浏览器验证方式：使用 in-app Browser。
+- 检查视口：
+  - 桌面：1440 x 1200。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 页面身份：通过。
+   - `/about` 标题为 `About - Ray Studio`。
+   - 页面包含 Studio Profile、时间线、原则、能力矩阵、协作约定和 Contact band。
+
+2. 原则选择：通过。
+   - 点击 `Code as product material` 后，详情区从 `Clarity before theatre` 切换为 `Code as product material`。
+
+3. 复制简介：通过。
+   - 点击 `Copy intro` 后按钮显示 `Copied`。
+
+4. Command Center：通过。
+   - 点击 `Open Command Center` 后打开全站命令面板。
+   - 搜索 `about` 出现真实 About 结果。
+   - 不再出现 `About is planned`。
+
+5. 布局 QA：通过。
+   - 桌面 1440px：`scrollWidth 1440`，`clientWidth 1440`。
+   - 生产构建移动端 390px：`scrollWidth 390`，`clientWidth 390`。
+   - 已修复：移动端 Contact 快捷路由卡片因网格列分配导致页面级横向溢出。
+
+截图：
+
+- `/tmp/about-desktop-1440.png`
+- `/tmp/about-command.png`
+- `/tmp/about-mobile-prod-fixed.png`

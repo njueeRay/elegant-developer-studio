@@ -12,6 +12,7 @@ import {
   Music2,
   Search,
   Sparkles,
+  UserRound,
   Wrench,
 } from "lucide-react";
 import {
@@ -30,6 +31,7 @@ export type CommandKind =
   | "project"
   | "knowledge"
   | "uses"
+  | "about"
   | "photo"
   | "music"
   | "contact";
@@ -50,6 +52,7 @@ const iconByKind: Record<CommandKind, ComponentType<{ size?: number }>> = {
   project: Code2,
   knowledge: LibraryBig,
   uses: Wrench,
+  about: UserRound,
   photo: Camera,
   music: Music2,
   contact: Mail,
@@ -61,6 +64,7 @@ const labelByKind: Record<CommandKind, string> = {
   project: "Projects",
   knowledge: "Knowledge",
   uses: "Uses",
+  about: "About",
   photo: "Photos",
   music: "Music",
   contact: "Contact",
@@ -98,12 +102,6 @@ const plannedSuggestions: PlannedSuggestion[] = [
     description: "The component lab will arrive after the interaction layer is stable.",
     query: "projects",
   },
-  {
-    id: "planned-about",
-    title: "About is planned",
-    description: "The resume and experience page is reserved for Phase 5.",
-    query: "contact",
-  },
 ];
 
 const fallbackSuggestions = ["writing", "projects", "photos", "music"];
@@ -133,6 +131,10 @@ function getContextKinds(pathname: string): CommandKind[] {
     return ["uses", "action", "knowledge", "project"];
   }
 
+  if (pathname.startsWith("/about")) {
+    return ["about", "action", "post", "project"];
+  }
+
   if (pathname.startsWith("/photos")) {
     return ["photo", "action"];
   }
@@ -159,6 +161,10 @@ function getContextLabel(pathname: string) {
 
   if (pathname.startsWith("/uses")) {
     return "Uses context";
+  }
+
+  if (pathname.startsWith("/about")) {
+    return "About context";
   }
 
   if (pathname.startsWith("/photos")) {
@@ -408,6 +414,12 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
         items: sectionByKind("uses", 3),
       },
       {
+        id: "about",
+        kind: "about",
+        label: "About",
+        items: sectionByKind("about", 3),
+      },
+      {
         id: "photos",
         kind: "photo",
         label: "Photos",
@@ -550,7 +562,7 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
           <input
             autoFocus
             value={query}
-            placeholder="Search writing, work, knowledge, uses..."
+            placeholder="Search writing, work, knowledge, uses, about..."
             role="searchbox"
             aria-controls="global-command-results"
             aria-activedescendant={activeItem ? getResultId(activeItem.id) : undefined}
