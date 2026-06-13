@@ -521,3 +521,11 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - Vercel inspect：deployment 状态 `READY`。
 - Production alias 已指向本阶段部署。
+
+外部同步：
+
+- GitHub issue `#4` comment `4699034933`。
+- GitHub issue `#5` comment `4699035053`。
+- 飞书：[33｜全站产品与交互审计](https://scnlb1lk96sb.feishu.cn/wiki/LoNqwp5igiui2skcSThc2iPHn3g)。
+- 飞书：[34｜第六阶段可达性调研](https://scnlb1lk96sb.feishu.cn/wiki/CFtQwXanFizQVBkfTT1czPh4nEg)。
+- 飞书：[35｜第六阶段可达性复盘](https://scnlb1lk96sb.feishu.cn/wiki/G47Bwwl2FiuJsYkQtZKcEpgtn4c)。

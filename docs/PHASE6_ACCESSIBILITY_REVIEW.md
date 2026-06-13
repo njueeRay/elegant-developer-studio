@@ -67,6 +67,15 @@
 - Deployment id：`dpl_A9hwKUEZNYsbL1grYaWxuj4v99EX`
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/A9hwKUEZNYsbL1grYaWxuj4v99EX`
 
+## 外部同步
+
+- GitHub issue `#4` comment `4699034933`。
+- GitHub issue `#5` comment `4699035053`。
+- 飞书：[33｜全站产品与交互审计](https://scnlb1lk96sb.feishu.cn/wiki/LoNqwp5igiui2skcSThc2iPHn3g)。
+- 飞书：[34｜第六阶段可达性调研](https://scnlb1lk96sb.feishu.cn/wiki/CFtQwXanFizQVBkfTT1czPh4nEg)。
+- 飞书：[35｜第六阶段可达性复盘](https://scnlb1lk96sb.feishu.cn/wiki/G47Bwwl2FiuJsYkQtZKcEpgtn4c)。
+- 飞书验证：导航页、进度页和复盘页均包含第六阶段关键记录。
+
 ## 下一步建议
 
 1. 部署本阶段修复，确认生产环境和本地 e2e 一致。

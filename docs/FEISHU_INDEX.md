@@ -40,6 +40,9 @@
 | About 调研 | [30｜第五阶段 About 调研](https://scnlb1lk96sb.feishu.cn/wiki/TAWHwObsji30i1kaJmfc3Wylnne) | About Studio Profile 调研、实现范围和验收 |
 | About 复盘 | [31｜第五阶段 About 复盘](https://scnlb1lk96sb.feishu.cn/wiki/EBUawLknuizjB2k73ORcGAhlnBg) | About 首个切片复盘和 Lab 进入标准 |
 | Lab 调研 | [32｜第五阶段 Lab 调研](https://scnlb1lk96sb.feishu.cn/wiki/VcJLwI0mLinio6kuJ1xchFt9nEd) | Lab 组件注册表调研、实现范围和验收 |
+| 全站审计 | [33｜全站产品与交互审计](https://scnlb1lk96sb.feishu.cn/wiki/LoNqwp5igiui2skcSThc2iPHn3g) | 全站页面、交互、链接和质量问题审计 |
+| 可达性调研 | [34｜第六阶段可达性调研](https://scnlb1lk96sb.feishu.cn/wiki/CFtQwXanFizQVBkfTT1czPh4nEg) | 第六阶段可达性、链接目的、剪贴板和 e2e 调研 |
+| 可达性复盘 | [35｜第六阶段可达性复盘](https://scnlb1lk96sb.feishu.cn/wiki/G47Bwwl2FiuJsYkQtZKcEpgtn4c) | 第六阶段完成复盘、验证和部署记录 |
 
 ## 当前项目状态
 
