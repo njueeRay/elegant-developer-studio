@@ -725,3 +725,47 @@ GitHub：
 - 飞书：[33｜全站产品与交互审计](https://scnlb1lk96sb.feishu.cn/wiki/LoNqwp5igiui2skcSThc2iPHn3g)。
 - 飞书：[34｜第六阶段可达性调研](https://scnlb1lk96sb.feishu.cn/wiki/CFtQwXanFizQVBkfTT1czPh4nEg)。
 - 飞书：[35｜第六阶段可达性复盘](https://scnlb1lk96sb.feishu.cn/wiki/G47Bwwl2FiuJsYkQtZKcEpgtn4c)。
+
+### 第七阶段：Contact 与公开信任层
+
+状态：本地完成，待部署和外部同步。
+
+复盘：
+
+- 第六阶段已修复假链接和占位邮箱，但 Contact 仍借用 `/about#contact`。
+- 本阶段将 Contact 升级为独立公开路由，避免用户只能通过 About 锚点或临时 Issues 链接联系。
+
+调研依据：
+
+- NN/g About 与信任信息研究。
+- GOV.UK 联系服务模式。
+- W3C WCAG 2.2 与 labels/instructions。
+- Next.js sitemap file convention。
+
+完成：
+
+- 新增 `/contact` 页面。
+- 新增 `ContactHub`。
+- 新增 `src/data/contact.ts`。
+- 首页 Header Contact、首页 Contact panel、首页社交入口改为 `/contact`。
+- About contact band 改为 `/contact`。
+- Knowledge 相关链接改为 `/contact`。
+- Command Center `action-contact` 改为 `/contact`。
+- sitemap 增加 `/contact`。
+- E2E 增加 `/contact` 路由、入口、命令面板、真实外链和复制反馈测试。
+- 新增 `docs/PHASE7_CONTACT_RESEARCH.md` 和 `docs/PHASE7_CONTACT_REVIEW.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：58 passed。
+- Browser QA：`/contact` URL、title、唯一 H1、GitHub Issues 链接、复制反馈、控制台健康通过。
+- 移动端 `390 x 844`：`scrollWidth 390`，无横向溢出。
+- 截图：`/tmp/contact-desktop-1440.png`、`/tmp/contact-mobile-390.png`。
+
+剩余：
+
+- 尚未部署到 Vercel production。
+- 尚未同步 GitHub issue 和飞书。
+- 后续可新增 GitHub issue template 与私密联系渠道。

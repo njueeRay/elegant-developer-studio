@@ -47,8 +47,8 @@ export const aboutProfile = {
   role: "Design engineer",
   location: "Nanjing / Remote",
   availability: "Available for focused product, interface, and system work.",
-  contactLabel: "Open a GitHub issue",
-  contactHref: "https://github.com/njueeRay/elegant-developer-studio/issues",
+  contactLabel: "Open contact routes",
+  contactHref: "/contact",
   oneLine: aboutIntro,
 };
 

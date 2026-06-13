@@ -140,10 +140,10 @@ function getCommandItems(): CommandItem[] {
       id: "action-contact",
       kind: "contact",
       title: "Open contact routes",
-      description: "Open the public contact section and project discussion route.",
-      href: "/about#contact",
-      meta: "About",
-      keywords: ["contact", "github", "issues", "about"],
+      description: "Open the public contact routes, brief template, and project discussion path.",
+      href: "/contact",
+      meta: "Routes",
+      keywords: ["contact", "github", "issues", "about", "route", "brief"],
     },
   ];
 

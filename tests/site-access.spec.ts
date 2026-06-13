@@ -14,6 +14,7 @@ const routes = [
   "/knowledge",
   "/uses",
   "/about",
+  "/contact",
   "/lab",
   "/rss.xml",
   "/sitemap.xml",
@@ -63,6 +64,37 @@ test.describe("core interaction contracts", () => {
     await page.getByTestId("command-result-action-lab").click();
 
     await expect(page).toHaveURL(/\/lab$/);
+  });
+
+  test("contact entry points resolve to the contact route", async ({ page }) => {
+    await page.goto("/");
+
+    await page.getByRole("link", { name: "Contact" }).first().click();
+    await expect(page).toHaveURL(/\/contact$/);
+    await expect(page.getByRole("heading", { name: "Contact", exact: true })).toBeVisible();
+
+    await page.getByTestId("contact-command-trigger").click();
+    await page.getByTestId("global-command-search").fill("contact");
+    await page.getByTestId("command-result-action-contact").click();
+
+    await expect(page).toHaveURL(/\/contact$/);
+  });
+
+  test("contact route exposes real discussion links and copy feedback", async ({ page }) => {
+    await page.goto("/contact");
+
+    await expect(page.getByRole("link", { name: /Open a GitHub issue/ })).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/issues",
+    );
+    await expect(page.getByRole("link", { name: /Inspect the repository/ })).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio",
+    );
+
+    await page.getByTestId("contact-copy-brief").click();
+
+    await expect(page.getByTestId("contact-copy-brief")).toContainText("Copied");
   });
 
   test("filters update visible content", async ({ page }) => {

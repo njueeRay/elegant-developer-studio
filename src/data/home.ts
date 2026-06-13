@@ -36,7 +36,7 @@ export const socialLinks = [
     label: "Issues",
     href: "https://github.com/njueeRay/elegant-developer-studio/issues",
   },
-  { label: "About", href: "/about#contact" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const workbenchItems: WorkbenchItem[] = [

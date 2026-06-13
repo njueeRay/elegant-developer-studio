@@ -60,7 +60,7 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     source: "Studio workflow",
     related: [
       { label: "Project map", href: "/projects/studio-knowledge-base" },
-      { label: "Contact", href: "/about#contact" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {

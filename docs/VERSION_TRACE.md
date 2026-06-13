@@ -529,3 +529,35 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - 飞书：[33｜全站产品与交互审计](https://scnlb1lk96sb.feishu.cn/wiki/LoNqwp5igiui2skcSThc2iPHn3g)。
 - 飞书：[34｜第六阶段可达性调研](https://scnlb1lk96sb.feishu.cn/wiki/CFtQwXanFizQVBkfTT1czPh4nEg)。
 - 飞书：[35｜第六阶段可达性复盘](https://scnlb1lk96sb.feishu.cn/wiki/G47Bwwl2FiuJsYkQtZKcEpgtn4c)。
+
+## Unreleased - 第七阶段 Contact 与公开信任层
+
+日期：2026-06-14
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 新增 `/contact` 页面。
+- 新增 `src/data/contact.ts`。
+- 新增 `ContactHub`，包含公开路由、联系 brief、适用主题和边界说明。
+- 首页、About、Knowledge、Command Center 的 Contact 入口统一到 `/contact`。
+- sitemap 增加 `/contact`。
+- Playwright E2E 增加 Contact 访问和交互契约。
+- 新增第七阶段调研与复盘文档。
+
+产品判断：
+
+- Contact 是公开信任层，不是伪表单。
+- 没有真实私密渠道前，不展示假邮箱或假提交。
+- GitHub Issues 继续作为公开讨论路径，但由 `/contact` 解释适用范围和上下文。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：58 passed。
+- Browser QA：页面身份、唯一 H1、真实 GitHub Issues 链接、复制反馈、控制台健康通过。
+- 移动端无横向溢出：`scrollWidth 390`，`clientWidth 390`。

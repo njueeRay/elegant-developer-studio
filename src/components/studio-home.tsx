@@ -180,12 +180,9 @@ export function StudioHome({
               and systems that make complex work feel calm.
             </p>
           </div>
-          <a
-            href="https://github.com/njueeRay/elegant-developer-studio/issues"
-            className="primary-link"
-          >
-            <Code2 size={16} />
-            Open a GitHub issue
+          <a href="/contact" className="primary-link">
+            <Mail size={16} />
+            Open contact routes
           </a>
         </article>
       </section>
@@ -255,7 +252,7 @@ function Header({
         >
           {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <Link href="/about#contact" className="contact-button">
+        <Link href="/contact" className="contact-button">
           <Mail size={16} />
           Contact
         </Link>
@@ -397,7 +394,7 @@ function SocialLinks() {
   const icons = {
     GitHub: Code2,
     Issues: Code2,
-    About: BookOpenText,
+    Contact: BookOpenText,
   } as const;
 
   return (
