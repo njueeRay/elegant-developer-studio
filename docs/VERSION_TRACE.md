@@ -451,8 +451,8 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-06-13
 Primary commit：`4c4ec8a`
-Deployment record commit：待提交
-GitHub trace commit：待提交
+Deployment record commit：`ad095fa`
+GitHub trace commit：本记录所在提交
 Vercel deployment：`dpl_FRvaS6k35CWuuYShEvxS6eDgFgbN`
 Production alias：`https://elegant-developer-studio.vercel.app`
 Deployment URL：`https://elegant-developer-studio-57vn0qx3p.vercel.app`
@@ -488,3 +488,4 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Production sitemap：包含 `/lab`。
 - Feishu：`31｜第五阶段 About 复盘`、`32｜第五阶段 Lab 调研`。
 - Feishu fetch：导航页包含 31/32；Lab 调研页包含 `Storybook Showcase`、`shadcn/ui Registry Directory` 和 `390px 移动端`；素材页包含 `lab-page-reference.png`。
+- GitHub：issue `#4` comment `4697990453`；issue `#5` comment `4697991038`。

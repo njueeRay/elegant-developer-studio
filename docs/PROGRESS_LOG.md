@@ -611,7 +611,7 @@ GitHub：
 
 ### 第五阶段：Lab 首个切片
 
-状态：已部署，已同步飞书，待 GitHub 追踪。
+状态：已部署，已同步飞书和 GitHub。
 
 复盘：
 
@@ -672,5 +672,5 @@ GitHub：
 
 GitHub：
 
-- 待追加 issue `#4` 交付记录。
-- 待追加 issue `#5` 调研记录。
+- Issue `#4` 追加 Phase 5 Lab 交付记录：comment `4697990453`。
+- Issue `#5` 追加 Phase 5 Lab 调研记录：comment `4697991038`。
