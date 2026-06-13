@@ -21,6 +21,7 @@
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - `npm run test:e2e`：52 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：52 passed。
 - e2e 覆盖：
   - 17 个公开路由。
   - 桌面 Chrome。
@@ -59,6 +60,13 @@
 - Playwright 覆盖了主路径，还未覆盖所有键盘导航细节。
 - npm audit 仍提示 2 个 moderate vulnerability，本阶段未做破坏性修复。
 
+## 部署记录
+
+- Production alias：`https://elegant-developer-studio.vercel.app`
+- Deployment URL：`https://elegant-developer-studio-84jah2zwx.vercel.app`
+- Deployment id：`dpl_A9hwKUEZNYsbL1grYaWxuj4v99EX`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/A9hwKUEZNYsbL1grYaWxuj4v99EX`
+
 ## 下一步建议
 
 1. 部署本阶段修复，确认生产环境和本地 e2e 一致。
@@ -66,4 +74,3 @@
 3. 为 `Issues` 增加更明确的图标或文字，避免移动端两个代码图标重复。
 4. 将 e2e 纳入每次阶段完成的固定质量门禁。
 5. 下一功能阶段可以进入 `ComponentPreview` 或 `Knowledge` URL query 筛选，但必须先保持 e2e 绿色。
-

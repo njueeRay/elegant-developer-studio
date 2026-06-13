@@ -677,7 +677,7 @@ GitHub：
 
 ### 第六阶段：可达性与交互契约
 
-状态：本地完成，待部署和外部同步。
+状态：已部署，待外部同步。
 
 复盘：
 
@@ -708,10 +708,13 @@ GitHub：
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - `npm run test:e2e`：52 passed。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，52 passed。
 - 生产模式本地截图：桌面首页、移动首页、About contact 通过视觉复核。
+- Vercel deployment：`dpl_A9hwKUEZNYsbL1grYaWxuj4v99EX`。
+- Deployment URL：`https://elegant-developer-studio-84jah2zwx.vercel.app`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
 
 剩余：
 
-- 待部署到 Vercel。
 - 待同步 GitHub issue 和飞书。
 - 可考虑新增 `/contact` 页面。

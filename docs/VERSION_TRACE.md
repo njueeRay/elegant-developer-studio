@@ -493,8 +493,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第六阶段可达性与交互契约
 
 日期：2026-06-13
-Primary commit：待提交
-Deployment record commit：待部署
+Primary commit：`be7f5bf`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_A9hwKUEZNYsbL1grYaWxuj4v99EX`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-84jah2zwx.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/A9hwKUEZNYsbL1grYaWxuj4v99EX`
 
 范围：
 
@@ -510,8 +514,10 @@ Deployment record commit：待部署
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - `npm run test:e2e`：52 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：52 passed。
 - 本地生产模式截图复核：首页桌面、首页移动端、About contact。
 
 部署：
 
-- 待部署。
+- Vercel inspect：deployment 状态 `READY`。
+- Production alias 已指向本阶段部署。
