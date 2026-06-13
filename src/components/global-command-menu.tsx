@@ -7,6 +7,7 @@ import {
   Camera,
   Code2,
   FileText,
+  LibraryBig,
   Mail,
   Music2,
   Search,
@@ -26,6 +27,7 @@ export type CommandKind =
   | "action"
   | "post"
   | "project"
+  | "knowledge"
   | "photo"
   | "music"
   | "contact";
@@ -44,6 +46,7 @@ const iconByKind: Record<CommandKind, ComponentType<{ size?: number }>> = {
   action: Sparkles,
   post: FileText,
   project: Code2,
+  knowledge: LibraryBig,
   photo: Camera,
   music: Music2,
   contact: Mail,
@@ -53,6 +56,7 @@ const labelByKind: Record<CommandKind, string> = {
   action: "Quick actions",
   post: "Writing",
   project: "Projects",
+  knowledge: "Knowledge",
   photo: "Photos",
   music: "Music",
   contact: "Contact",
@@ -84,12 +88,6 @@ type PlannedSuggestion = {
 };
 
 const plannedSuggestions: PlannedSuggestion[] = [
-  {
-    id: "planned-knowledge",
-    title: "Knowledge is planned",
-    description: "The public knowledge base belongs to Phase 5. Try writing or projects for now.",
-    query: "writing",
-  },
   {
     id: "planned-lab",
     title: "Lab is planned",
@@ -129,6 +127,10 @@ function getContextKinds(pathname: string): CommandKind[] {
     return ["project", "action"];
   }
 
+  if (pathname.startsWith("/knowledge")) {
+    return ["knowledge", "action", "post", "project"];
+  }
+
   if (pathname.startsWith("/photos")) {
     return ["photo", "action"];
   }
@@ -147,6 +149,10 @@ function getContextLabel(pathname: string) {
 
   if (pathname.startsWith("/projects")) {
     return "Project context";
+  }
+
+  if (pathname.startsWith("/knowledge")) {
+    return "Knowledge context";
   }
 
   if (pathname.startsWith("/photos")) {
