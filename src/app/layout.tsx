@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GlobalCommandMenu, type CommandItem } from "@/components/global-command-menu";
+import { knowledgeEntries } from "@/data/knowledge";
 import { currentMix, photos } from "@/data/media";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
 import "./globals.css";
@@ -74,6 +75,15 @@ function getCommandItems(): CommandItem[] {
       keywords: ["projects", "work", "case study"],
     },
     {
+      id: "action-knowledge",
+      kind: "knowledge",
+      title: "Browse knowledge",
+      description: "Open the public memory layer for patterns, snippets, and decisions.",
+      href: "/knowledge",
+      meta: `${knowledgeEntries.length} entries`,
+      keywords: ["knowledge", "notes", "snippets", "references", "decisions"],
+    },
+    {
       id: "action-photos",
       kind: "photo",
       title: "Open photos",
@@ -122,6 +132,16 @@ function getCommandItems(): CommandItem[] {
     keywords: project.stack,
   }));
 
+  const knowledgeItems = knowledgeEntries.map<CommandItem>((entry) => ({
+    id: `knowledge-${entry.slug}`,
+    kind: "knowledge",
+    title: entry.title,
+    description: entry.summary,
+    href: `/knowledge#${entry.slug}`,
+    meta: entry.kind,
+    keywords: [entry.kind, entry.status, entry.source, ...entry.tags],
+  }));
+
   const photoItems = photos
     .filter((photo) => photo.featured)
     .map<CommandItem>((photo) => ({
@@ -134,5 +154,5 @@ function getCommandItems(): CommandItem[] {
       keywords: photo.tags,
     }));
 
-  return [...quickActions, ...postItems, ...projectItems, ...photoItems];
+  return [...quickActions, ...postItems, ...projectItems, ...knowledgeItems, ...photoItems];
 }

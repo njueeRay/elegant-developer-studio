@@ -406,3 +406,50 @@ GitHub：
 
 - Issue `#3` 追加 Phase 4 照片筛选交付记录：comment `4694227104`。
 - Issue `#5` 追加照片筛选调研记录：comment `4694228454`。
+
+### 第五阶段：Knowledge 首个切片
+
+状态：本地实现完成，待浏览器 QA、部署、飞书和 GitHub 回填。
+
+复盘：
+
+- 上一切片已经证明 `FilterBar` 可跨文章、项目和照片复用。
+- `/knowledge` 是此前从 `notes` 修正而来的长期 IA，但仍停留在规划入口。
+- 继续堆 Command Center 价值不高，应把规划中的知识表面变成真实页面。
+
+调研依据：
+
+- NN/g：IA 是信息骨架，不是导航控件本身。
+- NN/g：信息气味决定用户是否敢点击；知识卡必须说明何时有用。
+- NN/g：当前内容量不需要完整 facets。
+- GitBook：文档 IA 要命名清晰、减少重复、保持组件一致。
+- Diátaxis：内容意图可帮助区分学习、执行、查阅和理解。
+- Obsidian：当前更适合 local trails 和关联链接，不适合全局图谱。
+
+完成：
+
+- 新增 `/knowledge` 页面。
+- 新增 `src/data/knowledge.ts` 内容模型。
+- 新增 `KnowledgeExplorer` 和 `KnowledgeCard`。
+- `FilterBar` 复用到知识类型筛选。
+- 每条知识支持稳定锚点和 `Copy ref`。
+- Command Center 新增 `knowledge` 类型、真实知识结果和 `Knowledge context`。
+- 移除 `Knowledge is planned` 状态。
+- sitemap 增加 `/knowledge`。
+- 添加 `docs/PHASE4_PHOTO_FILTER_REVIEW.md` 和 `docs/PHASE5_KNOWLEDGE_RESEARCH.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- Browser 验证：`/knowledge` 初始状态显示 `5 / 5 entries`，知识卡片 5 张，无框架错误覆盖层。
+- Playwright 验证：点击 `Decision` 后显示 `1 / 5 entries`，结果为 `Filters before full search`。
+- Playwright 验证：点击 `Copy ref` 后显示 `Copied`。
+- Playwright 验证：Command Center 搜索 `knowledge` 不再出现 `Knowledge is planned`，并显示真实 Knowledge 结果。
+- Playwright 验证：移动端 390 x 844 无页面级横向溢出。
+- 截图：`/tmp/knowledge-desktop.png`、`/tmp/knowledge-command.png`、`/tmp/knowledge-mobile.png`。
+
+下一步：
+
+- 部署到 Vercel。
+- 同步飞书知识库和 GitHub issue。

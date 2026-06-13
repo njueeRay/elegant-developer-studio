@@ -4,7 +4,7 @@ import { getAllPosts, getAllProjects } from "@/lib/content";
 const siteUrl = "https://elegant-developer-studio.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/blog", "/projects", "/photos", "/music"].map((route) => ({
+  const staticRoutes = ["", "/blog", "/projects", "/knowledge", "/photos", "/music"].map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),
   }));

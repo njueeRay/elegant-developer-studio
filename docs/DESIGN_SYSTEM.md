@@ -75,6 +75,11 @@ Phase 4 已实现首版：
 - `StatusPanel`
 - `FilterBar`
 
+Phase 5 已实现首版：
+
+- `KnowledgeExplorer`
+- `KnowledgeCard`
+
 后续保留：
 
 - `AlbumCard`
@@ -114,7 +119,8 @@ Phase 4 已实现首版：
 - 底部键盘提示保持低调，不能抢占结果列表注意力。
 - 默认分组必须理解当前路由：文章页优先写作，项目页优先项目，照片页优先照片，音乐页优先音乐。
 - 最近访问不能吞掉当前页面上下文分组。
-- 搜索规划中页面时必须解释路线图状态，例如 `Knowledge is planned`、`Uses is planned`。
+- 搜索规划中页面时必须解释路线图状态，例如 `Uses is planned`。
+- `Knowledge` 已经是正式路由，不再显示 planned 状态。
 - 无结果状态必须给出可点击建议词，不能只显示失败文本。
 - 无结果时结果容器不能声明为 `listbox`，除非内部确实有可选择 option。
 - `StatusPanel` 只表达当前三类状态：写作、建设、收听；不扩展成首页 dashboard。
@@ -123,6 +129,14 @@ Phase 4 已实现首版：
 - `FilterBar` 移动端允许控件内部横向滚动，但页面本身不能横向溢出。
 - `/photos` 使用 `FilterBar` 时，筛选必须同时影响精选区、网格和灯箱导航。
 - 灯箱在筛选状态下只能在当前结果内循环，不能跳回全量照片。
+
+## Phase 5 交互细节
+
+- `Knowledge` 首版使用公开索引，不做空白详情页。
+- 知识条目必须有稳定 slug、类型、状态、标签、来源和关联链接。
+- `KnowledgeCard` 的 `Copy ref` 复制稳定锚点，服务 GitHub、飞书和文档评论。
+- `Knowledge` 类型筛选继续复用 `FilterBar`，保持结果数量和清除动作一致。
+- 当前内容规模不足时，不做全局 graph、全文搜索库和多选 facets。
 
 ## 素材规则
 

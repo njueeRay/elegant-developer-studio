@@ -300,3 +300,64 @@
 备注：
 
 - Browser 运行时出现一条 ChatGPT/Statsig 网络超时噪声；页面应用控制台 `error/warn` 为空。
+
+## 第五阶段 Knowledge 首个切片 QA
+
+结果：通过。
+
+方法：
+
+- 本地 URL：`http://localhost:3000/knowledge`
+- 浏览器验证方式：
+  - in-app Browser 验证页面身份、初始状态、无覆盖层、无横向溢出。
+  - in-app Browser 在点击阶段遇到 CDP selector evaluation 超时。
+  - 本地 Playwright 补充验证筛选、复制引用、Command Center 和截图。
+- 检查视口：
+  - 桌面：1280 x 720。
+  - 移动端：390 x 844。
+
+检查项：
+
+1. 页面身份：通过。
+   - `/knowledge` 标题为 `Knowledge - Ray Studio`。
+   - 首屏 H1 为 `A small indexed memory layer for ideas that should stay useful.`。
+   - 页面包含知识索引面板、筛选条和知识卡片。
+
+2. 初始状态：通过。
+   - active filter 为 `All`。
+   - 结果数量显示 `5 / 5 entries`。
+   - 知识卡片数为 5。
+   - 无框架错误覆盖层。
+   - 无页面级横向溢出。
+
+3. 类型筛选：通过。
+   - 点击 `Decision` 后 active filter 为 `Decision`。
+   - 结果数量显示 `1 / 5 entries`。
+   - 卡片数为 1。
+   - 结果标题为 `Filters before full search`。
+   - 清除按钮可用。
+
+4. 复制引用：通过。
+   - 点击 `Copy reference for Filters before full search` 后按钮显示 `Copied`。
+   - 已增加 textarea fallback，降低 Clipboard API 权限差异导致的失败概率。
+
+5. Command Center：通过。
+   - 打开全站命令菜单并搜索 `knowledge`。
+   - 不再出现 `Knowledge is planned`。
+   - 出现 `Browse knowledge` 和知识条目结果。
+   - 搜索结果数为 7。
+
+6. 移动端布局：通过。
+   - 390 x 844 下无页面级横向溢出。
+   - Knowledge 布局收敛为单列。
+   - 结果数量仍显示 `5 / 5 entries`。
+
+截图：
+
+- `/tmp/knowledge-desktop.png`
+- `/tmp/knowledge-command.png`
+- `/tmp/knowledge-mobile.png`
+
+备注：
+
+- 使用 `127.0.0.1` 访问 Next dev server 会触发 Next 16 的 dev resource cross-origin 限制，导致部分客户端岛未正常工作；QA 改用 `localhost:3000` 后通过。

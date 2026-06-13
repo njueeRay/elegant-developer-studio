@@ -94,7 +94,7 @@
 
 - 全站命令菜单。
 - 全站搜索。
-- 写作、项目、knowledge、照片筛选。
+- 写作、项目、照片筛选。
 - 快捷入口：读文章、看作品、打开音乐、查看照片、联系我。
 - 状态面板：正在写什么、最近在做什么、最近听什么。
 
@@ -123,11 +123,12 @@
 - 标题和描述命中高亮
 - 底部键盘提示
 - 当前路由上下文分组和排序
-- `knowledge`、`lab`、`uses`、`about` 规划提示
+- `lab`、`uses`、`about` 规划提示
 - 无结果状态的恢复建议词
 - `StatusPanel`：首页最近在写、最近在做、最近在听
 - `FilterBar`：写作和项目列表统一筛选、结果数量、清除动作
 - `/photos` 复用 `FilterBar`，筛选联动精选、网格和灯箱
+- `Knowledge` 从规划提示升级为真实 Command Center 结果
 
 暂不做：
 
@@ -136,16 +137,18 @@
 - 复杂模糊搜索库。
 - 最近访问管理 UI。
 
-下一片重点：
+下一片重点已转入第五阶段：
 
-- 评估 `/knowledge` 未来内容模型和标签体系。
-- 判断 `FilterBar` 是否需要支持单选/多选模式。
+- 复盘 `/knowledge` 首版内容模型和标签体系。
+- 判断 `FilterBar` 是否需要支持单选/多选模式或 URL query 同步。
 - 继续观察 `GlobalSearch` 是否需要从 Command Center 中抽象。
 - 在内容规模证明必要前，不引入完整搜索库。
 
 ## 第五阶段：个人工作室操作系统
 
 目标：扩展成完整个人操作系统。
+
+状态：进行中。首个 Knowledge 切片已完成本地实现。
 
 交付：
 
@@ -155,12 +158,29 @@
 - `/knowledge` 公开知识库。
 - 可选访问统计、文章 reactions、联系表单、后台内容管理。
 
+已完成切片：
+
+- `/knowledge` 公开知识索引。
+- 知识内容模型：`Pattern`、`Snippet`、`Decision`、`Reference`。
+- `KnowledgeExplorer` 和 `KnowledgeCard`。
+- `FilterBar` 复用到知识类型筛选。
+- 每条知识支持稳定锚点和 `Copy ref`。
+- Command Center 新增 `knowledge` 类型、真实结果和 `Knowledge context`。
+- sitemap 收录 `/knowledge`。
+
 组件：
 
 - `Timeline`
 - `SkillMatrix`
 - `UsesShelf`
 - `KnowledgeCard`
+- `KnowledgeExplorer`
 - `ReactionBar`
 - `ContactPanel`
 - `ComponentPreview`
+
+下一片重点：
+
+- 判断 `/uses`、`/about`、`/lab` 哪个最能扩展个人工作室 OS。
+- 评估 `Knowledge` 是否需要详情页、反向链接和 local graph。
+- 暂不做后台 CMS，继续用本地数据模型保证结构清晰。

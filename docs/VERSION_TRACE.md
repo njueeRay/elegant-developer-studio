@@ -95,6 +95,8 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - `npm run lint`：通过。
 - `npm run build`：通过。
+- Browser QA：`/knowledge` 页面身份、初始状态、无覆盖层和无横向溢出通过。
+- Playwright QA：知识类型筛选、复制引用、Command Center 搜索和移动端布局通过。
 - Production Playwright QA：桌面和移动端无横向溢出。
 - 标签筛选、代码复制、RSS 检查通过。
 
@@ -313,3 +315,36 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Feishu：`23｜第四阶段状态面板与筛选复盘`、`24｜第四阶段照片筛选调研`。
 - Feishu fetch：导航页包含 23/24；照片筛选调研页包含 `Music`、`1 / 6 frames`、`Listening corner`。
 - GitHub：issue `#3` comment `4694227104`；issue `#5` comment `4694228454`。
+
+## Unreleased - 第五阶段 Knowledge 首个切片
+
+日期：2026-06-13
+Primary commit：待回填
+Deployment record commit：待回填
+Vercel deployment：待回填
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待回填
+Inspect URL：待回填
+
+范围：
+
+- 新增 `/knowledge` 页面。
+- 新增 `src/data/knowledge.ts` 内容模型。
+- 新增 `KnowledgeExplorer` 和 `KnowledgeCard`。
+- `FilterBar` 复用到知识类型筛选。
+- 每条知识支持稳定锚点和 `Copy ref`。
+- Command Center 新增 `knowledge` 类型、真实知识结果和 `Knowledge context`。
+- 移除 `Knowledge is planned` 状态。
+- sitemap 增加 `/knowledge`。
+- 添加 `docs/PHASE4_PHOTO_FILTER_REVIEW.md` 和 `docs/PHASE5_KNOWLEDGE_RESEARCH.md`。
+
+产品判断：
+
+- 第五阶段先打开 `Knowledge`，因为它是长期 IA 的基础。
+- 当前不做详情页、全文搜索、多选 facets 和全局图谱。
+- `Copy ref` 是本轮最小但高价值的程序员式交互。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。

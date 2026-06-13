@@ -42,6 +42,7 @@
 - 第四阶段交互层增强：键盘选择、最近访问、上下文排序、规划页面提示、空状态建议。
 - 第四阶段交互层状态与筛选切片：`StatusPanel`、可复用 `FilterBar`、结果数量和筛选清除。
 - 第四阶段照片筛选切片：`/photos` 复用 `FilterBar`，筛选联动精选、网格和灯箱。
+- 第五阶段 Knowledge 首个切片：`/knowledge` 公开索引、知识类型筛选、可复制引用和 Command Center 知识结果。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -56,7 +57,7 @@
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
-| Knowledge | `/knowledge` | 5 | 规划中 | 长期知识、片段、学习记录 |
+| Knowledge | `/knowledge` | 5 | 已实现首版 | 长期知识、片段、学习记录 |
 | Photos | `/photos` | 3 | 已实现首版 | 照片档案和灯箱 |
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
 | Lab | `/lab` | 5 | 规划中 | 实验、原型、组件预览 |
@@ -174,7 +175,8 @@
 - 搜索结果类型分组
 - 标题和描述命中高亮
 - 当前路由上下文分组：`Writing context`、`Project context`、`Photo context`、`Music context`
-- `knowledge`、`lab`、`uses`、`about` 规划页面提示
+- 当前路由上下文分组新增：`Knowledge context`
+- `lab`、`uses`、`about` 规划页面提示
 - 无结果恢复建议词
 - 首页 `StatusPanel`
 - 可复用 `FilterBar`
@@ -187,7 +189,7 @@
 
 ### 第五阶段：个人工作室操作系统
 
-状态：规划中。
+状态：进行中。
 
 追踪：
 
@@ -200,6 +202,17 @@
 - `/uses`
 - `/knowledge`
 - 可选 analytics、reactions、联系表单、admin。
+
+已实现：
+
+- `/knowledge`
+- `src/data/knowledge.ts`
+- `KnowledgeExplorer`
+- `KnowledgeCard`
+- 知识类型筛选：`Pattern`、`Snippet`、`Decision`、`Reference`
+- 可复制知识引用
+- Command Center 真实知识结果和 `Knowledge context`
+- sitemap 收录 `/knowledge`
 
 主要风险：
 
@@ -228,6 +241,8 @@ docs/
   PHASE4_STATUS_FILTER_RESEARCH.md 第四阶段状态面板与筛选调研
   PHASE4_STATUS_FILTER_REVIEW.md  第四阶段状态面板与筛选复盘
   PHASE4_PHOTO_FILTER_RESEARCH.md 第四阶段照片筛选调研
+  PHASE4_PHOTO_FILTER_REVIEW.md 第四阶段照片筛选复盘
+  PHASE5_KNOWLEDGE_RESEARCH.md  第五阶段 Knowledge 首个切片调研
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -259,6 +274,8 @@ src/
 - `StatusPanel`
 - `FilterBar`
 - `PhotoGrid` 筛选联动
+- `KnowledgeExplorer`
+- `KnowledgeCard`
 - `PostCard`
 - `ProjectCard`
 - `ReadingProgress`
@@ -304,12 +321,13 @@ src/
 - 首页状态面板：最近在写、最近在做、最近在听。
 - 博客和项目列表筛选：结果数量、active filter、清除动作。
 - 照片筛选：`Featured` 和 tags，精选区、网格、灯箱跟随当前结果。
+- Knowledge 筛选：类型筛选、结果数量、关联链接、复制引用反馈。
 
 研究轨道：
 
 - 项目卡片的 deploy、version、commit、changelog affordances。
 - 类似 build pipeline 的阅读进度语义。
-- Knowledge 卡片的复制、反向链接、关联链接。
+- Knowledge 详情页、反向链接、local graph。
 - Lab 卡片的状态、最近运行、branch、preview URL。
 - 键盘优先 focus state 和快捷键语法。
 
@@ -353,10 +371,10 @@ src/
 
 ## 10. 下一步
 
-下一步是第四阶段交互层继续收束：
+下一步是第五阶段 Portfolio OS 继续推进：
 
-1. 评估 `/knowledge` 的内容模型和标签体系。
-2. 判断 `FilterBar` 是否需要支持单选/多选模式。
-3. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
-4. 第三阶段并行决定是否引入真实音频文件。
-5. 继续打磨灯箱移动端手势和焦点管理。
+1. 复盘 `/knowledge` 首版是否足够清晰、可引用、可筛选。
+2. 决定下一切片是 `/uses`、`/about` 还是 `/lab`。
+3. 判断 `Knowledge` 是否需要详情页或 URL query 筛选。
+4. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
+5. 第三阶段并行决定是否引入真实音频文件。
