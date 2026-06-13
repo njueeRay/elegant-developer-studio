@@ -779,3 +779,42 @@ GitHub：
 - GitHub issue `#5` comment `4699086922`。
 - 飞书：[36｜第七阶段 Contact 调研](https://scnlb1lk96sb.feishu.cn/wiki/XAwGwIpJ2iVUE8k4Mjfcmw6yn8e)。
 - 飞书：[37｜第七阶段 Contact 复盘](https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb)。
+
+### 第八阶段：公开协作与 Issue Template 层
+
+状态：本地实现中，待完整验证、部署和外部同步。
+
+复盘：
+
+- 第七阶段完成 `/contact`，但 GitHub Issues 仍缺少结构化输入。
+- 本阶段将 Contact brief 落地为 GitHub Issue Form，让公开协作可执行、可追溯。
+
+调研依据：
+
+- GitHub Issue Forms syntax。
+- GitHub issue template configuration。
+- GitHub form schema。
+- GitHub issue URL query。
+
+完成：
+
+- 新增 `.github/ISSUE_TEMPLATE/config.yml`。
+- 新增 `.github/ISSUE_TEMPLATE/contact.yml`。
+- 新增 `.github/ISSUE_TEMPLATE/bug_report.yml`。
+- 新增 `.github/ISSUE_TEMPLATE/feature_request.yml`。
+- `/contact` 主讨论入口改为 `issues/new?template=contact.yml`。
+- 新增仓库协作契约测试，覆盖模板关键字段。
+- 新增 `docs/PHASE8_ISSUE_TEMPLATE_RESEARCH.md` 和 `docs/PHASE8_ISSUE_TEMPLATE_REVIEW.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：60 passed。
+- 本地生产模式视觉复核：`/contact` 桌面 `scrollWidth 1440`、移动端 `scrollWidth 390`，无横向溢出。
+- 截图：`/tmp/phase8-contact-desktop.png`、`/tmp/phase8-contact-mobile.png`。
+
+剩余：
+
+- Vercel production 部署。
+- GitHub issue 和飞书同步。

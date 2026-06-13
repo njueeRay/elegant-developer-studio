@@ -1,0 +1,50 @@
+name: Feature or improvement request
+description: Propose a scoped improvement to the studio, content system, or public workflow.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A useful request names the user need, the affected surface, and the smallest valuable version.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      description: Which part of the studio should change?
+      options:
+        - Home
+        - Blog
+        - Projects
+        - Knowledge
+        - Photos or music
+        - About
+        - Contact
+        - Lab
+        - GitHub or Feishu workflow
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What is currently missing, confusing, slow, or underpowered?
+      placeholder: "Example: Contact explains the route but does not prefill a GitHub issue."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed first slice
+      description: Describe the smallest useful version.
+      placeholder: "Example: Add a direct issue template link and keep the existing copy brief as fallback."
+    validations:
+      required: true
+  - type: textarea
+    id: quality_bar
+    attributes:
+      label: Quality bar
+      description: What must be true before this should ship?
+      placeholder: "Accessible, testable, low-density, no fake data, documented in PROJECT_MAP."
+    validations:
+      required: true

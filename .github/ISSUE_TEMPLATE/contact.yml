@@ -1,0 +1,62 @@
+name: Studio collaboration or project discussion
+description: Start a public discussion about the studio, interface system, writing, or project direction.
+title: "[Studio]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when the conversation is public, project-related, and benefits from traceable context.
+        Do not include private credentials, secrets, or personal information.
+  - type: dropdown
+    id: discussion_area
+    attributes:
+      label: Discussion area
+      description: Choose the closest area so the thread can be triaged quickly.
+      options:
+        - Product direction
+        - Interface or visual system
+        - Component behavior
+        - Writing or knowledge architecture
+        - Repository, deployment, or documentation
+        - Other public discussion
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What are we discussing? Link the page, component, route, document, screenshot, or commit if possible.
+      placeholder: "Example: /contact currently explains public routes, but the issue template flow could make the next step clearer."
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should change, become clearer, or become easier?
+      placeholder: "Example: Make the public collaboration path feel structured without turning the page into a support desk."
+    validations:
+      required: true
+  - type: textarea
+    id: surface
+    attributes:
+      label: Surface
+      description: Which surface is involved?
+      placeholder: "Route, component, data file, document, GitHub issue, Vercel deployment, or Feishu page."
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints and references
+      description: Add timing, quality bar, references, blockers, or things that should not be changed.
+      placeholder: "Example: Keep the page low-density; avoid fake private forms until a real backend exists."
+    validations:
+      required: false
+  - type: checkboxes
+    id: public_thread
+    attributes:
+      label: Public thread agreement
+      options:
+        - label: I understand this is a public GitHub issue and I have not included private or sensitive information.
+          required: true

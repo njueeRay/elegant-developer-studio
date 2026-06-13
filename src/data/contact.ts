@@ -1,5 +1,8 @@
 export type ContactRouteKind = "discussion" | "source" | "profile" | "writing" | "work";
 
+export const githubIssueTemplateUrl =
+  "https://github.com/njueeRay/elegant-developer-studio/issues/new?template=contact.yml";
+
 export type ContactRoute = {
   kind: ContactRouteKind;
   title: string;
@@ -18,10 +21,10 @@ export const contactStatus = {
 export const contactRoutes: ContactRoute[] = [
   {
     kind: "discussion",
-    title: "Open a GitHub issue",
-    description: "Best for project feedback, feature ideas, bugs, and public design discussion.",
-    href: "https://github.com/njueeRay/elegant-developer-studio/issues",
-    meta: "Public thread",
+    title: "Open a structured issue",
+    description: "Best for public project feedback, collaboration ideas, and design discussion with context.",
+    href: githubIssueTemplateUrl,
+    meta: "Issue form",
     external: true,
   },
   {

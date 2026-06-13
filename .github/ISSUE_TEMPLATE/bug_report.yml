@@ -1,0 +1,51 @@
+name: Broken page or interaction
+description: Report a reproducible page, route, link, layout, or interaction problem.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for concrete defects. If the request is exploratory or product-directional, use the studio discussion template instead.
+  - type: input
+    id: route
+    attributes:
+      label: Route or surface
+      description: Where did the issue happen?
+      placeholder: "/contact, /blog/interface-is-a-promise, Command Center, MiniPlayer"
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What did you see?
+      placeholder: "The button looks clickable but does not navigate."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened instead?
+      placeholder: "The button should open /contact or show visible feedback."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: List the shortest path that reproduces the issue.
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, viewport, device, production/local URL, or screenshot link.
+      placeholder: "Chrome, 390px mobile viewport, https://elegant-developer-studio.vercel.app"
+    validations:
+      required: false

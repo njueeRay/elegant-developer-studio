@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the live contact page
+    url: https://elegant-developer-studio.vercel.app/contact
+    about: Use this page to choose the right public discussion route before opening an issue.
+  - name: Inspect the project map
+    url: https://elegant-developer-studio.vercel.app/projects/studio-knowledge-base
+    about: Review the public project structure, roadmap, and trace before proposing a larger change.

@@ -47,6 +47,7 @@
 - 第五阶段 About 首个切片：`/about` Studio Profile、原则选择、时间线聚焦、能力矩阵、协作约定和 Contact band。
 - 第五阶段 Lab 首个切片：`/lab` 组件注册表、组件筛选、精选预览、复制 import、实验时间线和质量门禁。
 - 第七阶段 Contact 与公开信任层：`/contact` 独立页面、公开路由、联系 brief、边界说明和真实入口。
+- 第八阶段公开协作层：GitHub Issue Forms、结构化协作入口和 Contact 到 issue template 的直达链接。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -67,6 +68,7 @@
 | Lab | `/lab` | 5 | 已实现首版 | 实验、原型、组件注册表和质量门禁 |
 | About | `/about` | 5 | 已实现首版 | 个人介绍、时间线、原则、能力与联系方式 |
 | Contact | `/contact` | 7 | 已实现首版 | 公开联系路由、项目讨论入口、联系 brief 与边界说明 |
+| GitHub Issues | `.github/ISSUE_TEMPLATE/*` | 8 | 已实现首版 | 公开协作、bug、feature request 的结构化输入 |
 | Uses | `/uses` | 5 | 已实现首版 | 工具、技术栈、工作流 |
 
 ## 4. 阶段地图

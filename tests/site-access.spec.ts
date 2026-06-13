@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 
 const routes = [
@@ -83,9 +84,9 @@ test.describe("core interaction contracts", () => {
   test("contact route exposes real discussion links and copy feedback", async ({ page }) => {
     await page.goto("/contact");
 
-    await expect(page.getByRole("link", { name: /Open a GitHub issue/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Open a structured issue/ })).toHaveAttribute(
       "href",
-      "https://github.com/njueeRay/elegant-developer-studio/issues",
+      "https://github.com/njueeRay/elegant-developer-studio/issues/new?template=contact.yml",
     );
     await expect(page.getByRole("link", { name: /Inspect the repository/ })).toHaveAttribute(
       "href",
@@ -154,5 +155,24 @@ test.describe("core interaction contracts", () => {
 
     await expect(page.getByRole("button", { name: "Pause track" })).toBeVisible();
     await expect(page.getByRole("button", { name: /Quiet refactor/ })).toHaveClass(/active/);
+  });
+});
+
+test.describe("repository collaboration contracts", () => {
+  test("issue templates preserve the public collaboration intake", async () => {
+    const contactTemplate = readFileSync(".github/ISSUE_TEMPLATE/contact.yml", "utf8");
+    const bugTemplate = readFileSync(".github/ISSUE_TEMPLATE/bug_report.yml", "utf8");
+    const featureTemplate = readFileSync(".github/ISSUE_TEMPLATE/feature_request.yml", "utf8");
+    const config = readFileSync(".github/ISSUE_TEMPLATE/config.yml", "utf8");
+
+    expect(contactTemplate).toContain("Studio collaboration or project discussion");
+    expect(contactTemplate).toContain("Context");
+    expect(contactTemplate).toContain("Goal");
+    expect(contactTemplate).toContain("Surface");
+    expect(contactTemplate).toContain("Public thread agreement");
+    expect(bugTemplate).toContain("Steps to reproduce");
+    expect(featureTemplate).toContain("Proposed first slice");
+    expect(config).toContain("blank_issues_enabled: false");
+    expect(config).toContain("https://elegant-developer-studio.vercel.app/contact");
   });
 });

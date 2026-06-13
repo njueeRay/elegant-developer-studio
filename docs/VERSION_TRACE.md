@@ -95,6 +95,9 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - `npm run lint`：通过。
 - `npm run build`：通过。
+- `npm run test:e2e`：60 passed。
+- 本地生产模式视觉复核：`/contact` 桌面和移动端无横向溢出。
+- `npm run build`：通过。
 - Browser QA：`/knowledge` 页面身份、初始状态、无覆盖层和无横向溢出通过。
 - Playwright QA：知识类型筛选、复制引用、Command Center 搜索和移动端布局通过。
 - Production Playwright QA：桌面和移动端无横向溢出。
@@ -573,3 +576,29 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - GitHub issue `#5` comment `4699086922`。
 - 飞书：[36｜第七阶段 Contact 调研](https://scnlb1lk96sb.feishu.cn/wiki/XAwGwIpJ2iVUE8k4Mjfcmw6yn8e)。
 - 飞书：[37｜第七阶段 Contact 复盘](https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb)。
+
+## Unreleased - 第八阶段公开协作与 Issue Template 层
+
+日期：2026-06-14
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 新增 GitHub Issue Forms。
+- 新增 `config.yml` 关闭 blank issues，并提供 Contact 与项目地图外部链接。
+- `/contact` 主讨论入口改为结构化 issue form。
+- Playwright 增加仓库协作契约测试。
+- 新增第八阶段调研与复盘文档。
+
+产品判断：
+
+- 公开协作优先结构化 GitHub issue，而不是未配置的私密表单。
+- Contact brief 应变成可执行的 GitHub Issue Form。
+- 不绑定 labels/assignees/projects，避免缺少仓库标签体系时造成配置失败。
+
+验证：
+
+- `npm run lint`：通过。
