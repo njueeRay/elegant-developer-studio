@@ -320,6 +320,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-06-13
 Primary commit：`6cc9fda`
+Command menu wiring commit：`ca2df2f`
 Deployment record commit：待回填
 Vercel deployment：`dpl_8F8o7UHhon7spUfpzVtoLn1e217i`
 Production alias：`https://elegant-developer-studio.vercel.app`
@@ -353,3 +354,5 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Vercel inspect：deployment 状态 `Ready`。
 - Production fetch：`/knowledge` 返回 `200 OK`，并包含 `Knowledge - Ray Studio`、`Filter knowledge`、`5 / 5 entries`、`Copy ref`、`Filters before full search`。
 - Production sitemap：包含 `/knowledge`。
+- Feishu：`25｜第四阶段照片筛选复盘`、`26｜第五阶段 Knowledge 调研`。
+- Feishu fetch：导航页包含 25/26；Knowledge 调研页包含 `Copy ref`、`5 / 5 entries`、`Decision`、`Knowledge is planned` 变更记录。

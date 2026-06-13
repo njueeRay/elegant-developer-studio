@@ -409,7 +409,7 @@ GitHub：
 
 ### 第五阶段：Knowledge 首个切片
 
-状态：已部署，待飞书和 GitHub 回填。
+状态：已部署，已同步飞书，待 GitHub 回填。
 
 复盘：
 
@@ -438,6 +438,11 @@ GitHub：
 - sitemap 增加 `/knowledge`。
 - 添加 `docs/PHASE4_PHOTO_FILTER_REVIEW.md` 和 `docs/PHASE5_KNOWLEDGE_RESEARCH.md`。
 
+提交：
+
+- `6cc9fda` - `feat: add knowledge index workflow`
+- `ca2df2f` - `fix: wire knowledge into command menu`
+
 验证：
 
 - `npm run lint`：通过。
@@ -451,7 +456,7 @@ GitHub：
 
 下一步：
 
-- 同步飞书知识库和 GitHub issue。
+- 同步 GitHub issue。
 
 部署：
 
@@ -461,3 +466,9 @@ GitHub：
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/8F8o7UHhon7spUfpzVtoLn1e217i`
 - Production fetch：`/knowledge` 返回 `200 OK`，并包含本轮 Knowledge 内容。
 - Production sitemap：包含 `/knowledge`。
+
+飞书：
+
+- [25｜第四阶段照片筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/RaP7wMXZxiELyvkTSg5cZmh3nlc)
+- [26｜第五阶段 Knowledge 调研](https://scnlb1lk96sb.feishu.cn/wiki/QLohw7hBqi5CYpkIe6PciYhdnDv)
+- 验证：导航页包含 25/26；Knowledge 调研页包含 `Copy ref`、`5 / 5 entries`、`Decision`、`Knowledge is planned` 变更记录。

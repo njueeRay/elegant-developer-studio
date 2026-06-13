@@ -32,6 +32,8 @@
 | 状态筛选调研 | [22｜第四阶段状态面板与筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/K5rQw97FZiSMCvkiIYFceAY7nzf) | 首页状态面板、可复用筛选条和本轮验收 |
 | 状态筛选复盘 | [23｜第四阶段状态面板与筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/A4FFwPC4qiod5lkcPascxE4KnHc) | 状态面板和筛选条切片复盘、风险和下一步 |
 | 照片筛选调研 | [24｜第四阶段照片筛选调研](https://scnlb1lk96sb.feishu.cn/wiki/JA2jw4JSHiZWHnkMHfXc7Zamnlh) | 照片筛选、灯箱联动和媒体浏览模式调研 |
+| 照片筛选复盘 | [25｜第四阶段照片筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/RaP7wMXZxiELyvkTSg5cZmh3nlc) | 照片筛选完成复盘和 Knowledge 进入标准 |
+| Knowledge 调研 | [26｜第五阶段 Knowledge 调研](https://scnlb1lk96sb.feishu.cn/wiki/QLohw7hBqi5CYpkIe6PciYhdnDv) | Knowledge 首个切片调研、内容模型和验收 |
 
 ## 当前项目状态
 
