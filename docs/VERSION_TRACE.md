@@ -566,3 +566,10 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - 移动端无横向溢出：`scrollWidth 390`，`clientWidth 390`。
 - Vercel inspect：deployment 状态 `Ready`。
 - Production alias 已指向本阶段部署。
+
+外部同步：
+
+- GitHub issue `#4` comment `4699086363`。
+- GitHub issue `#5` comment `4699086922`。
+- 飞书：[36｜第七阶段 Contact 调研](https://scnlb1lk96sb.feishu.cn/wiki/XAwGwIpJ2iVUE8k4Mjfcmw6yn8e)。
+- 飞书：[37｜第七阶段 Contact 复盘](https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb)。

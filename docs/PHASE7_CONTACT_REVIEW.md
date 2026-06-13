@@ -155,3 +155,10 @@ Browser QA：
 - 把项目地图、阶段反馈、bug、feature request 分成不同 issue 类型。
 
 这个方向比直接加表单更稳，因为它延续了当前 GitHub + Vercel + Feishu 的追溯机制。
+
+## 8. 外部同步
+
+- GitHub issue `#4` comment `4699086363`。
+- GitHub issue `#5` comment `4699086922`。
+- 飞书调研页：https://scnlb1lk96sb.feishu.cn/wiki/XAwGwIpJ2iVUE8k4Mjfcmw6yn8e
+- 飞书复盘页：https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb

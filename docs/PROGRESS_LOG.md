@@ -728,7 +728,7 @@ GitHub：
 
 ### 第七阶段：Contact 与公开信任层
 
-状态：已部署，待外部同步。
+状态：已部署，已同步 GitHub 和飞书。
 
 复盘：
 
@@ -771,5 +771,11 @@ GitHub：
 
 剩余：
 
-- 尚未同步 GitHub issue 和飞书。
 - 后续可新增 GitHub issue template 与私密联系渠道。
+
+外部同步：
+
+- GitHub issue `#4` comment `4699086363`。
+- GitHub issue `#5` comment `4699086922`。
+- 飞书：[36｜第七阶段 Contact 调研](https://scnlb1lk96sb.feishu.cn/wiki/XAwGwIpJ2iVUE8k4Mjfcmw6yn8e)。
+- 飞书：[37｜第七阶段 Contact 复盘](https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb)。
