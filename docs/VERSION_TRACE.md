@@ -364,7 +364,8 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-06-13
 Primary commit：`070b9f5`
-Deployment record commit：待回填
+Deployment record commit：`eb28cb3`
+GitHub trace commit：本记录所在提交
 Vercel deployment：`dpl_53zPmqkRZvhssJURGiHE1PrWWy8y`
 Production alias：`https://elegant-developer-studio.vercel.app`
 Deployment URL：`https://elegant-developer-studio-egeyv7n0r.vercel.app`
@@ -400,3 +401,5 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Production fetch：`/uses` 返回 `200 OK`，并包含 `Uses - Ray Studio`、`Filter tools`、`12 / 12 tools`、`Open Command Center`、`Workspace rhythm`、`Publishing pipeline`。
 - Production sitemap：包含 `/uses`。
 - Feishu：`27｜第五阶段 Knowledge 复盘`、`28｜第五阶段 Uses 调研`。
+- Feishu fetch：导航页包含 27/28；Uses 调研页包含 `12 / 12 tools`、`Copy Raycast reference`、`Uses is planned` 变更记录。
+- GitHub：issue `#4` comment `4697820505`；issue `#5` comment `4697820783`。

@@ -65,9 +65,10 @@
 
 | 页面 | 素材 | Block ID | File token | 备注 |
 | --- | --- | --- | --- | --- |
-| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcnMA9oOPlNIH2ymTMLNAubag` | `WBscbat2roMNiNxYLfYcsquHnNd` | 第一阶段已采纳视觉参考 |
-| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcnlEBiq8yslx7yH5fvRHvpU9` | `R1vjboQ1voj8joxHQgtcpMVLnkb` | 项目卡片图 |
-| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcnr8hrYbPGMZJbPFATrY2gMj` | `ChG7bkELko3JhCxmO5pcqND8nuh` | 媒体图 |
+| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcnezg0bDriKnNU7uD8JKiHtg` | `YXhpbNKqboFMRfxE55OcJuyNnib` | 第一阶段已采纳视觉参考 |
+| 10｜素材与参考 | `public/references/uses-page-reference.png` | `doxcn7q0toFo7b5BBoGrXngdmAe` | `LT2abdXkyoP3fIx9XDHcA8HbnLd` | 第五阶段 Uses 视觉参考 |
+| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcnnqjAjv7MDYQkySy9WUBYLi` | `RdwHbTZV4oDGshxZofIcvmkAnFe` | 项目卡片图 |
+| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcnyXxWaiYrBn0q8AU6c720Pe` | `HvSobtuySo1DZLxDVHAcAyuGnx2` | 媒体图 |
 
 重要：
 

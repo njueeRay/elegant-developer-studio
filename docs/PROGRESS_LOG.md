@@ -476,7 +476,7 @@ GitHub：
 
 ### 第五阶段：Uses 首个切片
 
-状态：已部署，已创建飞书页面，待飞书同步和 GitHub 回填。
+状态：已部署，已同步飞书和 GitHub。
 
 复盘：
 
@@ -524,11 +524,6 @@ GitHub：
 - `/tmp/uses-mobile.png`
 - `/tmp/uses-command.png`
 
-下一步：
-
-- 创建飞书页面并同步。
-- 同步 GitHub issue。
-
 部署：
 
 - Vercel production：`https://elegant-developer-studio.vercel.app`
@@ -542,3 +537,9 @@ GitHub：
 
 - [27｜第五阶段 Knowledge 复盘](https://scnlb1lk96sb.feishu.cn/wiki/Vl0twcEuYi0aBHk5FIOcu6W3nVf)
 - [28｜第五阶段 Uses 调研](https://scnlb1lk96sb.feishu.cn/wiki/ZuFswpj8ci6SmFksRrSckuaNnVc)
+- 验证：导航页包含 27/28；Uses 调研页包含 `12 / 12 tools`、`Copy Raycast reference`、`Uses is planned` 变更记录。
+
+GitHub：
+
+- Issue `#4` 追加 Phase 5 Uses 交付记录：comment `4697820505`。
+- Issue `#5` 追加 Phase 5 Uses 调研记录：comment `4697820783`。
