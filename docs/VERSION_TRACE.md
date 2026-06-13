@@ -409,7 +409,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 日期：2026-06-13
 Primary commit：`f8f9cd8`
 Deployment record commit：本记录所在提交
-GitHub trace commit：待提交
+GitHub trace commit：本记录所在提交
 Vercel deployment：`dpl_eLddAkLRyfEqKAgUMfPCqUS36sFa`
 Production alias：`https://elegant-developer-studio.vercel.app`
 Deployment URL：`https://elegant-developer-studio-g852ukupb.vercel.app`
@@ -445,4 +445,4 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - Production sitemap：包含 `/about`。
 - Feishu：`29｜第五阶段 Uses 复盘`、`30｜第五阶段 About 调研`。
 - Feishu fetch：导航页包含 29/30；About 调研页包含 `Copy intro`、`About is planned` 变更记录和 `scrollWidth 390`；素材页包含 `about-page-reference.png`。
-- GitHub：待评论。
+- GitHub：issue `#4` comment `4697902514`；issue `#5` comment `4697902594`。

@@ -546,7 +546,7 @@ GitHub：
 
 ### 第五阶段：About 首个切片
 
-状态：已部署，已同步飞书，待 GitHub 追踪评论。
+状态：已部署，已同步飞书和 GitHub。
 
 复盘：
 
@@ -603,3 +603,8 @@ GitHub：
 - [29｜第五阶段 Uses 复盘](https://scnlb1lk96sb.feishu.cn/wiki/A0i0wPS74i4WyjkKO0RcOMWKngd)
 - [30｜第五阶段 About 调研](https://scnlb1lk96sb.feishu.cn/wiki/TAWHwObsji30i1kaJmfc3Wylnne)
 - 验证：导航页包含 29/30；About 调研页包含 `Copy intro`、`About is planned` 变更记录和移动端 QA；素材页包含 `about-page-reference.png`。
+
+GitHub：
+
+- Issue `#4` 追加 Phase 5 About 交付记录：comment `4697902514`。
+- Issue `#5` 追加 Phase 5 About 调研记录：comment `4697902594`。
