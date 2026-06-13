@@ -782,7 +782,7 @@ GitHub：
 
 ### 第八阶段：公开协作与 Issue Template 层
 
-状态：本地实现中，待完整验证、部署和外部同步。
+状态：已部署，待外部同步。
 
 复盘：
 
@@ -813,8 +813,12 @@ GitHub：
 - `npm run test:e2e`：60 passed。
 - 本地生产模式视觉复核：`/contact` 桌面 `scrollWidth 1440`、移动端 `scrollWidth 390`，无横向溢出。
 - 截图：`/tmp/phase8-contact-desktop.png`、`/tmp/phase8-contact-mobile.png`。
+- Vercel deployment：`dpl_HRDcxTSwxDfJAGxWAxGmQPj4LR38`。
+- Deployment URL：`https://elegant-developer-studio-eazkr2exm.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/HRDcxTSwxDfJAGxWAxGmQPj4LR38`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，60 passed。
 
 剩余：
 
-- Vercel production 部署。
 - GitHub issue 和飞书同步。

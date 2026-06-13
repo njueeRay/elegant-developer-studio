@@ -93,6 +93,14 @@
 - 本地生产模式视觉复核：`/contact` 桌面和移动端无横向溢出。
 - 截图：`/tmp/phase8-contact-desktop.png`、`/tmp/phase8-contact-mobile.png`。
 
+生产验证：
+
+- Vercel deployment：`dpl_HRDcxTSwxDfJAGxWAxGmQPj4LR38`。
+- Deployment URL：`https://elegant-developer-studio-eazkr2exm.vercel.app`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/HRDcxTSwxDfJAGxWAxGmQPj4LR38`。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：60 passed。
+
 已新增测试契约：
 
 - Contact 页面结构化 issue 链接必须指向 `contact.yml`。
@@ -103,7 +111,6 @@
 
 待完成：
 
-- 生产部署与线上 e2e。
 - GitHub / 飞书同步。
 
 ## 6. 风险
