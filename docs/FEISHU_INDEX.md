@@ -36,6 +36,8 @@
 | Knowledge 调研 | [26｜第五阶段 Knowledge 调研](https://scnlb1lk96sb.feishu.cn/wiki/QLohw7hBqi5CYpkIe6PciYhdnDv) | Knowledge 首个切片调研、内容模型和验收 |
 | Knowledge 复盘 | [27｜第五阶段 Knowledge 复盘](https://scnlb1lk96sb.feishu.cn/wiki/Vl0twcEuYi0aBHk5FIOcu6W3nVf) | Knowledge 首个切片完成复盘和 Uses 进入标准 |
 | Uses 调研 | [28｜第五阶段 Uses 调研](https://scnlb1lk96sb.feishu.cn/wiki/ZuFswpj8ci6SmFksRrSckuaNnVc) | Uses 工具书架调研、实现范围和验收 |
+| Uses 复盘 | [29｜第五阶段 Uses 复盘](https://scnlb1lk96sb.feishu.cn/wiki/A0i0wPS74i4WyjkKO0RcOMWKngd) | Uses 首个切片完成复盘和 About 进入标准 |
+| About 调研 | [30｜第五阶段 About 调研](https://scnlb1lk96sb.feishu.cn/wiki/TAWHwObsji30i1kaJmfc3Wylnne) | About Studio Profile 调研、实现范围和验收 |
 
 ## 当前项目状态
 

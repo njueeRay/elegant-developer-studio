@@ -51,6 +51,8 @@
 | 26｜第五阶段 Knowledge 调研 | `docs/PHASE5_KNOWLEDGE_RESEARCH.md` | `QLohw7hBqi5CYpkIe6PciYhdnDv` | `PFVrdLJgsookfnxuPizc5LkTnad` | https://scnlb1lk96sb.feishu.cn/wiki/QLohw7hBqi5CYpkIe6PciYhdnDv |
 | 27｜第五阶段 Knowledge 复盘 | `docs/PHASE5_KNOWLEDGE_REVIEW.md` | `Vl0twcEuYi0aBHk5FIOcu6W3nVf` | `N0mmdfc1eoeWSQx2TnccSe21nae` | https://scnlb1lk96sb.feishu.cn/wiki/Vl0twcEuYi0aBHk5FIOcu6W3nVf |
 | 28｜第五阶段 Uses 调研 | `docs/PHASE5_USES_RESEARCH.md` | `ZuFswpj8ci6SmFksRrSckuaNnVc` | `LQvwdAtBmofdgRxC0g9cZmQOnFd` | https://scnlb1lk96sb.feishu.cn/wiki/ZuFswpj8ci6SmFksRrSckuaNnVc |
+| 29｜第五阶段 Uses 复盘 | `docs/PHASE5_USES_REVIEW.md` | `A0i0wPS74i4WyjkKO0RcOMWKngd` | `J3ufdkNWionJsaxkRxrcHBXxnXe` | https://scnlb1lk96sb.feishu.cn/wiki/A0i0wPS74i4WyjkKO0RcOMWKngd |
+| 30｜第五阶段 About 调研 | `docs/PHASE5_ABOUT_RESEARCH.md` | `TAWHwObsji30i1kaJmfc3Wylnne` | `FHkMdJTIYoy3adxFvh1czyTZnHb` | https://scnlb1lk96sb.feishu.cn/wiki/TAWHwObsji30i1kaJmfc3Wylnne |
 
 ## 同步协议
 
@@ -65,10 +67,11 @@
 
 | 页面 | 素材 | Block ID | File token | 备注 |
 | --- | --- | --- | --- | --- |
-| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcnezg0bDriKnNU7uD8JKiHtg` | `YXhpbNKqboFMRfxE55OcJuyNnib` | 第一阶段已采纳视觉参考 |
-| 10｜素材与参考 | `public/references/uses-page-reference.png` | `doxcn7q0toFo7b5BBoGrXngdmAe` | `LT2abdXkyoP3fIx9XDHcA8HbnLd` | 第五阶段 Uses 视觉参考 |
-| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcnnqjAjv7MDYQkySy9WUBYLi` | `RdwHbTZV4oDGshxZofIcvmkAnFe` | 项目卡片图 |
-| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcnyXxWaiYrBn0q8AU6c720Pe` | `HvSobtuySo1DZLxDVHAcAyuGnx2` | 媒体图 |
+| 10｜素材与参考 | `public/references/developer-atelier-reference.png` | `doxcn6lPINZ5kXNDn31Q5S7G6hf` | `ZHGDbA0H3oEikOxbz6hcKQrCnSh` | 第一阶段已采纳视觉参考 |
+| 10｜素材与参考 | `public/references/uses-page-reference.png` | `doxcnvIu4k3XXuIfXvi67IGEmbe` | `ALynbMVmEoEFdrxPIF3cdihqnrg` | 第五阶段 Uses 视觉参考 |
+| 10｜素材与参考 | `public/references/about-page-reference.png` | `doxcnbg0KwPQtorIymT7tBwWHph` | `Epg8boKIgoagswxnGFJcrXEinvf` | 第五阶段 About 视觉参考 |
+| 10｜素材与参考 | `public/assets/lumen-design-system.png` | `doxcn4br4mY7aRJNRfnkXe9zYvf` | `QI80bHUtCoveLKx24UDcKG9wnMg` | 项目卡片图 |
+| 10｜素材与参考 | `public/assets/morning-studio-desk.png` | `doxcnqMWRj7tqghDNDIxbIhNdAf` | `TnBabgJyHoicxExSXomczp14nDq` | 媒体图 |
 
 重要：
 

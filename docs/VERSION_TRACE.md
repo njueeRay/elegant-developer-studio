@@ -407,13 +407,13 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第五阶段 About 首个切片
 
 日期：2026-06-13
-Primary commit：待提交
-Deployment record commit：待提交
+Primary commit：`f8f9cd8`
+Deployment record commit：本记录所在提交
 GitHub trace commit：待提交
-Vercel deployment：待部署
+Vercel deployment：`dpl_eLddAkLRyfEqKAgUMfPCqUS36sFa`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待部署
-Inspect URL：待部署
+Deployment URL：`https://elegant-developer-studio-g852ukupb.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/eLddAkLRyfEqKAgUMfPCqUS36sFa`
 
 范围：
 
@@ -440,7 +440,9 @@ Inspect URL：待部署
 - `npm run build`：通过。
 - Browser QA：`/about` 页面身份、原则选择、复制简介、Command Center 搜索和移动端布局通过。
 - 生产构建移动端 390 x 844：`scrollWidth 390`，`clientWidth 390`。
-- Production fetch：待部署后补充。
-- Production sitemap：待部署后补充。
-- Feishu：待同步。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production fetch：`/about` 返回 `200 OK`，并包含 `About - Ray Studio`、`I design and build calm`、`Code as product material`。
+- Production sitemap：包含 `/about`。
+- Feishu：`29｜第五阶段 Uses 复盘`、`30｜第五阶段 About 调研`。
+- Feishu fetch：导航页包含 29/30；About 调研页包含 `Copy intro`、`About is planned` 变更记录和 `scrollWidth 390`；素材页包含 `about-page-reference.png`。
 - GitHub：待评论。

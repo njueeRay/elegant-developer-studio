@@ -546,7 +546,7 @@ GitHub：
 
 ### 第五阶段：About 首个切片
 
-状态：已完成本地实现，待部署、飞书同步和 GitHub 追踪评论。
+状态：已部署，已同步飞书，待 GitHub 追踪评论。
 
 复盘：
 
@@ -588,3 +588,18 @@ GitHub：
 - `/tmp/about-desktop-1440.png`
 - `/tmp/about-command.png`
 - `/tmp/about-mobile-prod-fixed.png`
+
+部署：
+
+- Vercel production：`https://elegant-developer-studio.vercel.app`
+- Vercel deployment：`https://elegant-developer-studio-g852ukupb.vercel.app`
+- Deployment id：`dpl_eLddAkLRyfEqKAgUMfPCqUS36sFa`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/eLddAkLRyfEqKAgUMfPCqUS36sFa`
+- Production fetch：`/about` 返回 `200 OK`，并包含本轮 About 内容。
+- Production sitemap：包含 `/about`。
+
+飞书：
+
+- [29｜第五阶段 Uses 复盘](https://scnlb1lk96sb.feishu.cn/wiki/A0i0wPS74i4WyjkKO0RcOMWKngd)
+- [30｜第五阶段 About 调研](https://scnlb1lk96sb.feishu.cn/wiki/TAWHwObsji30i1kaJmfc3Wylnne)
+- 验证：导航页包含 29/30；About 调研页包含 `Copy intro`、`About is planned` 变更记录和移动端 QA；素材页包含 `about-page-reference.png`。
