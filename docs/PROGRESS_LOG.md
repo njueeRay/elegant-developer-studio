@@ -409,7 +409,7 @@ GitHub：
 
 ### 第五阶段：Knowledge 首个切片
 
-状态：已部署，已同步飞书，待 GitHub 回填。
+状态：已部署，已同步飞书和 GitHub。
 
 复盘：
 
@@ -454,10 +454,6 @@ GitHub：
 - Playwright 验证：移动端 390 x 844 无页面级横向溢出。
 - 截图：`/tmp/knowledge-desktop.png`、`/tmp/knowledge-command.png`、`/tmp/knowledge-mobile.png`。
 
-下一步：
-
-- 同步 GitHub issue。
-
 部署：
 
 - Vercel production：`https://elegant-developer-studio.vercel.app`
@@ -472,3 +468,8 @@ GitHub：
 - [25｜第四阶段照片筛选复盘](https://scnlb1lk96sb.feishu.cn/wiki/RaP7wMXZxiELyvkTSg5cZmh3nlc)
 - [26｜第五阶段 Knowledge 调研](https://scnlb1lk96sb.feishu.cn/wiki/QLohw7hBqi5CYpkIe6PciYhdnDv)
 - 验证：导航页包含 25/26；Knowledge 调研页包含 `Copy ref`、`5 / 5 entries`、`Decision`、`Knowledge is planned` 变更记录。
+
+GitHub：
+
+- Issue `#4` 追加 Phase 5 Knowledge 交付记录：comment `4697691422`。
+- Issue `#5` 追加 Phase 5 Knowledge 调研记录：comment `4697691502`。
