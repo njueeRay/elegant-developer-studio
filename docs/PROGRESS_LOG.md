@@ -1114,3 +1114,9 @@ GitHub 推送修复：
 - Deployment URL：`https://elegant-developer-studio-pu7nr8w6g.vercel.app`。
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/B4tu25Li2odMD2iz4J7gQKvkR8g4`。
 - Production alias：`https://elegant-developer-studio.vercel.app`。
+
+外部同步：
+
+- 飞书：[49｜第十三至第十六阶段 Navigation OS 复盘](https://scnlb1lk96sb.feishu.cn/wiki/XKS9wKn5Diutm1kKly4cDBwsnJe)。
+- 飞书核心页已同步：导航首页、项目地图、路线图、信息架构、设计系统、开发进度、版本追溯、同步协议。
+- 飞书 live verification：新阶段页包含 `公开可达`、`Phase 16`、`84 passed`、`Reference Constellation`；导航首页包含 49 号节点链接。
