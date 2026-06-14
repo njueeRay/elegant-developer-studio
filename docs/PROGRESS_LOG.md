@@ -1123,7 +1123,7 @@ GitHub 推送修复：
 
 ### 第十七阶段：中文内容试点与全站复盘
 
-状态：已实现，已验证，待提交、部署和外部同步。
+状态：已实现，已验证，已部署，待外部同步。
 
 阶段判断：
 
@@ -1147,9 +1147,18 @@ GitHub 推送修复：
 - `npm run build`：通过。
 - targeted e2e：`Chinese pilot content`，2 passed。
 - `npm run test:e2e`：88 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：88 passed。
 - 本地生产模式视觉检查：中文博客、Blog、Knowledge、Uses、About 的桌面与移动端均无横向溢出。
   - `/blog/chinese-as-product-memory` 桌面和移动端 `scrollWidth === clientWidth`。
   - `/knowledge`、`/uses`、`/about` 均可检索到中文内容。
+
+部署：
+
+- Primary commit：`01122c9`。
+- Vercel deployment：`dpl_4DqXDZMd2S8RWhsHhU128ZKSPEkW`。
+- Deployment URL：`https://elegant-developer-studio-8ojizsxr6.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/4DqXDZMd2S8RWhsHhU128ZKSPEkW`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
 
 下一步建议：
 
