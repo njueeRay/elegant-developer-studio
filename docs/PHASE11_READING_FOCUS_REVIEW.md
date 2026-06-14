@@ -115,6 +115,17 @@ https://elegant-developer-studio.vercel.app/blog/interface-is-a-promise#the-tech
 - `npm run build`：通过。
 - `npm run test:e2e`：72 passed。
 - targeted e2e：`article reading focus` 和 `lab and command center`，4 passed。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，72 passed。
+- Vercel deployment：`dpl_6yfkF68Y9W9CYkURgc4hcCe2XSxL`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- Deployment URL：`https://elegant-developer-studio-1bar07nc4.vercel.app`。
+
+Playwright 视觉巡检：
+
+- 桌面和移动端文章页均无横向溢出。
+- 桌面滚动到第二小节后显示 `read.focus("the-technical-texture")`。
+- 移动端显示 `read.focus("a-promise-has-shape")`，底部浮层未越界。
+- 截图：`output/phase11-reading-focus-desktop.png`、`output/phase11-reading-focus-technical-desktop.png`、`output/phase11-reading-focus-mobile.png`。
 
 新增测试覆盖：
 

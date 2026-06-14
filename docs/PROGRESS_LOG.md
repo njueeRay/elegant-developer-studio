@@ -956,7 +956,7 @@ GitHub：
 
 ### 第十一阶段：Reading Focus Lens
 
-状态：已实现，等待部署和外部同步。
+状态：已部署，已同步 GitHub 和飞书。
 
 复盘：
 
@@ -1000,10 +1000,19 @@ GitHub：
 - `npm run build`：通过。
 - targeted e2e：`article reading focus` 和 `lab and command center`，4 passed。
 - `npm run test:e2e`：72 passed。
+- Playwright 视觉巡检：桌面和移动端文章页无横向溢出。
+- 桌面滚动到第二小节后显示 `read.focus("the-technical-texture")`。
+- 移动端显示 `read.focus("a-promise-has-shape")`，底部浮层未越界。
+- 截图：`output/phase11-reading-focus-desktop.png`、`output/phase11-reading-focus-technical-desktop.png`、`output/phase11-reading-focus-mobile.png`。
+- Vercel deployment：`dpl_6yfkF68Y9W9CYkURgc4hcCe2XSxL`。
+- Deployment URL：`https://elegant-developer-studio-1bar07nc4.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/6yfkF68Y9W9CYkURgc4hcCe2XSxL`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，72 passed。
 
-剩余：
+外部同步：
 
-- Vercel 部署。
-- 生产环境 e2e。
-- GitHub issue 同步。
-- 飞书同步。
+- GitHub issue `#4` comment `4701358081`。
+- GitHub issue `#5` comment `4701358538`。
+- 飞书：[45｜第十一阶段 Reading Focus 调研](https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe)。
+- 飞书：[46｜第十一阶段 Reading Focus 复盘](https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg)。

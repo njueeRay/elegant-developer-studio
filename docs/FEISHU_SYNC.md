@@ -67,6 +67,8 @@
 | 42｜创意方向与交互 Backlog | `docs/CREATIVE_DIRECTION.md` | `TXViwYd2TiDvA7kGqs5czJifnSg` | `EFT1djiTto9dO5xyjmzcDDPan3g` | https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg |
 | 43｜第十阶段 Signature Interaction 调研 | `docs/PHASE10_SIGNATURE_INTERACTION_RESEARCH.md` | `DRRVwNzmoieq3TkBpgVcxJ2Pnhg` | `JfqhdwBtpoRGiRxKCQmcyzAqnAe` | https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg |
 | 44｜第十阶段 Signature Interaction 复盘 | `docs/PHASE10_SIGNATURE_INTERACTION_REVIEW.md` | `FTCPwMMMli8mMskzh3uctZjynGb` | `KRyIdeT3aodnsJxSKw5cCaqAnBb` | https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb |
+| 45｜第十一阶段 Reading Focus 调研 | `docs/PHASE11_READING_FOCUS_RESEARCH.md` | `Xhp5w6OntinAWMkHtofcd9RVnAe` | `DpNgdAt8Hofq3jxBPxycTDBon0c` | https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe |
+| 46｜第十一阶段 Reading Focus 复盘 | `docs/PHASE11_READING_FOCUS_REVIEW.md` | `X6qRwjnsLi02JNkUT5Pc2S3CnUg` | `OEkLd3Ld4oO1O3xmCSPcJbbNnrd` | https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg |
 
 ## 同步协议
 

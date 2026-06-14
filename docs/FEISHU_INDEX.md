@@ -52,6 +52,8 @@
 | 创意方向 | [42｜创意方向与交互 Backlog](https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg) | 可评论、可迭代的 signature interaction 与创意排期 |
 | Signature Interaction 调研 | [43｜第十阶段 Signature Interaction 调研](https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg) | Command Trace、Source Hover、外部参考和实现边界 |
 | Signature Interaction 复盘 | [44｜第十阶段 Signature Interaction 复盘](https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb) | 第十阶段交付、验证、部署、优缺点和下一步 |
+| Reading Focus 调研 | [45｜第十一阶段 Reading Focus 调研](https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe) | 阅读焦点、炫酷边界、外部参考和实现范围 |
+| Reading Focus 复盘 | [46｜第十一阶段 Reading Focus 复盘](https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg) | 第十一阶段交付、验证、部署、优缺点和创意建议 |
 
 ## 当前项目状态
 

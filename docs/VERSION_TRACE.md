@@ -711,12 +711,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第十一阶段 Reading Focus Lens
 
 日期：2026-06-14
-Primary commit：待提交
-Deployment record commit：待提交
-Vercel deployment：待部署
+Primary commit：`27c34f2`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_6yfkF68Y9W9CYkURgc4hcCe2XSxL`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待部署
-Inspect URL：待部署
+Deployment URL：`https://elegant-developer-studio-1bar07nc4.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/6yfkF68Y9W9CYkURgc4hcCe2XSxL`
 
 范围：
 
@@ -739,8 +739,14 @@ Inspect URL：待部署
 - `npm run build`：通过。
 - targeted e2e：4 passed。
 - `npm run test:e2e`：72 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：72 passed。
+- Playwright 视觉巡检：桌面和移动端文章页无横向溢出。
+- Vercel inspect：deployment 状态 `READY`。
+- Production alias 已指向本阶段部署。
 
 外部同步：
 
-- GitHub issue：待同步。
-- 飞书：待同步。
+- GitHub issue `#4` comment `4701358081`。
+- GitHub issue `#5` comment `4701358538`。
+- 飞书：[45｜第十一阶段 Reading Focus 调研](https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe)。
+- 飞书：[46｜第十一阶段 Reading Focus 复盘](https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg)。
