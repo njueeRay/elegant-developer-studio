@@ -48,6 +48,11 @@ export type ProjectMeta = {
   image: string;
   summary: string;
   impact: string[];
+  caseStudyDiff: Array<{
+    before: string;
+    after: string;
+    proof: string;
+  }>;
   featured: boolean;
 };
 
@@ -119,6 +124,7 @@ function toProjectMeta(project: Project): ProjectMeta {
     image: project.image,
     summary: project.summary,
     impact: project.impact,
+    caseStudyDiff: project.caseStudyDiff,
     featured: project.featured,
   };
 }

@@ -564,19 +564,6 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
     [closeCommand, recordRecentCommand, router],
   );
 
-  const onCommandLinkClick = useCallback(
-    (item: CommandItem) => {
-      recordRecentCommand(item);
-
-      if (!item.href.startsWith("mailto:") && !item.href.startsWith("http")) {
-        writeCommandTrace(item);
-      }
-
-      closeCommand();
-    },
-    [closeCommand, recordRecentCommand],
-  );
-
   const onInputKeyDown = (event: ReactKeyboardEvent<HTMLInputElement>) => {
     if (event.key === "ArrowDown") {
       event.preventDefault();
@@ -669,7 +656,10 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
                         href={item.href}
                         id={getResultId(item.id)}
                         key={item.id}
-                        onClick={() => onCommandLinkClick(item)}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          openItem(item);
+                        }}
                         onMouseEnter={() => setActiveIndex(index)}
                         role="option"
                       >

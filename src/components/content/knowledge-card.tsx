@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { BookOpenText, Braces, Check, Copy, GitBranch, Lightbulb, Waypoints } from "lucide-react";
 import { useState } from "react";
+import { SourceReveal } from "@/components/content/source-reveal";
 import type { KnowledgeEntry, KnowledgeKind } from "@/data/knowledge";
 import { writeToClipboard } from "@/lib/clipboard";
 
@@ -69,7 +70,20 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
             ),
           )}
         </div>
-        <span className="source-reveal">ref /knowledge#{entry.slug}</span>
+        <div className="knowledge-backlinks" aria-label={`${entry.title} backlinks`}>
+          <span>Backlinks</span>
+          {entry.backlinks.map((link) => (
+            <Link href={link.href} key={link.href}>
+              <strong>{link.label}</strong>
+              <small>{link.context}</small>
+            </Link>
+          ))}
+        </div>
+        <SourceReveal
+          label="source"
+          path="src/data/knowledge.ts"
+          testId={`source-link-knowledge-${entry.slug}`}
+        />
       </div>
 
       <button

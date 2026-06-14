@@ -1016,3 +1016,59 @@ GitHub：
 - GitHub issue `#5` comment `4701358538`。
 - 飞书：[45｜第十一阶段 Reading Focus 调研](https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe)。
 - 飞书：[46｜第十一阶段 Reading Focus 复盘](https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg)。
+
+### 第十二阶段：可追溯作品集层
+
+状态：已实现，已部署，待外部同步。
+
+阶段判断：
+
+- 第十一阶段后，站点已经有 `Command Trace`、`SourceReveal` 和 `ReadingFocusLens`。
+- 用户明确要求避免“能看到但点不到”的交互错误。
+- 因此本阶段优先补可追溯链条和真实点击验证，而不是继续堆装饰。
+
+完成：
+
+- `SourceReveal` 升级为可点击 GitHub source link。
+- 新增 `src/lib/source-links.ts`。
+- Knowledge 数据模型新增 backlinks。
+- Project metadata 新增 `caseStudyDiff`。
+- 项目详情页新增 `Case Study Diff`。
+- `/lab` 新增 `ComponentPreview`，支持 `preview / trace / source`。
+- Lab 注册 `ComponentPreview`。
+- 修复 Command Center 鼠标点击导航：点击结果和键盘 `Enter` 统一走 `openItem`。
+- 新增 `docs/PHASE12_TRACEABLE_PORTFOLIO_RESEARCH.md`。
+- 新增 `docs/PHASE12_TRACEABLE_PORTFOLIO_REVIEW.md`。
+
+专家判断：
+
+- 优点：界面、源码、知识、组件和证据之间开始形成可验证链条。
+- 缺点：source link 还不是 commit permalink；ComponentPreview 还不是交互沙箱；Case Study Diff 还缺截图/PR/commit 证据。
+- 创意建议：下一步优先设计 `Reference Constellation`，但必须只展示真实关系。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：6 passed。
+- `npm run test:e2e`：78 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：78 passed。
+- Playwright 视觉巡检：`/knowledge`、`/projects/lumen`、`/lab` 的桌面和移动端均无横向溢出。
+- Vercel deployment：`dpl_CJNVnLikDaf6LjhsDSFDTNFXYkaD`。
+- Deployment URL：`https://elegant-developer-studio-m2ez8af5j.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/CJNVnLikDaf6LjhsDSFDTNFXYkaD`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+
+GitHub 推送修复：
+
+- 问题：HTTPS remote 推送出现网络层空响应/超时。
+- 诊断：SSH 认证 `git@github.com` 成功。
+- 处理：`origin` 从 HTTPS 切换为 `git@github.com:njueeRay/elegant-developer-studio.git`。
+- 结果：上一批提交已成功推送到 `main`。
+
+外部同步：
+
+- GitHub issue `#4` comment `4701510690`。
+- GitHub issue `#5` comment `4701510805`。
+- 飞书：[47｜第十二阶段可追溯作品集调研](https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX)。
+- 飞书：[48｜第十二阶段可追溯作品集复盘](https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc)。

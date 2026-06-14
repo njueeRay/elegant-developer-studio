@@ -54,6 +54,8 @@
 | Signature Interaction 复盘 | [44｜第十阶段 Signature Interaction 复盘](https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb) | 第十阶段交付、验证、部署、优缺点和下一步 |
 | Reading Focus 调研 | [45｜第十一阶段 Reading Focus 调研](https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe) | 阅读焦点、炫酷边界、外部参考和实现范围 |
 | Reading Focus 复盘 | [46｜第十一阶段 Reading Focus 复盘](https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg) | 第十一阶段交付、验证、部署、优缺点和创意建议 |
+| 可追溯作品集调研 | [47｜第十二阶段可追溯作品集调研](https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX) | Source link、Knowledge backlinks、Case Study Diff、ComponentPreview 和外部参考 |
+| 可追溯作品集复盘 | [48｜第十二阶段可追溯作品集复盘](https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc) | 第十二阶段交付、验证、部署、交互 bug 修复和下一步创意建议 |
 
 ## 当前项目状态
 

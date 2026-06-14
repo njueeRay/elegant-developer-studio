@@ -176,6 +176,7 @@
 - `FilterBar` 复用到知识类型筛选。
 - `FilterBar` 复用到工具分类筛选。
 - 每条知识支持稳定锚点和 `Copy ref`。
+- Knowledge 条目支持 backlinks。
 - 每个工具支持 `Copy ref`，工具列表支持 `Copy all`。
 - Command Center 新增 `knowledge` 类型、真实结果和 `Knowledge context`。
 - Command Center 新增 `uses` 类型、真实工具和工作流结果、`Uses context`。
@@ -185,6 +186,10 @@
 - sitemap 收录 `/uses`。
 - sitemap 收录 `/about`。
 - sitemap 收录 `/lab`。
+- `SourceReveal` 可点击到 GitHub 文件。
+- 项目详情页新增 `Case Study Diff`。
+- `/lab` 新增 `ComponentPreview`，支持 `preview / trace / source`。
+- Command Center 点击结果和键盘打开结果统一导航路径。
 
 组件：
 
@@ -209,9 +214,10 @@
 
 下一片重点：
 
-- 复盘 `/lab` 的组件注册表、复制交互、质量门禁和实验时间线。
-- 判断是否需要进入 `ComponentPreview` 或 `ReactionBar` 切片。
-- 评估 `Knowledge` 是否需要详情页、反向链接和 local graph。
+- 给 `SourceReveal` 增加行号和 commit permalink。
+- 给 `ComponentPreview` 增加 viewport switch 和更真实的可交互状态。
+- 为 `Case Study Diff` 接入截图、PR、commit 或指标证据。
+- 为 Knowledge backlinks 增加 schema 校验。
 - 暂不做后台 CMS，继续用本地数据模型保证结构清晰。
 
 ## 第九阶段：协作治理与创意方向

@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, GitBranch, Radio } from "lucide-react";
+import { SourceReveal } from "@/components/content/source-reveal";
 import type { ProjectMeta } from "@/lib/content";
 
 export function ProjectCard({ project }: { project: ProjectMeta }) {
   return (
-    <Link href={`/projects/${project.slug}`} className="project-card">
+    <article className="project-card">
       <Image
         src={project.image}
         alt=""
@@ -31,9 +32,18 @@ export function ProjectCard({ project }: { project: ProjectMeta }) {
             <span key={item}>{item}</span>
           ))}
         </div>
-        <span className="source-reveal">source src/content/projects/{project.slug}.mdx</span>
+        <SourceReveal
+          label="source"
+          path={`src/content/projects/${project.slug}.mdx`}
+          testId={`source-link-project-${project.slug}`}
+        />
       </div>
+      <Link
+        href={`/projects/${project.slug}`}
+        className="project-card-link"
+        aria-label={`Open ${project.title} case study`}
+      />
       <ArrowRight className="card-arrow" size={20} />
-    </Link>
+    </article>
   );
 }

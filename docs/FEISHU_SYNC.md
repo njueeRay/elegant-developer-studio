@@ -69,6 +69,8 @@
 | 44｜第十阶段 Signature Interaction 复盘 | `docs/PHASE10_SIGNATURE_INTERACTION_REVIEW.md` | `FTCPwMMMli8mMskzh3uctZjynGb` | `KRyIdeT3aodnsJxSKw5cCaqAnBb` | https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb |
 | 45｜第十一阶段 Reading Focus 调研 | `docs/PHASE11_READING_FOCUS_RESEARCH.md` | `Xhp5w6OntinAWMkHtofcd9RVnAe` | `DpNgdAt8Hofq3jxBPxycTDBon0c` | https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe |
 | 46｜第十一阶段 Reading Focus 复盘 | `docs/PHASE11_READING_FOCUS_REVIEW.md` | `X6qRwjnsLi02JNkUT5Pc2S3CnUg` | `OEkLd3Ld4oO1O3xmCSPcJbbNnrd` | https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg |
+| 47｜第十二阶段可追溯作品集调研 | `docs/PHASE12_TRACEABLE_PORTFOLIO_RESEARCH.md` | `D7rSwIo6jiGQFHkpuPWcmav2nuX` | `Av5HdkivPoKrG0xH0Z3cf3y2nic` | https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX |
+| 48｜第十二阶段可追溯作品集复盘 | `docs/PHASE12_TRACEABLE_PORTFOLIO_REVIEW.md` | `OpBJwaM06i19GCkPAYzcbFB8nuc` | `Poc1dR2aYo0nNbxOVmKcvlBgnyg` | https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc |
 
 ## 同步协议
 

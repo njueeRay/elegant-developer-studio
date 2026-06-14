@@ -51,6 +51,7 @@
 - 第九阶段协作治理与创意方向层：`/collaboration`、`CONTRIBUTING.md`、PR 模板、创意 backlog 和专家审查。
 - 第十阶段签名交互层：`CommandTraceToast`、`SourceReveal`、命令执行痕迹和来源 reveal。
 - 第十一阶段阅读焦点层：`ReadingFocusLens`、当前小节追踪、`read.focus("section-id")` 和小节引用复制。
+- 第十二阶段可追溯作品集层：可点击 GitHub source link、Knowledge backlinks、Case Study Diff、Lab ComponentPreview 和 Command Center 点击导航修复。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -236,6 +237,7 @@
 - `ContactPanel` 深色 CTA 变体
 - `LabExplorer`
 - `ComponentRegistry` 首版模式
+- `ComponentPreview` 首版模式
 - `ExperimentTimeline`
 - `QualityGateList`
 - 知识类型筛选：`Pattern`、`Snippet`、`Decision`、`Reference`
@@ -244,6 +246,10 @@
 - Uses 工具分类筛选、复制引用和 `Copy all`
 - Command Center 真实 Uses 结果和 `Uses context`
 - Command Center 真实 Lab 结果和 `Lab context`
+- Knowledge backlinks
+- 可点击 GitHub source link
+- Project `Case Study Diff`
+- Command Center 鼠标点击结果真实导航
 - sitemap 收录 `/knowledge`
 - sitemap 收录 `/uses`
 - sitemap 收录 `/lab`
@@ -330,6 +336,33 @@
 - 本站可以炫酷，但应该选择可执行、可追踪、可引用的酷。
 - 当前仍不建议做常驻宠物、全站粒子或假终端。
 
+### 第十二阶段：可追溯作品集层
+
+状态：完成首版。
+
+范围：
+
+- `SourceReveal` 升级为真实 GitHub source link。
+- `/knowledge` 增加 backlinks。
+- `/projects/[slug]` 增加 `Case Study Diff`。
+- `/lab` 增加第一个真实 `ComponentPreview`。
+- Command Center 点击结果和键盘打开路径统一。
+
+已实现：
+
+- `src/lib/source-links.ts`
+- `src/components/content/source-reveal.tsx`
+- Knowledge 数据模型新增 `backlinks`。
+- 项目 MDX metadata 新增 `caseStudyDiff`。
+- `ComponentPreview` 支持 `preview / trace / source` 三种模式。
+- Lab 注册 `ComponentPreview`。
+- e2e 覆盖真实 GitHub href、backlinks、case diff、component preview 和命令菜单点击导航。
+
+主要判断：
+
+- 这轮最有价值的不是视觉装饰，而是把“界面、内容、源码、组件、证据”连成可验证链条。
+- 下一步创意可以做 `Reference Constellation`，但必须只展示真实关系，不做空图谱。
+
 ## 5. 仓库地图
 
 ```text
@@ -359,6 +392,8 @@ docs/
   PHASE5_USES_RESEARCH.md       第五阶段 Uses 调研与首个切片
   PHASE11_READING_FOCUS_RESEARCH.md 第十一阶段阅读焦点调研
   PHASE11_READING_FOCUS_REVIEW.md   第十一阶段阅读焦点复盘
+  PHASE12_TRACEABLE_PORTFOLIO_RESEARCH.md 第十二阶段可追溯作品集调研
+  PHASE12_TRACEABLE_PORTFOLIO_REVIEW.md   第十二阶段可追溯作品集复盘
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -404,6 +439,8 @@ src/
 - `CodeBlock`
 - `MetadataRail`
 - `ReadingFocusLens`
+- `SourceReveal`
+- `ComponentPreview`
 - `PhotoGrid`
 - `PhotoLightbox`
 - `MiniPlayer`
@@ -450,6 +487,7 @@ src/
 - 第六阶段交互契约：全站路由 e2e、占位链接防回归、Command Center 真实跳转、复制反馈、筛选反馈和音乐状态均纳入 Playwright 测试。
 - 第十阶段签名交互：Command Center 导航后显示 `cmd.open("/route")`，Knowledge/Projects/Lab 暴露真实 ref/source path。
 - 第十一阶段阅读焦点：博客详情页显示当前小节、`read.focus("section-id")` 和小节引用复制。
+- 第十二阶段可追溯交互：SourceReveal 可点击到 GitHub 文件，Knowledge backlinks 指向真实页面或小节，项目详情展示 before/after/proof，Lab ComponentPreview 可切换 preview/trace/source，Command Center 鼠标点击和键盘打开一致。
 
 研究轨道：
 
@@ -501,12 +539,12 @@ src/
 
 ## 10. 下一步
 
-下一步是第十一阶段之后的 Portfolio OS 继续推进：
+下一步是第十二阶段之后的 Portfolio OS 继续推进：
 
-1. 改善移动端筛选条的横向滚动提示。
-2. 将 `SourceReveal` 升级为可点击 GitHub source link。
-3. 做第一个真实 `ComponentPreview`。
-4. 为项目详情页增加 `Case Study Diff`。
-5. 判断 `Knowledge` 是否需要详情页、反向链接或 URL query 筛选。
+1. 给 `SourceReveal` 增加可选行号和 commit permalink。
+2. 给 `ComponentPreview` 增加 viewport switch 和更真实的组件状态。
+3. 为 `Case Study Diff` 接入截图、PR、commit 或指标证据。
+4. 为 Knowledge backlinks 增加 schema 校验。
+5. 设计 `Reference Constellation`，只展示真实关系，不做装饰性大图谱。
 6. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
 7. 第三阶段并行决定是否引入真实音频文件。

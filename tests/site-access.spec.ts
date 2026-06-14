@@ -121,23 +121,72 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByTestId("command-result-creative-source-hover")).toBeVisible();
   });
 
-  test("source reveal exposes real refs and source paths", async ({ page }) => {
+  test("source reveal exposes real GitHub source links", async ({ page }) => {
     await page.goto("/knowledge");
 
-    const knowledgeSource = page.locator("#filters-before-search .source-reveal");
+    const knowledgeSource = page.getByTestId("source-link-knowledge-filters-before-search");
     await page.locator("#filters-before-search").hover();
-    await expect(knowledgeSource).toContainText("ref /knowledge#filters-before-search");
+    await expect(knowledgeSource).toContainText("source src/data/knowledge.ts");
+    await expect(knowledgeSource).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/blob/main/src/data/knowledge.ts",
+    );
 
     await page.goto("/projects");
 
-    const projectSource = page.locator(".project-card").first().locator(".source-reveal");
+    const projectSource = page.locator('[data-testid^="source-link-project-"]').first();
     await page.locator(".project-card").first().hover();
     await expect(projectSource).toContainText("source src/content/projects/");
+    await expect(projectSource).toHaveAttribute(
+      "href",
+      /https:\/\/github\.com\/njueeRay\/elegant-developer-studio\/blob\/main\/src\/content\/projects\/.+\.mdx/,
+    );
 
     await page.goto("/lab");
 
     await expect(page.locator(".lab-component-row").first().locator(".source-reveal")).toContainText(
       "source src/",
+    );
+    await expect(page.getByTestId("source-link-lab-selected-global-command-menu")).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/blob/main/src/components/global-command-menu.tsx",
+    );
+  });
+
+  test("knowledge entries expose backlinks to public routes", async ({ page }) => {
+    await page.goto("/knowledge");
+
+    const knowledgeCard = page.locator("#interfaces-are-promises");
+
+    await expect(knowledgeCard.locator(".knowledge-backlinks")).toContainText("Backlinks");
+    await expect(knowledgeCard.getByRole("link", { name: /The Interface is a Promise/ })).toHaveAttribute(
+      "href",
+      "/blog/interface-is-a-promise#a-promise-has-shape",
+    );
+  });
+
+  test("project case studies expose before and after proof", async ({ page }) => {
+    await page.goto("/projects/lumen");
+
+    await expect(page.getByRole("heading", { name: "What changed" })).toBeVisible();
+    await expect(page.locator(".case-study-diff-card").first()).toContainText("Before");
+    await expect(page.locator(".case-study-diff-card").first()).toContainText("After");
+    await expect(page.locator(".case-study-diff-card").first()).toContainText("Proof");
+    await expect(page.locator(".case-study-diff")).toContainText("Shared styling now supports");
+  });
+
+  test("lab component preview switches modes and exposes source", async ({ page }) => {
+    await page.goto("/lab");
+
+    await expect(page.getByTestId("component-preview")).toContainText('lab.preview("global-command-menu")');
+
+    await page.getByRole("tab", { name: "trace" }).click();
+    await expect(page.getByTestId("component-preview")).toContainText("Reusable for");
+
+    await page.getByRole("tab", { name: "source" }).click();
+    await expect(page.getByTestId("source-link-lab-preview-global-command-menu")).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/blob/main/src/components/global-command-menu.tsx",
     );
   });
 

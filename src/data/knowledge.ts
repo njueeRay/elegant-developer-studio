@@ -15,6 +15,11 @@ export type KnowledgeEntry = {
     label: string;
     href: string;
   }>;
+  backlinks: Array<{
+    label: string;
+    href: string;
+    context: string;
+  }>;
 };
 
 export const knowledgeEntries: KnowledgeEntry[] = [
@@ -32,6 +37,18 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Read essay", href: "/blog/interface-is-a-promise" },
       { label: "Command Center", href: "/projects/studio-knowledge-base" },
     ],
+    backlinks: [
+      {
+        label: "The Interface is a Promise",
+        href: "/blog/interface-is-a-promise#a-promise-has-shape",
+        context: "Principle for action consequences and visible system state.",
+      },
+      {
+        label: "Lumen Design System",
+        href: "/projects/lumen",
+        context: "Used as the design-system rule for cards, buttons, and command surfaces.",
+      },
+    ],
   },
   {
     slug: "filters-before-search",
@@ -46,6 +63,18 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     related: [
       { label: "Browse writing", href: "/blog" },
       { label: "Browse photos", href: "/photos" },
+    ],
+    backlinks: [
+      {
+        label: "FilterBar",
+        href: "/lab#filter-bar",
+        context: "Component proof that simple visible filters beat premature search.",
+      },
+      {
+        label: "Studio Knowledge Base",
+        href: "/projects/studio-knowledge-base",
+        context: "Applied to the public knowledge layer before introducing full-text search.",
+      },
     ],
   },
   {
@@ -62,6 +91,18 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Project map", href: "/projects/studio-knowledge-base" },
       { label: "Contact", href: "/contact" },
     ],
+    backlinks: [
+      {
+        label: "KnowledgeCard",
+        href: "/lab#knowledge-card",
+        context: "The card implementation exposes Copy ref as a first-class action.",
+      },
+      {
+        label: "Reading Focus Lens",
+        href: "/blog/interface-is-a-promise#the-technical-texture",
+        context: "Article sections now also produce copyable references.",
+      },
+    ],
   },
   {
     slug: "diataxis-for-personal-knowledge",
@@ -77,6 +118,18 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Writing archive", href: "/blog" },
       { label: "Selected work", href: "/projects" },
     ],
+    backlinks: [
+      {
+        label: "Project map",
+        href: "/projects/studio-knowledge-base",
+        context: "Used to keep planning docs, references, and decision records separate.",
+      },
+      {
+        label: "Creative backlog",
+        href: "/collaboration",
+        context: "Helps separate experiments, decisions, and reusable references.",
+      },
+    ],
   },
   {
     slug: "local-graph-not-global-graph",
@@ -91,6 +144,18 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     related: [
       { label: "Knowledge project", href: "/projects/studio-knowledge-base" },
       { label: "Photos", href: "/photos" },
+    ],
+    backlinks: [
+      {
+        label: "Knowledge explorer",
+        href: "/knowledge",
+        context: "Current implementation favors related links and backlinks over a full graph.",
+      },
+      {
+        label: "Reading Focus Lens",
+        href: "/lab#reading-focus-lens",
+        context: "A local reading trail that is more useful than a decorative global graph.",
+      },
     ],
   },
 ];

@@ -750,3 +750,53 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - GitHub issue `#5` comment `4701358538`。
 - 飞书：[45｜第十一阶段 Reading Focus 调研](https://scnlb1lk96sb.feishu.cn/wiki/Xhp5w6OntinAWMkHtofcd9RVnAe)。
 - 飞书：[46｜第十一阶段 Reading Focus 复盘](https://scnlb1lk96sb.feishu.cn/wiki/X6qRwjnsLi02JNkUT5Pc2S3CnUg)。
+
+## Unreleased - 第十二阶段可追溯作品集层
+
+日期：2026-06-14
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：`dpl_CJNVnLikDaf6LjhsDSFDTNFXYkaD`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-m2ez8af5j.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/CJNVnLikDaf6LjhsDSFDTNFXYkaD`
+
+范围：
+
+- `SourceReveal` 升级为可点击 GitHub source link。
+- Knowledge 新增 backlinks。
+- 项目详情页新增 `Case Study Diff`。
+- Lab 新增 `ComponentPreview`。
+- 修复 Command Center 鼠标点击导航路径。
+- 新增第十二阶段调研与复盘文档。
+
+产品判断：
+
+- 本阶段的“炫酷”来自真实可追溯链条，而不是装饰。
+- 站点必须保证公开入口真实可达，不能出现只在端侧看得到、用户点不到的交互。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：6 passed。
+- `npm run test:e2e`：78 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：78 passed。
+- Playwright 视觉巡检：`/knowledge`、`/projects/lumen`、`/lab` 的桌面和移动端均无横向溢出。
+- Vercel deployment：`dpl_CJNVnLikDaf6LjhsDSFDTNFXYkaD`。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production alias 已指向本阶段部署。
+
+GitHub 推送：
+
+- HTTPS remote 推送出现网络层空响应/超时。
+- SSH 认证可用。
+- 已将 `origin` 切换为 `git@github.com:njueeRay/elegant-developer-studio.git`。
+- 切换后已成功推送上一批提交。
+
+外部同步：
+
+- GitHub issue `#4` comment `4701510690`。
+- GitHub issue `#5` comment `4701510805`。
+- 飞书：[47｜第十二阶段可追溯作品集调研](https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX)。
+- 飞书：[48｜第十二阶段可追溯作品集复盘](https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc)。

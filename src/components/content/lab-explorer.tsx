@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   Boxes,
   Check,
-  Clipboard,
   Code2,
   Command,
   Copy,
@@ -19,6 +18,7 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { FilterBar } from "@/components/content/filter-bar";
+import { SourceReveal } from "@/components/content/source-reveal";
 import {
   getLabRegistryReference,
   type LabCategory,
@@ -56,6 +56,73 @@ function getImportSnippet(component: LabComponent) {
 
 function getDisplayName(name: string) {
   return name.replace(/([a-z])([A-Z])/g, "$1 $2");
+}
+
+function ComponentPreview({ component }: { component: LabComponent }) {
+  const [mode, setMode] = useState<"preview" | "trace" | "source">("preview");
+  const command = `lab.preview("${component.slug}")`;
+
+  return (
+    <div className="component-preview" data-testid="component-preview">
+      <div className="component-preview-toolbar">
+        <span>{command}</span>
+        <div role="tablist" aria-label="Component preview mode">
+          {(["preview", "trace", "source"] as const).map((item) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={mode === item}
+              key={item}
+              onClick={() => setMode(item)}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {mode === "preview" ? (
+        <div className="component-preview-stage">
+          <div className="component-preview-card" data-category={component.category}>
+            <span>{component.category}</span>
+            <strong>{component.name}</strong>
+            <p>{component.signal}</p>
+            <small>
+              {component.status} / {component.shortcut}
+            </small>
+          </div>
+        </div>
+      ) : null}
+
+      {mode === "trace" ? (
+        <dl className="component-preview-trace">
+          <div>
+            <dt>Route</dt>
+            <dd>{component.route}</dd>
+          </div>
+          <div>
+            <dt>Reusable for</dt>
+            <dd>{component.reusableFor.join(" / ")}</dd>
+          </div>
+          <div>
+            <dt>Evidence</dt>
+            <dd>{component.evidence}</dd>
+          </div>
+        </dl>
+      ) : null}
+
+      {mode === "source" ? (
+        <div className="component-preview-source">
+          <code>{getImportSnippet(component)}</code>
+          <SourceReveal
+            label="source"
+            path={component.source}
+            testId={`source-link-lab-preview-${component.slug}`}
+          />
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 export function LabExplorer({ components, categories, experiments, gates }: LabExplorerProps) {
@@ -158,10 +225,11 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
                 <Route size={15} />
                 {selectedComponent.route}
               </span>
-              <span>
-                <Clipboard size={15} />
-                {selectedComponent.source}
-              </span>
+              <SourceReveal
+                label="source"
+                path={selectedComponent.source}
+                testId={`source-link-lab-selected-${selectedComponent.slug}`}
+              />
             </div>
             <button
               type="button"
@@ -221,7 +289,12 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
                   </span>
                   <strong>{component.name}</strong>
                   <small>{component.evidence}</small>
-                  <span className="source-reveal">source {component.source}</span>
+                  <SourceReveal
+                    label="source"
+                    path={component.source}
+                    testId={`source-link-lab-${component.slug}`}
+                    link={false}
+                  />
                 </span>
                 <span className="lab-component-status" data-status={component.status}>
                   {statusLabel[component.status]}
@@ -247,6 +320,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
               <div className="lab-code-line">
                 <code>{getImportSnippet(selectedComponent)}</code>
               </div>
+              <ComponentPreview component={selectedComponent} />
               <Link href={selectedComponent.route} className="lab-route-link">
                 Open route
                 <Route size={15} />
