@@ -804,10 +804,12 @@ GitHub 推送：
 ## Unreleased - 第十三至第十六阶段 Navigation OS
 
 日期：2026-06-14
-Primary commit：待提交
-Deployment record commit：待提交
-Vercel deployment：待部署
+Primary commit：`f2ea9fa`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_B4tu25Li2odMD2iz4J7gQKvkR8g4`
 Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-pu7nr8w6g.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/B4tu25Li2odMD2iz4J7gQKvkR8g4`
 
 范围：
 
@@ -825,5 +827,6 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - `npm run build`：通过。
 - targeted e2e：10 passed。
 - `npm run test:e2e`：84 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：84 passed。
 - Playwright 本地生产模式视觉检查：`/`、`/uses`、`/about`、`/lab`、`/collaboration` 桌面与移动端均无横向溢出。
 - `/collaboration` 移动端标题宽度 362px，390px 视口内无横向溢出。

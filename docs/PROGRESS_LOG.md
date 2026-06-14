@@ -1075,7 +1075,7 @@ GitHub 推送修复：
 
 ### 第十三至第十六阶段：Navigation OS 与可追溯交互
 
-状态：已实现，已验证，待提交、部署和外部同步。
+状态：已实现，已验证，已部署，待外部同步。
 
 阶段判断：
 
@@ -1102,6 +1102,15 @@ GitHub 推送修复：
 - `npm run build`：通过。
 - targeted e2e：`primary surfaces`、`mobile navigation`、`horizontal overflow`、`lab component preview`、`project case studies`，10 passed。
 - `npm run test:e2e`：84 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：84 passed。
 - Playwright 本地生产模式视觉检查：`/`、`/uses`、`/about`、`/lab`、`/collaboration` 桌面与移动端均无横向溢出。
 - `/collaboration` 移动端标题修正后，`h1` 宽度 362px，390px 视口内不再拆成孤立字母。
 - 截图：`/tmp/phase13-16-home-desktop.png`、`/tmp/phase13-16-home-mobile.png`、`/tmp/phase13-16-lab-desktop.png`、`/tmp/phase13-16-collaboration-mobile-fixed.png`。
+
+部署：
+
+- Primary commit：`f2ea9fa`。
+- Vercel deployment：`dpl_B4tu25Li2odMD2iz4J7gQKvkR8g4`。
+- Deployment URL：`https://elegant-developer-studio-pu7nr8w6g.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/B4tu25Li2odMD2iz4J7gQKvkR8g4`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
