@@ -211,3 +211,30 @@
 - 判断是否需要进入 `ComponentPreview` 或 `ReactionBar` 切片。
 - 评估 `Knowledge` 是否需要详情页、反向链接和 local graph。
 - 暂不做后台 CMS，继续用本地数据模型保证结构清晰。
+
+## 第九阶段：协作治理与创意方向
+
+目标：让公开反馈、PR、飞书评论和创意想法进入同一套可追踪系统。
+
+状态：已完成首版。
+
+交付：
+
+- `/collaboration`。
+- `CONTRIBUTING.md`。
+- `.github/PULL_REQUEST_TEMPLATE.md`。
+- Contact 到协作指南的入口。
+- Command Center 搜索协作指南和具体创意条目。
+- 创意 backlog：`Command Trace`、`Source Hover`、`Reading Focus Lens`、`Memory Map`、`Case Study Diff`、`Studio Companion`。
+
+组件：
+
+- `CollaborationGuide`
+- `CreativeBacklog`
+- `GovernanceSurface`
+
+下一阶段：
+
+- Phase 10：Signature Interaction Prototype。
+- 优先实现 `Command Trace` 和 `Source Hover`。
+- 暂缓宠物、大型图谱和高强度视觉特效。

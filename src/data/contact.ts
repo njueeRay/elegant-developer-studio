@@ -1,4 +1,4 @@
-export type ContactRouteKind = "discussion" | "source" | "profile" | "writing" | "work";
+export type ContactRouteKind = "discussion" | "source" | "collaboration" | "profile" | "writing" | "work";
 
 export const githubIssueTemplateUrl =
   "https://github.com/njueeRay/elegant-developer-studio/issues/new?template=contact.yml";
@@ -34,6 +34,13 @@ export const contactRoutes: ContactRoute[] = [
     href: "https://github.com/njueeRay/elegant-developer-studio",
     meta: "GitHub",
     external: true,
+  },
+  {
+    kind: "collaboration",
+    title: "Read collaboration guide",
+    description: "See how feedback, creative ideas, issue forms, Feishu notes, and phase records connect.",
+    href: "/collaboration",
+    meta: "Governance",
   },
   {
     kind: "profile",

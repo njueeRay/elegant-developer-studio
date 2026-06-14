@@ -7,6 +7,7 @@ import {
   aboutProfile,
   aboutTimeline,
 } from "@/data/about";
+import { creativeIdeas } from "@/data/collaboration";
 import { knowledgeEntries } from "@/data/knowledge";
 import { labComponents, labExperiments } from "@/data/lab";
 import { currentMix, photos } from "@/data/media";
@@ -145,6 +146,15 @@ function getCommandItems(): CommandItem[] {
       meta: "Routes",
       keywords: ["contact", "github", "issues", "about", "route", "brief"],
     },
+    {
+      id: "action-collaboration",
+      kind: "collaboration",
+      title: "Read collaboration guide",
+      description: "Open contribution flow, governance surfaces, creative audit, and idea backlog.",
+      href: "/collaboration",
+      meta: "Governance",
+      keywords: ["collaboration", "contributing", "governance", "ideas", "creative", "review"],
+    },
   ];
 
   const postItems = getAllPostMeta().map<CommandItem>((post) => ({
@@ -265,6 +275,16 @@ function getCommandItems(): CommandItem[] {
       keywords: photo.tags,
     }));
 
+  const creativeItems = creativeIdeas.map<CommandItem>((idea) => ({
+    id: `creative-${idea.slug}`,
+    kind: "collaboration",
+    title: idea.title,
+    description: idea.description,
+    href: `/collaboration#${idea.slug}`,
+    meta: idea.priority,
+    keywords: ["collaboration", "creative", "idea", idea.category, idea.priority],
+  }));
+
   return [
     ...quickActions,
     ...postItems,
@@ -276,5 +296,6 @@ function getCommandItems(): CommandItem[] {
     ...labExperimentItems,
     ...aboutItems,
     ...photoItems,
+    ...creativeItems,
   ];
 }

@@ -176,6 +176,22 @@ export const labComponents: LabComponent[] = [
     importPath: "@/components/content/code-block",
     shortcut: "C",
   },
+  {
+    slug: "collaboration-guide",
+    name: "CollaborationGuide",
+    category: "System",
+    status: "Stable",
+    component: "Governance surface",
+    source: "src/app/collaboration/page.tsx",
+    route: "/collaboration",
+    description:
+      "A public governance surface for contribution flow, review rules, creative direction, and traceable collaboration.",
+    signal: "Turns loose feedback and creative ideas into a structured intake, review, and backlog system.",
+    evidence: "Connected from Contact, Command Center, sitemap, CONTRIBUTING, PR template, and Feishu phase docs.",
+    reusableFor: ["Governance", "Creative backlog", "Contribution flow"],
+    importPath: "@/data/collaboration",
+    shortcut: "G",
+  },
 ];
 
 export const labExperiments: LabExperiment[] = [
@@ -201,6 +217,12 @@ export const labExperiments: LabExperiment[] = [
     step: "04",
     title: "ReactionBar",
     description: "Add reader feedback only after content pages have enough repeat traffic to justify it.",
+    status: "Planned",
+  },
+  {
+    step: "05",
+    title: "Signature interactions",
+    description: "Prototype Command Trace and Source Hover before any mascot or high-intensity visual effect.",
     status: "Planned",
   },
 ];

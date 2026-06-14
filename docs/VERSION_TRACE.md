@@ -258,6 +258,34 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 Deployment URL：`https://elegant-developer-studio-2lkoc4zhl.vercel.app`
 Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/49mRxU3AwqpJZQViZHqicg5D1mD8`
 
+## Unreleased - 第九阶段协作治理与创意方向
+
+日期：2026-06-14
+Primary commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 新增 `/collaboration` 页面。
+- 新增 `src/data/collaboration.ts`。
+- Contact 页面新增协作指南入口。
+- Command Center 新增 `Collaboration` 类型和创意条目搜索。
+- sitemap 增加 `/collaboration`。
+- Lab 注册 `CollaborationGuide`。
+- 新增 `CONTRIBUTING.md`。
+- 新增 `.github/PULL_REQUEST_TEMPLATE.md`。
+- 新增第九阶段调研、复盘和创意方向文档。
+
+产品判断：
+
+- 当前不做持久宠物或高强度特效。
+- 优先推进 `Command Trace` 和 `Source Hover`，因为它们更符合程序员个人主页的技术气质。
+
+验证：
+
+- 待补。
+
 范围：
 
 - 新增 `StatusPanel`。

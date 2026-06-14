@@ -12,6 +12,7 @@ import {
   Copy,
   FileText,
   GitBranch,
+  GitPullRequest,
   MessagesSquare,
   ShieldCheck,
   UserRound,
@@ -31,6 +32,7 @@ import { writeToClipboard } from "@/lib/clipboard";
 const iconByKind: Record<ContactRouteKind, LucideIcon> = {
   discussion: MessagesSquare,
   source: GitBranch,
+  collaboration: GitPullRequest,
   profile: UserRound,
   writing: FileText,
   work: Briefcase,

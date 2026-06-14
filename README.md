@@ -4,7 +4,7 @@
 
 ## 当前版本
 
-`v0.2.0` - Content Core，第四阶段交互层仍在 Unreleased 切片中推进。
+`v0.2.0` - Content Core，第三至九阶段以 Unreleased 切片持续推进。
 
 线上地址：
 
@@ -21,6 +21,8 @@
 - `/blog`、`/blog/[slug]`、`/projects`、`/projects/[slug]`。
 - `/photos`、`/music`、照片灯箱和迷你播放器。
 - 全站 `Cmd K` Command Center，支持键盘选择、最近访问、分组、高亮、上下文排序和空状态建议。
+- `/knowledge`、`/uses`、`/about`、`/lab`、`/contact`、`/collaboration`。
+- GitHub Issue Forms、`CONTRIBUTING.md` 和 PR 模板。
 - PRD、路线图、IA、设计系统、项目地图、版本追溯和飞书同步文档。
 
 ## 本地运行
@@ -47,6 +49,9 @@ npm run dev
 - `docs/PHASE4_KEYBOARD_RESEARCH.md`
 - `docs/PHASE4_KEYBOARD_REVIEW.md`
 - `docs/PHASE4_CONTEXT_RESEARCH.md`
+- `docs/PHASE9_COLLABORATION_RESEARCH.md`
+- `docs/PHASE9_COLLABORATION_REVIEW.md`
+- `docs/CREATIVE_DIRECTION.md`
 - `docs/DECISIONS.md`
 - `docs/PROGRESS_LOG.md`
 - `docs/FEISHU_SYNC.md`
@@ -67,5 +72,6 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- 第四阶段继续：`StatusPanel`、`FilterBar`、更强的全站搜索判断。
-- 第五阶段：`/lab`、`/about`、`/uses`、`/knowledge`、reactions、联系和可选后台。
+- Phase 10：Signature Interaction Prototype。
+- 首选切片：`Command Trace` 与 `Source Hover`。
+- 暂缓：常驻宠物、大型知识图谱、高强度背景特效。

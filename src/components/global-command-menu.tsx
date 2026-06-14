@@ -8,6 +8,7 @@ import {
   Code2,
   FileText,
   FlaskConical,
+  GitPullRequest,
   LibraryBig,
   Mail,
   Music2,
@@ -34,6 +35,7 @@ export type CommandKind =
   | "lab"
   | "uses"
   | "about"
+  | "collaboration"
   | "photo"
   | "music"
   | "contact";
@@ -56,6 +58,7 @@ const iconByKind: Record<CommandKind, ComponentType<{ size?: number }>> = {
   lab: FlaskConical,
   uses: Wrench,
   about: UserRound,
+  collaboration: GitPullRequest,
   photo: Camera,
   music: Music2,
   contact: Mail,
@@ -69,6 +72,7 @@ const labelByKind: Record<CommandKind, string> = {
   lab: "Lab",
   uses: "Uses",
   about: "About",
+  collaboration: "Collaboration",
   photo: "Photos",
   music: "Music",
   contact: "Contact",
@@ -136,6 +140,10 @@ function getContextKinds(pathname: string): CommandKind[] {
     return ["about", "action", "post", "project"];
   }
 
+  if (pathname.startsWith("/collaboration")) {
+    return ["collaboration", "action", "lab", "knowledge"];
+  }
+
   if (pathname.startsWith("/photos")) {
     return ["photo", "action"];
   }
@@ -170,6 +178,10 @@ function getContextLabel(pathname: string) {
 
   if (pathname.startsWith("/about")) {
     return "About context";
+  }
+
+  if (pathname.startsWith("/collaboration")) {
+    return "Collaboration context";
   }
 
   if (pathname.startsWith("/photos")) {

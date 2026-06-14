@@ -48,6 +48,7 @@
 - 第五阶段 Lab 首个切片：`/lab` 组件注册表、组件筛选、精选预览、复制 import、实验时间线和质量门禁。
 - 第七阶段 Contact 与公开信任层：`/contact` 独立页面、公开路由、联系 brief、边界说明和真实入口。
 - 第八阶段公开协作层：GitHub Issue Forms、结构化协作入口和 Contact 到 issue template 的直达链接。
+- 第九阶段协作治理与创意方向层：`/collaboration`、`CONTRIBUTING.md`、PR 模板、创意 backlog 和专家审查。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -69,6 +70,7 @@
 | About | `/about` | 5 | 已实现首版 | 个人介绍、时间线、原则、能力与联系方式 |
 | Contact | `/contact` | 7 | 已实现首版 | 公开联系路由、项目讨论入口、联系 brief 与边界说明 |
 | GitHub Issues | `.github/ISSUE_TEMPLATE/*` | 8 | 已实现首版 | 公开协作、bug、feature request 的结构化输入 |
+| Collaboration | `/collaboration` | 9 | 已实现首版 | 贡献流程、治理表面、创意评估和后续 idea backlog |
 | Uses | `/uses` | 5 | 已实现首版 | 工具、技术栈、工作流 |
 
 ## 4. 阶段地图
@@ -247,6 +249,32 @@
 主要风险：
 
 - 扩展成大量半成品页面。第五阶段应该基于稳定基础组件扩展。
+
+### 第九阶段：协作治理与创意方向
+
+状态：完成首版。
+
+范围：
+
+- `/collaboration`
+- `CONTRIBUTING.md`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- 创意 backlog 和专家审查。
+- Contact、Command Center、sitemap 和测试接入。
+
+已实现：
+
+- `src/data/collaboration.ts`
+- `src/app/collaboration/page.tsx`
+- Contact 页面新增协作指南入口。
+- Command Center 新增 `Collaboration` 类型和创意条目。
+- Lab 注册 `CollaborationGuide`。
+- e2e 覆盖新路由、Contact 链接、Command Center 创意搜索和仓库治理文件。
+
+主要判断：
+
+- 当前不做常驻宠物或高强度特效。
+- 下一步优先做 `Command Trace` 和 `Source Hover`。
 
 ## 5. 仓库地图
 

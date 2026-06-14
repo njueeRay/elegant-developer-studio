@@ -15,6 +15,7 @@ const routes = [
   "/knowledge",
   "/uses",
   "/about",
+  "/collaboration",
   "/contact",
   "/lab",
   "/rss.xml",
@@ -92,10 +93,31 @@ test.describe("core interaction contracts", () => {
       "href",
       "https://github.com/njueeRay/elegant-developer-studio",
     );
+    await expect(page.getByRole("link", { name: /Read collaboration guide/ })).toHaveAttribute(
+      "href",
+      "/collaboration",
+    );
 
     await page.getByTestId("contact-copy-brief").click();
 
     await expect(page.getByTestId("contact-copy-brief")).toContainText("Copied");
+  });
+
+  test("collaboration route exposes governance and creative backlog", async ({ page }) => {
+    await page.goto("/collaboration");
+
+    await expect(page.getByRole("heading", { name: "Collaboration", exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Open structured issue/ })).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/issues/new?template=contact.yml",
+    );
+    await expect(page.getByRole("heading", { name: "Command Trace" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Studio Companion" })).toBeVisible();
+
+    await page.keyboard.press(process.platform === "darwin" ? "Meta+K" : "Control+K");
+    await page.getByTestId("global-command-search").fill("source hover");
+
+    await expect(page.getByTestId("command-result-creative-source-hover")).toBeVisible();
   });
 
   test("filters update visible content", async ({ page }) => {
@@ -174,5 +196,16 @@ test.describe("repository collaboration contracts", () => {
     expect(featureTemplate).toContain("Proposed first slice");
     expect(config).toContain("blank_issues_enabled: false");
     expect(config).toContain("https://elegant-developer-studio.vercel.app/contact");
+  });
+
+  test("community governance files describe contribution and review flow", async () => {
+    const contributing = readFileSync("CONTRIBUTING.md", "utf8");
+    const pullRequestTemplate = readFileSync(".github/PULL_REQUEST_TEMPLATE.md", "utf8");
+
+    expect(contributing).toContain("首选语言");
+    expect(contributing).toContain("贡献入口");
+    expect(contributing).toContain("创意变更");
+    expect(pullRequestTemplate).toContain("变更类型");
+    expect(pullRequestTemplate).toContain("验证");
   });
 });

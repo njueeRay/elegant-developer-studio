@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/uses",
     "/lab",
     "/about",
+    "/collaboration",
     "/contact",
     "/photos",
     "/music",

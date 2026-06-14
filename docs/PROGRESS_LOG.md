@@ -829,3 +829,47 @@ GitHub：
 - GitHub issue `#5` comment `4699302265`。
 - 飞书：[38｜第八阶段 Issue Template 调研](https://scnlb1lk96sb.feishu.cn/wiki/Jtp4wmyfhiHqXQkHbzXcFeEZncb)。
 - 飞书：[39｜第八阶段 Issue Template 复盘](https://scnlb1lk96sb.feishu.cn/wiki/RbuowE2dtizYYokv8hwcU1tOn3d)。
+
+### 第九阶段：协作治理与创意方向
+
+状态：本地实现完成，等待验证、部署和外部同步。
+
+复盘：
+
+- 第八阶段让公开协作可以通过 Issue Forms 进入，但缺少贡献指南、PR 模板和创意判断标准。
+- 本阶段补齐“反馈如何进入、变更如何评估、创意如何排期、阶段如何追踪”的治理层。
+
+调研依据：
+
+- GitHub Community Health 与 `CONTRIBUTING.md` 官方文档。
+- GitHub repository contributor guidelines。
+- Raycast keyboard-first command surface。
+- Apple HIG motion guidance。
+
+完成：
+
+- 新增 `/collaboration` 页面。
+- 新增 `src/data/collaboration.ts`。
+- Contact 页面新增 `Read collaboration guide` 入口。
+- Command Center 新增 `Collaboration` 类型和创意条目搜索。
+- sitemap 增加 `/collaboration`。
+- Lab 注册 `CollaborationGuide`。
+- 新增 `CONTRIBUTING.md`。
+- 新增 `.github/PULL_REQUEST_TEMPLATE.md`。
+- 新增 `docs/PHASE9_COLLABORATION_RESEARCH.md`。
+- 新增 `docs/PHASE9_COLLABORATION_REVIEW.md`。
+- 新增 `docs/CREATIVE_DIRECTION.md`。
+- e2e 增加 `/collaboration`、Contact 链接、Command Center 创意搜索和仓库治理文件检查。
+
+当前专家判断：
+
+- 优点：站点结构稳定，Command Center 和 Lab 已经形成程序员风格骨架。
+- 缺点：还缺一个强 signature interaction；项目 case study 和媒体记忆层需要真实内容加深。
+- 下一步：优先做 `Command Trace` 和 `Source Hover`，暂缓常驻宠物、大型图谱和高强度背景特效。
+
+待补：
+
+- 验证结果。
+- Vercel deployment。
+- GitHub issue comment。
+- 飞书同步链接。
