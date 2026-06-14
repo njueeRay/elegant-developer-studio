@@ -47,6 +47,9 @@
 | Contact 复盘 | [37｜第七阶段 Contact 复盘](https://scnlb1lk96sb.feishu.cn/wiki/QiYew1iOhic5YkkZ6KicjZ4OnAb) | Contact 页面交付、验证、部署和后续建议 |
 | Issue Template 调研 | [38｜第八阶段 Issue Template 调研](https://scnlb1lk96sb.feishu.cn/wiki/Jtp4wmyfhiHqXQkHbzXcFeEZncb) | 公开协作、GitHub Issue Forms 和模板配置调研 |
 | Issue Template 复盘 | [39｜第八阶段 Issue Template 复盘](https://scnlb1lk96sb.feishu.cn/wiki/RbuowE2dtizYYokv8hwcU1tOn3d) | Issue template 交付、验证、部署和后续建议 |
+| 协作治理调研 | [40｜第九阶段协作治理调研](https://scnlb1lk96sb.feishu.cn/wiki/EsfZw9eIIieatLkruPRcvM9jnXf) | `CONTRIBUTING.md`、PR 模板、创意方向和外部参考 |
+| 协作治理复盘 | [41｜第九阶段协作治理复盘](https://scnlb1lk96sb.feishu.cn/wiki/NsDgwc0lsiEBBNkYnFtcdoHcnmf) | `/collaboration` 交付、验证、部署和下一阶段建议 |
+| 创意方向 | [42｜创意方向与交互 Backlog](https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg) | 可评论、可迭代的 signature interaction 与创意排期 |
 
 ## 当前项目状态
 

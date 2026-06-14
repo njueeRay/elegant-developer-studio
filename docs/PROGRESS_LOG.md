@@ -885,5 +885,8 @@ GitHub：
 
 外部同步：
 
-- GitHub issue comment：待补。
-- 飞书：待补。
+- GitHub issue `#4` comment `4700751204`。
+- GitHub issue `#5` comment `4700751288`。
+- 飞书：[40｜第九阶段协作治理调研](https://scnlb1lk96sb.feishu.cn/wiki/EsfZw9eIIieatLkruPRcvM9jnXf)。
+- 飞书：[41｜第九阶段协作治理复盘](https://scnlb1lk96sb.feishu.cn/wiki/NsDgwc0lsiEBBNkYnFtcdoHcnmf)。
+- 飞书：[42｜创意方向与交互 Backlog](https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg)。

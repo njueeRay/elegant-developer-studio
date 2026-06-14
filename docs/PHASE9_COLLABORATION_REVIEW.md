@@ -40,6 +40,14 @@
 - Production alias：`https://elegant-developer-studio.vercel.app`
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/6LRU2cxFSJS3uTPpoJVbQAtcLzLQ`
 
+## 外部同步
+
+- GitHub issue `#4` comment `4700751204`。
+- GitHub issue `#5` comment `4700751288`。
+- 飞书：[40｜第九阶段协作治理调研](https://scnlb1lk96sb.feishu.cn/wiki/EsfZw9eIIieatLkruPRcvM9jnXf)。
+- 飞书：[41｜第九阶段协作治理复盘](https://scnlb1lk96sb.feishu.cn/wiki/NsDgwc0lsiEBBNkYnFtcdoHcnmf)。
+- 飞书：[42｜创意方向与交互 Backlog](https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg)。
+
 ## 对上一阶段的复盘
 
 第八阶段的 Issue Forms 是正确的，但它只解决“用户从哪里进入”。如果没有第九阶段，项目仍然缺少：
