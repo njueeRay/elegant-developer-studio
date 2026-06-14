@@ -22,6 +22,24 @@
 - 新增 `.github/PULL_REQUEST_TEMPLATE.md`。
 - e2e 覆盖新路由、Contact 到 Collaboration 的链接、Command Center 创意搜索和仓库治理文件。
 
+## 验证
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：66 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：66 passed。
+- Playwright 本地生产模式视觉复核：`/collaboration` 桌面 `scrollWidth 1440`、移动端无横向溢出。
+- Command Center 搜索 `source hover` 能显示 `creative-source-hover`。
+- `/collaboration` 的 `Open structured issue` 指向 `https://github.com/njueeRay/elegant-developer-studio/issues/new?template=contact.yml`。
+- Production curl 确认页面包含 `Collaboration - Ray Studio`、`Command Trace`、`Source Hover` 和 issue form URL。
+
+## 部署
+
+- Vercel deployment：`dpl_6LRU2cxFSJS3uTPpoJVbQAtcLzLQ`
+- Deployment URL：`https://elegant-developer-studio-blgy772e9.vercel.app`
+- Production alias：`https://elegant-developer-studio.vercel.app`
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/6LRU2cxFSJS3uTPpoJVbQAtcLzLQ`
+
 ## 对上一阶段的复盘
 
 第八阶段的 Issue Forms 是正确的，但它只解决“用户从哪里进入”。如果没有第九阶段，项目仍然缺少：
@@ -78,4 +96,3 @@
 - 大型动态图谱。
 - 高强度视觉背景。
 - 没有真实内容支撑的 case study 组件。
-

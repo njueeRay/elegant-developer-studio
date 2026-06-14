@@ -832,7 +832,7 @@ GitHub：
 
 ### 第九阶段：协作治理与创意方向
 
-状态：本地实现完成，等待验证、部署和外部同步。
+状态：已部署，等待 GitHub 和飞书外部同步。
 
 复盘：
 
@@ -867,9 +867,23 @@ GitHub：
 - 缺点：还缺一个强 signature interaction；项目 case study 和媒体记忆层需要真实内容加深。
 - 下一步：优先做 `Command Trace` 和 `Source Hover`，暂缓常驻宠物、大型图谱和高强度背景特效。
 
-待补：
+验证：
 
-- 验证结果。
-- Vercel deployment。
-- GitHub issue comment。
-- 飞书同步链接。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：66 passed。
+- Playwright 本地生产模式视觉复核：`/collaboration` 桌面 `scrollWidth 1440`、移动端无横向溢出。
+- Command Center 搜索 `source hover` 能显示 `creative-source-hover` 结果。
+- `/collaboration` 公开 Issue Form 链接指向 `issues/new?template=contact.yml`。
+- 截图：`/tmp/phase9-collaboration-desktop.png`、`/tmp/phase9-collaboration-mobile.png`。
+- Vercel deployment：`dpl_6LRU2cxFSJS3uTPpoJVbQAtcLzLQ`。
+- Deployment URL：`https://elegant-developer-studio-blgy772e9.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/6LRU2cxFSJS3uTPpoJVbQAtcLzLQ`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，66 passed。
+- Production curl：`/collaboration` 包含 `Collaboration - Ray Studio`、`Command Trace`、`Source Hover` 和 `issues/new?template=contact.yml`。
+
+外部同步：
+
+- GitHub issue comment：待补。
+- 飞书：待补。

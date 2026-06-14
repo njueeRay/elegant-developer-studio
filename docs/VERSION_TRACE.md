@@ -258,34 +258,6 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 Deployment URL：`https://elegant-developer-studio-2lkoc4zhl.vercel.app`
 Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/49mRxU3AwqpJZQViZHqicg5D1mD8`
 
-## Unreleased - 第九阶段协作治理与创意方向
-
-日期：2026-06-14
-Primary commit：待提交
-Vercel deployment：待部署
-Production alias：`https://elegant-developer-studio.vercel.app`
-
-范围：
-
-- 新增 `/collaboration` 页面。
-- 新增 `src/data/collaboration.ts`。
-- Contact 页面新增协作指南入口。
-- Command Center 新增 `Collaboration` 类型和创意条目搜索。
-- sitemap 增加 `/collaboration`。
-- Lab 注册 `CollaborationGuide`。
-- 新增 `CONTRIBUTING.md`。
-- 新增 `.github/PULL_REQUEST_TEMPLATE.md`。
-- 新增第九阶段调研、复盘和创意方向文档。
-
-产品判断：
-
-- 当前不做持久宠物或高强度特效。
-- 优先推进 `Command Trace` 和 `Source Hover`，因为它们更符合程序员个人主页的技术气质。
-
-验证：
-
-- 待补。
-
 范围：
 
 - 新增 `StatusPanel`。
@@ -645,3 +617,47 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - GitHub issue `#5` comment `4699302265`。
 - 飞书：[38｜第八阶段 Issue Template 调研](https://scnlb1lk96sb.feishu.cn/wiki/Jtp4wmyfhiHqXQkHbzXcFeEZncb)。
 - 飞书：[39｜第八阶段 Issue Template 复盘](https://scnlb1lk96sb.feishu.cn/wiki/RbuowE2dtizYYokv8hwcU1tOn3d)。
+
+## Unreleased - 第九阶段协作治理与创意方向
+
+日期：2026-06-14
+Primary commit：`748eb94`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_6LRU2cxFSJS3uTPpoJVbQAtcLzLQ`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-blgy772e9.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/6LRU2cxFSJS3uTPpoJVbQAtcLzLQ`
+
+范围：
+
+- 新增 `/collaboration` 页面。
+- 新增 `src/data/collaboration.ts`。
+- Contact 页面新增协作指南入口。
+- Command Center 新增 `Collaboration` 类型和创意条目搜索。
+- sitemap 增加 `/collaboration`。
+- Lab 注册 `CollaborationGuide`。
+- 新增 `CONTRIBUTING.md`。
+- 新增 `.github/PULL_REQUEST_TEMPLATE.md`。
+- 新增第九阶段调研、复盘和创意方向文档。
+
+产品判断：
+
+- 当前不做持久宠物或高强度特效。
+- 优先推进 `Command Trace` 和 `Source Hover`，因为它们更符合程序员个人主页的技术气质。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：66 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：66 passed。
+- Playwright 本地生产模式视觉复核：`/collaboration` 桌面 `scrollWidth 1440`、移动端无横向溢出。
+- 截图：`/tmp/phase9-collaboration-desktop.png`、`/tmp/phase9-collaboration-mobile.png`。
+- Production curl：`/collaboration` 包含 `Collaboration - Ray Studio`、`Command Trace`、`Source Hover` 和 `issues/new?template=contact.yml`。
+- Vercel inspect：deployment 状态 `Ready`。
+- Production alias 已指向本阶段部署。
+
+外部同步：
+
+- GitHub issue comment：待补。
+- 飞书：待补。
