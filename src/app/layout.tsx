@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { CommandTraceToast } from "@/components/command-trace-toast";
 import { GlobalCommandMenu, type CommandItem } from "@/components/global-command-menu";
 import {
   aboutCapabilities,
@@ -14,16 +14,6 @@ import { currentMix, photos } from "@/data/media";
 import { useTools, useWorkflows } from "@/data/uses";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://elegant-developer-studio.vercel.app"),
@@ -44,11 +34,12 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
       <body className="min-h-full flex flex-col">
         {children}
         <GlobalCommandMenu items={commandItems} />
+        <CommandTraceToast />
       </body>
     </html>
   );

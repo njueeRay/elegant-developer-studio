@@ -890,3 +890,61 @@ GitHub：
 - 飞书：[40｜第九阶段协作治理调研](https://scnlb1lk96sb.feishu.cn/wiki/EsfZw9eIIieatLkruPRcvM9jnXf)。
 - 飞书：[41｜第九阶段协作治理复盘](https://scnlb1lk96sb.feishu.cn/wiki/NsDgwc0lsiEBBNkYnFtcdoHcnmf)。
 - 飞书：[42｜创意方向与交互 Backlog](https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg)。
+
+### 第十阶段：Signature Interaction Prototype
+
+状态：本地完成，等待部署和外部同步。
+
+复盘：
+
+- 第九阶段已经明确优先做 `Command Trace` 和 `Source Hover`，暂缓宠物、粒子、大型图谱和高强度特效。
+- 本阶段把这两个创意从 backlog 推进到可测试、可追踪、可复用的站点构件。
+
+调研依据：
+
+- Raycast：命令式导航和键盘优先行为。
+- Apple HIG Motion：动效服务状态理解，不抢内容。
+- GitHub healthy contributions：公开项目应暴露贡献路径、来源和维护上下文。
+- MDN `prefers-reduced-motion`：动效需要尊重系统偏好。
+
+完成：
+
+- 新增 `CommandTraceToast`。
+- 新增 `src/lib/command-trace.ts`。
+- Command Center 内部路由打开后写入并展示 `cmd.open("/route")`。
+- Command Trace 路由不匹配时清理，避免上下文残影。
+- Knowledge 卡片新增 `ref /knowledge#slug`。
+- Project 卡片新增 `source src/content/projects/{slug}.mdx`。
+- Lab row 新增 `source` reveal。
+- Lab 注册 `CommandTraceToast` 和 `SourceReveal`，组件总数增加到 12。
+- `SourceReveal` 桌面 hover/focus 显示，移动端常驻显示。
+- `prefers-reduced-motion` 下关闭位移动画。
+- 移除 `next/font/google` 构建期网络依赖，改为系统字体变量。
+- ESLint 忽略 `test-results`、`playwright-report` 和 `output`。
+- e2e 增加命令 trace 和 source reveal 检查。
+- 新增 `docs/PHASE10_SIGNATURE_INTERACTION_RESEARCH.md`。
+- 新增 `docs/PHASE10_SIGNATURE_INTERACTION_REVIEW.md`。
+
+专家判断：
+
+- 优点：程序员气质来自真实命令、真实来源和可检查路径，而不是假终端。
+- 缺点：`SourceReveal` 还不是 GitHub 可点击链接；移动端筛选条的横向滚动提示还不够优雅；Lab 仍缺 isolated component preview。
+- 下一步：优先做 GitHub source link、移动端筛选条 polish、`ComponentPreview`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：68 passed。
+- Playwright 本地生产模式视觉复核：桌面和移动端无横向溢出。
+- Command Trace：`cmd.open("/lab")` 可见。
+- Source Reveal：`ref /knowledge#filters-before-search` 和 `source src/content/projects/...` 可见。
+- stale trace：离开 `/lab` 后数量为 `0`。
+- 截图：`output/phase10-command-trace-desktop.png`、`output/phase10-source-hover-desktop.png`、`output/phase10-projects-mobile.png`。
+
+剩余：
+
+- 部署到 Vercel。
+- 生产环境 e2e。
+- GitHub issue 同步。
+- 飞书同步。

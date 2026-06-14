@@ -69,6 +69,7 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
             ),
           )}
         </div>
+        <span className="source-reveal">ref /knowledge#{entry.slug}</span>
       </div>
 
       <button

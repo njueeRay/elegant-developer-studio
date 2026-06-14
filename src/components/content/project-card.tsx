@@ -31,6 +31,7 @@ export function ProjectCard({ project }: { project: ProjectMeta }) {
             <span key={item}>{item}</span>
           ))}
         </div>
+        <span className="source-reveal">source src/content/projects/{project.slug}.mdx</span>
       </div>
       <ArrowRight className="card-arrow" size={20} />
     </Link>

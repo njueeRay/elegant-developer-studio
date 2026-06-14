@@ -192,6 +192,38 @@ export const labComponents: LabComponent[] = [
     importPath: "@/data/collaboration",
     shortcut: "G",
   },
+  {
+    slug: "command-trace-toast",
+    name: "CommandTraceToast",
+    category: "Command",
+    status: "Iterating",
+    component: "Command execution trace",
+    source: "src/components/command-trace-toast.tsx",
+    route: "/lab",
+    description:
+      "A compact post-command trace that confirms route execution with a code-like command string and contextual metadata.",
+    signal: "Makes keyboard navigation feel executable without turning the page into a fake terminal.",
+    evidence: "Session-backed trace survives route transition, clears on mismatched routes, and is covered by e2e.",
+    reusableFor: ["Command Center", "Navigation feedback", "Developer signature"],
+    importPath: "@/components/command-trace-toast",
+    shortcut: "T",
+  },
+  {
+    slug: "source-reveal",
+    name: "SourceReveal",
+    category: "System",
+    status: "Iterating",
+    component: "Source provenance",
+    source: "src/app/globals.css",
+    route: "/knowledge",
+    description:
+      "A subtle source/ref reveal pattern for knowledge cards, project cards, and Lab rows.",
+    signal: "Lets provenance appear on intent instead of permanently increasing information density.",
+    evidence: "Desktop hover/focus and mobile always-visible states are verified in Playwright.",
+    reusableFor: ["Knowledge", "Projects", "Lab", "Case studies"],
+    importPath: "CSS utility: .source-reveal",
+    shortcut: "V",
+  },
 ];
 
 export const labExperiments: LabExperiment[] = [
@@ -223,7 +255,7 @@ export const labExperiments: LabExperiment[] = [
     step: "05",
     title: "Signature interactions",
     description: "Prototype Command Trace and Source Hover before any mascot or high-intensity visual effect.",
-    status: "Planned",
+    status: "Iterating",
   },
 ];
 

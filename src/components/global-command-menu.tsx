@@ -26,6 +26,12 @@ import {
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
 } from "react";
+import {
+  COMMAND_TRACE_EVENT,
+  COMMAND_TRACE_STORAGE_KEY,
+  formatCommandTracePath,
+  type CommandTrace,
+} from "@/lib/command-trace";
 
 export type CommandKind =
   | "action"
@@ -259,6 +265,28 @@ function writeRecentCommands(entries: RecentCommand[]) {
   } catch {
     // Recent commands are a convenience. Navigation should never depend on storage.
   }
+}
+
+function writeCommandTrace(item: CommandItem) {
+  if (item.href.startsWith("mailto:") || item.href.startsWith("http")) {
+    return;
+  }
+
+  const trace: CommandTrace = {
+    command: `cmd.open("${formatCommandTracePath(item.href)}")`,
+    label: item.title,
+    href: item.href,
+    meta: `${labelByKind[item.kind]} / ${item.meta}`,
+    createdAt: Date.now(),
+  };
+
+  try {
+    window.sessionStorage.setItem(COMMAND_TRACE_STORAGE_KEY, JSON.stringify(trace));
+  } catch {
+    // Command trace is a progressive enhancement. Navigation should never depend on storage.
+  }
+
+  window.dispatchEvent(new CustomEvent(COMMAND_TRACE_EVENT, { detail: trace }));
 }
 
 function getResultId(itemId: string) {
@@ -522,16 +550,31 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
   const openItem = useCallback(
     (item: CommandItem) => {
       recordRecentCommand(item);
-      closeCommand();
 
       if (item.href.startsWith("mailto:") || item.href.startsWith("http")) {
+        closeCommand();
         window.location.href = item.href;
         return;
       }
 
+      writeCommandTrace(item);
+      closeCommand();
       router.push(item.href);
     },
     [closeCommand, recordRecentCommand, router],
+  );
+
+  const onCommandLinkClick = useCallback(
+    (item: CommandItem) => {
+      recordRecentCommand(item);
+
+      if (!item.href.startsWith("mailto:") && !item.href.startsWith("http")) {
+        writeCommandTrace(item);
+      }
+
+      closeCommand();
+    },
+    [closeCommand, recordRecentCommand],
   );
 
   const onInputKeyDown = (event: ReactKeyboardEvent<HTMLInputElement>) => {
@@ -626,10 +669,7 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
                         href={item.href}
                         id={getResultId(item.id)}
                         key={item.id}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          openItem(item);
-                        }}
+                        onClick={() => onCommandLinkClick(item)}
                         onMouseEnter={() => setActiveIndex(index)}
                         role="option"
                       >

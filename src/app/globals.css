@@ -14,6 +14,10 @@
   --sage: #6d7b5e;
   --sand: #d9c9b3;
   --shadow: 0 24px 80px rgba(47, 35, 20, 0.12);
+  --font-geist-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-geist-mono:
+    "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
   --font-serif: Georgia, "Times New Roman", serif;
 }
 
@@ -1074,6 +1078,126 @@ kbd {
   padding: 3px 7px;
   border-radius: 6px;
   font-size: 0.68rem;
+}
+
+.command-trace-toast {
+  position: fixed;
+  z-index: 70;
+  top: clamp(76px, 9vw, 104px);
+  right: clamp(16px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 28px;
+  gap: 10px;
+  align-items: center;
+  width: min(92vw, 430px);
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--rust), transparent 56%);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface-strong), transparent 2%), transparent 170%),
+    var(--surface-strong);
+  box-shadow: 0 18px 54px rgba(47, 35, 20, 0.16);
+  color: var(--foreground);
+  backdrop-filter: blur(18px);
+  animation: command-trace-enter 220ms ease-out both;
+}
+
+.command-trace-toast > svg,
+.command-trace-toast button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--rust-strong);
+}
+
+.command-trace-toast span {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.command-trace-toast code,
+.source-reveal {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.command-trace-toast code {
+  overflow: hidden;
+  color: var(--foreground);
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.command-trace-toast small {
+  overflow: hidden;
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.command-trace-toast button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.command-trace-toast button:hover {
+  background: color-mix(in srgb, var(--rust), transparent 90%);
+}
+
+@keyframes command-trace-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.source-reveal {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 26px;
+  align-items: center;
+  margin-top: 12px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--blue), transparent 78%);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--blue), transparent 94%);
+  color: color-mix(in srgb, var(--blue), var(--foreground) 24%);
+  font-size: 0.68rem;
+  line-height: 1;
+  opacity: 0;
+  padding: 0 8px;
+  text-overflow: ellipsis;
+  transform: translateY(4px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
+  white-space: nowrap;
+}
+
+.knowledge-card:hover .source-reveal,
+.knowledge-card:focus-within .source-reveal,
+.project-card:hover .source-reveal,
+.project-card:focus-visible .source-reveal,
+.lab-component-row:hover .source-reveal,
+.lab-component-row:focus-visible .source-reveal,
+.lab-component-row[data-active="true"] .source-reveal {
+  border-color: color-mix(in srgb, var(--blue), transparent 56%);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .content-shell {
@@ -5761,6 +5885,21 @@ html[data-theme="dark"] .about-notebook {
     display: none;
   }
 
+  .command-trace-toast {
+    top: auto;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: auto;
+  }
+
+  .source-reveal {
+    min-height: 24px;
+    font-size: 0.64rem;
+    opacity: 1;
+    transform: none;
+  }
+
   .article-signal {
     display: none;
   }
@@ -5813,5 +5952,20 @@ html[data-theme="dark"] .about-notebook {
 
   .track-list button > span:last-child {
     grid-column: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .command-trace-toast,
+  .source-reveal,
+  .knowledge-card,
+  .project-card,
+  .lab-component-row {
+    animation: none;
+    transition: none;
+  }
+
+  .source-reveal {
+    transform: none;
   }
 }

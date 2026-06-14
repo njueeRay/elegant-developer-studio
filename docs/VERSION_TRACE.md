@@ -664,3 +664,41 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - 飞书：[40｜第九阶段协作治理调研](https://scnlb1lk96sb.feishu.cn/wiki/EsfZw9eIIieatLkruPRcvM9jnXf)。
 - 飞书：[41｜第九阶段协作治理复盘](https://scnlb1lk96sb.feishu.cn/wiki/NsDgwc0lsiEBBNkYnFtcdoHcnmf)。
 - 飞书：[42｜创意方向与交互 Backlog](https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg)。
+
+## Unreleased - 第十阶段 Signature Interaction Prototype
+
+日期：2026-06-14
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待部署
+Inspect URL：待部署
+
+范围：
+
+- 新增 `CommandTraceToast`。
+- Command Center 内部路由导航后显示 `cmd.open("/route")`。
+- Knowledge、Projects、Lab 新增真实 ref/source reveal。
+- Lab 注册 `CommandTraceToast` 和 `SourceReveal`。
+- 移除 `next/font/google` 构建期网络依赖。
+- 修复 ESLint 测试产物目录忽略。
+- 新增第十阶段调研与复盘文档。
+
+产品判断：
+
+- 当前站点需要真实的程序员风格 signature，而不是装饰型特效。
+- `Command Trace` 和 `Source Hover` 是正确的第一批实验，因为它们提升导航确认、可检查性和长期维护性。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- `npm run test:e2e`：68 passed。
+- Playwright 本地生产模式视觉复核：桌面和移动端无横向溢出。
+- stale trace：离开目标路由后清理。
+
+外部同步：
+
+- GitHub issue：待同步。
+- 飞书：待同步。

@@ -221,6 +221,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
                   </span>
                   <strong>{component.name}</strong>
                   <small>{component.evidence}</small>
+                  <span className="source-reveal">source {component.source}</span>
                 </span>
                 <span className="lab-component-status" data-status={component.status}>
                   {statusLabel[component.status]}

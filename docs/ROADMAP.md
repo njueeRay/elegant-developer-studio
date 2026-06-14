@@ -238,3 +238,35 @@
 - Phase 10：Signature Interaction Prototype。
 - 优先实现 `Command Trace` 和 `Source Hover`。
 - 暂缓宠物、大型图谱和高强度视觉特效。
+
+## 第十阶段：Signature Interaction Prototype
+
+目标：让个人主页拥有可识别、可复用、不过度喧哗的程序员风格交互。
+
+状态：已完成首版，进入迭代观察。
+
+交付：
+
+- `Command Trace`：Command Center 打开内部路由后显示 `cmd.open("/route")`。
+- `Source Hover`：Knowledge、Projects、Lab 显示真实 ref/source path。
+- Lab 新增 `CommandTraceToast` 与 `SourceReveal` 两个构件。
+- e2e 覆盖命令 trace 和 source reveal。
+- 移除 `next/font/google` 构建期网络依赖，提升本地构建稳定性。
+- ESLint 忽略测试产物目录，避免测试并发清理产物时影响 lint。
+
+组件：
+
+- `CommandTraceToast`
+- `SourceReveal`
+
+本阶段判断：
+
+- 程序员风格应来自可执行命令、真实来源、可复制引用和可追踪对象。
+- 当前不做常驻宠物、粒子跟随、假终端、大型图谱或音乐可视化。
+- 微交互必须服务导航、阅读、可信度或维护性，不能只是装饰。
+
+下一阶段：
+
+- 优先改进移动端筛选条的横向滚动提示。
+- 将 `SourceReveal` 升级为可点击 GitHub source link。
+- 为 Lab 增加真实 `ComponentPreview`，让组件注册表从元数据走向可操作预览。

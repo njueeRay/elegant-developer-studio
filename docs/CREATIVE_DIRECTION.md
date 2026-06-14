@@ -14,12 +14,43 @@
 
 | 优先级 | 名称 | 类型 | 价值 |
 | --- | --- | --- | --- |
-| Now | Command Trace | Interaction | 让 Command Center 导航成为站点 signature |
-| Now | Source Hover | UI | 把程序员风格变成真实 inspectability |
+| Shipped / Iterate | Command Trace | Interaction | 已完成首版；下一步评估复制、历史和回放是否有价值 |
+| Shipped / Iterate | Source Hover | UI | 已完成首版；下一步升级为可点击 GitHub source link |
 | Next | Reading Focus Lens | Interaction | 增强博客阅读，而不污染正文 |
 | Next | Memory Map | Content | 建立文章、项目、照片、知识、工具之间的关系 |
 | Next | Case Study Diff | Component | 让作品集体现工程取舍 |
 | Later | Studio Companion | Interaction | 只在空状态或恢复路径中提供帮助 |
+
+## 已落地实验
+
+### Command Trace
+
+当前行为：
+
+- Command Center 打开内部路由后显示 `cmd.open("/route")`。
+- trace 在路由切换后显示，离开目标路由后清理。
+- 不处理外链或 `mailto:`。
+
+下一步只在证明有价值时增加：
+
+- 复制命令。
+- 最近命令历史。
+- 命令回放。
+
+### Source Hover
+
+当前行为：
+
+- Knowledge 显示稳定 ref。
+- Projects 显示 MDX source path。
+- Lab 显示组件 source path。
+- 桌面 hover/focus 显示，移动端常驻显示。
+
+下一步：
+
+- 链接到 GitHub 文件。
+- 绑定 commit 或版本。
+- 在 case study 中显示设计/代码 diff。
 
 ## 当前不建议做
 
@@ -39,4 +70,3 @@
 4. 它能否在移动端成立？
 5. 它能否降级或关闭？
 6. 它是否能被 `/lab` 和文档追踪？
-

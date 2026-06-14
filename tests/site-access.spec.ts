@@ -66,6 +66,7 @@ test.describe("core interaction contracts", () => {
     await page.getByTestId("command-result-action-lab").click();
 
     await expect(page).toHaveURL(/\/lab$/);
+    await expect(page.getByTestId("command-trace-toast")).toContainText('cmd.open("/lab")');
   });
 
   test("contact entry points resolve to the contact route", async ({ page }) => {
@@ -118,6 +119,26 @@ test.describe("core interaction contracts", () => {
     await page.getByTestId("global-command-search").fill("source hover");
 
     await expect(page.getByTestId("command-result-creative-source-hover")).toBeVisible();
+  });
+
+  test("source reveal exposes real refs and source paths", async ({ page }) => {
+    await page.goto("/knowledge");
+
+    const knowledgeSource = page.locator("#filters-before-search .source-reveal");
+    await page.locator("#filters-before-search").hover();
+    await expect(knowledgeSource).toContainText("ref /knowledge#filters-before-search");
+
+    await page.goto("/projects");
+
+    const projectSource = page.locator(".project-card").first().locator(".source-reveal");
+    await page.locator(".project-card").first().hover();
+    await expect(projectSource).toContainText("source src/content/projects/");
+
+    await page.goto("/lab");
+
+    await expect(page.locator(".lab-component-row").first().locator(".source-reveal")).toContainText(
+      "source src/",
+    );
   });
 
   test("filters update visible content", async ({ page }) => {
