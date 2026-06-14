@@ -800,3 +800,30 @@ GitHub 推送：
 - GitHub issue `#5` comment `4701510805`。
 - 飞书：[47｜第十二阶段可追溯作品集调研](https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX)。
 - 飞书：[48｜第十二阶段可追溯作品集复盘](https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc)。
+
+## Unreleased - 第十三至第十六阶段 Navigation OS
+
+日期：2026-06-14
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 统一全站 `SiteHeader`。
+- 主导航公开 `Writing / Work / Knowledge / Uses / Lab / About`。
+- 移动菜单公开主导航和二级入口。
+- 首页 Studio Map 补齐 `Uses` 与 `About`。
+- Project Case Study Diff 增加 evidence link。
+- SourceReveal 支持行号。
+- Lab ComponentPreview 增加 viewport switch。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：10 passed。
+- `npm run test:e2e`：84 passed。
+- Playwright 本地生产模式视觉检查：`/`、`/uses`、`/about`、`/lab`、`/collaboration` 桌面与移动端均无横向溢出。
+- `/collaboration` 移动端标题宽度 362px，390px 视口内无横向溢出。

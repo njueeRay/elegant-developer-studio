@@ -548,3 +548,42 @@ src/
 5. 设计 `Reference Constellation`，只展示真实关系，不做装饰性大图谱。
 6. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
 7. 第三阶段并行决定是否引入真实音频文件。
+
+## 11. 第十三至第十六阶段增量地图
+
+本次阶段把项目从“多页面已实现”推进到“多页面可发现、可进入、可追踪”。
+
+新增原则：
+
+- 公开可达优先于内部存在。
+- 主导航承载主信息架构，命令面板只做加速器。
+- 页面职责边界必须先定义，再继续增加组件。
+- 证据链接、源码链接、文档链接和测试覆盖是程序员风格的一部分。
+
+新增构件：
+
+- `SiteHeader`
+- `primaryNavigation`
+- `secondaryNavigation`
+- `ComponentPreview viewport switch`
+- `Case Study Diff evidence link`
+
+已提升的页面：
+
+- `/uses`：进入主导航和首页 Studio Map。
+- `/about`：进入主导航和首页 Studio Map。
+- `/lab`：从首页锚点升级为主路由入口。
+- `/collaboration`：进入移动二级导航，并修复长标题移动端溢出风险。
+
+验证状态：
+
+- `npm run lint`、`npm run build` 和 `npm run test:e2e` 已通过。
+- 当前 e2e 总量为 84 tests。
+- Playwright 视觉巡检确认首页、Uses、About、Lab、Collaboration 在桌面和移动端均无横向溢出。
+
+下一步：
+
+1. 设计 `Reference Constellation` 的真实数据模型。
+2. 给 `SourceReveal` 增加 commit permalink。
+3. 给 `Case Study Diff` 增加截图、PR 或 commit 证据。
+4. 继续保持飞书知识库中文优先。

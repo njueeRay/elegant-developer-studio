@@ -60,29 +60,44 @@ function getDisplayName(name: string) {
 
 function ComponentPreview({ component }: { component: LabComponent }) {
   const [mode, setMode] = useState<"preview" | "trace" | "source">("preview");
+  const [viewport, setViewport] = useState<"desktop" | "mobile">("desktop");
   const command = `lab.preview("${component.slug}")`;
 
   return (
     <div className="component-preview" data-testid="component-preview">
       <div className="component-preview-toolbar">
         <span>{command}</span>
-        <div role="tablist" aria-label="Component preview mode">
-          {(["preview", "trace", "source"] as const).map((item) => (
-            <button
-              type="button"
-              role="tab"
-              aria-selected={mode === item}
-              key={item}
-              onClick={() => setMode(item)}
-            >
-              {item}
-            </button>
-          ))}
+        <div className="component-preview-controls">
+          <div role="tablist" aria-label="Component preview mode">
+            {(["preview", "trace", "source"] as const).map((item) => (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={mode === item}
+                key={item}
+                onClick={() => setMode(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <div className="viewport-switch" aria-label="Preview viewport">
+            {(["desktop", "mobile"] as const).map((item) => (
+              <button
+                type="button"
+                aria-pressed={viewport === item}
+                key={item}
+                onClick={() => setViewport(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {mode === "preview" ? (
-        <div className="component-preview-stage">
+        <div className="component-preview-stage" data-viewport={viewport}>
           <div className="component-preview-card" data-category={component.category}>
             <span>{component.category}</span>
             <strong>{component.name}</strong>

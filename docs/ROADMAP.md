@@ -313,3 +313,30 @@
 - 将 `SourceReveal` 升级为 GitHub source link。
 - 为 Lab 增加第一个真实 `ComponentPreview`。
 - 为项目详情页增加 `Case Study Diff`。
+
+## 第十三至第十六阶段：Navigation OS 与可追溯交互
+
+目标：修复页面“存在但不可发现”的信息架构问题，并把导航、职责边界、证据层和 Lab 预览推进到可验证状态。
+
+范围：
+
+- Phase 13：统一全站导航，主导航改为真实路由，移动端提供完整菜单。
+- Phase 14：明确 `Knowledge / Uses / Lab / About / Collaboration` 的职责边界。
+- Phase 15：Case Study Diff 增加可点击 evidence link。
+- Phase 16：SourceReveal 支持行号，ComponentPreview 增加 viewport switch。
+
+验收：
+
+- `/uses`、`/about`、`/lab` 不再是隐藏页面。
+- 首页和内页都能进入主信息架构。
+- 移动端导航可发现主要页面和二级页面。
+- `/collaboration` 等长标题页面无横向溢出。
+- e2e 覆盖导航、证据链接、移动菜单和 Lab viewport switch。
+
+当前状态：已实现并通过本地验证，待提交、部署和外部同步。
+
+下一阶段：
+
+- Phase 17：设计真实关系驱动的 `Reference Constellation`。
+- Phase 18：SourceReveal commit permalink。
+- Phase 19：Case Study Diff 截图、PR、commit 证据。

@@ -1072,3 +1072,36 @@ GitHub 推送修复：
 - GitHub issue `#5` comment `4701510805`。
 - 飞书：[47｜第十二阶段可追溯作品集调研](https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX)。
 - 飞书：[48｜第十二阶段可追溯作品集复盘](https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc)。
+
+### 第十三至第十六阶段：Navigation OS 与可追溯交互
+
+状态：已实现，已验证，待提交、部署和外部同步。
+
+阶段判断：
+
+- 页面存在不等于用户可达。
+- 主信息架构必须进入公开导航，命令面板只能作为加速器。
+- 页面职责边界必须先定义清楚，再继续堆组件。
+- 程序员风格的高级感应来自可验证证据、源码路径、组件状态和真实交互。
+
+完成：
+
+- 新增 `src/data/navigation.ts`。
+- 新增 `SiteHeader`，统一桌面导航、移动菜单、主题切换和联系入口。
+- 首页和核心页面接入统一全站导航。
+- 首页低部补充 `Uses` 与 `About` 入口。
+- `Case Study Diff` 新增 `evidenceHref` 与 `Open evidence`。
+- `SourceReveal` 支持可选行号。
+- `ComponentPreview` 新增 `desktop / mobile` viewport switch。
+- 移动端长标题增加换行保护。
+- 新增 `docs/PHASE13_16_NAVIGATION_OS_REVIEW.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：`primary surfaces`、`mobile navigation`、`horizontal overflow`、`lab component preview`、`project case studies`，10 passed。
+- `npm run test:e2e`：84 passed。
+- Playwright 本地生产模式视觉检查：`/`、`/uses`、`/about`、`/lab`、`/collaboration` 桌面与移动端均无横向溢出。
+- `/collaboration` 移动端标题修正后，`h1` 宽度 362px，390px 视口内不再拆成孤立字母。
+- 截图：`/tmp/phase13-16-home-desktop.png`、`/tmp/phase13-16-home-mobile.png`、`/tmp/phase13-16-lab-desktop.png`、`/tmp/phase13-16-collaboration-mobile-fixed.png`。

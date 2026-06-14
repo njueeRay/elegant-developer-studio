@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ListMusic, Radio } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { MiniPlayer } from "@/components/media/mini-player";
 import { currentMix } from "@/data/media";
 
@@ -14,6 +15,7 @@ export default function MusicPage() {
   return (
     <main className="studio-shell content-shell media-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header media-header">
         <Link href="/" className="text-link">
           <ArrowLeft size={16} />

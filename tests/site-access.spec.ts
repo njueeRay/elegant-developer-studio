@@ -55,6 +55,57 @@ test.describe("public routes and links", () => {
     await expect(page.locator("#media")).toBeVisible();
     await expect(page.getByRole("link", { name: "Ray Studio home" })).toHaveAttribute("href", "/");
   });
+
+  test("primary surfaces are reachable from public navigation", async ({ page }) => {
+    await page.goto("/");
+
+    const isMobile = (page.viewportSize()?.width ?? 1024) < 800;
+    if (isMobile) {
+      await page.getByRole("button", { name: "Open navigation" }).click();
+    }
+
+    const mainNavigation = page.getByRole("navigation", {
+      name: isMobile ? "Mobile primary navigation" : "Main navigation",
+    });
+
+    for (const href of ["/blog", "/projects", "/knowledge", "/uses", "/lab", "/about"]) {
+      await expect(mainNavigation.locator(`a[href="${href}"]`)).toHaveCount(1);
+    }
+
+    await expect(page.locator("#uses")).toBeVisible();
+    await expect(page.locator("#about")).toBeVisible();
+    await expect(page.getByRole("link", { name: /Open uses/ })).toHaveAttribute("href", "/uses");
+    await expect(page.getByRole("link", { name: /Read profile/ })).toHaveAttribute("href", "/about");
+  });
+
+  test("mobile navigation exposes primary and secondary surfaces", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/uses");
+
+    await page.getByRole("button", { name: "Open navigation" }).click();
+
+    const mobileNavigation = page.getByRole("navigation", { name: "Mobile primary navigation" });
+    await expect(mobileNavigation.getByRole("link", { name: /About/ })).toHaveAttribute("href", "/about");
+    await expect(mobileNavigation.getByRole("link", { name: /Lab/ })).toHaveAttribute("href", "/lab");
+    await expect(page.getByRole("link", { name: "Collaboration" })).toHaveAttribute(
+      "href",
+      "/collaboration",
+    );
+  });
+
+  test("audited pages do not create horizontal overflow on mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+
+    for (const route of ["/", "/uses", "/about", "/lab", "/collaboration"]) {
+      await page.goto(route);
+      const width = await page.evaluate(() => ({
+        client: document.documentElement.clientWidth,
+        scroll: document.documentElement.scrollWidth,
+      }));
+
+      expect(width.scroll, route).toBeLessThanOrEqual(width.client + 1);
+    }
+  });
 });
 
 test.describe("core interaction contracts", () => {
@@ -173,12 +224,24 @@ test.describe("core interaction contracts", () => {
     await expect(page.locator(".case-study-diff-card").first()).toContainText("After");
     await expect(page.locator(".case-study-diff-card").first()).toContainText("Proof");
     await expect(page.locator(".case-study-diff")).toContainText("Shared styling now supports");
+    await expect(page.getByRole("link", { name: "Open evidence" }).first()).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/app",
+    );
   });
 
   test("lab component preview switches modes and exposes source", async ({ page }) => {
     await page.goto("/lab");
 
     await expect(page.getByTestId("component-preview")).toContainText('lab.preview("global-command-menu")');
+
+    const componentPreview = page.getByTestId("component-preview");
+
+    await componentPreview.getByRole("button", { name: "mobile" }).click();
+    await expect(componentPreview.locator(".component-preview-stage")).toHaveAttribute(
+      "data-viewport",
+      "mobile",
+    );
 
     await page.getByRole("tab", { name: "trace" }).click();
     await expect(page.getByTestId("component-preview")).toContainText("Reusable for");

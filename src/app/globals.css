@@ -105,9 +105,11 @@ input {
 }
 
 .brand-mark,
-.site-header nav a,
+.site-nav a,
+.mobile-nav-panel a,
 .contact-button,
 .icon-button,
+.mobile-menu-button,
 .command-strip,
 .primary-link,
 .text-link {
@@ -120,15 +122,16 @@ input {
   letter-spacing: 0;
 }
 
-.site-header nav {
+.site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 3vw, 44px);
+  gap: clamp(16px, 2.4vw, 34px);
   font-size: 0.95rem;
   color: color-mix(in srgb, var(--foreground), transparent 14%);
 }
 
-.site-header nav a,
+.site-nav a,
+.mobile-nav-panel a,
 .social-links a,
 .text-link,
 .latest-row,
@@ -141,7 +144,10 @@ input {
     background 180ms ease;
 }
 
-.site-header nav a:hover,
+.site-nav a:hover,
+.site-nav a[aria-current="page"],
+.mobile-nav-panel a:hover,
+.mobile-nav-panel a[aria-current="page"],
 .social-links a:hover,
 .text-link:hover {
   color: var(--rust);
@@ -154,6 +160,7 @@ input {
 }
 
 .icon-button,
+.mobile-menu-button,
 .contact-button,
 .command-strip,
 .primary-link,
@@ -174,10 +181,73 @@ input {
   border-radius: 12px;
 }
 
+.mobile-menu-button {
+  display: none;
+  width: 44px;
+  border-radius: 12px;
+  color: var(--foreground);
+}
+
 .contact-button {
   gap: 9px;
   padding: 0 16px;
   border-radius: 12px;
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--surface-strong), white 6%), var(--surface));
+  box-shadow: 0 24px 70px rgba(40, 31, 22, 0.18);
+}
+
+.mobile-nav-panel nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mobile-nav-panel nav a {
+  display: grid;
+  gap: 5px;
+  min-height: 78px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface), transparent 12%);
+}
+
+.mobile-nav-panel nav a span {
+  font-weight: 650;
+}
+
+.mobile-nav-panel nav a small {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+.mobile-nav-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.mobile-nav-secondary a {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 .hero-section {
@@ -694,7 +764,7 @@ kbd {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   width: min(100%, 1440px);
   margin: 0 auto;
   border-bottom: 1px solid var(--border);
@@ -702,6 +772,8 @@ kbd {
 
 .knowledge-panel,
 .lab-panel,
+.uses-panel,
+.about-panel,
 .contact-panel {
   display: flex;
   min-height: 260px;
@@ -718,6 +790,8 @@ kbd {
 
 .knowledge-panel h2,
 .lab-panel h2,
+.uses-panel h2,
+.about-panel h2,
 .contact-panel h2 {
   margin-bottom: 8px;
   font-size: 1.55rem;
@@ -725,6 +799,8 @@ kbd {
 
 .knowledge-panel p:not(.section-kicker),
 .lab-panel p:not(.section-kicker),
+.uses-panel p:not(.section-kicker),
+.about-panel p:not(.section-kicker),
 .contact-panel p:not(.section-kicker) {
   margin: 0;
   color: var(--muted);
@@ -740,6 +816,7 @@ kbd {
 }
 
 .knowledge-panel li,
+.uses-panel .lab-list span,
 .lab-list span {
   display: flex;
   align-items: center;
@@ -2803,13 +2880,26 @@ a.source-reveal:hover {
   overflow-wrap: anywhere;
 }
 
-.component-preview-toolbar div {
+.component-preview-controls {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) minmax(132px, 0.46fr);
+  gap: 8px;
+}
+
+.component-preview-controls > div {
+  display: grid;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--surface);
+}
+
+.component-preview-controls [role="tablist"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.viewport-switch {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .component-preview-toolbar button {
@@ -2831,10 +2921,27 @@ a.source-reveal:hover {
   color: var(--rust-strong);
 }
 
+.component-preview-toolbar button[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--blue), transparent 88%);
+  color: var(--blue);
+}
+
 .component-preview-stage {
   display: grid;
   min-height: 170px;
   place-items: center;
+  transition:
+    max-width 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.component-preview-stage[data-viewport="mobile"] {
+  max-width: 270px;
+  margin: 0 auto;
+  border: 1px solid color-mix(in srgb, var(--blue), transparent 72%);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--blue), transparent 94%);
 }
 
 .component-preview-card {
@@ -4986,6 +5093,20 @@ html[data-theme="dark"] .about-notebook {
   font-weight: 600;
 }
 
+.case-study-diff footer a {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 10px;
+  color: var(--blue);
+  font-size: 0.84rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.case-study-diff footer a:hover {
+  color: var(--rust);
+}
+
 .reader-spotlight {
   pointer-events: none;
   position: fixed;
@@ -5497,8 +5618,12 @@ html[data-theme="dark"] .about-notebook {
     grid-template-columns: 1fr auto;
   }
 
-  .site-header nav {
+  .site-nav {
     display: none;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
   }
 
   .hero-section {
@@ -5633,6 +5758,10 @@ html[data-theme="dark"] .about-notebook {
     gap: 12px;
   }
 
+  .mobile-nav-panel nav {
+    grid-template-columns: 1fr;
+  }
+
   .contact-button {
     width: 44px;
     padding: 0;
@@ -5720,6 +5849,8 @@ html[data-theme="dark"] .about-notebook {
 
   .knowledge-panel,
   .lab-panel,
+  .uses-panel,
+  .about-panel,
   .contact-panel {
     min-height: 0;
     padding: 28px 2px;
@@ -5741,6 +5872,17 @@ html[data-theme="dark"] .about-notebook {
   .article-header h1,
   .project-detail header h1 {
     font-size: clamp(2.7rem, 17vw, 4.2rem);
+    overflow-wrap: anywhere;
+  }
+
+  .collaboration-header h1 {
+    font-size: clamp(2.35rem, 12vw, 3.25rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .component-preview-controls {
+    grid-template-columns: 1fr;
   }
 
   .post-card {

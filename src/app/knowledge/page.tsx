@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { KnowledgeExplorer } from "@/components/content/knowledge-explorer";
 import { getKnowledgeKinds, knowledgeEntries } from "@/data/knowledge";
 
@@ -16,6 +17,7 @@ export default function KnowledgePage() {
   return (
     <main className="studio-shell content-shell knowledge-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header">
         <Link href="/" className="text-link">
           <ArrowLeft size={16} />

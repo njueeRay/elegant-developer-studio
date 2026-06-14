@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { ContactHub } from "@/components/content/contact-hub";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function ContactPage() {
   return (
     <main className="studio-shell content-shell contact-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header contact-header">
         <Link href="/" className="back-link">
           <ArrowLeft size={17} />

@@ -35,7 +35,7 @@
 
 Phase 1 已实现：
 
-- `Header`
+- `SiteHeader`
 - `ThemeToggle`
 - `StatusBadge`
 - `CommandPalette`
@@ -91,6 +91,7 @@ Phase 5 已实现首版：
 - `ContactPanel` 深色 CTA 变体
 - `LabExplorer`
 - `ComponentRegistry` 首版模式
+- `ComponentPreview` viewport switch
 - `ExperimentTimeline`
 - `QualityGateList`
 
@@ -100,7 +101,7 @@ Phase 5 已实现首版：
 - `GlobalSearch`
 - `QuickAction`
 - `KeyboardHint`
-- `ComponentPreview`
+- `ReferenceConstellation`
 
 ## Phase 2 交互细节
 
@@ -165,7 +166,9 @@ Phase 5 已实现首版：
 - `LabExplorer` 必须显示组件状态、来源文件、使用路由、质量证据和可复制 import。
 - `Lab` 组件列表中的代码标识可保留 PascalCase；预览标题可用可读名称避免长单词断裂。
 - `Lab` 移动端遇到长组件名时必须断词或切换为块级布局，页面级 `scrollWidth` 不得超过 `clientWidth`。
-- `ComponentPreview` 只有在真实示例超过静态 metadata 表达能力后再实现。
+- `SiteHeader` 是全站主信息架构入口，桌面显示主路由，移动端显示完整菜单；命令面板不能替代它。
+- `ComponentPreview` 已进入首版，可切换 `preview / trace / source` 和 `desktop / mobile` viewport，但仍不是完整沙箱。
+- `Case Study Diff` 的 proof 必须尽量附带 evidence link，避免只留下叙事文本。
 
 ## 素材规则
 

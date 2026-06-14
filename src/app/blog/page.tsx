@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { PostExplorer } from "@/components/content/tag-filter";
 import { getAllPostMeta, getAllTags } from "@/lib/content";
 
@@ -17,6 +18,7 @@ export default function BlogPage() {
   return (
     <main className="studio-shell content-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header">
         <Link href="/" className="text-link">
           <ArrowLeft size={16} />

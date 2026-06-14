@@ -10,20 +10,18 @@ import {
   Command,
   FileText,
   Mail,
-  Moon,
   Music2,
   Pause,
   Play,
-  Sun,
   Wrench,
 } from "lucide-react";
-import { useEffect, useState, type ComponentType } from "react";
+import { useState, type ComponentType } from "react";
+import { SiteHeader } from "@/components/site-header";
 import { StatusPanel } from "@/components/status-panel";
 import { currentMix } from "@/data/media";
 import {
   highlights,
   knowledgeItems,
-  navItems,
   socialLinks,
   workbenchItems,
   type Highlight,
@@ -38,21 +36,6 @@ const iconByKind: Record<HighlightKind, ComponentType<{ size?: number }>> = {
   media: Music2,
 };
 
-function getInitialTheme() {
-  if (typeof window === "undefined") {
-    return "light";
-  }
-
-  const stored = window.localStorage.getItem("studio-theme");
-  if (stored === "dark" || stored === "light") {
-    return stored;
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
 export function StudioHome({
   featuredPosts,
   featuredProjects,
@@ -60,21 +43,12 @@ export function StudioHome({
   featuredPosts: PostMeta[];
   featuredProjects: ProjectMeta[];
 }) {
-  const [theme, setTheme] = useState<"light" | "dark">(getInitialTheme);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("studio-theme", theme);
-  }, [theme]);
 
   return (
     <main className="studio-shell">
       <div className="ambient-grid" aria-hidden="true" />
-      <Header
-        theme={theme}
-        onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")}
-      />
+      <SiteHeader />
 
       <section className="hero-section" aria-label="Ray Studio overview">
         <div className="line-index" aria-hidden="true">
@@ -171,6 +145,38 @@ export function StudioHome({
           </a>
         </article>
 
+        <article className="uses-panel" id="uses">
+          <div>
+            <p className="section-kicker">Uses</p>
+            <h2>Tools & workflows</h2>
+            <p>
+              The practical stack behind the studio: writing systems, design
+              tools, code workflow, and rituals that make shipping repeatable.
+            </p>
+          </div>
+          <div className="lab-list">
+            <span>Toolchain map</span>
+            <span>Shipping workflow</span>
+          </div>
+          <Link href="/uses" className="text-link">
+            Open uses <ArrowRight size={16} />
+          </Link>
+        </article>
+
+        <article className="about-panel" id="about">
+          <div>
+            <p className="section-kicker rust">About</p>
+            <h2>Principles & profile</h2>
+            <p>
+              The human layer: operating principles, capability map,
+              collaboration contract, and the narrative behind the work.
+            </p>
+          </div>
+          <Link href="/about" className="text-link rust">
+            Read profile <ArrowRight size={16} />
+          </Link>
+        </article>
+
         <article className="contact-panel" id="contact">
           <div>
             <p className="section-kicker rust">Let&apos;s connect</p>
@@ -221,43 +227,6 @@ export function StudioHome({
       </section>
 
     </main>
-  );
-}
-
-function Header({
-  theme,
-  onToggleTheme,
-}: {
-  theme: "light" | "dark";
-  onToggleTheme: () => void;
-}) {
-  return (
-    <header className="site-header">
-      <Link href="/" className="brand-mark" aria-label="Ray Studio home">
-        Ray Studio
-      </Link>
-      <nav aria-label="Main navigation">
-        {navItems.map((item) => (
-          <a key={item.label} href={item.href}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
-      <div className="header-actions">
-        <button
-          type="button"
-          className="icon-button"
-          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
-          onClick={onToggleTheme}
-        >
-          {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-        <Link href="/contact" className="contact-button">
-          <Mail size={16} />
-          Contact
-        </Link>
-      </div>
-    </header>
   );
 }
 

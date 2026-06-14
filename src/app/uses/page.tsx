@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { UsesExplorer } from "@/components/content/uses-explorer";
 import { getUseCategories, pipelineSteps, useTools, useWorkflows } from "@/data/uses";
 
@@ -16,6 +17,7 @@ export default function UsesPage() {
   return (
     <main className="studio-shell content-shell uses-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header uses-header">
         <Link href="/" className="text-link">
           <ArrowLeft size={16} />

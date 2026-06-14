@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Camera, MapPin } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { PhotoGrid } from "@/components/media/photo-grid";
 import { photos } from "@/data/media";
 
@@ -16,6 +17,7 @@ export default function PhotosPage() {
   return (
     <main className="studio-shell content-shell media-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header media-header">
         <Link href="/" className="text-link">
           <ArrowLeft size={16} />

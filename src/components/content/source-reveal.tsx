@@ -5,13 +5,15 @@ type SourceRevealProps = {
   label: string;
   path: string;
   href?: string;
+  line?: number;
   testId?: string;
   link?: boolean;
 };
 
-export function SourceReveal({ label, path, href, testId, link = true }: SourceRevealProps) {
-  const sourceHref = href ?? getGitHubSourceUrl(path);
-  const text = `${label} ${path}`;
+export function SourceReveal({ label, path, href, line, testId, link = true }: SourceRevealProps) {
+  const sourceHref = href ?? getGitHubSourceUrl(path, line);
+  const location = line ? `${path}:${line}` : path;
+  const text = `${label} ${location}`;
 
   if (!link) {
     return (
@@ -28,7 +30,7 @@ export function SourceReveal({ label, path, href, testId, link = true }: SourceR
       href={sourceHref}
       rel="noreferrer"
       target="_blank"
-      aria-label={`Open ${path} on GitHub`}
+      aria-label={`Open ${location} on GitHub`}
     >
       <span>{text}</span>
       <ExternalLink size={12} />

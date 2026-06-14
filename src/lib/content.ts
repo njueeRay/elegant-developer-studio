@@ -52,6 +52,7 @@ export type ProjectMeta = {
     before: string;
     after: string;
     proof: string;
+    evidenceHref?: string;
   }>;
   featured: boolean;
 };

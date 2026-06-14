@@ -10,6 +10,7 @@ import {
   Lightbulb,
   Sparkles,
 } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import {
   collaborationStatus,
   collaborationSteps,
@@ -28,6 +29,7 @@ export default function CollaborationPage() {
   return (
     <main className="studio-shell content-shell collaboration-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header collaboration-header">
         <Link href="/" className="back-link">
           <ArrowLeft size={17} />

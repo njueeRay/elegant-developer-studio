@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { LabExplorer } from "@/components/content/lab-explorer";
 import {
   getLabCategories,
@@ -21,6 +22,7 @@ export default function LabPage() {
   return (
     <main className="studio-shell content-shell lab-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <header className="content-header lab-header">
         <Link href="/" className="text-link">
           <ArrowLeft size={16} />

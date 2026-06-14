@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Code2, ExternalLink, GitCompareArrows } from "lucide-react";
+import { SiteHeader } from "@/components/site-header";
 import { getAllProjects, getProject } from "@/lib/content";
 
 type PageProps = {
@@ -46,6 +47,7 @@ export default async function ProjectPage({ params }: PageProps) {
   return (
     <main className="studio-shell content-shell project-detail-shell">
       <div className="ambient-grid" aria-hidden="true" />
+      <SiteHeader />
       <article className="project-detail">
         <Link href="/projects" className="text-link">
           <ArrowLeft size={16} />
@@ -113,6 +115,11 @@ export default async function ProjectPage({ params }: PageProps) {
                 <footer>
                   <span>Proof</span>
                   <strong>{item.proof}</strong>
+                  {item.evidenceHref ? (
+                    <a href={item.evidenceHref} rel="noreferrer" target="_blank">
+                      Open evidence
+                    </a>
+                  ) : null}
                 </footer>
               </article>
             ))}
