@@ -893,7 +893,7 @@ GitHub：
 
 ### 第十阶段：Signature Interaction Prototype
 
-状态：本地完成，等待部署和外部同步。
+状态：已部署，等待 GitHub 和飞书外部同步。
 
 复盘：
 
@@ -936,6 +936,11 @@ GitHub：
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - `npm run test:e2e`：68 passed。
+- Vercel deployment：`dpl_BAvc9wkG9cRr9XbC3WzDWoyxCRrZ`。
+- Deployment URL：`https://elegant-developer-studio-dx2h0nnk6.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/BAvc9wkG9cRr9XbC3WzDWoyxCRrZ`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，68 passed。
 - Playwright 本地生产模式视觉复核：桌面和移动端无横向溢出。
 - Command Trace：`cmd.open("/lab")` 可见。
 - Source Reveal：`ref /knowledge#filters-before-search` 和 `source src/content/projects/...` 可见。
@@ -944,7 +949,5 @@ GitHub：
 
 剩余：
 
-- 部署到 Vercel。
-- 生产环境 e2e。
 - GitHub issue 同步。
 - 飞书同步。

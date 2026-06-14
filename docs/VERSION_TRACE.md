@@ -668,12 +668,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第十阶段 Signature Interaction Prototype
 
 日期：2026-06-14
-Primary commit：待提交
-Deployment record commit：待提交
-Vercel deployment：待部署
+Primary commit：`fffa2b9`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_BAvc9wkG9cRr9XbC3WzDWoyxCRrZ`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待部署
-Inspect URL：待部署
+Deployment URL：`https://elegant-developer-studio-dx2h0nnk6.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/BAvc9wkG9cRr9XbC3WzDWoyxCRrZ`
 
 范围：
 
@@ -695,8 +695,11 @@ Inspect URL：待部署
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - `npm run test:e2e`：68 passed。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：68 passed。
 - Playwright 本地生产模式视觉复核：桌面和移动端无横向溢出。
 - stale trace：离开目标路由后清理。
+- Vercel inspect：deployment 状态 `READY`。
+- Production alias 已指向本阶段部署。
 
 外部同步：
 
