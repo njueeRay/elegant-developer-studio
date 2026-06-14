@@ -4464,6 +4464,7 @@ html[data-theme="dark"] .about-notebook {
 }
 
 .article-content h2 {
+  position: relative;
   scroll-margin-top: 64px;
   display: flex;
   gap: 10px;
@@ -4488,6 +4489,28 @@ html[data-theme="dark"] .about-notebook {
   opacity: 1;
 }
 
+.article-content h2::after {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 0.18em;
+  width: 3px;
+  height: 0.92em;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--rust), var(--blue));
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.article-content h2.reading-section-active::after,
+.article-content h2:target::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .article-content h3 {
   margin: 34px 0 12px;
   font-size: 1.25rem;
@@ -4498,6 +4521,15 @@ html[data-theme="dark"] .about-notebook {
   color: var(--muted);
   font-size: 1.04rem;
   line-height: 1.88;
+  transition:
+    color 180ms ease,
+    text-shadow 180ms ease;
+}
+
+.article-content p:hover,
+.article-content li:hover {
+  color: color-mix(in srgb, var(--foreground), transparent 8%);
+  text-shadow: 0 10px 30px color-mix(in srgb, var(--rust), transparent 88%);
 }
 
 .article-content p {
@@ -4703,7 +4735,14 @@ html[data-theme="dark"] .about-notebook {
   backdrop-filter: blur(20px);
 }
 
-.article-signal div {
+.article-signal header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.article-signal header div {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -4716,10 +4755,26 @@ html[data-theme="dark"] .about-notebook {
 }
 
 .article-signal p {
-  margin: 8px 28px 0 0;
-  color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.55;
+  margin: 12px 0 8px;
+  color: var(--foreground);
+  font-size: 0.9rem;
+  font-weight: 620;
+  line-height: 1.35;
+}
+
+.article-signal code {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 8px 9px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--foreground), transparent 95%);
+  color: color-mix(in srgb, var(--muted), var(--blue) 20%);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .article-signal button,
@@ -4733,13 +4788,26 @@ html[data-theme="dark"] .about-notebook {
   cursor: pointer;
 }
 
-.article-signal button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.article-signal header button {
   width: 28px;
   height: 28px;
   border-radius: 8px;
+}
+
+.article-ref-button {
+  gap: 7px;
+  width: 100%;
+  min-height: 34px;
+  margin-top: 10px;
+  border-radius: 9px;
+  color: var(--foreground);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+}
+
+.article-ref-button:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-strong);
 }
 
 .article-signal-toggle {
@@ -5901,7 +5969,11 @@ html[data-theme="dark"] .about-notebook {
   }
 
   .article-signal {
-    display: none;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    width: auto;
+    padding: 12px;
   }
 
   .article-signal-toggle {
@@ -5958,6 +6030,9 @@ html[data-theme="dark"] .about-notebook {
 @media (prefers-reduced-motion: reduce) {
   .command-trace-toast,
   .source-reveal,
+  .article-content h2::after,
+  .article-content p,
+  .article-content li,
   .knowledge-card,
   .project-card,
   .lab-component-row {

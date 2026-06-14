@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <main className="studio-shell content-shell article-shell">
       <ReadingProgress />
-      <ArticleInteractions />
+      <ArticleInteractions slug={post.slug} title={post.title} toc={post.toc} />
       <div className="ambient-grid" aria-hidden="true" />
       <article className="article-layout">
         <aside className="metadata-rail">

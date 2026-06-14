@@ -953,3 +953,57 @@ GitHub：
 - GitHub issue `#5` comment `4701203356`。
 - 飞书：[43｜第十阶段 Signature Interaction 调研](https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg)。
 - 飞书：[44｜第十阶段 Signature Interaction 复盘](https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb)。
+
+### 第十一阶段：Reading Focus Lens
+
+状态：已实现，等待部署和外部同步。
+
+复盘：
+
+- 第十阶段已经完成 `Command Trace` 和 `SourceReveal`，站点开始拥有真实的程序员风格 signature。
+- 用户希望继续探索更有创意、更炫酷的交互，但不能污染整体优雅气质。
+- 本阶段选择博客阅读页作为创意入口，因为它服务真实阅读、引用和内容追踪。
+
+调研依据：
+
+- Apple HIG Motion：动效应该服务状态理解，不能抢内容。
+- NN/g：动画和反馈需要贴近用户动作，阅读型页面必须克制。
+- GitHub Primer：技术产品的可信度来自清晰 focus、稳定状态和可访问交互。
+- MDN IntersectionObserver 与 `prefers-reduced-motion`：可见区域追踪和动效降级。
+
+完成：
+
+- `ArticleInteractions` 升级为 `ReadingFocusLens`。
+- 文章页显示当前小节标题。
+- 显示 `read.focus("section-id")`。
+- 支持复制当前小节 URL。
+- 复制使用 `writeToClipboard` 降级工具。
+- 当前 heading 显示轻量 focus 指示。
+- 正文段落和列表 hover 时有轻微阅读聚焦。
+- 移动端保留底部轻量浮层。
+- `prefers-reduced-motion` 下取消过渡。
+- Lab 注册 `ReadingFocusLens`。
+- Lab experiment timeline 新增 `Reading focus`。
+- Command Center 可搜索 `reading focus`。
+- 新增 `docs/PHASE11_READING_FOCUS_RESEARCH.md`。
+- 新增 `docs/PHASE11_READING_FOCUS_REVIEW.md`。
+
+专家判断：
+
+- 优点：炫酷感来自真实阅读状态和可复制引用，不是装饰。
+- 缺点：目前只在博客页生效，还没有复用到 Knowledge 详情页或项目 case study。
+- 下一步：优先做 GitHub source link、ComponentPreview 和 Case Study Diff。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：`article reading focus` 和 `lab and command center`，4 passed。
+- `npm run test:e2e`：72 passed。
+
+剩余：
+
+- Vercel 部署。
+- 生产环境 e2e。
+- GitHub issue 同步。
+- 飞书同步。

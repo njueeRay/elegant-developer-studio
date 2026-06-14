@@ -707,3 +707,40 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - GitHub issue `#5` comment `4701203356`。
 - 飞书：[43｜第十阶段 Signature Interaction 调研](https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg)。
 - 飞书：[44｜第十阶段 Signature Interaction 复盘](https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb)。
+
+## Unreleased - 第十一阶段 Reading Focus Lens
+
+日期：2026-06-14
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待部署
+Inspect URL：待部署
+
+范围：
+
+- 博客详情页新增当前阅读小节追踪。
+- 显示 `read.focus("section-id")`。
+- 支持复制当前小节 URL。
+- 当前 heading 和正文 hover 获得轻量阅读焦点反馈。
+- Lab 注册 `ReadingFocusLens`。
+- Command Center 可搜索 `reading focus`。
+- 新增第十一阶段调研与复盘文档。
+
+产品判断：
+
+- 本站可以炫酷，但当前最适合的是可执行、可追踪、可引用的低噪音交互。
+- 继续暂缓常驻宠物、全站粒子、假终端和大型图谱。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：4 passed。
+- `npm run test:e2e`：72 passed。
+
+外部同步：
+
+- GitHub issue：待同步。
+- 飞书：待同步。

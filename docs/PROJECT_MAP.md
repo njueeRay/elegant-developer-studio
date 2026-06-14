@@ -49,6 +49,8 @@
 - 第七阶段 Contact 与公开信任层：`/contact` 独立页面、公开路由、联系 brief、边界说明和真实入口。
 - 第八阶段公开协作层：GitHub Issue Forms、结构化协作入口和 Contact 到 issue template 的直达链接。
 - 第九阶段协作治理与创意方向层：`/collaboration`、`CONTRIBUTING.md`、PR 模板、创意 backlog 和专家审查。
+- 第十阶段签名交互层：`CommandTraceToast`、`SourceReveal`、命令执行痕迹和来源 reveal。
+- 第十一阶段阅读焦点层：`ReadingFocusLens`、当前小节追踪、`read.focus("section-id")` 和小节引用复制。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -276,6 +278,58 @@
 - 当前不做常驻宠物或高强度特效。
 - 下一步优先做 `Command Trace` 和 `Source Hover`。
 
+### 第十阶段：Signature Interaction Prototype
+
+状态：完成首版。
+
+范围：
+
+- 命令执行痕迹。
+- 来源 reveal。
+- Lab 注册和 e2e 覆盖。
+
+已实现：
+
+- `CommandTraceToast`
+- `SourceReveal`
+- `src/lib/command-trace.ts`
+- Command Center 内部路由导航后显示 `cmd.open("/route")`。
+- Knowledge、Projects、Lab 显示真实 ref/source path。
+- Lab 注册 `CommandTraceToast` 和 `SourceReveal`。
+- e2e 覆盖命令 trace、source reveal 和 stale trace 清理。
+
+主要判断：
+
+- 程序员风格应来自真实命令、真实来源和可检查路径。
+- `SourceReveal` 下一步应该变成 GitHub source link。
+
+### 第十一阶段：Reading Focus Lens
+
+状态：完成首版。
+
+范围：
+
+- 博客详情页阅读焦点。
+- 当前小节追踪。
+- 小节引用复制。
+- Lab 和 Command Center 接入。
+
+已实现：
+
+- `ArticleInteractions` 接收文章 slug、title 和 TOC。
+- 当前小节显示为 `read.focus("section-id")`。
+- 使用 heading/TOC 和滚动位置追踪当前阅读段落。
+- 复制当前小节 URL，使用 `writeToClipboard` 降级。
+- 文章 heading 当前态指示和段落 hover 聚焦。
+- 移动端底部轻量浮层。
+- Lab 注册 `ReadingFocusLens`。
+- e2e 覆盖阅读焦点、复制反馈和 Command Center 搜索。
+
+主要判断：
+
+- 本站可以炫酷，但应该选择可执行、可追踪、可引用的酷。
+- 当前仍不建议做常驻宠物、全站粒子或假终端。
+
 ## 5. 仓库地图
 
 ```text
@@ -303,6 +357,8 @@ docs/
   PHASE5_KNOWLEDGE_REVIEW.md    第五阶段 Knowledge 首个切片复盘
   PHASE5_KNOWLEDGE_RESEARCH.md  第五阶段 Knowledge 首个切片调研
   PHASE5_USES_RESEARCH.md       第五阶段 Uses 调研与首个切片
+  PHASE11_READING_FOCUS_RESEARCH.md 第十一阶段阅读焦点调研
+  PHASE11_READING_FOCUS_REVIEW.md   第十一阶段阅读焦点复盘
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
 
@@ -347,6 +403,7 @@ src/
 - `TableOfContents`
 - `CodeBlock`
 - `MetadataRail`
+- `ReadingFocusLens`
 - `PhotoGrid`
 - `PhotoLightbox`
 - `MiniPlayer`
@@ -392,6 +449,7 @@ src/
 - Lab 交互：组件分类筛选、组件预览选择、复制 import、复制 registry、Command Center 真实 Lab 结果。
 - 第六阶段交互契约：全站路由 e2e、占位链接防回归、Command Center 真实跳转、复制反馈、筛选反馈和音乐状态均纳入 Playwright 测试。
 - 第十阶段签名交互：Command Center 导航后显示 `cmd.open("/route")`，Knowledge/Projects/Lab 暴露真实 ref/source path。
+- 第十一阶段阅读焦点：博客详情页显示当前小节、`read.focus("section-id")` 和小节引用复制。
 
 研究轨道：
 
@@ -443,11 +501,12 @@ src/
 
 ## 10. 下一步
 
-下一步是第十阶段之后的 Portfolio OS 继续推进：
+下一步是第十一阶段之后的 Portfolio OS 继续推进：
 
 1. 改善移动端筛选条的横向滚动提示。
 2. 将 `SourceReveal` 升级为可点击 GitHub source link。
-3. 判断 `ComponentPreview` 是否需要进入下一切片。
-4. 判断 `Knowledge` 是否需要详情页、反向链接或 URL query 筛选。
-5. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
-6. 第三阶段并行决定是否引入真实音频文件。
+3. 做第一个真实 `ComponentPreview`。
+4. 为项目详情页增加 `Case Study Diff`。
+5. 判断 `Knowledge` 是否需要详情页、反向链接或 URL query 筛选。
+6. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
+7. 第三阶段并行决定是否引入真实音频文件。

@@ -16,7 +16,7 @@
 | --- | --- | --- | --- |
 | Shipped / Iterate | Command Trace | Interaction | 已完成首版；下一步评估复制、历史和回放是否有价值 |
 | Shipped / Iterate | Source Hover | UI | 已完成首版；下一步升级为可点击 GitHub source link |
-| Next | Reading Focus Lens | Interaction | 增强博客阅读，而不污染正文 |
+| Shipped / Iterate | Reading Focus Lens | Interaction | 已完成首版；下一步评估 Knowledge/Project 复用和 Markdown 引用复制 |
 | Next | Memory Map | Content | 建立文章、项目、照片、知识、工具之间的关系 |
 | Next | Case Study Diff | Component | 让作品集体现工程取舍 |
 | Later | Studio Companion | Interaction | 只在空状态或恢复路径中提供帮助 |
@@ -51,6 +51,22 @@
 - 链接到 GitHub 文件。
 - 绑定 commit 或版本。
 - 在 case study 中显示设计/代码 diff。
+
+### Reading Focus Lens
+
+当前行为：
+
+- 博客详情页显示当前小节标题。
+- 显示 `read.focus("section-id")`。
+- 支持复制当前小节 URL。
+- 当前 heading 显示轻量指示。
+- 移动端保留底部浮层。
+
+下一步：
+
+- 支持复制 Markdown 引用。
+- 复用到 Knowledge 详情页。
+- 在项目 case study 中显示当前决策段落。
 
 ## 当前不建议做
 

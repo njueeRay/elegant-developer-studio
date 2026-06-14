@@ -36,6 +36,7 @@
 - `TableOfContents`
 - `CodeBlock`
 - `MetadataRail`
+- `ReadingFocusLens`
 
 状态：已在 `v0.2.0` 完成。
 
@@ -73,6 +74,7 @@
 - `/photos`、照片网格、精选照片、灯箱。
 - `/music`、当前歌单、曲目列表、迷你播放器。
 - 博客 reader mode 提示、鼠标跟随阅读微光、代码块行数。
+- 博客 `ReadingFocusLens`：当前小节、`read.focus("section-id")` 和小节引用复制。
 
 暂不做：
 
@@ -270,3 +272,38 @@
 - 优先改进移动端筛选条的横向滚动提示。
 - 将 `SourceReveal` 升级为可点击 GitHub source link。
 - 为 Lab 增加真实 `ComponentPreview`，让组件注册表从元数据走向可操作预览。
+
+## 第十一阶段：Reading Focus Lens
+
+目标：在不污染博客阅读的前提下，为长文增加当前小节追踪、代码式阅读状态和稳定引用能力。
+
+状态：已完成首版，进入迭代观察。
+
+交付：
+
+- `ReadingFocusLens`：博客详情页显示当前小节。
+- 显示 `read.focus("section-id")`。
+- 支持复制当前小节 URL。
+- 当前 heading 显示轻量 focus 指示。
+- 正文段落 hover 时有轻微阅读聚焦。
+- 移动端保留底部轻量浮层。
+- Lab 注册 `ReadingFocusLens`。
+- Command Center 可搜索 `reading focus`。
+- e2e 覆盖阅读焦点、滚动更新、复制反馈、Lab 和 Command Center 发现路径。
+
+组件：
+
+- `ReadingFocusLens`
+- `ArticleInteractions`
+
+本阶段判断：
+
+- 可以炫酷，但炫酷必须来自真实阅读状态和可引用对象。
+- 当前仍不做常驻宠物、全站粒子、假终端或大型图谱。
+- 更适合本站的创意方向是 `Source Link`、`Case Study Diff`、`Knowledge Backlinks` 和 `ComponentPreview`。
+
+下一阶段：
+
+- 将 `SourceReveal` 升级为 GitHub source link。
+- 为 Lab 增加第一个真实 `ComponentPreview`。
+- 为项目详情页增加 `Case Study Diff`。

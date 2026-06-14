@@ -158,6 +158,25 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByTestId("code-copy")).toContainText("Copied");
   });
 
+  test("article reading focus exposes active section refs", async ({ page }) => {
+    await page.goto("/blog/interface-is-a-promise");
+
+    await expect(page.getByTestId("reading-focus-lens")).toBeVisible();
+    await expect(page.getByTestId("reading-focus-section")).toContainText("A promise has shape");
+    await expect(page.getByTestId("reading-focus-lens")).toContainText(
+      'read.focus("a-promise-has-shape")',
+    );
+
+    await page.locator("#the-technical-texture").evaluate((element) => {
+      element.scrollIntoView({ block: "start" });
+    });
+    await expect(page.getByTestId("reading-focus-section")).toContainText("The technical texture");
+
+    await page.getByTestId("reading-focus-copy").click();
+
+    await expect(page.getByTestId("reading-focus-copy")).toContainText("Copied ref");
+  });
+
   test("knowledge reference copy has visible feedback", async ({ page }) => {
     await page.goto("/knowledge");
 
@@ -188,6 +207,17 @@ test.describe("core interaction contracts", () => {
     await page.getByTestId("lab-copy-import").click();
 
     await expect(page.getByTestId("lab-copy-import")).toContainText("Copied import");
+  });
+
+  test("lab and command center expose the reading focus component", async ({ page }) => {
+    await page.goto("/lab");
+
+    await expect(page.getByRole("button", { name: /ReadingFocusLens/ })).toBeVisible();
+
+    await page.getByTestId("lab-command-trigger").click();
+    await page.getByTestId("global-command-search").fill("reading focus");
+
+    await expect(page.getByTestId("command-result-lab-reading-focus-lens")).toBeVisible();
   });
 
   test("music controls update the active track", async ({ page }) => {

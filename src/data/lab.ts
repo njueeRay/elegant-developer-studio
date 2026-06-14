@@ -224,6 +224,22 @@ export const labComponents: LabComponent[] = [
     importPath: "CSS utility: .source-reveal",
     shortcut: "V",
   },
+  {
+    slug: "reading-focus-lens",
+    name: "ReadingFocusLens",
+    category: "Content",
+    status: "Iterating",
+    component: "Article focus trace",
+    source: "src/components/content/article-interactions.tsx",
+    route: "/blog/interface-is-a-promise",
+    description:
+      "A lightweight reading instrument that tracks the active article section, exposes a code-like focus command, and copies stable section refs.",
+    signal: "Adds a playful developer signature to long-form reading without interrupting the prose.",
+    evidence: "Uses real TOC ids, IntersectionObserver, copy feedback, mobile bottom chrome, and reduced-motion CSS.",
+    reusableFor: ["Blog", "Knowledge detail", "Project case studies", "Reading focus lens"],
+    importPath: "@/components/content/article-interactions",
+    shortcut: "L",
+  },
 ];
 
 export const labExperiments: LabExperiment[] = [
@@ -255,6 +271,12 @@ export const labExperiments: LabExperiment[] = [
     step: "05",
     title: "Signature interactions",
     description: "Prototype Command Trace and Source Hover before any mascot or high-intensity visual effect.",
+    status: "Iterating",
+  },
+  {
+    step: "06",
+    title: "Reading focus",
+    description: "Give long-form writing a subtle active-section lens, stable ref copy, and code-like reading trace.",
     status: "Iterating",
   },
 ];
