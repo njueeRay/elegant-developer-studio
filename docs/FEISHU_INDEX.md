@@ -50,6 +50,8 @@
 | 协作治理调研 | [40｜第九阶段协作治理调研](https://scnlb1lk96sb.feishu.cn/wiki/EsfZw9eIIieatLkruPRcvM9jnXf) | `CONTRIBUTING.md`、PR 模板、创意方向和外部参考 |
 | 协作治理复盘 | [41｜第九阶段协作治理复盘](https://scnlb1lk96sb.feishu.cn/wiki/NsDgwc0lsiEBBNkYnFtcdoHcnmf) | `/collaboration` 交付、验证、部署和下一阶段建议 |
 | 创意方向 | [42｜创意方向与交互 Backlog](https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg) | 可评论、可迭代的 signature interaction 与创意排期 |
+| Signature Interaction 调研 | [43｜第十阶段 Signature Interaction 调研](https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg) | Command Trace、Source Hover、外部参考和实现边界 |
+| Signature Interaction 复盘 | [44｜第十阶段 Signature Interaction 复盘](https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb) | 第十阶段交付、验证、部署、优缺点和下一步 |
 
 ## 当前项目状态
 

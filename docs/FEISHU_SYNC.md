@@ -65,6 +65,8 @@
 | 40｜第九阶段协作治理调研 | `docs/PHASE9_COLLABORATION_RESEARCH.md` | `EsfZw9eIIieatLkruPRcvM9jnXf` | `YuTQd82GYoz13SxHw4lcFTZWncf` | https://scnlb1lk96sb.feishu.cn/wiki/EsfZw9eIIieatLkruPRcvM9jnXf |
 | 41｜第九阶段协作治理复盘 | `docs/PHASE9_COLLABORATION_REVIEW.md` | `NsDgwc0lsiEBBNkYnFtcdoHcnmf` | `OD7bdN6pyoP1hAx4GUVcsrEVnzf` | https://scnlb1lk96sb.feishu.cn/wiki/NsDgwc0lsiEBBNkYnFtcdoHcnmf |
 | 42｜创意方向与交互 Backlog | `docs/CREATIVE_DIRECTION.md` | `TXViwYd2TiDvA7kGqs5czJifnSg` | `EFT1djiTto9dO5xyjmzcDDPan3g` | https://scnlb1lk96sb.feishu.cn/wiki/TXViwYd2TiDvA7kGqs5czJifnSg |
+| 43｜第十阶段 Signature Interaction 调研 | `docs/PHASE10_SIGNATURE_INTERACTION_RESEARCH.md` | `DRRVwNzmoieq3TkBpgVcxJ2Pnhg` | `JfqhdwBtpoRGiRxKCQmcyzAqnAe` | https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg |
+| 44｜第十阶段 Signature Interaction 复盘 | `docs/PHASE10_SIGNATURE_INTERACTION_REVIEW.md` | `FTCPwMMMli8mMskzh3uctZjynGb` | `KRyIdeT3aodnsJxSKw5cCaqAnBb` | https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb |
 
 ## 同步协议
 

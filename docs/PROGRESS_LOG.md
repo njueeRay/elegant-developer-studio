@@ -832,7 +832,7 @@ GitHub：
 
 ### 第九阶段：协作治理与创意方向
 
-状态：已部署，等待 GitHub 和飞书外部同步。
+状态：已部署，已同步 GitHub 和飞书。
 
 复盘：
 
@@ -893,7 +893,7 @@ GitHub：
 
 ### 第十阶段：Signature Interaction Prototype
 
-状态：已部署，等待 GitHub 和飞书外部同步。
+状态：已部署，已同步 GitHub 和飞书。
 
 复盘：
 
@@ -947,7 +947,9 @@ GitHub：
 - stale trace：离开 `/lab` 后数量为 `0`。
 - 截图：`output/phase10-command-trace-desktop.png`、`output/phase10-source-hover-desktop.png`、`output/phase10-projects-mobile.png`。
 
-剩余：
+外部同步：
 
-- GitHub issue 同步。
-- 飞书同步。
+- GitHub issue `#4` comment `4701201385`。
+- GitHub issue `#5` comment `4701203356`。
+- 飞书：[43｜第十阶段 Signature Interaction 调研](https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg)。
+- 飞书：[44｜第十阶段 Signature Interaction 复盘](https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb)。

@@ -69,6 +69,9 @@ cmd.open("/lab")
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - `npm run test:e2e`：68 passed。
+- 生产环境 e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`，68 passed。
+- Vercel deployment：`dpl_BAvc9wkG9cRr9XbC3WzDWoyxCRrZ`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
 
 Playwright 视觉巡检：
 

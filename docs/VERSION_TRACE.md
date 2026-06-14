@@ -703,5 +703,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 外部同步：
 
-- GitHub issue：待同步。
-- 飞书：待同步。
+- GitHub issue `#4` comment `4701201385`。
+- GitHub issue `#5` comment `4701203356`。
+- 飞书：[43｜第十阶段 Signature Interaction 调研](https://scnlb1lk96sb.feishu.cn/wiki/DRRVwNzmoieq3TkBpgVcxJ2Pnhg)。
+- 飞书：[44｜第十阶段 Signature Interaction 复盘](https://scnlb1lk96sb.feishu.cn/wiki/FTCPwMMMli8mMskzh3uctZjynGb)。
