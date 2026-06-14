@@ -1160,6 +1160,12 @@ GitHub 推送修复：
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/4DqXDZMd2S8RWhsHhU128ZKSPEkW`。
 - Production alias：`https://elegant-developer-studio.vercel.app`。
 
+外部同步：
+
+- 飞书：[50｜第十七阶段中文内容试点与全站复盘](https://scnlb1lk96sb.feishu.cn/wiki/OeZqwkMvFiiQYFkLvKLcQlmOnid)。
+- 飞书核心页已同步：导航首页、项目地图、路线图、开发进度、版本追溯、同步协议。
+- 飞书 live verification：50 号阶段页包含 `把中文作为产品记忆`、`Phase 18`、`Phase 22`、`88 passed`；导航首页包含 50 号节点链接。
+
 下一步建议：
 
 - Phase 18：中文内容系统化。

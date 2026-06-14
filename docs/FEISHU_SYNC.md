@@ -72,6 +72,7 @@
 | 47｜第十二阶段可追溯作品集调研 | `docs/PHASE12_TRACEABLE_PORTFOLIO_RESEARCH.md` | `D7rSwIo6jiGQFHkpuPWcmav2nuX` | `Av5HdkivPoKrG0xH0Z3cf3y2nic` | https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX |
 | 48｜第十二阶段可追溯作品集复盘 | `docs/PHASE12_TRACEABLE_PORTFOLIO_REVIEW.md` | `OpBJwaM06i19GCkPAYzcbFB8nuc` | `Poc1dR2aYo0nNbxOVmKcvlBgnyg` | https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc |
 | 49｜第十三至第十六阶段 Navigation OS 复盘 | `docs/PHASE13_16_NAVIGATION_OS_REVIEW.md` | `XKS9wKn5Diutm1kKly4cDBwsnJe` | `ZGMsdF8ProzldxxgQEncaJb3nmh` | https://scnlb1lk96sb.feishu.cn/wiki/XKS9wKn5Diutm1kKly4cDBwsnJe |
+| 50｜第十七阶段中文内容试点与全站复盘 | `docs/PHASE17_CHINESE_CONTENT_AND_NEXT_REVIEW.md` | `OeZqwkMvFiiQYFkLvKLcQlmOnid` | `QIXqdChVcoVRN6xBN8mceMYCn4g` | https://scnlb1lk96sb.feishu.cn/wiki/OeZqwkMvFiiQYFkLvKLcQlmOnid |
 
 ## 同步协议
 

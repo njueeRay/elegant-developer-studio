@@ -57,6 +57,7 @@
 | 可追溯作品集调研 | [47｜第十二阶段可追溯作品集调研](https://scnlb1lk96sb.feishu.cn/wiki/D7rSwIo6jiGQFHkpuPWcmav2nuX) | Source link、Knowledge backlinks、Case Study Diff、ComponentPreview 和外部参考 |
 | 可追溯作品集复盘 | [48｜第十二阶段可追溯作品集复盘](https://scnlb1lk96sb.feishu.cn/wiki/OpBJwaM06i19GCkPAYzcbFB8nuc) | 第十二阶段交付、验证、部署、交互 bug 修复和下一步创意建议 |
 | Navigation OS 复盘 | [49｜第十三至第十六阶段 Navigation OS 复盘](https://scnlb1lk96sb.feishu.cn/wiki/XKS9wKn5Diutm1kKly4cDBwsnJe) | 全站导航、页面职责边界、证据链接、viewport preview 和 Phase 16 验证记录 |
+| 中文内容试点复盘 | [50｜第十七阶段中文内容试点与全站复盘](https://scnlb1lk96sb.feishu.cn/wiki/OeZqwkMvFiiQYFkLvKLcQlmOnid) | 中文博客、Knowledge、Uses、About 试点，全站复盘和 Phase 18-22 展望 |
 
 ## 当前项目状态
 
