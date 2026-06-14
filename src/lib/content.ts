@@ -8,6 +8,9 @@ import CalmSystemsContent, {
 import CommandsAttentionContent, {
   meta as commandsAttentionMeta,
 } from "@/content/posts/commands-that-respect-attention.mdx";
+import ChineseProductMemoryContent, {
+  meta as chineseProductMemoryMeta,
+} from "@/content/posts/chinese-as-product-memory.mdx";
 import LumenContent, { meta as lumenMeta } from "@/content/projects/lumen.mdx";
 import StudioKnowledgeContent, {
   meta as studioKnowledgeMeta,
@@ -68,6 +71,11 @@ export type Project = ProjectMeta & {
 };
 
 const posts: Post[] = [
+  {
+    ...(chineseProductMemoryMeta as PostMeta),
+    kind: "post" as const,
+    Content: ChineseProductMemoryContent,
+  },
   {
     ...(interfacePromiseMeta as PostMeta),
     kind: "post" as const,

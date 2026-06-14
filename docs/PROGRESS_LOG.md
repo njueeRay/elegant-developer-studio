@@ -1120,3 +1120,39 @@ GitHub 推送修复：
 - 飞书：[49｜第十三至第十六阶段 Navigation OS 复盘](https://scnlb1lk96sb.feishu.cn/wiki/XKS9wKn5Diutm1kKly4cDBwsnJe)。
 - 飞书核心页已同步：导航首页、项目地图、路线图、信息架构、设计系统、开发进度、版本追溯、同步协议。
 - 飞书 live verification：新阶段页包含 `公开可达`、`Phase 16`、`84 passed`、`Reference Constellation`；导航首页包含 49 号节点链接。
+
+### 第十七阶段：中文内容试点与全站复盘
+
+状态：已实现，已验证，待提交、部署和外部同步。
+
+阶段判断：
+
+- 中文内容应该进入公开站点，而不是只留在飞书和聊天历史中。
+- 当前不做整站机械双语，先在高价值页面做小范围试点。
+- 中文主要承担产品判断、协作语境、阶段复盘和长期记忆。
+
+完成：
+
+- 新增中文博客 `/blog/chinese-as-product-memory`。
+- Knowledge 新增 `公开可达优先于内部完成`。
+- Uses 新增 `中文复盘` 工作流。
+- About 新增 `中文承载判断` 原则。
+- About 新增 `中文优先记录判断` 协作约定。
+- 新增 `docs/PHASE17_CHINESE_CONTENT_AND_NEXT_REVIEW.md`。
+- e2e 新增中文内容可见性测试。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：`Chinese pilot content`，2 passed。
+- `npm run test:e2e`：88 passed。
+- 本地生产模式视觉检查：中文博客、Blog、Knowledge、Uses、About 的桌面与移动端均无横向溢出。
+  - `/blog/chinese-as-product-memory` 桌面和移动端 `scrollWidth === clientWidth`。
+  - `/knowledge`、`/uses`、`/about` 均可检索到中文内容。
+
+下一步建议：
+
+- Phase 18：中文内容系统化。
+- Phase 19：真实证据增强。
+- Phase 20：Knowledge 详情层。

@@ -587,3 +587,29 @@ src/
 2. 给 `SourceReveal` 增加 commit permalink。
 3. 给 `Case Study Diff` 增加截图、PR 或 commit 证据。
 4. 继续保持飞书知识库中文优先。
+
+## 12. 第十七阶段中文内容试点
+
+本阶段把中文内容从飞书和阶段文档推进到公开站点。
+
+新增内容：
+
+- 中文博客：`/blog/chinese-as-product-memory`。
+- Knowledge 条目：`公开可达优先于内部完成`。
+- Uses 工作流：`中文复盘`。
+- About 原则：`中文承载判断`。
+- About 协作约定：`中文优先记录判断`。
+
+阶段判断：
+
+- 中文不应该只是英文内容的翻译层。
+- 中文更适合承载产品判断、协作语境、阶段复盘和长期记忆。
+- 当前不做整站机械双语，先做少量高价值试点。
+
+下一步：
+
+1. Phase 18：中文内容系统化。
+2. Phase 19：真实证据增强。
+3. Phase 20：Knowledge 详情层。
+4. Phase 21：Reference Constellation。
+5. Phase 22：个人真实层。

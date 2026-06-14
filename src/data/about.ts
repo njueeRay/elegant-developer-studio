@@ -54,6 +54,15 @@ export const aboutProfile = {
 
 export const aboutPrinciples: AboutPrinciple[] = [
   {
+    slug: "chinese-context",
+    title: "中文承载判断",
+    summary: "当项目讨论、飞书评论和阶段复盘都以中文推进时，中文应该进入公开系统。",
+    detail:
+      "我会保留技术对象的英文名称，但把产品判断、协作原则和长期复盘写成中文。语言不是翻译层，而是工作方式的一部分。",
+    icon: MessageSquare,
+    accent: "rust",
+  },
+  {
     slug: "clarity",
     title: "Clarity before theatre",
     summary: "A page should reveal what matters before it shows how clever it is.",
@@ -152,6 +161,11 @@ export const aboutCapabilities: AboutCapability[] = [
 ];
 
 export const workingAgreements: WorkingAgreement[] = [
+  {
+    title: "中文优先记录判断",
+    detail: "阶段复盘、项目地图、飞书同步和长期原则优先用中文表达；英文保留给代码路径、组件名、品牌和 API。",
+    signal: "中文是记忆层",
+  },
   {
     title: "Define the shape first",
     detail: "We name the audience, route, components, constraints, and success criteria before adding surface polish.",

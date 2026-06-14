@@ -24,6 +24,34 @@ export type KnowledgeEntry = {
 
 export const knowledgeEntries: KnowledgeEntry[] = [
   {
+    slug: "public-reachable-before-internal-complete",
+    kind: "Decision",
+    title: "公开可达优先于内部完成",
+    summary:
+      "一个页面、组件或知识条目只有在用户能从公开路径进入时，才算真正进入产品系统。",
+    signal: "用于审查 Uses、About、Lab、Knowledge 等页面是否只是内部存在，而没有公开入口。",
+    status: "Evergreen",
+    tags: ["中文", "IA", "Navigation", "Traceability"],
+    source: "Phase 13-16 review",
+    related: [
+      { label: "Navigation OS 复盘", href: "/knowledge#public-reachable-before-internal-complete" },
+      { label: "Uses", href: "/uses" },
+      { label: "About", href: "/about" },
+    ],
+    backlinks: [
+      {
+        label: "把中文作为产品记忆",
+        href: "/blog/chinese-as-product-memory#where-chinese-should-live",
+        context: "中文内容试点说明哪些内容应该进入公开站点。",
+      },
+      {
+        label: "Lab",
+        href: "/lab",
+        context: "组件只有可发现、可预览、可追踪时才算进入系统。",
+      },
+    ],
+  },
+  {
     slug: "interfaces-are-promises",
     kind: "Pattern",
     title: "Interfaces are promises",

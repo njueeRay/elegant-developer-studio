@@ -4,6 +4,7 @@ import { expect, test } from "@playwright/test";
 const routes = [
   "/",
   "/blog",
+  "/blog/chinese-as-product-memory",
   "/blog/interface-is-a-promise",
   "/blog/calm-systems-for-creative-work",
   "/blog/commands-that-respect-attention",
@@ -96,7 +97,7 @@ test.describe("public routes and links", () => {
   test("audited pages do not create horizontal overflow on mobile", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
 
-    for (const route of ["/", "/uses", "/about", "/lab", "/collaboration"]) {
+    for (const route of ["/", "/blog/chinese-as-product-memory", "/uses", "/about", "/lab", "/collaboration"]) {
       await page.goto(route);
       const width = await page.evaluate(() => ({
         client: document.documentElement.clientWidth,
@@ -105,6 +106,21 @@ test.describe("public routes and links", () => {
 
       expect(width.scroll, route).toBeLessThanOrEqual(width.client + 1);
     }
+  });
+
+  test("Chinese pilot content is visible across core surfaces", async ({ page }) => {
+    await page.goto("/blog/chinese-as-product-memory");
+    await expect(page.getByRole("heading", { name: "把中文作为产品记忆" })).toBeVisible();
+    await expect(page.getByText("中文不只是翻译层")).toBeVisible();
+
+    await page.goto("/knowledge");
+    await expect(page.getByRole("heading", { name: "公开可达优先于内部完成" })).toBeVisible();
+
+    await page.goto("/uses");
+    await expect(page.getByText("中文复盘", { exact: true })).toBeVisible();
+
+    await page.goto("/about");
+    await expect(page.getByRole("button", { name: /中文承载判断/ })).toBeVisible();
   });
 });
 

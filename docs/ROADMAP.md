@@ -340,3 +340,30 @@
 - Phase 17：设计真实关系驱动的 `Reference Constellation`。
 - Phase 18：SourceReveal commit permalink。
 - Phase 19：Case Study Diff 截图、PR、commit 证据。
+
+## 第十七阶段：中文内容试点与全站复盘
+
+目标：让中文内容进入公开站点，同时审查过去阶段的系统优缺点，为下一阶段建立清晰路线。
+
+范围：
+
+- 新增一篇中文博客。
+- 新增一条中文 Knowledge 决策。
+- 新增 Uses 中文复盘工作流。
+- 新增 About 中文原则和协作约定。
+- 新增全站复盘与下一阶段规划文档。
+
+验收：
+
+- 中文内容在博客、Knowledge、Uses、About 都能访问。
+- 中文内容不造成移动端横向溢出。
+- 中文不是机械翻译，而是服务产品记忆和阶段复盘。
+- e2e 覆盖中文内容可见性。
+
+下一阶段：
+
+- Phase 18：中文内容系统化。
+- Phase 19：真实证据增强。
+- Phase 20：Knowledge 详情页。
+- Phase 21：Reference Constellation。
+- Phase 22：个人真实层。

@@ -136,6 +136,13 @@ export const useTools: UseTool[] = [
 
 export const useWorkflows: UseWorkflow[] = [
   {
+    step: "00",
+    time: "Before shipping",
+    title: "中文复盘",
+    description: "把阶段判断、页面边界、验证结果和下一步写成中文，先进入本地 Markdown，再同步飞书。",
+    key: "0",
+  },
+  {
     step: "01",
     time: "09:00 - 12:00",
     title: "Deep work",
@@ -167,7 +174,7 @@ export const useWorkflows: UseWorkflow[] = [
 
 export const pipelineSteps: PipelineStep[] = [
   { title: "Idea", detail: "Knowledge / Feishu" },
-  { title: "Draft", detail: "MDX / Figma" },
+  { title: "Draft", detail: "中文复盘 / MDX" },
   { title: "Build", detail: "Next.js / TypeScript" },
   { title: "Review", detail: "Playwright / GitHub" },
   { title: "Deploy", detail: "Vercel / Trace" },
