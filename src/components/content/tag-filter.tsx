@@ -14,21 +14,47 @@ export function PostExplorer({
   tags: string[];
 }) {
   const [activeTag, setActiveTag] = useState("All");
+  const [activeLanguage, setActiveLanguage] = useState("All");
+  const languages = useMemo(
+    () => Array.from(new Set(posts.map((post) => post.language))),
+    [posts],
+  );
   const filtered = useMemo(
     () =>
-      activeTag === "All"
-        ? posts
-        : posts.filter((post) => post.tags.includes(activeTag)),
-    [activeTag, posts],
+      posts.filter((post) => {
+        const matchesTag = activeTag === "All" || post.tags.includes(activeTag);
+        const matchesLanguage = activeLanguage === "All" || post.language === activeLanguage;
+
+        return matchesTag && matchesLanguage;
+      }),
+    [activeLanguage, activeTag, posts],
   );
 
   return (
     <section className="content-explorer" aria-label="Writing explorer">
+      <div className="writing-system-panel" aria-label="Writing system">
+        <div>
+          <span>writing.system</span>
+          <strong>中文承载判断，English 保留技术语境</strong>
+        </div>
+        <p>
+          博客现在按标签和语言共同组织：长文负责完整论证，中文内容负责阶段复盘、产品判断和可追溯的项目记忆。
+        </p>
+      </div>
       <FilterBar
         label="Filter writing"
         active={activeTag}
         items={["All", ...tags]}
         onChange={setActiveTag}
+        resultCount={filtered.length}
+        totalCount={posts.length}
+        noun="essays"
+      />
+      <FilterBar
+        label="Filter language"
+        active={activeLanguage}
+        items={["All", ...languages]}
+        onChange={setActiveLanguage}
         resultCount={filtered.length}
         totalCount={posts.length}
         noun="essays"

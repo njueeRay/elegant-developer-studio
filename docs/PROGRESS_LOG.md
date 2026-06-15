@@ -1171,3 +1171,43 @@ GitHub 推送修复：
 - Phase 18：中文内容系统化。
 - Phase 19：真实证据增强。
 - Phase 20：Knowledge 详情层。
+
+### 第十八阶段：博客系统化复盘
+
+状态：已实现，已本地验证，待部署和外部同步。
+
+阶段判断：
+
+- 博客当前最大的缺口不是组件数量，而是内容语言、写作意图、栏目规则和读完后的路径。
+- 中文内容不能只是偶然插入，它必须进入 metadata、筛选、卡片和文章详情。
+- 程序员风格的博客应该让系统状态可读，而不是靠假终端增加技术感。
+
+完成：
+
+- `PostMeta` 新增 `language` 和 `intent`。
+- 所有现有文章补齐语言和写作意图。
+- `/blog` 新增写作系统说明面板。
+- `/blog` 新增语言筛选。
+- `PostCard` 显示语言和写作意图。
+- `/blog/[slug]` metadata rail 显示 Language 与 Intent。
+- `FilterBar` 的 `data-testid` 生成支持中文按钮。
+- `CommandTraceToast` 修复跨路由跳转时追踪 toast 过早消失的问题。
+- 新增 `docs/PHASE18_BLOG_SYSTEM_REVIEW.md`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：`command menu opens real lab route|blog language filter reaches Chinese writing`，4 passed。
+- `npm run test:e2e`：90 passed。
+- 本地生产模式视觉检查：`/blog` 桌面、`/blog` 移动端、中文博客移动端均无横向溢出。
+  - `/tmp/phase18-blog-desktop.png`
+  - `/tmp/phase18-blog-mobile.png`
+  - `/tmp/phase18-zh-article-mobile.png`
+
+下一步建议：
+
+- Phase 19：博客阅读路径增强。
+- Phase 20：Knowledge 详情与 Blog 双向引用。
+- Phase 21：筛选状态 URL query。
+- Phase 22：补真实中文长文与项目复盘。

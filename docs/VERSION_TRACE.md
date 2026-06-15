@@ -738,6 +738,8 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - targeted e2e：4 passed。
+- `npm run test:e2e`：90 passed。
+- 本地生产模式视觉检查：`/blog` 桌面、`/blog` 移动端、中文博客移动端均无横向溢出。
 - `npm run test:e2e`：72 passed。
 - `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npm run test:e2e`：72 passed。
 - Playwright 视觉巡检：桌面和移动端文章页无横向溢出。
@@ -867,3 +869,30 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - 飞书：[50｜第十七阶段中文内容试点与全站复盘](https://scnlb1lk96sb.feishu.cn/wiki/OeZqwkMvFiiQYFkLvKLcQlmOnid)。
 - 飞书导航首页已更新并验证包含 50 号节点。
+
+## Unreleased - 第十八阶段博客系统化
+
+日期：2026-06-15
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 博客文章 metadata 新增语言和写作意图。
+- `/blog` 新增写作系统说明和语言筛选。
+- `PostCard` 与文章详情页显示语言和写作意图。
+- `FilterBar` 的测试 ID 生成支持中文按钮。
+- `CommandTraceToast` 修复跨路由清理过早导致目标页反馈消失的问题。
+- 新增第十八阶段博客系统化复盘文档。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：4 passed。
+
+外部同步：
+
+- 待 Vercel 部署后同步飞书。

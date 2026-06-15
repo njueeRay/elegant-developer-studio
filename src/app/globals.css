@@ -1334,6 +1334,45 @@ a.source-reveal:hover {
   padding: 30px 0 70px;
 }
 
+.writing-system-panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.4fr);
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--rust), transparent 91%), transparent 48%),
+    color-mix(in srgb, var(--surface), transparent 10%);
+  box-shadow: 0 18px 56px color-mix(in srgb, var(--ink), transparent 92%);
+}
+
+.writing-system-panel span,
+.post-card-intent {
+  color: var(--rust);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.writing-system-panel strong {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.writing-system-panel p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
 .knowledge-explorer {
   position: relative;
   z-index: 1;
@@ -1354,6 +1393,10 @@ a.source-reveal:hover {
   border-radius: 16px;
   background: color-mix(in srgb, var(--surface), transparent 12%);
   backdrop-filter: blur(18px);
+}
+
+.content-explorer .filter-toolbar + .filter-toolbar {
+  margin-top: -18px;
 }
 
 .filter-summary {
@@ -4592,6 +4635,11 @@ html[data-theme="dark"] .about-notebook {
   line-height: 1.1;
 }
 
+.post-card-intent {
+  margin: 12px 0 0;
+  color: var(--rust-strong);
+}
+
 .post-card p,
 .project-card p {
   max-width: 720px;
@@ -5888,6 +5936,10 @@ html[data-theme="dark"] .about-notebook {
   .post-card {
     grid-template-columns: 1fr;
     padding-right: 0;
+  }
+
+  .writing-system-panel {
+    grid-template-columns: 1fr;
   }
 
   .filter-toolbar {

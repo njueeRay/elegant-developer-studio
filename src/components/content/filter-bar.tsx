@@ -13,7 +13,16 @@ type FilterBarProps = {
 };
 
 function toTestId(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const ascii = value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+  if (ascii) {
+    return ascii;
+  }
+
+  return Array.from(value)
+    .map((char) => char.codePointAt(0)?.toString(16))
+    .filter(Boolean)
+    .join("-");
 }
 
 export function FilterBar({

@@ -31,6 +31,8 @@ export type PostMeta = {
   updated: string;
   status: "Draft" | "Published";
   readingTime: string;
+  language: "English" | "中文";
+  intent: string;
   tags: string[];
   featured: boolean;
   summary: string;
@@ -111,6 +113,8 @@ function toPostMeta(post: Post): PostMeta {
     updated: post.updated,
     status: post.status,
     readingTime: post.readingTime,
+    language: post.language,
+    intent: post.intent,
     tags: post.tags,
     featured: post.featured,
     summary: post.summary,

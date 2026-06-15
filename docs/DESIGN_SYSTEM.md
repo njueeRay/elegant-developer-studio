@@ -51,8 +51,10 @@ Phase 1 已实现：
 Phase 2 已实现：
 
 - `PostCard`
+- `PostCard` 语言和写作意图 metadata
 - `ProjectCard`
 - `TagFilter`
+- `FilterBar` 中文安全测试 ID
 - `ReadingProgress`
 - `TableOfContents`
 - `CodeBlock`

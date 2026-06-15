@@ -278,6 +278,18 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByRole("link", { name: /Calm Systems for Creative Work/ })).toBeVisible();
   });
 
+  test("blog language filter reaches Chinese writing", async ({ page }) => {
+    await page.goto("/blog");
+
+    await expect(page.getByLabel("Writing system")).toContainText("中文承载判断");
+
+    await page.getByTestId("filter-filter-language-4e2d-6587").click();
+
+    await expect(page.getByTestId("filter-filter-language-4e2d-6587")).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByRole("link", { name: /把中文作为产品记忆/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: /The Interface is a Promise/ })).toHaveCount(0);
+  });
+
   test("article code copy has visible feedback", async ({ page }) => {
     await page.goto("/blog/interface-is-a-promise");
 

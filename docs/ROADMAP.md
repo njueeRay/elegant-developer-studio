@@ -75,6 +75,13 @@
 - `/music`、当前歌单、曲目列表、迷你播放器。
 - 博客 reader mode 提示、鼠标跟随阅读微光、代码块行数。
 - 博客 `ReadingFocusLens`：当前小节、`read.focus("section-id")` 和小节引用复制。
+- 博客系统化：文章语言、写作意图、语言筛选和写作系统说明。
+
+下一步：
+
+- `RelatedReading`：文章末尾关联下一篇文章、Knowledge 条目和项目。
+- `/blog` 筛选状态进入 URL query。
+- 补真实中文文章，优先写产品判断和项目复盘。
 
 暂不做：
 

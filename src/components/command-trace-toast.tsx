@@ -82,13 +82,17 @@ export function CommandTraceToast() {
       return;
     }
 
+    if (trace.href !== pathname) {
+      return;
+    }
+
     const timeout = window.setTimeout(() => {
       setTrace(null);
       window.sessionStorage.removeItem(COMMAND_TRACE_STORAGE_KEY);
     }, TRACE_LIFETIME_MS);
 
     return () => window.clearTimeout(timeout);
-  }, [trace]);
+  }, [pathname, trace]);
 
   if (!trace) {
     return null;

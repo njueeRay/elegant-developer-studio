@@ -52,6 +52,7 @@
 - 第十阶段签名交互层：`CommandTraceToast`、`SourceReveal`、命令执行痕迹和来源 reveal。
 - 第十一阶段阅读焦点层：`ReadingFocusLens`、当前小节追踪、`read.focus("section-id")` 和小节引用复制。
 - 第十二阶段可追溯作品集层：可点击 GitHub source link、Knowledge backlinks、Case Study Diff、Lab ComponentPreview 和 Command Center 点击导航修复。
+- 第十八阶段博客系统化：文章语言和写作意图 metadata、博客语言筛选、写作系统说明、中文筛选 e2e、Command Trace 跨路由反馈修复。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -61,7 +62,7 @@
 | --- | --- | --- | --- | --- |
 | 首页 | `/` | 1 | 已实现 | 第一印象和精选工作室入口 |
 | 博客列表 | `/blog` | 2 | 已实现 | 长文和写作归档 |
-| 文章详情 | `/blog/[slug]` | 2 | 已实现 | MDX 阅读体验 |
+| 文章详情 | `/blog/[slug]` | 2 | 已实现 | MDX 阅读体验、语言与写作意图 |
 | 项目列表 | `/projects` | 2 | 已实现 | 精选作品和 case study |
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
@@ -613,3 +614,33 @@ src/
 3. Phase 20：Knowledge 详情层。
 4. Phase 21：Reference Constellation。
 5. Phase 22：个人真实层。
+
+## 13. 第十八阶段博客系统化
+
+本阶段把博客从“文章列表”推进到“可维护写作系统”。
+
+完成内容：
+
+- `PostMeta` 新增 `language` 和 `intent`。
+- 所有现有文章补齐语言和写作意图。
+- `/blog` 新增写作系统说明。
+- `/blog` 新增语言筛选。
+- `PostCard` 显示语言和写作意图。
+- `/blog/[slug]` metadata rail 显示 Language 与 Intent。
+- `FilterBar` 的测试 ID 生成支持中文按钮。
+- `CommandTraceToast` 修复跨路由追踪反馈过早消失的问题。
+- 新增 `docs/PHASE18_BLOG_SYSTEM_REVIEW.md`。
+
+专家审查结论：
+
+- 博客优势是阅读气质、MDX 基座、程序员式阅读辅助和站内关联雏形。
+- 博客弱点是内容量不足、栏目规则不足、读完后的路径不足、筛选状态不可分享。
+- 下一阶段优先做文章阅读路径增强，而不是继续堆独立页面。
+
+下一步：
+
+1. 建立长期写作线：产品判断、设计工程、项目复盘。
+2. 增加 `RelatedReading`。
+3. 建立 Blog 与 Knowledge 的双向引用。
+4. 将筛选状态映射到 URL query。
+5. 补一篇真实中文文章。

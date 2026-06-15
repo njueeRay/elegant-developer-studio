@@ -72,6 +72,14 @@ export default async function BlogPostPage({ params }: PageProps) {
               <dt>Reading</dt>
               <dd>{post.readingTime}</dd>
             </div>
+            <div>
+              <dt>Language</dt>
+              <dd>{post.language}</dd>
+            </div>
+            <div>
+              <dt>Intent</dt>
+              <dd>{post.intent}</dd>
+            </div>
           </dl>
         </aside>
         <div className="article-main">

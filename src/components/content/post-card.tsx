@@ -15,8 +15,10 @@ export function PostCard({ post, compact = false }: { post: PostMeta; compact?: 
             {formatDate(post.date)}
           </span>
           <span>{post.readingTime}</span>
+          <span>{post.language}</span>
           <span>{post.status}</span>
         </div>
+        <p className="post-card-intent">{post.intent}</p>
         <h2>{post.title}</h2>
         <p>{post.summary}</p>
         <div className="tag-row content-tags">
