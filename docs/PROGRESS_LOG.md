@@ -1075,7 +1075,7 @@ GitHub 推送修复：
 
 ### 第十三至第十六阶段：Navigation OS 与可追溯交互
 
-状态：已实现，已验证，已部署，待外部同步。
+状态：已实现，已验证，已部署，已外部同步。
 
 阶段判断：
 
@@ -1220,6 +1220,11 @@ GitHub 推送修复：
 - 第一次 production 并发 e2e 前 81 条通过，后续出现 `net::ERR_CONNECTION_CLOSED`。
 - 重试式 HTTP 检查核心路由均返回 200。
 - 单 worker 全量 production e2e 通过，判定为短时连接问题，不是页面功能回归。
+
+外部同步：
+
+- 飞书：[51｜第十八阶段博客系统化复盘](https://scnlb1lk96sb.feishu.cn/wiki/UhnbwnuWYiH7lIkmkh4cU1qlnvd)。
+- 飞书核心页已同步：导航首页、项目地图、路线图、设计系统、开发进度、版本追溯、同步协议。
 
 下一步建议：
 
