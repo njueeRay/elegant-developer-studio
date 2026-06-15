@@ -873,10 +873,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第十八阶段博客系统化
 
 日期：2026-06-15
-Primary commit：待提交
-Deployment record commit：待提交
-Vercel deployment：待部署
+Primary commit：`6a83294`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_AQK2jGhgSEULmsbYdAVDmqyNuzjc`
 Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-krseoboo8.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/AQK2jGhgSEULmsbYdAVDmqyNuzjc`
 
 范围：
 
@@ -892,7 +894,11 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - `npm run lint`：通过。
 - `npm run build`：通过。
 - targeted e2e：4 passed。
+- `npm run test:e2e`：90 passed。
+- 本地生产模式视觉检查：`/blog` 桌面、`/blog` 移动端、中文博客移动端均无横向溢出。
+- Vercel inspect：deployment `Ready`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，90 passed。
 
 外部同步：
 
-- 待 Vercel 部署后同步飞书。
+- 待同步飞书。

@@ -1174,7 +1174,7 @@ GitHub 推送修复：
 
 ### 第十八阶段：博客系统化复盘
 
-状态：已实现，已本地验证，待部署和外部同步。
+状态：已实现，已验证，已部署，待外部同步。
 
 阶段判断：
 
@@ -1204,6 +1204,22 @@ GitHub 推送修复：
   - `/tmp/phase18-blog-desktop.png`
   - `/tmp/phase18-blog-mobile.png`
   - `/tmp/phase18-zh-article-mobile.png`
+- Vercel inspect：deployment `Ready`。
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`：90 passed。
+
+部署：
+
+- Primary commit：`6a83294`。
+- Vercel deployment：`dpl_AQK2jGhgSEULmsbYdAVDmqyNuzjc`。
+- Deployment URL：`https://elegant-developer-studio-krseoboo8.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/AQK2jGhgSEULmsbYdAVDmqyNuzjc`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+
+生产验证备注：
+
+- 第一次 production 并发 e2e 前 81 条通过，后续出现 `net::ERR_CONNECTION_CLOSED`。
+- 重试式 HTTP 检查核心路由均返回 200。
+- 单 worker 全量 production e2e 通过，判定为短时连接问题，不是页面功能回归。
 
 下一步建议：
 
