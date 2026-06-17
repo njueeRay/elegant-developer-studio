@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { PostExplorer } from "@/components/content/tag-filter";
 import { getAllPostMeta, getAllTags } from "@/lib/content";
@@ -31,7 +32,9 @@ export default function BlogPage() {
           small arguments for calmer software.
         </p>
       </header>
-      <PostExplorer posts={posts} tags={tags} />
+      <Suspense fallback={<div className="content-explorer" aria-label="Writing explorer" />}>
+        <PostExplorer posts={posts} tags={tags} />
+      </Suspense>
     </main>
   );
 }

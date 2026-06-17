@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { ProjectExplorer } from "@/components/content/tag-filter";
 import { getAllProjectMeta, getAllTags } from "@/lib/content";
@@ -31,7 +32,9 @@ export default function ProjectsPage() {
           architecture, experiments, and code-backed design work.
         </p>
       </header>
-      <ProjectExplorer projects={projects} tags={tags} />
+      <Suspense fallback={<div className="content-explorer" aria-label="Project explorer" />}>
+        <ProjectExplorer projects={projects} tags={tags} />
+      </Suspense>
     </main>
   );
 }

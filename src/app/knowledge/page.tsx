@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { KnowledgeExplorer } from "@/components/content/knowledge-explorer";
 import { getKnowledgeKinds, knowledgeEntries } from "@/data/knowledge";
@@ -31,7 +32,9 @@ export default function KnowledgePage() {
           or project work.
         </p>
       </header>
-      <KnowledgeExplorer entries={knowledgeEntries} kinds={kinds} />
+      <Suspense fallback={<div className="knowledge-explorer" aria-label="Knowledge explorer" />}>
+        <KnowledgeExplorer entries={knowledgeEntries} kinds={kinds} />
+      </Suspense>
     </main>
   );
 }

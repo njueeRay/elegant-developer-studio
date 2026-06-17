@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { FilterBar } from "@/components/content/filter-bar";
 import { KnowledgeCard } from "@/components/content/knowledge-card";
 import type { KnowledgeEntry } from "@/data/knowledge";
+import { useQueryFilter } from "@/lib/use-query-filter";
 
 export function KnowledgeExplorer({
   entries,
@@ -12,7 +13,10 @@ export function KnowledgeExplorer({
   entries: KnowledgeEntry[];
   kinds: string[];
 }) {
-  const [activeKind, setActiveKind] = useState("All");
+  const [activeKind, setActiveKind] = useQueryFilter({
+    param: "kind",
+    allowedValues: kinds,
+  });
   const filtered = useMemo(
     () =>
       activeKind === "All"

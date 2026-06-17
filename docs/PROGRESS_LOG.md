@@ -1322,3 +1322,39 @@ GitHub 推送修复：
 - Phase 21：筛选状态 URL query。
 - 增加内容关系 slug 校验脚本。
 - 为每条 Knowledge 增加更具体的短正文，减少通用解释。
+
+### 第二十一阶段：URL Query 筛选与关系校验
+
+状态：已实现，已本地验证，待部署和外部同步。
+
+阶段判断：
+
+- 列表筛选状态必须进入 URL，才能支持分享、刷新和浏览器返回。
+- 内容关系 slug 必须自动校验，不能靠人工记忆维护。
+- 当前不引入全文搜索库或复杂状态管理，一个小型 query hook 足够。
+
+完成：
+
+- 新增 `useQueryFilter`。
+- `/blog` 支持 `tag` 与 `language` query。
+- `/projects` 支持 `stack` query。
+- `/knowledge` 支持 `kind` query。
+- Blog / Projects / Knowledge Explorer 增加 Suspense 边界。
+- 新增 `scripts/validate-content-relations.mjs`。
+- 新增 `npm run validate:content`。
+- e2e 覆盖 query URL 直达、点击筛选写 URL、Knowledge 详情返回保留 query。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：8 passed。
+- `npm run test:e2e`：102 passed。
+- 本地生产模式渲染检查：Blog query 桌面和 Knowledge query 移动端均无横向溢出，console 无相关错误。
+
+下一步建议：
+
+- Phase 22：URL IA 文档化与内容深度增强。
+- 将 query 参数约定写入 `INFORMATION_ARCHITECTURE.md`。
+- Command Center 增加少量高价值 query 快捷入口。

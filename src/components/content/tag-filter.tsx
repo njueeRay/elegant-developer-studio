@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { FilterBar } from "@/components/content/filter-bar";
 import { PostCard } from "@/components/content/post-card";
 import { ProjectCard } from "@/components/content/project-card";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
+import { useQueryFilter } from "@/lib/use-query-filter";
 
 export function PostExplorer({
   posts,
@@ -13,12 +14,18 @@ export function PostExplorer({
   posts: PostMeta[];
   tags: string[];
 }) {
-  const [activeTag, setActiveTag] = useState("All");
-  const [activeLanguage, setActiveLanguage] = useState("All");
   const languages = useMemo(
     () => Array.from(new Set(posts.map((post) => post.language))),
     [posts],
   );
+  const [activeTag, setActiveTag] = useQueryFilter({
+    param: "tag",
+    allowedValues: tags,
+  });
+  const [activeLanguage, setActiveLanguage] = useQueryFilter({
+    param: "language",
+    allowedValues: languages,
+  });
   const filtered = useMemo(
     () =>
       posts.filter((post) => {
@@ -77,7 +84,10 @@ export function ProjectExplorer({
   projects: ProjectMeta[];
   tags: string[];
 }) {
-  const [activeTag, setActiveTag] = useState("All");
+  const [activeTag, setActiveTag] = useQueryFilter({
+    param: "stack",
+    allowedValues: tags,
+  });
   const filtered = useMemo(
     () =>
       activeTag === "All"

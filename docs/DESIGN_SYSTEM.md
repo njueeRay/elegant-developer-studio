@@ -78,6 +78,7 @@ Phase 4 已实现首版：
 - `GlobalCommandMenu` 当前路由上下文排序、规划页面提示和空状态建议
 - `StatusPanel`
 - `FilterBar`
+- `useQueryFilter`
 
 Phase 5 已实现首版：
 
@@ -148,6 +149,9 @@ Phase 5 已实现首版：
 - `StatusPanel` 每张卡必须链接到真实页面，不能只是展示文本。
 - `FilterBar` 必须显示结果数量、active 状态和清除动作。
 - `FilterBar` 移动端允许控件内部横向滚动，但页面本身不能横向溢出。
+- `/blog`、`/projects`、`/knowledge` 的 `FilterBar` 状态必须写入 URL query，支持分享、刷新和浏览器返回。
+- Query 参数非法时必须清理回默认状态，不能让用户停在不可解释的空状态。
+- `All` 状态不写入 URL，保持公开链接干净。
 - `/photos` 使用 `FilterBar` 时，筛选必须同时影响精选区、网格和灯箱导航。
 - 灯箱在筛选状态下只能在当前结果内循环，不能跳回全量照片。
 

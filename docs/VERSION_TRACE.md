@@ -969,3 +969,37 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 外部同步：
 
 - 飞书：[53｜第二十阶段 Knowledge 详情层](https://scnlb1lk96sb.feishu.cn/wiki/U0XWwA1enitT6Sk6bm8cXpphnbb)。
+
+## Unreleased - 第二十一阶段 URL Query 筛选与关系校验
+
+日期：2026-06-18
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待部署
+Inspect URL：待部署
+
+范围：
+
+- 新增 `useQueryFilter`。
+- `/blog` 支持 `tag` 与 `language` query。
+- `/projects` 支持 `stack` query。
+- `/knowledge` 支持 `kind` query。
+- Blog / Projects / Knowledge Explorer 增加 Suspense 边界。
+- 新增 `scripts/validate-content-relations.mjs`。
+- 新增 `npm run validate:content`。
+- e2e 覆盖 query URL 直达、筛选写 URL 和 Knowledge 详情返回保留 query。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：8 passed。
+- `npm run test:e2e`：102 passed。
+- 本地生产模式渲染检查：Blog query 桌面和 Knowledge query 移动端均无横向溢出，console 无相关错误。
+
+外部同步：
+
+- 飞书：待同步。

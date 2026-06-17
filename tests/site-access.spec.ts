@@ -316,7 +316,52 @@ test.describe("core interaction contracts", () => {
     await page.getByTestId("filter-filter-writing-systems").click();
 
     await expect(page.getByTestId("filter-filter-writing-systems")).toHaveAttribute("aria-pressed", "true");
+    await expect(page).toHaveURL(/\/blog\?tag=Systems$/);
     await expect(page.getByRole("link", { name: /Calm Systems for Creative Work/ })).toBeVisible();
+  });
+
+  test("list filters can be opened from URL query", async ({ page }) => {
+    await page.goto("/blog?tag=Product+Systems&language=%E4%B8%AD%E6%96%87");
+
+    await expect(page.getByTestId("filter-filter-writing-product-systems")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(page.getByTestId("filter-filter-language-4e2d-6587")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(page.getByRole("link", { name: /把中文作为产品记忆/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: /The Interface is a Promise/ })).toHaveCount(0);
+
+    await page.goto("/projects?stack=GitHub");
+    await expect(page.getByTestId("filter-filter-work-github")).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByRole("link", { name: /Studio Knowledge Base/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Lumen Design System/ })).toHaveCount(0);
+  });
+
+  test("knowledge filter query survives detail navigation history", async ({ page }) => {
+    await page.goto("/knowledge?kind=Decision");
+
+    await expect(page.getByTestId("filter-filter-knowledge-decision")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(page.getByRole("heading", { name: "公开可达优先于内部完成" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Interfaces are promises" })).toHaveCount(0);
+
+    await page
+      .locator("#public-reachable-before-internal-complete")
+      .getByRole("link", { name: "Open detail" })
+      .click();
+    await expect(page).toHaveURL(/\/knowledge\/public-reachable-before-internal-complete$/);
+
+    await page.goBack();
+    await expect(page).toHaveURL(/\/knowledge\?kind=Decision$/);
+    await expect(page.getByTestId("filter-filter-knowledge-decision")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
   });
 
   test("blog language filter reaches Chinese writing", async ({ page }) => {
@@ -327,6 +372,7 @@ test.describe("core interaction contracts", () => {
     await page.getByTestId("filter-filter-language-4e2d-6587").click();
 
     await expect(page.getByTestId("filter-filter-language-4e2d-6587")).toHaveAttribute("aria-pressed", "true");
+    await expect(page).toHaveURL(/language=%E4%B8%AD%E6%96%87/);
     await expect(page.getByRole("link", { name: /把中文作为产品记忆/ })).toBeVisible();
     await expect(page.getByRole("link", { name: /The Interface is a Promise/ })).toHaveCount(0);
   });

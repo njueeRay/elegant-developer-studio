@@ -55,6 +55,7 @@
 - 第十八阶段博客系统化：文章语言和写作意图 metadata、博客语言筛选、写作系统说明、中文筛选 e2e、Command Trace 跨路由反馈修复。
 - 第十九阶段博客阅读路径增强：`PRODUCT.md`、impeccable live config、文章 related metadata、`RelatedReading`、Blog → Knowledge → Project 局部路径。
 - 第二十阶段 Knowledge 详情层：`/knowledge/[slug]`、`KnowledgeTrails`、Knowledge → Blog / Project 双向路径、Knowledge 详情进入 Command Center 与 sitemap。
+- 第二十一阶段 URL Query 筛选与关系校验：`useQueryFilter`、Blog/Projects/Knowledge query 状态、`validate:content`、内容关系断链检查。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -64,12 +65,15 @@
 | --- | --- | --- | --- | --- |
 | 首页 | `/` | 1 | 已实现 | 第一印象和精选工作室入口 |
 | 博客列表 | `/blog` | 2 | 已实现 | 长文和写作归档 |
+| 博客筛选状态 | `/blog?tag=&language=` | 21 | 已实现 | 可分享、可刷新、可返回的写作筛选 |
 | 文章详情 | `/blog/[slug]` | 2/19 | 已实现 | MDX 阅读体验、语言与写作意图、相关阅读路径 |
 | 项目列表 | `/projects` | 2 | 已实现 | 精选作品和 case study |
+| 项目筛选状态 | `/projects?stack=` | 21 | 已实现 | 可分享的项目技术栈筛选 |
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
 | Knowledge | `/knowledge` | 5 | 已实现首版 | 长期知识、片段、学习记录 |
+| Knowledge 筛选状态 | `/knowledge?kind=` | 21 | 已实现 | 可分享的知识类型筛选 |
 | Knowledge 详情 | `/knowledge/[slug]` | 20 | 已实现 | 可独立访问、引用和追踪的知识节点 |
 | Photos | `/photos` | 3 | 已实现首版 | 照片档案和灯箱 |
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
@@ -705,3 +709,31 @@ src/
 2. 增加内容关系 slug 校验脚本。
 3. 让列表页筛选状态可分享、可返回、可从 Command Center 进入。
 4. 补每条 Knowledge 的真实短正文，减少通用模板文案。
+
+## 16. 第二十一阶段 URL Query 筛选与关系校验
+
+本阶段把列表筛选从页面内临时状态推进到公开 URL 状态。
+
+完成内容：
+
+- 新增 `useQueryFilter`。
+- `/blog` 支持 `tag` 与 `language` query。
+- `/projects` 支持 `stack` query。
+- `/knowledge` 支持 `kind` query。
+- Blog / Projects / Knowledge Explorer 增加局部 Suspense，避免 App Router 静态预渲染被整个页面拖入 CSR。
+- 新增 `scripts/validate-content-relations.mjs`。
+- 新增 `npm run validate:content`。
+- e2e 覆盖直接打开 query URL、点击筛选更新 URL、Knowledge 筛选后进入详情再返回。
+
+阶段判断：
+
+- 筛选状态是产品状态，不只是组件状态。
+- 当前内容规模不需要全文搜索库，但需要 URL 可分享和关系校验。
+- 内容关系必须能被脚本审查，不能只靠记忆维护。
+
+下一步：
+
+1. Phase 22：URL IA 文档化与内容深度增强。
+2. 将 query 参数约定写入 `INFORMATION_ARCHITECTURE.md`。
+3. Command Center 增加少量高价值 query 快捷入口。
+4. 为 Knowledge 详情补更具体的短正文。

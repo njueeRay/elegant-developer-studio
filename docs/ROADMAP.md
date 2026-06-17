@@ -80,8 +80,8 @@
 
 下一步：
 
-- `/blog`、`/projects`、`/knowledge` 筛选状态进入 URL query。
-- 内容关系 slug 校验，防止 related posts / knowledge / projects 失效。
+- URL query 约定进入 `INFORMATION_ARCHITECTURE.md`。
+- Command Center 增加少量高价值 query 快捷入口。
 - 补真实中文文章，优先写产品判断和项目复盘。
 
 暂不做：
@@ -137,6 +137,8 @@
 - 无结果状态的恢复建议词
 - `StatusPanel`：首页最近在写、最近在做、最近在听
 - `FilterBar`：写作和项目列表统一筛选、结果数量、清除动作
+- `/blog`、`/projects`、`/knowledge` 筛选状态进入 URL query
+- `validate:content` 内容关系校验
 - `/photos` 复用 `FilterBar`，筛选联动精选、网格和灯箱
 - `Knowledge` 从规划提示升级为真实 Command Center 结果
 
