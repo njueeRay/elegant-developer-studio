@@ -148,6 +148,45 @@ function getCommandItems(): CommandItem[] {
     },
   ];
 
+  const queryActions: CommandItem[] = [
+    {
+      id: "action-writing-chinese",
+      kind: "action",
+      title: "Open Chinese writing",
+      description: "Open the writing archive filtered to Chinese product memory and phase notes.",
+      href: "/blog?language=%E4%B8%AD%E6%96%87",
+      meta: "Query",
+      keywords: ["中文", "Chinese", "writing", "language", "blog", "query", "filter"],
+    },
+    {
+      id: "action-writing-product-systems",
+      kind: "action",
+      title: "Open Product Systems essays",
+      description: "Open writing filtered to product systems and durable studio decisions.",
+      href: "/blog?tag=Product+Systems",
+      meta: "Query",
+      keywords: ["Product Systems", "writing", "blog", "query", "filter", "systems"],
+    },
+    {
+      id: "action-knowledge-decisions",
+      kind: "action",
+      title: "Open Decision knowledge",
+      description: "Open knowledge entries that record durable product and architecture decisions.",
+      href: "/knowledge?kind=Decision",
+      meta: "Query",
+      keywords: ["knowledge", "decision", "query", "filter", "IA", "architecture"],
+    },
+    {
+      id: "action-projects-github",
+      kind: "action",
+      title: "Open GitHub-backed projects",
+      description: "Open project case studies filtered to GitHub-backed implementation work.",
+      href: "/projects?stack=GitHub",
+      meta: "Query",
+      keywords: ["projects", "GitHub", "work", "query", "filter", "source"],
+    },
+  ];
+
   const postItems = getAllPostMeta().map<CommandItem>((post) => ({
     id: `post-${post.slug}`,
     kind: "post",
@@ -278,6 +317,7 @@ function getCommandItems(): CommandItem[] {
 
   return [
     ...quickActions,
+    ...queryActions,
     ...postItems,
     ...projectItems,
     ...knowledgeItems,

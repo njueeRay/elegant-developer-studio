@@ -255,6 +255,9 @@ test.describe("core interaction contracts", () => {
       "/knowledge",
     );
     await expect(page.getByText('knowledge.trace("public-reachable-before-internal-complete")')).toBeVisible();
+    await expect(page.getByRole("heading", { name: "What it protects" })).toBeVisible();
+    await expect(page.getByText("导航审计")).toBeVisible();
+    await expect(page.getByText("PR 说明")).toBeVisible();
 
     const trails = page.getByLabel("Knowledge trails");
 
@@ -338,6 +341,33 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByTestId("filter-filter-work-github")).toHaveAttribute("aria-pressed", "true");
     await expect(page.getByRole("link", { name: /Studio Knowledge Base/ })).toBeVisible();
     await expect(page.getByRole("link", { name: /Lumen Design System/ })).toHaveCount(0);
+  });
+
+  test("command menu opens query-backed content views", async ({ page }) => {
+    await page.goto("/");
+
+    await page.getByTestId("home-command-trigger").click();
+    await page.getByTestId("global-command-search").fill("Chinese writing");
+    await page.getByTestId("command-result-action-writing-chinese").click();
+
+    await expect(page).toHaveURL(/\/blog\?language=%E4%B8%AD%E6%96%87$/);
+    await expect(page.getByTestId("filter-filter-language-4e2d-6587")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(page.getByTestId("command-trace-toast")).toContainText(
+      'cmd.open("/blog?language=%E4%B8%AD%E6%96%87")',
+    );
+
+    await page.keyboard.press(process.platform === "darwin" ? "Meta+K" : "Control+K");
+    await page.getByTestId("global-command-search").fill("Decision knowledge");
+    await page.getByTestId("command-result-action-knowledge-decisions").click();
+
+    await expect(page).toHaveURL(/\/knowledge\?kind=Decision$/);
+    await expect(page.getByTestId("filter-filter-knowledge-decision")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
   });
 
   test("knowledge filter query survives detail navigation history", async ({ page }) => {

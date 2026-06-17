@@ -83,6 +83,7 @@
 - URL query 约定进入 `INFORMATION_ARCHITECTURE.md`。
 - Command Center 增加少量高价值 query 快捷入口。
 - 补真实中文文章，优先写产品判断和项目复盘。
+- Knowledge 详情正文从通用模板升级为每条规则自己的 `protects` 和 `citation`。
 
 暂不做：
 
@@ -138,7 +139,9 @@
 - `StatusPanel`：首页最近在写、最近在做、最近在听
 - `FilterBar`：写作和项目列表统一筛选、结果数量、清除动作
 - `/blog`、`/projects`、`/knowledge` 筛选状态进入 URL query
+- Command Center 支持打开精选 query 状态：中文写作、Product Systems、Decision knowledge、GitHub-backed projects
 - `validate:content` 内容关系校验
+- `validate:content` 校验 Knowledge 详情正文完整性
 - `/photos` 复用 `FilterBar`，筛选联动精选、网格和灯箱
 - `Knowledge` 从规划提示升级为真实 Command Center 结果
 
@@ -175,6 +178,7 @@
 
 - `/knowledge` 公开知识索引。
 - `/knowledge/[slug]` 详情页，Knowledge 从列表卡片升级为可引用节点。
+- Knowledge 详情页使用真实 `protects` 和 `citation`，不再依赖通用说明模板。
 - `/uses` 工具书架和工作流页面。
 - `/about` Studio Profile。
 - `/lab` 组件注册表。

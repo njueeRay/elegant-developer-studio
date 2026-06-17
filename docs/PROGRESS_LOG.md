@@ -1363,3 +1363,39 @@ GitHub 推送修复：
 - Phase 22：URL IA 文档化与内容深度增强。
 - 将 query 参数约定写入 `INFORMATION_ARCHITECTURE.md`。
 - Command Center 增加少量高价值 query 快捷入口。
+
+### 第二十二阶段：URL IA 与命令快捷入口
+
+状态：已实现，已验证，待部署和外部同步。
+
+阶段判断：
+
+- query 是公开产品状态，必须写入 IA，而不是只停留在组件实现里。
+- Command Center 只承载精选 query 快捷入口，不复制完整筛选器。
+- Knowledge 详情页必须回答“保护什么”和“如何引用”，否则不具备长期引用价值。
+
+完成：
+
+- `INFORMATION_ARCHITECTURE.md` 增加 URL Query 约定。
+- Command Center 新增中文写作、Product Systems、Decision knowledge、GitHub-backed projects 四个 query 快捷入口。
+- `KnowledgeEntry` 新增 `protects` 和 `citation`。
+- `/knowledge/[slug]` 用真实知识正文替换通用模板。
+- `validate:content` 增加 Knowledge 正文完整性校验。
+- 修复 query 命令导航后 `CommandTraceToast` 不显示的问题：展示完整 query 命令，匹配时按 pathname 判断。
+- 新增 e2e 覆盖 Command Center 打开 query 视图、active filter 和 query trace。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：6 passed。
+- `npm run test:e2e`：104 passed。
+- 本地生产模式视觉检查：Command Center query 入口桌面、Blog query 桌面、Knowledge 详情移动端均无横向溢出，console 无相关错误。
+
+下一步建议：
+
+- Phase 23：内容证据密度增强。
+- 为项目详情补真实 commit、PR、截图、部署或指标证据。
+- 为 Knowledge `Copy ref` 增加 Markdown link 格式。
+- 评估 Command Center 轻量 preview，但暂不做复杂二级 action panel。

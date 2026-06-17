@@ -152,6 +152,8 @@ Phase 5 已实现首版：
 - `/blog`、`/projects`、`/knowledge` 的 `FilterBar` 状态必须写入 URL query，支持分享、刷新和浏览器返回。
 - Query 参数非法时必须清理回默认状态，不能让用户停在不可解释的空状态。
 - `All` 状态不写入 URL，保持公开链接干净。
+- Command Center 可以打开少量精选 query 状态，但必须落到真实列表页面和真实 active filter，不做隐藏内部视图。
+- Command Trace 必须保留 query 字符串，让 `cmd.open("/route?query=value")` 成为可见执行证据。
 - `/photos` 使用 `FilterBar` 时，筛选必须同时影响精选区、网格和灯箱导航。
 - 灯箱在筛选状态下只能在当前结果内循环，不能跳回全量照片。
 
@@ -159,6 +161,7 @@ Phase 5 已实现首版：
 
 - `Knowledge` 首版使用公开索引，不做空白详情页。
 - 知识条目必须有稳定 slug、类型、状态、标签、来源和关联链接。
+- 知识详情必须有每条 entry 自己的 `protects` 和 `citation`，不能长期使用通用模板文案。
 - `KnowledgeCard` 的 `Copy ref` 复制稳定详情页 URL，服务 GitHub、飞书和文档评论。
 - `KnowledgeCard` 必须提供 `Open detail`，列表页负责浏览，详情页负责引用和解释。
 - `KnowledgeDetailPage` 使用 rail + main 布局，表达可引用节点，不伪装成长文。

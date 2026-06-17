@@ -28,13 +28,42 @@
 - `/uses` 已进入第五阶段首个切片。
 - `/about` 已进入第五阶段首个切片。
 - `/lab` 已进入第五阶段首个切片。
-- 首版采用公开索引页，而不是详情页集合。
+- `/knowledge/[slug]` 已成为稳定详情页集合，负责引用、解释和关系追踪。
 - 内容模型包含 `Pattern`、`Snippet`、`Decision`、`Reference`。
-- 每条知识需要有稳定 slug、summary、signal、状态、标签、来源和关联链接。
+- 每条知识需要有稳定 slug、summary、signal、protects、citation、状态、标签、来源和关联链接。
 - `notes` 不作为顶层路由；未来可作为 `Knowledge` 内部 entry kind 或标签。
 - `/uses` 不是工具清单页，而是工具、工作流、自动化和发布管线的工作室表面。
 - `/about` 不是传统简历页，而是个人原则、时间线、能力边界、协作方式和联系入口。
 - `/lab` 不是空白组件画廊，而是组件注册表、实验时间线和质量门禁。
+- `/blog`、`/projects`、`/knowledge` 的筛选状态已经进入 URL query，可以分享、刷新和通过浏览器返回恢复。
+
+## URL Query 约定
+
+筛选状态是产品状态，不是临时组件状态。任何被公开承诺的 query 都必须满足：
+
+- `All` 状态不写入 URL。
+- 非法 query 必须清理回默认状态，不能停留在不可解释的空结果。
+- Command Center 可以提供少量高价值 query 快捷入口，但不能替代公开导航。
+- query 链接必须可以被复制到 GitHub issue、飞书评论、PR 描述和路线图文档中。
+
+| 表面 | Query | 合法值来源 | 规则 |
+| --- | --- | --- | --- |
+| `/blog` | `tag` | 文章 metadata `tags` | 单选筛选；用于主题路径，如 `Product Systems`。 |
+| `/blog` | `language` | `English` / `中文` | 单选筛选；用于中英文写作分流。 |
+| `/projects` | `stack` | 项目 metadata `stack` | 单选筛选；用于技术栈和证据来源。 |
+| `/knowledge` | `kind` | `Pattern` / `Snippet` / `Decision` / `Reference` | 单选筛选；用于知识类型入口。 |
+
+当前已承诺的 Command Center query 快捷入口：
+
+- `Open Chinese writing`：`/blog?language=中文`
+- `Open Product Systems essays`：`/blog?tag=Product+Systems`
+- `Open Decision knowledge`：`/knowledge?kind=Decision`
+- `Open GitHub-backed projects`：`/projects?stack=GitHub`
+
+验证要求：
+
+- `npm run validate:content` 必须检查内容关系和 Knowledge 详情正文完整性。
+- e2e 必须覆盖 query URL 直达、筛选状态 active、Command Center query 入口和浏览器返回。
 
 ## 首页内容模型
 

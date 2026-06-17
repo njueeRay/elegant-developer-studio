@@ -197,6 +197,12 @@ projects.forEach((project) => {
 knowledgeEntries.forEach((entry) => {
   const owner = `knowledge:${entry.slug}`;
 
+  ["summary", "signal", "protects", "citation"].forEach((field) => {
+    if (typeof entry[field] !== "string" || !entry[field].trim()) {
+      errors.push(`${owner}.${field} must be a non-empty string`);
+    }
+  });
+
   assertSlugList({
     owner,
     field: "relatedPostSlugs",

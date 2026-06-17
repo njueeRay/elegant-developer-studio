@@ -8,6 +8,8 @@ export type KnowledgeEntry = {
   title: string;
   summary: string;
   signal: string;
+  protects: string;
+  citation: string;
   status: KnowledgeStatus;
   tags: string[];
   source: string;
@@ -32,6 +34,10 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     summary:
       "一个页面、组件或知识条目只有在用户能从公开路径进入时，才算真正进入产品系统。",
     signal: "用于审查 Uses、About、Lab、Knowledge 等页面是否只是内部存在，而没有公开入口。",
+    protects:
+      "它防止团队把页面、组件或文档误认为已经完成，实际上用户没有公开入口、搜索不到、也无法评论。每次新增表面都要问：它是否出现在导航、sitemap、Command Center、相关内容路径或明确二级入口里？",
+    citation:
+      "当评审一个页面是否真正进入产品系统时引用这条规则。它尤其适合用于导航审计、飞书评论、PR 说明和阶段复盘。",
     status: "Evergreen",
     tags: ["中文", "IA", "Navigation", "Traceability"],
     source: "Phase 13-16 review",
@@ -62,6 +68,10 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     summary:
       "A durable interface should make system behavior legible before the user commits attention or effort.",
     signal: "Use when judging whether a component explains what will happen next.",
+    protects:
+      "It protects the gap between visual polish and behavioral trust. If a button, card, command, or filter does not reveal consequence, status, and next step before action, the interface is making a vague promise.",
+    citation:
+      "Use this entry when reviewing action surfaces, command results, cards, and content trails that need to make system behavior legible.",
     status: "Evergreen",
     tags: ["Interaction", "Writing", "Trust"],
     source: "Essay thread",
@@ -91,6 +101,10 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     summary:
       "Visible filters are cheaper and clearer than a separate search index while content volume is still small.",
     signal: "Use before adding Fuse, FlexSearch, or external search infrastructure.",
+    protects:
+      "It protects the project from adding search infrastructure before the content model is dense enough to justify it. Visible filters keep the system inspectable while tags, languages, kinds, and stacks are still small and editorial.",
+    citation:
+      "Use this decision before introducing Fuse, FlexSearch, external search, or AI search. The current proof is URL-backed filters plus content relation validation.",
     status: "Working",
     tags: ["Filtering", "IA", "Phase 4"],
     source: "Phase 4 research",
@@ -120,6 +134,10 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     summary:
       "Each public knowledge card should expose a stable permalink so ideas can move between issues, docs, and Feishu comments.",
     signal: "Use when turning a note into a reusable reference inside a project discussion.",
+    protects:
+      "It keeps ideas portable across GitHub issues, Feishu comments, PR reviews, and local docs. A knowledge entry is not reusable if people must describe it from memory every time.",
+    citation:
+      "Use the detail URL when referencing a rule in planning documents, issue comments, or review notes. Prefer a stable route over screenshots or copied card text.",
     status: "Working",
     tags: ["Workflow", "References", "GitHub"],
     source: "Studio workflow",
@@ -149,6 +167,10 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     summary:
       "Use tutorial, guide, reference, and explanation as content intent labels, not as rigid visible sections.",
     signal: "Use when deciding whether a note teaches, guides, describes, or explains.",
+    protects:
+      "It prevents the knowledge base from becoming a pile of undifferentiated notes. The taxonomy should clarify whether a piece teaches, guides, explains, or documents reference material without forcing that structure into the visible UI too early.",
+    citation:
+      "Use this when deciding how to label future writing, Knowledge entries, docs, and project records. It is a quiet editorial rule, not a decorative section system.",
     status: "Queued",
     tags: ["Documentation", "Taxonomy", "Learning"],
     source: "Documentation IA",
@@ -178,6 +200,10 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     summary:
       "A small public knowledge base benefits more from related links and context trails than from a decorative full graph.",
     signal: "Use when tempted to add a large canvas before the note network has enough density.",
+    protects:
+      "It protects the studio from making relationship visualization before relationships are useful. A few explicit trails, backlinks, and queryable lists beat a beautiful but underpopulated global graph.",
+    citation:
+      "Use this whenever a graph, constellation, canvas, or network view is proposed. First prove the local trails have enough density and user value.",
     status: "Evergreen",
     tags: ["Knowledge", "Links", "Restraint"],
     source: "PKM research",

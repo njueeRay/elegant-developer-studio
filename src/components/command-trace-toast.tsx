@@ -12,6 +12,10 @@ import {
 const TRACE_LIFETIME_MS = 2600;
 const TRACE_MAX_AGE_MS = 5000;
 
+function getTracePath(href: string) {
+  return href.split("#")[0].split("?")[0].replace(/\/$/, "") || "/";
+}
+
 function readStoredTrace() {
   try {
     const rawValue = window.sessionStorage.getItem(COMMAND_TRACE_STORAGE_KEY);
@@ -61,16 +65,16 @@ export function CommandTraceToast() {
     const restoreTimeout = window.setTimeout(() => {
       const storedTrace = readStoredTrace();
 
-      if (storedTrace?.href !== pathname) {
+      if (storedTrace && getTracePath(storedTrace.href) !== pathname) {
         window.sessionStorage.removeItem(COMMAND_TRACE_STORAGE_KEY);
       }
 
       setTrace((currentTrace) => {
-        if (storedTrace?.href === pathname) {
+        if (storedTrace && getTracePath(storedTrace.href) === pathname) {
           return storedTrace;
         }
 
-        return currentTrace?.href === pathname ? currentTrace : null;
+        return currentTrace && getTracePath(currentTrace.href) === pathname ? currentTrace : null;
       });
     }, 0);
 
@@ -82,7 +86,7 @@ export function CommandTraceToast() {
       return;
     }
 
-    if (trace.href !== pathname) {
+    if (getTracePath(trace.href) !== pathname) {
       return;
     }
 

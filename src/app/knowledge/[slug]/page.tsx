@@ -110,20 +110,13 @@ export default async function KnowledgeDetailPage({ params }: PageProps) {
             <section aria-labelledby="knowledge-principle-title">
               <p className="section-kicker blue">Principle</p>
               <h2 id="knowledge-principle-title">What it protects</h2>
-              <p>
-                This knowledge entry should reduce ambiguity in future design and engineering
-                decisions. It is useful only when it changes what gets built, linked, reviewed, or
-                removed.
-              </p>
+              <p>{entry.protects}</p>
             </section>
 
             <section aria-labelledby="knowledge-tags-title">
               <p className="section-kicker">Reference</p>
               <h2 id="knowledge-tags-title">How to cite it</h2>
-              <p>
-                Use this route as the stable public reference for the idea. The list view remains a
-                browsing surface; this page is the durable citation node.
-              </p>
+              <p>{entry.citation}</p>
             </section>
           </div>
 

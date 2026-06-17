@@ -56,6 +56,7 @@
 - 第十九阶段博客阅读路径增强：`PRODUCT.md`、impeccable live config、文章 related metadata、`RelatedReading`、Blog → Knowledge → Project 局部路径。
 - 第二十阶段 Knowledge 详情层：`/knowledge/[slug]`、`KnowledgeTrails`、Knowledge → Blog / Project 双向路径、Knowledge 详情进入 Command Center 与 sitemap。
 - 第二十一阶段 URL Query 筛选与关系校验：`useQueryFilter`、Blog/Projects/Knowledge query 状态、`validate:content`、内容关系断链检查。
+- 第二十二阶段 URL IA 与命令快捷入口：query 参数写入 IA、Command Center query 快捷入口、Knowledge 详情正文结构化和正文完整性校验。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -66,14 +67,17 @@
 | 首页 | `/` | 1 | 已实现 | 第一印象和精选工作室入口 |
 | 博客列表 | `/blog` | 2 | 已实现 | 长文和写作归档 |
 | 博客筛选状态 | `/blog?tag=&language=` | 21 | 已实现 | 可分享、可刷新、可返回的写作筛选 |
+| 博客 query 快捷入口 | `/blog?tag=` `/blog?language=` | 22 | 已实现 | Command Center 打开精选写作状态 |
 | 文章详情 | `/blog/[slug]` | 2/19 | 已实现 | MDX 阅读体验、语言与写作意图、相关阅读路径 |
 | 项目列表 | `/projects` | 2 | 已实现 | 精选作品和 case study |
 | 项目筛选状态 | `/projects?stack=` | 21 | 已实现 | 可分享的项目技术栈筛选 |
+| 项目 query 快捷入口 | `/projects?stack=GitHub` | 22 | 已实现 | Command Center 打开 GitHub-backed projects |
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
 | Knowledge | `/knowledge` | 5 | 已实现首版 | 长期知识、片段、学习记录 |
 | Knowledge 筛选状态 | `/knowledge?kind=` | 21 | 已实现 | 可分享的知识类型筛选 |
+| Knowledge query 快捷入口 | `/knowledge?kind=Decision` | 22 | 已实现 | Command Center 打开决策知识 |
 | Knowledge 详情 | `/knowledge/[slug]` | 20 | 已实现 | 可独立访问、引用和追踪的知识节点 |
 | Photos | `/photos` | 3 | 已实现首版 | 照片档案和灯箱 |
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
@@ -737,3 +741,34 @@ src/
 2. 将 query 参数约定写入 `INFORMATION_ARCHITECTURE.md`。
 3. Command Center 增加少量高价值 query 快捷入口。
 4. 为 Knowledge 详情补更具体的短正文。
+
+## 17. 第二十二阶段 URL IA 与命令快捷入口
+
+本阶段把第二十一阶段的 query 能力从“已实现功能”推进为“被信息架构承诺的公开状态”。
+
+完成内容：
+
+- `INFORMATION_ARCHITECTURE.md` 新增 URL Query 约定，明确 `/blog`、`/projects`、`/knowledge` 的合法 query、值来源和验收规则。
+- Command Center 新增精选 query 快捷入口：
+  - `Open Chinese writing`
+  - `Open Product Systems essays`
+  - `Open Decision knowledge`
+  - `Open GitHub-backed projects`
+- `KnowledgeEntry` 新增 `protects` 和 `citation`。
+- `/knowledge/[slug]` 用真实 entry 正文替换通用模板说明。
+- `validate:content` 增加 Knowledge 详情正文完整性检查。
+- e2e 覆盖 Command Center 打开 query-backed content views。
+
+阶段判断：
+
+- query 是公开产品状态，不是组件内部状态。
+- Command Center 只放高价值 query 入口，不复制整套筛选器。
+- Knowledge 详情页必须能被引用；没有正文的详情页只是更漂亮的空壳。
+- 当前仍不引入全文搜索库，先把 URL、关系和引用稳定下来。
+
+下一步：
+
+1. Phase 23：内容证据密度增强。
+2. 为项目详情补真实 commit、PR、截图或变更说明证据。
+3. 为 Knowledge 增加更好的“引用复制”格式，例如 Markdown link 或 `knowledge.trace(...)`。
+4. 评估是否为 Command Center 增加 action preview，但不做复杂二级 action panel。
