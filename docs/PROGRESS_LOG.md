@@ -1284,7 +1284,7 @@ GitHub 推送修复：
 
 ### 第二十阶段：Knowledge 详情层
 
-状态：已实现，已验证，已部署，待外部同步。
+状态：已实现，已验证，已部署，已同步飞书。
 
 阶段判断：
 
@@ -1396,6 +1396,7 @@ GitHub 推送修复：
 - Deployment URL：`https://elegant-developer-studio-exx94q177.vercel.app`。
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/5EXf8SBZL1F6dF7zaSpLoxNRTDi8`。
 - Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，104 passed。
+- 飞书：[55｜第二十二阶段 URL IA 与命令快捷入口](https://scnlb1lk96sb.feishu.cn/wiki/GwHwwdiFeiEb3lkbHDXcs2Mgnbc)。
 
 下一步建议：
 

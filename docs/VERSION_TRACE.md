@@ -1042,4 +1042,4 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 外部同步：
 
-- 飞书：待同步。
+- 飞书：[55｜第二十二阶段 URL IA 与命令快捷入口](https://scnlb1lk96sb.feishu.cn/wiki/GwHwwdiFeiEb3lkbHDXcs2Mgnbc)。
