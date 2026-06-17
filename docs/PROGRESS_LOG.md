@@ -1235,7 +1235,7 @@ GitHub 推送修复：
 
 ### 第十九阶段：博客阅读路径增强
 
-状态：已实现，已验证，已部署，待外部同步。
+状态：已实现，已验证，已部署，已外部同步。
 
 阶段判断：
 
@@ -1356,6 +1356,7 @@ GitHub 推送修复：
 - Deployment URL：`https://elegant-developer-studio-iwkpljhgs.vercel.app`。
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Ba29BZBkotJogLaaAFL8eTL37Hbs`。
 - Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，102 passed。
+- 飞书：[54｜第二十一阶段 URL Query 筛选与关系校验](https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc)。
 
 下一步建议：
 

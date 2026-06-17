@@ -61,6 +61,7 @@
 | 博客系统化复盘 | [51｜第十八阶段博客系统化复盘](https://scnlb1lk96sb.feishu.cn/wiki/UhnbwnuWYiH7lIkmkh4cU1qlnvd) | 博客语言 metadata、写作意图、语言筛选、专家审查和 Phase 19 优先级 |
 | 博客阅读路径复盘 | [52｜第十九阶段博客阅读路径增强](https://scnlb1lk96sb.feishu.cn/wiki/S0KHwktcKiC1VIkIqkdcE6J6nhm) | RelatedReading、文章关系 metadata、impeccable 初始化和 Phase 20 方向 |
 | Knowledge 详情层复盘 | [53｜第二十阶段 Knowledge 详情层](https://scnlb1lk96sb.feishu.cn/wiki/U0XWwA1enitT6Sk6bm8cXpphnbb) | `/knowledge/[slug]`、KnowledgeTrails、双向路径、部署和 Phase 21 方向 |
+| URL Query 筛选复盘 | [54｜第二十一阶段 URL Query 筛选与关系校验](https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc) | query-backed filters、内容关系校验、生产验证和 Phase 22 方向 |
 
 ## 当前项目状态
 

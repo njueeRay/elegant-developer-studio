@@ -190,6 +190,6 @@ Phase 22 建议进入内容深度与 URL IA 文档化：
 - Production alias：`https://elegant-developer-studio.vercel.app`。
 - Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，102 passed。
 
-待最终阶段收口：
+外部同步：
 
-- 飞书知识库同步。
+- 飞书知识库同步：[54｜第二十一阶段 URL Query 筛选与关系校验](https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc)。

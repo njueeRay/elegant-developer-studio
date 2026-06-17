@@ -974,7 +974,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-06-18
 Primary commit：`bc4f1fe`
-Deployment record commit：待提交
+Deployment record commit：`0cc1326`
 Vercel deployment：`dpl_Ba29BZBkotJogLaaAFL8eTL37Hbs`
 Production alias：`https://elegant-developer-studio.vercel.app`
 Deployment URL：`https://elegant-developer-studio-iwkpljhgs.vercel.app`
@@ -1003,4 +1003,4 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 外部同步：
 
-- 飞书：待同步。
+- 飞书：[54｜第二十一阶段 URL Query 筛选与关系校验](https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc)。
