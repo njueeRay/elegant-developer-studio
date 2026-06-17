@@ -151,9 +151,9 @@
 
 - `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`：92 passed。
 
-待补充：
+外部同步：
 
-- 飞书知识库同步。
+- 飞书知识库同步已完成：[52｜第十九阶段博客阅读路径增强](https://scnlb1lk96sb.feishu.cn/wiki/S0KHwktcKiC1VIkIqkdcE6J6nhm)。
 
 ## 下一阶段建议
 

@@ -933,4 +933,5 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 外部同步：
 
-- 待同步飞书。
+- 飞书：[52｜第十九阶段博客阅读路径增强](https://scnlb1lk96sb.feishu.cn/wiki/S0KHwktcKiC1VIkIqkdcE6J6nhm)。
+- 飞书导航首页已更新并验证包含 52 号节点。

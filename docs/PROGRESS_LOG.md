@@ -1123,7 +1123,7 @@ GitHub 推送修复：
 
 ### 第十七阶段：中文内容试点与全站复盘
 
-状态：已实现，已验证，已部署，待外部同步。
+状态：已实现，已验证，已部署，已外部同步。
 
 阶段判断：
 
@@ -1270,6 +1270,11 @@ GitHub 推送修复：
 - Deployment URL：`https://elegant-developer-studio-hy7v9mlcu.vercel.app`。
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/A2uGZkzjiPA15xGy8AbrjAxp4uvd`。
 - Production alias：`https://elegant-developer-studio.vercel.app`。
+
+外部同步：
+
+- 飞书：[52｜第十九阶段博客阅读路径增强](https://scnlb1lk96sb.feishu.cn/wiki/S0KHwktcKiC1VIkIqkdcE6J6nhm)。
+- 飞书核心页已同步：导航首页、项目地图、路线图、设计系统、开发进度、版本追溯、同步协议。
 
 下一步建议：
 
