@@ -90,3 +90,16 @@ Phase 23：内容证据密度增强。
 - 全局 graph。
 - 全量 query 命令生成。
 - 后台 CMS。
+
+## 验证与部署
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：6 passed。
+- `npm run test:e2e`：104 passed。
+- 本地生产模式视觉检查：Command Center query 入口桌面、Blog query 桌面、Knowledge 详情移动端均无横向溢出，console 无相关错误。
+- Vercel deployment：`dpl_5EXf8SBZL1F6dF7zaSpLoxNRTDi8`。
+- Deployment URL：`https://elegant-developer-studio-exx94q177.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/5EXf8SBZL1F6dF7zaSpLoxNRTDi8`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，104 passed。

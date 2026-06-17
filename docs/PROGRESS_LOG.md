@@ -1366,7 +1366,7 @@ GitHub 推送修复：
 
 ### 第二十二阶段：URL IA 与命令快捷入口
 
-状态：已实现，已验证，待部署和外部同步。
+状态：已实现，已验证，已部署，待外部同步。
 
 阶段判断：
 
@@ -1392,6 +1392,10 @@ GitHub 推送修复：
 - targeted e2e：6 passed。
 - `npm run test:e2e`：104 passed。
 - 本地生产模式视觉检查：Command Center query 入口桌面、Blog query 桌面、Knowledge 详情移动端均无横向溢出，console 无相关错误。
+- Vercel deployment：`dpl_5EXf8SBZL1F6dF7zaSpLoxNRTDi8`。
+- Deployment URL：`https://elegant-developer-studio-exx94q177.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/5EXf8SBZL1F6dF7zaSpLoxNRTDi8`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，104 passed。
 
 下一步建议：
 

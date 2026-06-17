@@ -1004,3 +1004,42 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 外部同步：
 
 - 飞书：[54｜第二十一阶段 URL Query 筛选与关系校验](https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc)。
+
+## Unreleased - 第二十二阶段 URL IA 与命令快捷入口
+
+日期：2026-06-18
+Primary commit：`43d6ffb`
+Vercel deployment：`dpl_5EXf8SBZL1F6dF7zaSpLoxNRTDi8`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-exx94q177.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/5EXf8SBZL1F6dF7zaSpLoxNRTDi8`
+
+范围：
+
+- `INFORMATION_ARCHITECTURE.md` 新增 URL Query 约定。
+- Command Center 新增精选 query 快捷入口：中文写作、Product Systems、Decision knowledge、GitHub-backed projects。
+- `KnowledgeEntry` 新增 `protects` 和 `citation`。
+- `/knowledge/[slug]` 使用每条知识自己的 `protects` 和 `citation`。
+- `validate:content` 增加 Knowledge 正文完整性校验。
+- 修复 query 命令导航后 `CommandTraceToast` 不显示的问题。
+- e2e 覆盖 Command Center 打开 query-backed content views。
+
+产品判断：
+
+- query 是公开产品状态，不是组件内部状态。
+- Command Center 只放高价值 query 入口，不复制整套筛选器。
+- Knowledge 详情页必须能被引用；没有正文的详情页只是路由层面的形式主义。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：6 passed。
+- `npm run test:e2e`：104 passed。
+- 本地生产模式视觉检查：Command Center query 入口桌面、Blog query 桌面、Knowledge 详情移动端均无横向溢出，console 无相关错误。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，104 passed。
+
+外部同步：
+
+- 飞书：待同步。
