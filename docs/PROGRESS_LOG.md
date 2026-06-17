@@ -1174,7 +1174,7 @@ GitHub 推送修复：
 
 ### 第十八阶段：博客系统化复盘
 
-状态：已实现，已验证，已部署，待外部同步。
+状态：已实现，已验证，已部署，已外部同步。
 
 阶段判断：
 
@@ -1315,6 +1315,7 @@ GitHub 推送修复：
 - Deployment URL：`https://elegant-developer-studio-kr44h847o.vercel.app`。
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/BQbxSsRHDMh3uCP9TZjX6acTR5vF`。
 - Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，98 passed。
+- 飞书：[53｜第二十阶段 Knowledge 详情层](https://scnlb1lk96sb.feishu.cn/wiki/U0XWwA1enitT6Sk6bm8cXpphnbb)。
 
 下一步建议：
 

@@ -200,6 +200,6 @@ Phase 21 建议进入 URL Query 与内容关系校验：
 - Production alias：`https://elegant-developer-studio.vercel.app`。
 - Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，98 passed。
 
-待最终阶段收口：
+外部同步：
 
-- 飞书知识库同步。
+- 飞书知识库同步：[53｜第二十阶段 Knowledge 详情层](https://scnlb1lk96sb.feishu.cn/wiki/U0XWwA1enitT6Sk6bm8cXpphnbb)。
