@@ -173,7 +173,7 @@ function getCommandItems(): CommandItem[] {
     kind: "knowledge",
     title: entry.title,
     description: entry.summary,
-    href: `/knowledge#${entry.slug}`,
+    href: `/knowledge/${entry.slug}`,
     meta: entry.kind,
     keywords: [entry.kind, entry.status, entry.source, ...entry.tags],
   }));

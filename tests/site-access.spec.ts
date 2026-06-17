@@ -14,6 +14,8 @@ const routes = [
   "/photos",
   "/music",
   "/knowledge",
+  "/knowledge/public-reachable-before-internal-complete",
+  "/knowledge/interfaces-are-promises",
   "/uses",
   "/about",
   "/collaboration",
@@ -97,7 +99,15 @@ test.describe("public routes and links", () => {
   test("audited pages do not create horizontal overflow on mobile", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
 
-    for (const route of ["/", "/blog/chinese-as-product-memory", "/uses", "/about", "/lab", "/collaboration"]) {
+    for (const route of [
+      "/",
+      "/blog/chinese-as-product-memory",
+      "/knowledge/public-reachable-before-internal-complete",
+      "/uses",
+      "/about",
+      "/lab",
+      "/collaboration",
+    ]) {
       await page.goto(route);
       const width = await page.evaluate(() => ({
         client: document.documentElement.clientWidth,
@@ -230,6 +240,37 @@ test.describe("core interaction contracts", () => {
       "href",
       "/blog/interface-is-a-promise#a-promise-has-shape",
     );
+    await expect(knowledgeCard.getByRole("link", { name: "Open detail" })).toHaveAttribute(
+      "href",
+      "/knowledge/interfaces-are-promises",
+    );
+  });
+
+  test("knowledge detail pages expose bidirectional public trails", async ({ page }) => {
+    await page.goto("/knowledge/public-reachable-before-internal-complete");
+
+    await expect(page.getByRole("heading", { name: "公开可达优先于内部完成" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Back to Knowledge" })).toHaveAttribute(
+      "href",
+      "/knowledge",
+    );
+    await expect(page.getByText('knowledge.trace("public-reachable-before-internal-complete")')).toBeVisible();
+
+    const trails = page.getByLabel("Knowledge trails");
+
+    const relatedWriting = trails.getByLabel("Related writing");
+    const projectEvidence = trails.getByLabel("Project evidence");
+
+    await expect(relatedWriting).toContainText("Related writing");
+    await expect(relatedWriting.getByRole("link", { name: /把中文作为产品记忆/ })).toHaveAttribute(
+      "href",
+      "/blog/chinese-as-product-memory",
+    );
+    await expect(projectEvidence).toContainText("Project evidence");
+    await expect(projectEvidence.getByRole("link", { name: /Studio Knowledge Base/ })).toHaveAttribute(
+      "href",
+      "/projects/studio-knowledge-base",
+    );
   });
 
   test("project case studies expose before and after proof", async ({ page }) => {
@@ -329,7 +370,7 @@ test.describe("core interaction contracts", () => {
     );
     await expect(related.getByRole("link", { name: /公开可达优先于内部完成/ })).toHaveAttribute(
       "href",
-      "/knowledge#public-reachable-before-internal-complete",
+      "/knowledge/public-reachable-before-internal-complete",
     );
     await expect(related.getByRole("link", { name: /Studio Knowledge Base/ })).toHaveAttribute(
       "href",

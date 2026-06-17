@@ -60,6 +60,7 @@ Phase 2 已实现：
 - `CodeBlock`
 - `MetadataRail`
 - `RelatedReading`
+- `KnowledgeTrails`
 
 Phase 3 已实现首版：
 
@@ -82,6 +83,7 @@ Phase 5 已实现首版：
 
 - `KnowledgeExplorer`
 - `KnowledgeCard`
+- `KnowledgeDetailPage`
 - `UsesExplorer`
 - `UsesShelf`
 - `ToolCard`
@@ -153,9 +155,12 @@ Phase 5 已实现首版：
 
 - `Knowledge` 首版使用公开索引，不做空白详情页。
 - 知识条目必须有稳定 slug、类型、状态、标签、来源和关联链接。
-- `KnowledgeCard` 的 `Copy ref` 复制稳定锚点，服务 GitHub、飞书和文档评论。
+- `KnowledgeCard` 的 `Copy ref` 复制稳定详情页 URL，服务 GitHub、飞书和文档评论。
+- `KnowledgeCard` 必须提供 `Open detail`，列表页负责浏览，详情页负责引用和解释。
+- `KnowledgeDetailPage` 使用 rail + main 布局，表达可引用节点，不伪装成长文。
+- `KnowledgeTrails` 必须分清 Related writing、Project evidence 和 Backlinks；同名内容可能出现在不同 lane，lane 需要明确可访问名称。
 - `Knowledge` 类型筛选继续复用 `FilterBar`，保持结果数量和清除动作一致。
-- 当前内容规模不足时，不做全局 graph、全文搜索库和多选 facets。
+- 当前内容规模不足时，不做全局 graph、全文搜索库和多选 facets；先做 URL query 和 slug 校验。
 - `Uses` 首版不是 Logo 墙，而是工具、角色、信号、工作流和发布管线。
 - `Uses` 工具卡必须支持稳定引用，服务 GitHub、飞书和后续文档评论。
 - `UsesShelf` 可以有工作台意象，但不能变成不可维护的装饰图。

@@ -80,8 +80,8 @@
 
 下一步：
 
-- Knowledge 详情页：将 `/knowledge#slug` 升级为 `/knowledge/[slug]`。
-- `/blog` 筛选状态进入 URL query。
+- `/blog`、`/projects`、`/knowledge` 筛选状态进入 URL query。
+- 内容关系 slug 校验，防止 related posts / knowledge / projects 失效。
 - 补真实中文文章，优先写产品判断和项目复盘。
 
 暂不做：
@@ -172,10 +172,12 @@
 已完成切片：
 
 - `/knowledge` 公开知识索引。
+- `/knowledge/[slug]` 详情页，Knowledge 从列表卡片升级为可引用节点。
 - `/uses` 工具书架和工作流页面。
 - `/about` Studio Profile。
 - `/lab` 组件注册表。
 - 知识内容模型：`Pattern`、`Snippet`、`Decision`、`Reference`。
+- 知识关系模型：`relatedPostSlugs`、`relatedProjectSlugs`、backlinks。
 - Uses 内容模型：工具、分类、工作流、发布管线。
 - About 内容模型：个人介绍、原则、时间线、能力、工作约定。
 - `KnowledgeExplorer` 和 `KnowledgeCard`。

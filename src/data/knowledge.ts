@@ -15,6 +15,8 @@ export type KnowledgeEntry = {
     label: string;
     href: string;
   }>;
+  relatedPostSlugs: string[];
+  relatedProjectSlugs: string[];
   backlinks: Array<{
     label: string;
     href: string;
@@ -34,10 +36,12 @@ export const knowledgeEntries: KnowledgeEntry[] = [
     tags: ["中文", "IA", "Navigation", "Traceability"],
     source: "Phase 13-16 review",
     related: [
-      { label: "Navigation OS 复盘", href: "/knowledge#public-reachable-before-internal-complete" },
+      { label: "Navigation OS 复盘", href: "/knowledge/public-reachable-before-internal-complete" },
       { label: "Uses", href: "/uses" },
       { label: "About", href: "/about" },
     ],
+    relatedPostSlugs: ["chinese-as-product-memory"],
+    relatedProjectSlugs: ["studio-knowledge-base"],
     backlinks: [
       {
         label: "把中文作为产品记忆",
@@ -65,6 +69,8 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Read essay", href: "/blog/interface-is-a-promise" },
       { label: "Command Center", href: "/projects/studio-knowledge-base" },
     ],
+    relatedPostSlugs: ["interface-is-a-promise", "commands-that-respect-attention"],
+    relatedProjectSlugs: ["lumen"],
     backlinks: [
       {
         label: "The Interface is a Promise",
@@ -92,6 +98,8 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Browse writing", href: "/blog" },
       { label: "Browse photos", href: "/photos" },
     ],
+    relatedPostSlugs: ["commands-that-respect-attention"],
+    relatedProjectSlugs: ["studio-knowledge-base"],
     backlinks: [
       {
         label: "FilterBar",
@@ -119,6 +127,8 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Project map", href: "/projects/studio-knowledge-base" },
       { label: "Contact", href: "/contact" },
     ],
+    relatedPostSlugs: ["interface-is-a-promise"],
+    relatedProjectSlugs: ["studio-knowledge-base"],
     backlinks: [
       {
         label: "KnowledgeCard",
@@ -146,6 +156,8 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Writing archive", href: "/blog" },
       { label: "Selected work", href: "/projects" },
     ],
+    relatedPostSlugs: ["calm-systems-for-creative-work"],
+    relatedProjectSlugs: ["studio-knowledge-base"],
     backlinks: [
       {
         label: "Project map",
@@ -173,6 +185,8 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       { label: "Knowledge project", href: "/projects/studio-knowledge-base" },
       { label: "Photos", href: "/photos" },
     ],
+    relatedPostSlugs: ["calm-systems-for-creative-work", "chinese-as-product-memory"],
+    relatedProjectSlugs: ["studio-knowledge-base"],
     backlinks: [
       {
         label: "Knowledge explorer",
@@ -192,4 +206,12 @@ export function getKnowledgeKinds(entries = knowledgeEntries) {
   return Array.from(new Set(entries.map((entry) => entry.kind))).sort((a, b) =>
     a.localeCompare(b),
   );
+}
+
+export function getKnowledgeEntry(slug: string) {
+  return knowledgeEntries.find((entry) => entry.slug === slug);
+}
+
+export function getAllKnowledgeSlugs() {
+  return knowledgeEntries.map((entry) => entry.slug);
 }

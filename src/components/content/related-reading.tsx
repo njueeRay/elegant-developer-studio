@@ -40,7 +40,7 @@ export function RelatedReading({ current, posts, knowledge, projects }: RelatedR
     .map((entry) => ({
       title: entry.title,
       summary: entry.summary,
-      href: `/knowledge#${entry.slug}`,
+      href: `/knowledge/${entry.slug}`,
       meta: `${entry.kind} / ${entry.status}`,
     }));
 

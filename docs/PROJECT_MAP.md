@@ -54,6 +54,7 @@
 - 第十二阶段可追溯作品集层：可点击 GitHub source link、Knowledge backlinks、Case Study Diff、Lab ComponentPreview 和 Command Center 点击导航修复。
 - 第十八阶段博客系统化：文章语言和写作意图 metadata、博客语言筛选、写作系统说明、中文筛选 e2e、Command Trace 跨路由反馈修复。
 - 第十九阶段博客阅读路径增强：`PRODUCT.md`、impeccable live config、文章 related metadata、`RelatedReading`、Blog → Knowledge → Project 局部路径。
+- 第二十阶段 Knowledge 详情层：`/knowledge/[slug]`、`KnowledgeTrails`、Knowledge → Blog / Project 双向路径、Knowledge 详情进入 Command Center 与 sitemap。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -69,6 +70,7 @@
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
 | Knowledge | `/knowledge` | 5 | 已实现首版 | 长期知识、片段、学习记录 |
+| Knowledge 详情 | `/knowledge/[slug]` | 20 | 已实现 | 可独立访问、引用和追踪的知识节点 |
 | Photos | `/photos` | 3 | 已实现首版 | 照片档案和灯箱 |
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
 | Lab | `/lab` | 5 | 已实现首版 | 实验、原型、组件注册表和质量门禁 |
@@ -673,3 +675,33 @@ src/
 2. 将 `/knowledge#slug` 升级为 `/knowledge/[slug]`。
 3. 为 Knowledge 建立反向 related posts/projects。
 4. 再补真实中文长文。
+
+## 15. 第二十阶段 Knowledge 详情层
+
+本阶段把 Knowledge 从“列表上的可复制卡片”推进到“可独立访问的知识节点”。
+
+完成内容：
+
+- 新增 `/knowledge/[slug]`。
+- 新增 `KnowledgeTrails`。
+- `KnowledgeEntry` 新增 `relatedPostSlugs` 和 `relatedProjectSlugs`。
+- `RelatedReading` 的 Knowledge 链接从 hash 锚点升级为详情页。
+- `KnowledgeCard` 增加 `Open detail`，`Copy ref` 复制详情页 URL。
+- `GlobalCommandMenu` 的 Knowledge 结果指向详情页。
+- `sitemap.xml` 包含所有 Knowledge 详情路由。
+- 首页内部站内路由改用 Next `Link`。
+- 新增 e2e 覆盖 Knowledge 详情公开可达、双向路径和移动端无横向溢出。
+
+阶段判断：
+
+- 列表页负责浏览，详情页负责引用和解释。
+- Knowledge 是项目记忆，不是普通博客分类。
+- 当前内容规模下，局部 trails 比全局 graph 更诚实。
+- 可达性必须通过公开路由、sitemap、命令菜单和测试共同证明。
+
+下一步：
+
+1. Phase 21：筛选状态 URL query。
+2. 增加内容关系 slug 校验脚本。
+3. 让列表页筛选状态可分享、可返回、可从 Command Center 进入。
+4. 补每条 Knowledge 的真实短正文，减少通用模板文案。

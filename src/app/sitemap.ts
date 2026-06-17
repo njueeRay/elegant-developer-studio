@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { knowledgeEntries } from "@/data/knowledge";
 import { getAllPosts, getAllProjects } from "@/lib/content";
 
 const siteUrl = "https://elegant-developer-studio.vercel.app";
@@ -31,5 +32,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  return [...staticRoutes, ...postRoutes, ...projectRoutes];
+  const knowledgeRoutes = knowledgeEntries.map((entry) => ({
+    url: `${siteUrl}/knowledge/${entry.slug}`,
+    lastModified: new Date(),
+  }));
+
+  return [...staticRoutes, ...postRoutes, ...projectRoutes, ...knowledgeRoutes];
 }

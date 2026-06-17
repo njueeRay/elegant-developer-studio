@@ -1281,3 +1281,39 @@ GitHub 推送修复：
 - Phase 20：Knowledge 详情层。
 - 将 Blog 的 Knowledge related links 从 hash 升级到详情页。
 - 建立 Knowledge ↔ Blog ↔ Project 双向路径。
+
+### 第二十阶段：Knowledge 详情层
+
+状态：已实现，待最终验证、部署和外部同步。
+
+阶段判断：
+
+- `/knowledge#slug` 适合快速定位列表卡片，但不适合作为长期知识引用。
+- Knowledge 应该有详情路由、metadata、sitemap 条目和可测试的公开入口。
+- 当前阶段继续采用局部 trails，不做装饰性全局图谱。
+
+完成：
+
+- 新增 `/knowledge/[slug]` 静态详情页。
+- 新增 `KnowledgeTrails`，分为 Related writing、Project evidence 和 Backlinks。
+- `KnowledgeEntry` 新增 `relatedPostSlugs` 和 `relatedProjectSlugs`。
+- `RelatedReading` 的 Knowledge 链接升级为 `/knowledge/[slug]`。
+- `KnowledgeCard` 增加 `Open detail`，`Copy ref` 改为复制详情页 URL。
+- `GlobalCommandMenu` 的 Knowledge 结果指向详情页。
+- `sitemap.xml` 加入 Knowledge 详情路由。
+- 首页 `/knowledge`、`/lab`、`/contact` 站内链接改用 Next `Link`。
+- 新增 Knowledge 详情页 e2e 和移动端无横向溢出覆盖。
+
+已验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过，`/knowledge/[slug]` 已静态生成。
+- targeted e2e：14 passed。
+- `npm run test:e2e`：98 passed。
+- 本地生产模式视觉检查：Knowledge 详情页桌面和移动端无横向溢出。
+
+下一步建议：
+
+- Phase 21：筛选状态 URL query。
+- 增加内容关系 slug 校验脚本。
+- 为每条 Knowledge 增加更具体的短正文，减少通用解释。

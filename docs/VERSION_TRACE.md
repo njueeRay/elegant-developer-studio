@@ -935,3 +935,37 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - 飞书：[52｜第十九阶段博客阅读路径增强](https://scnlb1lk96sb.feishu.cn/wiki/S0KHwktcKiC1VIkIqkdcE6J6nhm)。
 - 飞书导航首页已更新并验证包含 52 号节点。
+
+## Unreleased - 第二十阶段 Knowledge 详情层
+
+日期：2026-06-18
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：待部署
+Inspect URL：待部署
+
+范围：
+
+- 新增 `/knowledge/[slug]` 静态详情页。
+- 新增 `KnowledgeTrails`。
+- `KnowledgeEntry` 新增 `relatedPostSlugs` 和 `relatedProjectSlugs`。
+- Blog `RelatedReading` 的 Knowledge 链接从 hash 锚点升级为详情页。
+- `KnowledgeCard` 增加 `Open detail`，`Copy ref` 复制详情页 URL。
+- Command Center 的 Knowledge 结果指向详情页。
+- `sitemap.xml` 包含 Knowledge 详情路由。
+- 首页站内链接改用 Next `Link`。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：14 passed。
+- `npm run test:e2e`：98 passed。
+- 本地生产模式视觉检查：Knowledge 详情页桌面和移动端无横向溢出。
+- 部署和生产验证待收口。
+
+外部同步：
+
+- 飞书：待同步。

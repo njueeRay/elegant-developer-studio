@@ -122,9 +122,9 @@ export function StudioHome({
               </li>
             ))}
           </ul>
-          <a href="/knowledge" className="text-link">
+          <Link href="/knowledge" className="text-link">
             Browse knowledge <ArrowRight size={16} />
-          </a>
+          </Link>
         </article>
 
         <article className="lab-panel" id="lab">
@@ -140,9 +140,9 @@ export function StudioHome({
             <span>Notebook UI exploration</span>
             <span>Agent loop playground</span>
           </div>
-          <a href="/lab" className="text-link blue">
+          <Link href="/lab" className="text-link blue">
             See experiments <ArrowRight size={16} />
-          </a>
+          </Link>
         </article>
 
         <article className="uses-panel" id="uses">
@@ -186,10 +186,10 @@ export function StudioHome({
               and systems that make complex work feel calm.
             </p>
           </div>
-          <a href="/contact" className="primary-link">
+          <Link href="/contact" className="primary-link">
             <Mail size={16} />
             Open contact routes
-          </a>
+          </Link>
         </article>
       </section>
 

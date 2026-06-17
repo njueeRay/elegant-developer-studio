@@ -19,7 +19,7 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
   const Icon = iconByKind[entry.kind];
 
   const copyRef = async () => {
-    const path = `/knowledge#${entry.slug}`;
+    const path = `/knowledge/${entry.slug}`;
     const value =
       typeof window === "undefined" ? path : `${window.location.origin}${path}`;
 
@@ -58,6 +58,7 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
           ))}
         </div>
         <div className="knowledge-related" aria-label={`${entry.title} related links`}>
+          <Link href={`/knowledge/${entry.slug}`}>Open detail</Link>
           {entry.related.map((link) =>
             link.href.startsWith("mailto:") ? (
               <a href={link.href} key={link.href}>
