@@ -194,9 +194,12 @@ Phase 21 建议进入 URL Query 与内容关系校验：
 - 截图：
   - `/tmp/phase20-knowledge-detail-desktop.png`
   - `/tmp/phase20-knowledge-detail-mobile.png`
+- Vercel deployment：`dpl_BQbxSsRHDMh3uCP9TZjX6acTR5vF`。
+- Deployment URL：`https://elegant-developer-studio-kr44h847o.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/BQbxSsRHDMh3uCP9TZjX6acTR5vF`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，98 passed。
 
 待最终阶段收口：
 
-- Vercel 部署。
-- 生产 e2e。
 - 飞书知识库同步。

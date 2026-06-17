@@ -939,12 +939,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第二十阶段 Knowledge 详情层
 
 日期：2026-06-18
-Primary commit：待提交
+Primary commit：`c4e0e23`
 Deployment record commit：待提交
-Vercel deployment：待部署
+Vercel deployment：`dpl_BQbxSsRHDMh3uCP9TZjX6acTR5vF`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待部署
-Inspect URL：待部署
+Deployment URL：`https://elegant-developer-studio-kr44h847o.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/BQbxSsRHDMh3uCP9TZjX6acTR5vF`
 
 范围：
 
@@ -964,7 +964,7 @@ Inspect URL：待部署
 - targeted e2e：14 passed。
 - `npm run test:e2e`：98 passed。
 - 本地生产模式视觉检查：Knowledge 详情页桌面和移动端无横向溢出。
-- 部署和生产验证待收口。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，98 passed。
 
 外部同步：
 

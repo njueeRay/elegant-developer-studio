@@ -1284,7 +1284,7 @@ GitHub 推送修复：
 
 ### 第二十阶段：Knowledge 详情层
 
-状态：已实现，待最终验证、部署和外部同步。
+状态：已实现，已验证，已部署，待外部同步。
 
 阶段判断：
 
@@ -1311,6 +1311,10 @@ GitHub 推送修复：
 - targeted e2e：14 passed。
 - `npm run test:e2e`：98 passed。
 - 本地生产模式视觉检查：Knowledge 详情页桌面和移动端无横向溢出。
+- Vercel deployment：`dpl_BQbxSsRHDMh3uCP9TZjX6acTR5vF`。
+- Deployment URL：`https://elegant-developer-studio-kr44h847o.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/BQbxSsRHDMh3uCP9TZjX6acTR5vF`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，98 passed。
 
 下一步建议：
 
