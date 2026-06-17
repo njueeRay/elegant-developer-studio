@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { ArticleInteractions } from "@/components/content/article-interactions";
 import { ReadingProgress } from "@/components/content/reading-progress";
+import { RelatedReading } from "@/components/content/related-reading";
 import { SiteHeader } from "@/components/site-header";
 import { TableOfContents } from "@/components/content/table-of-contents";
-import { formatDate, getAllPosts, getPost } from "@/lib/content";
+import { knowledgeEntries } from "@/data/knowledge";
+import { formatDate, getAllPostMeta, getAllPosts, getAllProjectMeta, getPost } from "@/lib/content";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -95,6 +97,12 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="article-content">
             <Content />
           </div>
+          <RelatedReading
+            current={post}
+            posts={getAllPostMeta()}
+            knowledge={knowledgeEntries}
+            projects={getAllProjectMeta()}
+          />
         </div>
         <TableOfContents items={post.toc} />
       </article>

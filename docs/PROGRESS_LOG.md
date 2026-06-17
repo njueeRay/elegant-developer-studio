@@ -1232,3 +1232,38 @@ GitHub 推送修复：
 - Phase 20：Knowledge 详情与 Blog 双向引用。
 - Phase 21：筛选状态 URL query。
 - Phase 22：补真实中文长文与项目复盘。
+
+### 第十九阶段：博客阅读路径增强
+
+状态：已实现，待全量验证、部署和外部同步。
+
+阶段判断：
+
+- 文章页不能只负责展示正文，还要负责把读者带入站点系统。
+- 当前内容规模下，局部 related trails 比全局图谱更诚实。
+- Tags 适合筛选，相关阅读必须由作者显式声明。
+
+完成：
+
+- 新增 `PRODUCT.md`。
+- 新增 `.impeccable/live/config.json`。
+- `PostMeta` 新增 `relatedPostSlugs`、`relatedKnowledgeSlugs`、`relatedProjectSlugs`。
+- 所有现有文章补齐 related metadata。
+- 新增 `RelatedReading` 组件。
+- `/blog/[slug]` 正文后接入 Essays、Knowledge、Projects 三条路径。
+- 移动端文章布局增加底部安全留白，避免 `ReadingFocusLens` 遮挡尾部内容。
+- 新增相关阅读 e2e 覆盖。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：6 passed。
+- `npm run test:e2e`：92 passed。
+- 本地生产模式视觉检查：中文文章移动端、英文文章桌面均无横向溢出；中文文章尾部 related project 与 fixed ReadingFocusLens 不重叠。
+
+下一步建议：
+
+- Phase 20：Knowledge 详情层。
+- 将 Blog 的 Knowledge related links 从 hash 升级到详情页。
+- 建立 Knowledge ↔ Blog ↔ Project 双向路径。

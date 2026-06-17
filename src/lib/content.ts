@@ -37,6 +37,9 @@ export type PostMeta = {
   featured: boolean;
   summary: string;
   toc: TocItem[];
+  relatedPostSlugs: string[];
+  relatedKnowledgeSlugs: string[];
+  relatedProjectSlugs: string[];
 };
 
 export type ProjectMeta = {
@@ -119,6 +122,9 @@ function toPostMeta(post: Post): PostMeta {
     featured: post.featured,
     summary: post.summary,
     toc: post.toc,
+    relatedPostSlugs: post.relatedPostSlugs,
+    relatedKnowledgeSlugs: post.relatedKnowledgeSlugs,
+    relatedProjectSlugs: post.relatedProjectSlugs,
   };
 }
 

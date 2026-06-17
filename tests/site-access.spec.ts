@@ -317,6 +317,26 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByTestId("reading-focus-copy")).toContainText("Copied ref");
   });
 
+  test("article related reading exposes public trails", async ({ page }) => {
+    await page.goto("/blog/chinese-as-product-memory");
+
+    const related = page.getByLabel("Related reading");
+
+    await expect(related).toContainText('read.next("chinese-as-product-memory")');
+    await expect(related.getByRole("link", { name: /Calm Systems for Creative Work/ })).toHaveAttribute(
+      "href",
+      "/blog/calm-systems-for-creative-work",
+    );
+    await expect(related.getByRole("link", { name: /公开可达优先于内部完成/ })).toHaveAttribute(
+      "href",
+      "/knowledge#public-reachable-before-internal-complete",
+    );
+    await expect(related.getByRole("link", { name: /Studio Knowledge Base/ })).toHaveAttribute(
+      "href",
+      "/projects/studio-knowledge-base",
+    );
+  });
+
   test("knowledge reference copy has visible feedback", async ({ page }) => {
     await page.goto("/knowledge");
 

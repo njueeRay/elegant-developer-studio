@@ -903,3 +903,31 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - 飞书：[51｜第十八阶段博客系统化复盘](https://scnlb1lk96sb.feishu.cn/wiki/UhnbwnuWYiH7lIkmkh4cU1qlnvd)。
 - 飞书导航首页已更新并验证包含 51 号节点。
+
+## Unreleased - 第十九阶段博客阅读路径增强
+
+日期：2026-06-18
+Primary commit：待提交
+Deployment record commit：待提交
+Vercel deployment：待部署
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 新增 impeccable `PRODUCT.md` 和 live config。
+- 文章 metadata 新增 related posts、related knowledge、related projects。
+- 新增 `RelatedReading` 组件。
+- `/blog/[slug]` 接入 Essays、Knowledge、Projects 三条阅读路径。
+- 移动端文章页增加底部安全留白，避免 fixed `ReadingFocusLens` 遮挡相关阅读。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：6 passed。
+- `npm run test:e2e`：92 passed。
+- 本地生产模式视觉检查：中文文章移动端、英文文章桌面均无横向溢出。
+
+外部同步：
+
+- 待部署后同步飞书。

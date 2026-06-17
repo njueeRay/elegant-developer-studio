@@ -53,6 +53,7 @@
 - 第十一阶段阅读焦点层：`ReadingFocusLens`、当前小节追踪、`read.focus("section-id")` 和小节引用复制。
 - 第十二阶段可追溯作品集层：可点击 GitHub source link、Knowledge backlinks、Case Study Diff、Lab ComponentPreview 和 Command Center 点击导航修复。
 - 第十八阶段博客系统化：文章语言和写作意图 metadata、博客语言筛选、写作系统说明、中文筛选 e2e、Command Trace 跨路由反馈修复。
+- 第十九阶段博客阅读路径增强：`PRODUCT.md`、impeccable live config、文章 related metadata、`RelatedReading`、Blog → Knowledge → Project 局部路径。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -62,7 +63,7 @@
 | --- | --- | --- | --- | --- |
 | 首页 | `/` | 1 | 已实现 | 第一印象和精选工作室入口 |
 | 博客列表 | `/blog` | 2 | 已实现 | 长文和写作归档 |
-| 文章详情 | `/blog/[slug]` | 2 | 已实现 | MDX 阅读体验、语言与写作意图 |
+| 文章详情 | `/blog/[slug]` | 2/19 | 已实现 | MDX 阅读体验、语言与写作意图、相关阅读路径 |
 | 项目列表 | `/projects` | 2 | 已实现 | 精选作品和 case study |
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
@@ -644,3 +645,31 @@ src/
 3. 建立 Blog 与 Knowledge 的双向引用。
 4. 将筛选状态映射到 URL query。
 5. 补一篇真实中文文章。
+
+## 14. 第十九阶段博客阅读路径增强
+
+本阶段把文章详情页从“阅读终点”推进为“内容系统入口”。
+
+完成内容：
+
+- 新增 `PRODUCT.md`，作为 impeccable 和后续设计判断的产品上下文。
+- 新增 `.impeccable/live/config.json`。
+- `PostMeta` 新增 `relatedPostSlugs`、`relatedKnowledgeSlugs`、`relatedProjectSlugs`。
+- 所有现有文章补齐显式阅读路径。
+- 新增 `RelatedReading` 组件。
+- `/blog/[slug]` 正文后接入 Essays、Knowledge、Projects 三条局部路径。
+- 移动端文章页增加底部安全留白，避免 fixed `ReadingFocusLens` 遮挡相关阅读。
+- 新增 e2e：文章相关阅读必须指向公开路由。
+
+阶段判断：
+
+- Tags 适合过滤，不适合表达作者判断。
+- 当前内容规模下，局部路径优于全局图谱。
+- 技术风格来自可追溯阅读路径，而不是装饰。
+
+下一步：
+
+1. Phase 20：Knowledge 详情页。
+2. 将 `/knowledge#slug` 升级为 `/knowledge/[slug]`。
+3. 为 Knowledge 建立反向 related posts/projects。
+4. 再补真实中文长文。

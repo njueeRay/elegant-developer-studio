@@ -59,6 +59,7 @@ Phase 2 已实现：
 - `TableOfContents`
 - `CodeBlock`
 - `MetadataRail`
+- `RelatedReading`
 
 Phase 3 已实现首版：
 
