@@ -139,10 +139,20 @@
   - `/tmp/phase19-related-zh-mobile-fixed.png`
   - `/tmp/phase19-related-interface-desktop.png`
 
-待最终部署前补充：
+部署：
 
-- Vercel production 部署。
-- 生产环境 e2e。
+- Primary commit：`d405cfe`。
+- Vercel deployment：`dpl_A2uGZkzjiPA15xGy8AbrjAxp4uvd`。
+- Deployment URL：`https://elegant-developer-studio-hy7v9mlcu.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/A2uGZkzjiPA15xGy8AbrjAxp4uvd`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+
+生产验证：
+
+- `PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`：92 passed。
+
+待补充：
+
 - 飞书知识库同步。
 
 ## 下一阶段建议

@@ -907,10 +907,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第十九阶段博客阅读路径增强
 
 日期：2026-06-18
-Primary commit：待提交
-Deployment record commit：待提交
-Vercel deployment：待部署
+Primary commit：`d405cfe`
+Deployment record commit：本记录所在提交
+Vercel deployment：`dpl_A2uGZkzjiPA15xGy8AbrjAxp4uvd`
 Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-hy7v9mlcu.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/A2uGZkzjiPA15xGy8AbrjAxp4uvd`
 
 范围：
 
@@ -927,7 +929,8 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - targeted e2e：6 passed。
 - `npm run test:e2e`：92 passed。
 - 本地生产模式视觉检查：中文文章移动端、英文文章桌面均无横向溢出。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，92 passed。
 
 外部同步：
 
-- 待部署后同步飞书。
+- 待同步飞书。

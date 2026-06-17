@@ -1235,7 +1235,7 @@ GitHub 推送修复：
 
 ### 第十九阶段：博客阅读路径增强
 
-状态：已实现，待全量验证、部署和外部同步。
+状态：已实现，已验证，已部署，待外部同步。
 
 阶段判断：
 
@@ -1261,6 +1261,15 @@ GitHub 推送修复：
 - targeted e2e：6 passed。
 - `npm run test:e2e`：92 passed。
 - 本地生产模式视觉检查：中文文章移动端、英文文章桌面均无横向溢出；中文文章尾部 related project 与 fixed ReadingFocusLens 不重叠。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，92 passed。
+
+部署：
+
+- Primary commit：`d405cfe`。
+- Vercel deployment：`dpl_A2uGZkzjiPA15xGy8AbrjAxp4uvd`。
+- Deployment URL：`https://elegant-developer-studio-hy7v9mlcu.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/A2uGZkzjiPA15xGy8AbrjAxp4uvd`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
 
 下一步建议：
 
