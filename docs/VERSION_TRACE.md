@@ -973,12 +973,12 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第二十一阶段 URL Query 筛选与关系校验
 
 日期：2026-06-18
-Primary commit：待提交
+Primary commit：`bc4f1fe`
 Deployment record commit：待提交
-Vercel deployment：待部署
+Vercel deployment：`dpl_Ba29BZBkotJogLaaAFL8eTL37Hbs`
 Production alias：`https://elegant-developer-studio.vercel.app`
-Deployment URL：待部署
-Inspect URL：待部署
+Deployment URL：`https://elegant-developer-studio-iwkpljhgs.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Ba29BZBkotJogLaaAFL8eTL37Hbs`
 
 范围：
 
@@ -999,6 +999,7 @@ Inspect URL：待部署
 - targeted e2e：8 passed。
 - `npm run test:e2e`：102 passed。
 - 本地生产模式渲染检查：Blog query 桌面和 Knowledge query 移动端均无横向溢出，console 无相关错误。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，102 passed。
 
 外部同步：
 

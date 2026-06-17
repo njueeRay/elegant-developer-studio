@@ -184,9 +184,12 @@ Phase 22 建议进入内容深度与 URL IA 文档化：
 - 截图：
   - `/tmp/phase21-blog-query-desktop.png`
   - `/tmp/phase21-knowledge-query-mobile.png`
+- Vercel deployment：`dpl_Ba29BZBkotJogLaaAFL8eTL37Hbs`。
+- Deployment URL：`https://elegant-developer-studio-iwkpljhgs.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Ba29BZBkotJogLaaAFL8eTL37Hbs`。
+- Production alias：`https://elegant-developer-studio.vercel.app`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，102 passed。
 
 待最终阶段收口：
 
-- Vercel 部署。
-- Production e2e。
 - 飞书知识库同步。
