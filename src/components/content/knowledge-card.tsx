@@ -20,8 +20,8 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
 
   const copyRef = async () => {
     const path = `/knowledge/${entry.slug}`;
-    const value =
-      typeof window === "undefined" ? path : `${window.location.origin}${path}`;
+    const href = typeof window === "undefined" ? path : `${window.location.origin}${path}`;
+    const value = `[${entry.title}](${href}) - ${entry.summary}`;
 
     const didCopy = await writeToClipboard(value);
 
@@ -95,7 +95,7 @@ export function KnowledgeCard({ entry }: { entry: KnowledgeEntry }) {
         onClick={copyRef}
       >
         {copied ? <Check size={15} /> : <Copy size={15} />}
-        {copied ? "Copied" : "Copy ref"}
+        {copied ? "Copied Markdown" : "Copy ref"}
       </button>
     </article>
   );

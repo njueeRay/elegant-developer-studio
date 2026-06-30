@@ -57,6 +57,7 @@
 - 第二十阶段 Knowledge 详情层：`/knowledge/[slug]`、`KnowledgeTrails`、Knowledge → Blog / Project 双向路径、Knowledge 详情进入 Command Center 与 sitemap。
 - 第二十一阶段 URL Query 筛选与关系校验：`useQueryFilter`、Blog/Projects/Knowledge query 状态、`validate:content`、内容关系断链检查。
 - 第二十二阶段 URL IA 与命令快捷入口：query 参数写入 IA、Command Center query 快捷入口、Knowledge 详情正文结构化和正文完整性校验。
+- 第二十三阶段内容证据密度增强：Project Evidence Pack、Knowledge Markdown ref、项目证据完整性校验。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -73,6 +74,7 @@
 | 项目筛选状态 | `/projects?stack=` | 21 | 已实现 | 可分享的项目技术栈筛选 |
 | 项目 query 快捷入口 | `/projects?stack=GitHub` | 22 | 已实现 | Command Center 打开 GitHub-backed projects |
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
+| 项目证据包 | `/projects/[slug]#project-evidence-title` | 23 | 已实现 | GitHub、Vercel、飞书和测试证据入口 |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
 | Knowledge | `/knowledge` | 5 | 已实现首版 | 长期知识、片段、学习记录 |
@@ -772,3 +774,30 @@ src/
 2. 为项目详情补真实 commit、PR、截图或变更说明证据。
 3. 为 Knowledge 增加更好的“引用复制”格式，例如 Markdown link 或 `knowledge.trace(...)`。
 4. 评估是否为 Command Center 增加 action preview，但不做复杂二级 action panel。
+
+## 18. 第二十三阶段内容证据密度增强
+
+本阶段把项目详情从“有叙事的 case study”推进到“有可检查证据的 case study”。
+
+完成内容：
+
+- `ProjectMeta` 新增 `evidencePack`。
+- Lumen 和 Studio Knowledge Base 都补齐结构化证据项。
+- `/projects/[slug]` 新增 `Evidence Pack` 区块。
+- Evidence Pack 直接链接到 GitHub、Vercel 或飞书。
+- `validate:content` 增加 Project Evidence Pack 完整性校验。
+- `KnowledgeCard` 的 `Copy ref` 改为复制 Markdown link。
+- e2e 覆盖项目证据包、证据链接和 Knowledge Markdown ref。
+
+阶段判断：
+
+- `Case Study Diff` 负责解释变化，`Evidence Pack` 负责提供可检查证据。
+- Knowledge 引用必须服务 GitHub、飞书、PR 和路线图评论，而不是只复制裸 URL。
+- 当前证据包仍保持轻量，不做证据时间线或仪表盘。
+
+下一步：
+
+1. Phase 24：项目证据对象升级。
+2. 为 Evidence Pack 增加 commit、deploymentId、screenshot、metric 等可选字段。
+3. 为 Knowledge detail 页增加 Markdown 引用复制。
+4. 增加中文项目复盘文章，展示“判断 → 实现 → 证据 → 验证”的完整路径。

@@ -192,6 +192,22 @@ posts.forEach((post) => {
 
 projects.forEach((project) => {
   assertRoute({ owner: `project:${project.slug}.href`, href: project.href, routes, errors });
+
+  if (!Array.isArray(project.evidencePack) || project.evidencePack.length === 0) {
+    errors.push(`project:${project.slug}.evidencePack must be a non-empty array`);
+  } else {
+    project.evidencePack.forEach((item, index) => {
+      const owner = `project:${project.slug}.evidencePack[${index}]`;
+
+      ["label", "kind", "detail", "href", "source"].forEach((field) => {
+        if (typeof item[field] !== "string" || !item[field].trim()) {
+          errors.push(`${owner}.${field} must be a non-empty string`);
+        }
+      });
+
+      assertRoute({ owner: `${owner}.href`, href: item.href, routes, errors });
+    });
+  }
 });
 
 knowledgeEntries.forEach((entry) => {

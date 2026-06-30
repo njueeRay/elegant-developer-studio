@@ -13,6 +13,32 @@ export const meta = {
   summary:
     "A cloud-readable project map that keeps requirements, decisions, assets, versions, and progress synchronized.",
   impact: ["Created 12-page Wiki", "Added repeatable sync map", "Linked GitHub, Vercel, and Feishu"],
+  evidencePack: [
+    {
+      label: "Feishu knowledge base",
+      kind: "Cloud",
+      detail:
+        "The public working memory layer is synced into a Feishu Wiki so project planning can be read and commented on outside the local repo.",
+      href: "https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb",
+      source: "Feishu",
+    },
+    {
+      label: "Sync map",
+      kind: "Trace",
+      detail:
+        "`docs/FEISHU_SYNC.md` records every Wiki node, doc token, source file, and repeated sync protocol.",
+      href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/FEISHU_SYNC.md",
+      source: "GitHub",
+    },
+    {
+      label: "Version trace",
+      kind: "Release",
+      detail:
+        "`docs/VERSION_TRACE.md` records phase commits, deployments, validation commands, and Feishu pages.",
+      href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/VERSION_TRACE.md",
+      source: "GitHub",
+    },
+  ],
   caseStudyDiff: [
     {
       before: "Project memory lived in chat history and scattered local files.",

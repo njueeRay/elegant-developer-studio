@@ -279,6 +279,14 @@ test.describe("core interaction contracts", () => {
   test("project case studies expose before and after proof", async ({ page }) => {
     await page.goto("/projects/lumen");
 
+    await expect(page.getByRole("heading", { name: "Proof you can inspect" })).toBeVisible();
+    await expect(page.getByTestId("project-evidence-lumen-component-source")).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/components",
+    );
+    await expect(page.getByTestId("project-evidence-lumen-regression-suite")).toContainText(
+      "Playwright covers public routes",
+    );
     await expect(page.getByRole("heading", { name: "What changed" })).toBeVisible();
     await expect(page.locator(".case-study-diff-card").first()).toContainText("Before");
     await expect(page.locator(".case-study-diff-card").first()).toContainText("After");
@@ -455,11 +463,20 @@ test.describe("core interaction contracts", () => {
   });
 
   test("knowledge reference copy has visible feedback", async ({ page }) => {
+    await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
     await page.goto("/knowledge");
 
     await page.getByTestId("knowledge-copy-filters-before-search").click();
 
-    await expect(page.getByTestId("knowledge-copy-filters-before-search")).toContainText("Copied");
+    await expect(page.getByTestId("knowledge-copy-filters-before-search")).toContainText(
+      "Copied Markdown",
+    );
+    await expect
+      .poll(() => page.evaluate(() => navigator.clipboard.readText()))
+      .toContain("[Filters before full search](");
+    await expect
+      .poll(() => page.evaluate(() => navigator.clipboard.readText()))
+      .toContain("/knowledge/filters-before-search");
   });
 
   test("uses stack copy has visible feedback", async ({ page }) => {

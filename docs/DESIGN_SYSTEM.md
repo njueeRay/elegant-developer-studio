@@ -53,6 +53,7 @@ Phase 2 已实现：
 - `PostCard`
 - `PostCard` 语言和写作意图 metadata
 - `ProjectCard`
+- `ProjectEvidencePack`
 - `TagFilter`
 - `FilterBar` 中文安全测试 ID
 - `ReadingProgress`
@@ -162,7 +163,7 @@ Phase 5 已实现首版：
 - `Knowledge` 首版使用公开索引，不做空白详情页。
 - 知识条目必须有稳定 slug、类型、状态、标签、来源和关联链接。
 - 知识详情必须有每条 entry 自己的 `protects` 和 `citation`，不能长期使用通用模板文案。
-- `KnowledgeCard` 的 `Copy ref` 复制稳定详情页 URL，服务 GitHub、飞书和文档评论。
+- `KnowledgeCard` 的 `Copy ref` 复制 Markdown link，服务 GitHub、飞书、PR 和文档评论。
 - `KnowledgeCard` 必须提供 `Open detail`，列表页负责浏览，详情页负责引用和解释。
 - `KnowledgeDetailPage` 使用 rail + main 布局，表达可引用节点，不伪装成长文。
 - `KnowledgeTrails` 必须分清 Related writing、Project evidence 和 Backlinks；同名内容可能出现在不同 lane，lane 需要明确可访问名称。
@@ -184,6 +185,9 @@ Phase 5 已实现首版：
 - `SiteHeader` 是全站主信息架构入口，桌面显示主路由，移动端显示完整菜单；命令面板不能替代它。
 - `ComponentPreview` 已进入首版，可切换 `preview / trace / source` 和 `desktop / mobile` viewport，但仍不是完整沙箱。
 - `Case Study Diff` 的 proof 必须尽量附带 evidence link，避免只留下叙事文本。
+- 项目详情必须优先使用 `Evidence Pack` 显示可检查证据；`Case Study Diff` 负责解释变化，`Evidence Pack` 负责证明。
+- Evidence Pack 证据卡必须链接到真实 GitHub、Vercel、飞书、测试文件或其他可访问证据，不能只链接回当前页面。
+- 当前证据卡只做轻量入口，不做 nested card、仪表盘或时间线。
 
 ## 素材规则
 

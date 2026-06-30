@@ -77,13 +77,14 @@
 - 博客 `ReadingFocusLens`：当前小节、`read.focus("section-id")` 和小节引用复制。
 - 博客系统化：文章语言、写作意图、语言筛选和写作系统说明。
 - 博客阅读路径：`RelatedReading` 将文章、Knowledge 和 Project 连接成局部路径。
+- 项目详情接入 `Evidence Pack`，将 GitHub、Vercel、飞书和测试证据显性化。
+- Knowledge `Copy ref` 复制 Markdown link，服务飞书、GitHub 和 PR 评论。
 
 下一步：
 
-- URL query 约定进入 `INFORMATION_ARCHITECTURE.md`。
-- Command Center 增加少量高价值 query 快捷入口。
-- 补真实中文文章，优先写产品判断和项目复盘。
-- Knowledge 详情正文从通用模板升级为每条规则自己的 `protects` 和 `citation`。
+- 为 Evidence Pack 增加 commit、deploymentId、screenshot 和 metric 等更硬证据。
+- 为 Knowledge detail 页增加 Markdown 引用复制。
+- 补真实中文项目复盘，优先写产品判断、实现路径和验证证据。
 
 暂不做：
 
@@ -142,6 +143,7 @@
 - Command Center 支持打开精选 query 状态：中文写作、Product Systems、Decision knowledge、GitHub-backed projects
 - `validate:content` 内容关系校验
 - `validate:content` 校验 Knowledge 详情正文完整性
+- `validate:content` 校验 Project Evidence Pack 完整性
 - `/photos` 复用 `FilterBar`，筛选联动精选、网格和灯箱
 - `Knowledge` 从规划提示升级为真实 Command Center 结果
 
@@ -204,6 +206,7 @@
 - sitemap 收录 `/lab`。
 - `SourceReveal` 可点击到 GitHub 文件。
 - 项目详情页新增 `Case Study Diff`。
+- 项目详情页新增 `Evidence Pack`。
 - `/lab` 新增 `ComponentPreview`，支持 `preview / trace / source`。
 - Command Center 点击结果和键盘打开结果统一导航路径。
 
@@ -227,6 +230,7 @@
 - `ReactionBar`
 - `ContactPanel`
 - `ComponentPreview`
+- `EvidencePack`
 
 下一片重点：
 

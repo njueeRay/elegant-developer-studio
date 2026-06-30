@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Code2, ExternalLink, GitCompareArrows } from "lucide-react";
+import { ArrowLeft, Code2, ExternalLink, FileCheck2, GitCompareArrows } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { getAllProjects, getProject } from "@/lib/content";
 
@@ -93,6 +93,38 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="article-content project-prose">
           <Content />
         </div>
+        <section className="project-evidence-pack" aria-labelledby="project-evidence-title">
+          <div className="project-evidence-heading">
+            <FileCheck2 size={19} />
+            <div>
+              <p className="section-kicker blue">Evidence Pack</p>
+              <h2 id="project-evidence-title">Proof you can inspect</h2>
+            </div>
+          </div>
+          <div className="project-evidence-grid">
+            {project.evidencePack.map((item) => (
+              <a
+                className="project-evidence-card"
+                data-testid={`project-evidence-${project.slug}-${item.label
+                  .toLowerCase()
+                  .replace(/[^a-z0-9]+/g, "-")
+                  .replace(/(^-|-$)/g, "")}`}
+                href={item.href}
+                key={item.label}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span>{item.kind}</span>
+                <strong>{item.label}</strong>
+                <p>{item.detail}</p>
+                <small>
+                  {item.source}
+                  <ExternalLink size={12} />
+                </small>
+              </a>
+            ))}
+          </div>
+        </section>
         <section className="case-study-diff" aria-labelledby="case-study-diff-title">
           <div className="case-study-diff-heading">
             <GitCompareArrows size={19} />

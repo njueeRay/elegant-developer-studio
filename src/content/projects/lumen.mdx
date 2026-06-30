@@ -13,6 +13,32 @@ export const meta = {
   summary:
     "A reusable component language for warm, developer-oriented product surfaces.",
   impact: ["Reduced UI drift", "Established token vocabulary", "Documented interaction states"],
+  evidencePack: [
+    {
+      label: "Component source",
+      kind: "Source",
+      detail:
+        "Reusable interaction surfaces live in `src/components`, with project-wide visual language in `src/app/globals.css`.",
+      href: "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/components",
+      source: "GitHub",
+    },
+    {
+      label: "Production surface",
+      kind: "Deployment",
+      detail:
+        "The public Vercel alias renders the design language across writing, projects, knowledge, uses, lab, contact, photos, and music.",
+      href: "https://elegant-developer-studio.vercel.app",
+      source: "Vercel",
+    },
+    {
+      label: "Regression suite",
+      kind: "Quality",
+      detail:
+        "Playwright covers public routes, navigation, command flows, source links, copy feedback, filters, and mobile overflow.",
+      href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/tests/site-access.spec.ts",
+      source: "Playwright",
+    },
+  ],
   caseStudyDiff: [
     {
       before: "Homepage-specific styling with reusable intent hidden inside one-off sections.",

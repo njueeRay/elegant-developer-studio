@@ -1404,3 +1404,41 @@ GitHub 推送修复：
 - 为项目详情补真实 commit、PR、截图、部署或指标证据。
 - 为 Knowledge `Copy ref` 增加 Markdown link 格式。
 - 评估 Command Center 轻量 preview，但暂不做复杂二级 action panel。
+
+### 第二十三阶段：内容证据密度增强
+
+状态：已实现，已验证，待部署和外部同步。
+
+阶段判断：
+
+- 作品集的可信度不来自更大的图片，而来自可检查证据。
+- `Case Study Diff` 负责解释变化，`Evidence Pack` 负责提供外部可访问证明。
+- Knowledge 引用应该直接服务飞书、GitHub issue 和 PR 描述，裸 URL 不够。
+
+完成：
+
+- `ProjectMeta` 新增 `evidencePack`。
+- Lumen 和 Studio Knowledge Base 补齐结构化证据。
+- `/projects/[slug]` 新增 `Evidence Pack`。
+- Evidence Pack 直接链接 GitHub、Vercel 或飞书。
+- `validate:content` 增加 Project Evidence Pack 完整性校验。
+- `KnowledgeCard` 的 `Copy ref` 改为复制 Markdown link。
+- e2e 覆盖 Evidence Pack、证据链接和 Knowledge Markdown ref。
+- 修复本机 Playwright 浏览器缓存缺失，重新安装 Chromium cache 后完成测试。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：4 passed。
+- `npm run test:e2e`：104 passed。
+- Browser QA：`/projects/lumen#project-evidence-title` 桌面与 390px 移动端均无横向溢出，Evidence Pack 可见，console 无相关 warning/error。
+- Clipboard e2e：`KnowledgeCard` 复制结果包含 Markdown link 和 `/knowledge/filters-before-search`。
+
+下一步建议：
+
+- Phase 24：项目证据对象升级。
+- 为 Evidence Pack 增加 commit、deploymentId、screenshot、metric 等可选字段。
+- 为 Knowledge detail 页增加 Markdown 引用复制能力。
+- 写一篇中文项目复盘文章，展示“判断 → 实现 → 证据 → 验证”的完整路径。
