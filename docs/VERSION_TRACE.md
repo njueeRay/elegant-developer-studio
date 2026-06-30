@@ -1043,3 +1043,40 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 外部同步：
 
 - 飞书：[55｜第二十二阶段 URL IA 与命令快捷入口](https://scnlb1lk96sb.feishu.cn/wiki/GwHwwdiFeiEb3lkbHDXcs2Mgnbc)。
+
+## Unreleased - 第二十三阶段内容证据密度增强
+
+日期：2026-07-01
+Primary commit：`019a5c3`
+Vercel deployment：`dpl_3SdSD4vTLuXUrQARLXpK9aUS5ZXx`
+Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-h0ppnsud6.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/3SdSD4vTLuXUrQARLXpK9aUS5ZXx`
+
+范围：
+
+- `ProjectMeta` 新增 `evidencePack`。
+- Lumen 和 Studio Knowledge Base 补齐结构化 Evidence Pack。
+- `/projects/[slug]` 新增 Evidence Pack 区块。
+- `validate:content` 增加 Project Evidence Pack 完整性校验。
+- `KnowledgeCard` 的 `Copy ref` 改为复制 Markdown link。
+- e2e 覆盖项目证据包、证据链接和 Knowledge Markdown ref。
+
+产品判断：
+
+- `Case Study Diff` 负责解释变化，`Evidence Pack` 负责提供可检查证据。
+- Knowledge 引用必须服务飞书、GitHub issue、PR 和路线图评论，而不是只复制裸 URL。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：4 passed。
+- `npm run test:e2e`：104 passed。
+- Browser QA：`/projects/lumen#project-evidence-title` 桌面与 390px 移动端均无横向溢出，Evidence Pack 可见，console 无相关 warning/error。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，104 passed。
+
+外部同步：
+
+- 飞书：待同步。

@@ -89,3 +89,7 @@ Phase 24：项目证据对象升级。
 - `npm run test:e2e`：104 passed。
 - Browser QA：`/projects/lumen#project-evidence-title` 桌面与 390px 移动端均无横向溢出，Evidence Pack 可见，console 无相关 warning/error。
 - Clipboard e2e：`KnowledgeCard` 复制结果包含 Markdown link 和 `/knowledge/filters-before-search`。
+- Vercel deployment：`dpl_3SdSD4vTLuXUrQARLXpK9aUS5ZXx`。
+- Deployment URL：`https://elegant-developer-studio-h0ppnsud6.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/3SdSD4vTLuXUrQARLXpK9aUS5ZXx`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，104 passed。
