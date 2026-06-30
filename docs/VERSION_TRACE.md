@@ -1079,4 +1079,4 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 外部同步：
 
-- 飞书：待同步。
+- 飞书：[56｜第二十三阶段 内容证据密度增强](https://scnlb1lk96sb.feishu.cn/wiki/Gz6RwlWCliND0bkV5Z1cLfk0n1d)。

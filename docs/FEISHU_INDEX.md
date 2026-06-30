@@ -63,6 +63,7 @@
 | Knowledge 详情层复盘 | [53｜第二十阶段 Knowledge 详情层](https://scnlb1lk96sb.feishu.cn/wiki/U0XWwA1enitT6Sk6bm8cXpphnbb) | `/knowledge/[slug]`、KnowledgeTrails、双向路径、部署和 Phase 21 方向 |
 | URL Query 筛选复盘 | [54｜第二十一阶段 URL Query 筛选与关系校验](https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc) | query-backed filters、内容关系校验、生产验证和 Phase 22 方向 |
 | URL IA 与命令快捷入口 | [55｜第二十二阶段 URL IA 与命令快捷入口](https://scnlb1lk96sb.feishu.cn/wiki/GwHwwdiFeiEb3lkbHDXcs2Mgnbc) | query IA、Command Center query 快捷入口、Knowledge 详情正文和生产验证 |
+| 内容证据密度复盘 | [56｜第二十三阶段 内容证据密度增强](https://scnlb1lk96sb.feishu.cn/wiki/Gz6RwlWCliND0bkV5Z1cLfk0n1d) | Evidence Pack、Knowledge Markdown ref、项目证据校验和生产验证 |
 
 ## 当前项目状态
 

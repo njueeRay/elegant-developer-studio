@@ -78,6 +78,7 @@
 | 53｜第二十阶段 Knowledge 详情层 | `docs/PHASE20_KNOWLEDGE_DETAIL_REVIEW.md` | `U0XWwA1enitT6Sk6bm8cXpphnbb` | `WbTydaOpIoOGNexpe3ncNbDQnbh` | https://scnlb1lk96sb.feishu.cn/wiki/U0XWwA1enitT6Sk6bm8cXpphnbb |
 | 54｜第二十一阶段 URL Query 筛选与关系校验 | `docs/PHASE21_QUERY_FILTERS_AND_RELATION_VALIDATION.md` | `URFOwJV9bi2GVJkNNxTcNkMfnbc` | `WIJfdP4NyoidCIx6EnocT1DenFA` | https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc |
 | 55｜第二十二阶段 URL IA 与命令快捷入口 | `docs/PHASE22_URL_IA_AND_COMMAND_SHORTCUTS.md` | `GwHwwdiFeiEb3lkbHDXcs2Mgnbc` | `AXF9d7QBkoupUhxh4bpcjx4rnMc` | https://scnlb1lk96sb.feishu.cn/wiki/GwHwwdiFeiEb3lkbHDXcs2Mgnbc |
+| 56｜第二十三阶段 内容证据密度增强 | `docs/PHASE23_EVIDENCE_DENSITY_REVIEW.md` | `Gz6RwlWCliND0bkV5Z1cLfk0n1d` | `CkAid6UGRoF2DOx9HLMch5Ikn5d` | https://scnlb1lk96sb.feishu.cn/wiki/Gz6RwlWCliND0bkV5Z1cLfk0n1d |
 
 ## 同步协议
 
