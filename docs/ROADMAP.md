@@ -332,6 +332,35 @@
 
 - 将 `SourceReveal` 升级为 GitHub source link。
 - 为 Lab 增加第一个真实 `ComponentPreview`。
+
+## Phase 24.5：Personal OS Zoo
+
+目标：吸收 `ursb.me` 的个人操作系统逻辑，但先在 Lab 校准，不把首页改成高密度数据墙。
+
+状态：已实现首版。
+
+实现范围：
+
+- `/lab` 新增 `PersonalOsZoo`。
+- 首页 `StatusPanel` 升级为 `Studio Pulse`。
+- 首页新增轻量 `Ask Me Terminal` prompt 交互。
+- 新增 `src/data/personal-os.ts` 作为 Personal OS 对象模型。
+- Lab 注册 `PersonalOsZoo`。
+
+组件沉淀：
+
+- `PersonalOsZoo`
+- `StudioPulse`
+- `AskMeTerminal`
+- `DataSourceBadge`
+- `TerminalObjectList`
+- `DensityGuardrail`
+
+判断：
+
+- 可迁移的是对象模型、数据来源、命令语法和生命迹象。
+- 不迁移高密度卡片数量、宠物、3D world、在线人数和访客光标。
+- 奇趣交互必须先进入 Lab，再决定是否进入首页。
 - 为项目详情页增加 `Case Study Diff`。
 
 ## 第十三至第十六阶段：Navigation OS 与可追溯交互

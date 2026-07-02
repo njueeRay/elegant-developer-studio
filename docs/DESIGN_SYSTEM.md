@@ -78,6 +78,8 @@ Phase 4 已实现首版：
 - `GlobalCommandMenu` 键盘选择、结果分组、最近访问和命中高亮
 - `GlobalCommandMenu` 当前路由上下文排序、规划页面提示和空状态建议
 - `StatusPanel`
+- `StudioPulse`
+- `AskMeTerminal`
 - `FilterBar`
 - `useQueryFilter`
 
@@ -99,6 +101,9 @@ Phase 5 已实现首版：
 - `LabExplorer`
 - `ComponentRegistry` 首版模式
 - `ComponentPreview` viewport switch
+- `PersonalOsZoo`
+- `DataSourceBadge` 首版语法
+- `TerminalObjectList` 首版语法
 - `ExperimentTimeline`
 - `QualityGateList`
 
@@ -146,8 +151,10 @@ Phase 5 已实现首版：
 - `Uses` 已经是正式路由，不再显示 planned 状态。
 - 无结果状态必须给出可点击建议词，不能只显示失败文本。
 - 无结果时结果容器不能声明为 `listbox`，除非内部确实有可选择 option。
-- `StatusPanel` 只表达当前三类状态：写作、建设、收听；不扩展成首页 dashboard。
+- `StatusPanel` 只表达当前四类状态：写作、建设、Knowledge、收听；不扩展成首页 dashboard。
 - `StatusPanel` 每张卡必须链接到真实页面，不能只是展示文本。
+- `StatusPanel` 可以显示 source 和 command，但 command 必须能解释、导航、复制或揭示来源，不能成为装饰性假终端。
+- `AskMeTerminal` 只提供少量高价值 prompt，不做全量 AI chat 或无边界问答。
 - `FilterBar` 必须显示结果数量、active 状态和清除动作。
 - `FilterBar` 移动端允许控件内部横向滚动，但页面本身不能横向溢出。
 - `/blog`、`/projects`、`/knowledge` 的 `FilterBar` 状态必须写入 URL query，支持分享、刷新和浏览器返回。
@@ -182,6 +189,8 @@ Phase 5 已实现首版：
 - `LabExplorer` 必须显示组件状态、来源文件、使用路由、质量证据和可复制 import。
 - `Lab` 组件列表中的代码标识可保留 PascalCase；预览标题可用可读名称避免长单词断裂。
 - `Lab` 移动端遇到长组件名时必须断词或切换为块级布局，页面级 `scrollWidth` 不得超过 `clientWidth`。
+- `PersonalOsZoo` 是外部参考迁移的校准面，必须同时展示 object grammar、prompt、source、flaw ledger 和 density guardrail。
+- Personal OS 方向禁止一次性复制参考站的 20+ 模块；新增个人数据模块必须先说明来源、路由、维护成本和真实用途。
 - `SiteHeader` 是全站主信息架构入口，桌面显示主路由，移动端显示完整菜单；命令面板不能替代它。
 - `ComponentPreview` 已进入首版，可切换 `preview / trace / source` 和 `desktop / mobile` viewport，但仍不是完整沙箱。
 - `Case Study Diff` 的 proof 必须尽量附带 evidence link，避免只留下叙事文本。

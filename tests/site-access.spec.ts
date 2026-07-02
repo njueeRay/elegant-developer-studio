@@ -81,6 +81,40 @@ test.describe("public routes and links", () => {
     await expect(page.getByRole("link", { name: /Read profile/ })).toHaveAttribute("href", "/about");
   });
 
+  test("home exposes a guided personal OS pulse", async ({ page }) => {
+    await page.goto("/");
+
+    await expect(page.getByRole("heading", { name: "Studio Pulse" })).toBeVisible();
+    await expect(page.getByText('studio.pulse("knowledge")')).toBeVisible();
+    await expect(page.getByRole("button", { name: "最近在做什么？" })).toBeVisible();
+
+    await page.getByRole("button", { name: "最近在做什么？" }).click();
+
+    await expect(page.getByTestId("home-ask-response")).toContainText('ask.ray("recent-work")');
+    await expect(page.getByTestId("home-ask-response")).toContainText("Personal OS");
+    await expect(page.getByTestId("home-ask-response").getByRole("link", { name: /Open route/ })).toHaveAttribute(
+      "href",
+      "/projects",
+    );
+  });
+
+  test("lab exposes the personal OS zoo and copyable object commands", async ({ page }) => {
+    await page.goto("/lab");
+
+    await expect(page.getByRole("heading", { name: "A living homepage, not a dashboard." })).toBeVisible();
+    await expect(page.getByText("StudioPulse")).toBeVisible();
+    await expect(page.getByText("AskMeTerminal")).toBeVisible();
+    await expect(page.getByText("Flaw ledger", { exact: true })).toBeVisible();
+
+    await page.getByRole("button", { name: "推荐一个入口" }).click();
+    await expect(page.getByTestId("personal-os-zoo-response")).toContainText('ask.ray("recommend")');
+
+    await expect(page.getByTestId("source-link-lab-selected-global-command-menu")).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/elegant-developer-studio/blob/main/src/components/global-command-menu.tsx",
+    );
+  });
+
   test("mobile navigation exposes primary and secondary surfaces", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/uses");

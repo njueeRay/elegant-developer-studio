@@ -1447,3 +1447,31 @@ GitHub 推送修复：
 - 为 Evidence Pack 增加 commit、deploymentId、screenshot、metric 等可选字段。
 - 为 Knowledge detail 页增加 Markdown 引用复制能力。
 - 写一篇中文项目复盘文章，展示“判断 → 实现 → 证据 → 验证”的完整路径。
+
+### 第二十四点五阶段：Personal OS Zoo
+
+状态：已实现，已验证，待部署，待外部同步。
+
+阶段判断：
+
+- `ursb.me` 的价值不是可复制模板，而是个人数据操作系统的对象模型。
+- 本站应该吸收 source-backed pulse、guided prompt、命令语法和 flaw ledger，不应该复制高密度模块数量。
+- 首页仍保持优雅工作室姿态，Personal OS 扩展先进入 Lab 校准。
+
+完成：
+
+- 新增 `src/data/personal-os.ts`。
+- 新增 `PersonalOsZoo`，挂载到 `/lab`。
+- `StatusPanel` 升级为 `Studio Pulse`，新增 Knowledge pulse、source 和 command。
+- 首页新增 `Ask Me Terminal` prompt 交互和复制。
+- Lab 注册 `PersonalOsZoo`。
+- e2e 覆盖首页 pulse、prompt 切换和 Lab zoo。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：4 passed。
+- `npm run test:e2e`：108 passed。
+- Playwright 本地生产模式视觉检查：`/` 和 `/lab#personal-os-zoo-title` 的桌面与移动端均无页面级横向溢出，console 无相关 warning/error。

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { LabExplorer } from "@/components/content/lab-explorer";
+import { PersonalOsZoo } from "@/components/personal-os-zoo";
 import {
   getLabCategories,
   labComponents,
@@ -34,6 +35,7 @@ export default function LabPage() {
           studio. This is where polished pieces become traceable building blocks.
         </p>
       </header>
+      <PersonalOsZoo />
       <LabExplorer
         categories={categories}
         components={labComponents}

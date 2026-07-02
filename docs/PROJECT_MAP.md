@@ -58,6 +58,7 @@
 - 第二十一阶段 URL Query 筛选与关系校验：`useQueryFilter`、Blog/Projects/Knowledge query 状态、`validate:content`、内容关系断链检查。
 - 第二十二阶段 URL IA 与命令快捷入口：query 参数写入 IA、Command Center query 快捷入口、Knowledge 详情正文结构化和正文完整性校验。
 - 第二十三阶段内容证据密度增强：Project Evidence Pack、Knowledge Markdown ref、项目证据完整性校验。
+- 第二十四点五阶段 Personal OS Zoo：`/lab` 新增 Personal OS 校准面，首页 `StatusPanel` 升级为 Studio Pulse 和 Ask Me Terminal。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -75,6 +76,7 @@
 | 项目 query 快捷入口 | `/projects?stack=GitHub` | 22 | 已实现 | Command Center 打开 GitHub-backed projects |
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
 | 项目证据包 | `/projects/[slug]#project-evidence-title` | 23 | 已实现 | GitHub、Vercel、飞书和测试证据入口 |
+| Studio Pulse | `/#studio-pulse` | 24.5 | 已实现 | 首页 Personal OS 小切片：写作、建设、Knowledge、音乐和 prompt |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
 | Knowledge | `/knowledge` | 5 | 已实现首版 | 长期知识、片段、学习记录 |
@@ -84,6 +86,7 @@
 | Photos | `/photos` | 3 | 已实现首版 | 照片档案和灯箱 |
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
 | Lab | `/lab` | 5 | 已实现首版 | 实验、原型、组件注册表和质量门禁 |
+| Personal OS Zoo | `/lab#personal-os-zoo-title` | 24.5 | 已实现 | 外部参考迁移后的组件校准面和 flaw ledger |
 | About | `/about` | 5 | 已实现首版 | 个人介绍、时间线、原则、能力与联系方式 |
 | Contact | `/contact` | 7 | 已实现首版 | 公开联系路由、项目讨论入口、联系 brief 与边界说明 |
 | GitHub Issues | `.github/ISSUE_TEMPLATE/*` | 8 | 已实现首版 | 公开协作、bug、feature request 的结构化输入 |
@@ -797,7 +800,34 @@ src/
 
 下一步：
 
+1. Phase 24.5：先吸收 `ursb.me` 的 Personal OS 语法，做 Lab zoo 和首页小切片。
+2. Phase 24：项目证据对象升级。
+3. 为 Evidence Pack 增加 commit、deploymentId、screenshot、metric 等可选字段。
+4. 为 Knowledge detail 页增加 Markdown 引用复制。
+5. 增加中文项目复盘文章，展示“判断 → 实现 → 证据 → 验证”的完整路径。
+
+## 19. 第二十四点五阶段 Personal OS Zoo
+
+本阶段吸收 `ursb.me` 的个人数据操作系统逻辑，但不复制其高密度内容量。
+
+完成内容：
+
+- 新增 `src/data/personal-os.ts`。
+- 新增 `PersonalOsZoo`，挂载到 `/lab`。
+- `StatusPanel` 升级为 `Studio Pulse`，包含 Writing、Building、Knowledge、Listening 四个 source-backed pulse。
+- 首页新增轻量 `Ask Me Terminal` prompt 交互。
+- Lab 注册 `PersonalOsZoo`。
+- e2e 覆盖首页 pulse、prompt 切换和 Lab zoo 可访问性。
+
+阶段判断：
+
+- `ursb.me` 最值得学的是对象模型、数据来源、命令语法和生命迹象，不是暗色卡片外观。
+- 本站仍保持 Elegant Developer Studio 的暖色、克制、低中密度方向。
+- 宠物、3D world、在线人数、访客光标等奇趣交互暂不进入首页，必须先在 Lab 证明有真实作用。
+
+下一步：
+
 1. Phase 24：项目证据对象升级。
-2. 为 Evidence Pack 增加 commit、deploymentId、screenshot、metric 等可选字段。
-3. 为 Knowledge detail 页增加 Markdown 引用复制。
-4. 增加中文项目复盘文章，展示“判断 → 实现 → 证据 → 验证”的完整路径。
+2. 把 Personal OS 的 `DataSourceBadge` 语法迁移到项目详情和 Knowledge 详情。
+3. 为 Evidence Pack 增加更硬证据字段。
+4. 继续观察首页密度，避免把 Studio Pulse 扩张成仪表盘。

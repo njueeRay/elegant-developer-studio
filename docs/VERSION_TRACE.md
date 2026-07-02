@@ -1080,3 +1080,36 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 外部同步：
 
 - 飞书：[56｜第二十三阶段 内容证据密度增强](https://scnlb1lk96sb.feishu.cn/wiki/Gz6RwlWCliND0bkV5Z1cLfk0n1d)。
+
+## Unreleased - 第二十四点五阶段 Personal OS Zoo
+
+日期：2026-07-02
+Primary commit：待提交。
+Vercel deployment：待部署。
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 新增 `src/data/personal-os.ts`。
+- 新增 `PersonalOsZoo` 并挂载到 `/lab`。
+- `StatusPanel` 升级为 `Studio Pulse`，增加 source-backed pulse 和 guided prompt。
+- Lab 注册 `PersonalOsZoo`。
+- e2e 覆盖首页 Studio Pulse、Ask Me Terminal 和 Lab Personal OS Zoo。
+
+产品判断：
+
+- 迁移 `ursb.me` 的对象模型和生命迹象，不迁移其高密度卡片规模。
+- Personal OS 扩展先进入 Lab 校准，再进入首页。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：4 passed。
+- `npm run test:e2e`：108 passed。
+- Playwright 本地生产模式视觉检查：`/` 和 `/lab#personal-os-zoo-title` 的桌面与移动端均无页面级横向溢出，console 无相关 warning/error。
+
+外部同步：
+
+- 飞书：待同步。
