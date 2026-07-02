@@ -1116,3 +1116,32 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 外部同步：
 
 - 飞书：[57｜第二十四点五阶段 Personal OS Zoo](https://scnlb1lk96sb.feishu.cn/wiki/KJu3wcx4tiuoYBk6GuPcZRDFnLd)。
+
+## Planned - 第二十四阶段项目证据对象升级
+
+日期：2026-07-02
+Primary commit：待实现
+Deployment：待实现
+Production alias：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- `ProjectMeta.evidencePack` 从轻量链接升级为 typed evidence object。
+- 项目详情页 Evidence Pack 显示 source、deployment、document、test、screenshot、metric 等证据类型。
+- `DataSourceBadge` 从 Personal OS Zoo 迁移到真实内容详情页。
+- Knowledge 详情页增加 Markdown ref 复制。
+- `validate:content` 增加证据对象完整性校验。
+
+产品判断：
+
+- 第二十四阶段必须补齐第二十三阶段留下的证据硬度，而不是继续增加页面数量。
+- 证据对象要提高可信度，但不能制造 dashboard 感。
+- 当前阶段以本地文档和代码可追溯为主，完成后再同步飞书。
+
+验证计划：
+
+- `npm run validate:content`
+- `npm run lint`
+- `npm run build`
+- `npm run test:e2e`
+- Playwright 检查项目详情和 Knowledge 详情桌面、移动端无页面级横向溢出。

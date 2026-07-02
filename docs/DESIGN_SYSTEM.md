@@ -107,6 +107,14 @@ Phase 5 已实现首版：
 - `ExperimentTimeline`
 - `QualityGateList`
 
+Phase 24 计划沉淀：
+
+- `EvidenceObjectCard`
+- `EvidenceTypeBadge`
+- `VerificationStamp`
+- `DataSourceBadge` 复用到项目详情和 Knowledge 详情
+- `KnowledgeDetailReference`
+
 后续保留：
 
 - `AlbumCard`
@@ -197,6 +205,16 @@ Phase 5 已实现首版：
 - 项目详情必须优先使用 `Evidence Pack` 显示可检查证据；`Case Study Diff` 负责解释变化，`Evidence Pack` 负责证明。
 - Evidence Pack 证据卡必须链接到真实 GitHub、Vercel、飞书、测试文件或其他可访问证据，不能只链接回当前页面。
 - 当前证据卡只做轻量入口，不做 nested card、仪表盘或时间线。
+
+## Phase 24 证据对象规则
+
+- Evidence object 必须先回答“证明什么”，再展示“从哪里看”。
+- Evidence object 的首层信息只放类型、标题、说明、来源和验证状态；commit、deploymentId、metric、screenshot 放在次级层级。
+- `DataSourceBadge` 可以表达 source、route、command、verifiedAt，但不能伪装成终端输出。
+- `metric` 必须有单位或上下文，例如 `108 e2e tests passed`，不能使用无来源的大数字。
+- `screenshot` 必须是高信息密度资产，不能用低质量占位图。
+- Knowledge 详情页的引用复制必须产生 Markdown 格式，默认服务飞书、GitHub issue、PR 和本地文档。
+- 证据组件不能互相嵌套成卡片套卡片，也不能把项目详情变成 dashboard。
 
 ## 素材规则
 

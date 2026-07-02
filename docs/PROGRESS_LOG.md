@@ -1480,3 +1480,31 @@ GitHub 推送修复：
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/AFdKdXk3heycQR32WWMBBffzrSMe`。
 - Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，108 passed。
 - 飞书：[57｜第二十四点五阶段 Personal OS Zoo](https://scnlb1lk96sb.feishu.cn/wiki/KJu3wcx4tiuoYBk6GuPcZRDFnLd)。
+
+### 第二十四阶段：项目证据对象升级
+
+状态：已规划，待实现，待验证，待部署，待外部同步。
+
+当前状态复盘：
+
+- 第二十三阶段已经让项目详情拥有 `Evidence Pack`，但证据仍偏轻量链接。
+- 第二十四点五阶段已经在 Lab 中验证 Personal OS 的 `DataSourceBadge` 和 source-backed pulse 语法。
+- 现在最值得推进的不是新增页面，而是把证据对象、引用对象和校验脚本做硬。
+- 用户明确要求本地文档维护阶段目标和开发进度，因此本阶段先补齐项目地图、路线图、设计系统和版本追溯。
+
+计划完成：
+
+- 新增 `docs/PHASE24_EVIDENCE_OBJECTS_PLAN.md`。
+- `PROJECT_MAP.md` 增加项目证据对象和 Knowledge 详情引用入口。
+- `ROADMAP.md` 增加 Phase 24 的交付、组件、非目标和验收标准。
+- `DESIGN_SYSTEM.md` 增加 Phase 24 证据对象规则。
+- `VERSION_TRACE.md` 增加 planned entry。
+
+下一步执行：
+
+- 抽出可复用 `DataSourceBadge`。
+- 升级项目 evidence 数据模型。
+- 改造项目详情 Evidence Pack。
+- 增加 Knowledge 详情 Markdown ref。
+- 更新 `validate:content` 和 e2e。
+- 完成部署、生产验证和飞书同步。

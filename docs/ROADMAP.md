@@ -333,6 +333,49 @@
 - 将 `SourceReveal` 升级为 GitHub source link。
 - 为 Lab 增加第一个真实 `ComponentPreview`。
 
+## Phase 24：项目证据对象升级
+
+目标：把项目证据从“可点击链接”升级为“可检查对象”，让项目详情页能清楚说明来源、验证方式、部署、截图、指标和引用路径。
+
+状态：已规划，待实现。
+
+交付：
+
+- 升级 `ProjectMeta.evidencePack` 数据模型。
+- 项目详情页改造 `Evidence Pack`，显示 typed evidence object。
+- 抽出或复用 `DataSourceBadge`，从 Lab 迁移到真实内容详情页。
+- Knowledge 详情页增加 Markdown 引用复制。
+- `validate:content` 增加证据对象校验。
+- e2e 覆盖 evidence object、Knowledge detail copy ref 和移动端无溢出。
+
+组件：
+
+- `EvidenceObjectCard`
+- `EvidenceTypeBadge`
+- `DataSourceBadge`
+- `VerificationStamp`
+
+本阶段判断：
+
+- 作品集可信度不应依赖更大的视觉图，而应依赖可追溯证据。
+- Personal OS 的 source-backed 语法应该先进入项目和 Knowledge 详情，而不是继续扩大首页模块数量。
+- 证据组件必须克制，不能把个人主页变成部署 dashboard。
+
+暂不做：
+
+- 自动 GitHub / Vercel API 同步。
+- 后台 CMS。
+- 证据时间线。
+- 新首页模块。
+- 大型关系图谱。
+
+验收：
+
+- 至少两个项目详情页出现结构化 evidence object。
+- 每条 evidence 有真实 href、类型、说明和验证信息。
+- Knowledge 详情页可以复制 Markdown ref。
+- `npm run validate:content`、`npm run lint`、`npm run build`、`npm run test:e2e` 通过。
+
 ## Phase 24.5：Personal OS Zoo
 
 目标：吸收 `ursb.me` 的个人操作系统逻辑，但先在 Lab 校准，不把首页改成高密度数据墙。
