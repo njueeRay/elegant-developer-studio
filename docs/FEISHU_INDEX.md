@@ -64,6 +64,7 @@
 | URL Query 筛选复盘 | [54｜第二十一阶段 URL Query 筛选与关系校验](https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc) | query-backed filters、内容关系校验、生产验证和 Phase 22 方向 |
 | URL IA 与命令快捷入口 | [55｜第二十二阶段 URL IA 与命令快捷入口](https://scnlb1lk96sb.feishu.cn/wiki/GwHwwdiFeiEb3lkbHDXcs2Mgnbc) | query IA、Command Center query 快捷入口、Knowledge 详情正文和生产验证 |
 | 内容证据密度复盘 | [56｜第二十三阶段 内容证据密度增强](https://scnlb1lk96sb.feishu.cn/wiki/Gz6RwlWCliND0bkV5Z1cLfk0n1d) | Evidence Pack、Knowledge Markdown ref、项目证据校验和生产验证 |
+| Personal OS Zoo | [57｜第二十四点五阶段 Personal OS Zoo](https://scnlb1lk96sb.feishu.cn/wiki/KJu3wcx4tiuoYBk6GuPcZRDFnLd) | ursb.me 参考迁移、Studio Pulse、Ask Me Terminal、Lab zoo 和 flaw ledger |
 
 ## 当前项目状态
 

@@ -79,6 +79,7 @@
 | 54｜第二十一阶段 URL Query 筛选与关系校验 | `docs/PHASE21_QUERY_FILTERS_AND_RELATION_VALIDATION.md` | `URFOwJV9bi2GVJkNNxTcNkMfnbc` | `WIJfdP4NyoidCIx6EnocT1DenFA` | https://scnlb1lk96sb.feishu.cn/wiki/URFOwJV9bi2GVJkNNxTcNkMfnbc |
 | 55｜第二十二阶段 URL IA 与命令快捷入口 | `docs/PHASE22_URL_IA_AND_COMMAND_SHORTCUTS.md` | `GwHwwdiFeiEb3lkbHDXcs2Mgnbc` | `AXF9d7QBkoupUhxh4bpcjx4rnMc` | https://scnlb1lk96sb.feishu.cn/wiki/GwHwwdiFeiEb3lkbHDXcs2Mgnbc |
 | 56｜第二十三阶段 内容证据密度增强 | `docs/PHASE23_EVIDENCE_DENSITY_REVIEW.md` | `Gz6RwlWCliND0bkV5Z1cLfk0n1d` | `CkAid6UGRoF2DOx9HLMch5Ikn5d` | https://scnlb1lk96sb.feishu.cn/wiki/Gz6RwlWCliND0bkV5Z1cLfk0n1d |
+| 57｜第二十四点五阶段 Personal OS Zoo | `docs/PHASE24_5_PERSONAL_OS_ZOO.md` | `KJu3wcx4tiuoYBk6GuPcZRDFnLd` | `XO4qdj2OVoCUjLxvv32cD9qrnxg` | https://scnlb1lk96sb.feishu.cn/wiki/KJu3wcx4tiuoYBk6GuPcZRDFnLd |
 
 ## 同步协议
 

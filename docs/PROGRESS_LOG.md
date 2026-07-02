@@ -1479,3 +1479,4 @@ GitHub 推送修复：
 - Deployment URL：`https://elegant-developer-studio-4pimef4a2.vercel.app`。
 - Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/AFdKdXk3heycQR32WWMBBffzrSMe`。
 - Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，108 passed。
+- 飞书：[57｜第二十四点五阶段 Personal OS Zoo](https://scnlb1lk96sb.feishu.cn/wiki/KJu3wcx4tiuoYBk6GuPcZRDFnLd)。
