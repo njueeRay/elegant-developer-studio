@@ -1450,7 +1450,7 @@ GitHub 推送修复：
 
 ### 第二十四点五阶段：Personal OS Zoo
 
-状态：已实现，已验证，待部署，待外部同步。
+状态：已实现，已验证，已部署，待外部同步。
 
 阶段判断：
 
@@ -1475,3 +1475,7 @@ GitHub 推送修复：
 - targeted e2e：4 passed。
 - `npm run test:e2e`：108 passed。
 - Playwright 本地生产模式视觉检查：`/` 和 `/lab#personal-os-zoo-title` 的桌面与移动端均无页面级横向溢出，console 无相关 warning/error。
+- Vercel deployment：`dpl_AFdKdXk3heycQR32WWMBBffzrSMe`。
+- Deployment URL：`https://elegant-developer-studio-4pimef4a2.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/AFdKdXk3heycQR32WWMBBffzrSMe`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，108 passed。

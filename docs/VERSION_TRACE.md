@@ -1084,9 +1084,11 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 ## Unreleased - 第二十四点五阶段 Personal OS Zoo
 
 日期：2026-07-02
-Primary commit：待提交。
-Vercel deployment：待部署。
+Primary commit：`03f2cac`
+Vercel deployment：`dpl_AFdKdXk3heycQR32WWMBBffzrSMe`
 Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-4pimef4a2.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/AFdKdXk3heycQR32WWMBBffzrSMe`
 
 范围：
 
@@ -1109,6 +1111,7 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - targeted e2e：4 passed。
 - `npm run test:e2e`：108 passed。
 - Playwright 本地生产模式视觉检查：`/` 和 `/lab#personal-os-zoo-title` 的桌面与移动端均无页面级横向溢出，console 无相关 warning/error。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，108 passed。
 
 外部同步：
 
