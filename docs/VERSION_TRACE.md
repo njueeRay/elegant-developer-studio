@@ -1311,10 +1311,12 @@ Deployed source commit：`304c090`
 - `/command-index.json` 当前是全量 JSON；当 items > 120 或 gzip payload 明显增长时，应评估 `/api/command-index` 或服务端搜索。
 - Production smoke 已覆盖 command index、release evidence、Command Center 懒加载和公开路由可访问性。
 
-## Unreleased - 第二十九阶段 Reading & Knowledge Quality Layer
+## Released - 第二十九阶段 Reading & Knowledge Quality Layer
 
 日期：2026-07-04
 Primary implementation commit：`0f7fa20`
+Deployment record commit：待记录
+Deployed source commit：`f0ff534`
 Production host：`https://raynode.me`
 
 范围：
@@ -1334,7 +1336,10 @@ Production host：`https://raynode.me`
 - `npm run build`：通过，53 routes。
 - targeted e2e：6 passed。
 - full e2e：180 passed。
-- RayNode scripted deploy：待执行。
+- RayNode scripted deploy：通过，远端源码为 `f0ff534`，service active。
+- production targeted smoke：3 passed。
+- production public route smoke：47 passed。
+- `https://raynode.me/release-evidence.json`：commit `f0ff534`，14 posts / 5 projects / 16 knowledge entries / 51 public routes。
 
 残余风险：
 

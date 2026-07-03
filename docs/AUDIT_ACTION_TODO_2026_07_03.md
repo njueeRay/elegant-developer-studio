@@ -571,7 +571,7 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 29：Reading & Knowledge Quality Layer
 
-状态：已实现并完成完整本地回归，2026-07-04；待提交与 RayNode 部署。
+状态：已完成并部署到 RayNode，2026-07-04。
 
 优先级：中。
 
@@ -617,6 +617,12 @@ Knowledge kind 评估：
 - `npm run validate:content` 会阻止失控 intent、非法 language、缺失 citation guide、空 related trail 和空写作线。
 - 完整本地质量门禁通过：`report:command-index`、`release:evidence`、`validate:release-evidence`、`validate:content`、`lint`、`build`、`npm run test:e2e -- --workers=1`。
 - 完整本地 e2e：180 passed。
+- Phase 29 implementation commit：`0f7fa20`。
+- RayNode 已部署提交 `f0ff534`。
+- 线上 `/release-evidence.json` 返回 `commitSha: f0ff534`、14 posts / 5 projects / 16 knowledge entries / 51 public routes。
+- 线上 `https://raynode.me/blog?track=product-judgment` 返回 200。
+- production targeted smoke：3 passed，覆盖 `/blog`、writing tracks 和文章 RelatedReading。
+- production public route smoke：47 passed。
 
 验收标准：
 

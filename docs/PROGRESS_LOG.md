@@ -1784,7 +1784,7 @@ GitHub 推送修复：
 
 日期：2026-07-04
 
-状态：已实现并完成完整本地回归，待提交和 RayNode 部署。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -1812,8 +1812,16 @@ GitHub 推送修复：
 - targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "blog language filter|blog writing tracks|article related reading" --workers=1`，6 passed。
 - 完整本地质量门禁：`npm run report:command-index && npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`，通过。
 - 完整本地 e2e：180 passed。
+- implementation commit：`0f7fa20`。
+- trace commit：`f0ff534`。
+- `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `f0ff534`，service active。
+- `https://raynode.me/release-evidence.json`：返回 `commitSha` `f0ff534`、14 posts / 5 projects / 16 knowledge entries / 51 public routes。
+- `https://raynode.me/blog?track=product-judgment`：返回 200。
+- production targeted smoke：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "blog writing tracks|article related reading|serves /blog($|\\?)" --workers=1`，3 passed。
+- production public route smoke：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves" --workers=1`，47 passed。
 
 下一步：
 
-- 提交、推送并部署到 RayNode。
-- 部署后生产 smoke 覆盖 `/blog?track=product-judgment` 和文章阅读质量上下文。
+- 启动 Phase 30：RayNode Operations Hardening。
+- 把生产 smoke 和 release evidence 检查沉淀为更短、更可复用的运维命令。
+- 同步 Feishu 当前上下文、Phase 25-29 结果。

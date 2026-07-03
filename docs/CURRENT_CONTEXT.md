@@ -6,7 +6,7 @@
 
 Phase 30：RayNode Operations Hardening。
 
-Phase 29 已完成阅读质量层第一切片并通过完整本地回归：Blog 有 4 条长期 writing tracks，文章 intent 进入受控词表，文章页显示引用/技术语境，RelatedReading 开始解释下一步路径。Phase 29 完成提交和 RayNode 部署后，主线转入 Phase 30：RayNode Operations Hardening，把服务器从“能部署”推进到“可持续运维”。
+Phase 29 已完成阅读质量层第一切片并部署到 RayNode：Blog 有 4 条长期 writing tracks，文章 intent 进入受控词表，文章页显示引用/技术语境，RelatedReading 开始解释下一步路径。当前主线转入 Phase 30，把服务器从“能部署”推进到“可持续运维”。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -31,8 +31,8 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`304c090`。
-- `/release-evidence.json` 返回部署提交 `304c090`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 51 public routes。
+- 当前服务器源码提交：`f0ff534`。
+- `/release-evidence.json` 返回部署提交 `f0ff534`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 51 public routes。
 - `/command-index.json` 返回 110 command items。
 - 生产公开路由可访问性测试通过：47 passed。
 
@@ -117,6 +117,9 @@ RayNode 当前状态：
 - `validate:content` 增加 writing intent、language、citation guide、related trails 和 writing track 校验。
 - targeted e2e：6 passed。
 - 完整本地 e2e：180 passed。
+- 已部署到 RayNode，部署源码提交为 `f0ff534`。
+- production targeted smoke：3 passed。
+- production public route smoke：47 passed。
 
 ## 已完成的 Phase 25 切片
 
@@ -180,6 +183,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 完成 Phase 29 提交、部署和生产 smoke。
-2. 启动 Phase 30：RayNode Operations Hardening。
+1. 启动 Phase 30：RayNode Operations Hardening。
+2. 为 RayNode 增加可复用 smoke / health 脚本，减少人工 curl 和临时 grep。
 3. 同步 Feishu 当前上下文、Phase 25-29 结果。

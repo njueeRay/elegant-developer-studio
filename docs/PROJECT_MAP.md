@@ -80,9 +80,9 @@
 | 博客列表 | `/blog` | 2 | 已实现 | 长文和写作归档 |
 | 博客筛选状态 | `/blog?tag=&language=` | 21 | 已实现 | 可分享、可刷新、可返回的写作筛选 |
 | 博客 query 快捷入口 | `/blog?tag=` `/blog?language=` | 22 | 已实现 | Command Center 打开精选写作状态 |
-| 博客 writing tracks | `/blog?track=` | 29 | 已实现待部署 | 产品判断、设计工程、部署自动化、AI 协作四条长期写作线 |
+| 博客 writing tracks | `/blog?track=` | 29 | 已实现 | 产品判断、设计工程、部署自动化、AI 协作四条长期写作线 |
 | 文章详情 | `/blog/[slug]` | 2/19 | 已实现 | MDX 阅读体验、语言与写作意图、相关阅读路径 |
-| 文章阅读质量上下文 | `/blog/[slug]` | 29 | 已实现待部署 | 显示 writing track、中文引用场景或英文技术语境 |
+| 文章阅读质量上下文 | `/blog/[slug]` | 29 | 已实现 | 显示 writing track、中文引用场景或英文技术语境 |
 | 项目列表 | `/projects` | 2 | 已实现 | 精选作品和 case study |
 | 项目筛选状态 | `/projects?stack=` | 21 | 已实现 | 可分享的项目技术栈筛选 |
 | 项目 query 快捷入口 | `/projects?stack=GitHub` | 22 | 已实现 | Command Center 打开 GitHub-backed projects |
