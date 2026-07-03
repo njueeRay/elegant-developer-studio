@@ -1231,7 +1231,7 @@ Preview / fallback：`https://elegant-developer-studio.vercel.app`
 ## Unreleased - 第二十七阶段 Evidence Automation & Release Discipline
 
 日期：2026-07-04
-Primary implementation commit：待记录
+Primary implementation commit：`9e454a2`
 Production host：`https://raynode.me`
 Release evidence：`/release-evidence.json`
 
