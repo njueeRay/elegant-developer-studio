@@ -1,0 +1,51 @@
+export const meta = {
+  slug: "raynode-standalone-deployment",
+  title: "RayNode 自托管部署复盘",
+  subtitle: "一次小服务器上部署 Next.js 个人站的真实复盘：远端构建失败、本地 standalone 产物、systemd、Caddy 和回滚边界。",
+  date: "2026-07-03",
+  updated: "2026-07-03",
+  status: "Published",
+  readingTime: "7 min read",
+  language: "中文",
+  intent: "工程复盘",
+  tags: ["部署", "Next.js", "RayNode", "Operations"],
+  featured: true,
+  summary:
+    "把个人主页从 Vercel 扩展到 RayNode 自托管时，真正重要的不是命令顺利，而是承认小服务器不能承受远端构建，并把部署策略改成本地 standalone 产物。",
+  toc: [
+    { id: "the-failure-was-the-signal", title: "失败就是信号" },
+    { id: "runtime-and-source-should-separate", title: "运行产物和源码分离" },
+    { id: "deployment-is-product-trust", title: "部署也是产品可信度" },
+  ],
+  relatedPostSlugs: ["homepage-truth-source-audit", "evidence-without-precision-theater"],
+  relatedKnowledgeSlugs: ["deployment-is-product-surface", "truth-source-before-polish"],
+  relatedProjectSlugs: ["codex-feishu-bridge", "studio-knowledge-base"],
+};
+
+# RayNode 自托管部署复盘
+
+这次部署最有价值的部分不是“服务器最终能访问”，而是中途暴露了一个更真实的约束：小型 ECS 不应该承担当前 Next.js 项目的 production build。
+
+远端 `npm ci` 和内容校验都没问题，但 `next build` 卡在 optimized production build 后，SSH banner、HTTP response、HTTPS handshake 都开始超时。这个现象比任何主观判断都清楚：构建不是运行，运行链路必须更轻。
+
+<InsightCard title="部署规则" tone="rust">
+  小服务器只运行产物，不承担重型构建。构建应该在本地、CI 或更适合的构建环境完成。
+</InsightCard>
+
+## 失败就是信号
+
+如果一次部署把 sshd 和 Caddy 都拖到无法及时响应，它就不是“再等等”的问题，而是架构信号。把失败解释成偶发网络问题，会让下一次部署继续踩同一个坑。
+
+这次更合理的判断是：RayNode 应该成为 runtime host，而不是 build host。Next.js standalone output 正好适合这个边界。
+
+## 运行产物和源码分离
+
+源码仓库应该留在 `/srv/apps/elegant-developer-studio`，运行产物应该释放到 `/srv/apps/elegant-developer-studio-runtime`。这两个目录分开后，回滚、排查和下一次更新都更清楚。
+
+systemd 只需要跑 `node server.js`，Caddy 只负责 TLS 和反代。这个结构不华丽，但足够可查。
+
+## 部署也是产品可信度
+
+个人主页不是只有视觉和内容。RSS、sitemap、robots、canonical、服务状态、回滚路径和运维记录，都会影响一个访问者和搜索引擎如何判断这个站点。
+
+所以部署文档不应该是附录。它应该进入项目地图，成为这个 Studio 的可信度层。

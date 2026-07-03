@@ -1,0 +1,47 @@
+export const meta = {
+  slug: "homepage-truth-source-audit",
+  title: "个人主页先说真话",
+  subtitle: "一个漂亮的个人站如果主域名、证据、状态和文案互相矛盾，就会比普通模板更不可信。",
+  date: "2026-07-03",
+  updated: "2026-07-03",
+  status: "Published",
+  readingTime: "6 min read",
+  language: "中文",
+  intent: "产品审计",
+  tags: ["产品判断", "SEO", "Evidence", "中文写作"],
+  featured: true,
+  summary:
+    "一次针对个人主页的事实源审计：先修 canonical、RSS、sitemap、假状态和腐烂证据，再继续追求更复杂的个人操作系统。",
+  toc: [
+    { id: "truth-before-style", title: "真实先于风格" },
+    { id: "precision-can-rot", title: "精确会腐烂" },
+    { id: "audit-should-change-the-roadmap", title: "审计必须改变路线图" },
+  ],
+  relatedPostSlugs: ["raynode-standalone-deployment", "evidence-without-precision-theater"],
+  relatedKnowledgeSlugs: ["truth-source-before-polish", "evidence-without-precision-theater"],
+  relatedProjectSlugs: ["lumen", "studio-knowledge-base"],
+};
+
+# 个人主页先说真话
+
+个人主页可以有漂亮的动效、精致的排版和一点程序员气质。但这些都不是第一优先级。一个站点如果主域名、RSS、sitemap、证据卡片和 README 说的不是同一件事，它越精致，越显得不可靠。
+
+这次审计最尖锐的结论不是“首页需要更好看”，而是：站点必须先说真话。
+
+## 真实先于风格
+
+风格解决第一眼，事实解决第二眼。第一眼看到 Ray Studio，用户可能觉得这是一个有审美的设计工程师；第二眼点开 RSS、项目证据、GitHub、部署链接，如果发现事实源互相漂移，信任会立刻下降。
+
+所以主站 URL、preview URL、metadataBase、sitemap、robots、RSS 和 README 必须来自同一个事实源。
+
+## 精确会腐烂
+
+`108 e2e tests passed` 看起来很专业，但它是容易腐烂的数字。测试数量只要变化一次，这个证据就会变成精确幻觉。
+
+更好的表达是说明覆盖范围：公开路由、命令流、复制反馈、筛选、移动端溢出。数字可以留在 CI 或版本追溯里，不应该手写在长期展示页面上。
+
+## 审计必须改变路线图
+
+真正有价值的审计不应该只产生一份报告。它应该改变下一阶段的优先级。
+
+这就是 Phase 25 的意义：先修 Truth Source & Public Trust。站点要先可访问、可验证、可分享、可追溯，然后才继续扩展更多 Personal OS 表面。

@@ -5,12 +5,14 @@ import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { PostExplorer } from "@/components/content/tag-filter";
 import { getAllPostMeta, getAllTags } from "@/lib/content";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Writing - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Writing",
   description:
-    "Essays and notes on design engineering, calm systems, command interfaces, and personal software.",
-};
+    "Ray Studio 的文章归档：设计工程、冷静系统、命令界面、AI 协作和个人软件实践。",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   const posts = getAllPostMeta();

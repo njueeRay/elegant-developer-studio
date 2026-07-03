@@ -5,12 +5,14 @@ import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { ProjectExplorer } from "@/components/content/tag-filter";
 import { getAllProjectMeta, getAllTags } from "@/lib/content";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Projects - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Projects",
   description:
-    "Selected work from Ray Studio: product systems, design engineering, documentation architecture, and studio tools.",
-};
+    "Ray Studio 的作品集：产品系统、设计工程、文档架构、工作室工具和可追溯 case study。",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   const projects = getAllProjectMeta();

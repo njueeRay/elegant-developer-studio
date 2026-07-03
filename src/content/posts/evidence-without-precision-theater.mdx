@@ -1,0 +1,52 @@
+export const meta = {
+  slug: "evidence-without-precision-theater",
+  title: "Evidence Without Precision Theater",
+  subtitle: "A portfolio can use evidence without turning every card into a brittle dashboard.",
+  date: "2026-07-03",
+  updated: "2026-07-03",
+  status: "Published",
+  readingTime: "5 min read",
+  language: "English",
+  intent: "Portfolio systems",
+  tags: ["Evidence", "Portfolio", "Trust"],
+  featured: true,
+  summary:
+    "Evidence packs are useful when they reveal source, deployment, verification, and tradeoffs. They become harmful when they hard-code volatile numbers for decorative precision.",
+  toc: [
+    { id: "evidence-is-not-a-dashboard", title: "Evidence is not a dashboard" },
+    { id: "volatile-facts-need-a-home", title: "Volatile facts need a home" },
+    { id: "the-better-card", title: "The better card" },
+  ],
+  relatedPostSlugs: ["homepage-truth-source-audit", "interface-is-a-promise"],
+  relatedKnowledgeSlugs: ["evidence-without-precision-theater", "truth-source-before-polish"],
+  relatedProjectSlugs: ["lumen", "studio-knowledge-base"],
+};
+
+# Evidence Without Precision Theater
+
+Portfolio evidence is a promise. A source link says the work can be inspected. A deployment link says the work can be used. A test reference says the behavior has a guardrail.
+
+But evidence can also become theater. The moment a portfolio card hard-codes a test count, an old deployment ID, or a stale commit, it starts borrowing credibility from a fact that is already decaying.
+
+## Evidence is not a dashboard
+
+The page should not pretend to be a live operations console unless it actually has a live data source. For a personal studio, evidence should answer simple questions:
+
+- Where is the source?
+- Where is the running surface?
+- What behavior is covered?
+- What changed because of this work?
+
+That is enough for trust. More precision is not automatically more truth.
+
+## Volatile facts need a home
+
+Deployment IDs, test counts, and commit hashes should live in release traces, CI artifacts, or generated release evidence. They can still be shown, but they should not be hand-maintained inside MDX.
+
+The rule is blunt: if a fact changes frequently, it needs a system. If it does not have a system, describe the stable coverage instead.
+
+## The better card
+
+A better evidence card says: “Playwright covers public routes, command flows, copy feedback, filters, and mobile overflow.” That is less numerically exciting than a count, but it is more durable.
+
+Precision is only valuable when the maintenance loop is real.

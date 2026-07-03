@@ -23,9 +23,15 @@
 
 线上：
 
-- Production：`https://elegant-developer-studio.vercel.app`
+- Production：`https://raynode.me`
+- Preview / fallback：`https://elegant-developer-studio.vercel.app`
 - GitHub：`https://github.com/njueeRay/elegant-developer-studio`
 - 飞书知识库：`https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb`
+
+当前审计行动入口：
+
+- `docs/AUDIT_ACTION_TODO_2026_07_03.md`：基于 `CLAUDE_CODE_PERSONAL_HOMEPAGE_AUDIT_2026_07_03.md` 形成的 P0-P3 行动清单。
+- RayNode 部署已恢复；当前最优先事项不是继续扩新表面，而是统一站点事实源、修复假状态和腐烂证据。
 
 已实现：
 
@@ -423,32 +429,15 @@ docs/
   PRD.md                         产品需求文档
   ROADMAP.md                     阶段计划和组件 backlog
   PROJECT_MAP.md                 产品、仓库、阶段、追踪总地图
+  CURRENT_CONTEXT.md             当前主线、线上状态、质量门禁和下一步
+  AUDIT_ACTION_TODO_2026_07_03.md Phase 25 审计行动清单
   INFORMATION_ARCHITECTURE.md    导航、路由和命名决策
   DESIGN_SYSTEM.md               视觉 tokens 和组件库存
   DECISIONS.md                   产品/架构决策记录
   PROGRESS_LOG.md                阶段进度账本
-  PHASE2_RESEARCH.md             第二阶段复盘和调研
-  PHASE3_RESEARCH.md             第三阶段媒体层调研和计划
-  PHASE3_REVIEW.md               第三阶段媒体层复盘
-  PHASE4_RESEARCH.md             第四阶段交互层调研和计划
-  PHASE4_REVIEW.md               第四阶段首个切片复盘
-  PHASE4_KEYBOARD_RESEARCH.md    第四阶段键盘与搜索增强调研
-  PHASE4_KEYBOARD_REVIEW.md      第四阶段键盘与搜索增强复盘
-  PHASE4_CONTEXT_RESEARCH.md     第四阶段上下文搜索调研和计划
-  PHASE4_CONTEXT_REVIEW.md       第四阶段上下文搜索复盘
-  PHASE4_STATUS_FILTER_RESEARCH.md 第四阶段状态面板与筛选调研
-  PHASE4_STATUS_FILTER_REVIEW.md  第四阶段状态面板与筛选复盘
-  PHASE4_PHOTO_FILTER_RESEARCH.md 第四阶段照片筛选调研
-  PHASE4_PHOTO_FILTER_REVIEW.md 第四阶段照片筛选复盘
-  PHASE5_KNOWLEDGE_REVIEW.md    第五阶段 Knowledge 首个切片复盘
-  PHASE5_KNOWLEDGE_RESEARCH.md  第五阶段 Knowledge 首个切片调研
-  PHASE5_USES_RESEARCH.md       第五阶段 Uses 调研与首个切片
-  PHASE11_READING_FOCUS_RESEARCH.md 第十一阶段阅读焦点调研
-  PHASE11_READING_FOCUS_REVIEW.md   第十一阶段阅读焦点复盘
-  PHASE12_TRACEABLE_PORTFOLIO_RESEARCH.md 第十二阶段可追溯作品集调研
-  PHASE12_TRACEABLE_PORTFOLIO_REVIEW.md   第十二阶段可追溯作品集复盘
   FEISHU_SYNC.md                 飞书同步地图和节点 token
   VERSION_TRACE.md               版本、部署、commit 追溯
+  archive/phase-history/         历史阶段 research / review 文档
 
 public/
   assets/                        生产 UI 使用的生成素材
@@ -458,7 +447,7 @@ src/
   app/                           Next.js App Router 入口
   components/                    可复用交互组件
   content/                       MDX 文章和项目 case study
-  data/                          首页 mock 和未来数据契约
+  data/                          首页、媒体、Knowledge、Uses、Lab、发布证据数据
   lib/                           内容注册表和工具函数
 ```
 
@@ -468,8 +457,6 @@ src/
 
 - `StudioHome`
 - `Header`
-- `WorkbenchPanel`
-- `WorkbenchRow`
 - `HighlightCard`
 - `SocialLinks`
 - `CommandPalette`
@@ -581,8 +568,10 @@ src/
 
 阶段完成前必须确认：
 
+- `npm run validate:content` 通过。
 - `npm run lint` 通过。
 - `npm run build` 通过。
+- 关键 Chromium smoke e2e 通过。
 - 桌面和移动端视觉检查完成。
 - 无横向溢出。
 - 核心交互已验证。
@@ -590,17 +579,22 @@ src/
 - GitHub issue/milestone 状态与仓库一致。
 - 飞书知识库已同步，且使用中文为主。
 
+GitHub Actions：
+
+- `.github/workflows/quality.yml` 在 push 到 `main` 和 pull request 时运行。
+- CI 覆盖 `npm ci`、`npm run validate:content`、`npm run lint`、`npm run build` 和 Chromium smoke e2e。
+- `NEXT_PUBLIC_SITE_URL` 在 CI 中显式设为 `https://raynode.me`，避免主域名事实源漂移。
+
 ## 10. 下一步
 
-下一步是第十二阶段之后的 Portfolio OS 继续推进：
+当前下一步是 Phase 25：Truth Source & Public Trust。
 
-1. 给 `SourceReveal` 增加可选行号和 commit permalink。
-2. 给 `ComponentPreview` 增加 viewport switch 和更真实的组件状态。
-3. 为 `Case Study Diff` 接入截图、PR、commit 或指标证据。
-4. 为 Knowledge backlinks 增加 schema 校验。
-5. 设计 `Reference Constellation`，只展示真实关系，不做装饰性大图谱。
-6. 继续观察 `GlobalSearch` 是否有必要从 Command Center 中抽象。
-7. 第三阶段并行决定是否引入真实音频文件。
+1. 完成主域名事实源、metadata、RSS、sitemap、robots 和 README 一致性。
+2. 修复证据卡中的腐烂数字和假实时状态。
+3. 建立最小 CI 和 modal 焦点契约。
+4. 增加真实内容资产，降低“系统大于内容”的风险。
+5. 建立 `CURRENT_CONTEXT` 并归档早期 phase 文档。
+6. 验证 RayNode 主站并同步飞书。
 
 ## 11. 第十三至第十六阶段增量地图
 
@@ -681,7 +675,7 @@ src/
 - `/blog/[slug]` metadata rail 显示 Language 与 Intent。
 - `FilterBar` 的测试 ID 生成支持中文按钮。
 - `CommandTraceToast` 修复跨路由追踪反馈过早消失的问题。
-- 新增 `docs/PHASE18_BLOG_SYSTEM_REVIEW.md`。
+- 新增阶段复盘文档，现已归档到 `docs/archive/phase-history/PHASE18_BLOG_SYSTEM_REVIEW.md`。
 
 专家审查结论：
 

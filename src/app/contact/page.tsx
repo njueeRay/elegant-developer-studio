@@ -3,12 +3,14 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { ContactHub } from "@/components/content/contact-hub";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Contact",
   description:
-    "Public contact routes for Ray Studio: GitHub Issues, project context, profile, writing, and portfolio references.",
-};
+    "Ray Studio 的公开联系入口：GitHub Issues、项目上下文、个人资料、写作和作品引用。",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

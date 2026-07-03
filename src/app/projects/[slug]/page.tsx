@@ -6,6 +6,7 @@ import { ArrowLeft, Code2, ExternalLink, GitCompareArrows } from "lucide-react";
 import { ProjectEvidencePack } from "@/components/content/project-evidence-pack";
 import { SiteHeader } from "@/components/site-header";
 import { getAllProjects, getProject } from "@/lib/content";
+import { createMetadata } from "@/lib/metadata";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -23,16 +24,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  return {
-    title: `${project.title} - Ray Studio`,
+  return createMetadata({
+    title: project.title,
     description: project.summary,
-    openGraph: {
-      title: project.title,
-      description: project.summary,
-      type: "website",
-      images: [project.image],
-    },
-  };
+    path: `/projects/${project.slug}`,
+    image: project.image,
+  });
 }
 
 export default async function ProjectPage({ params }: PageProps) {

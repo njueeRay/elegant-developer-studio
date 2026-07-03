@@ -1,0 +1,53 @@
+export const meta = {
+  slug: "agent-handoff-loop",
+  title: "AI Agent 交接不是聊天记录",
+  subtitle: "长周期项目里的 AI 协作，不能依赖上下文记忆，而要依赖可读文档、可执行命令和明确的恢复点。",
+  date: "2026-07-03",
+  updated: "2026-07-03",
+  status: "Published",
+  readingTime: "6 min read",
+  language: "中文",
+  intent: "AI 协作复盘",
+  tags: ["AI 协作", "Knowledge", "Workflow", "中文写作"],
+  featured: true,
+  summary:
+    "把 AI agent 当成长期协作者时，真正重要的是 handoff：当前状态、下一步、验证命令、阻塞条件和不能重来的决策。",
+  toc: [
+    { id: "memory-is-not-a-contract", title: "记忆不是契约" },
+    { id: "handoff-needs-recovery-points", title: "交接需要恢复点" },
+    { id: "documents-should-be-operational", title: "文档必须能操作" },
+  ],
+  relatedPostSlugs: ["chinese-as-product-memory", "raynode-standalone-deployment"],
+  relatedKnowledgeSlugs: ["agent-handoff-contract", "copyable-knowledge-refs"],
+  relatedProjectSlugs: ["codex-feishu-bridge", "studio-knowledge-base"],
+};
+
+# AI Agent 交接不是聊天记录
+
+长周期项目里，AI 协作真正难的不是“让模型写一段代码”，而是让下一个回合还能知道现在在哪里。
+
+聊天记录太长，模型上下文会压缩，人也会忘。真正可靠的是可读文档、可执行命令、明确恢复点和不会误导下一位 agent 的项目地图。
+
+## 记忆不是契约
+
+如果一个决策只存在于对话里，它就不是项目事实。对话适合探索，文档适合承诺。尤其当项目涉及部署、GitHub、Feishu、Vercel、服务器和本地内容模型时，交接必须落到仓库里。
+
+这也是为什么 `PROJECT_MAP`、`PROGRESS_LOG`、`VERSION_TRACE` 和 `CURRENT_CONTEXT` 的职责边界很重要。
+
+## 交接需要恢复点
+
+好的 handoff 至少包含五件事：
+
+- 当前目标。
+- 已完成事实。
+- 未完成事项。
+- 验证命令。
+- 明确阻塞条件。
+
+如果服务器部署卡住，handoff 不能写“部署中”。它必须写清楚：SSH banner 超时，HTTP 无响应，下一步需要控制台重启或等待恢复。
+
+## 文档必须能操作
+
+项目文档不是写给归档系统看的。它应该让下一位 agent 能直接执行：去哪个目录、跑什么命令、预期什么结果、哪里不能乱改。
+
+这就是个人主页变成 Studio 的关键：它不是展示作品，而是在展示一种可继续工作的系统。

@@ -3,12 +3,14 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { AboutProfile } from "@/components/content/about-profile";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "About - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "About",
   description:
-    "A calm studio profile for Ray: principles, timeline, capabilities, working agreements, and contact.",
-};
+    "Ray Studio 的个人简介：原则、时间线、能力边界、协作约定和联系入口。",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

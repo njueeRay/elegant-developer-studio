@@ -1,6 +1,5 @@
 import { getAllPosts } from "@/lib/content";
-
-const siteUrl = "https://elegant-developer-studio.vercel.app";
+import { absoluteUrl } from "@/lib/site";
 
 function escapeXml(value: string) {
   return value
@@ -18,8 +17,8 @@ export function GET() {
       (post) => `
         <item>
           <title>${escapeXml(post.title)}</title>
-          <link>${siteUrl}/blog/${post.slug}</link>
-          <guid>${siteUrl}/blog/${post.slug}</guid>
+          <link>${absoluteUrl(`/blog/${post.slug}`)}</link>
+          <guid>${absoluteUrl(`/blog/${post.slug}`)}</guid>
           <pubDate>${new Date(`${post.date}T00:00:00Z`).toUTCString()}</pubDate>
           <description>${escapeXml(post.summary)}</description>
         </item>
@@ -31,8 +30,8 @@ export function GET() {
     <rss version="2.0">
       <channel>
         <title>Ray Studio Writing</title>
-        <link>${siteUrl}</link>
-        <description>Essays from Ray Studio on design engineering and calm systems.</description>
+        <link>${absoluteUrl("/")}</link>
+        <description>Ray Studio 的写作：设计工程、冷静系统、AI 协作和可追溯的个人工作室实践。</description>
         ${items}
       </channel>
     </rss>`;

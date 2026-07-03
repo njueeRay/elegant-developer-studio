@@ -1,0 +1,47 @@
+export const meta = {
+  slug: "designing-command-surfaces",
+  title: "Designing Command Surfaces That Earn Their Place",
+  subtitle: "Command menus should reduce navigation cost, not decorate a homepage with developer aesthetics.",
+  date: "2026-07-03",
+  updated: "2026-07-03",
+  status: "Published",
+  readingTime: "5 min read",
+  language: "English",
+  intent: "Interaction design",
+  tags: ["Command Center", "Accessibility", "Interaction"],
+  featured: true,
+  summary:
+    "A command menu earns its place when results are real, keyboard behavior is reliable, focus is contained, and closing the menu returns the user to where they started.",
+  toc: [
+    { id: "a-command-is-a-shortcut", title: "A command is a shortcut" },
+    { id: "keyboard-behavior-is-product-behavior", title: "Keyboard behavior is product behavior" },
+    { id: "make-the-result-real", title: "Make the result real" },
+  ],
+  relatedPostSlugs: ["commands-that-respect-attention", "interface-is-a-promise"],
+  relatedKnowledgeSlugs: ["interfaces-are-promises", "agent-handoff-contract"],
+  relatedProjectSlugs: ["lumen"],
+};
+
+# Designing Command Surfaces That Earn Their Place
+
+A command menu is not inherently sophisticated. It becomes useful only when it reduces the cost of movement through a real system.
+
+For Ray Studio, the command surface has a job: open routes, reveal content, preserve context, and leave a small trace of what happened. It should not be a fake terminal in disguise.
+
+## A command is a shortcut
+
+If a command result leads to a real route, a real filter state, a real project, or a real knowledge entry, it earns its space. If it only looks technical, it does not.
+
+That is why the menu indexes posts, projects, knowledge, tools, lab components, media, contact routes, and collaboration surfaces. It is a site map with intent.
+
+## Keyboard behavior is product behavior
+
+Accessibility is not a separate layer for command menus. Arrow keys, Enter, Escape, Tab, focus trap, and focus restore are the product behavior.
+
+When a modal closes, the user should return to the trigger. When Tab moves, it should stay inside the dialog. These are not polish details; they are trust details.
+
+## Make the result real
+
+The strongest command surfaces are boring in the right way: every result opens something, every action has consequence, and every trace can be inspected.
+
+That kind of developer style is better than decorative code rain.

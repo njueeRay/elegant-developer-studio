@@ -1,0 +1,91 @@
+export const meta = {
+  slug: "codex-feishu-bridge",
+  title: "Codex Feishu Bridge",
+  subtitle: "A working-memory bridge that lets local agent development and cloud-readable project documentation stay in sync.",
+  year: "2026",
+  status: "Active",
+  role: "Agent workflow architecture",
+  stack: ["Feishu CLI", "Markdown", "Codex", "GitHub"],
+  href: "/projects/codex-feishu-bridge",
+  externalUrl: "https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb",
+  repo: "https://github.com/njueeRay/elegant-developer-studio",
+  image: "/references/developer-atelier-reference.png",
+  summary:
+    "A lightweight operating loop for syncing project maps, decisions, phase progress, and audit actions between local Markdown and Feishu Wiki.",
+  impact: ["Reduced handoff loss", "Made project state commentable", "Separated chat exploration from durable facts"],
+  evidencePack: [
+    {
+      type: "document",
+      label: "Feishu Wiki surface",
+      detail:
+        "The cloud-readable knowledge base gives project maps, decisions, progress logs, and phase reviews a commentable surface outside the local repo.",
+      href: "https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb",
+      source: "Feishu",
+      route: "/knowledge",
+      verifiedBy: "wiki.open()",
+      verifiedAt: "2026-07-03",
+    },
+    {
+      type: "source",
+      label: "Local sync protocol",
+      detail:
+        "`docs/FEISHU_SYNC.md` records which local documents map to Feishu nodes and how the sync loop should be maintained.",
+      href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/FEISHU_SYNC.md",
+      source: "GitHub",
+      route: "/projects/studio-knowledge-base",
+      verifiedBy: "docs.trace()",
+      verifiedAt: "2026-07-03",
+    },
+    {
+      type: "decision",
+      label: "Handoff contract",
+      detail:
+        "The bridge treats chat as exploration and repository Markdown as the durable fact source for future agents.",
+      href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/PROJECT_MAP.md",
+      source: "GitHub",
+      route: "/projects/codex-feishu-bridge",
+      verifiedBy: "handoff.audit()",
+      verifiedAt: "2026-07-03",
+    },
+  ],
+  caseStudyDiff: [
+    {
+      before: "Project state was distributed across chat, local files, and memory.",
+      after: "Current state, decisions, and phase progress have named documents and a Feishu cloud mirror.",
+      proof: "A new agent can start from PROJECT_MAP, ROADMAP, CURRENT_CONTEXT, and FEISHU_SYNC.",
+      evidenceHref: "https://github.com/njueeRay/elegant-developer-studio/tree/main/docs",
+    },
+    {
+      before: "Audit findings could remain a one-off report.",
+      after: "Audit findings become a prioritized todo with P0-P3 ownership and roadmap linkage.",
+      proof: "The 2026-07-03 audit now points to a concrete Phase 25 execution queue.",
+      evidenceHref: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/AUDIT_ACTION_TODO_2026_07_03.md",
+    },
+  ],
+  featured: true,
+};
+
+# Codex Feishu Bridge
+
+This project is not a visual product. It is an operating loop: local Markdown remains the source of truth, while Feishu becomes the cloud-readable and commentable layer.
+
+## Why it exists
+
+Long agent-led projects fail when state lives only in chat. A useful bridge gives each project a stable map, a current context, an execution log, and a place for human comments.
+
+## System shape
+
+- Local repository Markdown stores decisions and phase state.
+- Feishu Wiki mirrors the key documents for cloud review.
+- GitHub keeps source, issues, PR templates, and CI.
+- Codex uses the local map to continue work without restarting from memory.
+
+## What it protects
+
+The bridge protects against three failure modes:
+
+- A new agent repeats solved work.
+- The user cannot comment on project direction in the cloud.
+- A deployment or audit failure disappears into chat history.
+
+This is a small project, but it is a real external workflow around the homepage rather than another page inside the homepage.

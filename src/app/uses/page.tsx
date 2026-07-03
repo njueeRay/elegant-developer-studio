@@ -4,12 +4,14 @@ import { ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { UsesExplorer } from "@/components/content/uses-explorer";
 import { getUseCategories, pipelineSteps, useTools, useWorkflows } from "@/data/uses";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Uses - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Uses",
   description:
-    "Tools, systems, and rituals Ray Studio trusts for writing, designing, coding, and shipping.",
-};
+    "Ray Studio 信任的工具、系统和工作仪式：写作、设计、编码、部署与发布流程。",
+  path: "/uses",
+});
 
 export default function UsesPage() {
   const categories = getUseCategories(useTools);

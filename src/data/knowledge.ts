@@ -28,6 +28,138 @@ export type KnowledgeEntry = {
 
 export const knowledgeEntries: KnowledgeEntry[] = [
   {
+    slug: "truth-source-before-polish",
+    kind: "Decision",
+    title: "事实源先于视觉打磨",
+    summary:
+      "当主域名、RSS、sitemap、证据和 README 不一致时，继续打磨视觉只会放大不可信。",
+    signal: "用于判断下一阶段应该修事实一致性，还是继续增加新组件和新动效。",
+    protects:
+      "它防止个人主页变成精致但不诚实的展示层。主站 URL、canonical、RSS、robots、sitemap、项目证据和 README 必须先说同一件事。",
+    citation:
+      "当审计发现事实源漂移、过期证据或假状态时引用这条规则。它是 Phase 25 的核心判断。",
+    status: "Evergreen",
+    tags: ["中文", "SEO", "Evidence", "Phase 25"],
+    source: "2026-07-03 audit",
+    related: [
+      { label: "Truth source audit", href: "/blog/homepage-truth-source-audit" },
+      { label: "Project map", href: "/projects/studio-knowledge-base" },
+    ],
+    relatedPostSlugs: ["homepage-truth-source-audit", "raynode-standalone-deployment"],
+    relatedProjectSlugs: ["lumen", "studio-knowledge-base"],
+    backlinks: [
+      {
+        label: "个人主页先说真话",
+        href: "/blog/homepage-truth-source-audit#truth-before-style",
+        context: "解释为什么事实源优先级高于继续扩展页面表面。",
+      },
+      {
+        label: "Phase 25 todo",
+        href: "/projects/studio-knowledge-base",
+        context: "Phase 25 将事实源一致性列为 P0。",
+      },
+    ],
+  },
+  {
+    slug: "deployment-is-product-surface",
+    kind: "Pattern",
+    title: "部署也是产品表面",
+    summary:
+      "自托管、反代、systemd、RSS、sitemap 和回滚路径都会影响用户与搜索引擎对站点的信任。",
+    signal: "用于把部署从幕后脚本提升为个人工作室可信度的一部分。",
+    protects:
+      "它防止团队只验证页面视觉，而忽略服务状态、主域名、证书、RSS、robots、sitemap 和可恢复部署路径。",
+    citation:
+      "当新增主站、迁移服务器或变更部署策略时引用这条规则。",
+    status: "Working",
+    tags: ["中文", "Deployment", "Operations", "Trust"],
+    source: "RayNode deployment review",
+    related: [
+      { label: "RayNode deployment", href: "/blog/raynode-standalone-deployment" },
+      { label: "Projects", href: "/projects" },
+    ],
+    relatedPostSlugs: ["raynode-standalone-deployment", "homepage-truth-source-audit"],
+    relatedProjectSlugs: ["lumen", "codex-feishu-bridge"],
+    backlinks: [
+      {
+        label: "RayNode 自托管部署复盘",
+        href: "/blog/raynode-standalone-deployment#deployment-is-product-trust",
+        context: "部署链路被定义为个人站可信度的一部分。",
+      },
+      {
+        label: "Lumen Design System",
+        href: "/projects/lumen",
+        context: "项目证据包现在指向 RayNode 主站而不是旧 Vercel 主站。",
+      },
+    ],
+  },
+  {
+    slug: "agent-handoff-contract",
+    kind: "Decision",
+    title: "Agent handoff is a contract",
+    summary:
+      "长周期 AI 协作不能依赖聊天记忆，必须依赖当前上下文、恢复点、验证命令和明确阻塞条件。",
+    signal: "Use when a task crosses sessions, tools, deployments, or agent handoffs.",
+    protects:
+      "It prevents the next agent from restarting the project from vibes. A handoff must say what is true, what changed, what is blocked, what command proves it, and what must not be reverted.",
+    citation:
+      "Use this rule when updating CURRENT_CONTEXT, deployment handoffs, progress logs, or external Feishu sync notes.",
+    status: "Evergreen",
+    tags: ["AI", "Workflow", "Handoff", "Traceability"],
+    source: "Agent collaboration review",
+    related: [
+      { label: "Agent handoff essay", href: "/blog/agent-handoff-loop" },
+      { label: "Codex Feishu Bridge", href: "/projects/codex-feishu-bridge" },
+    ],
+    relatedPostSlugs: ["agent-handoff-loop", "chinese-as-product-memory"],
+    relatedProjectSlugs: ["codex-feishu-bridge", "studio-knowledge-base"],
+    backlinks: [
+      {
+        label: "AI Agent 交接不是聊天记录",
+        href: "/blog/agent-handoff-loop#handoff-needs-recovery-points",
+        context: "定义交接中必须包含的恢复点。",
+      },
+      {
+        label: "Codex Feishu Bridge",
+        href: "/projects/codex-feishu-bridge",
+        context: "项目把本地 Markdown 和 Feishu Wiki 作为 handoff 的双层记忆。",
+      },
+    ],
+  },
+  {
+    slug: "evidence-without-precision-theater",
+    kind: "Pattern",
+    title: "Evidence without precision theater",
+    summary:
+      "证据应该说明来源、部署、验证方式和行为覆盖，不应该手写容易腐烂的测试数量和旧部署 ID。",
+    signal: "Use before adding metrics, deployment IDs, commits, or test counts to a public portfolio card.",
+    protects:
+      "It protects evidence cards from becoming precise but stale. Volatile facts belong in CI, release traces, generated data, or version logs.",
+    citation:
+      "Use this when reviewing Evidence Pack, Case Study Diff, release notes, and project cards.",
+    status: "Evergreen",
+    tags: ["Evidence", "Portfolio", "Testing", "Trust"],
+    source: "Phase 25 audit",
+    related: [
+      { label: "Evidence essay", href: "/blog/evidence-without-precision-theater" },
+      { label: "Lumen project", href: "/projects/lumen" },
+    ],
+    relatedPostSlugs: ["evidence-without-precision-theater", "homepage-truth-source-audit"],
+    relatedProjectSlugs: ["lumen", "studio-knowledge-base"],
+    backlinks: [
+      {
+        label: "Evidence Without Precision Theater",
+        href: "/blog/evidence-without-precision-theater#volatile-facts-need-a-home",
+        context: "Explains why volatile facts need generated or release-backed sources.",
+      },
+      {
+        label: "Lumen Design System",
+        href: "/projects/lumen#project-evidence-title",
+        context: "Evidence Pack now avoids hard-coded test counts and old deployment IDs.",
+      },
+    ],
+  },
+  {
     slug: "public-reachable-before-internal-complete",
     kind: "Decision",
     title: "公开可达优先于内部完成",

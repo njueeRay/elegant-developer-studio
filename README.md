@@ -8,7 +8,8 @@
 
 线上地址：
 
-- https://elegant-developer-studio.vercel.app
+- 主站：https://raynode.me
+- 预览/备用：https://elegant-developer-studio.vercel.app
 
 仓库：
 
@@ -41,21 +42,13 @@ npm run dev
 - `docs/PROJECT_MAP.md`
 - `docs/INFORMATION_ARCHITECTURE.md`
 - `docs/DESIGN_SYSTEM.md`
-- `docs/PHASE2_RESEARCH.md`
-- `docs/PHASE3_RESEARCH.md`
-- `docs/PHASE3_REVIEW.md`
-- `docs/PHASE4_RESEARCH.md`
-- `docs/PHASE4_REVIEW.md`
-- `docs/PHASE4_KEYBOARD_RESEARCH.md`
-- `docs/PHASE4_KEYBOARD_REVIEW.md`
-- `docs/PHASE4_CONTEXT_RESEARCH.md`
-- `docs/PHASE9_COLLABORATION_RESEARCH.md`
-- `docs/PHASE9_COLLABORATION_REVIEW.md`
-- `docs/CREATIVE_DIRECTION.md`
-- `docs/DECISIONS.md`
+- `docs/CURRENT_CONTEXT.md`
+- `docs/AUDIT_ACTION_TODO_2026_07_03.md`
 - `docs/PROGRESS_LOG.md`
 - `docs/FEISHU_SYNC.md`
 - `docs/VERSION_TRACE.md`
+
+历史阶段研究与复盘已逐步归档到 `docs/archive/`。
 
 ## 目录结构
 
@@ -72,6 +65,6 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- Phase 10：Signature Interaction Prototype。
-- 首选切片：`Command Trace` 与 `Source Hover`。
-- 暂缓：常驻宠物、大型知识图谱、高强度背景特效。
+- Phase 25：Truth Source & Public Trust。
+- 首选切片：主域名事实源、证据一致性、最小 CI、Command Center 焦点契约、真实内容资产。
+- 暂缓：继续扩展新 surface、常驻宠物、大型知识图谱、高强度背景特效。

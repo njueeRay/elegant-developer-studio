@@ -11,10 +11,31 @@ import CommandsAttentionContent, {
 import ChineseProductMemoryContent, {
   meta as chineseProductMemoryMeta,
 } from "@/content/posts/chinese-as-product-memory.mdx";
+import RaynodeStandaloneDeploymentContent, {
+  meta as raynodeStandaloneDeploymentMeta,
+} from "@/content/posts/raynode-standalone-deployment.mdx";
+import HomepageTruthSourceAuditContent, {
+  meta as homepageTruthSourceAuditMeta,
+} from "@/content/posts/homepage-truth-source-audit.mdx";
+import AgentHandoffLoopContent, {
+  meta as agentHandoffLoopMeta,
+} from "@/content/posts/agent-handoff-loop.mdx";
+import EvidenceWithoutPrecisionTheaterContent, {
+  meta as evidenceWithoutPrecisionTheaterMeta,
+} from "@/content/posts/evidence-without-precision-theater.mdx";
+import DesigningCommandSurfacesContent, {
+  meta as designingCommandSurfacesMeta,
+} from "@/content/posts/designing-command-surfaces.mdx";
+import HomepageDensityCaseStudyContent, {
+  meta as homepageDensityCaseStudyMeta,
+} from "@/content/posts/homepage-density-case-study.mdx";
 import LumenContent, { meta as lumenMeta } from "@/content/projects/lumen.mdx";
 import StudioKnowledgeContent, {
   meta as studioKnowledgeMeta,
 } from "@/content/projects/studio-knowledge-base.mdx";
+import CodexFeishuBridgeContent, {
+  meta as codexFeishuBridgeMeta,
+} from "@/content/projects/codex-feishu-bridge.mdx";
 
 type MDXContent = ComponentType<Record<string, never>>;
 
@@ -91,6 +112,36 @@ export type Project = ProjectMeta & {
 
 const posts: Post[] = [
   {
+    ...(raynodeStandaloneDeploymentMeta as PostMeta),
+    kind: "post" as const,
+    Content: RaynodeStandaloneDeploymentContent,
+  },
+  {
+    ...(homepageTruthSourceAuditMeta as PostMeta),
+    kind: "post" as const,
+    Content: HomepageTruthSourceAuditContent,
+  },
+  {
+    ...(agentHandoffLoopMeta as PostMeta),
+    kind: "post" as const,
+    Content: AgentHandoffLoopContent,
+  },
+  {
+    ...(evidenceWithoutPrecisionTheaterMeta as PostMeta),
+    kind: "post" as const,
+    Content: EvidenceWithoutPrecisionTheaterContent,
+  },
+  {
+    ...(designingCommandSurfacesMeta as PostMeta),
+    kind: "post" as const,
+    Content: DesigningCommandSurfacesContent,
+  },
+  {
+    ...(homepageDensityCaseStudyMeta as PostMeta),
+    kind: "post" as const,
+    Content: HomepageDensityCaseStudyContent,
+  },
+  {
     ...(chineseProductMemoryMeta as PostMeta),
     kind: "post" as const,
     Content: ChineseProductMemoryContent,
@@ -113,6 +164,11 @@ const posts: Post[] = [
 ].sort((a, b) => b.date.localeCompare(a.date));
 
 const projects: Project[] = [
+  {
+    ...(codexFeishuBridgeMeta as ProjectMeta),
+    kind: "project" as const,
+    Content: CodexFeishuBridgeContent,
+  },
   { ...(lumenMeta as ProjectMeta), kind: "project" as const, Content: LumenContent },
   {
     ...(studioKnowledgeMeta as ProjectMeta),

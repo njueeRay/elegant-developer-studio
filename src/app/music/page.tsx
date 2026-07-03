@@ -4,12 +4,14 @@ import { ArrowLeft, ListMusic, Radio } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { MiniPlayer } from "@/components/media/mini-player";
 import { currentMix } from "@/data/media";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Music - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Music",
   description:
-    "A focused studio mix page with a refined mini player, track list, and listening context for Ray Studio.",
-};
+    "Ray Studio 的音乐页：工作室歌单、迷你播放器、曲目列表和写作/重构时的收听上下文。",
+  path: "/music",
+});
 
 export default function MusicPage() {
   return (

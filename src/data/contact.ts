@@ -14,7 +14,7 @@ export type ContactRoute = {
 
 export const contactStatus = {
   availability: "Available for focused product, interface, and system work.",
-  responseWindow: "Public project threads first; private route is still planned.",
+  responseWindow: "Public project threads first; private routes are handled case by case.",
   preferredLanguage: "Chinese first, English when useful for code and references.",
 };
 

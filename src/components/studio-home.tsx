@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   BookOpenText,
-  CheckCircle2,
   Code2,
   Command,
   FileText,
@@ -13,7 +12,6 @@ import {
   Music2,
   Pause,
   Play,
-  Wrench,
 } from "lucide-react";
 import { useEffect, useState, type ComponentType } from "react";
 import { SiteHeader } from "@/components/site-header";
@@ -23,10 +21,8 @@ import {
   highlights,
   knowledgeItems,
   socialLinks,
-  workbenchItems,
   type Highlight,
   type HighlightKind,
-  type WorkbenchItem,
 } from "@/data/home";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
 
@@ -75,7 +71,16 @@ export function StudioHome({
           </p>
           <div className="status-badge">
             <span className="status-dot" />
-            Shipping: personal design system, writing, and tools
+            Live on RayNode: standalone Next.js behind Caddy
+          </div>
+          <div className="hero-actions" aria-label="Primary studio paths">
+            <Link href="/blog" className="primary-link">
+              <FileText size={16} />
+              Read
+            </Link>
+            <Link href="/projects" className="text-link blue">
+              Work <ArrowRight size={16} />
+            </Link>
           </div>
           <button
             className="command-strip"
@@ -90,8 +95,6 @@ export function StudioHome({
           </button>
           <SocialLinks />
         </div>
-
-        <WorkbenchPanel />
       </section>
 
       <StatusPanel
@@ -141,7 +144,8 @@ export function StudioHome({
             <h2>Experiments & prototypes</h2>
             <p>
               Small interface experiments, AI workflows, and components in
-              progress. The lab becomes its own surface in Phase 5.
+              progress. The lab now works as the proving ground for reusable
+              interaction patterns before they reach the homepage.
             </p>
           </div>
           <div className="lab-list">
@@ -235,42 +239,6 @@ export function StudioHome({
       </section>
 
     </main>
-  );
-}
-
-function WorkbenchPanel() {
-  return (
-    <aside className="workbench-panel" aria-label="Current workbench">
-      <div className="panel-title">
-        <Wrench size={24} />
-        <h2>Workbench</h2>
-      </div>
-      {workbenchItems.map((item) => (
-        <WorkbenchRow key={item.title} item={item} />
-      ))}
-    </aside>
-  );
-}
-
-function WorkbenchRow({ item }: { item: WorkbenchItem }) {
-  return (
-    <Link href="/projects" className="workbench-row">
-      <div className={`workbench-icon ${item.status}`}>
-        {item.status === "healthy" ? <Code2 size={24} /> : null}
-        {item.status === "progress" ? <FileText size={24} /> : null}
-        {item.status === "queued" ? <Music2 size={24} /> : null}
-      </div>
-      <div>
-        <p>{item.label}</p>
-        <h3>{item.title}</h3>
-        <span>{item.detail}</span>
-        <small>
-          {item.status === "healthy" ? <CheckCircle2 size={14} /> : null}
-          {item.meta}
-        </small>
-      </div>
-      <ArrowRight className="row-arrow" size={20} />
-    </Link>
   );
 }
 

@@ -463,3 +463,33 @@
 - Phase 20：Knowledge 详情页。
 - Phase 21：Reference Constellation。
 - Phase 22：个人真实层。
+
+## Phase 25：Truth Source & Public Trust
+
+目标：根据 2026-07-03 全面审计结果，先修复部署、主域名事实源、证据一致性、假状态、CI 和可访问性焦点契约，再继续扩展新的个人操作系统表面。
+
+行动清单：
+
+- 详见 `docs/AUDIT_ACTION_TODO_2026_07_03.md`。
+
+优先级：
+
+- P0：恢复 RayNode 部署；统一 `SITE_URL`；修复首页假状态、旧 evidence 数字和过期文案。
+- P1：新增最小 CI；修复 Command Center modal focus trap / focus restore；补真实内容资产。
+- P2：建立 `CURRENT_CONTEXT`；归档早期 phase 文档；记录 Command index 懒加载阈值；完善 metadata 策略。
+- P3：将内容网络从“本站建设日志”转向外部项目、真实约束、真实部署和真实协作记录。
+
+本阶段判断：
+
+- 审计指出的核心问题不是“页面不够复杂”，而是“系统已经很强，事实和内容必须跟上”。
+- 在 `raynode.me` 未恢复可访问前，不应把 canonical、RSS、sitemap 和 README 强行切到该域名。
+- 证据系统必须减少硬编码精确数字，优先建立单一事实源。
+
+验收：
+
+- 主站部署状态明确，Vercel 与 RayNode 的职责边界清楚。
+- sitemap、robots、RSS、metadata 和 README 与主站事实一致。
+- 首页不展示无法验证的伪实时状态。
+- 项目证据不展示腐烂的测试数量或旧部署 ID。
+- GitHub Actions 至少覆盖 lint、content validation、build 和 Chromium smoke e2e。
+- Command Center 满足基本 modal keyboard focus contract。

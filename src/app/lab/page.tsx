@@ -10,12 +10,14 @@ import {
   labExperiments,
   labQualityGates,
 } from "@/data/lab";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Lab - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Lab",
   description:
-    "A component laboratory for Ray Studio: reusable patterns, interaction proofs, quality gates, and traceable UI experiments.",
-};
+    "Ray Studio 的组件实验室：可复用模式、交互证明、质量门禁和可追溯 UI 实验。",
+  path: "/lab",
+});
 
 export default function LabPage() {
   const categories = getLabCategories(labComponents);

@@ -295,10 +295,9 @@ html[data-cursor="active"] .ambient-grid {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(540px, 1fr) minmax(420px, 0.9fr);
-  gap: clamp(36px, 7vw, 90px);
-  width: min(100%, 1440px);
-  min-height: 610px;
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 1120px);
+  min-height: 570px;
   margin: 0 auto;
   padding: clamp(54px, 8vw, 92px) 0 46px;
   border-bottom: 1px solid var(--border);
@@ -317,7 +316,7 @@ html[data-cursor="active"] .ambient-grid {
 }
 
 .hero-copy {
-  max-width: 650px;
+  max-width: 760px;
   align-self: center;
 }
 
@@ -366,6 +365,14 @@ html[data-cursor="active"] .ambient-grid {
   border-radius: 999px;
   background: var(--rust);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--rust), transparent 84%);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
 }
 
 .status-dot.live {

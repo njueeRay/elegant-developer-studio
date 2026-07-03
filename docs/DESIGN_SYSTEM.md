@@ -212,9 +212,9 @@ Phase 24 已实现/计划沉淀：
 ## Phase 24 证据对象规则
 
 - Evidence object 必须先回答“证明什么”，再展示“从哪里看”。
-- Evidence object 的首层信息只放类型、标题、说明、来源和验证状态；commit、deploymentId、metric、screenshot 放在次级层级。
+- Evidence object 的首层信息只放类型、标题、说明、来源和验证状态；commit、deploymentId、metric、screenshot 必须来自 release trace、CI、生成数据或明确的版本文档，不能靠长期手写维护。
 - `DataSourceBadge` 可以表达 source、route、command、verifiedAt，但不能伪装成终端输出。
-- `metric` 必须有单位或上下文，例如 `108 e2e tests passed`，不能使用无来源的大数字。
+- `metric` 必须表达稳定覆盖范围或来自生成事实源；禁止手写 `108 e2e tests passed` 这类会随测试集变化而腐烂的精确数字。
 - `screenshot` 必须是高信息密度资产，不能用低质量占位图。
 - Knowledge 详情页的引用复制必须产生 Markdown 格式，默认服务飞书、GitHub issue、PR 和本地文档。
 - 证据组件不能互相嵌套成卡片套卡片，也不能把项目详情变成 dashboard。

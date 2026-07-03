@@ -5,12 +5,14 @@ import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { KnowledgeExplorer } from "@/components/content/knowledge-explorer";
 import { getKnowledgeKinds, knowledgeEntries } from "@/data/knowledge";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Knowledge - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Knowledge",
   description:
-    "A public knowledge layer for durable interface ideas, decisions, snippets, and references from Ray Studio.",
-};
+    "Ray Studio 的公开知识层：可引用的界面原则、决策、代码片段和长期参考。",
+  path: "/knowledge",
+});
 
 export default function KnowledgePage() {
   const kinds = getKnowledgeKinds(knowledgeEntries);

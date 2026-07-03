@@ -41,10 +41,10 @@ export const socialLinks = [
 
 export const workbenchItems: WorkbenchItem[] = [
   {
-    label: "Latest commit",
-    title: "ray-studio/design-system",
-    detail: "feat: add color scales and elevation tokens",
-    meta: "main / a7f3c2e / 2h ago",
+    label: "Release channel",
+    title: "raynode.me self-hosted studio",
+    detail: "Next.js standalone runtime behind Caddy, with Vercel kept as preview fallback.",
+    meta: "RayNode / systemd / verified 2026-07-03",
     status: "healthy",
   },
   {

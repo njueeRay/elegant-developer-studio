@@ -14,13 +14,12 @@ import { labComponents, labExperiments } from "@/data/lab";
 import { currentMix, photos } from "@/data/media";
 import { useTools, useWorkflows } from "@/data/uses";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
+import { createMetadata, metadataBase } from "@/lib/metadata";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://elegant-developer-studio.vercel.app"),
-  title: "Ray Studio - Elegant Developer Studio",
-  description:
-    "A warm, precise personal homepage for a design engineer: writing, work, knowledge, media, and lab experiments.",
+  metadataBase,
+  ...createMetadata(),
 };
 
 export const viewport: Viewport = {

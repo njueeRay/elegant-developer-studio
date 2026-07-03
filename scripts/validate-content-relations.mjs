@@ -227,6 +227,15 @@ projects.forEach((project) => {
       if (typeof item.screenshot === "string" && !item.screenshot.startsWith("/")) {
         errors.push(`${owner}.screenshot must start with /`);
       }
+
+      if (
+        typeof item.metric === "string" &&
+        /\b\d+\s+(?:e2e|test|tests|passed)\b/i.test(item.metric)
+      ) {
+        errors.push(
+          `${owner}.metric must not hard-code volatile test counts; use release evidence or a durable coverage description`,
+        );
+      }
     });
   }
 });

@@ -4,12 +4,15 @@ import { ArrowLeft, Camera, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { PhotoGrid } from "@/components/media/photo-grid";
 import { photos } from "@/data/media";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Photos - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Photos",
   description:
-    "A small visual memory layer for Ray Studio: studio desks, prototype rooms, listening corners, and observed texture.",
-};
+    "Ray Studio 的视觉记忆层：桌面、原型空间、收听角落和影响工作的细节观察。",
+  path: "/photos",
+  image: "/assets/morning-studio-desk.png",
+});
 
 export default function PhotosPage() {
   const featured = photos.find((photo) => photo.featured) ?? photos[0];

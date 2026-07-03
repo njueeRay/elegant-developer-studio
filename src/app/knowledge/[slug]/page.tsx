@@ -11,6 +11,7 @@ import {
   type KnowledgeKind,
 } from "@/data/knowledge";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
+import { createMetadata } from "@/lib/metadata";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -35,15 +36,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  return {
-    title: `${entry.title} - Ray Studio Knowledge`,
+  return createMetadata({
+    title: `${entry.title} - Knowledge`,
     description: entry.summary,
-    openGraph: {
-      title: entry.title,
-      description: entry.summary,
-      type: "article",
-    },
-  };
+    path: `/knowledge/${entry.slug}`,
+    type: "article",
+    locale: entry.tags.includes("中文") ? "zh_CN" : "en_US",
+  });
 }
 
 export default async function KnowledgeDetailPage({ params }: PageProps) {

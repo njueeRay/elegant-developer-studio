@@ -46,6 +46,6 @@ body:
     attributes:
       label: Environment
       description: Browser, viewport, device, production/local URL, or screenshot link.
-      placeholder: "Chrome, 390px mobile viewport, https://elegant-developer-studio.vercel.app"
+      placeholder: "Chrome, 390px mobile viewport, https://raynode.me"
     validations:
       required: false

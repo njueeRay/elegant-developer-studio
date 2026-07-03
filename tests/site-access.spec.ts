@@ -5,17 +5,28 @@ const routes = [
   "/",
   "/blog",
   "/blog/chinese-as-product-memory",
+  "/blog/raynode-standalone-deployment",
+  "/blog/homepage-truth-source-audit",
+  "/blog/agent-handoff-loop",
+  "/blog/evidence-without-precision-theater",
+  "/blog/designing-command-surfaces",
+  "/blog/homepage-density-case-study",
   "/blog/interface-is-a-promise",
   "/blog/calm-systems-for-creative-work",
   "/blog/commands-that-respect-attention",
   "/projects",
   "/projects/lumen",
   "/projects/studio-knowledge-base",
+  "/projects/codex-feishu-bridge",
   "/photos",
   "/music",
   "/knowledge",
   "/knowledge/public-reachable-before-internal-complete",
   "/knowledge/interfaces-are-promises",
+  "/knowledge/truth-source-before-polish",
+  "/knowledge/deployment-is-product-surface",
+  "/knowledge/agent-handoff-contract",
+  "/knowledge/evidence-without-precision-theater",
   "/uses",
   "/about",
   "/collaboration",
@@ -181,6 +192,21 @@ test.describe("public routes and links", () => {
     await page.goto("/about");
     await expect(page.getByRole("button", { name: /中文承载判断/ })).toBeVisible();
   });
+
+  test("Phase 25 content assets are publicly reachable", async ({ page }) => {
+    await page.goto("/blog/raynode-standalone-deployment");
+    await expect(page.getByRole("heading", { name: "RayNode 自托管部署复盘" })).toBeVisible();
+
+    await page.goto("/projects/codex-feishu-bridge");
+    await expect(page.getByRole("heading", { name: "Codex Feishu Bridge" })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Open surface/ })).toHaveAttribute(
+      "href",
+      "https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb",
+    );
+
+    await page.goto("/knowledge/truth-source-before-polish");
+    await expect(page.getByRole("heading", { name: "事实源先于视觉打磨" })).toBeVisible();
+  });
 });
 
 test.describe("core interaction contracts", () => {
@@ -193,6 +219,25 @@ test.describe("core interaction contracts", () => {
 
     await expect(page).toHaveURL(/\/lab$/);
     await expect(page.getByTestId("command-trace-toast")).toContainText('cmd.open("/lab")');
+  });
+
+  test("command menu traps and restores keyboard focus", async ({ page }) => {
+    await page.goto("/");
+
+    const trigger = page.getByTestId("home-command-trigger");
+    await trigger.click();
+    await expect(page.getByTestId("global-command-search")).toBeFocused();
+
+    await page.keyboard.press("Shift+Tab");
+    await expect
+      .poll(() => page.evaluate(() => Boolean(document.activeElement?.id.startsWith("command-result-"))))
+      .toBe(true);
+
+    await page.keyboard.press("Tab");
+    await expect(page.getByTestId("global-command-search")).toBeFocused();
+
+    await page.keyboard.press("Escape");
+    await expect(trigger).toBeFocused();
   });
 
   test("contact entry points resolve to the contact route", async ({ page }) => {
@@ -345,14 +390,18 @@ test.describe("core interaction contracts", () => {
       "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/components",
     );
     await expect(page.getByTestId("project-evidence-lumen-component-source")).toContainText("source");
+    await expect(page.getByTestId("project-evidence-lumen-production-surface")).toHaveAttribute(
+      "href",
+      "https://raynode.me",
+    );
     await expect(page.getByTestId("project-evidence-lumen-production-surface")).toContainText(
-      "dpl_AFdKdXk3heycQR32WWMBBffzrSMe",
+      "RayNode",
     );
     await expect(page.getByTestId("project-evidence-lumen-regression-suite")).toContainText(
       "Playwright covers public routes",
     );
     await expect(page.getByTestId("project-evidence-lumen-regression-suite")).toContainText(
-      "108 e2e tests passed",
+      "mobile overflow",
     );
     await expect(page.getByRole("heading", { name: "What changed" })).toBeVisible();
     await expect(page.locator(".case-study-diff-card").first()).toContainText("Before");
@@ -591,6 +640,29 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByTestId("command-result-lab-reading-focus-lens")).toBeVisible();
   });
 
+  test("photo lightbox traps and restores keyboard focus", async ({ page }) => {
+    await page.goto("/photos");
+
+    const firstPhoto = page.locator(".photo-feature-card").first();
+    await firstPhoto.click();
+
+    await expect(page.getByRole("dialog", { name: "Photo viewer" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Close photo viewer" })).toBeFocused();
+
+    await page.keyboard.press("Shift+Tab");
+    await expect(page.getByRole("button", { name: "Next photo" })).toBeFocused();
+
+    await page.keyboard.press("Tab");
+    await expect(page.getByRole("button", { name: "Close photo viewer" })).toBeFocused();
+
+    await page.keyboard.press("Escape");
+    await expect
+      .poll(() =>
+        page.evaluate(() => Boolean(document.activeElement?.classList.contains("photo-feature-card"))),
+      )
+      .toBe(true);
+  });
+
   test("music controls update the active track", async ({ page }) => {
     await page.goto("/music");
 
@@ -617,7 +689,7 @@ test.describe("repository collaboration contracts", () => {
     expect(bugTemplate).toContain("Steps to reproduce");
     expect(featureTemplate).toContain("Proposed first slice");
     expect(config).toContain("blank_issues_enabled: false");
-    expect(config).toContain("https://elegant-developer-studio.vercel.app/contact");
+    expect(config).toContain("https://raynode.me/contact");
   });
 
   test("community governance files describe contribution and review flow", async () => {

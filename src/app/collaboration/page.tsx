@@ -11,6 +11,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
+import { createMetadata } from "@/lib/metadata";
 import {
   collaborationStatus,
   collaborationSteps,
@@ -19,11 +20,12 @@ import {
   creativeIdeas,
 } from "@/data/collaboration";
 
-export const metadata: Metadata = {
-  title: "Collaboration - Ray Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Collaboration",
   description:
-    "A public collaboration guide for Ray Studio: contribution flow, governance surfaces, creative audit, and future interaction ideas.",
-};
+    "Ray Studio 的公开协作指南：贡献流程、治理表面、创意审计和后续交互想法。",
+  path: "/collaboration",
+});
 
 export default function CollaborationPage() {
   return (

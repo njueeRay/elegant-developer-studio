@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Expand, MapPin, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { FilterBar } from "@/components/content/filter-bar";
 import type { Photo } from "@/data/media";
 
 export function PhotoGrid({ photos }: { photos: Photo[] }) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const restoreFocusRef = useRef<HTMLElement | null>(null);
   const filterItems = useMemo(
     () => [
       "All",
@@ -42,6 +45,26 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
     setActiveIndex(null);
   }
 
+  const openLightbox = useCallback((index: number) => {
+    const activeElement = document.activeElement;
+
+    if (activeElement instanceof HTMLElement) {
+      restoreFocusRef.current = activeElement;
+    }
+
+    setActiveIndex(index);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setActiveIndex(null);
+
+    window.requestAnimationFrame(() => {
+      if (restoreFocusRef.current?.isConnected) {
+        restoreFocusRef.current.focus({ preventScroll: true });
+      }
+    });
+  }, []);
+
   useEffect(() => {
     if (activeIndex === null) {
       return;
@@ -49,7 +72,7 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setActiveIndex(null);
+        closeLightbox();
       }
 
       if (event.key === "ArrowRight") {
@@ -74,7 +97,43 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
       window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-  }, [activeIndex, filteredPhotos.length]);
+  }, [activeIndex, closeLightbox, filteredPhotos.length]);
+
+  useEffect(() => {
+    if (activeIndex === null) {
+      return;
+    }
+
+    closeButtonRef.current?.focus({ preventScroll: true });
+  }, [activeIndex]);
+
+  const onLightboxKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    const focusable = Array.from(
+      lightboxRef.current?.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
+      ) ?? [],
+    ).filter((element) => element.offsetParent !== null);
+
+    if (focusable.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
 
   return (
     <>
@@ -95,9 +154,9 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
           {highlights.map((photo, index) => (
             <button
               key={photo.slug}
-              type="button"
-              className="photo-feature-card"
-              onClick={() => setActiveIndex(filteredPhotos.indexOf(photo))}
+            type="button"
+            className="photo-feature-card"
+            onClick={() => openLightbox(filteredPhotos.indexOf(photo))}
             >
               <Image
                 src={photo.image}
@@ -123,7 +182,7 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
             key={photo.slug}
             type="button"
             className={`photo-tile ${photo.aspect}`}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => openLightbox(index)}
           >
             <Image
               src={photo.image}
@@ -150,15 +209,18 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
       {activePhoto ? (
         <div
           className="photo-lightbox"
+          ref={lightboxRef}
           role="dialog"
           aria-modal="true"
           aria-label="Photo viewer"
+          onKeyDown={onLightboxKeyDown}
         >
           <button
+            ref={closeButtonRef}
             type="button"
             className="lightbox-close"
             aria-label="Close photo viewer"
-            onClick={() => setActiveIndex(null)}
+            onClick={closeLightbox}
           >
             <X size={20} />
           </button>

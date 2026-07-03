@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { knowledgeEntries } from "@/data/knowledge";
 import { getAllPosts, getAllProjects } from "@/lib/content";
-
-const siteUrl = "https://elegant-developer-studio.vercel.app";
+import { absoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -18,22 +17,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/photos",
     "/music",
   ].map((route) => ({
-    url: `${siteUrl}${route}`,
+    url: absoluteUrl(route || "/"),
     lastModified: new Date(),
   }));
 
   const postRoutes = getAllPosts().map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
+    url: absoluteUrl(`/blog/${post.slug}`),
     lastModified: new Date(post.updated),
   }));
 
   const projectRoutes = getAllProjects().map((project) => ({
-    url: `${siteUrl}/projects/${project.slug}`,
+    url: absoluteUrl(`/projects/${project.slug}`),
     lastModified: new Date(),
   }));
 
   const knowledgeRoutes = knowledgeEntries.map((entry) => ({
-    url: `${siteUrl}/knowledge/${entry.slug}`,
+    url: absoluteUrl(`/knowledge/${entry.slug}`),
     lastModified: new Date(),
   }));
 

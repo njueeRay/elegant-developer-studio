@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 import { TableOfContents } from "@/components/content/table-of-contents";
 import { knowledgeEntries } from "@/data/knowledge";
 import { formatDate, getAllPostMeta, getAllPosts, getAllProjectMeta, getPost } from "@/lib/content";
+import { createMetadata } from "@/lib/metadata";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -26,17 +27,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  return {
-    title: `${post.title} - Ray Studio`,
+  return createMetadata({
+    title: post.title,
     description: post.summary,
-    openGraph: {
-      title: post.title,
-      description: post.summary,
-      type: "article",
-      publishedTime: post.date,
-      modifiedTime: post.updated,
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+    locale: post.language === "中文" ? "zh_CN" : "en_US",
+  });
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
