@@ -39,6 +39,14 @@ jobs:
         env:
           NEXT_PUBLIC_SITE_URL: https://raynode.me
 
+      - name: Generate release evidence
+        run: npm run release:evidence -- --local-quality-passed
+        env:
+          NEXT_PUBLIC_SITE_URL: https://raynode.me
+
+      - name: Validate release evidence
+        run: npm run validate:release-evidence
+
       - name: Chromium smoke e2e
         run: npx playwright test --project=chromium --grep "serves|primary surfaces|command menu opens real lab route"
         env:

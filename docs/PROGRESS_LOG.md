@@ -1686,3 +1686,40 @@ GitHub 推送修复：
 
 - 下一阶段进入 Phase 27：Evidence Automation & Release Discipline。
 - 同步飞书。
+
+### 第二十七阶段：Evidence Automation & Release Discipline
+
+日期：2026-07-04
+
+状态：已本地完整验证，待脚本部署，待外部同步。
+
+阶段判断：
+
+- Phase 26 让作品集有了外部证据，但 Evidence Pack 仍有人工事实源风险。
+- Release evidence 不能再手写在 MDX 或 TypeScript 常量里；它必须由当前 commit、内容规模、路由和质量门禁生成。
+- 部署也不能继续依赖散落在对话里的命令；RayNode standalone 部署必须成为一条可复用命令。
+
+完成：
+
+- 新增 `scripts/write-release-evidence.mjs`，生成 `public/release-evidence.json`。
+- 新增 `scripts/validate-release-evidence.mjs`，校验 evidence commit、主站、内容规模、路由和 gate。
+- 新增 `scripts/deploy-raynode.mjs`，封装本地质量门禁、build、evidence、standalone 打包、上传、远端切换、systemd restart 和 smoke。
+- `ProjectEvidencePack` 渐进读取 `/release-evidence.json`，为 Lumen / Studio Knowledge Base 增加 generated release evidence card。
+- `validate:content` 增加 stale evidence 防线：拦截 `dpl_*` 和临时 Vercel deployment URL。
+- CI 增加 release evidence 生成与校验。
+- e2e 增加 `/release-evidence.json` 和 generated release evidence card 覆盖。
+
+已验证：
+
+- `npm run release:evidence -- --local-quality-passed`：通过，生成 14 posts / 5 projects / 16 knowledge entries / 50 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run deploy:raynode -- --dry-run --skip-quality`：通过，生成 standalone artifact，并使用 `tar --no-xattrs`。
+- targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "generated release evidence|serves /release-evidence" --workers=1`，4 passed。
+- full local gate：`npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`，170 passed。
+
+下一步：
+
+- 提交并推送。
+- 使用 `npm run deploy:raynode` 完成真实 RayNode 部署。

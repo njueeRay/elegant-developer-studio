@@ -474,6 +474,8 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 27：Evidence Automation & Release Discipline
 
+状态：执行中，2026-07-04。
+
 优先级：高。
 
 目标：把 Phase 25 的“不要手写腐烂证据”推进为自动化事实源。
@@ -493,22 +495,28 @@ Phase 25: Truth Source & Public Trust
 
 待办：
 
-- [ ] 新增 `scripts/write-release-evidence.mjs`。
-- [ ] 生成 `src/data/release-evidence.generated.json` 或 `public/release-evidence.json`。
-- [ ] 写入 `commitSha`、`builtAt`、`siteUrl`、`routesCount`、`contentCounts`、`qualityGates`。
-- [ ] 部署前自动生成 release evidence。
-- [ ] 部署脚本使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`，消除 macOS provenance xattr warning。
-- [ ] 新增 `scripts/deploy-raynode.mjs` 或 `scripts/deploy-raynode.sh`，封装 standalone 打包、上传、远端切换、重启、smoke。
-- [ ] `ProjectEvidencePack` 支持从 release evidence 读取当前部署状态。
-- [ ] `validate:content` 校验证据卡不能引用旧 deployment id 或旧主站。
-- [ ] `VERSION_TRACE` 只记录 release facts，不再要求人工复制大量命令输出。
+- [x] 新增 `scripts/write-release-evidence.mjs`。
+- [x] 生成 `public/release-evidence.json`，并将它作为部署时生成产物，不提交进仓库。
+- [x] 写入 `commitSha`、`builtAt`、`siteUrl`、`routesCount`、`contentCounts`、`qualityGates`。
+- [x] 部署前自动生成 release evidence。
+- [x] 部署脚本使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`，消除 macOS provenance xattr warning。
+- [x] 新增 `scripts/deploy-raynode.mjs`，封装 standalone 打包、上传、远端切换、重启、smoke。
+- [x] `ProjectEvidencePack` 支持从 release evidence 读取当前部署状态。
+- [x] `validate:content` 校验证据卡不能引用旧 deployment id 或临时 Vercel deployment URL。
+- [x] `VERSION_TRACE` 记录 release facts，不再要求人工复制大量命令输出。
 
 验收标准：
 
-- 一条命令可以完成本地打包、上传、远端重启和 smoke。
+- 一条命令可以完成本地打包、上传、远端重启和 smoke：`npm run deploy:raynode`。
 - release evidence 文件由脚本生成，不靠手写。
-- Lumen 或 Studio Knowledge Base 至少一个项目页读取 release evidence。
-- CI 和本地验证都能发现 release evidence 缺失或过期。
+- Lumen 项目页读取 release evidence，并由 e2e 覆盖。
+- CI 和本地验证都能发现 release evidence 缺失或过期：`npm run validate:release-evidence`。
+
+设计决定：
+
+- `public/release-evidence.json` 不提交进 Git。原因是它需要记录当前部署 commit；如果把它提交进同一个 commit，会天然出现“记录自己的 commit hash”悖论。
+- 部署脚本在当前 HEAD 上生成 evidence，再打包进 standalone artifact；RayNode 上的 `/release-evidence.json` 才是运行时事实源。
+- 项目页渐进读取 evidence。没有 evidence 时页面仍可用，有 evidence 时 Lumen / Studio Knowledge Base 自动显示生成证据卡。
 
 ### Phase 28：Content Discovery & Command Index Scale
 

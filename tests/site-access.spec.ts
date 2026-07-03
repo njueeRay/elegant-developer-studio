@@ -24,6 +24,7 @@ const routes = [
   "/projects/lumen",
   "/projects/studio-knowledge-base",
   "/projects/codex-feishu-bridge",
+  "/release-evidence.json",
   "/photos",
   "/music",
   "/knowledge",
@@ -461,6 +462,19 @@ test.describe("core interaction contracts", () => {
       "href",
       "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/app",
     );
+  });
+
+  test("project evidence pack reads generated release evidence", async ({ page }) => {
+    await page.goto("/projects/lumen");
+
+    const releaseEvidence = page.getByTestId("project-evidence-lumen-generated-release-evidence");
+
+    await expect(releaseEvidence).toBeVisible();
+    await expect(releaseEvidence).toContainText("release-evidence.json");
+    await expect(releaseEvidence).toContainText("14 posts");
+    await expect(releaseEvidence).toContainText("5 projects");
+    await expect(releaseEvidence).toContainText("16 knowledge entries");
+    await expect(releaseEvidence).toHaveAttribute("href", "/release-evidence.json");
   });
 
   test("reading focus copy emits a command echo", async ({ page }) => {

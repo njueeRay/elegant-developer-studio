@@ -66,6 +66,7 @@
 - 第二十三阶段内容证据密度增强：Project Evidence Pack、Knowledge Markdown ref、项目证据完整性校验。
 - 第二十四点五阶段 Personal OS Zoo：`/lab` 新增 Personal OS 校准面，首页 `StatusPanel` 升级为 Studio Pulse 和 Ask Me Terminal。
 - 第二十六阶段外部证据网络：新增 OpenProfile 与 AnyReader 两个外部化项目、4 篇非本站中心文章、6 条 Knowledge，并让首页精选转向外部证据。
+- 第二十七阶段证据自动化与发布纪律：新增 release evidence 生成/校验、RayNode 一键部署脚本和项目页生成证据卡。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -86,6 +87,7 @@
 | AnyReader Interface Teardown | `/projects/anyreader-interface-teardown` | 26 | 已实现 | 外部深度阅读产品界面拆解 |
 | 项目证据包 | `/projects/[slug]#project-evidence-title` | 23 | 已实现 | GitHub、Vercel、飞书和测试证据入口 |
 | 项目证据对象 | `/projects/[slug]#project-evidence-title` | 24 | 已实现待部署 | 证据升级为 typed object：source、deployment、document、test、screenshot、metric |
+| Release evidence | `/release-evidence.json` | 27 | 已实现 | 部署时生成的运行时发布事实源 |
 | Studio Pulse | `/#studio-pulse` | 24.5 | 已实现 | 首页 Personal OS 小切片：写作、建设、Knowledge、音乐和 prompt |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |

@@ -1,6 +1,7 @@
 "use client";
 
 import { ExternalLink, FileCheck2 } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { DataSourceBadge } from "@/components/data-source-badge";
 import { emitCommandTrace } from "@/lib/command-trace";
 import type { ProjectMeta } from "@/lib/content";
@@ -20,6 +21,23 @@ const toneByType: Record<ProjectMeta["evidencePack"][number]["type"], "rust" | "
   decision: "rust",
 };
 
+type ReleaseEvidence = {
+  siteUrl: string;
+  commitSha: string;
+  builtAt: string;
+  contentCounts: {
+    posts: number;
+    projects: number;
+    knowledge: number;
+  };
+  routesCount: number;
+  qualityGates: Array<{
+    id: string;
+    command: string;
+    status: string;
+  }>;
+};
+
 function toTestId(projectSlug: string, label: string) {
   return `project-evidence-${projectSlug}-${label
     .toLowerCase()
@@ -28,6 +46,58 @@ function toTestId(projectSlug: string, label: string) {
 }
 
 export function ProjectEvidencePack({ projectSlug, evidencePack }: ProjectEvidencePackProps) {
+  const [releaseEvidence, setReleaseEvidence] = useState<ReleaseEvidence | null>(null);
+
+  useEffect(() => {
+    if (!["lumen", "studio-knowledge-base"].includes(projectSlug)) {
+      return;
+    }
+
+    const controller = new AbortController();
+
+    fetch("/release-evidence.json", { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((evidence: ReleaseEvidence | null) => {
+        if (evidence) {
+          setReleaseEvidence(evidence);
+        }
+      })
+      .catch((error: unknown) => {
+        if (error instanceof Error && error.name !== "AbortError") {
+          console.warn("Could not load release evidence", error);
+        }
+      });
+
+    return () => controller.abort();
+  }, [projectSlug]);
+
+  const evidenceCards = useMemo(() => {
+    if (!releaseEvidence) {
+      return evidencePack;
+    }
+
+    const passedRequiredGates = releaseEvidence.qualityGates.filter(
+      (gate) => ["content-relations", "lint", "build"].includes(gate.id) && gate.status === "passed",
+    ).length;
+    const releaseEvidenceCard: ProjectMeta["evidencePack"][number] = {
+      type: "deployment",
+      label: "Generated release evidence",
+      detail:
+        `Generated deployment facts for commit ${releaseEvidence.commitSha}: ` +
+        `${releaseEvidence.contentCounts.posts} posts, ${releaseEvidence.contentCounts.projects} projects, ` +
+        `${releaseEvidence.contentCounts.knowledge} knowledge entries, and ${releaseEvidence.routesCount} public routes.`,
+      href: "/release-evidence.json",
+      source: "release-evidence.json",
+      route: `/projects/${projectSlug}`,
+      commit: releaseEvidence.commitSha,
+      metric: `${passedRequiredGates}/3 required local gates marked passed`,
+      verifiedBy: "release.evidence()",
+      verifiedAt: releaseEvidence.builtAt.slice(0, 10),
+    };
+
+    return [...evidencePack, releaseEvidenceCard];
+  }, [evidencePack, projectSlug, releaseEvidence]);
+
   return (
     <section className="project-evidence-pack" aria-labelledby="project-evidence-title">
       <div className="project-evidence-heading">
@@ -38,7 +108,7 @@ export function ProjectEvidencePack({ projectSlug, evidencePack }: ProjectEviden
         </div>
       </div>
       <div className="project-evidence-grid">
-        {evidencePack.map((item) => (
+        {evidenceCards.map((item) => (
           <a
             className={`project-evidence-card evidence-${item.type}`}
             data-testid={toTestId(projectSlug, item.label)}

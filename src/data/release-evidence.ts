@@ -1,12 +1,39 @@
-import { repositoryUrl, siteUrl } from "@/lib/site";
+export type ReleaseEvidence = {
+  schemaVersion: 1;
+  channel: "raynode";
+  siteUrl: string;
+  previewUrl: string;
+  repositoryUrl: string;
+  commitSha: string;
+  fullCommitSha: string;
+  branch: string;
+  builtAt: string;
+  generatedAt: string;
+  package: {
+    name: string;
+    version: string;
+  };
+  runtime: {
+    framework: string;
+    server: string;
+    reverseProxy: string;
+    processManager: string;
+    service: string;
+    runtimePath: string;
+  };
+  contentCounts: {
+    posts: number;
+    projects: number;
+    knowledge: number;
+  };
+  routesCount: number;
+  publicRoutes: string[];
+  qualityGates: Array<{
+    id: string;
+    command: string;
+    status: "pending" | "passed" | "manual";
+    required: boolean;
+  }>;
+};
 
-export const releaseEvidence = {
-  channel: "raynode",
-  primaryUrl: siteUrl,
-  previewUrl: "https://elegant-developer-studio.vercel.app",
-  repositoryUrl,
-  runtime: "Next.js standalone runtime behind Caddy and systemd",
-  verifiedAt: "2026-07-03",
-  qualityGate:
-    "Content relation validation, lint, production build, and Playwright public-route coverage.",
-} as const;
+export const releaseEvidencePath = "/release-evidence.json";

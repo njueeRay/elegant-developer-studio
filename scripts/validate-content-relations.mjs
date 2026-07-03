@@ -15,6 +15,7 @@ const staticRoutes = new Set([
   "/photos",
   "/projects",
   "/robots.txt",
+  "/release-evidence.json",
   "/rss.xml",
   "/sitemap.xml",
   "/uses",
@@ -166,6 +167,8 @@ const evidenceTypes = new Set([
   "metric",
   "decision",
 ]);
+const staleEvidencePattern =
+  /\b(?:dpl_[a-z0-9]+|elegant-developer-studio-[a-z0-9-]+\.vercel\.app)\b/i;
 
 posts.forEach((post) => routes.add(`/blog/${post.slug}`));
 projects.forEach((project) => routes.add(`/projects/${project.slug}`));
@@ -236,6 +239,14 @@ projects.forEach((project) => {
           `${owner}.metric must not hard-code volatile test counts; use release evidence or a durable coverage description`,
         );
       }
+
+      ["href", "detail", "deploymentId", "metric", "verifiedBy"].forEach((field) => {
+        if (typeof item[field] === "string" && staleEvidencePattern.test(item[field])) {
+          errors.push(
+            `${owner}.${field} must not reference stale Vercel deployment ids or temporary deployment URLs; use release evidence, VERSION_TRACE, RayNode, or the stable preview alias`,
+          );
+        }
+      });
     });
   }
 });

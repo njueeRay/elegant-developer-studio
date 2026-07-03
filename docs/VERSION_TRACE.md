@@ -1228,6 +1228,38 @@ Preview / fallback：`https://elegant-developer-studio.vercel.app`
 - Evidence Pack 仍是手写事实源；下一阶段应进入 Phase 27 自动化 release evidence。
 - 当前手动部署流程仍有打包细节债；已验证后续应使用 `tar --no-xattrs` 消除 macOS provenance xattr 解包噪音。
 
+## Unreleased - 第二十七阶段 Evidence Automation & Release Discipline
+
+日期：2026-07-04
+Primary implementation commit：待记录
+Production host：`https://raynode.me`
+Release evidence：`/release-evidence.json`
+
+范围：
+
+- 新增 release evidence 生成脚本。
+- 新增 release evidence 校验脚本。
+- 新增 RayNode standalone 部署脚本。
+- Lumen / Studio Knowledge Base 项目页渐进读取生成证据。
+- CI 增加 release evidence 生成与校验。
+- 内容校验拦截旧 Vercel deployment id 和临时 deployment URL。
+
+验证：
+
+- `npm run release:evidence -- --local-quality-passed`：通过。
+- `npm run validate:release-evidence`：通过。
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run deploy:raynode -- --dry-run --skip-quality`：通过。
+- targeted e2e：4 passed。
+- full local gate：`npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`：170 passed。
+- RayNode scripted deploy：待执行。
+
+残余风险：
+
+- `public/release-evidence.json` 是部署产物，不提交进 Git；新 agent 必须知道先运行 `npm run release:evidence` 或 `npm run deploy:raynode`。
+- Production smoke 仍由部署脚本做 HTTP 级检查；完整 Playwright production e2e 仍建议阶段收尾手动执行。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

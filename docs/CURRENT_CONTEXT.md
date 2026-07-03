@@ -4,15 +4,15 @@
 
 ## 当前主线
 
-Phase 26：External Proof & Content Network。
+Phase 27：Evidence Automation & Release Discipline。
 
-Phase 25 已完成可信度底座修复。当前主线已经从“站点说真话”转为“站点能被外部判断”：
+Phase 26 已完成外部证据网络。当前主线转为：把证据和部署纪律从人工操作变成脚本化事实源。
 
-- 增加外部化项目，而不是继续围绕本站自证。
-- 增加非本站中心文章，让 Writing 解释真实产品判断。
-- 增加 Knowledge 原则，使外部证据、阅读界面、agent workflow 和 case study diff 可复用。
-- 首页精选优先展示外部证据更强的内容。
-- 继续避免新增一级页面、宠物、粒子、全站图谱或复杂动效。
+- `public/release-evidence.json` 由脚本生成，不提交进 Git。
+- `ProjectEvidencePack` 渐进读取运行时 release evidence。
+- `deploy:raynode` 封装 build、evidence、standalone artifact、上传、远端切换、重启和 smoke。
+- `validate:release-evidence` 检查 evidence 是否缺失、过期或内容规模不一致。
+- `validate:content` 拦截旧 Vercel deployment id 和临时 deployment URL。
 
 ## 线上状态
 
@@ -34,7 +34,11 @@ RayNode 当前状态：
 
 - `src/lib/site.ts`：主站 URL、预览 URL、仓库 URL。
 - `src/lib/metadata.ts`：统一 canonical、Open Graph、Twitter card。
-- `src/data/release-evidence.ts`：发布事实源雏形。
+- `src/data/release-evidence.ts`：release evidence 类型和路径定义。
+- `public/release-evidence.json`：部署时生成的运行时发布事实源。
+- `scripts/write-release-evidence.mjs`：生成 release evidence。
+- `scripts/validate-release-evidence.mjs`：校验 release evidence。
+- `scripts/deploy-raynode.mjs`：RayNode standalone 部署脚本。
 - `docs/AUDIT_ACTION_TODO_2026_07_03.md`：Phase 25 P0-P3 执行队列。
 - `docs/PROJECT_MAP.md`：产品表面、阶段、目录和质量门禁地图。
 - `docs/ROADMAP.md`：阶段路线。
@@ -62,6 +66,18 @@ RayNode 当前状态：
 - e2e 增加 Phase 26 外部证据网络可达性检查。
 - `npm run validate:content` 通过，内容规模为 14 posts / 5 projects / 16 knowledge entries。
 - 已部署到 RayNode，production smoke e2e 48 passed。
+
+## 已完成的 Phase 27 切片
+
+- 新增 `npm run release:evidence`。
+- 新增 `npm run validate:release-evidence`。
+- 新增 `npm run deploy:raynode`。
+- `public/release-evidence.json` 加入 `.gitignore`，由部署时生成。
+- CI 增加 release evidence 生成与校验。
+- Lumen / Studio Knowledge Base 项目详情可读取生成证据。
+- e2e 覆盖 `/release-evidence.json` 和 Lumen 的 generated release evidence card。
+- 内容校验拦截旧 Vercel deployment id 和临时 deployment URL。
+- 部署 artifact 使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`。
 
 ## 已完成的 Phase 25 切片
 
@@ -92,9 +108,11 @@ RayNode 当前状态：
 
 ```bash
 npm run validate:content
+npm run release:evidence -- --local-quality-passed
+npm run validate:release-evidence
 npm run lint
 npm run build
-npx playwright test --project=chromium --grep "Phase 26|command menu traps|photo lightbox traps|project case studies"
+npx playwright test --project=chromium --grep "release evidence|command menu traps|photo lightbox traps|project case studies"
 ```
 
 完整回归：
@@ -122,8 +140,6 @@ Command Center index 现在仍在 root layout 组装。当前内容量可接受�
 
 ## 下一步建议
 
-1. 下一阶段优先 Phase 27：Evidence Automation & Release Discipline。
-2. 将 release evidence 从手写 TypeScript 推进到脚本生成或 JSON 事实源。
-3. 部署脚本应使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`，消除 macOS provenance xattr 解包噪音。
-4. 观察 Command Center payload；posts > 15 或 knowledge entries > 25 时启动懒加载改造。
-5. 同步 Feishu 当前上下文、Phase 25 与 Phase 26 结果。
+1. 完成 Phase 27 剩余验证与 RayNode 脚本部署。
+2. 同步 Feishu 当前上下文、Phase 25-27 结果。
+3. 观察 Command Center payload；posts > 15 或 knowledge entries > 25 时启动懒加载改造。
