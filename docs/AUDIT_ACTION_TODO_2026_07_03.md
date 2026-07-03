@@ -375,3 +375,284 @@ Phase 25: Truth Source & Public Trust
 
 - 修复主域名、部署、证据、假状态、CI 和可访问性焦点契约。
 - 先让站点“说真话、可访问、可验证”，再继续追求更复杂的系统扩展。
+
+## 10. Phase 25 完成后再审视
+
+复核日期：2026-07-03
+
+当前判断：Phase 25 已经把最危险的问题从“线上事实不一致”降到了可控状态。站点现在有主站、有 CI、有 canonical、有 RSS/sitemap/robots 一致性、有更真实的内容样本、有焦点契约测试，也有新的当前上下文入口。
+
+但这不意味着项目已经进入“继续堆功能”的阶段。恰恰相反，Phase 25 把系统可信度补上后，下一个真正风险变成：**内容和证据是否能持续增长，而不是再次回到系统搭建本身。**
+
+### 已明显改善
+
+- 主站事实源从 Vercel 漂移修正为 RayNode 主站 + Vercel preview / fallback。
+- 首页从“证明我有很多模块”收敛为 Ray Studio、定位、真实部署状态、Read / Work 主路径。
+- Evidence Pack 不再用旧 deployment id 和硬编码 e2e 数字制造精确幻觉。
+- Posts / Projects / Knowledge 从 `4 / 2 / 6` 增长到 `10 / 3 / 10`。
+- Command Center 和 Photo lightbox 的 modal 焦点契约进入 e2e。
+- 文档入口从历史堆栈转向 `PROJECT_MAP + CURRENT_CONTEXT + AUDIT_ACTION_TODO`。
+
+### 仍然存在的问题
+
+- 新增 6 篇文章虽然补了内容密度，但大部分仍围绕本站、部署、审计和 agent workflow，外部世界项目仍偏少。
+- `Codex Feishu Bridge` 是非本站项目，但仍和本站工作流强相关；还需要更外部化的产品、工具、开源或真实用户问题 case study。
+- CI 已经建立，但 evidence 还没有自动从 CI artifact、Git commit、部署记录生成。
+- Command Center index 仍在 root layout 组装；当前可接受，但内容继续增长会变成性能债。
+- RayNode 部署流程仍是手动上传 tarball；可追溯，但不够自动化。
+- Feishu 尚未同步 Phase 25 结果，云端知识库可能落后于仓库。
+- npm audit 仍有 2 个 moderate vulnerabilities，当前未处理是合理的，但不能长期不看。
+
+### 下一阶段总原则
+
+- 不再以“新增页面数量”作为进展。
+- 不再优先做宠物、粒子、图谱、访客光标、复杂动效。
+- 优先让内容、证据、部署、搜索、性能和外部 case study 更真实。
+- 新组件必须服务真实内容发现、阅读、证据、维护或协作。
+
+## 11. 后续阶段总优先级
+
+后续阶段建议从 Phase 26 开始。Phase 26-29 不应并行乱开，应该按依赖顺序推进。
+
+### Phase 26：External Proof & Content Network
+
+优先级：最高。
+
+目标：把个人主页从“Ray Studio 建设日志”推进到“可被外部判断的作品与知识网络”。
+
+为什么排第一：
+
+- 当前最大产品风险已经不是可信度底座，而是外部样本不足。
+- 个人主页最终要让访客判断一个人的能力，不能主要证明“我很会建设个人主页系统”。
+- 内容增长会反过来验证 Command Center、Knowledge trails、RelatedReading、RSS、sitemap、metadata 是否真的能承载规模。
+
+交付范围：
+
+- 新增 2 个外部化 project case study。
+- 新增 4 篇非本站中心文章。
+- 新增 6 条 Knowledge，用于连接外部项目、技术判断和产品原则。
+- 首页精选内容重新排序，优先展示外部证据更强的内容。
+- Project Evidence Pack 增加更可检查的截图、commit、PR、设计引用或部署链接。
+
+候选内容方向：
+
+- 一个小型开源工具或脚本：真实 repo、真实 README、真实使用方式。
+- 一个产品拆解：不是临摹 UI，而是分析信息架构、交互取舍、实现边界。
+- 一个服务器/自动化工具：RayNode、Feishu bridge、Codex workflow 之外的独立实用工具。
+- 一个设计系统 micro-case：从问题、约束、组件、token、测试到结果。
+
+待办：
+
+- [ ] 定义“外部化 case study”的最低标准：真实问题、真实约束、真实交付物、真实链接、真实结果。
+- [ ] 新增项目 `tooling-or-automation-case-study`，不能只是本站内部页面。
+- [ ] 新增项目 `product-interface-teardown`，展示产品判断和 UI/UX 分析能力。
+- [ ] 每个项目必须有 `Evidence Pack`，且 evidence link 不能只指向本站。
+- [ ] 新增 2 篇中文判断型文章，重点写真实取舍和失败。
+- [ ] 新增 2 篇英文技术/设计文章，重点服务开放技术语境。
+- [ ] 为新增内容补 `relatedPostSlugs`、`relatedKnowledgeSlugs`、`relatedProjectSlugs`。
+- [ ] 更新首页 featured project 和 featured writing 的挑选逻辑，避免只展示最近内容。
+- [ ] 新增 e2e 覆盖至少一个新外部项目详情页。
+
+验收标准：
+
+- Projects >= 5。
+- Posts >= 14。
+- Knowledge entries >= 16。
+- 至少 2 个项目不是本站自身，也不是单纯围绕本站文档系统。
+- 首页第一屏之后的精选内容至少有 1 个外部化项目。
+- 新项目 evidence link 可公开访问。
+
+### Phase 27：Evidence Automation & Release Discipline
+
+优先级：高。
+
+目标：把 Phase 25 的“不要手写腐烂证据”推进为自动化事实源。
+
+为什么排第二：
+
+- 当前已经有 `src/data/release-evidence.ts` 雏形，但它仍是手写。
+- Evidence Pack 的可信度取决于事实更新机制，而不是卡片样式。
+- CI 已有，但还没有把 CI 结果、commit、部署时间、主站 smoke 结果沉淀成可消费数据。
+
+交付范围：
+
+- 生成化 release evidence。
+- 部署脚本标准化。
+- RayNode 部署记录结构化。
+- CI artifact 或本地脚本输出可被项目页引用。
+
+待办：
+
+- [ ] 新增 `scripts/write-release-evidence.mjs`。
+- [ ] 生成 `src/data/release-evidence.generated.json` 或 `public/release-evidence.json`。
+- [ ] 写入 `commitSha`、`builtAt`、`siteUrl`、`routesCount`、`contentCounts`、`qualityGates`。
+- [ ] 部署前自动生成 release evidence。
+- [ ] 部署脚本使用 `COPYFILE_DISABLE=1 tar ...`，消除 macOS xattr warning。
+- [ ] 新增 `scripts/deploy-raynode.mjs` 或 `scripts/deploy-raynode.sh`，封装 standalone 打包、上传、远端切换、重启、smoke。
+- [ ] `ProjectEvidencePack` 支持从 release evidence 读取当前部署状态。
+- [ ] `validate:content` 校验证据卡不能引用旧 deployment id 或旧主站。
+- [ ] `VERSION_TRACE` 只记录 release facts，不再要求人工复制大量命令输出。
+
+验收标准：
+
+- 一条命令可以完成本地打包、上传、远端重启和 smoke。
+- release evidence 文件由脚本生成，不靠手写。
+- Lumen 或 Studio Knowledge Base 至少一个项目页读取 release evidence。
+- CI 和本地验证都能发现 release evidence 缺失或过期。
+
+### Phase 28：Content Discovery & Command Index Scale
+
+优先级：中高。
+
+目标：在内容继续增长前，处理 Command Center、内容列表、筛选和 RelatedReading 的规模化路径。
+
+触发条件：
+
+- posts > 15，或
+- knowledge entries > 25，或
+- command index payload 明显影响首屏 HTML / RSC payload。
+
+当前状态：
+
+- 现在 posts = 10，knowledge = 10，尚未到强制重构阈值。
+- 但 Phase 26 如果完成，posts 会接近 14，knowledge 会到 16，已经接近第一道阈值。
+
+待办：
+
+- [ ] 先测量当前首页 HTML / RSC payload 和 command item 数量。
+- [ ] 新增 `scripts/report-command-index.mjs`，输出 command item count、kind 分布和估算 payload。
+- [ ] 将 `getCommandItems()` 从 `layout.tsx` 拆到独立 server module。
+- [ ] 评估 static JSON：`/command-index.json`。
+- [ ] 评估 route handler：`/api/command-index`。
+- [ ] 打开 Cmd K 时再加载 index，未打开时不把完整内容索引塞进首屏。
+- [ ] 搜索结果增加 top-level 分组权重：External proof、Writing、Projects、Knowledge。
+- [ ] 为 `GlobalCommandMenu` 增加 loading / error / empty states 的 e2e。
+
+验收标准：
+
+- 首屏不再携带完整 command index。
+- Cmd K 首次打开延迟可接受。
+- 搜索、最近访问、上下文排序仍保持。
+- e2e 覆盖懒加载成功、失败、空查询和 query action。
+
+### Phase 29：Reading & Knowledge Quality Layer
+
+优先级：中。
+
+目标：让博客和 Knowledge 从“有内容”升级为“有阅读路径、有复用价值、有长期编辑质量”。
+
+为什么需要：
+
+- Phase 26 会增加内容量。
+- 如果没有编辑质量层，内容会变成卡片数量增长，而不是认知网络增长。
+
+交付范围：
+
+- 写作栏目规则。
+- Knowledge 类型规则。
+- RelatedReading 策略升级。
+- 中文/英文分工明确化。
+- 阅读页更强的“下一步”路径。
+
+待办：
+
+- [ ] 定义 4 条长期写作线：产品判断、设计工程、部署/自动化、AI 协作。
+- [ ] 每篇文章必须声明 `intent`，且 intent 只能来自受控词表。
+- [ ] 新增 `validate:content` 对 post intent、language、related links 的更严格校验。
+- [ ] Knowledge `kind` 是否足够，评估是否需要 `Case`, `Principle`, `Runbook`。
+- [ ] `RelatedReading` 根据语言、intent、项目关系给出更强排序。
+- [ ] 中文文章至少显示“适合引用到哪里”：飞书、issue、PR、复盘。
+- [ ] 英文文章至少显示“技术语境”：source、component、API、implementation note。
+- [ ] 增加 `/blog` 的 writing tracks，而不是只靠 tag filter。
+
+验收标准：
+
+- 每条内容都有明确写作线。
+- RelatedReading 不只是罗列关联，而能形成下一步阅读路径。
+- 新增内容不会破坏 sitemap、RSS、Command Center 和 Knowledge trails。
+
+### Phase 30：RayNode Operations Hardening
+
+优先级：中。
+
+目标：把服务器从“能部署”推进到“可持续运维”。
+
+为什么不是最高：
+
+- 当前 RayNode 已可用，服务 active，主站 smoke 通过。
+- 但长期看，手动部署、无监控、无自动备份会成为风险。
+
+待办：
+
+- [ ] 确认 systemd service 文件进入仓库文档或 `ops/` 模板。
+- [ ] 新增 RayNode smoke script：home、rss、sitemap、robots、关键文章、关键项目。
+- [ ] 新增 uptime / health endpoint 方案评估，不一定立刻做。
+- [ ] 记录回滚流程：恢复 `/srv/apps/elegant-developer-studio-runtime.prev`。
+- [ ] 记录 Caddy 配置备份位置。
+- [ ] 评估 GitHub Actions 通过 SSH 自动部署的安全边界。
+- [ ] 建立部署后 5 分钟检查清单。
+
+验收标准：
+
+- 新 agent 能按文档完成部署、回滚和 smoke。
+- RayNode 故障时能区分 DNS、Caddy、systemd、Next runtime、服务器资源耗尽。
+- 部署不再依赖散落在对话中的命令。
+
+### Phase 31：Visual System Polish Without Adding Surfaces
+
+优先级：中低。
+
+目标：在不新增页面的前提下，继续打磨视觉层级、移动端、首页节奏和细微交互。
+
+为什么排后：
+
+- 当前视觉不是最大瓶颈。
+- 继续“炫酷化”很容易掩盖内容和证据不足。
+
+待办：
+
+- [ ] 对首页首屏做桌面、平板、手机三档视觉 QA。
+- [ ] 检查 RayNode 状态 badge 是否过长，移动端是否需要短文案。
+- [ ] 检查 Studio Pulse 卡片是否因为新增内容变得过密。
+- [ ] 检查 Command Center 在移动端的焦点、滚动和结果高度。
+- [ ] 检查文章详情页 AmbientCursorField 是否仍可能干扰长文。
+- [ ] 评估是否按路由弱化 AmbientCursorField，而不是全站删除。
+- [ ] 增加 screenshots 到 `output/` 仅作为临时 QA，不纳入仓库。
+
+验收标准：
+
+- 不新增 surface。
+- 不增加 fake terminal / fake live 状态。
+- 所有视觉打磨必须服务可读性、层级、可访问性或内容发现。
+
+## 12. 当前不做事项
+
+这些事项不是永远不做，而是当前阶段不应该做：
+
+- 不做常驻宠物。
+- 不做访客光标。
+- 不做全站粒子或 3D world。
+- 不做大型 Reference Constellation。
+- 不做复杂后台 CMS。
+- 不做完整双语路由 `/zh`。
+- 不做 AI 搜索。
+- 不做新的一级导航页面。
+
+理由：
+
+- 当前内容规模还不足以支撑复杂图谱、AI 搜索或 CMS。
+- 新一级页面会重新制造 Phase 25 刚压下去的信息架构过载。
+- 奇趣交互可以继续留在 Lab，但不应进入首页主体验。
+
+## 13. 推荐执行顺序：Phase 26 起
+
+1. Phase 26：External Proof & Content Network。
+2. Phase 27：Evidence Automation & Release Discipline。
+3. Phase 28：Content Discovery & Command Index Scale。
+4. Phase 29：Reading & Knowledge Quality Layer。
+5. Phase 30：RayNode Operations Hardening。
+6. Phase 31：Visual System Polish Without Adding Surfaces。
+
+如果只能选一个下一步：选 Phase 26。
+
+原因：Phase 25 已经让站点可信，下一步必须让站点值得被判断。
