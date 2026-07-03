@@ -4,15 +4,16 @@
 
 ## 当前主线
 
-Phase 27：Evidence Automation & Release Discipline。
+Phase 28：Content Discovery & Command Index Scale。
 
-Phase 26 已完成外部证据网络。当前主线转为：把证据和部署纪律从人工操作变成脚本化事实源。
+Phase 27 已完成 evidence automation 与 RayNode 脚本化部署。当前主线转为：在内容继续增长前，先测量 Command Center / 内容发现层的规模边界，再决定是否懒加载 command index。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
 - `deploy:raynode` 封装 build、evidence、standalone artifact、上传、远端切换、重启和 smoke。
 - `validate:release-evidence` 检查 evidence 是否缺失、过期或内容规模不一致。
 - `validate:content` 拦截旧 Vercel deployment id 和临时 deployment URL。
+- Phase 28 的第一步不是重构，而是测量：command item count、payload、kind 分布、首屏是否携带过多索引。
 
 ## 线上状态
 
@@ -27,8 +28,9 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`9143bc0`。
-- Phase 26 新增项目 `/projects/openprofile-agent-workflow` 和 `/projects/anyreader-interface-teardown` 已在 RayNode 返回 200。
+- 当前服务器源码提交：`d59bdaf`。
+- `/release-evidence.json` 返回部署提交 `d59bdaf`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 50 public routes。
+- 生产公开路由可访问性测试通过：46 passed。
 
 ## 当前事实源
 
@@ -78,6 +80,8 @@ RayNode 当前状态：
 - e2e 覆盖 `/release-evidence.json` 和 Lumen 的 generated release evidence card。
 - 内容校验拦截旧 Vercel deployment id 和临时 deployment URL。
 - 部署 artifact 使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`。
+- 已部署到 RayNode，部署源码提交为 `d59bdaf`。
+- 生产定向 smoke 2 passed，生产公开路由可访问性 46 passed。
 
 ## 已完成的 Phase 25 切片
 
@@ -140,6 +144,6 @@ Command Center index 现在仍在 root layout 组装。当前内容量可接受�
 
 ## 下一步建议
 
-1. 完成 Phase 27 剩余验证与 RayNode 脚本部署。
-2. 同步 Feishu 当前上下文、Phase 25-27 结果。
-3. 观察 Command Center payload；posts > 15 或 knowledge entries > 25 时启动懒加载改造。
+1. 启动 Phase 28：先新增 command index 测量脚本，不先动交互。
+2. 根据测量结果决定是否将 command index 改为 `/command-index.json` 或 `/api/command-index` 懒加载。
+3. 同步 Feishu 当前上下文、Phase 25-27 结果。

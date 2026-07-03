@@ -1234,6 +1234,7 @@ Preview / fallback：`https://elegant-developer-studio.vercel.app`
 Primary implementation commit：`9e454a2`
 Production host：`https://raynode.me`
 Release evidence：`/release-evidence.json`
+Deployed source commit：`d59bdaf`
 
 范围：
 
@@ -1253,12 +1254,15 @@ Release evidence：`/release-evidence.json`
 - `npm run deploy:raynode -- --dry-run --skip-quality`：通过。
 - targeted e2e：4 passed。
 - full local gate：`npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`：170 passed。
-- RayNode scripted deploy：待执行。
+- RayNode scripted deploy：通过，远端源码为 `d59bdaf`，service active。
+- production targeted smoke：2 passed。
+- production public route smoke：46 passed。
+- `https://raynode.me/release-evidence.json`：commit `d59bdaf`，14 posts / 5 projects / 16 knowledge entries / 50 public routes。
 
 残余风险：
 
 - `public/release-evidence.json` 是部署产物，不提交进 Git；新 agent 必须知道先运行 `npm run release:evidence` 或 `npm run deploy:raynode`。
-- Production smoke 仍由部署脚本做 HTTP 级检查；完整 Playwright production e2e 仍建议阶段收尾手动执行。
+- Production smoke 已覆盖公开路由可访问性；仍未把 production Playwright 全量回归接入 CI。
 
 ## Unreleased - 第二十四阶段项目证据对象升级
 

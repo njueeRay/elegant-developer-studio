@@ -474,7 +474,7 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 27：Evidence Automation & Release Discipline
 
-状态：执行中，2026-07-04。
+状态：已完成并部署到 RayNode，2026-07-04。
 
 优先级：高。
 
@@ -511,6 +511,8 @@ Phase 25: Truth Source & Public Trust
 - release evidence 文件由脚本生成，不靠手写。
 - Lumen 项目页读取 release evidence，并由 e2e 覆盖。
 - CI 和本地验证都能发现 release evidence 缺失或过期：`npm run validate:release-evidence`。
+- RayNode 线上 `/release-evidence.json` 记录部署提交 `d59bdaf`。
+- 生产公开路由可访问性测试通过：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves" --workers=1`，46 passed。
 
 设计决定：
 
@@ -532,8 +534,8 @@ Phase 25: Truth Source & Public Trust
 
 当前状态：
 
-- 现在 posts = 10，knowledge = 10，尚未到强制重构阈值。
-- 但 Phase 26 如果完成，posts 会接近 14，knowledge 会到 16，已经接近第一道阈值。
+- 现在 posts = 14，knowledge = 16，尚未到强制重构阈值。
+- 但内容规模已经接近第一道阈值；下一阶段不应先做大重构，应先做测量和边界定义。
 
 待办：
 

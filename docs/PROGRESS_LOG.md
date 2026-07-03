@@ -1691,7 +1691,7 @@ GitHub 推送修复：
 
 日期：2026-07-04
 
-状态：已本地完整验证，待脚本部署，待外部同步。
+状态：已完成并部署到 RayNode，待外部同步。
 
 阶段判断：
 
@@ -1718,8 +1718,12 @@ GitHub 推送修复：
 - `npm run deploy:raynode -- --dry-run --skip-quality`：通过，生成 standalone artifact，并使用 `tar --no-xattrs`。
 - targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "generated release evidence|serves /release-evidence" --workers=1`，4 passed。
 - full local gate：`npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`，170 passed。
+- `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `d59bdaf`，服务 active。
+- `https://raynode.me/release-evidence.json`：返回 commit `d59bdaf`、14 posts / 5 projects / 16 knowledge entries / 50 public routes，必需 gate 为 passed。
+- production targeted smoke：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves /release-evidence|project evidence pack reads generated release evidence|project case studies expose evidence packs" --workers=1`，2 passed。
+- production public route smoke：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves" --workers=1`，46 passed。
 
 下一步：
 
-- 提交并推送。
-- 使用 `npm run deploy:raynode` 完成真实 RayNode 部署。
+- 启动 Phase 28：Content Discovery & Command Index Scale。
+- 先测量 command index，而不是直接重构。
