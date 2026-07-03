@@ -1527,3 +1527,42 @@ GitHub 推送修复：
 下一步：
 
 - 同步飞书。
+
+### 服务器部署尝试：raynode.me
+
+日期：2026-07-03
+
+状态：本地部署产物已准备，GitHub 已推送，服务器侧部署被远端用户态无响应阻塞。
+
+完成：
+
+- 读取 `/Users/ray/Data/Project/Github/Workshop/raynode-elegant-developer-studio-handoff.md`，确认服务器、Caddy、systemd 和部署路径。
+- 确认目标服务器 `47.81.38.236` 初始可 SSH，系统为 Ubuntu 24.04.4 LTS，Node 为 `v22.23.1`，npm 为 `10.9.8`，Caddy 为 active。
+- 在服务器 clone `https://github.com/njueeRay/elegant-developer-studio.git` 到 `/srv/apps/elegant-developer-studio`。
+- 远端 `npm ci` 完成，`npm run validate:content` 通过。
+- 远端 `npm run build` 在 `Creating an optimized production build ...` 后长时间无输出，随后 SSH、HTTP、HTTPS 均进入用户态无响应状态。
+- 本地将 Next.js 配置改为 `output: "standalone"`，避免后续在小服务器上执行重型构建。
+- 本地重新构建通过，并生成 `/tmp/elegant-developer-studio-standalone.tgz`，包含 `server.js`、standalone `node_modules`、`.next/static` 和 `public`。
+- 提交并推送 `6278958 chore: enable standalone server output`。
+
+验证与故障现象：
+
+- `nc -vz -w 5 47.81.38.236 22`：TCP 端口可连接。
+- `ssh -o BatchMode=yes -o ConnectTimeout=30 ray@47.81.38.236 ...`：`Connection timed out during banner exchange`。
+- `curl http://raynode.me`：TCP connect 成功后 15 秒无响应，HTTP code `000`。
+- `curl https://raynode.me`：SSL connection timeout。
+- 原始 `nc` 连接 22 端口也没有返回 SSH banner。
+
+判断：
+
+- 服务器网络入口和端口未完全断开，但 sshd/Caddy 或系统用户态已经无法及时响应。
+- 大概率是远端 Next.js build 在小实例上触发 CPU、内存或 I/O 压力，导致服务响应耗尽。
+- 当前不能继续安全部署；需要先从阿里云控制台重启实例，或等待系统恢复 SSH banner。
+
+恢复后部署策略：
+
+- 不再远端执行 `npm run build`。
+- 上传本地 standalone tarball 到服务器。
+- 将运行产物释放到 `/srv/apps/elegant-developer-studio-runtime`，保留 `/srv/apps/elegant-developer-studio` 作为源码仓库。
+- systemd 使用 `/usr/bin/node server.js`，监听 `HOSTNAME=127.0.0.1` 和 `PORT=3001`。
+- Caddy 保留 `/feishu/oauth/* -> localhost:18888`，其余流量反代到 `localhost:3001`。

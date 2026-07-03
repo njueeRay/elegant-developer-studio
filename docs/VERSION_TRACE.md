@@ -1117,6 +1117,35 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - 飞书：[57｜第二十四点五阶段 Personal OS Zoo](https://scnlb1lk96sb.feishu.cn/wiki/KJu3wcx4tiuoYBk6GuPcZRDFnLd)。
 
+## Server Deployment Attempt - raynode.me
+
+日期：2026-07-03
+Server target：`raynode.me` / `47.81.38.236`
+Prepared commit：`6278958`
+Server status：阻塞，远端 SSH banner、HTTP response 和 HTTPS handshake 均超时。
+
+范围：
+
+- 根据 `/Users/ray/Data/Project/Github/Workshop/raynode-elegant-developer-studio-handoff.md` 启动服务器部署。
+- 远端 clone 到 `/srv/apps/elegant-developer-studio`。
+- 远端 `npm ci` 完成，`npm run validate:content` 通过。
+- 远端 `npm run build` 长时间卡在 Next.js production build。
+- 本地启用 Next.js standalone output，提交并推送 `6278958 chore: enable standalone server output`。
+- 本地生成 `/tmp/elegant-developer-studio-standalone.tgz`，用于恢复后直接上传运行。
+
+验证：
+
+- `47.81.38.236:22` TCP 端口可连接，但 SSH 不返回 banner。
+- `http://raynode.me` 连接后无响应，HTTP code `000`。
+- `https://raynode.me` SSL 握手超时。
+- 本机无可用阿里云 CLI 或凭证，无法从云 API 侧强制重启。
+
+结论：
+
+- 当前不能宣称服务器部署完成。
+- 下一步需要先通过阿里云控制台重启实例，或等待远端用户态恢复。
+- 恢复后必须使用本地 standalone artifact 部署，不再在服务器上执行 `npm run build`。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02
