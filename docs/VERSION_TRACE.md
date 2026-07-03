@@ -1267,7 +1267,7 @@ Deployed source commit：`d59bdaf`
 ## Unreleased - 第二十八阶段 Content Discovery & Command Index Scale
 
 日期：2026-07-04
-Primary implementation commit：待记录
+Primary implementation commit：`a3f5f78`
 Production host：`https://raynode.me`
 Command index：`/command-index.json`
 Release evidence：`/release-evidence.json`
