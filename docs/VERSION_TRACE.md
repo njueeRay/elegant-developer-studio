@@ -1349,7 +1349,7 @@ Production host：`https://raynode.me`
 ## Unreleased - 第三十阶段 RayNode Operations Hardening
 
 日期：2026-07-04
-Primary implementation commit：待记录
+Primary implementation commit：`87e185c`
 Production host：`https://raynode.me`
 
 范围：
