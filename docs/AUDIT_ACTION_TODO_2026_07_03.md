@@ -522,7 +522,7 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 28：Content Discovery & Command Index Scale
 
-状态：已实现并完成本地回归，2026-07-04；待 RayNode 部署。
+状态：已完成并部署到 RayNode，2026-07-04。
 
 优先级：中高。
 
@@ -564,6 +564,10 @@ Phase 25: Truth Source & Public Trust
 - 估算 payload：35,413 bytes JSON，10,413 bytes gzip，keywords 6,735 bytes。
 - `firstScreenCarriesCommandIndex: false`。
 - `npm run test:e2e -- --workers=1`：178 passed。
+- RayNode 线上 `/command-index.json` 返回 110 items。
+- RayNode 线上 `/release-evidence.json` 记录部署提交 `304c090` 和 51 public routes。
+- production targeted smoke：6 passed。
+- production public route smoke：47 passed。
 
 ### Phase 29：Reading & Knowledge Quality Layer
 

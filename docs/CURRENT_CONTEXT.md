@@ -30,9 +30,10 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`d59bdaf`。
-- `/release-evidence.json` 返回部署提交 `d59bdaf`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 50 public routes。
-- 生产公开路由可访问性测试通过：46 passed。
+- 当前服务器源码提交：`304c090`。
+- `/release-evidence.json` 返回部署提交 `304c090`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 51 public routes。
+- `/command-index.json` 返回 110 command items。
+- 生产公开路由可访问性测试通过：47 passed。
 
 ## 当前事实源
 
@@ -98,6 +99,8 @@ RayNode 当前状态：
 - 当前 command index：110 items，35,413 bytes JSON，10,413 bytes gzip。
 - 首页初始 HTML 不再携带 `action-writing-product-systems` / `command-result-action-lab` 等完整索引标记。
 - 完整本地 e2e：178 passed。
+- 已部署到 RayNode，部署源码提交为 `304c090`。
+- 生产定向 smoke 6 passed，生产公开路由可访问性 47 passed。
 
 ## 已完成的 Phase 25 切片
 
@@ -128,11 +131,12 @@ RayNode 当前状态：
 
 ```bash
 npm run validate:content
+npm run report:command-index
 npm run release:evidence -- --local-quality-passed
 npm run validate:release-evidence
 npm run lint
 npm run build
-npx playwright test --project=chromium --grep "release evidence|command menu traps|photo lightbox traps|project case studies"
+npx playwright test --project=chromium --grep "command index|release evidence|command menu traps|photo lightbox traps|project case studies"
 ```
 
 完整回归：
@@ -144,7 +148,7 @@ npm run test:e2e -- --workers=1
 生产主站 smoke：
 
 ```bash
-PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves|primary surfaces|command menu opens real lab route"
+PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves|command index|command menu opens real lab route"
 ```
 
 ## 当前技术债触发条件
@@ -160,6 +164,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 部署 Phase 28 到 RayNode，并确认 `/command-index.json` 线上可达。
-2. 启动 Phase 29：Reading & Knowledge Quality Layer。
+1. 启动 Phase 29：Reading & Knowledge Quality Layer。
+2. 为 Blog / Knowledge 定义长期写作线、intent 受控词表和 RelatedReading 排序规则。
 3. 同步 Feishu 当前上下文、Phase 25-28 结果。

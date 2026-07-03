@@ -1271,6 +1271,7 @@ Primary implementation commit：`a3f5f78`
 Production host：`https://raynode.me`
 Command index：`/command-index.json`
 Release evidence：`/release-evidence.json`
+Deployed source commit：`304c090`
 
 范围：
 
@@ -1299,12 +1300,16 @@ Release evidence：`/release-evidence.json`
 - `npm run build`：通过，53 routes。
 - targeted e2e：8 passed。
 - full e2e：178 passed。
-- RayNode scripted deploy：待执行。
+- RayNode scripted deploy：通过，远端源码为 `304c090`，service active。
+- production targeted smoke：6 passed。
+- production public route smoke：47 passed。
+- `https://raynode.me/command-index.json`：110 items。
+- `https://raynode.me/release-evidence.json`：commit `304c090`，14 posts / 5 projects / 16 knowledge entries / 51 public routes。
 
 残余风险：
 
 - `/command-index.json` 当前是全量 JSON；当 items > 120 或 gzip payload 明显增长时，应评估 `/api/command-index` 或服务端搜索。
-- Production smoke 尚待部署后执行。
+- Production smoke 已覆盖 command index、release evidence、Command Center 懒加载和公开路由可访问性。
 
 ## Unreleased - 第二十四阶段项目证据对象升级
 

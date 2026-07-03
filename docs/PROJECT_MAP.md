@@ -89,7 +89,7 @@
 | 项目证据包 | `/projects/[slug]#project-evidence-title` | 23 | 已实现 | GitHub、Vercel、飞书和测试证据入口 |
 | 项目证据对象 | `/projects/[slug]#project-evidence-title` | 24 | 已实现待部署 | 证据升级为 typed object：source、deployment、document、test、screenshot、metric |
 | Release evidence | `/release-evidence.json` | 27 | 已实现 | 部署时生成的运行时发布事实源 |
-| Command index | `/command-index.json` | 28 | 已实现待部署 | Command Center 按需加载的公开索引 payload |
+| Command index | `/command-index.json` | 28 | 已实现 | Command Center 按需加载的公开索引 payload |
 | Studio Pulse | `/#studio-pulse` | 24.5 | 已实现 | 首页 Personal OS 小切片：写作、建设、Knowledge、音乐和 prompt |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |

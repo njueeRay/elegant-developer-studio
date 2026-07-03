@@ -1732,7 +1732,7 @@ GitHub 推送修复：
 
 日期：2026-07-04
 
-状态：已实现并完成本地完整回归，待 RayNode 部署。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -1769,9 +1769,13 @@ GitHub 推送修复：
 - `npm run build`：通过，53 routes。
 - targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "command menu traps|command menu lazy loads|command menu exposes error|command index" --workers=1`，8 passed。
 - full e2e：`npm run test:e2e -- --workers=1`，178 passed。
+- `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `304c090`，服务 active。
+- `https://raynode.me/command-index.json`：返回 110 items，包含 `action-lab` 和 `action-writing-product-systems`。
+- `https://raynode.me/release-evidence.json`：返回 commit `304c090`、14 posts / 5 projects / 16 knowledge entries / 51 public routes。
+- production targeted smoke：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves /command-index|command index is a lazy|command menu lazy loads|command menu exposes error|command menu opens real lab route|serves /release-evidence" --workers=1`，6 passed。
+- production public route smoke：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves" --workers=1`，47 passed。
 
 下一步：
 
-- 提交、推送并部署到 RayNode。
-- 部署后确认 `/command-index.json`、`/release-evidence.json` 和 Command Center 线上行为。
 - 启动 Phase 29：Reading & Knowledge Quality Layer。
+- 同步飞书。
