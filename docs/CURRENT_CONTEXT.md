@@ -4,9 +4,9 @@
 
 ## 当前主线
 
-Phase 29：Reading & Knowledge Quality Layer。
+Phase 30：RayNode Operations Hardening。
 
-Phase 28 已完成 Command Center 索引规模化第一切片：索引从 root layout 移出，改为 `/command-index.json` 按需加载，并新增测量脚本。当前主线转为：让博客和 Knowledge 从“内容存在”升级为“阅读路径、写作线和复用价值更明确”。
+Phase 29 已完成阅读质量层第一切片并通过完整本地回归：Blog 有 4 条长期 writing tracks，文章 intent 进入受控词表，文章页显示引用/技术语境，RelatedReading 开始解释下一步路径。Phase 29 完成提交和 RayNode 部署后，主线转入 Phase 30：RayNode Operations Hardening，把服务器从“能部署”推进到“可持续运维”。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -16,6 +16,7 @@ Phase 28 已完成 Command Center 索引规模化第一切片：索引从 root l
 - `src/lib/command-index.ts` 是 Command Center 索引事实源。
 - `/command-index.json` 是 Command Center 按需加载的公开索引 payload。
 - `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
+- `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
 
 ## 线上状态
 
@@ -47,6 +48,7 @@ RayNode 当前状态：
 - `src/lib/command-index.ts`：Command Center 索引构建器。
 - `src/app/command-index.json/route.ts`：Command Center 懒加载 JSON endpoint。
 - `scripts/report-command-index.mjs`：Command index 规模报告。
+- `src/data/writing.ts`：Writing tracks、受控 intent 和 citation guide。
 - `docs/AUDIT_ACTION_TODO_2026_07_03.md`：Phase 25 P0-P3 执行队列。
 - `docs/PROJECT_MAP.md`：产品表面、阶段、目录和质量门禁地图。
 - `docs/ROADMAP.md`：阶段路线。
@@ -101,6 +103,20 @@ RayNode 当前状态：
 - 完整本地 e2e：178 passed。
 - 已部署到 RayNode，部署源码提交为 `304c090`。
 - 生产定向 smoke 6 passed，生产公开路由可访问性 47 passed。
+
+## 已完成的 Phase 29 切片
+
+- 新增 `src/data/writing.ts`。
+- 定义 4 条长期写作线：产品判断、设计工程、部署与自动化、AI 协作。
+- `/blog` 新增 Writing tracks 面板和 `track` query 筛选。
+- `PostCard` 显示写作线 + intent。
+- 文章详情页新增 `Reading quality context`。
+- 中文文章显示“适合引用到哪里”：飞书阶段复盘、GitHub issue、PR 说明、路线图审查。
+- 英文文章显示 Technical context：Source notes、Component decisions、API / route contracts、Implementation review。
+- `RelatedReading` 根据当前文章 track / language 重排相关文章，并显示路径理由。
+- `validate:content` 增加 writing intent、language、citation guide、related trails 和 writing track 校验。
+- targeted e2e：6 passed。
+- 完整本地 e2e：180 passed。
 
 ## 已完成的 Phase 25 切片
 
@@ -164,6 +180,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 启动 Phase 29：Reading & Knowledge Quality Layer。
-2. 为 Blog / Knowledge 定义长期写作线、intent 受控词表和 RelatedReading 排序规则。
-3. 同步 Feishu 当前上下文、Phase 25-28 结果。
+1. 完成 Phase 29 提交、部署和生产 smoke。
+2. 启动 Phase 30：RayNode Operations Hardening。
+3. 同步 Feishu 当前上下文、Phase 25-29 结果。

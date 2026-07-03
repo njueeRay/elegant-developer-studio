@@ -1,6 +1,7 @@
 import { ArrowRight, BookOpenText, Boxes, LibraryBig } from "lucide-react";
 import Link from "next/link";
 import type { KnowledgeEntry } from "@/data/knowledge";
+import { getWritingTrackForIntent, intentToTrack } from "@/data/writing";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
 
 type RelatedReadingProps = {
@@ -15,23 +16,39 @@ type TrailItem = {
   summary: string;
   href: string;
   meta: string;
+  reason: string;
 };
 
 type TrailLaneProps = {
   label: string;
+  description: string;
   icon: typeof BookOpenText;
   items: TrailItem[];
 };
 
 export function RelatedReading({ current, posts, knowledge, projects }: RelatedReadingProps) {
+  const currentTrack = getWritingTrackForIntent(current.intent);
+  const currentTrackId = intentToTrack[current.intent];
   const relatedPosts = current.relatedPostSlugs
     .map((slug) => posts.find((post) => post.slug === slug))
     .filter((post): post is PostMeta => Boolean(post))
+    .sort((a, b) => {
+      const aSameTrack = intentToTrack[a.intent] === currentTrackId ? 1 : 0;
+      const bSameTrack = intentToTrack[b.intent] === currentTrackId ? 1 : 0;
+      const aSameLanguage = a.language === current.language ? 1 : 0;
+      const bSameLanguage = b.language === current.language ? 1 : 0;
+
+      return bSameTrack - aSameTrack || bSameLanguage - aSameLanguage || b.date.localeCompare(a.date);
+    })
     .map((post) => ({
       title: post.title,
       summary: post.summary,
       href: `/blog/${post.slug}`,
-      meta: `${post.intent} / ${post.language}`,
+      meta: `${getWritingTrackForIntent(post.intent).label} / ${post.language}`,
+      reason:
+        intentToTrack[post.intent] === currentTrackId
+          ? "Same writing track"
+          : "Adjacent argument",
     }));
 
   const relatedKnowledge = current.relatedKnowledgeSlugs
@@ -42,6 +59,7 @@ export function RelatedReading({ current, posts, knowledge, projects }: RelatedR
       summary: entry.summary,
       href: `/knowledge/${entry.slug}`,
       meta: `${entry.kind} / ${entry.status}`,
+      reason: "Reusable rule",
     }));
 
   const relatedProjects = current.relatedProjectSlugs
@@ -52,6 +70,7 @@ export function RelatedReading({ current, posts, knowledge, projects }: RelatedR
       summary: project.summary,
       href: `/projects/${project.slug}`,
       meta: `${project.role} / ${project.status}`,
+      reason: "Project proof",
     }));
 
   return (
@@ -60,20 +79,36 @@ export function RelatedReading({ current, posts, knowledge, projects }: RelatedR
         <span>read.next(&quot;{current.slug}&quot;)</span>
         <h2>Keep the thread alive.</h2>
         <p>
-          This essay is part of a local trail: read the next argument, inspect the
-          reusable knowledge, or open the project evidence behind the system.
+          This essay belongs to the {currentTrack.label} track. Read the next
+          argument, inspect the reusable knowledge, or open the project evidence
+          behind the system.
         </p>
       </div>
       <div className="related-reading-lanes">
-        <TrailLane label="Essays" icon={BookOpenText} items={relatedPosts} />
-        <TrailLane label="Knowledge" icon={LibraryBig} items={relatedKnowledge} />
-        <TrailLane label="Projects" icon={Boxes} items={relatedProjects} />
+        <TrailLane
+          label="Essays"
+          description="Next arguments in the same or adjacent writing path."
+          icon={BookOpenText}
+          items={relatedPosts}
+        />
+        <TrailLane
+          label="Knowledge"
+          description="Reusable principles and decisions behind this essay."
+          icon={LibraryBig}
+          items={relatedKnowledge}
+        />
+        <TrailLane
+          label="Projects"
+          description="Inspectable proof and implementation surfaces."
+          icon={Boxes}
+          items={relatedProjects}
+        />
       </div>
     </section>
   );
 }
 
-function TrailLane({ label, icon: Icon, items }: TrailLaneProps) {
+function TrailLane({ label, description, icon: Icon, items }: TrailLaneProps) {
   if (items.length === 0) {
     return null;
   }
@@ -84,9 +119,11 @@ function TrailLane({ label, icon: Icon, items }: TrailLaneProps) {
         <Icon size={16} />
         <span>{label}</span>
       </div>
+      <p className="related-reading-lane-description">{description}</p>
       <div className="related-reading-links">
         {items.map((item) => (
           <Link key={item.href} href={item.href} className="related-reading-link">
+            <span className="related-reading-link-reason">{item.reason}</span>
             <span className="related-reading-link-meta">{item.meta}</span>
             <strong>{item.title}</strong>
             <small>{item.summary}</small>

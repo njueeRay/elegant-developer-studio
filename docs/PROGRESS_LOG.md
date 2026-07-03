@@ -1779,3 +1779,41 @@ GitHub 推送修复：
 
 - 启动 Phase 29：Reading & Knowledge Quality Layer。
 - 同步飞书。
+
+### 第二十九阶段：Reading & Knowledge Quality Layer
+
+日期：2026-07-04
+
+状态：已实现并完成完整本地回归，待提交和 RayNode 部署。
+
+阶段判断：
+
+- Phase 28 解决了内容发现的 payload 问题，但博客和 Knowledge 仍需要更强编辑秩序。
+- 当前最有价值的切片不是新增文章，而是定义写作线、收紧 intent、让 RelatedReading 真正形成下一步路径。
+- Knowledge kind 暂不扩展。`Case` 属于项目/文章，`Runbook` 应放到 Phase 30 运维层，`Principle` 暂可由 `Decision` / `Pattern` 承载。
+
+完成：
+
+- 新增 `src/data/writing.ts`，集中定义 writing tracks、受控 intent、intent → track 映射和 citation guide。
+- `/blog` 新增四条 writing tracks：产品判断、设计工程、部署与自动化、AI 协作。
+- `/blog` 支持 `?track=product-judgment` 这类稳定 URL 状态。
+- `PostCard` 显示写作线和 intent。
+- 文章详情页新增 `Reading quality context`。
+- 中文文章显示“适合引用到哪里”：飞书阶段复盘、GitHub issue、PR 说明、路线图审查。
+- 英文文章显示 Technical context：Source notes、Component decisions、API / route contracts、Implementation review。
+- `RelatedReading` 按同写作线、同语言优先排序，并显示 Same writing track / Adjacent argument / Reusable rule / Project proof。
+- `validate:content` 增加 intent 受控词表、language、citation guide、related trails 和 writing track 覆盖校验。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "blog language filter|blog writing tracks|article related reading" --workers=1`，6 passed。
+- 完整本地质量门禁：`npm run report:command-index && npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`，通过。
+- 完整本地 e2e：180 passed。
+
+下一步：
+
+- 提交、推送并部署到 RayNode。
+- 部署后生产 smoke 覆盖 `/blog?track=product-judgment` 和文章阅读质量上下文。

@@ -68,6 +68,7 @@
 - 第二十六阶段外部证据网络：新增 OpenProfile 与 AnyReader 两个外部化项目、4 篇非本站中心文章、6 条 Knowledge，并让首页精选转向外部证据。
 - 第二十七阶段证据自动化与发布纪律：新增 release evidence 生成/校验、RayNode 一键部署脚本和项目页生成证据卡。
 - 第二十八阶段内容发现规模化：Command Center 索引从 root layout 移出，改为 `/command-index.json` 按需加载，并新增规模报告。
+- 第二十九阶段阅读质量层：新增 writing tracks、受控 intent、文章引用语境、RelatedReading 路径理由和内容质量校验。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 
@@ -79,7 +80,9 @@
 | 博客列表 | `/blog` | 2 | 已实现 | 长文和写作归档 |
 | 博客筛选状态 | `/blog?tag=&language=` | 21 | 已实现 | 可分享、可刷新、可返回的写作筛选 |
 | 博客 query 快捷入口 | `/blog?tag=` `/blog?language=` | 22 | 已实现 | Command Center 打开精选写作状态 |
+| 博客 writing tracks | `/blog?track=` | 29 | 已实现待部署 | 产品判断、设计工程、部署自动化、AI 协作四条长期写作线 |
 | 文章详情 | `/blog/[slug]` | 2/19 | 已实现 | MDX 阅读体验、语言与写作意图、相关阅读路径 |
+| 文章阅读质量上下文 | `/blog/[slug]` | 29 | 已实现待部署 | 显示 writing track、中文引用场景或英文技术语境 |
 | 项目列表 | `/projects` | 2 | 已实现 | 精选作品和 case study |
 | 项目筛选状态 | `/projects?stack=` | 21 | 已实现 | 可分享的项目技术栈筛选 |
 | 项目 query 快捷入口 | `/projects?stack=GitHub` | 22 | 已实现 | Command Center 打开 GitHub-backed projects |

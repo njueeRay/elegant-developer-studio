@@ -6,6 +6,7 @@ type FilterBarProps = {
   label: string;
   active: string;
   items: string[];
+  displayLabels?: Record<string, string>;
   onChange: (item: string) => void;
   resultCount: number;
   totalCount: number;
@@ -29,12 +30,14 @@ export function FilterBar({
   label,
   active,
   items,
+  displayLabels,
   onChange,
   resultCount,
   totalCount,
   noun,
 }: FilterBarProps) {
   const hasFilter = active !== "All";
+  const activeLabel = displayLabels?.[active] ?? active;
 
   return (
     <div className="filter-toolbar">
@@ -60,7 +63,7 @@ export function FilterBar({
             aria-pressed={active === item}
             onClick={() => onChange(item)}
           >
-            {item}
+            {displayLabels?.[item] ?? item}
           </button>
         ))}
       </div>
@@ -70,8 +73,8 @@ export function FilterBar({
         className="filter-reset"
         data-testid={`filter-${toTestId(label)}-clear`}
         disabled={!hasFilter}
-        aria-label={hasFilter ? `Clear ${active} filter` : "No active filter"}
-        title={hasFilter ? `Clear ${active} filter` : "No active filter"}
+        aria-label={hasFilter ? `Clear ${activeLabel} filter` : "No active filter"}
+        title={hasFilter ? `Clear ${activeLabel} filter` : "No active filter"}
         onClick={() => onChange("All")}
       >
         <X size={14} />

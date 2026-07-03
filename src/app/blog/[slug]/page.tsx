@@ -8,6 +8,7 @@ import { RelatedReading } from "@/components/content/related-reading";
 import { SiteHeader } from "@/components/site-header";
 import { TableOfContents } from "@/components/content/table-of-contents";
 import { knowledgeEntries } from "@/data/knowledge";
+import { getCitationGuide, getWritingTrackForIntent } from "@/data/writing";
 import { formatDate, getAllPostMeta, getAllPosts, getAllProjectMeta, getPost } from "@/lib/content";
 import { createMetadata } from "@/lib/metadata";
 
@@ -45,6 +46,8 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const Content = post.Content;
+  const writingTrack = getWritingTrackForIntent(post.intent);
+  const citationGuide = getCitationGuide(post.language);
 
   return (
     <main className="studio-shell content-shell article-shell">
@@ -79,6 +82,10 @@ export default async function BlogPostPage({ params }: PageProps) {
               <dt>Intent</dt>
               <dd>{post.intent}</dd>
             </div>
+            <div>
+              <dt>Track</dt>
+              <dd>{writingTrack.label}</dd>
+            </div>
           </dl>
         </aside>
         <div className="article-main">
@@ -91,6 +98,22 @@ export default async function BlogPostPage({ params }: PageProps) {
             <h1>{post.title}</h1>
             <p>{post.subtitle}</p>
           </header>
+          <section className="article-quality-panel" aria-label="Reading quality context">
+            <div>
+              <span>writing.track</span>
+              <strong>{writingTrack.label}</strong>
+              <p>{writingTrack.description}</p>
+            </div>
+            <div>
+              <span>{citationGuide.command}</span>
+              <strong>{citationGuide.label}</strong>
+              <ul>
+                {citationGuide.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
           <div className="article-content">
             <Content />
           </div>

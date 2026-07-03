@@ -103,6 +103,24 @@ function extractKnowledgeEntries() {
   return evaluateObjectLiteral(arrayLiteral, "src/data/knowledge.ts");
 }
 
+function extractExportLiteral(path, exportName, openChar, closeChar) {
+  const source = read(path);
+  const marker = `export const ${exportName}`;
+  const markerIndex = source.indexOf(marker);
+
+  if (markerIndex === -1) {
+    throw new Error(`${path} does not export ${exportName}`);
+  }
+
+  const assignmentIndex = source.indexOf("=", markerIndex);
+  const valueStart = source.indexOf(openChar, assignmentIndex);
+
+  return evaluateObjectLiteral(
+    extractBalanced(source, valueStart, openChar, closeChar),
+    `${path}:${exportName}`,
+  );
+}
+
 function listContentMeta(dir) {
   return readdirSync(join(root, dir))
     .filter((file) => file.endsWith(".mdx"))
@@ -154,10 +172,17 @@ function assertRoute({ owner, href, routes, errors }) {
 const posts = listContentMeta("src/content/posts");
 const projects = listContentMeta("src/content/projects");
 const knowledgeEntries = extractKnowledgeEntries();
+const writingIntents = extractExportLiteral("src/data/writing.ts", "writingIntents", "[", "]");
+const writingTracks = extractExportLiteral("src/data/writing.ts", "writingTracks", "[", "]");
+const intentToTrack = extractExportLiteral("src/data/writing.ts", "intentToTrack", "{", "}");
+const citationGuides = extractExportLiteral("src/data/writing.ts", "citationGuides", "{", "}");
 
 const postSlugs = new Set(posts.map((post) => post.slug));
 const projectSlugs = new Set(projects.map((project) => project.slug));
 const knowledgeSlugs = new Set(knowledgeEntries.map((entry) => entry.slug));
+const allowedLanguages = new Set(["English", "中文"]);
+const allowedIntents = new Set(writingIntents);
+const writingTrackIds = new Set(writingTracks.map((track) => track.id));
 const routes = new Set(staticRoutes);
 const evidenceTypes = new Set([
   "source",
@@ -180,6 +205,22 @@ const errors = [];
 posts.forEach((post) => {
   const owner = `post:${post.slug}`;
 
+  if (!allowedLanguages.has(post.language)) {
+    errors.push(`${owner}.language must be one of ${Array.from(allowedLanguages).join(", ")}`);
+  }
+
+  if (!allowedIntents.has(post.intent)) {
+    errors.push(`${owner}.intent "${post.intent}" is not in src/data/writing.ts writingIntents`);
+  }
+
+  if (!writingTrackIds.has(intentToTrack[post.intent])) {
+    errors.push(`${owner}.intent "${post.intent}" must map to a writing track`);
+  }
+
+  if (!citationGuides[post.language]?.items?.length) {
+    errors.push(`${owner}.language "${post.language}" must have a citation guide`);
+  }
+
   assertSlugList({
     owner,
     field: "relatedPostSlugs",
@@ -201,6 +242,34 @@ posts.forEach((post) => {
     allowed: projectSlugs,
     errors,
   });
+
+  if (post.slug && post.relatedPostSlugs?.includes(post.slug)) {
+    errors.push(`${owner}.relatedPostSlugs must not reference itself`);
+  }
+
+  ["relatedPostSlugs", "relatedKnowledgeSlugs", "relatedProjectSlugs"].forEach((field) => {
+    if (!Array.isArray(post[field]) || post[field].length === 0) {
+      errors.push(`${owner}.${field} must contain at least one public trail`);
+    }
+  });
+});
+
+if (writingTracks.length !== 4) {
+  errors.push("src/data/writing.ts must define exactly 4 long-term writing tracks");
+}
+
+writingIntents.forEach((intent) => {
+  if (!writingTrackIds.has(intentToTrack[intent])) {
+    errors.push(`writing intent "${intent}" must map to a valid writing track`);
+  }
+});
+
+writingTracks.forEach((track) => {
+  const count = posts.filter((post) => intentToTrack[post.intent] === track.id).length;
+
+  if (count === 0) {
+    errors.push(`writing track "${track.id}" must have at least one post`);
+  }
 });
 
 projects.forEach((project) => {

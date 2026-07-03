@@ -1,8 +1,11 @@
 import { ArrowRight, CalendarDays, FileText } from "lucide-react";
 import Link from "next/link";
+import { getWritingTrackForIntent } from "@/data/writing";
 import { formatDate, type PostMeta } from "@/lib/content";
 
 export function PostCard({ post, compact = false }: { post: PostMeta; compact?: boolean }) {
+  const track = getWritingTrackForIntent(post.intent);
+
   return (
     <Link href={`/blog/${post.slug}`} className={`post-card ${compact ? "compact" : ""}`}>
       <div className="post-card-icon">
@@ -18,7 +21,9 @@ export function PostCard({ post, compact = false }: { post: PostMeta; compact?: 
           <span>{post.language}</span>
           <span>{post.status}</span>
         </div>
-        <p className="post-card-intent">{post.intent}</p>
+        <p className="post-card-intent">
+          {track.label} / {post.intent}
+        </p>
         <h2>{post.title}</h2>
         <p>{post.summary}</p>
         <div className="tag-row content-tags">

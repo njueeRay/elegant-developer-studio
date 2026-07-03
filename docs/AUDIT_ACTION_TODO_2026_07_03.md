@@ -571,6 +571,8 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 29：Reading & Knowledge Quality Layer
 
+状态：已实现并完成完整本地回归，2026-07-04；待提交与 RayNode 部署。
+
 优先级：中。
 
 目标：让博客和 Knowledge 从“有内容”升级为“有阅读路径、有复用价值、有长期编辑质量”。
@@ -590,14 +592,31 @@ Phase 25: Truth Source & Public Trust
 
 待办：
 
-- [ ] 定义 4 条长期写作线：产品判断、设计工程、部署/自动化、AI 协作。
-- [ ] 每篇文章必须声明 `intent`，且 intent 只能来自受控词表。
-- [ ] 新增 `validate:content` 对 post intent、language、related links 的更严格校验。
-- [ ] Knowledge `kind` 是否足够，评估是否需要 `Case`, `Principle`, `Runbook`。
-- [ ] `RelatedReading` 根据语言、intent、项目关系给出更强排序。
-- [ ] 中文文章至少显示“适合引用到哪里”：飞书、issue、PR、复盘。
-- [ ] 英文文章至少显示“技术语境”：source、component、API、implementation note。
-- [ ] 增加 `/blog` 的 writing tracks，而不是只靠 tag filter。
+- [x] 定义 4 条长期写作线：产品判断、设计工程、部署/自动化、AI 协作。
+- [x] 每篇文章必须声明 `intent`，且 intent 只能来自受控词表。
+- [x] 新增 `validate:content` 对 post intent、language、related links 的更严格校验。
+- [x] Knowledge `kind` 是否足够，评估是否需要 `Case`, `Principle`, `Runbook`。
+- [x] `RelatedReading` 根据语言、intent、项目关系给出更强排序。
+- [x] 中文文章至少显示“适合引用到哪里”：飞书、issue、PR、复盘。
+- [x] 英文文章至少显示“技术语境”：source、component、API、implementation note。
+- [x] 增加 `/blog` 的 writing tracks，而不是只靠 tag filter。
+
+Knowledge kind 评估：
+
+- 暂不扩展 `KnowledgeKind`。当前 `Pattern`、`Snippet`、`Decision`、`Reference` 足够覆盖现有 16 条知识。
+- `Case` 已由项目页和文章承载，暂不放进 Knowledge；否则会和 Project Evidence Pack 职能重叠。
+- `Principle` 目前可归入 `Decision` 或 `Pattern`；等原则类条目超过 8 条再拆。
+- `Runbook` 应进入 Phase 30 运维层，而不是混入当前阅读质量层。
+
+阶段结果：
+
+- 新增 `src/data/writing.ts`，集中管理写作线、intent 词表、intent → track 映射和引用语境。
+- `/blog` 新增 writing tracks，并支持 `?track=product-judgment` 这类稳定 URL 状态。
+- 文章页新增 `Reading quality context`，中文文章显示引用场景，英文文章显示技术语境。
+- `RelatedReading` 增加路径理由：同写作线 / 相邻论点 / 可复用规则 / 项目证据。
+- `npm run validate:content` 会阻止失控 intent、非法 language、缺失 citation guide、空 related trail 和空写作线。
+- 完整本地质量门禁通过：`report:command-index`、`release:evidence`、`validate:release-evidence`、`validate:content`、`lint`、`build`、`npm run test:e2e -- --workers=1`。
+- 完整本地 e2e：180 passed。
 
 验收标准：
 

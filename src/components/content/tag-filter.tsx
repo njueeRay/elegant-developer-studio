@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { FilterBar } from "@/components/content/filter-bar";
 import { PostCard } from "@/components/content/post-card";
 import { ProjectCard } from "@/components/content/project-card";
+import { getWritingTrackSummaries, intentToTrack } from "@/data/writing";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
 import { useQueryFilter } from "@/lib/use-query-filter";
 
@@ -18,6 +19,18 @@ export function PostExplorer({
     () => Array.from(new Set(posts.map((post) => post.language))),
     [posts],
   );
+  const trackSummaries = useMemo(() => getWritingTrackSummaries(posts), [posts]);
+  const trackIds = useMemo(() => trackSummaries.map((track) => track.id), [trackSummaries]);
+  const trackLabels = useMemo(
+    () =>
+      Object.fromEntries(
+        trackSummaries.map((track) => [
+          track.id,
+          `${track.label} · ${track.count}`,
+        ]),
+      ),
+    [trackSummaries],
+  );
   const [activeTag, setActiveTag] = useQueryFilter({
     param: "tag",
     allowedValues: tags,
@@ -26,15 +39,20 @@ export function PostExplorer({
     param: "language",
     allowedValues: languages,
   });
+  const [activeTrack, setActiveTrack] = useQueryFilter({
+    param: "track",
+    allowedValues: trackIds,
+  });
   const filtered = useMemo(
     () =>
       posts.filter((post) => {
         const matchesTag = activeTag === "All" || post.tags.includes(activeTag);
         const matchesLanguage = activeLanguage === "All" || post.language === activeLanguage;
+        const matchesTrack = activeTrack === "All" || intentToTrack[post.intent] === activeTrack;
 
-        return matchesTag && matchesLanguage;
+        return matchesTag && matchesLanguage && matchesTrack;
       }),
-    [activeLanguage, activeTag, posts],
+    [activeLanguage, activeTag, activeTrack, posts],
   );
 
   return (
@@ -48,6 +66,33 @@ export function PostExplorer({
           博客现在按标签和语言共同组织：长文负责完整论证，中文内容负责阶段复盘、产品判断和可追溯的项目记忆。
         </p>
       </div>
+      <div className="writing-track-grid" aria-label="Writing tracks">
+        {trackSummaries.map((track) => (
+          <button
+            type="button"
+            key={track.id}
+            className={activeTrack === track.id ? "active" : ""}
+            data-testid={`writing-track-${track.id}`}
+            aria-pressed={activeTrack === track.id}
+            onClick={() => setActiveTrack(activeTrack === track.id ? "All" : track.id)}
+          >
+            <span>{track.shortLabel}</span>
+            <strong>{track.label}</strong>
+            <small>{track.count} essays</small>
+            <p>{track.description}</p>
+          </button>
+        ))}
+      </div>
+      <FilterBar
+        label="Filter writing track"
+        active={activeTrack}
+        items={["All", ...trackIds]}
+        displayLabels={{ All: "All tracks", ...trackLabels }}
+        onChange={setActiveTrack}
+        resultCount={filtered.length}
+        totalCount={posts.length}
+        noun="essays"
+      />
       <FilterBar
         label="Filter writing"
         active={activeTag}

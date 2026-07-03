@@ -1689,6 +1689,61 @@ a.source-reveal:hover {
   line-height: 1.72;
 }
 
+.writing-track-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.writing-track-grid button {
+  display: grid;
+  gap: 8px;
+  min-height: 188px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--surface), transparent 8%), transparent),
+    color-mix(in srgb, var(--background), transparent 4%);
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 16px;
+  text-align: left;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.writing-track-grid button:hover,
+.writing-track-grid button.active {
+  border-color: color-mix(in srgb, var(--rust), transparent 42%);
+  background: color-mix(in srgb, var(--rust), transparent 93%);
+  transform: translateY(-2px);
+}
+
+.writing-track-grid span,
+.writing-track-grid small {
+  color: var(--rust);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.writing-track-grid strong {
+  font-family: var(--font-serif);
+  font-size: 1.34rem;
+  font-weight: 500;
+}
+
+.writing-track-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.58;
+}
+
 .knowledge-explorer {
   position: relative;
   z-index: 1;
@@ -5792,6 +5847,55 @@ html[data-theme="dark"] .about-notebook {
   color: color-mix(in srgb, var(--foreground), transparent 6%);
 }
 
+.article-quality-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 26px;
+}
+
+.article-quality-panel > div {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  min-height: 190px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--rust), transparent 93%), transparent 54%),
+    color-mix(in srgb, var(--surface), transparent 12%);
+  padding: 18px;
+}
+
+.article-quality-panel span,
+.related-reading-link-reason {
+  color: var(--rust);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.article-quality-panel strong {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.8vw, 1.95rem);
+  font-weight: 500;
+}
+
+.article-quality-panel p,
+.article-quality-panel li {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.article-quality-panel ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+}
+
 .article-content > h1 {
   display: none;
 }
@@ -5924,10 +6028,18 @@ html[data-theme="dark"] .about-notebook {
 
 .related-reading-lane {
   display: grid;
-  grid-template-columns: 128px minmax(0, 1fr);
+  grid-template-columns: 168px minmax(0, 1fr);
   gap: 18px;
   padding: 16px 0;
   border-top: 1px solid var(--border);
+}
+
+.related-reading-lane-description {
+  grid-column: 1;
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
 }
 
 .related-reading-lane-title {
@@ -5969,6 +6081,7 @@ html[data-theme="dark"] .about-notebook {
 }
 
 .related-reading-link-meta,
+.related-reading-link-reason,
 .related-reading-link small,
 .related-reading-link strong {
   grid-column: 1;
@@ -5977,6 +6090,10 @@ html[data-theme="dark"] .about-notebook {
 
 .related-reading-link-meta {
   color: var(--rust-strong);
+}
+
+.related-reading-link-reason {
+  color: color-mix(in srgb, var(--blue), transparent 16%);
 }
 
 .related-reading-link strong {
@@ -7258,6 +7375,10 @@ html[data-theme="dark"] .about-notebook {
     grid-template-columns: 1fr;
   }
 
+  .writing-track-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .filter-toolbar {
     grid-template-columns: 1fr;
     align-items: stretch;
@@ -7762,6 +7883,16 @@ html[data-theme="dark"] .about-notebook {
   .metadata-rail dl,
   .project-facts {
     grid-template-columns: 1fr;
+  }
+
+  .article-quality-panel,
+  .writing-track-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-reading-lane-description {
+    grid-column: 1;
+    margin-top: -8px;
   }
 
   .project-facts div {

@@ -670,6 +670,8 @@ test.describe("core interaction contracts", () => {
     await page.goto("/blog");
 
     await expect(page.getByLabel("Writing system")).toContainText("中文承载判断");
+    await expect(page.getByLabel("Writing tracks")).toContainText("产品判断");
+    await expect(page.getByLabel("Writing tracks")).toContainText("设计工程");
 
     await page.getByTestId("filter-filter-language-4e2d-6587").click();
 
@@ -677,6 +679,20 @@ test.describe("core interaction contracts", () => {
     await expect(page).toHaveURL(/language=%E4%B8%AD%E6%96%87/);
     await expect(page.getByRole("link", { name: /把中文作为产品记忆/ })).toBeVisible();
     await expect(page.getByRole("link", { name: /The Interface is a Promise/ })).toHaveCount(0);
+  });
+
+  test("blog writing tracks create durable reading paths", async ({ page }) => {
+    await page.goto("/blog");
+
+    await page.getByTestId("writing-track-product-judgment").click();
+
+    await expect(page).toHaveURL(/track=product-judgment/);
+    await expect(page.getByTestId("filter-filter-writing-track-product-judgment")).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await expect(page.getByRole("link", { name: /外部证据比作品集叙事更重要/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Commands That Respect Attention/ })).toHaveCount(0);
   });
 
   test("article code copy has visible feedback", async ({ page }) => {
@@ -709,9 +725,17 @@ test.describe("core interaction contracts", () => {
   test("article related reading exposes public trails", async ({ page }) => {
     await page.goto("/blog/chinese-as-product-memory");
 
+    await expect(page.getByLabel("Reading quality context")).toContainText("产品判断");
+    await expect(page.getByLabel("Reading quality context")).toContainText("适合引用到哪里");
+    await expect(page.getByLabel("Reading quality context")).toContainText("飞书阶段复盘");
+
     const related = page.getByLabel("Related reading");
 
     await expect(related).toContainText('read.next("chinese-as-product-memory")');
+    await expect(related).toContainText("This essay belongs to the 产品判断 track");
+    await expect(related).toContainText("Adjacent argument");
+    await expect(related).toContainText("Reusable rule");
+    await expect(related).toContainText("Project proof");
     await expect(related.getByRole("link", { name: /Calm Systems for Creative Work/ })).toHaveAttribute(
       "href",
       "/blog/calm-systems-for-creative-work",

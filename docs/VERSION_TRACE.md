@@ -1311,6 +1311,36 @@ Deployed source commit：`304c090`
 - `/command-index.json` 当前是全量 JSON；当 items > 120 或 gzip payload 明显增长时，应评估 `/api/command-index` 或服务端搜索。
 - Production smoke 已覆盖 command index、release evidence、Command Center 懒加载和公开路由可访问性。
 
+## Unreleased - 第二十九阶段 Reading & Knowledge Quality Layer
+
+日期：2026-07-04
+Primary implementation commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 新增 writing tracks 和受控 intent 事实源：`src/data/writing.ts`。
+- `/blog` 新增 writing tracks 面板和 `track` query 筛选。
+- 文章卡显示 writing track / intent。
+- 文章详情页新增 `Reading quality context`。
+- 中文文章显示引用场景，英文文章显示技术语境。
+- `RelatedReading` 增加路径理由和基于 track/language 的排序。
+- `validate:content` 增加文章 intent、language、citation guide、related trails 和 writing track 覆盖校验。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：6 passed。
+- full e2e：180 passed。
+- RayNode scripted deploy：待执行。
+
+残余风险：
+
+- Writing tracks 当前是人工维护的编辑模型；后续新增内容必须由 `validate:content` 保护。
+- Knowledge kind 暂不扩展；Phase 30 如新增运维 runbook，再评估是否引入 `Runbook`。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02
