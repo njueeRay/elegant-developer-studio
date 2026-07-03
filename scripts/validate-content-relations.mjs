@@ -10,6 +10,7 @@ const staticRoutes = new Set([
   "/command-index.json",
   "/collaboration",
   "/contact",
+  "/health.json",
   "/knowledge",
   "/lab",
   "/music",

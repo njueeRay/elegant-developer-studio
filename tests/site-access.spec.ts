@@ -45,6 +45,7 @@ const routes = [
   "/about",
   "/collaboration",
   "/contact",
+  "/health.json",
   "/lab",
   "/rss.xml",
   "/sitemap.xml",

@@ -1825,3 +1825,41 @@ GitHub 推送修复：
 - 启动 Phase 30：RayNode Operations Hardening。
 - 把生产 smoke 和 release evidence 检查沉淀为更短、更可复用的运维命令。
 - 同步 Feishu 当前上下文、Phase 25-29 结果。
+
+### 第三十阶段：RayNode Operations Hardening
+
+日期：2026-07-04
+
+状态：已实现并完成完整本地回归，待提交和 RayNode 部署。
+
+阶段判断：
+
+- Phase 27 已经有 `deploy:raynode`，但部署后的检查仍依赖人工记忆和临时命令。
+- Phase 30 的最小有效切片不是接入复杂监控，而是把 health、release evidence、command index、关键 URL 和生产公开路由 smoke 变成稳定命令。
+- GitHub Actions SSH 自动部署暂缓。当前收益小于 secrets、误触发、失败回滚和权限边界带来的复杂度。
+
+完成：
+
+- 新增 `/health.json`，返回公开、非敏感的服务健康信息。
+- 新增 `scripts/verify-raynode.mjs`。
+- 新增 `npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke`。
+- `release:evidence`、`validate:release-evidence`、`validate:content`、public route tests 纳入 `/health.json`。
+- `deploy:raynode` 远端 smoke 增加 `/health.json`。
+- 新增 `ops/raynode-runbook.md`，记录健康检查、部署、回滚、故障定位和配置模板入口。
+- 新增 `ops/raynode-systemd.service` 和 `ops/Caddyfile.raynode.example`。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run release:evidence -- --local-quality-passed`：通过，生成 52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，新增动态路由 `/health.json`。
+- targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "serves /health|serves /release-evidence|serves /blog$|primary surfaces" --workers=1`，8 passed。
+- 完整本地质量门禁：`npm run report:command-index && npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`，通过。
+- 完整本地 e2e：182 passed。
+
+下一步：
+
+- 提交、推送并部署到 RayNode。
+- 部署后执行 `npm run raynode:health`、`npm run raynode:health:full` 和 `npm run raynode:smoke`。

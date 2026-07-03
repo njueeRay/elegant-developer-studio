@@ -1346,6 +1346,36 @@ Production host：`https://raynode.me`
 - Writing tracks 当前是人工维护的编辑模型；后续新增内容必须由 `validate:content` 保护。
 - Knowledge kind 暂不扩展；Phase 30 如新增运维 runbook，再评估是否引入 `Runbook`。
 
+## Unreleased - 第三十阶段 RayNode Operations Hardening
+
+日期：2026-07-04
+Primary implementation commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 新增 `/health.json` 公开轻量健康端点。
+- 新增 `scripts/verify-raynode.mjs`。
+- 新增 `npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke`。
+- release evidence、content validation、public route e2e 和 deploy smoke 纳入 `/health.json`。
+- 新增 RayNode runbook、systemd 模板和 Caddy 模板。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：8 passed。
+- full e2e：182 passed。
+- RayNode scripted deploy：待执行。
+
+残余风险：
+
+- `/health.json` 是应用层健康，不替代外部 uptime 监控。
+- GitHub Actions SSH 自动部署暂缓；后续如启用，必须先设计 key scope、manual approval 和 rollback policy。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

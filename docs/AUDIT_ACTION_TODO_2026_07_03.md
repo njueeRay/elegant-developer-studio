@@ -632,6 +632,8 @@ Knowledge kind 评估：
 
 ### Phase 30：RayNode Operations Hardening
 
+状态：已实现并完成完整本地回归，2026-07-04；待提交与 RayNode 部署。
+
 优先级：中。
 
 目标：把服务器从“能部署”推进到“可持续运维”。
@@ -643,13 +645,31 @@ Knowledge kind 评估：
 
 待办：
 
-- [ ] 确认 systemd service 文件进入仓库文档或 `ops/` 模板。
-- [ ] 新增 RayNode smoke script：home、rss、sitemap、robots、关键文章、关键项目。
-- [ ] 新增 uptime / health endpoint 方案评估，不一定立刻做。
-- [ ] 记录回滚流程：恢复 `/srv/apps/elegant-developer-studio-runtime.prev`。
-- [ ] 记录 Caddy 配置备份位置。
+- [x] 确认 systemd service 文件进入仓库文档或 `ops/` 模板。
+- [x] 新增 RayNode smoke script：home、rss、sitemap、robots、关键文章、关键项目。
+- [x] 新增 uptime / health endpoint 方案评估，不一定立刻做。
+- [x] 记录回滚流程：恢复 `/srv/apps/elegant-developer-studio-runtime.prev`。
+- [x] 记录 Caddy 配置备份位置。
 - [ ] 评估 GitHub Actions 通过 SSH 自动部署的安全边界。
-- [ ] 建立部署后 5 分钟检查清单。
+- [x] 建立部署后 5 分钟检查清单。
+
+阶段结果：
+
+- 新增 `/health.json` 动态健康端点，只暴露 `status`、service、site、runtime、版本和检查时间。
+- 新增 `scripts/verify-raynode.mjs`，把 release evidence、command index、关键 URL 和可选全量公开路由检查收束为一条命令。
+- 新增 `npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke`。
+- `release:evidence`、`validate:release-evidence`、`validate:content` 和 public route e2e 纳入 `/health.json`。
+- `deploy:raynode` 远端 smoke 增加 `/health.json`。
+- 新增 `ops/raynode-runbook.md`、`ops/raynode-systemd.service`、`ops/Caddyfile.raynode.example`。
+- 本地定向验证：`validate:content`、`release:evidence -- --local-quality-passed`、`validate:release-evidence`、`lint`、`build` 通过。
+- 本地定向 e2e：8 passed，覆盖桌面和移动端 `/health.json`、`/release-evidence.json`、`/blog` 与主导航。
+- 完整本地质量门禁通过：`report:command-index`、`release:evidence`、`validate:release-evidence`、`validate:content`、`lint`、`build`、`npm run test:e2e -- --workers=1`。
+- 完整本地 e2e：182 passed。
+
+本阶段暂缓：
+
+- GitHub Actions SSH 自动部署。原因：当前没有必要为了省一次手动发布，引入长期 SSH key、secrets rotation、失败回滚和误触发部署风险。
+- 外部 uptime 服务。原因：先用轻量健康端点和脚本明确故障边界，等站点发布节奏稳定后再接入。
 
 验收标准：
 

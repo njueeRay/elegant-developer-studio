@@ -93,6 +93,7 @@
 | 项目证据对象 | `/projects/[slug]#project-evidence-title` | 24 | 已实现待部署 | 证据升级为 typed object：source、deployment、document、test、screenshot、metric |
 | Release evidence | `/release-evidence.json` | 27 | 已实现 | 部署时生成的运行时发布事实源 |
 | Command index | `/command-index.json` | 28 | 已实现 | Command Center 按需加载的公开索引 payload |
+| Health endpoint | `/health.json` | 30 | 已实现待部署 | RayNode 轻量健康检查，供脚本和人工排障使用 |
 | Studio Pulse | `/#studio-pulse` | 24.5 | 已实现 | 首页 Personal OS 小切片：写作、建设、Knowledge、音乐和 prompt |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
@@ -597,7 +598,7 @@ GitHub Actions：
 
 ## 10. 下一步
 
-当前下一步是 Phase 25：Truth Source & Public Trust。
+当前主线是 Phase 30：RayNode Operations Hardening。下面这段 Phase 25 记录保留为历史阶段入口。
 
 1. 完成主域名事实源、metadata、RSS、sitemap、robots 和 README 一致性。
 2. 修复证据卡中的腐烂数字和假实时状态。
@@ -605,6 +606,24 @@ GitHub Actions：
 4. 增加真实内容资产，降低“系统大于内容”的风险。
 5. 建立 `CURRENT_CONTEXT` 并归档早期 phase 文档。
 6. 验证 RayNode 主站并同步飞书。
+
+## 10.1 当前 Phase 30 运维地图
+
+新增入口：
+
+- `/health.json`：公开轻量健康端点。
+- `npm run raynode:health`：检查 health、release evidence、command index 和关键公开 URL。
+- `npm run raynode:health:full`：在轻量检查基础上遍历 release evidence 的所有公开路由。
+- `npm run raynode:smoke`：生产 Playwright 公开路由 smoke。
+- `ops/raynode-runbook.md`：RayNode 部署、健康检查、回滚和故障定位。
+- `ops/raynode-systemd.service`：systemd 模板。
+- `ops/Caddyfile.raynode.example`：Caddy 模板。
+
+阶段边界：
+
+- 本阶段不引入外部 uptime 服务。
+- 本阶段不启用 GitHub Actions SSH 自动部署。
+- 本阶段优先让人工部署后的验证更短、更可靠、更可追溯。
 
 ## 11. 第十三至第十六阶段增量地图
 

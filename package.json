@@ -12,6 +12,9 @@
     "validate:content": "node scripts/validate-content-relations.mjs",
     "report:command-index": "node scripts/report-command-index.mjs",
     "deploy:raynode": "node scripts/deploy-raynode.mjs",
+    "raynode:health": "node scripts/verify-raynode.mjs",
+    "raynode:health:full": "node scripts/verify-raynode.mjs --full-routes",
+    "raynode:smoke": "PLAYWRIGHT_BASE_URL=https://raynode.me playwright test --project=chromium --grep \"serves\" --workers=1",
     "pretest:e2e": "npm run release:evidence",
     "test:e2e": "playwright test"
   },

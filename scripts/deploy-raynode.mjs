@@ -111,6 +111,7 @@ for attempt in 1 2 3 4 5; do
 done
 systemctl is-active elegant-developer-studio
 curl -fsSI --max-time 20 https://raynode.me >/dev/null
+curl -fsSI --max-time 20 https://raynode.me/health.json >/dev/null
 curl -fsSI --max-time 20 https://raynode.me/release-evidence.json >/dev/null
 curl -fsSI --max-time 20 https://raynode.me/projects/lumen >/dev/null
 cd /srv/apps/elegant-developer-studio

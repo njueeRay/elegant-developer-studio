@@ -1,0 +1,11 @@
+raynode.me {
+  encode zstd gzip
+
+  handle /feishu/oauth/* {
+    reverse_proxy 127.0.0.1:18888
+  }
+
+  handle {
+    reverse_proxy 127.0.0.1:3001
+  }
+}

@@ -12,6 +12,7 @@ const staticRoutes = [
   "/command-index.json",
   "/collaboration",
   "/contact",
+  "/health.json",
   "/knowledge",
   "/lab",
   "/music",

@@ -6,7 +6,7 @@
 
 Phase 30：RayNode Operations Hardening。
 
-Phase 29 已完成阅读质量层第一切片并部署到 RayNode：Blog 有 4 条长期 writing tracks，文章 intent 进入受控词表，文章页显示引用/技术语境，RelatedReading 开始解释下一步路径。当前主线转入 Phase 30，把服务器从“能部署”推进到“可持续运维”。
+Phase 30 已完成第一切片并通过完整本地回归：新增 `/health.json`、`scripts/verify-raynode.mjs`、`npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke` 和 `ops/` 运维模板。下一步是提交、部署和生产 health/smoke。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -17,6 +17,8 @@ Phase 29 已完成阅读质量层第一切片并部署到 RayNode：Blog 有 4 �
 - `/command-index.json` 是 Command Center 按需加载的公开索引 payload。
 - `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
 - `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
+- `/health.json` 是公开轻量健康端点。
+- `scripts/verify-raynode.mjs` 是 RayNode HTTP health 检查脚本。
 
 ## 线上状态
 
@@ -33,6 +35,7 @@ RayNode 当前状态：
 - `https://raynode.me/` 返回 200。
 - 当前服务器源码提交：`f0ff534`。
 - `/release-evidence.json` 返回部署提交 `f0ff534`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 51 public routes。
+- `/health.json` 待部署；当前线上仍是 Phase 29 runtime。
 - `/command-index.json` 返回 110 command items。
 - 生产公开路由可访问性测试通过：47 passed。
 
@@ -49,6 +52,11 @@ RayNode 当前状态：
 - `src/app/command-index.json/route.ts`：Command Center 懒加载 JSON endpoint。
 - `scripts/report-command-index.mjs`：Command index 规模报告。
 - `src/data/writing.ts`：Writing tracks、受控 intent 和 citation guide。
+- `src/app/health.json/route.ts`：公开健康端点。
+- `scripts/verify-raynode.mjs`：RayNode health CLI。
+- `ops/raynode-runbook.md`：部署、健康检查、回滚和故障定位手册。
+- `ops/raynode-systemd.service`：systemd 模板。
+- `ops/Caddyfile.raynode.example`：Caddy 模板。
 - `docs/AUDIT_ACTION_TODO_2026_07_03.md`：Phase 25 P0-P3 执行队列。
 - `docs/PROJECT_MAP.md`：产品表面、阶段、目录和质量门禁地图。
 - `docs/ROADMAP.md`：阶段路线。
@@ -143,6 +151,7 @@ RayNode 当前状态：
 - Posts：14。
 - Projects：5。
 - Knowledge entries：16。
+- Public routes：52，包含 `/health.json`。
 
 ## 质量门禁
 
@@ -155,7 +164,7 @@ npm run release:evidence -- --local-quality-passed
 npm run validate:release-evidence
 npm run lint
 npm run build
-npx playwright test --project=chromium --grep "command index|release evidence|command menu traps|photo lightbox traps|project case studies"
+npx playwright test --project=chromium --grep "command index|release evidence|health|command menu traps|photo lightbox traps|project case studies"
 ```
 
 完整回归：
@@ -167,7 +176,8 @@ npm run test:e2e -- --workers=1
 生产主站 smoke：
 
 ```bash
-PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves|command index|command menu opens real lab route"
+npm run raynode:health
+npm run raynode:smoke
 ```
 
 ## 当前技术债触发条件
@@ -183,6 +193,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 启动 Phase 30：RayNode Operations Hardening。
-2. 为 RayNode 增加可复用 smoke / health 脚本，减少人工 curl 和临时 grep。
-3. 同步 Feishu 当前上下文、Phase 25-29 结果。
+1. 完成 Phase 30 提交、部署和生产 health/smoke。
+2. 记录 Phase 30 部署提交和线上 `/health.json` 结果。
+3. 同步 Feishu 当前上下文、Phase 25-30 结果。
