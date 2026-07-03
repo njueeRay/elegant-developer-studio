@@ -16,7 +16,7 @@ import {
   Sparkles,
   UserRound,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FilterBar } from "@/components/content/filter-bar";
 import { SourceReveal } from "@/components/content/source-reveal";
 import {
@@ -144,6 +144,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedSlug, setSelectedSlug] = useState(components[0]?.slug ?? "");
   const [copied, setCopied] = useState<string | null>(null);
+  const [isCommandReady, setIsCommandReady] = useState(false);
   const filteredComponents = useMemo(
     () =>
       activeCategory === "All"
@@ -156,6 +157,12 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
     filteredComponents[0] ??
     components[0];
   const stableCount = components.filter((component) => component.status === "Stable").length;
+
+  useEffect(() => {
+    const animationFrame = window.requestAnimationFrame(() => setIsCommandReady(true));
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, []);
   const activeCategories = new Set(components.map((component) => component.category)).size;
 
   const copyValue = async (id: string, value: string) => {
@@ -198,6 +205,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
               type="button"
               className="lab-command-button"
               data-testid="lab-command-trigger"
+              disabled={!isCommandReady}
               onClick={() => window.dispatchEvent(new Event("studio:open-command"))}
             >
               <Command size={17} />

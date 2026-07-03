@@ -76,7 +76,7 @@
 | 项目 query 快捷入口 | `/projects?stack=GitHub` | 22 | 已实现 | Command Center 打开 GitHub-backed projects |
 | 项目详情 | `/projects/[slug]` | 2 | 已实现 | MDX 项目 case study |
 | 项目证据包 | `/projects/[slug]#project-evidence-title` | 23 | 已实现 | GitHub、Vercel、飞书和测试证据入口 |
-| 项目证据对象 | `/projects/[slug]#project-evidence-title` | 24 | 已规划 | 证据升级为 typed object：source、deployment、document、test、screenshot、metric |
+| 项目证据对象 | `/projects/[slug]#project-evidence-title` | 24 | 已实现待部署 | 证据升级为 typed object：source、deployment、document、test、screenshot、metric |
 | Studio Pulse | `/#studio-pulse` | 24.5 | 已实现 | 首页 Personal OS 小切片：写作、建设、Knowledge、音乐和 prompt |
 | RSS | `/rss.xml` | 2 | 已实现 | 写作订阅源 |
 | Sitemap | `/sitemap.xml` | 2 | 已实现 | 搜索引擎路由地图 |
@@ -84,7 +84,7 @@
 | Knowledge 筛选状态 | `/knowledge?kind=` | 21 | 已实现 | 可分享的知识类型筛选 |
 | Knowledge query 快捷入口 | `/knowledge?kind=Decision` | 22 | 已实现 | Command Center 打开决策知识 |
 | Knowledge 详情 | `/knowledge/[slug]` | 20 | 已实现 | 可独立访问、引用和追踪的知识节点 |
-| Knowledge 详情引用 | `/knowledge/[slug]` | 24 | 已规划 | 详情页级 Markdown ref，服务飞书、GitHub issue、PR 和项目文档 |
+| Knowledge 详情引用 | `/knowledge/[slug]` | 24 | 已实现待部署 | 详情页级 Markdown ref，服务飞书、GitHub issue、PR 和项目文档 |
 | Photos | `/photos` | 3 | 已实现首版 | 照片档案和灯箱 |
 | Music | `/music` | 3 | 已实现首版 | 工作室歌单和收听状态 |
 | Lab | `/lab` | 5 | 已实现首版 | 实验、原型、组件注册表和质量门禁 |
@@ -279,7 +279,7 @@
 
 ### 第二十四阶段：项目证据对象升级
 
-状态：已规划，待实现。
+状态：已实现，已本地验证，待部署，待外部同步。
 
 追踪：
 
@@ -293,6 +293,7 @@
 - 将 Personal OS Zoo 中形成的 `DataSourceBadge` 语法迁移到项目详情和 Knowledge 详情。
 - `/knowledge/[slug]` 增加详情页级 Markdown 引用复制。
 - `validate:content` 增加 evidence object 完整性校验。
+- 新增 `AmbientCursorField`、`Command Echo` copy trace、阅读 signal 扫描线、首页 `pulse.live("studio")` 和移动端 viewport 配置。
 
 非目标：
 
@@ -304,11 +305,11 @@
 
 验收：
 
-- 至少两个项目详情页展示结构化证据。
-- Evidence link 指向真实可访问地址，不能只是当前页面锚点。
-- Knowledge 详情页可以复制 Markdown ref。
-- 桌面和移动端项目详情、Knowledge 详情均无页面级横向溢出。
-- `npm run validate:content`、`npm run lint`、`npm run build`、`npm run test:e2e` 通过。
+- 至少两个项目详情页展示结构化证据：已完成。
+- Evidence link 指向真实可访问地址，不能只是当前页面锚点：已完成。
+- Knowledge 详情页可以复制 Markdown ref：已完成。
+- 桌面和移动端项目详情、Knowledge 详情均无页面级横向溢出：targeted e2e 已覆盖。
+- `npm run validate:content`、`npm run lint`、`npm run build`、`npm run test:e2e -- --workers=1`：已通过。
 
 ### 第九阶段：协作治理与创意方向
 

@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { AmbientCursorField } from "@/components/ambient-cursor-field";
 import { CommandTraceToast } from "@/components/command-trace-toast";
 import { GlobalCommandMenu, type CommandItem } from "@/components/global-command-menu";
 import {
@@ -22,6 +23,11 @@ export const metadata: Metadata = {
     "A warm, precise personal homepage for a design engineer: writing, work, knowledge, media, and lab experiments.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,6 +44,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {children}
+        <AmbientCursorField />
         <GlobalCommandMenu items={commandItems} />
         <CommandTraceToast />
       </body>

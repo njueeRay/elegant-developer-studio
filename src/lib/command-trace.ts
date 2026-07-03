@@ -12,3 +12,22 @@ export type CommandTrace = {
 export function formatCommandTracePath(href: string) {
   return href.replace(/"/g, '\\"');
 }
+
+export function emitCommandTrace(trace: Omit<CommandTrace, "createdAt">) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const nextTrace: CommandTrace = {
+    ...trace,
+    createdAt: Date.now(),
+  };
+
+  try {
+    window.sessionStorage.setItem(COMMAND_TRACE_STORAGE_KEY, JSON.stringify(nextTrace));
+  } catch {
+    // Command trace is a progressive enhancement. The user action should never depend on storage.
+  }
+
+  window.dispatchEvent(new CustomEvent(COMMAND_TRACE_EVENT, { detail: nextTrace }));
+}

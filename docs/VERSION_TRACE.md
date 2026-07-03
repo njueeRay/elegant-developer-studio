@@ -1117,7 +1117,7 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 - 飞书：[57｜第二十四点五阶段 Personal OS Zoo](https://scnlb1lk96sb.feishu.cn/wiki/KJu3wcx4tiuoYBk6GuPcZRDFnLd)。
 
-## Planned - 第二十四阶段项目证据对象升级
+## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02
 Primary commit：待实现
@@ -1131,6 +1131,8 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - `DataSourceBadge` 从 Personal OS Zoo 迁移到真实内容详情页。
 - Knowledge 详情页增加 Markdown ref 复制。
 - `validate:content` 增加证据对象完整性校验。
+- 新增 `AmbientCursorField`、source glow、command echo、reading signal 和 Personal OS pulse 微交互。
+- 新增显式 viewport 配置，修复移动端 viewport 失真。
 
 产品判断：
 
@@ -1138,10 +1140,11 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - 证据对象要提高可信度，但不能制造 dashboard 感。
 - 当前阶段以本地文档和代码可追溯为主，完成后再同步飞书。
 
-验证计划：
+验证：
 
-- `npm run validate:content`
-- `npm run lint`
-- `npm run build`
-- `npm run test:e2e`
-- Playwright 检查项目详情和 Knowledge 详情桌面、移动端无页面级横向溢出。
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：10 passed。
+- `npm run test:e2e -- --workers=1`：112 passed。
+- 额外验证：命令入口在 hydration 前 disabled，避免首页和 Lab 的 Command Center 触发器出现早点击无反馈。

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BookOpenText, Braces, GitBranch, Lightbulb, Waypoints } from "lucide-react";
+import { KnowledgeDetailReference } from "@/components/content/knowledge-detail-reference";
 import { KnowledgeTrails } from "@/components/content/knowledge-trails";
 import { SiteHeader } from "@/components/site-header";
 import {
@@ -98,6 +99,7 @@ export default async function KnowledgeDetailPage({ params }: PageProps) {
             </div>
             <h1>{entry.title}</h1>
             <p>{entry.summary}</p>
+            <KnowledgeDetailReference entry={entry} />
           </header>
 
           <div className="knowledge-detail-body">

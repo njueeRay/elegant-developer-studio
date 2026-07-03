@@ -337,7 +337,7 @@
 
 目标：把项目证据从“可点击链接”升级为“可检查对象”，让项目详情页能清楚说明来源、验证方式、部署、截图、指标和引用路径。
 
-状态：已规划，待实现。
+状态：已实现，已本地验证，待部署，待外部同步。
 
 交付：
 
@@ -347,6 +347,8 @@
 - Knowledge 详情页增加 Markdown 引用复制。
 - `validate:content` 增加证据对象校验。
 - e2e 覆盖 evidence object、Knowledge detail copy ref 和移动端无溢出。
+- 实现签名微交互切片：cursor field、source glow、command echo、reading signal、Personal OS pulse。
+- 增加显式 viewport 配置，修复移动端 CSS viewport 失真。
 
 组件：
 
@@ -354,6 +356,8 @@
 - `EvidenceTypeBadge`
 - `DataSourceBadge`
 - `VerificationStamp`
+- `AmbientCursorField`
+- `KnowledgeDetailReference`
 
 本阶段判断：
 

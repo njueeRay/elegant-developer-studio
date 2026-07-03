@@ -3,6 +3,7 @@
 import { Braces, Copy, Focus, MousePointer2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { writeToClipboard } from "@/lib/clipboard";
+import { emitCommandTrace } from "@/lib/command-trace";
 import type { TocItem } from "@/lib/content";
 
 type ArticleInteractionsProps = {
@@ -120,6 +121,12 @@ export function ArticleInteractions({ slug, title, toc }: ArticleInteractionsPro
     const origin = window.location.origin;
 
     await writeToClipboard(`${origin}${path}`);
+    emitCommandTrace({
+      command: `read.copy("${sectionId ?? slug}")`,
+      label: activeItem?.title ?? title,
+      href: path,
+      meta: "Reading Signal / section ref",
+    });
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1400);
   };

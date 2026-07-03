@@ -1,0 +1,48 @@
+"use client";
+
+import { useEffect } from "react";
+
+export function AmbientCursorField() {
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reducedMotion) {
+      return;
+    }
+
+    let animationFrame = 0;
+
+    const updateCursor = (clientX: number, clientY: number) => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(() => {
+        document.documentElement.style.setProperty("--cursor-x", `${clientX}px`);
+        document.documentElement.style.setProperty("--cursor-y", `${clientY}px`);
+        document.documentElement.dataset.cursor = "active";
+      });
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      updateCursor(event.clientX, event.clientY);
+    };
+
+    const onMouseMove = (event: MouseEvent) => {
+      updateCursor(event.clientX, event.clientY);
+    };
+
+    updateCursor(window.innerWidth * 0.52, window.innerHeight * 0.38);
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("mousemove", onMouseMove);
+      document.documentElement.style.removeProperty("--cursor-x");
+      document.documentElement.style.removeProperty("--cursor-y");
+      delete document.documentElement.dataset.cursor;
+    };
+  }, []);
+
+  return null;
+}

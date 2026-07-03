@@ -8,10 +8,12 @@ import {
   TerminalSquare,
 } from "lucide-react";
 import { useState } from "react";
+import { DataSourceBadge } from "@/components/data-source-badge";
 import type { Mix } from "@/data/media";
 import { askPrompts, studioPulseItems, type StudioPulseItem } from "@/data/personal-os";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
 import { writeToClipboard } from "@/lib/clipboard";
+import { emitCommandTrace } from "@/lib/command-trace";
 
 type StatusPanelProps = {
   post?: PostMeta;
@@ -53,6 +55,12 @@ export function StatusPanel({ post, project, mix }: StatusPanelProps) {
   ];
   const copyPrompt = async () => {
     await writeToClipboard(`${activePrompt.command}\n${activePrompt.response}`);
+    emitCommandTrace({
+      command: `ask.copy("${activePrompt.id}")`,
+      label: activePrompt.label,
+      href: activePrompt.href,
+      meta: "Ask Me Terminal / prompt copied",
+    });
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1500);
   };
@@ -68,6 +76,10 @@ export function StatusPanel({ post, project, mix }: StatusPanelProps) {
             A small Personal OS slice: current writing, building, knowledge, and
             media loops with inspectable sources.
           </p>
+          <div className="studio-pulse-signal" aria-label="Studio pulse signal">
+            <span />
+            <code>{'pulse.live("studio")'}</code>
+          </div>
         </div>
       </div>
       <div className="status-panel-stack">
@@ -128,7 +140,7 @@ function StatusCard({ item }: { item: StudioPulseItem }) {
         <span>{item.detail}</span>
         <small>{item.meta}</small>
         <code>{item.command}</code>
-        <em>{item.source}</em>
+        <DataSourceBadge source={item.source} command={item.command} tone={item.tone} />
       </div>
       <ArrowRight className="status-panel-arrow" size={18} aria-hidden="true" />
     </Link>

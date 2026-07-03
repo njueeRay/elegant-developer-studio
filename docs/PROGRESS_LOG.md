@@ -1483,7 +1483,7 @@ GitHub 推送修复：
 
 ### 第二十四阶段：项目证据对象升级
 
-状态：已规划，待实现，待验证，待部署，待外部同步。
+状态：已实现，已本地验证，待部署，待外部同步。
 
 当前状态复盘：
 
@@ -1502,9 +1502,26 @@ GitHub 推送修复：
 
 下一步执行：
 
-- 抽出可复用 `DataSourceBadge`。
-- 升级项目 evidence 数据模型。
-- 改造项目详情 Evidence Pack。
-- 增加 Knowledge 详情 Markdown ref。
-- 更新 `validate:content` 和 e2e。
-- 完成部署、生产验证和飞书同步。
+- 已抽出可复用 `DataSourceBadge`。
+- 已新增 `AmbientCursorField`，形成温和鼠标场和背景网格响应。
+- 已升级项目 evidence 数据模型：`type`、`route`、`commit`、`deploymentId`、`metric`、`verifiedBy`、`verifiedAt`。
+- 已改造项目详情 Evidence Pack 为 typed evidence object，并增加 `evidence.open(...)` command echo。
+- 已增加 Knowledge 详情 Markdown ref 复制，并增加 `ref.copy(...)` command echo。
+- 已增强博客阅读 signal：copy ref 触发 `read.copy(...)`，阅读浮层增加低强度扫描线。
+- 已增强首页 Personal OS pulse：`pulse.live("studio")`、source badge、Ask Me Terminal copy echo。
+- 已补充 viewport 配置，修复移动端 CSS viewport 失真。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过。
+- targeted e2e：10 passed，覆盖 Personal OS pulse、ambient cursor、Knowledge detail ref、Project evidence object、Reading command echo。
+- `npm run test:e2e -- --workers=1`：112 passed。
+- 额外修复：命令入口在 hydration 前 disabled，避免用户点击早于客户端监听器挂载时无反馈。
+
+下一步：
+
+- 部署 Vercel。
+- 生产 e2e。
+- 同步飞书。

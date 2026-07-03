@@ -15,7 +15,7 @@ import {
   Play,
   Wrench,
 } from "lucide-react";
-import { useState, type ComponentType } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { StatusPanel } from "@/components/status-panel";
 import { currentMix } from "@/data/media";
@@ -44,6 +44,13 @@ export function StudioHome({
   featuredProjects: ProjectMeta[];
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isCommandReady, setIsCommandReady] = useState(false);
+
+  useEffect(() => {
+    const animationFrame = window.requestAnimationFrame(() => setIsCommandReady(true));
+
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, []);
 
   return (
     <main className="studio-shell">
@@ -73,6 +80,7 @@ export function StudioHome({
           <button
             className="command-strip"
             data-testid="home-command-trigger"
+            disabled={!isCommandReady}
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent("studio:open-command"))}
           >

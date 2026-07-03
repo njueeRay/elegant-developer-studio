@@ -157,6 +157,15 @@ const postSlugs = new Set(posts.map((post) => post.slug));
 const projectSlugs = new Set(projects.map((project) => project.slug));
 const knowledgeSlugs = new Set(knowledgeEntries.map((entry) => entry.slug));
 const routes = new Set(staticRoutes);
+const evidenceTypes = new Set([
+  "source",
+  "deployment",
+  "document",
+  "test",
+  "screenshot",
+  "metric",
+  "decision",
+]);
 
 posts.forEach((post) => routes.add(`/blog/${post.slug}`));
 projects.forEach((project) => routes.add(`/projects/${project.slug}`));
@@ -199,13 +208,25 @@ projects.forEach((project) => {
     project.evidencePack.forEach((item, index) => {
       const owner = `project:${project.slug}.evidencePack[${index}]`;
 
-      ["label", "kind", "detail", "href", "source"].forEach((field) => {
+      ["type", "label", "detail", "href", "source"].forEach((field) => {
         if (typeof item[field] !== "string" || !item[field].trim()) {
           errors.push(`${owner}.${field} must be a non-empty string`);
         }
       });
 
+      if (typeof item.type === "string" && !evidenceTypes.has(item.type)) {
+        errors.push(`${owner}.type must be one of ${Array.from(evidenceTypes).join(", ")}`);
+      }
+
       assertRoute({ owner: `${owner}.href`, href: item.href, routes, errors });
+
+      if (typeof item.route === "string") {
+        assertRoute({ owner: `${owner}.route`, href: item.route, routes, errors });
+      }
+
+      if (typeof item.screenshot === "string" && !item.screenshot.startsWith("/")) {
+        errors.push(`${owner}.screenshot must start with /`);
+      }
     });
   }
 });

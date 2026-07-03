@@ -107,13 +107,16 @@ Phase 5 已实现首版：
 - `ExperimentTimeline`
 - `QualityGateList`
 
-Phase 24 计划沉淀：
+Phase 24 已实现/计划沉淀：
 
 - `EvidenceObjectCard`
 - `EvidenceTypeBadge`
 - `VerificationStamp`
 - `DataSourceBadge` 复用到项目详情和 Knowledge 详情
 - `KnowledgeDetailReference`
+- `AmbientCursorField`
+- `Command Echo`
+- `Reading Signal`
 
 后续保留：
 
@@ -215,6 +218,15 @@ Phase 24 计划沉淀：
 - `screenshot` 必须是高信息密度资产，不能用低质量占位图。
 - Knowledge 详情页的引用复制必须产生 Markdown 格式，默认服务飞书、GitHub issue、PR 和本地文档。
 - 证据组件不能互相嵌套成卡片套卡片，也不能把项目详情变成 dashboard。
+
+## Phase 24 签名微交互规则
+
+- Cursor field 只做柔和场感和网格响应，不追踪正文、不覆盖可点击控件。
+- Source glow 只在真实 source、evidence、component row 上出现，不给普通装饰卡片制造伪证据。
+- Command Echo 必须由真实动作触发：导航、复制引用、打开 evidence、复制 prompt。
+- Reading Signal 只服务当前阅读位置和引用复制，不做宠物、粒子或强干扰。
+- Personal OS Pulse 只保留少量 source-backed 状态，不把首页扩展成 dashboard。
+- 所有微交互必须尊重 `prefers-reduced-motion`。
 
 ## 素材规则
 

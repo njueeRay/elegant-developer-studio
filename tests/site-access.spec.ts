@@ -85,7 +85,10 @@ test.describe("public routes and links", () => {
     await page.goto("/");
 
     await expect(page.getByRole("heading", { name: "Studio Pulse" })).toBeVisible();
-    await expect(page.getByText('studio.pulse("knowledge")')).toBeVisible();
+    await expect(page.getByLabel("Studio pulse signal")).toContainText('pulse.live("studio")');
+    await expect(page.getByRole("link", { name: /Knowledge Public memory graph/ })).toContainText(
+      'studio.pulse("knowledge")',
+    );
     await expect(page.getByRole("button", { name: "最近在做什么？" })).toBeVisible();
 
     await page.getByRole("button", { name: "最近在做什么？" }).click();
@@ -96,6 +99,18 @@ test.describe("public routes and links", () => {
       "href",
       "/projects",
     );
+
+    await page.getByTestId("home-copy-ask-response").click();
+    await expect(page.getByTestId("command-trace-toast")).toContainText('ask.copy("recent-work")');
+  });
+
+  test("ambient cursor field activates only as progressive enhancement", async ({ page }) => {
+    await page.goto("/");
+    await page.mouse.move(240, 220);
+
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.dataset.cursor))
+      .toBe("active");
   });
 
   test("lab exposes the personal OS zoo and copyable object commands", async ({ page }) => {
@@ -288,7 +303,9 @@ test.describe("core interaction contracts", () => {
       "href",
       "/knowledge",
     );
-    await expect(page.getByText('knowledge.trace("public-reachable-before-internal-complete")')).toBeVisible();
+    await expect(page.getByLabel("Knowledge reference object")).toContainText(
+      'knowledge.trace("public-reachable-before-internal-complete")',
+    );
     await expect(page.getByRole("heading", { name: "What it protects" })).toBeVisible();
     await expect(page.getByText("导航审计")).toBeVisible();
     await expect(page.getByText("PR 说明")).toBeVisible();
@@ -308,6 +325,15 @@ test.describe("core interaction contracts", () => {
       "href",
       "/projects/studio-knowledge-base",
     );
+
+    await expect(page.getByLabel("Knowledge reference object")).toContainText(
+      'knowledge.trace("public-reachable-before-internal-complete")',
+    );
+    await page.getByTestId("knowledge-detail-copy-ref").click();
+    await expect(page.getByTestId("knowledge-detail-copy-ref")).toContainText("Copied ref");
+    await expect(page.getByTestId("command-trace-toast")).toContainText(
+      'ref.copy("knowledge/public-reachable-before-internal-complete")',
+    );
   });
 
   test("project case studies expose before and after proof", async ({ page }) => {
@@ -318,18 +344,35 @@ test.describe("core interaction contracts", () => {
       "href",
       "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/components",
     );
+    await expect(page.getByTestId("project-evidence-lumen-component-source")).toContainText("source");
+    await expect(page.getByTestId("project-evidence-lumen-production-surface")).toContainText(
+      "dpl_AFdKdXk3heycQR32WWMBBffzrSMe",
+    );
     await expect(page.getByTestId("project-evidence-lumen-regression-suite")).toContainText(
       "Playwright covers public routes",
+    );
+    await expect(page.getByTestId("project-evidence-lumen-regression-suite")).toContainText(
+      "108 e2e tests passed",
     );
     await expect(page.getByRole("heading", { name: "What changed" })).toBeVisible();
     await expect(page.locator(".case-study-diff-card").first()).toContainText("Before");
     await expect(page.locator(".case-study-diff-card").first()).toContainText("After");
     await expect(page.locator(".case-study-diff-card").first()).toContainText("Proof");
     await expect(page.locator(".case-study-diff")).toContainText("Shared styling now supports");
-    await expect(page.getByRole("link", { name: "Open evidence" }).first()).toHaveAttribute(
+    await expect(page.locator(".case-study-diff").getByRole("link", { name: "Open evidence" }).first()).toHaveAttribute(
       "href",
       "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/app",
     );
+  });
+
+  test("reading focus copy emits a command echo", async ({ page }) => {
+    await page.goto("/blog/interface-is-a-promise");
+
+    await expect(page.getByTestId("reading-focus-lens")).toBeVisible();
+    await page.getByTestId("reading-focus-copy").click();
+
+    await expect(page.getByTestId("reading-focus-copy")).toContainText("Copied ref");
+    await expect(page.getByTestId("command-trace-toast")).toContainText("read.copy(");
   });
 
   test("lab component preview switches modes and exposes source", async ({ page }) => {

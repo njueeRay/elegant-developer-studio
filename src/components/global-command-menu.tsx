@@ -27,10 +27,8 @@ import {
   type ReactNode,
 } from "react";
 import {
-  COMMAND_TRACE_EVENT,
-  COMMAND_TRACE_STORAGE_KEY,
+  emitCommandTrace,
   formatCommandTracePath,
-  type CommandTrace,
 } from "@/lib/command-trace";
 
 export type CommandKind =
@@ -272,21 +270,12 @@ function writeCommandTrace(item: CommandItem) {
     return;
   }
 
-  const trace: CommandTrace = {
+  emitCommandTrace({
     command: `cmd.open("${formatCommandTracePath(item.href)}")`,
     label: item.title,
     href: item.href,
     meta: `${labelByKind[item.kind]} / ${item.meta}`,
-    createdAt: Date.now(),
-  };
-
-  try {
-    window.sessionStorage.setItem(COMMAND_TRACE_STORAGE_KEY, JSON.stringify(trace));
-  } catch {
-    // Command trace is a progressive enhancement. Navigation should never depend on storage.
-  }
-
-  window.dispatchEvent(new CustomEvent(COMMAND_TRACE_EVENT, { detail: trace }));
+  });
 }
 
 function getResultId(itemId: string) {

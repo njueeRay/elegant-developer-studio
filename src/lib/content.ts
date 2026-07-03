@@ -57,11 +57,18 @@ export type ProjectMeta = {
   summary: string;
   impact: string[];
   evidencePack: Array<{
+    type: "source" | "deployment" | "document" | "test" | "screenshot" | "metric" | "decision";
     label: string;
-    kind: string;
     detail: string;
     href: string;
     source: string;
+    route?: string;
+    commit?: string;
+    deploymentId?: string;
+    screenshot?: string;
+    metric?: string;
+    verifiedBy?: string;
+    verifiedAt?: string;
   }>;
   caseStudyDiff: Array<{
     before: string;
