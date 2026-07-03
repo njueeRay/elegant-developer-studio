@@ -11,10 +11,16 @@ const routes = [
   "/blog/evidence-without-precision-theater",
   "/blog/designing-command-surfaces",
   "/blog/homepage-density-case-study",
+  "/blog/external-proof-over-portfolio-theater",
+  "/blog/anyreader-deep-reading-interface-teardown",
+  "/blog/openprofile-as-agentic-profile-infrastructure",
+  "/blog/case-study-diff-as-portfolio-format",
   "/blog/interface-is-a-promise",
   "/blog/calm-systems-for-creative-work",
   "/blog/commands-that-respect-attention",
   "/projects",
+  "/projects/openprofile-agent-workflow",
+  "/projects/anyreader-interface-teardown",
   "/projects/lumen",
   "/projects/studio-knowledge-base",
   "/projects/codex-feishu-bridge",
@@ -27,6 +33,12 @@ const routes = [
   "/knowledge/deployment-is-product-surface",
   "/knowledge/agent-handoff-contract",
   "/knowledge/evidence-without-precision-theater",
+  "/knowledge/external-proof-over-self-reference",
+  "/knowledge/project-evidence-minimum-standard",
+  "/knowledge/socratic-reading-surfaces",
+  "/knowledge/selection-anchors-are-product-state",
+  "/knowledge/agent-team-as-product-surface",
+  "/knowledge/case-study-diff-format",
   "/uses",
   "/about",
   "/collaboration",
@@ -206,6 +218,43 @@ test.describe("public routes and links", () => {
 
     await page.goto("/knowledge/truth-source-before-polish");
     await expect(page.getByRole("heading", { name: "事实源先于视觉打磨" })).toBeVisible();
+  });
+
+  test("Phase 26 external proof network is publicly reachable", async ({ page }) => {
+    await page.goto("/");
+
+    await expect(page.locator('a[href="/blog/external-proof-over-portfolio-theater"]').first()).toContainText(
+      "外部证据比作品集叙事更重要",
+    );
+    await expect(page.locator('a[href="/projects/openprofile-agent-workflow"]').first()).toContainText(
+      "OpenProfile Agent Workflow",
+    );
+
+    await page.goto("/projects/openprofile-agent-workflow");
+    await expect(page.getByRole("heading", { name: "OpenProfile Agent Workflow" })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Open surface/ })).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/OpenProfile",
+    );
+    await expect(page.getByTestId("project-evidence-openprofile-agent-workflow-public-repository")).toHaveAttribute(
+      "href",
+      "https://github.com/njueeRay/OpenProfile",
+    );
+
+    await page.goto("/projects/anyreader-interface-teardown");
+    await expect(page.getByRole("heading", { name: "AnyReader Interface Teardown" })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Open surface/ })).toHaveAttribute(
+      "href",
+      "https://app.exnju.top",
+    );
+    await expect(page.getByRole("heading", { name: "The product promise" })).toBeVisible();
+
+    await page.goto("/blog/anyreader-deep-reading-interface-teardown");
+    await expect(page.getByRole("heading", { name: "AnyReader 深度阅读界面拆解" })).toBeVisible();
+
+    await page.goto("/knowledge/external-proof-over-self-reference");
+    await expect(page.getByRole("heading", { name: "外部证据优先于自指叙事" })).toBeVisible();
+    await expect(page.getByLabel("Knowledge trails")).toContainText("OpenProfile Agent Workflow");
   });
 });
 

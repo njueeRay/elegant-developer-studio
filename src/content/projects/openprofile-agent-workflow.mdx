@@ -1,0 +1,86 @@
+export const meta = {
+  slug: "openprofile-agent-workflow",
+  title: "OpenProfile Agent Workflow",
+  subtitle: "A public GitHub Profile system that treats personal presence as an agent-maintained product surface.",
+  year: "2026",
+  status: "Shipped",
+  role: "AI-native developer tooling",
+  stack: ["GitHub", "Copilot Agents", "Astro", "CI"],
+  href: "/projects/openprofile-agent-workflow",
+  externalUrl: "https://github.com/njueeRay/OpenProfile",
+  repo: "https://github.com/njueeRay/OpenProfile",
+  image: "/assets/openprofile-logo.svg",
+  summary:
+    "A reproducible workflow for keeping a GitHub Profile, companion site, docs, and agent team aligned through explicit context, decisions, releases, and quality gates.",
+  impact: ["Turned profile upkeep into a repeatable workflow", "Made agent roles and handoff visible", "Separated public profile output from the process that maintains it"],
+  evidencePack: [
+    {
+      type: "source",
+      label: "Public repository",
+      detail:
+        "The repo exposes the profile workflow, agent files, docs, CI configuration, changelog, and reusable setup instructions.",
+      href: "https://github.com/njueeRay/OpenProfile",
+      source: "GitHub",
+      route: "/projects/openprofile-agent-workflow",
+      verifiedBy: "curl.head()",
+      verifiedAt: "2026-07-04",
+    },
+    {
+      type: "document",
+      label: "Agent workflow docs",
+      detail:
+        "The workflow documentation defines the Brain, PM, Dev, Researcher, Code Reviewer, and Profile Designer roles as a reusable operating model.",
+      href: "https://github.com/njueeRay/OpenProfile/blob/main/docs/agent-workflow.md",
+      source: "GitHub",
+      route: "/knowledge/agent-team-as-product-surface",
+      verifiedBy: "docs.read()",
+      verifiedAt: "2026-07-04",
+    },
+    {
+      type: "decision",
+      label: "Open source strategy",
+      detail:
+        "The strategy document draws a hard boundary between a static profile generator and a workflow template with persistent context.",
+      href: "https://github.com/njueeRay/OpenProfile/blob/main/docs/open-source-strategy.md",
+      source: "GitHub",
+      route: "/blog/openprofile-as-agentic-profile-infrastructure",
+      verifiedBy: "strategy.trace()",
+      verifiedAt: "2026-07-04",
+    },
+  ],
+  caseStudyDiff: [
+    {
+      before: "A developer profile is usually a one-time Markdown artifact that becomes stale.",
+      after: "OpenProfile turns the profile into a maintained system with agents, docs, CI, decisions, releases, and a live showcase.",
+      proof: "The public repository includes agent definitions, workflow docs, design decisions, CI checks, and release history.",
+      evidenceHref: "https://github.com/njueeRay/OpenProfile",
+    },
+    {
+      before: "AI help was an ad hoc chat layer with no stable project memory.",
+      after: "Agent roles and handoff protocol are encoded as repo files so future sessions can resume from explicit context.",
+      proof: "The agent workflow doc specifies session open, session close, DoD, and required documentation updates.",
+      evidenceHref: "https://github.com/njueeRay/OpenProfile/blob/main/docs/agent-workflow.md",
+    },
+  ],
+  featured: true,
+};
+
+# OpenProfile Agent Workflow
+
+OpenProfile is a better portfolio proof than another visual card because the work is public, reusable, and opinionated. It says: a developer profile should not be maintained by memory, taste, and occasional README edits. It should have a workflow.
+
+## What changed
+
+The project reframes the GitHub Profile from a static output into an AI-native maintenance system. The public result still matters, but the more interesting product is the process behind it: role files, handoff rules, design decisions, CI, releases, and a strategy document that explains who the system is for.
+
+That distinction is important for this homepage. Ray Studio should not only show polished pages. It should show how a system keeps itself coherent when humans and agents work across time.
+
+## Product judgment
+
+The strongest decision in OpenProfile is exclusion. It does not try to be a no-code profile generator. It asks the user to fork, configure, and work with an agent team. That narrows the audience, but makes the product sharper.
+
+The weak point is adoption friction. A workflow template requires users to understand GitHub, VS Code, Copilot Agent mode, and repository structure. That is not a bug, but it should stay explicit in the case study: the product trades mass-market simplicity for power and repeatability.
+
+## Why it belongs here
+
+This project expands the portfolio beyond this site itself. It proves a reusable operating pattern: public surface, local source of truth, agent memory, quality gate, release trace, and documentation that can survive the next session.

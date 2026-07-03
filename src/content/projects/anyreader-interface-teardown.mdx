@@ -1,0 +1,86 @@
+export const meta = {
+  slug: "anyreader-interface-teardown",
+  title: "AnyReader Interface Teardown",
+  subtitle: "A deep-reading product teardown focused on Markdown structure, math selection, QA anchors, and local/remote workspace boundaries.",
+  year: "2026",
+  status: "Active",
+  role: "Product interface research",
+  stack: ["React", "Vite", "Markdown", "KaTeX", "Knowledge UX"],
+  href: "/projects/anyreader-interface-teardown",
+  externalUrl: "https://app.exnju.top",
+  repo: "https://github.com/TeaFishMeow/any-reader-ui",
+  image: "/assets/anyreader-banner.png",
+  summary:
+    "A structured teardown of AnyReader as a reading workspace: what the interface promises, where the code proves it, and which engineering guardrails should come before more features.",
+  impact: ["Separated product promise from repository reality", "Identified high-leverage tests for math and selection behavior", "Mapped local and remote workspace boundaries"],
+  evidencePack: [
+    {
+      type: "deployment",
+      label: "Cloud reading surface",
+      detail:
+        "The public AnyReader app is reachable and gives the product promise a live surface beyond screenshots and README copy.",
+      href: "https://app.exnju.top",
+      source: "AnyReader",
+      route: "/projects/anyreader-interface-teardown",
+      verifiedBy: "curl.head()",
+      verifiedAt: "2026-07-04",
+    },
+    {
+      type: "source",
+      label: "Public source repo",
+      detail:
+        "The UI repository exposes the React/Vite reader, domain model, Markdown rendering, local workspace plugin, and product README.",
+      href: "https://github.com/TeaFishMeow/any-reader-ui",
+      source: "GitHub",
+      route: "/knowledge/socratic-reading-surfaces",
+      verifiedBy: "repo.inspect()",
+      verifiedAt: "2026-07-04",
+    },
+    {
+      type: "document",
+      label: "Local codebase research",
+      detail:
+        "The local research report distinguishes implemented frontend behavior from cloud/backend capabilities that require external services.",
+      href: "https://github.com/TeaFishMeow/any-reader-ui/blob/main/docs/codebase-research.zh-CN.md",
+      source: "Local + GitHub",
+      route: "/blog/anyreader-deep-reading-interface-teardown",
+      verifiedBy: "research.trace()",
+      verifiedAt: "2026-07-04",
+    },
+  ],
+  caseStudyDiff: [
+    {
+      before: "The README promise could be read as a complete cloud knowledge system.",
+      after: "The teardown separates the frontend reader, local Vite file bridge, remote API contract, and external backend responsibilities.",
+      proof: "The codebase research maps App.tsx, bootstrap-local, bootstrap-remote, api.ts, markdown.tsx, and domain.ts as distinct system boundaries.",
+      evidenceHref: "https://github.com/TeaFishMeow/any-reader-ui",
+    },
+    {
+      before: "More AI reading features looked like the obvious next step.",
+      after: "The higher-leverage next step is testing math rendering, selection anchors, QA records, mounted vault behavior, and remote/local mode documentation.",
+      proof: "The PR impact analysis prioritizes tests and boundary docs before feature expansion.",
+      evidenceHref: "https://github.com/TeaFishMeow/any-reader-ui/tree/main/docs",
+    },
+  ],
+  featured: true,
+};
+
+# AnyReader Interface Teardown
+
+AnyReader is useful as a portfolio case because it is not just another clean UI. It has real product tension: deep reading needs calm surfaces, but the implementation must also handle Markdown, math, selection ranges, local files, remote APIs, QA records, and long-lived anchors.
+
+## The product promise
+
+The promise is not "read Markdown in a prettier way." The promise is slower, deeper understanding: select a passage, ask a question, keep the answer anchored to the source, and return to it later.
+
+That promise is fragile. If math selection breaks, if anchors drift, if remote mode is implied but not implemented by the repo, the product loses trust quickly.
+
+## What the teardown found
+
+The local research found a frontend workbench with a serious domain model. `App.tsx` coordinates the reading surface, windows, state persistence, QA records, prompt templates, and streaming answers. `domain.ts` models reader, widget, sidebar, anchors, prompt intents, and repository modes. Markdown and KaTeX rendering are product-critical, not cosmetic.
+
+The important criticism is also simple: the README-level cloud promise is broader than what the UI repo alone implements. That is acceptable only if the boundary is documented. Product confidence comes from saying where the frontend ends and where the backend contract begins.
+
+## Why it belongs here
+
+This case gives Ray Studio a genuinely external product analysis surface. It shows UI/UX judgment, codebase reading, risk prioritization, and a bias toward engineering guardrails before more features.

@@ -29,6 +29,24 @@ import DesigningCommandSurfacesContent, {
 import HomepageDensityCaseStudyContent, {
   meta as homepageDensityCaseStudyMeta,
 } from "@/content/posts/homepage-density-case-study.mdx";
+import ExternalProofContent, {
+  meta as externalProofMeta,
+} from "@/content/posts/external-proof-over-portfolio-theater.mdx";
+import AnyReaderTeardownContent, {
+  meta as anyReaderTeardownMeta,
+} from "@/content/posts/anyreader-deep-reading-interface-teardown.mdx";
+import OpenProfileInfrastructureContent, {
+  meta as openProfileInfrastructureMeta,
+} from "@/content/posts/openprofile-as-agentic-profile-infrastructure.mdx";
+import CaseStudyDiffContent, {
+  meta as caseStudyDiffMeta,
+} from "@/content/posts/case-study-diff-as-portfolio-format.mdx";
+import OpenProfileContent, {
+  meta as openProfileMeta,
+} from "@/content/projects/openprofile-agent-workflow.mdx";
+import AnyReaderProjectContent, {
+  meta as anyReaderProjectMeta,
+} from "@/content/projects/anyreader-interface-teardown.mdx";
 import LumenContent, { meta as lumenMeta } from "@/content/projects/lumen.mdx";
 import StudioKnowledgeContent, {
   meta as studioKnowledgeMeta,
@@ -112,6 +130,26 @@ export type Project = ProjectMeta & {
 
 const posts: Post[] = [
   {
+    ...(externalProofMeta as PostMeta),
+    kind: "post" as const,
+    Content: ExternalProofContent,
+  },
+  {
+    ...(anyReaderTeardownMeta as PostMeta),
+    kind: "post" as const,
+    Content: AnyReaderTeardownContent,
+  },
+  {
+    ...(openProfileInfrastructureMeta as PostMeta),
+    kind: "post" as const,
+    Content: OpenProfileInfrastructureContent,
+  },
+  {
+    ...(caseStudyDiffMeta as PostMeta),
+    kind: "post" as const,
+    Content: CaseStudyDiffContent,
+  },
+  {
     ...(raynodeStandaloneDeploymentMeta as PostMeta),
     kind: "post" as const,
     Content: RaynodeStandaloneDeploymentContent,
@@ -164,6 +202,16 @@ const posts: Post[] = [
 ].sort((a, b) => b.date.localeCompare(a.date));
 
 const projects: Project[] = [
+  {
+    ...(openProfileMeta as ProjectMeta),
+    kind: "project" as const,
+    Content: OpenProfileContent,
+  },
+  {
+    ...(anyReaderProjectMeta as ProjectMeta),
+    kind: "project" as const,
+    Content: AnyReaderProjectContent,
+  },
   {
     ...(codexFeishuBridgeMeta as ProjectMeta),
     kind: "project" as const,

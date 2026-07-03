@@ -1,0 +1,61 @@
+export const meta = {
+  slug: "external-proof-over-portfolio-theater",
+  title: "外部证据比作品集叙事更重要",
+  subtitle: "个人主页最容易犯的错误，是把自我描述误认为能力证明。",
+  date: "2026-07-04",
+  updated: "2026-07-04",
+  status: "Published",
+  readingTime: "6 min read",
+  language: "中文",
+  intent: "Product judgment",
+  tags: ["中文", "Portfolio", "Evidence", "Product Systems"],
+  featured: true,
+  summary:
+    "一个成熟的个人主页不应该只证明自己会搭个人主页。它必须把外部问题、外部交付、外部证据和清晰取舍带到公开表面。",
+  toc: [
+    { id: "self-reference-is-not-proof", title: "自指不是证明" },
+    { id: "what-counts-as-external-proof", title: "什么算外部证据" },
+    { id: "how-this-site-should-change", title: "这个站点应该如何改变" },
+  ],
+  relatedPostSlugs: ["homepage-truth-source-audit", "evidence-without-precision-theater"],
+  relatedKnowledgeSlugs: ["external-proof-over-self-reference", "project-evidence-minimum-standard"],
+  relatedProjectSlugs: ["openprofile-agent-workflow", "anyreader-interface-teardown"],
+};
+
+# 外部证据比作品集叙事更重要
+
+作品集最常见的问题不是丑，而是自证循环：我做了一个主页，主页说我很会做主页，主页里还有很多说明主页如何被构建。
+
+这不是没有价值。它能证明工程能力、审美判断和维护能力。但如果整个站点长期只围绕自身演化，它会变成一台精密的镜子。
+
+## 自指不是证明
+
+个人主页当然可以展示自己的架构、CI、部署、组件和写作系统。问题在于：这些东西只能证明你能维护一个个人主页系统，不能充分证明你能处理外部问题。
+
+真正强的作品集应该让访客看到三类证据：
+
+- 你能进入别人的问题，而不是只解释自己的系统。
+- 你能读懂产品和代码之间的断裂，而不是只描述视觉效果。
+- 你能把模糊判断变成可检查的交付物，而不是只写漂亮原则。
+
+所以 Phase 26 的核心不是继续增加页面，而是把外部项目带进来。
+
+## 什么算外部证据
+
+最低标准很硬：
+
+1. 有真实外部对象：仓库、产品、文档、部署、PR、截图或可访问链接。
+2. 有明确问题：不是“我做了一个东西”，而是“原本哪里不清楚、不可维护、不可判断”。
+3. 有取舍：说明为什么不做某些更炫的方案。
+4. 有证据包：访客能点开检查，而不是只能相信卡片文案。
+5. 有反思：指出项目的弱点，而不是把每个作品都写成胜利叙事。
+
+这个标准会排除很多看似漂亮的作品卡。但排除是必要的。作品集需要减少精致废话。
+
+## 这个站点应该如何改变
+
+Ray Studio 现在应该从“系统搭好了”转向“系统承载什么”。这意味着首页的 Selected Work 应该优先展示外部项目，Writing 应该解释判断逻辑，Knowledge 应该沉淀可复用原则。
+
+OpenProfile 和 AnyReader 是第一轮试点。前者证明 agent workflow 可以产品化；后者证明我能拆解一个真实阅读器界面、代码边界和风险优先级。
+
+后续如果继续增加内容，也应该沿着同一条线：少一点“我又做了一个组件”，多一点“这个组件解决了哪个真实问题，证据在哪里，代价是什么”。

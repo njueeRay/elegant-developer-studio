@@ -67,11 +67,11 @@ export const highlights: Highlight[] = [
   {
     kind: "writing",
     eyebrow: "Featured essay",
-    title: "The Interface is a Promise",
+    title: "外部证据比作品集叙事更重要",
     description:
-      "Good interfaces are agreements between human intent and system behavior.",
-    meta: "May 12, 2026 / 8 min read",
-    href: "/blog/interface-is-a-promise",
+      "A mature portfolio needs real outside problems, not only a beautiful self-referential system.",
+    meta: "Jul 4, 2026 / 6 min read",
+    href: "/blog/external-proof-over-portfolio-theater",
   },
   {
     kind: "work",
@@ -96,7 +96,7 @@ export const highlights: Highlight[] = [
 ];
 
 export const knowledgeItems = [
-  "Interface notes that age well",
-  "Keyboard-driven workflows",
-  "AI-native product patterns",
+  "外部证据优先于自指叙事",
+  "Selection anchors are product state",
+  "Case study diff format",
 ] as const;

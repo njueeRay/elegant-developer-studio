@@ -416,6 +416,8 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 26：External Proof & Content Network
 
+状态：已完成，2026-07-04。
+
 优先级：最高。
 
 目标：把个人主页从“Ray Studio 建设日志”推进到“可被外部判断的作品与知识网络”。
@@ -443,24 +445,31 @@ Phase 25: Truth Source & Public Trust
 
 待办：
 
-- [ ] 定义“外部化 case study”的最低标准：真实问题、真实约束、真实交付物、真实链接、真实结果。
-- [ ] 新增项目 `tooling-or-automation-case-study`，不能只是本站内部页面。
-- [ ] 新增项目 `product-interface-teardown`，展示产品判断和 UI/UX 分析能力。
-- [ ] 每个项目必须有 `Evidence Pack`，且 evidence link 不能只指向本站。
-- [ ] 新增 2 篇中文判断型文章，重点写真实取舍和失败。
-- [ ] 新增 2 篇英文技术/设计文章，重点服务开放技术语境。
-- [ ] 为新增内容补 `relatedPostSlugs`、`relatedKnowledgeSlugs`、`relatedProjectSlugs`。
-- [ ] 更新首页 featured project 和 featured writing 的挑选逻辑，避免只展示最近内容。
-- [ ] 新增 e2e 覆盖至少一个新外部项目详情页。
+- [x] 定义“外部化 case study”的最低标准：真实问题、真实约束、真实交付物、真实链接、真实结果。
+- [x] 新增外部工具/工作流项目 `openprofile-agent-workflow`，不再只是本站内部页面。
+- [x] 新增产品界面拆解项目 `anyreader-interface-teardown`，展示产品判断和 UI/UX 分析能力。
+- [x] 每个项目都有 `Evidence Pack`，且 evidence link 指向公开 GitHub、公开部署或可检查研究表面。
+- [x] 新增 2 篇中文判断型文章，重点写真实取舍和失败。
+- [x] 新增 2 篇英文技术/设计文章，重点服务开放技术语境。
+- [x] 为新增内容补 `relatedPostSlugs`、`relatedKnowledgeSlugs`、`relatedProjectSlugs`。
+- [x] 更新首页 featured project 和 featured writing，使首页展示外部化项目和外部证据判断。
+- [x] 新增 e2e 覆盖新外部项目详情页、首页入口、博客和 Knowledge 关系链。
 
 验收标准：
 
-- Projects >= 5。
-- Posts >= 14。
-- Knowledge entries >= 16。
-- 至少 2 个项目不是本站自身，也不是单纯围绕本站文档系统。
-- 首页第一屏之后的精选内容至少有 1 个外部化项目。
-- 新项目 evidence link 可公开访问。
+- Projects = 5。
+- Posts = 14。
+- Knowledge entries = 16。
+- 2 个项目不是本站自身，也不是单纯围绕本站文档系统：`OpenProfile Agent Workflow`、`AnyReader Interface Teardown`。
+- 首页第一屏之后的精选内容展示 `OpenProfile Agent Workflow`。
+- 新项目 evidence link 经 `curl -I -L` 验证公开可访问：`https://github.com/njueeRay/OpenProfile`、`https://github.com/TeaFishMeow/any-reader-ui`、`https://app.exnju.top`。
+
+完成说明：
+
+- `OpenProfile Agent Workflow` 提供 AI-native profile workflow、公开仓库、agent workflow docs 和 open source strategy 作为证据。
+- `AnyReader Interface Teardown` 提供深度阅读界面拆解、公开应用、公开仓库和本地代码调研作为证据。
+- 新增 Knowledge 将外部证据、项目证据标准、Socratic reading surface、selection anchor、agent team surface 和 case study diff 固化为可引用原则。
+- 当前内容规模接近 Phase 28 的触发阈值，但尚未达到 posts > 15 或 knowledge entries > 25；下一阶段应优先 Phase 27，而不是立刻重构 Command Center。
 
 ### Phase 27：Evidence Automation & Release Discipline
 

@@ -358,6 +358,204 @@ export const knowledgeEntries: KnowledgeEntry[] = [
       },
     ],
   },
+  {
+    slug: "external-proof-over-self-reference",
+    kind: "Decision",
+    title: "外部证据优先于自指叙事",
+    summary:
+      "个人主页可以展示自身系统，但不能长期只证明自己会建设个人主页。",
+    signal: "用于判断下一批作品、文章和首页精选是否应该引入外部项目。",
+    protects:
+      "它防止作品集陷入自证循环：主页解释主页、项目证明主页、文章复盘主页。外部证据必须来自真实仓库、产品、文档、部署、PR 或可检查的研究对象。",
+    citation:
+      "当新增作品卡、精选文章或 Evidence Pack 时引用这条规则。它是 Phase 26 的核心判断。",
+    status: "Evergreen",
+    tags: ["中文", "Portfolio", "Evidence", "Phase 26"],
+    source: "Phase 26 external proof review",
+    related: [
+      { label: "外部证据文章", href: "/blog/external-proof-over-portfolio-theater" },
+      { label: "Projects", href: "/projects" },
+    ],
+    relatedPostSlugs: ["external-proof-over-portfolio-theater", "case-study-diff-as-portfolio-format"],
+    relatedProjectSlugs: ["openprofile-agent-workflow", "anyreader-interface-teardown"],
+    backlinks: [
+      {
+        label: "外部证据比作品集叙事更重要",
+        href: "/blog/external-proof-over-portfolio-theater#self-reference-is-not-proof",
+        context: "解释为什么个人主页不能只围绕自身系统自证。",
+      },
+      {
+        label: "OpenProfile Agent Workflow",
+        href: "/projects/openprofile-agent-workflow",
+        context: "作为第一批外部化项目证据进入作品集。",
+      },
+    ],
+  },
+  {
+    slug: "project-evidence-minimum-standard",
+    kind: "Reference",
+    title: "项目证据最低标准",
+    summary:
+      "一个公开项目至少需要真实问题、真实约束、真实交付物、真实链接和真实结果。",
+    signal: "Use before promoting a project to the homepage or featured portfolio rail.",
+    protects:
+      "It keeps project cards from becoming persuasive copy without inspectable proof. If a reader cannot open the repo, deployment, document, screenshot, decision, or validation route, the evidence is not strong enough.",
+    citation:
+      "Use this checklist when writing Project Evidence Pack, Case Study Diff, PR descriptions, and phase acceptance criteria.",
+    status: "Evergreen",
+    tags: ["Evidence", "Portfolio", "Checklist"],
+    source: "Phase 26 delivery standard",
+    related: [
+      { label: "Case study diff", href: "/blog/case-study-diff-as-portfolio-format" },
+      { label: "AnyReader teardown", href: "/projects/anyreader-interface-teardown" },
+    ],
+    relatedPostSlugs: ["case-study-diff-as-portfolio-format", "external-proof-over-portfolio-theater"],
+    relatedProjectSlugs: ["openprofile-agent-workflow", "anyreader-interface-teardown"],
+    backlinks: [
+      {
+        label: "Case Study Diff as a Portfolio Format",
+        href: "/blog/case-study-diff-as-portfolio-format#diff-thinking",
+        context: "Defines before, after, proof, and tradeoff as the compact evidence unit.",
+      },
+      {
+        label: "AnyReader Interface Teardown",
+        href: "/projects/anyreader-interface-teardown",
+        context: "Uses public app, source repo, and local research as separate evidence types.",
+      },
+    ],
+  },
+  {
+    slug: "socratic-reading-surfaces",
+    kind: "Pattern",
+    title: "Socratic reading surfaces",
+    summary:
+      "A reading interface becomes interesting when selection, question, context, answer, and return path stay connected.",
+    signal: "Use when designing or reviewing AI-assisted reading, note, or learning interfaces.",
+    protects:
+      "It protects reading products from treating AI as a generic chat widget. The useful surface is anchored: what was selected, which context was used, where the answer lives, and how the user returns to the source.",
+    citation:
+      "Use this when reviewing AnyReader-like reading workspaces, article interaction layers, and future Knowledge reading tools.",
+    status: "Working",
+    tags: ["Reading UX", "AI", "Knowledge", "Interaction"],
+    source: "AnyReader teardown",
+    related: [
+      { label: "AnyReader project", href: "/projects/anyreader-interface-teardown" },
+      { label: "AnyReader article", href: "/blog/anyreader-deep-reading-interface-teardown" },
+    ],
+    relatedPostSlugs: ["anyreader-deep-reading-interface-teardown", "interface-is-a-promise"],
+    relatedProjectSlugs: ["anyreader-interface-teardown"],
+    backlinks: [
+      {
+        label: "AnyReader 深度阅读界面拆解",
+        href: "/blog/anyreader-deep-reading-interface-teardown#deep-reading-is-a-state-problem",
+        context: "把深度阅读定义为连续状态问题，而不是单纯排版问题。",
+      },
+      {
+        label: "AnyReader Interface Teardown",
+        href: "/projects/anyreader-interface-teardown",
+        context: "项目证据包展示阅读器代码和产品边界。",
+      },
+    ],
+  },
+  {
+    slug: "selection-anchors-are-product-state",
+    kind: "Snippet",
+    title: "Selection anchors are product state",
+    summary:
+      "When a user selects text or math, the product receives a durable intent, not a temporary highlight.",
+    signal: "Use when implementing quote, highlight, annotation, QA, or reading-progress behavior.",
+    protects:
+      "It prevents teams from treating DOM selection as enough. Durable reading products need stable anchors, source context, quote hashes, replay behavior, and tests for Markdown, math, and cross-block selection.",
+    citation:
+      "Use this when planning tests for Markdown rendering, math selection, QA records, or article interaction components.",
+    status: "Working",
+    tags: ["Reading UX", "Anchors", "Testing"],
+    source: "AnyReader codebase research",
+    related: [
+      { label: "AnyReader teardown", href: "/blog/anyreader-deep-reading-interface-teardown" },
+      { label: "Interface promise", href: "/blog/interface-is-a-promise" },
+    ],
+    relatedPostSlugs: ["anyreader-deep-reading-interface-teardown", "interface-is-a-promise"],
+    relatedProjectSlugs: ["anyreader-interface-teardown"],
+    backlinks: [
+      {
+        label: "选区是一份契约",
+        href: "/blog/anyreader-deep-reading-interface-teardown#selection-is-a-contract",
+        context: "说明为什么选区必须被当作后续行为的稳定入口。",
+      },
+      {
+        label: "Reading Focus Lens",
+        href: "/lab#reading-focus-lens",
+        context: "本站文章阅读层也使用可复制的 section ref 表达阅读状态。",
+      },
+    ],
+  },
+  {
+    slug: "agent-team-as-product-surface",
+    kind: "Pattern",
+    title: "Agent team as product surface",
+    summary:
+      "Agent roles become product infrastructure when their responsibilities, handoff rules, and quality gates are inspectable.",
+    signal: "Use when turning AI collaboration from chat behavior into a reusable workflow.",
+    protects:
+      "It prevents agent collaboration from depending on vibes. The surface should expose roles, permissions, recovery points, session closeout rules, and the documents that make future work resumable.",
+    citation:
+      "Use this when designing AI-native repositories, profile workflows, Feishu sync, or long-running Codex projects.",
+    status: "Evergreen",
+    tags: ["AI Workflow", "Agents", "Documentation"],
+    source: "OpenProfile workflow review",
+    related: [
+      { label: "OpenProfile project", href: "/projects/openprofile-agent-workflow" },
+      { label: "Agentic profile essay", href: "/blog/openprofile-as-agentic-profile-infrastructure" },
+    ],
+    relatedPostSlugs: ["openprofile-as-agentic-profile-infrastructure", "agent-handoff-loop"],
+    relatedProjectSlugs: ["openprofile-agent-workflow", "codex-feishu-bridge"],
+    backlinks: [
+      {
+        label: "OpenProfile as Agentic Profile Infrastructure",
+        href: "/blog/openprofile-as-agentic-profile-infrastructure#agent-roles-create-operational-memory",
+        context: "Explains why named roles create recoverable operational memory.",
+      },
+      {
+        label: "OpenProfile Agent Workflow",
+        href: "/projects/openprofile-agent-workflow",
+        context: "Project page uses workflow docs as public evidence.",
+      },
+    ],
+  },
+  {
+    slug: "case-study-diff-format",
+    kind: "Pattern",
+    title: "Case study diff format",
+    summary:
+      "Before, after, proof, and tradeoff are often a better portfolio unit than a long process narrative.",
+    signal: "Use when writing project pages that need to stay inspectable and low-drama.",
+    protects:
+      "It keeps case studies grounded in change. A diff forces the author to name what was actually different after the work, where the proof lives, and which limitations remain.",
+    citation:
+      "Use this when adding Project Evidence Pack, project detail pages, release reviews, or compact portfolio writeups.",
+    status: "Evergreen",
+    tags: ["Portfolio", "Writing", "Evidence"],
+    source: "Phase 26 portfolio format",
+    related: [
+      { label: "Diff essay", href: "/blog/case-study-diff-as-portfolio-format" },
+      { label: "OpenProfile project", href: "/projects/openprofile-agent-workflow" },
+    ],
+    relatedPostSlugs: ["case-study-diff-as-portfolio-format", "evidence-without-precision-theater"],
+    relatedProjectSlugs: ["openprofile-agent-workflow", "anyreader-interface-teardown"],
+    backlinks: [
+      {
+        label: "Case Study Diff as a Portfolio Format",
+        href: "/blog/case-study-diff-as-portfolio-format#diff-thinking",
+        context: "Defines the compact before, after, proof, tradeoff structure.",
+      },
+      {
+        label: "AnyReader Interface Teardown",
+        href: "/projects/anyreader-interface-teardown",
+        context: "Uses diff cards to separate product promise from repository reality.",
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeKinds(entries = knowledgeEntries) {

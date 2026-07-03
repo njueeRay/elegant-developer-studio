@@ -1,20 +1,18 @@
 # 当前上下文
 
-更新时间：2026-07-03
+更新时间：2026-07-04
 
 ## 当前主线
 
-Phase 25：Truth Source & Public Trust。
+Phase 26：External Proof & Content Network。
 
-本阶段不继续扩新页面表面，优先修复可信度底座：
+Phase 25 已完成可信度底座修复。当前主线已经从“站点说真话”转为“站点能被外部判断”：
 
-- RayNode 主站事实源。
-- 证据一致性。
-- 首页假状态和过期文案。
-- 最小 CI。
-- Command Center 与 Photo lightbox 的 modal 焦点契约。
-- 真实内容资产。
-- 文档入口收敛。
+- 增加外部化项目，而不是继续围绕本站自证。
+- 增加非本站中心文章，让 Writing 解释真实产品判断。
+- 增加 Knowledge 原则，使外部证据、阅读界面、agent workflow 和 case study diff 可复用。
+- 首页精选优先展示外部证据更强的内容。
+- 继续避免新增一级页面、宠物、粒子、全站图谱或复杂动效。
 
 ## 线上状态
 
@@ -41,6 +39,27 @@ RayNode 当前状态：
 - `docs/PROGRESS_LOG.md`：阶段进度。
 - `docs/VERSION_TRACE.md`：提交、部署和验证追溯。
 
+## 已完成的 Phase 26 切片
+
+- 新增外部项目 `OpenProfile Agent Workflow`。
+- 新增产品拆解项目 `AnyReader Interface Teardown`。
+- 新增 4 篇非本站中心文章：
+  - `外部证据比作品集叙事更重要`
+  - `AnyReader 深度阅读界面拆解`
+  - `OpenProfile as Agentic Profile Infrastructure`
+  - `Case Study Diff as a Portfolio Format`
+- 新增 6 条 Knowledge：
+  - `外部证据优先于自指叙事`
+  - `项目证据最低标准`
+  - `Socratic reading surfaces`
+  - `Selection anchors are product state`
+  - `Agent team as product surface`
+  - `Case study diff format`
+- 首页 Featured essay 指向外部证据文章。
+- 首页 Selected work 指向 `OpenProfile Agent Workflow`。
+- e2e 增加 Phase 26 外部证据网络可达性检查。
+- `npm run validate:content` 通过，内容规模为 14 posts / 5 projects / 16 knowledge entries。
+
 ## 已完成的 Phase 25 切片
 
 - RayNode 部署恢复确认。
@@ -60,9 +79,9 @@ RayNode 当前状态：
 
 ## 当前内容规模
 
-- Posts：10。
-- Projects：3。
-- Knowledge entries：10。
+- Posts：14。
+- Projects：5。
+- Knowledge entries：16。
 
 ## 质量门禁
 
@@ -72,7 +91,7 @@ RayNode 当前状态：
 npm run validate:content
 npm run lint
 npm run build
-npx playwright test --project=chromium --grep "Phase 25|command menu traps|photo lightbox traps|project case studies"
+npx playwright test --project=chromium --grep "Phase 26|command menu traps|photo lightbox traps|project case studies"
 ```
 
 完整回归：
@@ -100,6 +119,7 @@ Command Center index 现在仍在 root layout 组装。当前内容量可接受�
 
 ## 下一步建议
 
-1. 同步 Feishu 当前上下文和 Phase 25 结果。
-2. 下一轮优先继续生产真实内容，而不是扩新页面表面。
+1. 下一阶段优先 Phase 27：Evidence Automation & Release Discipline。
+2. 将 release evidence 从手写 TypeScript 推进到脚本生成或 JSON 事实源。
 3. 观察 Command Center payload；posts > 15 或 knowledge entries > 25 时启动懒加载改造。
+4. 同步 Feishu 当前上下文、Phase 25 与 Phase 26 结果。

@@ -1,0 +1,61 @@
+export const meta = {
+  slug: "anyreader-deep-reading-interface-teardown",
+  title: "AnyReader 深度阅读界面拆解",
+  subtitle: "一个阅读产品真正难的地方，不是 Markdown 渲染，而是选区、锚点、上下文和承诺边界。",
+  date: "2026-07-04",
+  updated: "2026-07-04",
+  status: "Published",
+  readingTime: "7 min read",
+  language: "中文",
+  intent: "Product teardown",
+  tags: ["中文", "Reading UX", "Knowledge", "Interface"],
+  featured: true,
+  summary:
+    "AnyReader 的价值在于把阅读、追问、数学公式、QA 记录和工作区状态放进同一个界面承诺里；风险也正来自这些承诺的边界。",
+  toc: [
+    { id: "deep-reading-is-a-state-problem", title: "深度阅读是状态问题" },
+    { id: "selection-is-a-contract", title: "选区是一份契约" },
+    { id: "boundary-honesty", title: "边界诚实" },
+  ],
+  relatedPostSlugs: ["interface-is-a-promise", "external-proof-over-portfolio-theater"],
+  relatedKnowledgeSlugs: ["socratic-reading-surfaces", "selection-anchors-are-product-state"],
+  relatedProjectSlugs: ["anyreader-interface-teardown"],
+};
+
+# AnyReader 深度阅读界面拆解
+
+AnyReader 的表面看起来是阅读器，但它真正的产品命题更窄也更难：让一个人围绕结构化材料进行慢阅读、追问、回看和复盘。
+
+如果只把它理解成 Markdown 阅读器，会低估它。Markdown 渲染只是入口，真正复杂的是状态。
+
+## 深度阅读是状态问题
+
+深度阅读不是“把内容排得好看”。它包含这些连续动作：
+
+- 我正在读哪一份材料？
+- 我选中了哪一段？
+- 这个选区是否包含数学公式？
+- 我问了什么？
+- AI 回答引用了什么上下文？
+- 回答能不能回到原文位置？
+- 下次打开时这些记录还在不在？
+
+这些问题都不是视觉层能单独解决的。它们需要 domain model、workspace state、QA record、anchor、prompt template 和持久化策略一起工作。
+
+## 选区是一份契约
+
+阅读产品里的选区不是临时 UI 状态。它是用户对系统说：“请围绕这里发生后续行为。”
+
+因此选区需要被认真建模。尤其当材料包含 Markdown 标记、数学公式、代码块、中文路径和跨块文本时，简单的 DOM range 不够稳定。
+
+AnyReader 的价值在于它已经把 reader、widget、sidebar、anchor、prompt intent 等概念放进类型系统。它的问题也在这里：这些能力越关键，越需要测试保护。
+
+对这个项目而言，下一批最有价值的 PR 不是更大的 AI 功能，而是 Markdown、公式、选区、高亮和 QA anchor 的测试。
+
+## 边界诚实
+
+README 可以承载愿景，但产品文档必须说明边界。AnyReader 的 UI 仓库可以证明阅读器前端、本地文件桥、远程 API 协议和渲染链路；但云端协作、权限、额度和后端代理需要外部服务兑现。
+
+这不是缺陷，而是产品诚实问题。只要边界说清楚，用户就能判断自己应该本地运行、云端体验，还是参与后端能力建设。
+
+好的界面不是让系统看起来更完整，而是让用户知道完整性在哪里成立、在哪里需要外部条件。

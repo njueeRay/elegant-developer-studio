@@ -1189,6 +1189,38 @@ Deployment target：RayNode `/srv/apps/elegant-developer-studio-runtime`
 - 当前 Command Center index 仍在 root layout 组装；触发阈值为 posts > 15 或 knowledge entries > 25。
 - 飞书尚待同步本阶段结果。
 
+## Unreleased - 第二十六阶段 External Proof & Content Network
+
+日期：2026-07-04
+Primary commit：`4c7212f`
+Production host：`https://raynode.me`
+Preview / fallback：`https://elegant-developer-studio.vercel.app`
+
+范围：
+
+- 新增外部项目 `OpenProfile Agent Workflow`。
+- 新增产品拆解项目 `AnyReader Interface Teardown`。
+- 新增 4 篇非本站中心文章。
+- 新增 6 条 Knowledge。
+- 首页精选写作和精选作品转向外部证据。
+- e2e 增加 Phase 26 外部证据网络检查。
+
+验证：
+
+- `curl -I -L https://github.com/njueeRay/OpenProfile`：200。
+- `curl -I -L https://github.com/TeaFishMeow/any-reader-ui`：200。
+- `curl -I -L https://app.exnju.top`：200。
+- `npm run validate:content`：通过，14 posts / 5 projects / 16 knowledge entries。
+- `npm run lint`：通过。
+- `npm run build`：通过，52 routes。
+- targeted e2e：2 passed。
+- `npm run test:e2e -- --workers=1`：166 passed。
+
+残余风险：
+
+- Posts 已到 14，接近 Phase 28 的 command index 规模触发线 posts > 15。
+- Evidence Pack 仍是手写事实源；下一阶段应进入 Phase 27 自动化 release evidence。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

@@ -1,0 +1,59 @@
+export const meta = {
+  slug: "case-study-diff-as-portfolio-format",
+  title: "Case Study Diff as a Portfolio Format",
+  subtitle: "A useful project page should show before, after, proof, and tradeoff before it tries to sound impressive.",
+  date: "2026-07-04",
+  updated: "2026-07-04",
+  status: "Published",
+  readingTime: "5 min read",
+  language: "English",
+  intent: "Portfolio systems",
+  tags: ["Portfolio", "Evidence", "Writing Systems"],
+  featured: true,
+  summary:
+    "The case study diff is a compact portfolio pattern: name the previous state, the changed state, the proof, and what the change did not solve.",
+  toc: [
+    { id: "portfolios-hide-too-much", title: "Portfolios hide too much" },
+    { id: "diff-thinking", title: "Diff thinking" },
+    { id: "where-it-breaks", title: "Where it breaks" },
+  ],
+  relatedPostSlugs: ["evidence-without-precision-theater", "external-proof-over-portfolio-theater"],
+  relatedKnowledgeSlugs: ["case-study-diff-format", "project-evidence-minimum-standard"],
+  relatedProjectSlugs: ["openprofile-agent-workflow", "anyreader-interface-teardown"],
+};
+
+# Case Study Diff as a Portfolio Format
+
+Most portfolio case studies are too smooth. They turn messy work into a sequence of confident sections: problem, process, solution, outcome. The format is familiar, but it often hides the part that matters: what actually changed?
+
+A case study diff is a stricter pattern.
+
+## Portfolios hide too much
+
+Polished narratives make weak projects look better than they are. They also make strong projects harder to inspect because the evidence gets buried under process theater.
+
+The reader should not have to infer whether the work changed a real constraint, shipped a public artifact, improved a system boundary, or merely produced a nicer-looking screen.
+
+## Diff thinking
+
+The basic unit is small:
+
+```txt
+Before: what was unclear, brittle, missing, misleading, slow, or hard to trust.
+After: what exists now.
+Proof: where the reader can inspect the change.
+Tradeoff: what the change does not solve.
+```
+
+This structure is especially useful for design engineering because the best work often lives between product judgment and implementation detail. A diff can show both without pretending every project needs a dramatic transformation arc.
+
+## Where it breaks
+
+Diffs can become another formula if every card tries to sound equally important. The fix is to be willing to write small, unglamorous truths:
+
+- The deployment now has a clear fallback.
+- The evidence card no longer claims stale test counts.
+- The interface teardown found that backend capability lives outside the UI repo.
+- The profile workflow is powerful, but not beginner-friendly.
+
+That is the tone this site should use more often: less mystique, more inspectable change.

@@ -1632,3 +1632,50 @@ GitHub 推送修复：
 
 - 同步飞书。
 - 后续打包时使用 `COPYFILE_DISABLE=1`，避免 macOS xattr tar warning。
+
+### 第二十六阶段：External Proof & Content Network
+
+日期：2026-07-04
+
+状态：已实现，已本地验证，待部署，待外部同步。
+
+阶段判断：
+
+- Phase 25 已经把站点可信度修到可控状态，继续堆页面会重新制造信息架构过载。
+- 当前最大短板是外部证据不足：站点不能长期只证明“我很会建设这个站点”。
+- Phase 26 的核心不是新增 surface，而是用外部项目、文章和 Knowledge 让作品集可被外部判断。
+
+完成：
+
+- 新增项目 `OpenProfile Agent Workflow`，引用公开 GitHub 仓库、agent workflow docs 和 open source strategy。
+- 新增项目 `AnyReader Interface Teardown`，引用公开云端体验、公开 GitHub 仓库和本地代码调研。
+- 新增文章 `外部证据比作品集叙事更重要`。
+- 新增文章 `AnyReader 深度阅读界面拆解`。
+- 新增文章 `OpenProfile as Agentic Profile Infrastructure`。
+- 新增文章 `Case Study Diff as a Portfolio Format`。
+- 新增 6 条 Knowledge：外部证据、自指叙事、项目证据最低标准、Socratic reading surface、selection anchor、agent team surface、case study diff。
+- 首页 Featured essay 切到外部证据文章。
+- 首页 Selected work 通过 featured project 指向 `OpenProfile Agent Workflow`。
+- e2e 增加 Phase 26 外部证据网络可达性检查。
+
+内容规模：
+
+- Posts：14。
+- Projects：5。
+- Knowledge entries：16。
+
+已验证：
+
+- `curl -I -L https://github.com/njueeRay/OpenProfile`：200。
+- `curl -I -L https://github.com/TeaFishMeow/any-reader-ui`：200。
+- `curl -I -L https://app.exnju.top`：200。
+- `npm run validate:content`：通过，14 posts / 5 projects / 16 knowledge entries。
+- `npm run lint`：通过。
+- `npm run build`：通过，52 routes。
+- targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "Phase 26 external proof" --workers=1`，2 passed。
+- 完整 e2e：`npm run test:e2e -- --workers=1`，166 passed。
+
+下一步：
+
+- 下一阶段进入 Phase 27：Evidence Automation & Release Discipline。
+- 提交并推送后，按部署策略决定是否更新 RayNode。
