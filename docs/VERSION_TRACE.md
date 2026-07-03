@@ -1346,10 +1346,12 @@ Production host：`https://raynode.me`
 - Writing tracks 当前是人工维护的编辑模型；后续新增内容必须由 `validate:content` 保护。
 - Knowledge kind 暂不扩展；Phase 30 如新增运维 runbook，再评估是否引入 `Runbook`。
 
-## Unreleased - 第三十阶段 RayNode Operations Hardening
+## Released - 第三十阶段 RayNode Operations Hardening
 
 日期：2026-07-04
 Primary implementation commit：`87e185c`
+Deployment record commit：待记录
+Deployed source commit：`fee8825`
 Production host：`https://raynode.me`
 
 范围：
@@ -1369,7 +1371,12 @@ Production host：`https://raynode.me`
 - `npm run build`：通过。
 - targeted e2e：8 passed。
 - full e2e：182 passed。
-- RayNode scripted deploy：待执行。
+- RayNode scripted deploy：通过，远端源码为 `fee8825`，service active。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- `https://raynode.me/health.json`：`status: ok`。
+- `https://raynode.me/release-evidence.json`：commit `fee8825`，14 posts / 5 projects / 16 knowledge entries / 52 public routes。
 
 残余风险：
 

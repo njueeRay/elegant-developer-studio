@@ -4,9 +4,9 @@
 
 ## 当前主线
 
-Phase 30：RayNode Operations Hardening。
+Phase 31：Visual System Polish Without Adding Surfaces。
 
-Phase 30 已完成第一切片并通过完整本地回归：新增 `/health.json`、`scripts/verify-raynode.mjs`、`npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke` 和 `ops/` 运维模板。下一步是提交、部署和生产 health/smoke。
+Phase 30 已完成第一切片并部署到 RayNode：新增 `/health.json`、`scripts/verify-raynode.mjs`、`npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke` 和 `ops/` 运维模板。当前主线可以转入 Phase 31：Visual System Polish Without Adding Surfaces。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -33,11 +33,13 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`f0ff534`。
-- `/release-evidence.json` 返回部署提交 `f0ff534`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 51 public routes。
-- `/health.json` 待部署；当前线上仍是 Phase 29 runtime。
+- 当前服务器源码提交：`fee8825`。
+- `/release-evidence.json` 返回部署提交 `fee8825`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 52 public routes。
+- `/health.json` 返回 `status: ok`。
 - `/command-index.json` 返回 110 command items。
-- 生产公开路由可访问性测试通过：47 passed。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- 生产公开路由可访问性测试通过：48 passed。
 
 ## 当前事实源
 
@@ -193,6 +195,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 完成 Phase 30 提交、部署和生产 health/smoke。
-2. 记录 Phase 30 部署提交和线上 `/health.json` 结果。
+1. 启动 Phase 31：Visual System Polish Without Adding Surfaces。
+2. 优先检查首页首屏、RayNode 状态 badge、Command Center 移动端高度和文章详情 AmbientCursorField 干扰。
 3. 同步 Feishu 当前上下文、Phase 25-30 结果。

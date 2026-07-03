@@ -1830,7 +1830,7 @@ GitHub 推送修复：
 
 日期：2026-07-04
 
-状态：已实现并完成完整本地回归，待提交和 RayNode 部署。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -1858,8 +1858,16 @@ GitHub 推送修复：
 - targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "serves /health|serves /release-evidence|serves /blog$|primary surfaces" --workers=1`，8 passed。
 - 完整本地质量门禁：`npm run report:command-index && npm run release:evidence -- --local-quality-passed && npm run validate:release-evidence && npm run validate:content && npm run lint && npm run build && npm run test:e2e -- --workers=1`，通过。
 - 完整本地 e2e：182 passed。
+- implementation commit：`87e185c`。
+- trace commit：`fee8825`。
+- `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `fee8825`，service active。
+- `https://raynode.me/health.json`：返回 `status: ok`。
+- `https://raynode.me/release-evidence.json`：返回 `commitSha` `fee8825`、14 posts / 5 projects / 16 knowledge entries / 52 public routes。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
 
 下一步：
 
-- 提交、推送并部署到 RayNode。
-- 部署后执行 `npm run raynode:health`、`npm run raynode:health:full` 和 `npm run raynode:smoke`。
+- 启动 Phase 31：Visual System Polish Without Adding Surfaces。
+- 本阶段后，不再用散落 curl 命令作为默认生产验证入口；优先使用 `raynode:health` 和 `raynode:smoke`。

@@ -632,7 +632,7 @@ Knowledge kind 评估：
 
 ### Phase 30：RayNode Operations Hardening
 
-状态：已实现并完成完整本地回归，2026-07-04；待提交与 RayNode 部署。
+状态：已完成并部署到 RayNode，2026-07-04。
 
 优先级：中。
 
@@ -665,6 +665,13 @@ Knowledge kind 评估：
 - 本地定向 e2e：8 passed，覆盖桌面和移动端 `/health.json`、`/release-evidence.json`、`/blog` 与主导航。
 - 完整本地质量门禁通过：`report:command-index`、`release:evidence`、`validate:release-evidence`、`validate:content`、`lint`、`build`、`npm run test:e2e -- --workers=1`。
 - 完整本地 e2e：182 passed。
+- Phase 30 implementation commit：`87e185c`。
+- RayNode 已部署提交 `fee8825`。
+- 线上 `/health.json` 返回 `status: ok`。
+- 线上 `/release-evidence.json` 返回 `commitSha: fee8825`、14 posts / 5 projects / 16 knowledge entries / 52 public routes。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed，包含 release evidence 的所有公开路由和 query-backed `/blog?track=product-judgment`。
+- `npm run raynode:smoke`：48 passed。
 
 本阶段暂缓：
 
