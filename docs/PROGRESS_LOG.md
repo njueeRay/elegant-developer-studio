@@ -1519,9 +1519,11 @@ GitHub 推送修复：
 - targeted e2e：10 passed，覆盖 Personal OS pulse、ambient cursor、Knowledge detail ref、Project evidence object、Reading command echo。
 - `npm run test:e2e -- --workers=1`：112 passed。
 - 额外修复：命令入口在 hydration 前 disabled，避免用户点击早于客户端监听器挂载时无反馈。
+- Vercel deployment：`dpl_Cyu6PVJdcqehP5xCLGQYComca8au`。
+- Deployment URL：`https://elegant-developer-studio-439dz7q0z.vercel.app`。
+- Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Cyu6PVJdcqehP5xCLGQYComca8au`。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，112 passed。
 
 下一步：
 
-- 部署 Vercel。
-- 生产 e2e。
 - 同步飞书。

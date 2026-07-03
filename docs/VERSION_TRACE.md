@@ -1121,8 +1121,11 @@ Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-dev
 
 日期：2026-07-02
 Primary commit：`f2f7774`
-Deployment：待实现
+Deployment record commit：待记录
+Vercel deployment：`dpl_Cyu6PVJdcqehP5xCLGQYComca8au`
 Production alias：`https://elegant-developer-studio.vercel.app`
+Deployment URL：`https://elegant-developer-studio-439dz7q0z.vercel.app`
+Inspect URL：`https://vercel.com/soniadjtgwatsondktg-5541s-projects/elegant-developer-studio/Cyu6PVJdcqehP5xCLGQYComca8au`
 
 范围：
 
@@ -1148,3 +1151,4 @@ Production alias：`https://elegant-developer-studio.vercel.app`
 - targeted e2e：10 passed。
 - `npm run test:e2e -- --workers=1`：112 passed。
 - 额外验证：命令入口在 hydration 前 disabled，避免首页和 Lab 的 Command Center 触发器出现早点击无反馈。
+- Production e2e：`PLAYWRIGHT_BASE_URL=https://elegant-developer-studio.vercel.app npx playwright test --workers=1 --retries=1`，112 passed。
