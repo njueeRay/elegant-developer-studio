@@ -55,6 +55,8 @@ RayNode 当前状态：
 - Command Center 和 Photo lightbox 增加 focus trap / focus restore。
 - 新增 6 篇文章、1 个非本站项目 case study、4 条 Knowledge。
 - README 文档入口收敛。
+- RayNode 已部署 `cb968a4`。
+- 主站 smoke e2e 37 passed。
 
 ## 当前内容规模
 
@@ -98,7 +100,6 @@ Command Center index 现在仍在 root layout 组装。当前内容量可接受�
 
 ## 下一步建议
 
-1. 跑完 Phase 25 全量验证并部署。
-2. 将 `docs/AUDIT_ACTION_TODO_2026_07_03.md` 的 P0-P2 勾选状态更新为完成。
-3. 将 RayNode 主站重新跑生产 e2e。
-4. 同步 Feishu 当前上下文和 Phase 25 结果。
+1. 同步 Feishu 当前上下文和 Phase 25 结果。
+2. 下一轮优先继续生产真实内容，而不是扩新页面表面。
+3. 观察 Command Center payload；posts > 15 或 knowledge entries > 25 时启动懒加载改造。

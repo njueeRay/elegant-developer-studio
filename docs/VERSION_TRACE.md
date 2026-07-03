@@ -1146,6 +1146,49 @@ Server status：阻塞，远端 SSH banner、HTTP response 和 HTTPS handshake �
 - 下一步需要先通过阿里云控制台重启实例，或等待远端用户态恢复。
 - 恢复后必须使用本地 standalone artifact 部署，不再在服务器上执行 `npm run build`。
 
+## Unreleased - 第二十五阶段 Truth Source & Public Trust
+
+日期：2026-07-03
+Primary commit：`cb968a4`
+Production host：`https://raynode.me`
+Preview / fallback：`https://elegant-developer-studio.vercel.app`
+Deployment target：RayNode `/srv/apps/elegant-developer-studio-runtime`
+
+范围：
+
+- 将 Claude Code 审计转化为 `docs/AUDIT_ACTION_TODO_2026_07_03.md`。
+- 新增 `docs/CURRENT_CONTEXT.md`。
+- 归档历史 phase research/review 文档到 `docs/archive/phase-history/`。
+- 统一 `SITE_URL`、canonical、Open Graph、Twitter card、sitemap、robots 和 RSS。
+- 将 RayNode 设为默认主站，Vercel 设为 preview / fallback。
+- 修复首页假状态、过期 Lab 文案、旧 Vercel evidence 和硬编码 e2e 数字。
+- 新增 release evidence 事实源雏形和 content validation 防线。
+- 新增 GitHub Actions 最小质量门禁。
+- 增加 Command Center 与 Photo lightbox modal focus trap / focus restore。
+- 新增 6 篇文章、1 个非本站项目 case study、4 条 Knowledge。
+- 首页首屏减法：Read / Work 成为主入口，Command Center 降为辅助入口。
+
+验证：
+
+- `npm ci`：通过。
+- `npm run validate:content`：通过，10 posts / 3 projects / 10 knowledge entries。
+- `npm run lint`：通过。
+- `npm run build`：通过，40 routes。
+- targeted e2e：4 passed。
+- 本地完整 e2e：140 passed。
+- RayNode deploy：源码与 runtime 均对应 `cb968a4`。
+- `https://raynode.me/`：200。
+- `https://www.raynode.me/`：200。
+- `robots.txt` 指向 `https://raynode.me/sitemap.xml`。
+- `sitemap.xml` 和 `rss.xml` 均输出 RayNode URL。
+- Production smoke e2e：37 passed。
+
+残余风险：
+
+- npm audit 仍有 2 个 moderate vulnerabilities；未执行 `npm audit fix --force`。
+- 当前 Command Center index 仍在 root layout 组装；触发阈值为 posts > 15 或 knowledge entries > 25。
+- 飞书尚待同步本阶段结果。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

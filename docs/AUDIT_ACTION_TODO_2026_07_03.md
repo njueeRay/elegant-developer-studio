@@ -4,7 +4,7 @@
 
 生成日期：2026-07-03
 
-状态：执行中
+状态：P0-P2 已完成，P3 作为长期方向保留
 
 ## 1. 结论校准
 
@@ -46,7 +46,7 @@
 - [x] 运行目录为 `/srv/apps/elegant-developer-studio-runtime`。
 - [x] `elegant-developer-studio.service` active。
 - [x] Caddy active，并对外提供 `https://raynode.me`。
-- [ ] 验证 `https://raynode.me`、`https://www.raynode.me`、`/rss.xml`、`/sitemap.xml`、`/robots.txt`。
+- [x] 验证 `https://raynode.me`、`https://www.raynode.me`、`/rss.xml`、`/sitemap.xml`、`/robots.txt`。
 
 验收：
 

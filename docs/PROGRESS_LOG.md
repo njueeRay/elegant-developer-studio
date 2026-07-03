@@ -1566,3 +1566,69 @@ GitHub 推送修复：
 - 将运行产物释放到 `/srv/apps/elegant-developer-studio-runtime`，保留 `/srv/apps/elegant-developer-studio` 作为源码仓库。
 - systemd 使用 `/usr/bin/node server.js`，监听 `HOSTNAME=127.0.0.1` 和 `PORT=3001`。
 - Caddy 保留 `/feishu/oauth/* -> localhost:18888`，其余流量反代到 `localhost:3001`。
+
+### 第二十五阶段：Truth Source & Public Trust
+
+日期：2026-07-03
+
+状态：P0-P2 已实现，已本地验证，已部署到 RayNode，待外部同步。
+
+阶段判断：
+
+- 审计结论成立：站点不是缺系统，而是需要先修事实源、证据和内容密度。
+- RayNode 已恢复并成为默认主站，Vercel 保留为 preview / fallback。
+- 下一阶段不继续扩新 surface，优先让站点“说真话、可访问、可验证”。
+
+完成：
+
+- 新增 `docs/AUDIT_ACTION_TODO_2026_07_03.md`，将 Claude Code 审计转为 P0-P3 行动清单。
+- 新增 `docs/CURRENT_CONTEXT.md`，作为新会话和后续 agent 的当前事实入口。
+- 归档 40 份历史 `PHASE*_RESEARCH.md` / `PHASE*_REVIEW.md` 到 `docs/archive/phase-history/`。
+- 新增 `src/lib/site.ts` 和 `src/lib/metadata.ts`，统一 `SITE_URL`、canonical、Open Graph 和 Twitter card。
+- sitemap、robots、RSS、layout metadata、post/project/knowledge metadata 接入 RayNode 主站事实源。
+- 首页移除首屏 Workbench，改成 Ray Studio、定位、RayNode 真实状态、Read / Work 主入口和辅助 Command Center。
+- 首页假 `Latest commit` 状态改为 RayNode release channel。
+- Lumen Evidence Pack 移除旧 Vercel deployment id 和硬编码 e2e 数字。
+- `validate:content` 增加 volatile test count 防线。
+- 新增 GitHub Actions 最小质量门禁。
+- Command Center 和 Photo lightbox 增加 focus trap / focus restore。
+- 新增 6 篇文章、1 个非本站项目 case study、4 条 Knowledge。
+
+内容规模：
+
+- Posts：10。
+- Projects：3。
+- Knowledge entries：10。
+
+已验证：
+
+- `npm ci`：通过，保留 2 个 moderate npm audit 风险，未执行破坏性 `npm audit fix --force`。
+- `npm run validate:content`：通过，10 posts / 3 projects / 10 knowledge entries。
+- `npm run lint`：通过。
+- `npm run build`：通过，40 routes。
+- targeted e2e：4 passed。
+- 本地完整 e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npm run test:e2e -- --workers=1`，140 passed。
+- Browser smoke：`http://127.0.0.1:3101/` 首页可渲染，console 无 app warning/error，Command Center Escape 后焦点恢复到触发按钮。
+- RayNode deploy commit：`cb968a4`。
+- RayNode systemd：`elegant-developer-studio` active。
+- Caddy：active。
+- `https://raynode.me/`：200。
+- `https://www.raynode.me/`：200。
+- `https://raynode.me/robots.txt`：指向 `https://raynode.me/sitemap.xml`。
+- `https://raynode.me/sitemap.xml`：包含 RayNode URL。
+- `https://raynode.me/rss.xml`：包含 RayNode URL。
+- Production smoke e2e：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves|primary surfaces|Phase 25|command menu traps|project case studies" --workers=1`，37 passed。
+
+部署方式：
+
+- 本地 `next build` 生成 standalone。
+- 本地打包 `.next/standalone`、`.next/static` 和 `public`。
+- 上传 `/tmp/elegant-developer-studio-standalone.tgz`。
+- 服务器源码更新到 `cb968a4`。
+- 运行产物替换 `/srv/apps/elegant-developer-studio-runtime`。
+- `sudo systemctl restart elegant-developer-studio`。
+
+下一步：
+
+- 同步飞书。
+- 后续打包时使用 `COPYFILE_DISABLE=1`，避免 macOS xattr tar warning。
