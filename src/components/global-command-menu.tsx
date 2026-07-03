@@ -31,29 +31,7 @@ import {
   emitCommandTrace,
   formatCommandTracePath,
 } from "@/lib/command-trace";
-
-export type CommandKind =
-  | "action"
-  | "post"
-  | "project"
-  | "knowledge"
-  | "lab"
-  | "uses"
-  | "about"
-  | "collaboration"
-  | "photo"
-  | "music"
-  | "contact";
-
-export type CommandItem = {
-  id: string;
-  kind: CommandKind;
-  title: string;
-  description: string;
-  href: string;
-  meta: string;
-  keywords: string[];
-};
+import type { CommandIndexPayload, CommandItem, CommandKind } from "@/lib/command-index";
 
 const iconByKind: Record<CommandKind, ComponentType<{ size?: number }>> = {
   action: Sparkles,
@@ -85,6 +63,7 @@ const labelByKind: Record<CommandKind, string> = {
 
 const RECENT_STORAGE_KEY = "ray-studio-command-recent";
 const MAX_RECENT_ITEMS = 5;
+const COMMAND_INDEX_URL = "/command-index.json";
 
 type RecentCommand = {
   id: string;
@@ -210,22 +189,56 @@ function getContextBoost(item: CommandItem, contextKinds: CommandKind[]) {
   return Math.max(1, contextKinds.length - index);
 }
 
+function getTopLevelIntentBoost(item: CommandItem, query: string) {
+  if (!query) {
+    return 0;
+  }
+
+  if (
+    ["external proof", "external", "proof", "evidence"].some((term) => query.includes(term)) &&
+    [item.title, item.description, item.meta, ...item.keywords].some((value) =>
+      normalize(value).match(/external|proof|evidence|openprofile|anyreader/),
+    )
+  ) {
+    return 8;
+  }
+
+  if (["writing", "essay", "blog"].some((term) => query.includes(term)) && item.kind === "post") {
+    return 6;
+  }
+
+  if (["project", "work", "case"].some((term) => query.includes(term)) && item.kind === "project") {
+    return 6;
+  }
+
+  if (["knowledge", "decision", "pattern"].some((term) => query.includes(term)) && item.kind === "knowledge") {
+    return 6;
+  }
+
+  return 0;
+}
+
 function scoreItem(item: CommandItem, query: string, contextKinds: CommandKind[]) {
   const haystack = normalize(
     [item.title, item.description, item.meta, item.kind, ...item.keywords].join(" "),
   );
   const contextBoost = getContextBoost(item, contextKinds);
+  const topLevelBoost = getTopLevelIntentBoost(item, query);
 
   if (!query) {
     return 1 + contextBoost;
   }
 
   if (normalize(item.title).includes(query)) {
-    return 40 + contextBoost;
+    return 40 + contextBoost + topLevelBoost;
   }
 
   if (haystack.includes(query)) {
-    return 20 + contextBoost;
+    return 20 + contextBoost + topLevelBoost;
+  }
+
+  if (topLevelBoost > 0) {
+    return topLevelBoost;
   }
 
   return 0;
@@ -311,12 +324,29 @@ function getPlannedSuggestion(query: string) {
   return plannedSuggestions.find((suggestion) => normalizedQuery.includes(suggestion.id.replace("planned-", "")));
 }
 
-export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
+function isCommandIndexPayload(value: unknown): value is CommandIndexPayload {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const payload = value as Partial<CommandIndexPayload>;
+
+  return (
+    payload.schemaVersion === 1 &&
+    Array.isArray(payload.items) &&
+    typeof payload.count === "number" &&
+    payload.items.length === payload.count
+  );
+}
+
+export function GlobalCommandMenu() {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
+  const [items, setItems] = useState<CommandItem[]>([]);
+  const [loadStatus, setLoadStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [recentCommands, setRecentCommands] = useState<RecentCommand[]>(readRecentCommands);
   const dialogRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<HTMLElement | null>(null);
@@ -331,6 +361,7 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
     }
 
     setActiveIndex(0);
+    setLoadStatus((current) => (current === "idle" ? "loading" : current));
     setOpen(true);
   }, []);
 
@@ -374,6 +405,40 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
       window.removeEventListener("studio:open-command", onOpenCommand);
     };
   }, [closeCommand, open, openCommand]);
+
+  useEffect(() => {
+    if (!open || loadStatus !== "loading") {
+      return;
+    }
+
+    const controller = new AbortController();
+
+    fetch(COMMAND_INDEX_URL, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Command index responded with ${response.status}`);
+        }
+
+        return response.json() as Promise<unknown>;
+      })
+      .then((payload) => {
+        if (!isCommandIndexPayload(payload)) {
+          throw new Error("Command index payload does not match schema");
+        }
+
+        setItems(payload.items);
+        setLoadStatus("ready");
+      })
+      .catch((error: unknown) => {
+        if (error instanceof Error && error.name === "AbortError") {
+          return;
+        }
+
+        setLoadStatus("error");
+      });
+
+    return () => controller.abort();
+  }, [loadStatus, open]);
 
   useEffect(() => {
     if (!open) {
@@ -674,7 +739,28 @@ export function GlobalCommandMenu({ items }: { items: CommandItem[] }) {
           id="global-command-results"
           role={flatItems.length > 0 ? "listbox" : undefined}
         >
-          {flatItems.length > 0 ? (
+          {loadStatus === "loading" ? (
+            <div className="command-loading" data-testid="global-command-loading" role="status">
+              <strong>Loading command index...</strong>
+              <p>Fetching writing, projects, knowledge, lab, uses, and studio actions.</p>
+            </div>
+          ) : loadStatus === "error" ? (
+            <div className="command-empty" data-testid="global-command-error" role="alert">
+              <strong>Command index could not load.</strong>
+              <p>The shell is still available; retry the index before searching.</p>
+              <div className="command-suggestions" aria-label="Command index recovery">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLoadStatus("loading");
+                    setActiveIndex(0);
+                  }}
+                >
+                  Retry
+                </button>
+              </div>
+            </div>
+          ) : flatItems.length > 0 ? (
             <>
               {plannedSuggestion ? (
                 <div className="command-planned-note">

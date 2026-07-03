@@ -1727,3 +1727,51 @@ GitHub 推送修复：
 
 - 启动 Phase 28：Content Discovery & Command Index Scale。
 - 先测量 command index，而不是直接重构。
+
+### 第二十八阶段：Content Discovery & Command Index Scale
+
+日期：2026-07-04
+
+状态：已实现并完成本地完整回归，待 RayNode 部署。
+
+阶段判断：
+
+- 继续让 root layout 同步组装 command index，会让内容增长逐渐进入首屏 HTML / RSC payload。
+- 当前规模还不需要引入复杂搜索服务；正确切片是把索引事实源拆出来、按需加载、可测量。
+- `/command-index.json` 比 `/api/command-index` 更适合当前阶段：公开、可缓存、可测试、概念更轻。
+
+完成：
+
+- 新增 `src/lib/command-index.ts`，作为 Command Center 索引事实源。
+- 新增 `/command-index.json` route handler。
+- `src/app/layout.tsx` 不再组装 command items，只挂载 Command Center shell。
+- `GlobalCommandMenu` 首次打开时拉取 `/command-index.json`，并保留搜索、recent、上下文排序、键盘打开和 command trace。
+- `GlobalCommandMenu` 增加 loading、error 和 retry 状态。
+- 搜索排序增加 External proof、Writing、Projects、Knowledge 的 top-level intent boost。
+- 新增 `scripts/report-command-index.mjs` 和 `npm run report:command-index`。
+- release evidence / content validation / public route tests 纳入 `/command-index.json`。
+
+测量结果：
+
+- command items：110。
+- kind 分布：action 7、post 14、project 5、knowledge 17、lab 23、uses 18、about 14、collaboration 7、photo 3、music 1、contact 1。
+- 估算 payload：35,413 bytes JSON，10,413 bytes gzip，keywords 6,735 bytes。
+- `firstScreenCarriesCommandIndex`：false。
+- 结论：当前规模适合按需加载 JSON；暂不需要复杂搜索服务。
+
+已验证：
+
+- `npm run report:command-index`：通过。
+- `npm run validate:content`：通过。
+- `npm run release:evidence -- --local-quality-passed`：通过，生成 14 posts / 5 projects / 16 knowledge entries / 51 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "command menu traps|command menu lazy loads|command menu exposes error|command index" --workers=1`，8 passed。
+- full e2e：`npm run test:e2e -- --workers=1`，178 passed。
+
+下一步：
+
+- 提交、推送并部署到 RayNode。
+- 部署后确认 `/command-index.json`、`/release-evidence.json` 和 Command Center 线上行为。
+- 启动 Phase 29：Reading & Knowledge Quality Layer。

@@ -10,6 +10,7 @@
     "release:evidence": "node scripts/write-release-evidence.mjs",
     "validate:release-evidence": "node scripts/validate-release-evidence.mjs",
     "validate:content": "node scripts/validate-content-relations.mjs",
+    "report:command-index": "node scripts/report-command-index.mjs",
     "deploy:raynode": "node scripts/deploy-raynode.mjs",
     "pretest:e2e": "npm run release:evidence",
     "test:e2e": "playwright test"

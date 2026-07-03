@@ -522,6 +522,8 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 28：Content Discovery & Command Index Scale
 
+状态：已实现并完成本地回归，2026-07-04；待 RayNode 部署。
+
 优先级：中高。
 
 目标：在内容继续增长前，处理 Command Center、内容列表、筛选和 RelatedReading 的规模化路径。
@@ -539,14 +541,14 @@ Phase 25: Truth Source & Public Trust
 
 待办：
 
-- [ ] 先测量当前首页 HTML / RSC payload 和 command item 数量。
-- [ ] 新增 `scripts/report-command-index.mjs`，输出 command item count、kind 分布和估算 payload。
-- [ ] 将 `getCommandItems()` 从 `layout.tsx` 拆到独立 server module。
-- [ ] 评估 static JSON：`/command-index.json`。
-- [ ] 评估 route handler：`/api/command-index`。
-- [ ] 打开 Cmd K 时再加载 index，未打开时不把完整内容索引塞进首屏。
-- [ ] 搜索结果增加 top-level 分组权重：External proof、Writing、Projects、Knowledge。
-- [ ] 为 `GlobalCommandMenu` 增加 loading / error / empty states 的 e2e。
+- [x] 先测量当前首页 HTML / RSC payload 和 command item 数量。
+- [x] 新增 `scripts/report-command-index.mjs`，输出 command item count、kind 分布和估算 payload。
+- [x] 将 `getCommandItems()` 从 `layout.tsx` 拆到独立 server module：`src/lib/command-index.ts`。
+- [x] 评估 static JSON：采用 `/command-index.json`，作为公开、可缓存、可测试的轻量索引 payload。
+- [x] 评估 route handler：暂不采用 `/api/command-index`。当前 110 items / 35.4KB JSON / 10.4KB gzip，不需要服务端搜索。
+- [x] 打开 Cmd K 时再加载 index，未打开时不把完整内容索引塞进首屏。
+- [x] 搜索结果增加 top-level 分组权重：External proof、Writing、Projects、Knowledge。
+- [x] 为 `GlobalCommandMenu` 增加 loading / error / empty states 的 e2e。
 
 验收标准：
 
@@ -554,6 +556,14 @@ Phase 25: Truth Source & Public Trust
 - Cmd K 首次打开延迟可接受。
 - 搜索、最近访问、上下文排序仍保持。
 - e2e 覆盖懒加载成功、失败、空查询和 query action。
+
+阶段结果：
+
+- Command index 当前规模：110 items。
+- kind 分布：action 7、post 14、project 5、knowledge 17、lab 23、uses 18、about 14、collaboration 7、photo 3、music 1、contact 1。
+- 估算 payload：35,413 bytes JSON，10,413 bytes gzip，keywords 6,735 bytes。
+- `firstScreenCarriesCommandIndex: false`。
+- `npm run test:e2e -- --workers=1`：178 passed。
 
 ### Phase 29：Reading & Knowledge Quality Layer
 

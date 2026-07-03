@@ -18,6 +18,7 @@ const routes = [
   "/blog/interface-is-a-promise",
   "/blog/calm-systems-for-creative-work",
   "/blog/commands-that-respect-attention",
+  "/command-index.json",
   "/projects",
   "/projects/openprofile-agent-workflow",
   "/projects/anyreader-interface-teardown",
@@ -58,6 +59,32 @@ test.describe("public routes and links", () => {
       expect(response?.status(), route).toBeLessThan(400);
     });
   }
+
+  test("command index is a lazy public payload instead of initial HTML", async ({ request }) => {
+    const homeResponse = await request.get("/");
+    const homeHtml = await homeResponse.text();
+
+    expect(homeHtml).not.toContain("action-writing-product-systems");
+    expect(homeHtml).not.toContain("command-result-action-lab");
+
+    const indexResponse = await request.get("/command-index.json");
+    const payload = await indexResponse.json();
+
+    expect(payload.schemaVersion).toBe(1);
+    expect(payload.count).toBeGreaterThan(100);
+    expect(payload.items).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "action-writing-product-systems",
+          href: "/blog?tag=Product+Systems",
+        }),
+        expect.objectContaining({
+          id: "action-lab",
+          href: "/lab",
+        }),
+      ]),
+    );
+  });
 
   test("home page does not expose placeholder links", async ({ page }) => {
     await page.goto("/");
@@ -260,6 +287,53 @@ test.describe("public routes and links", () => {
 });
 
 test.describe("core interaction contracts", () => {
+  test("command menu lazy loads index before showing results", async ({ page }) => {
+    let releaseIndex: (() => void) | undefined;
+
+    await page.route("**/command-index.json", async (route) => {
+      await new Promise<void>((resolve) => {
+        releaseIndex = resolve;
+      });
+      await route.continue();
+    });
+
+    await page.goto("/");
+    await page.getByTestId("home-command-trigger").click();
+
+    await expect(page.getByTestId("global-command-loading")).toBeVisible();
+
+    releaseIndex?.();
+
+    await expect(page.getByTestId("command-result-action-lab")).toBeVisible();
+  });
+
+  test("command menu exposes error and retry states for index loading", async ({ page }) => {
+    let shouldFail = true;
+
+    await page.route("**/command-index.json", async (route) => {
+      if (shouldFail) {
+        await route.fulfill({
+          status: 500,
+          contentType: "application/json",
+          body: JSON.stringify({ error: "forced failure" }),
+        });
+        return;
+      }
+
+      await route.continue();
+    });
+
+    await page.goto("/");
+    await page.getByTestId("home-command-trigger").click();
+
+    await expect(page.getByTestId("global-command-error")).toBeVisible();
+
+    shouldFail = false;
+    await page.getByRole("button", { name: "Retry" }).click();
+
+    await expect(page.getByTestId("command-result-action-lab")).toBeVisible();
+  });
+
   test("command menu opens real lab route", async ({ page }) => {
     await page.goto("/");
 
@@ -277,6 +351,7 @@ test.describe("core interaction contracts", () => {
     const trigger = page.getByTestId("home-command-trigger");
     await trigger.click();
     await expect(page.getByTestId("global-command-search")).toBeFocused();
+    await expect(page.getByTestId("command-result-action-lab")).toBeVisible();
 
     await page.keyboard.press("Shift+Tab");
     await expect

@@ -4,16 +4,18 @@
 
 ## 当前主线
 
-Phase 28：Content Discovery & Command Index Scale。
+Phase 29：Reading & Knowledge Quality Layer。
 
-Phase 27 已完成 evidence automation 与 RayNode 脚本化部署。当前主线转为：在内容继续增长前，先测量 Command Center / 内容发现层的规模边界，再决定是否懒加载 command index。
+Phase 28 已完成 Command Center 索引规模化第一切片：索引从 root layout 移出，改为 `/command-index.json` 按需加载，并新增测量脚本。当前主线转为：让博客和 Knowledge 从“内容存在”升级为“阅读路径、写作线和复用价值更明确”。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
 - `deploy:raynode` 封装 build、evidence、standalone artifact、上传、远端切换、重启和 smoke。
 - `validate:release-evidence` 检查 evidence 是否缺失、过期或内容规模不一致。
 - `validate:content` 拦截旧 Vercel deployment id 和临时 deployment URL。
-- Phase 28 的第一步不是重构，而是测量：command item count、payload、kind 分布、首屏是否携带过多索引。
+- `src/lib/command-index.ts` 是 Command Center 索引事实源。
+- `/command-index.json` 是 Command Center 按需加载的公开索引 payload。
+- `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
 
 ## 线上状态
 
@@ -41,6 +43,9 @@ RayNode 当前状态：
 - `scripts/write-release-evidence.mjs`：生成 release evidence。
 - `scripts/validate-release-evidence.mjs`：校验 release evidence。
 - `scripts/deploy-raynode.mjs`：RayNode standalone 部署脚本。
+- `src/lib/command-index.ts`：Command Center 索引构建器。
+- `src/app/command-index.json/route.ts`：Command Center 懒加载 JSON endpoint。
+- `scripts/report-command-index.mjs`：Command index 规模报告。
 - `docs/AUDIT_ACTION_TODO_2026_07_03.md`：Phase 25 P0-P3 执行队列。
 - `docs/PROJECT_MAP.md`：产品表面、阶段、目录和质量门禁地图。
 - `docs/ROADMAP.md`：阶段路线。
@@ -82,6 +87,17 @@ RayNode 当前状态：
 - 部署 artifact 使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`。
 - 已部署到 RayNode，部署源码提交为 `d59bdaf`。
 - 生产定向 smoke 2 passed，生产公开路由可访问性 46 passed。
+
+## 已完成的 Phase 28 切片
+
+- `getCommandItems()` 从 root layout 拆到 `src/lib/command-index.ts`。
+- 新增 `/command-index.json`，Command Center 首次打开时按需加载索引。
+- `GlobalCommandMenu` 增加 loading、error 和 retry 状态。
+- 搜索排序增加 External proof、Writing、Projects、Knowledge 的 top-level intent boost。
+- 新增 `npm run report:command-index`。
+- 当前 command index：110 items，35,413 bytes JSON，10,413 bytes gzip。
+- 首页初始 HTML 不再携带 `action-writing-product-systems` / `command-result-action-lab` 等完整索引标记。
+- 完整本地 e2e：178 passed。
 
 ## 已完成的 Phase 25 切片
 
@@ -133,17 +149,17 @@ PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --
 
 ## 当前技术债触发条件
 
-Command Center index 现在仍在 root layout 组装。当前内容量可接受，不提前重构。
+Command Center index 已经从 root layout 移出。当前规模适合按需加载 JSON，暂不需要服务端搜索。
 
 触发条件：
 
 - posts > 15，或
 - knowledge entries > 25。
 
-到达阈值后，将 command index 从 root layout 移出，改为打开 Cmd K 时懒加载 static JSON 或 `/api/command-index`。
+到达阈值后，评估是否从 `/command-index.json` 升级为 `/api/command-index` 或服务端搜索。
 
 ## 下一步建议
 
-1. 启动 Phase 28：先新增 command index 测量脚本，不先动交互。
-2. 根据测量结果决定是否将 command index 改为 `/command-index.json` 或 `/api/command-index` 懒加载。
-3. 同步 Feishu 当前上下文、Phase 25-27 结果。
+1. 部署 Phase 28 到 RayNode，并确认 `/command-index.json` 线上可达。
+2. 启动 Phase 29：Reading & Knowledge Quality Layer。
+3. 同步 Feishu 当前上下文、Phase 25-28 结果。

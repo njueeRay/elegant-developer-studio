@@ -7,6 +7,7 @@ const staticRoutes = new Set([
   "/",
   "/about",
   "/blog",
+  "/command-index.json",
   "/collaboration",
   "/contact",
   "/knowledge",

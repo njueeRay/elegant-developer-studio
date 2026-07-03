@@ -1264,6 +1264,48 @@ Deployed source commit：`d59bdaf`
 - `public/release-evidence.json` 是部署产物，不提交进 Git；新 agent 必须知道先运行 `npm run release:evidence` 或 `npm run deploy:raynode`。
 - Production smoke 已覆盖公开路由可访问性；仍未把 production Playwright 全量回归接入 CI。
 
+## Unreleased - 第二十八阶段 Content Discovery & Command Index Scale
+
+日期：2026-07-04
+Primary implementation commit：待记录
+Production host：`https://raynode.me`
+Command index：`/command-index.json`
+Release evidence：`/release-evidence.json`
+
+范围：
+
+- 将 Command Center 索引构建器从 root layout 拆到 `src/lib/command-index.ts`。
+- 新增 `/command-index.json`，作为 Command Center 按需加载 payload。
+- `GlobalCommandMenu` 增加 loading、error、retry 状态。
+- 搜索排序增加 External proof、Writing、Projects、Knowledge 的 top-level intent boost。
+- 新增 `scripts/report-command-index.mjs` 和 `npm run report:command-index`。
+- release evidence、content validation 和 e2e 纳入 `/command-index.json`。
+
+测量：
+
+- command items：110。
+- estimated JSON：35,413 bytes。
+- estimated gzip：10,413 bytes。
+- keyword bytes：6,735 bytes。
+- first screen carries command index：false。
+
+验证：
+
+- `npm run report:command-index`：通过。
+- `npm run validate:content`：通过。
+- `npm run release:evidence -- --local-quality-passed`：通过。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：8 passed。
+- full e2e：178 passed。
+- RayNode scripted deploy：待执行。
+
+残余风险：
+
+- `/command-index.json` 当前是全量 JSON；当 items > 120 或 gzip payload 明显增长时，应评估 `/api/command-index` 或服务端搜索。
+- Production smoke 尚待部署后执行。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02
