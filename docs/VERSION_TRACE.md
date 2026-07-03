@@ -1314,7 +1314,7 @@ Deployed source commit：`304c090`
 ## Unreleased - 第二十九阶段 Reading & Knowledge Quality Layer
 
 日期：2026-07-04
-Primary implementation commit：待记录
+Primary implementation commit：`0f7fa20`
 Production host：`https://raynode.me`
 
 范围：
