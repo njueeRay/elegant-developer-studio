@@ -1193,6 +1193,7 @@ Deployment target：RayNode `/srv/apps/elegant-developer-studio-runtime`
 
 日期：2026-07-04
 Primary implementation commit：`7ef4a2d`
+RayNode deployed source commit：`9143bc0`
 Production host：`https://raynode.me`
 Preview / fallback：`https://elegant-developer-studio.vercel.app`
 
@@ -1215,11 +1216,17 @@ Preview / fallback：`https://elegant-developer-studio.vercel.app`
 - `npm run build`：通过，52 routes。
 - targeted e2e：2 passed。
 - `npm run test:e2e -- --workers=1`：166 passed。
+- RayNode systemd：active。
+- `https://raynode.me/`：200。
+- `https://raynode.me/projects/openprofile-agent-workflow`：200。
+- `https://raynode.me/projects/anyreader-interface-teardown`：200。
+- Production smoke e2e：48 passed。
 
 残余风险：
 
 - Posts 已到 14，接近 Phase 28 的 command index 规模触发线 posts > 15。
 - Evidence Pack 仍是手写事实源；下一阶段应进入 Phase 27 自动化 release evidence。
+- 当前手动部署流程仍有打包细节债；已验证后续应使用 `tar --no-xattrs` 消除 macOS provenance xattr 解包噪音。
 
 ## Unreleased - 第二十四阶段项目证据对象升级
 

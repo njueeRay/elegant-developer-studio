@@ -1637,7 +1637,7 @@ GitHub 推送修复：
 
 日期：2026-07-04
 
-状态：已实现，已本地验证，待部署，待外部同步。
+状态：已实现，已本地验证，已部署到 RayNode，待外部同步。
 
 阶段判断：
 
@@ -1674,8 +1674,15 @@ GitHub 推送修复：
 - `npm run build`：通过，52 routes。
 - targeted e2e：`npx playwright test --project=chromium --project=mobile-chrome --grep "Phase 26 external proof" --workers=1`，2 passed。
 - 完整 e2e：`npm run test:e2e -- --workers=1`，166 passed。
+- RayNode source commit：`9143bc0`。
+- RayNode systemd：`elegant-developer-studio` active。
+- `https://raynode.me/`：200。
+- `https://raynode.me/projects/openprofile-agent-workflow`：200。
+- `https://raynode.me/projects/anyreader-interface-teardown`：200。
+- Production smoke e2e：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test --project=chromium --grep "serves|primary surfaces|Phase 26 external proof|project case studies" --workers=1`，48 passed。
+- 部署复盘：`COPYFILE_DISABLE=1 tar ...` 仍会带入 `LIBARCHIVE.xattr.com.apple.provenance` 解包噪音；已验证 `COPYFILE_DISABLE=1 tar --no-xattrs ...` 可消除远端 xattr warning，Phase 27 部署脚本应固化该参数。
 
 下一步：
 
 - 下一阶段进入 Phase 27：Evidence Automation & Release Discipline。
-- 提交并推送后，按部署策略决定是否更新 RayNode。
+- 同步飞书。

@@ -27,6 +27,8 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
+- 当前服务器源码提交：`9143bc0`。
+- Phase 26 新增项目 `/projects/openprofile-agent-workflow` 和 `/projects/anyreader-interface-teardown` 已在 RayNode 返回 200。
 
 ## 当前事实源
 
@@ -59,6 +61,7 @@ RayNode 当前状态：
 - 首页 Selected work 指向 `OpenProfile Agent Workflow`。
 - e2e 增加 Phase 26 外部证据网络可达性检查。
 - `npm run validate:content` 通过，内容规模为 14 posts / 5 projects / 16 knowledge entries。
+- 已部署到 RayNode，production smoke e2e 48 passed。
 
 ## 已完成的 Phase 25 切片
 
@@ -121,5 +124,6 @@ Command Center index 现在仍在 root layout 组装。当前内容量可接受�
 
 1. 下一阶段优先 Phase 27：Evidence Automation & Release Discipline。
 2. 将 release evidence 从手写 TypeScript 推进到脚本生成或 JSON 事实源。
-3. 观察 Command Center payload；posts > 15 或 knowledge entries > 25 时启动懒加载改造。
-4. 同步 Feishu 当前上下文、Phase 25 与 Phase 26 结果。
+3. 部署脚本应使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`，消除 macOS provenance xattr 解包噪音。
+4. 观察 Command Center payload；posts > 15 或 knowledge entries > 25 时启动懒加载改造。
+5. 同步 Feishu 当前上下文、Phase 25 与 Phase 26 结果。

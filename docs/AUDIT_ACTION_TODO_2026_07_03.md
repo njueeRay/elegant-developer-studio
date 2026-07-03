@@ -416,7 +416,7 @@ Phase 25: Truth Source & Public Trust
 
 ### Phase 26：External Proof & Content Network
 
-状态：已完成，2026-07-04。
+状态：已完成并部署到 RayNode，2026-07-04。
 
 优先级：最高。
 
@@ -463,6 +463,7 @@ Phase 25: Truth Source & Public Trust
 - 2 个项目不是本站自身，也不是单纯围绕本站文档系统：`OpenProfile Agent Workflow`、`AnyReader Interface Teardown`。
 - 首页第一屏之后的精选内容展示 `OpenProfile Agent Workflow`。
 - 新项目 evidence link 经 `curl -I -L` 验证公开可访问：`https://github.com/njueeRay/OpenProfile`、`https://github.com/TeaFishMeow/any-reader-ui`、`https://app.exnju.top`。
+- RayNode 已部署提交 `9143bc0`，production smoke e2e 48 passed。
 
 完成说明：
 
@@ -496,7 +497,7 @@ Phase 25: Truth Source & Public Trust
 - [ ] 生成 `src/data/release-evidence.generated.json` 或 `public/release-evidence.json`。
 - [ ] 写入 `commitSha`、`builtAt`、`siteUrl`、`routesCount`、`contentCounts`、`qualityGates`。
 - [ ] 部署前自动生成 release evidence。
-- [ ] 部署脚本使用 `COPYFILE_DISABLE=1 tar ...`，消除 macOS xattr warning。
+- [ ] 部署脚本使用 `COPYFILE_DISABLE=1 tar --no-xattrs ...`，消除 macOS provenance xattr warning。
 - [ ] 新增 `scripts/deploy-raynode.mjs` 或 `scripts/deploy-raynode.sh`，封装 standalone 打包、上传、远端切换、重启、smoke。
 - [ ] `ProjectEvidencePack` 支持从 release evidence 读取当前部署状态。
 - [ ] `validate:content` 校验证据卡不能引用旧 deployment id 或旧主站。
