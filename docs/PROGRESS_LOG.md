@@ -1927,7 +1927,7 @@ GitHub 推送修复：
 
 日期：2026-07-04
 
-状态：本地完成，待部署记录。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -1957,10 +1957,16 @@ GitHub 推送修复：
 - targeted e2e：20 passed。
 - `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=chromium --workers=1`：107 passed。
 - `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=mobile-chrome --workers=1`：107 passed。
+- `npm run deploy:raynode`：通过，部署源码提交 `b767bd9`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production targeted interaction tests：4 passed。
 
 实施提交：
 
 - implementation commit：`018bab2`。
+- trace/deployed source commit：`b767bd9`。
 
 下一步：
 

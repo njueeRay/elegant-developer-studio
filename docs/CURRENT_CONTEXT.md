@@ -168,6 +168,8 @@ RayNode 当前状态：
 - `CodeBlock` 复制反馈修复：点击时从 DOM 读取代码，失败时显示 `Copy failed`。
 - e2e 长串页面巡检拆分为单页契约，source reveal 和 Phase 25/26 public assets 失败时可定位具体页面。
 - implementation commit：`018bab2`。
+- RayNode 已部署 `b767bd9`。
+- 线上验证：`raynode:health` 18/18，`raynode:health:full` 53/53，`raynode:smoke` 48/48，Phase 32 targeted production tests 4/4。
 
 ## 已完成的 Phase 31 切片
 

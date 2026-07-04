@@ -1422,12 +1422,12 @@ Production host：`https://raynode.me`
 - 本阶段尚未做平板宽度视觉 QA。
 - Studio Pulse 密度未在本阶段重排，留给 Phase 32。
 
-## Unreleased - 第三十二阶段 Content Density & Studio Pulse Restraint
+## Released - 第三十二阶段 Content Density & Studio Pulse Restraint
 
 日期：2026-07-04
 Primary implementation commit：`018bab2`
 Deployment record commit：待记录
-Deployed source commit：待部署
+Deployed source commit：`b767bd9`
 Production host：`https://raynode.me`
 
 范围：
@@ -1451,6 +1451,12 @@ Production host：`https://raynode.me`
 - targeted e2e：20 passed。
 - `chromium` 主矩阵：107/107 passed。
 - `mobile-chrome` 主矩阵：107/107 passed。
+- `npm run deploy:raynode`：通过，远端源码为 `b767bd9`，service active。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production targeted interaction tests：4 passed。
+- `https://raynode.me/release-evidence.json`：commit `b767bd9`，14 posts / 5 projects / 16 knowledge entries / 52 public routes。
 
 残余风险：
 

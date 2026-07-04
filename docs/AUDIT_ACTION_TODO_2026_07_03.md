@@ -777,7 +777,7 @@ Knowledge kind 评估：
 
 优先级：高。
 
-状态：本地完成，待 RayNode 部署记录。
+状态：已完成并部署到 RayNode。
 
 锚定 milestone：Studio Pulse Compact Mode。
 
@@ -812,6 +812,11 @@ Knowledge kind 评估：
 - `chromium` 主矩阵：107/107 passed。
 - `mobile-chrome` 主矩阵：107/107 passed。
 - 一次未分片长跑出现 `ERR_NETWORK_IO_SUSPENDED`、browser launch timeout 和 `newPage` timeout；复核后判定为本机长跑资源状态异常。后续本地质量记录优先按 project 分片执行，而不是把 214 条测试塞进一次长会话。
+- `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `b767bd9`，service active。
+- `npm run raynode:health`：18/18 passed，commit `b767bd9`。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production targeted interaction tests：4 passed，覆盖首页 Studio Pulse compact、Ask Me Terminal、project source reveal、article code copy。
 
 量化结果：
 
