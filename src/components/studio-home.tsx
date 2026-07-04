@@ -69,9 +69,13 @@ export function StudioHome({
             I design systems that compose, interfaces that respect, essays that
             clarify, and experiments that explore the edge of ideas and tools.
           </p>
-          <div className="status-badge">
-            <span className="status-dot" />
-            Live on RayNode: standalone Next.js behind Caddy
+          <div
+            className="status-badge"
+            aria-label="Live on RayNode, verified standalone Next.js runtime behind Caddy"
+          >
+            <span className="status-dot live" />
+            <span className="status-badge-main">Live on RayNode</span>
+            <span className="status-badge-detail">Next.js standalone / Caddy</span>
           </div>
           <div className="hero-actions" aria-label="Primary studio paths">
             <Link href="/blog" className="primary-link">

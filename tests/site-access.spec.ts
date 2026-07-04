@@ -163,6 +163,45 @@ test.describe("public routes and links", () => {
     await expect
       .poll(() => page.evaluate(() => document.documentElement.dataset.cursor))
       .toBe("active");
+
+    await page.goto("/blog/chinese-as-product-memory");
+    await page.mouse.move(260, 260);
+
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.dataset.cursorSurface))
+      .toBe("reading");
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.dataset.cursor ?? "inactive"))
+      .toBe("inactive");
+  });
+
+  test("mobile command center stays inside the viewport", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+
+    await expect(page.getByTestId("home-command-trigger")).toBeEnabled();
+    await page.getByTestId("home-command-trigger").click();
+    await expect(page.getByRole("dialog", { name: "Global command center" })).toBeVisible();
+
+    const rect = await page
+      .getByRole("dialog", { name: "Global command center" })
+      .evaluate((dialog) => {
+        const box = dialog.getBoundingClientRect();
+        return {
+          left: box.left,
+          right: box.right,
+          top: box.top,
+          bottom: box.bottom,
+          width: box.width,
+          viewportWidth: window.innerWidth,
+          viewportHeight: window.innerHeight,
+        };
+      });
+
+    expect(rect.left).toBeGreaterThanOrEqual(0);
+    expect(rect.right).toBeLessThanOrEqual(rect.viewportWidth);
+    expect(rect.top).toBeGreaterThanOrEqual(0);
+    expect(rect.bottom).toBeLessThanOrEqual(rect.viewportHeight);
   });
 
   test("lab exposes the personal OS zoo and copyable object commands", async ({ page }) => {

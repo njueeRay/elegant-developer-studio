@@ -722,7 +722,7 @@ export function GlobalCommandMenu() {
             autoFocus
             data-testid="global-command-search"
             value={query}
-            placeholder="Search writing, work, knowledge, lab, uses, about..."
+            placeholder="Search or jump anywhere..."
             role="searchbox"
             aria-controls="global-command-results"
             aria-activedescendant={activeItem ? getResultId(activeItem.id) : undefined}

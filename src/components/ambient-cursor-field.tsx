@@ -1,13 +1,26 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function AmbientCursorField() {
+  const pathname = usePathname();
+  const isReadingSurface =
+    pathname.startsWith("/blog/") || pathname.startsWith("/knowledge/");
+
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (reducedMotion) {
-      return;
+    delete document.documentElement.dataset.cursorSurface;
+
+    if (reducedMotion || isReadingSurface) {
+      if (isReadingSurface) {
+        document.documentElement.dataset.cursorSurface = "reading";
+      }
+
+      return () => {
+        delete document.documentElement.dataset.cursorSurface;
+      };
     }
 
     let animationFrame = 0;
@@ -41,8 +54,9 @@ export function AmbientCursorField() {
       document.documentElement.style.removeProperty("--cursor-x");
       document.documentElement.style.removeProperty("--cursor-y");
       delete document.documentElement.dataset.cursor;
+      delete document.documentElement.dataset.cursorSurface;
     };
-  }, []);
+  }, [isReadingSurface]);
 
   return null;
 }
