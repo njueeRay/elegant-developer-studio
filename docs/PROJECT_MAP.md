@@ -890,3 +890,32 @@ GitHub Actions：
 2. 把 Personal OS 的 `DataSourceBadge` 语法迁移到项目详情和 Knowledge 详情。
 3. 为 Evidence Pack 增加更硬证据字段。
 4. 继续观察首页密度，避免把 Studio Pulse 扩张成仪表盘。
+
+## 20. 第三十一阶段视觉系统克制打磨
+
+本阶段不新增页面和 surface，只处理已有体验中的职责重叠与移动端细节。
+
+完成内容：
+
+- 首页部署状态从长句改为两层结构：
+  - 主状态：`Live on RayNode`
+  - 工程细节：`Next.js standalone / Caddy`
+- `AmbientCursorField` 不再无差别覆盖全站。文章和 Knowledge 详情页进入 reading surface，避免全局 cursor 光场干扰长文阅读。
+- `reader-spotlight` 在 reading surface 下弱化，保留阅读页自己的 Reading Focus Lens 作为主交互。
+- Command Center 移动端弹层重新定义高度和滚动边界，确保第一屏能看到 Studio Context 与 Writing 内容，同时不越出 viewport。
+- Command Center 输入文案改为更短的 `Search or jump anywhere...`，避免小屏挤压。
+- 测试新增两条硬约束：阅读页 cursor surface、移动端 Command Center viewport 边界。
+
+阶段判断：
+
+- 炫酷不等于动效叠加。阅读页已经有 Reading Focus Lens，全局 ambient cursor 在这里是噪声。
+- 首页状态可以提供可信度，但不应该把部署语句作为首屏视觉主角。
+- 用户能看到、能点击的入口优先于快捷键；快捷键是高级路径，不是唯一可达路径。
+- 视觉打磨必须服务可读性、层级、可访问性或内容发现，否则应该留在 Lab，而不是进入主页主体验。
+
+下一步：
+
+1. Phase 32：Content Density & Studio Pulse Restraint。
+2. 审查首页中段密度：Studio Pulse、Ask Me Terminal、精选文章、精选作品、媒体入口之间是否互相抢注意力。
+3. 检查 Studio Pulse 是否需要减少默认可见信息，或改成更明确的“状态摘要 + 可展开细节”。
+4. 不新增一级导航，不新增大型奇趣交互，优先优化现有内容节奏。

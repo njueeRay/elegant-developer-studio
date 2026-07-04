@@ -4,9 +4,9 @@
 
 ## 当前主线
 
-Phase 31：Visual System Polish Without Adding Surfaces。
+Phase 31：Visual System Polish Without Adding Surfaces 已完成本地里程碑切片。
 
-Phase 30 已完成第一切片并部署到 RayNode：新增 `/health.json`、`scripts/verify-raynode.mjs`、`npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke` 和 `ops/` 运维模板。当前主线可以转入 Phase 31：Visual System Polish Without Adding Surfaces。
+Phase 31 不新增页面，只处理视觉系统里真实影响用户体验的细节：移动端 RayNode 状态 badge、Command Center 小屏高度与滚动、阅读详情页全局 cursor 光场降噪。当前已经完成本地实现和验证，下一步可以进入部署追踪，之后转入 Phase 32：Content Density & Studio Pulse Restraint。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -19,6 +19,7 @@ Phase 30 已完成第一切片并部署到 RayNode：新增 `/health.json`、`sc
 - `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
 - `/health.json` 是公开轻量健康端点。
 - `scripts/verify-raynode.mjs` 是 RayNode HTTP health 检查脚本。
+- `AmbientCursorField` 在首页等探索页保留 cursor 光场，在 `/blog/[slug]` 和 `/knowledge/[slug]` 自动进入 reading surface，避免与 Reading Focus Lens 抢注意力。
 
 ## 线上状态
 
@@ -155,6 +156,16 @@ RayNode 当前状态：
 - Knowledge entries：16。
 - Public routes：52，包含 `/health.json`。
 
+## 已完成的 Phase 31 切片
+
+- 首页 RayNode 状态 badge 拆成主状态 `Live on RayNode` 和工程细节 `Next.js standalone / Caddy`，移动端更短、更稳。
+- `AmbientCursorField` 接入 pathname 判断，阅读详情页设置 `data-cursor-surface="reading"`，不再激活全站 cursor 光场。
+- 阅读页 `reader-spotlight` 在 reading surface 下进一步降噪。
+- Command Center 移动端弹层明确约束 top padding、结果区高度、footer 换行和输入 placeholder。
+- 新增 e2e：阅读详情页不激活全局 cursor、移动端 Command Center 保持在 viewport 内。
+- 本地截图 QA：`/tmp/phase31-after-home-mobile.png`、`/tmp/phase31-after-command-mobile-2.png`、`/tmp/phase31-after-article-mobile.png`。
+- 本地完整 e2e：184 passed。
+
 ## 质量门禁
 
 本地改动至少运行：
@@ -195,6 +206,7 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 启动 Phase 31：Visual System Polish Without Adding Surfaces。
-2. 优先检查首页首屏、RayNode 状态 badge、Command Center 移动端高度和文章详情 AmbientCursorField 干扰。
-3. 同步 Feishu 当前上下文、Phase 25-30 结果。
+1. 部署 Phase 31 到 RayNode，并运行 `npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke`。
+2. 启动 Phase 32：Content Density & Studio Pulse Restraint。
+3. 优先审查首页中段 Studio Pulse、Ask Me Terminal、精选内容、Personal OS 入口的密度与顺序。
+4. 同步 Feishu / Copilot 当前上下文、Phase 31 结果。

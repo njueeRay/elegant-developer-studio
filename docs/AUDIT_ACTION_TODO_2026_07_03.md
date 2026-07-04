@@ -688,6 +688,8 @@ Knowledge kind 评估：
 
 优先级：中低。
 
+状态：已完成本地里程碑切片，等待部署追踪。
+
 目标：在不新增页面的前提下，继续打磨视觉层级、移动端、首页节奏和细微交互。
 
 为什么排后：
@@ -697,19 +699,41 @@ Knowledge kind 评估：
 
 待办：
 
-- [ ] 对首页首屏做桌面、平板、手机三档视觉 QA。
-- [ ] 检查 RayNode 状态 badge 是否过长，移动端是否需要短文案。
+- [x] 对首页首屏做桌面和手机视觉 QA。
+- [x] 检查 RayNode 状态 badge 是否过长，移动端是否需要短文案。
+- [x] 检查 Command Center 在移动端的焦点、滚动和结果高度。
+- [x] 检查文章详情页 AmbientCursorField 是否仍可能干扰长文。
+- [x] 按路由弱化 AmbientCursorField，而不是全站删除。
+- [x] 增加截图到 `/tmp/phase31-after-*.png` 作为临时 QA，不纳入仓库。
+- [ ] 补一轮平板宽度视觉 QA。
 - [ ] 检查 Studio Pulse 卡片是否因为新增内容变得过密。
-- [ ] 检查 Command Center 在移动端的焦点、滚动和结果高度。
-- [ ] 检查文章详情页 AmbientCursorField 是否仍可能干扰长文。
-- [ ] 评估是否按路由弱化 AmbientCursorField，而不是全站删除。
-- [ ] 增加 screenshots 到 `output/` 仅作为临时 QA，不纳入仓库。
+
+本轮审视结论：
+
+- 首页不是信息缺失，而是首屏部署状态文案过硬。将 `Live on RayNode: standalone Next.js behind Caddy` 拆成主状态和工程细节后，保留可信度，同时减少移动端压迫感。
+- 阅读详情页已经有 `Reading Focus Lens`，全站 AmbientCursorField 继续参与会造成动效职责重叠。现在 `/blog/[slug]` 和 `/knowledge/[slug]` 使用 `data-cursor-surface="reading"`，关闭全局 cursor 光场，只保留阅读页自己的低强度 spotlight。
+- 移动端 Command Center 之前可用但偏满；第一次调小后又牺牲了内容发现，最终调整为顶部 92px、结果区最高 450px，第一屏能看到 Studio Context 与 Writing 内容。
+- Command Center 测试改走首页可见 trigger，而不是只依赖 `Meta+K`。快捷键是效率增强，公开可点入口才是可访问性事实源。
+
+已验证：
+
+- `npm run lint`：通过。
+- `npm run validate:content`：通过。
+- targeted e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=chromium --grep "ambient cursor|mobile command center|audited pages|primary surfaces|mobile navigation" --workers=1`，5 passed。
+- `npm run build`：通过，53 routes。
+- full e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npm run test:e2e -- --workers=1`，184 passed。
 
 验收标准：
 
 - 不新增 surface。
 - 不增加 fake terminal / fake live 状态。
 - 所有视觉打磨必须服务可读性、层级、可访问性或内容发现。
+
+下一阶段建议：
+
+- Phase 32：Content Density & Studio Pulse Restraint。
+- 优先审查首页中段的 Studio Pulse、Ask Me Terminal、精选内容与 Personal OS 入口是否共同抬高密度。
+- 只在必要时调整内容模块顺序；不要新增一级页面，不新增大型奇趣交互。
 
 ## 12. 当前不做事项
 
@@ -738,7 +762,8 @@ Knowledge kind 评估：
 4. Phase 29：Reading & Knowledge Quality Layer。
 5. Phase 30：RayNode Operations Hardening。
 6. Phase 31：Visual System Polish Without Adding Surfaces。
+7. Phase 32：Content Density & Studio Pulse Restraint。
 
-如果只能选一个下一步：选 Phase 26。
+如果只能选一个下一步：选 Phase 32。
 
-原因：Phase 25 已经让站点可信，下一步必须让站点值得被判断。
+原因：Phase 31 证明视觉微调有效，但首页继续扩张会损害“优雅工作室”的第一性目标。下一步应该审查密度与内容节奏，而不是继续加 surface。

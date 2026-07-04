@@ -1383,6 +1383,39 @@ Production host：`https://raynode.me`
 - `/health.json` 是应用层健康，不替代外部 uptime 监控。
 - GitHub Actions SSH 自动部署暂缓；后续如启用，必须先设计 key scope、manual approval 和 rollback policy。
 
+## Unreleased - 第三十一阶段 Visual System Polish Without Adding Surfaces
+
+日期：2026-07-04
+Primary implementation commit：`def8dbd`
+Deployment record commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 首页 RayNode 状态 badge 从长句改为主状态和工程细节两层。
+- `/blog/[slug]` 与 `/knowledge/[slug]` 进入 reading cursor surface，关闭全站 AmbientCursorField 光场。
+- reading surface 下弱化 `reader-spotlight`，避免与 Reading Focus Lens 争夺注意力。
+- Command Center 移动端尺寸、结果区高度、footer 和 placeholder 完成一轮可用性打磨。
+- e2e 增加阅读页 cursor surface 与移动端 Command Center viewport 边界检查。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes，first screen carries index: no。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- targeted e2e：5 passed。
+- `npm run build`：通过，53 routes。
+- full e2e：184 passed。
+- 本地 Playwright 视觉 QA：移动首页、移动 Command Center、移动中文文章详情均无横向溢出；Command Center dialog 位于 viewport 内。
+
+残余风险：
+
+- 本阶段尚未做平板宽度视觉 QA。
+- Studio Pulse 密度未在本阶段重排，留给 Phase 32。
+- 尚未部署到 RayNode；部署后需要补充 deployed source commit、health 和 smoke 结果。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

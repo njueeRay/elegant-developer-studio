@@ -1871,3 +1871,48 @@ GitHub 推送修复：
 
 - 启动 Phase 31：Visual System Polish Without Adding Surfaces。
 - 本阶段后，不再用散落 curl 命令作为默认生产验证入口；优先使用 `raynode:health` 和 `raynode:smoke`。
+
+### 第三十一阶段：Visual System Polish Without Adding Surfaces
+
+日期：2026-07-04
+
+状态：已完成本地里程碑切片，待部署。
+
+阶段判断：
+
+- 当前最大风险不是页面不够多，而是已有微交互在不同页面上职责重叠。
+- 首页要继续保持“Elegant Developer Studio”，不能因为部署状态、Personal OS 和命令入口不断堆叠而变成控制台。
+- 可点击入口必须优先于快捷键。`Meta+K` 可以保留为效率增强，但 Command Center 的质量测试必须走用户能看到、能点击的入口。
+
+完成：
+
+- 首页 RayNode 状态 badge 改为主状态 + 工程细节两层，移动端不再把长部署文案硬塞进首屏。
+- `AmbientCursorField` 按路由识别 reading surface：`/blog/[slug]` 和 `/knowledge/[slug]` 不再激活全局 cursor 光场。
+- reading surface 下 `reader-spotlight` 降低强度，保留阅读页自己的 Reading Focus Lens。
+- Command Center 移动端调整 top padding、结果区高度、footer 换行和短 placeholder。
+- e2e 增加两个质量约束：
+  - 阅读详情页进入 `data-cursor-surface="reading"`，不激活 `data-cursor="active"`。
+  - 移动端 Command Center dialog 不越出 viewport。
+
+已验证：
+
+- `npm run lint`：通过。
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes，first screen carries index: no。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- targeted e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=chromium --grep "ambient cursor|mobile command center|audited pages|primary surfaces|mobile navigation" --workers=1`，5 passed。
+- `npm run build`：通过，53 routes。
+- full e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npm run test:e2e -- --workers=1`，184 passed。
+- implementation commit：`def8dbd`。
+- 本地视觉 QA：
+  - `/tmp/phase31-after-home-mobile.png`
+  - `/tmp/phase31-after-command-mobile-2.png`
+  - `/tmp/phase31-after-article-mobile.png`
+
+下一步：
+
+- 提交并部署 Phase 31。
+- 运行 RayNode health / full health / smoke。
+- 启动 Phase 32：Content Density & Studio Pulse Restraint。
+- Phase 32 不新增一级页面；优先审查首页密度、Studio Pulse 卡片、Ask Me Terminal 和精选内容之间的节奏。
