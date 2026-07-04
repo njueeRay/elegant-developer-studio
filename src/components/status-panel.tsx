@@ -139,9 +139,8 @@ function StatusCard({ item }: { item: StudioPulseItem }) {
         <h3>{item.title}</h3>
         <span>{item.detail}</span>
         <small>{item.meta}</small>
-        <code>{item.command}</code>
-        <DataSourceBadge source={item.source} command={item.command} tone={item.tone} />
       </div>
+      <DataSourceBadge source={item.source} command={item.command} tone={item.tone} />
       <ArrowRight className="status-panel-arrow" size={18} aria-hidden="true" />
     </Link>
   );

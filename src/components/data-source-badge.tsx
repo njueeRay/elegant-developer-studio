@@ -16,7 +16,10 @@ export function DataSourceBadge({
   tone = "blue",
 }: DataSourceBadgeProps) {
   return (
-    <span className={`data-source-badge ${tone}`}>
+    <span
+      className={`data-source-badge ${tone}`}
+      title={[source, route, command, verifiedAt].filter(Boolean).join(" / ")}
+    >
       <DatabaseZap size={12} aria-hidden="true" />
       <span>{source}</span>
       {route ? <code>{route}</code> : null}

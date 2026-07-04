@@ -52,6 +52,16 @@ const routes = [
   "/robots.txt",
 ];
 
+const auditedMobileRoutes = [
+  "/",
+  "/blog/chinese-as-product-memory",
+  "/knowledge/public-reachable-before-internal-complete",
+  "/uses",
+  "/about",
+  "/lab",
+  "/collaboration",
+];
+
 test.describe("public routes and links", () => {
   for (const route of routes) {
     test(`serves ${route}`, async ({ page }) => {
@@ -156,6 +166,49 @@ test.describe("public routes and links", () => {
     await expect(page.getByTestId("command-trace-toast")).toContainText('ask.copy("recent-work")');
   });
 
+  test("home Studio Pulse stays compact across responsive viewports", async ({ page }) => {
+    for (const viewport of [
+      { name: "tablet", width: 834, height: 1112, maxSectionHeight: 1040 },
+      { name: "mobile", width: 390, height: 844, maxSectionHeight: 1360 },
+    ]) {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await page.goto("/");
+
+      const metrics = await page.locator("#studio-pulse").evaluate((section) => {
+        const sectionRect = section.getBoundingClientRect();
+        const cardRects = Array.from(section.querySelectorAll(".status-panel-card")).map((card) => {
+          const rect = card.getBoundingClientRect();
+          return {
+            width: rect.width,
+            height: rect.height,
+          };
+        });
+        const grid = section.querySelector(".status-panel-grid");
+
+        return {
+          sectionHeight: sectionRect.height,
+          cardRects,
+          gridColumns: grid ? getComputedStyle(grid).gridTemplateColumns : "",
+          interactiveCount: section.querySelectorAll("a, button").length,
+          scrollWidth: document.documentElement.scrollWidth,
+          clientWidth: document.documentElement.clientWidth,
+        };
+      });
+
+      expect(metrics.sectionHeight, viewport.name).toBeLessThan(viewport.maxSectionHeight);
+      expect(metrics.interactiveCount, viewport.name).toBe(9);
+      expect(metrics.scrollWidth, viewport.name).toBeLessThanOrEqual(metrics.clientWidth + 1);
+
+      if (viewport.name === "mobile") {
+        expect(metrics.gridColumns.trim(), viewport.name).not.toContain(" ");
+        for (const rect of metrics.cardRects) {
+          expect(rect.width, viewport.name).toBeGreaterThan(300);
+          expect(rect.height, viewport.name).toBeLessThan(230);
+        }
+      }
+    }
+  });
+
   test("ambient cursor field activates only as progressive enhancement", async ({ page }) => {
     await page.goto("/");
     await page.mouse.move(240, 220);
@@ -236,27 +289,19 @@ test.describe("public routes and links", () => {
     );
   });
 
-  test("audited pages do not create horizontal overflow on mobile", async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
+  for (const route of auditedMobileRoutes) {
+    test(`mobile audited page has no horizontal overflow: ${route}`, async ({ page }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto(route, { waitUntil: "domcontentloaded" });
 
-    for (const route of [
-      "/",
-      "/blog/chinese-as-product-memory",
-      "/knowledge/public-reachable-before-internal-complete",
-      "/uses",
-      "/about",
-      "/lab",
-      "/collaboration",
-    ]) {
-      await page.goto(route);
       const width = await page.evaluate(() => ({
         client: document.documentElement.clientWidth,
         scroll: document.documentElement.scrollWidth,
       }));
 
       expect(width.scroll, route).toBeLessThanOrEqual(width.client + 1);
-    }
-  });
+    });
+  }
 
   test("Chinese pilot content is visible across core surfaces", async ({ page }) => {
     await page.goto("/blog/chinese-as-product-memory");
@@ -273,22 +318,26 @@ test.describe("public routes and links", () => {
     await expect(page.getByRole("button", { name: /中文承载判断/ })).toBeVisible();
   });
 
-  test("Phase 25 content assets are publicly reachable", async ({ page }) => {
+  test("Phase 25 deployment essay is publicly reachable", async ({ page }) => {
     await page.goto("/blog/raynode-standalone-deployment");
     await expect(page.getByRole("heading", { name: "RayNode 自托管部署复盘" })).toBeVisible();
+  });
 
+  test("Phase 25 Feishu bridge project links to the public surface", async ({ page }) => {
     await page.goto("/projects/codex-feishu-bridge");
     await expect(page.getByRole("heading", { name: "Codex Feishu Bridge" })).toBeVisible();
     await expect(page.getByRole("link", { name: /Open surface/ })).toHaveAttribute(
       "href",
       "https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb",
     );
+  });
 
+  test("Phase 25 truth source knowledge asset is publicly reachable", async ({ page }) => {
     await page.goto("/knowledge/truth-source-before-polish");
     await expect(page.getByRole("heading", { name: "事实源先于视觉打磨" })).toBeVisible();
   });
 
-  test("Phase 26 external proof network is publicly reachable", async ({ page }) => {
+  test("Phase 26 external proof appears on the homepage", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.locator('a[href="/blog/external-proof-over-portfolio-theater"]').first()).toContainText(
@@ -297,7 +346,9 @@ test.describe("public routes and links", () => {
     await expect(page.locator('a[href="/projects/openprofile-agent-workflow"]').first()).toContainText(
       "OpenProfile Agent Workflow",
     );
+  });
 
+  test("Phase 26 OpenProfile proof links to the real repository", async ({ page }) => {
     await page.goto("/projects/openprofile-agent-workflow");
     await expect(page.getByRole("heading", { name: "OpenProfile Agent Workflow" })).toBeVisible();
     await expect(page.getByRole("link", { name: /Open surface/ })).toHaveAttribute(
@@ -308,7 +359,9 @@ test.describe("public routes and links", () => {
       "href",
       "https://github.com/njueeRay/OpenProfile",
     );
+  });
 
+  test("Phase 26 AnyReader proof links to the live product", async ({ page }) => {
     await page.goto("/projects/anyreader-interface-teardown");
     await expect(page.getByRole("heading", { name: "AnyReader Interface Teardown" })).toBeVisible();
     await expect(page.getByRole("link", { name: /Open surface/ })).toHaveAttribute(
@@ -316,10 +369,14 @@ test.describe("public routes and links", () => {
       "https://app.exnju.top",
     );
     await expect(page.getByRole("heading", { name: "The product promise" })).toBeVisible();
+  });
 
+  test("Phase 26 AnyReader essay is publicly reachable", async ({ page }) => {
     await page.goto("/blog/anyreader-deep-reading-interface-teardown");
     await expect(page.getByRole("heading", { name: "AnyReader 深度阅读界面拆解" })).toBeVisible();
+  });
 
+  test("Phase 26 external proof knowledge trail is publicly reachable", async ({ page }) => {
     await page.goto("/knowledge/external-proof-over-self-reference");
     await expect(page.getByRole("heading", { name: "外部证据优先于自指叙事" })).toBeVisible();
     await expect(page.getByLabel("Knowledge trails")).toContainText("OpenProfile Agent Workflow");
@@ -457,7 +514,7 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByTestId("command-result-creative-source-hover")).toBeVisible();
   });
 
-  test("source reveal exposes real GitHub source links", async ({ page }) => {
+  test("knowledge source reveal exposes a real GitHub source link", async ({ page }) => {
     await page.goto("/knowledge");
 
     const knowledgeSource = page.getByTestId("source-link-knowledge-filters-before-search");
@@ -467,17 +524,24 @@ test.describe("core interaction contracts", () => {
       "href",
       "https://github.com/njueeRay/elegant-developer-studio/blob/main/src/data/knowledge.ts",
     );
+  });
 
+  test("project source reveal exposes a real GitHub source link", async ({ page }) => {
     await page.goto("/projects");
 
     const projectSource = page.locator('[data-testid^="source-link-project-"]').first();
-    await page.locator(".project-card").first().hover();
+    const projectCard = page.locator(".project-card").first();
+    await expect(projectCard).toBeVisible();
+    await projectCard.scrollIntoViewIfNeeded();
+    await projectCard.hover();
     await expect(projectSource).toContainText("source src/content/projects/");
     await expect(projectSource).toHaveAttribute(
       "href",
       /https:\/\/github\.com\/njueeRay\/elegant-developer-studio\/blob\/main\/src\/content\/projects\/.+\.mdx/,
     );
+  });
 
+  test("lab source reveal exposes a real GitHub source link", async ({ page }) => {
     await page.goto("/lab");
 
     await expect(page.locator(".lab-component-row").first().locator(".source-reveal")).toContainText(

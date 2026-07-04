@@ -108,7 +108,7 @@ export const askPrompts: AskPrompt[] = [
     label: "这个站怎么构建的？",
     command: 'ask.ray("how-built")',
     response:
-      "Next.js + MDX + typed content registries. The important part is not the stack, but the trace loop: route, source, docs, tests, deployment, and Feishu records move together.",
+      "Next.js + MDX + typed registries. The real system is the trace loop: route, source, docs, tests, deploy, and Feishu records move together.",
     href: "/lab",
   },
   {
@@ -116,7 +116,7 @@ export const askPrompts: AskPrompt[] = [
     label: "最近在做什么？",
     command: 'ask.ray("recent-work")',
     response:
-      "The current direction is Personal OS: keep the homepage alive with writing, projects, knowledge, media, and source-backed evidence without becoming a dense dashboard.",
+      "The current direction is Personal OS without dashboard gravity: writing, projects, knowledge, media, and source-backed evidence stay alive but restrained.",
     href: "/projects",
   },
   {
@@ -124,7 +124,7 @@ export const askPrompts: AskPrompt[] = [
     label: "推荐一个入口",
     command: 'ask.ray("recommend")',
     response:
-      "Start from Knowledge if you want the system logic, Blog if you want the thinking style, and Lab if you want reusable interface pieces.",
+      "Start with Knowledge for system logic, Blog for thinking style, Projects for proof, and Lab for reusable interface pieces.",
     href: "/knowledge",
   },
 ];

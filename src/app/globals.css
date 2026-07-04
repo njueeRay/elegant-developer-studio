@@ -758,17 +758,17 @@ kbd {
 
 .status-panel-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
 .status-panel-card {
   position: relative;
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  gap: 14px;
-  min-height: 174px;
-  padding: 18px 18px 42px;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 12px;
+  min-height: 152px;
+  padding: 16px 50px 16px 16px;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -798,13 +798,13 @@ kbd {
 .status-panel-card::after {
   content: "";
   position: absolute;
-  right: -28px;
-  bottom: -36px;
-  width: 96px;
-  height: 96px;
+  right: -18px;
+  bottom: -26px;
+  width: 64px;
+  height: 64px;
   border: 1px solid color-mix(in srgb, var(--border), transparent 20%);
   border-radius: 999px;
-  opacity: 0.5;
+  opacity: 0.28;
 }
 
 .status-panel-card.rust .status-panel-icon {
@@ -826,8 +826,8 @@ kbd {
 .status-panel-icon {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: color-mix(in srgb, var(--surface-strong), #fff 10%);
@@ -848,7 +848,7 @@ kbd {
 }
 
 .status-panel-copy h3 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   overflow-wrap: anywhere;
   font-size: 1rem;
   font-weight: 650;
@@ -866,12 +866,12 @@ kbd {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   font-size: 0.9rem;
 }
 
 .status-panel-copy small {
-  margin-top: 12px;
+  margin-top: 8px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.72rem;
 }
@@ -894,6 +894,27 @@ kbd {
 
 .status-panel-copy em {
   color: color-mix(in srgb, var(--muted), transparent 8%);
+}
+
+.status-panel-card .data-source-badge {
+  grid-column: 2;
+  max-width: min(100%, 220px);
+  margin-top: -2px;
+}
+
+.status-panel-card .data-source-badge span {
+  display: none;
+}
+
+.status-panel-card .data-source-badge code {
+  display: inline;
+  margin-top: 0;
+  max-width: 180px;
+  color: inherit;
+  font: inherit;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .data-source-badge {
@@ -952,8 +973,8 @@ kbd {
 
 .status-panel-arrow {
   position: absolute;
-  right: 16px;
-  bottom: 16px;
+  right: 14px;
+  bottom: 14px;
   color: color-mix(in srgb, var(--foreground), transparent 48%);
 }
 
@@ -992,11 +1013,15 @@ kbd {
 
 .ask-me-prompt-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
 }
 
 .ask-me-prompt-row button {
+  flex: 0 0 auto;
   min-height: 34px;
   padding: 0 10px;
   border: 1px solid var(--border);
@@ -7107,9 +7132,12 @@ html[data-theme="dark"] .about-notebook {
 
   .highlight-rail,
   .studio-lower-grid,
-  .studio-status-panel,
-  .status-panel-grid {
+  .studio-status-panel {
     grid-template-columns: 1fr;
+  }
+
+  .status-panel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .personal-os-zoo-heading,
@@ -7340,13 +7368,21 @@ html[data-theme="dark"] .about-notebook {
     padding: 24px 0;
   }
 
+  .status-panel-grid {
+    grid-template-columns: 1fr;
+  }
+
   .status-panel-heading {
     padding-top: 0;
   }
 
   .status-panel-card {
-    min-height: 0;
-    padding: 18px 16px 40px;
+    min-height: 136px;
+    padding: 15px 46px 15px 15px;
+  }
+
+  .status-panel-card .data-source-badge {
+    max-width: min(100%, 220px);
   }
 
   .highlight-image,
@@ -8068,6 +8104,12 @@ html[data-theme="dark"] .about-notebook {
 
   .track-list button > span:last-child {
     grid-column: 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .studio-status-panel .status-panel-grid {
+    grid-template-columns: 1fr;
   }
 }
 

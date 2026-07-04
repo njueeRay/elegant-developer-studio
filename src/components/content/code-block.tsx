@@ -28,7 +28,7 @@ function extractText(value: unknown): string {
 }
 
 export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">("idle");
   const [codeText, setCodeText] = useState("");
   const [lineCount, setLineCount] = useState(0);
   const preRef = useRef<HTMLPreElement>(null);
@@ -41,16 +41,21 @@ export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
   }, [children]);
 
   async function copyCode() {
-    if (!codeText) {
+    const nextText = (preRef.current?.innerText ?? codeText).trim();
+
+    if (!nextText) {
       return;
     }
 
-    const didCopy = await writeToClipboard(codeText);
+    const didCopy = await writeToClipboard(nextText);
 
     if (didCopy) {
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1400);
+      setCopyState("copied");
+    } else {
+      setCopyState("failed");
     }
+
+    window.setTimeout(() => setCopyState("idle"), 1400);
   }
 
   return (
@@ -66,8 +71,12 @@ export function CodeBlock({ children, ...props }: ComponentProps<"pre">) {
           onClick={copyCode}
           aria-label="Copy code"
         >
-          {copied ? <Check size={14} /> : <Copy size={14} />}
-          {copied ? "Copied" : "Copy"}
+          {copyState === "copied" ? <Check size={14} /> : <Copy size={14} />}
+          {copyState === "copied"
+            ? "Copied"
+            : copyState === "failed"
+              ? "Copy failed"
+              : "Copy"}
         </button>
       </div>
       <pre {...props} ref={preRef}>
