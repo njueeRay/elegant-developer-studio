@@ -4,9 +4,9 @@
 
 ## 当前主线
 
-Phase 31：Visual System Polish Without Adding Surfaces 已完成本地里程碑切片。
+Phase 31：Visual System Polish Without Adding Surfaces 已完成并部署到 RayNode。
 
-Phase 31 不新增页面，只处理视觉系统里真实影响用户体验的细节：移动端 RayNode 状态 badge、Command Center 小屏高度与滚动、阅读详情页全局 cursor 光场降噪。当前已经完成本地实现和验证，下一步可以进入部署追踪，之后转入 Phase 32：Content Density & Studio Pulse Restraint。
+Phase 31 不新增页面，只处理视觉系统里真实影响用户体验的细节：移动端 RayNode 状态 badge、Command Center 小屏高度与滚动、阅读详情页全局 cursor 光场降噪。当前主线可以转入 Phase 32：Content Density & Studio Pulse Restraint。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -34,13 +34,14 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`fee8825`。
-- `/release-evidence.json` 返回部署提交 `fee8825`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 52 public routes。
+- 当前服务器源码提交：`f86b134`。
+- `/release-evidence.json` 返回部署提交 `f86b134`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 52 public routes。
 - `/health.json` 返回 `status: ok`。
 - `/command-index.json` 返回 110 command items。
 - `npm run raynode:health`：18/18 passed。
 - `npm run raynode:health:full`：53/53 passed。
 - 生产公开路由可访问性测试通过：48 passed。
+- Phase 31 production targeted interaction tests：2 passed。
 
 ## 当前事实源
 
@@ -165,6 +166,9 @@ RayNode 当前状态：
 - 新增 e2e：阅读详情页不激活全局 cursor、移动端 Command Center 保持在 viewport 内。
 - 本地截图 QA：`/tmp/phase31-after-home-mobile.png`、`/tmp/phase31-after-command-mobile-2.png`、`/tmp/phase31-after-article-mobile.png`。
 - 本地完整 e2e：184 passed。
+- 已部署到 RayNode，部署源码提交为 `f86b134`。
+- production targeted interaction tests：2 passed。
+- production route smoke：48 passed。
 
 ## 质量门禁
 
@@ -206,7 +210,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 部署 Phase 31 到 RayNode，并运行 `npm run raynode:health`、`npm run raynode:health:full`、`npm run raynode:smoke`。
-2. 启动 Phase 32：Content Density & Studio Pulse Restraint。
-3. 优先审查首页中段 Studio Pulse、Ask Me Terminal、精选内容、Personal OS 入口的密度与顺序。
-4. 同步 Feishu / Copilot 当前上下文、Phase 31 结果。
+1. 启动 Phase 32：Content Density & Studio Pulse Restraint。
+2. 优先审查首页中段 Studio Pulse、Ask Me Terminal、精选内容、Personal OS 入口的密度与顺序。
+3. 同步 Feishu / Copilot 当前上下文、Phase 31 结果。

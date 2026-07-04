@@ -688,7 +688,7 @@ Knowledge kind 评估：
 
 优先级：中低。
 
-状态：已完成本地里程碑切片，等待部署追踪。
+状态：已完成并部署到 RayNode。
 
 目标：在不新增页面的前提下，继续打磨视觉层级、移动端、首页节奏和细微交互。
 
@@ -722,6 +722,11 @@ Knowledge kind 评估：
 - targeted e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=chromium --grep "ambient cursor|mobile command center|audited pages|primary surfaces|mobile navigation" --workers=1`，5 passed。
 - `npm run build`：通过，53 routes。
 - full e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npm run test:e2e -- --workers=1`，184 passed。
+- `npm run deploy:raynode`：通过，部署源码提交 `f86b134`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production targeted interaction tests：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test tests/site-access.spec.ts --project=chromium --grep "ambient cursor|mobile command center" --workers=1`，2 passed。
 
 验收标准：
 

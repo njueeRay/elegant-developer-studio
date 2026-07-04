@@ -1876,7 +1876,7 @@ GitHub 推送修复：
 
 日期：2026-07-04
 
-状态：已完成本地里程碑切片，待部署。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -1905,6 +1905,13 @@ GitHub 推送修复：
 - `npm run build`：通过，53 routes。
 - full e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npm run test:e2e -- --workers=1`，184 passed。
 - implementation commit：`def8dbd`。
+- trace commit：`f86b134`。
+- `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `f86b134`，service active。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production targeted interaction tests：`PLAYWRIGHT_BASE_URL=https://raynode.me npx playwright test tests/site-access.spec.ts --project=chromium --grep "ambient cursor|mobile command center" --workers=1`，2 passed。
+- `https://raynode.me/release-evidence.json`：返回 `commitSha` `f86b134`、14 posts / 5 projects / 16 knowledge entries / 52 public routes。
 - 本地视觉 QA：
   - `/tmp/phase31-after-home-mobile.png`
   - `/tmp/phase31-after-command-mobile-2.png`
@@ -1912,7 +1919,5 @@ GitHub 推送修复：
 
 下一步：
 
-- 提交并部署 Phase 31。
-- 运行 RayNode health / full health / smoke。
 - 启动 Phase 32：Content Density & Studio Pulse Restraint。
 - Phase 32 不新增一级页面；优先审查首页密度、Studio Pulse 卡片、Ask Me Terminal 和精选内容之间的节奏。

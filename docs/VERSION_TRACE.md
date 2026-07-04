@@ -1383,11 +1383,12 @@ Production host：`https://raynode.me`
 - `/health.json` 是应用层健康，不替代外部 uptime 监控。
 - GitHub Actions SSH 自动部署暂缓；后续如启用，必须先设计 key scope、manual approval 和 rollback policy。
 
-## Unreleased - 第三十一阶段 Visual System Polish Without Adding Surfaces
+## Released - 第三十一阶段 Visual System Polish Without Adding Surfaces
 
 日期：2026-07-04
 Primary implementation commit：`def8dbd`
 Deployment record commit：待记录
+Deployed source commit：`f86b134`
 Production host：`https://raynode.me`
 
 范围：
@@ -1409,12 +1410,17 @@ Production host：`https://raynode.me`
 - `npm run build`：通过，53 routes。
 - full e2e：184 passed。
 - 本地 Playwright 视觉 QA：移动首页、移动 Command Center、移动中文文章详情均无横向溢出；Command Center dialog 位于 viewport 内。
+- `npm run deploy:raynode`：通过，远端源码为 `f86b134`，service active。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production targeted interaction tests：2 passed。
+- `https://raynode.me/release-evidence.json`：commit `f86b134`，14 posts / 5 projects / 16 knowledge entries / 52 public routes。
 
 残余风险：
 
 - 本阶段尚未做平板宽度视觉 QA。
 - Studio Pulse 密度未在本阶段重排，留给 Phase 32。
-- 尚未部署到 RayNode；部署后需要补充 deployed source commit、health 和 smoke 结果。
 
 ## Unreleased - 第二十四阶段项目证据对象升级
 
