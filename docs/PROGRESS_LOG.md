@@ -1906,6 +1906,7 @@ GitHub 推送修复：
 - full e2e：`PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npm run test:e2e -- --workers=1`，184 passed。
 - implementation commit：`def8dbd`。
 - trace commit：`f86b134`。
+- deployment record commit：`4723965`。
 - `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `f86b134`，service active。
 - `npm run raynode:health`：18/18 passed。
 - `npm run raynode:health:full`：53/53 passed。

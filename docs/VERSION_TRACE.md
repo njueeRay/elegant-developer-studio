@@ -1387,7 +1387,7 @@ Production host：`https://raynode.me`
 
 日期：2026-07-04
 Primary implementation commit：`def8dbd`
-Deployment record commit：待记录
+Deployment record commit：`4723965`
 Deployed source commit：`f86b134`
 Production host：`https://raynode.me`
 
