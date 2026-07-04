@@ -772,3 +772,64 @@ Knowledge kind 评估：
 如果只能选一个下一步：选 Phase 32。
 
 原因：Phase 31 证明视觉微调有效，但首页继续扩张会损害“优雅工作室”的第一性目标。下一步应该审查密度与内容节奏，而不是继续加 surface。
+
+### Phase 32：Content Density & Studio Pulse Restraint
+
+优先级：高。
+
+状态：本地完成，待 RayNode 部署记录。
+
+锚定 milestone：Studio Pulse Compact Mode。
+
+阶段复盘：
+
+- Phase 31 已经把全局动效和移动 Command Center 的职责压住，但首页中段仍有明显“Personal OS 继续膨胀”的风险。
+- Studio Pulse 的 4 张卡在桌面上原本以 4 列出现，每张卡高度接近 392px，视觉上像四个窄控制台面板，不像一个优雅个人工作室的状态摘要。
+- Ask Me Terminal、DataSourceBadge、命令字符串同时出现时，语义是对的，但局部密度偏高，容易把“可追溯”误读成“仪表盘堆料”。
+- 本阶段不应该新增页面、宠物、3D 或大型交互；真正的问题是已有模块的信息节奏。
+
+完成：
+
+- Studio Pulse 从桌面 4 列改为 2 列紧凑卡片；平板保持 2 列，手机降为 1 列。
+- 状态卡压缩 icon、padding、装饰圆、摘要行数和 meta 间距，保留可读标题和真实 route。
+- 移除卡片内重复的 standalone command 文本，只保留 compact `DataSourceBadge` command chip。
+- `DataSourceBadge` 增加 `title`，在卡片内视觉压缩时仍保留 source、route、command、verifiedAt 的可检查信息。
+- Ask Me Terminal prompt row 改为横向可滚动，避免小屏按钮换行把响应区向下挤压。
+- 缩短 3 条 Ask Me response 文案，保留 Personal OS、trace loop、Knowledge/Blog/Projects/Lab 的核心判断。
+- 修复 `CodeBlock` 复制反馈：点击时重新从 `<pre>` 读取代码，避免 hydration 初期 state 为空；剪贴板失败时显示 `Copy failed`，不再静默吞点击。
+- e2e 拆分长串页面巡检：Phase 25、Phase 26、source reveal、移动溢出检查从多页面串联改为单页契约，失败时能定位具体 route。
+- project source reveal 测试滚动到卡片后 hover，避免视口边界导致误判。
+
+已验证：
+
+- `npm run validate:content`：通过，14 posts / 5 projects / 16 knowledge entries。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes，first screen carries index: no。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：20 passed，覆盖 Studio Pulse compact、Ask Me Terminal、移动溢出、Phase 25/26 public assets、project source reveal、project evidence、article code copy。
+- `chromium` 主矩阵：107/107 passed。
+- `mobile-chrome` 主矩阵：107/107 passed。
+- 一次未分片长跑出现 `ERR_NETWORK_IO_SUSPENDED`、browser launch timeout 和 `newPage` timeout；复核后判定为本机长跑资源状态异常。后续本地质量记录优先按 project 分片执行，而不是把 214 条测试塞进一次长会话。
+
+量化结果：
+
+- Desktop 1280px：Studio Pulse section 约 672px，卡片约 166px。
+- Tablet 834px：Studio Pulse section 约 898px，保持 2 列。
+- Mobile 390px：Studio Pulse section 约 1293px，单列卡片高度约 164-182px，无横向溢出。
+- Studio Pulse 仍保留 9 个可交互入口，不靠隐藏链接降低密度。
+
+验收标准：
+
+- 首页中段不再像控制台或 GitHub clone。
+- Studio Pulse 是状态摘要，不是四个信息密集仪表盘。
+- source-backed 语义仍然可检查，但默认视觉更安静。
+- 桌面、平板、手机都不产生横向溢出。
+- 复制、hover、source reveal 必须真实可操作，不能只在组件内部“看得到”。
+
+下一阶段建议：
+
+- Phase 33：Content Performance & Test Sharding Discipline。
+- 优先处理本地 dev 长跑里暴露出的测试编排问题：建立稳定的 `test:e2e:chromium`、`test:e2e:mobile` 或 CI shard 入口。
+- 继续审查 MDX 静态导入与 dev server 首次渲染长尾，但不要为测试环境过度架构化。

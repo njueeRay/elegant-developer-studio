@@ -919,3 +919,31 @@ GitHub Actions：
 2. 审查首页中段密度：Studio Pulse、Ask Me Terminal、精选文章、精选作品、媒体入口之间是否互相抢注意力。
 3. 检查 Studio Pulse 是否需要减少默认可见信息，或改成更明确的“状态摘要 + 可展开细节”。
 4. 不新增一级导航，不新增大型奇趣交互，优先优化现有内容节奏。
+
+## 21. 第三十二阶段内容密度与 Studio Pulse 克制
+
+本阶段锚定一个小但关键的 milestone：Studio Pulse Compact Mode。
+
+完成内容：
+
+- 首页 Studio Pulse 从 4 列窄卡改成 2 列紧凑状态摘要。
+- 平板维持 2 列，手机改为 1 列，避免卡片互相挤压。
+- 状态卡减少摘要行数、padding、装饰圆和重复 command 文本。
+- `DataSourceBadge` 在 Studio Pulse 内转为 compact command chip，同时用 `title` 保留完整追溯上下文。
+- Ask Me Terminal prompt row 支持横向滚动，避免移动端按钮换行破坏节奏。
+- Ask Me response 文案整体缩短，保留判断密度，降低视觉密度。
+- 修复文章代码块复制反馈，保证点击后有明确成功或失败状态。
+- e2e 拆分多页面串联巡检，避免一个慢 route 污染整条契约。
+
+阶段判断：
+
+- 首页的专业感不能靠堆信息制造。真正高级的程序员主页应该让访客一眼看见判断、气质和可检查证据，而不是被密集卡片逼着读完所有 metadata。
+- source-backed 设计不是把所有 provenance 文字同时展示出来；默认层只需要给出可追踪线索，完整证据应该在 route、source link、release evidence 和项目详情里展开。
+- 测试也属于产品架构。把 7 个公开页面塞进一个 30 秒测试，会让“页面是否可达”和“本地 dev 首编译是否抖动”混在一起，失去诊断价值。
+
+下一步：
+
+1. Phase 33：Content Performance & Test Sharding Discipline。
+2. 增加明确脚本或文档入口：桌面 e2e、移动 e2e、生产 smoke、release evidence 校验分开执行。
+3. 审查 `src/lib/content.ts` 的 MDX 静态导入策略是否会继续导致 dev server 长尾。
+4. 只在真实瓶颈稳定复现时优化内容加载，不为偶发本机资源异常重写架构。

@@ -1422,6 +1422,41 @@ Production host：`https://raynode.me`
 - 本阶段尚未做平板宽度视觉 QA。
 - Studio Pulse 密度未在本阶段重排，留给 Phase 32。
 
+## Unreleased - 第三十二阶段 Content Density & Studio Pulse Restraint
+
+日期：2026-07-04
+Primary implementation commit：`018bab2`
+Deployment record commit：待记录
+Deployed source commit：待部署
+Production host：`https://raynode.me`
+
+范围：
+
+- Studio Pulse 从桌面 4 列窄卡改为 2 列紧凑摘要，平板 2 列，手机 1 列。
+- 状态卡压缩 icon、padding、装饰圆、摘要行数和 badge 占位，降低首页中段密度。
+- 移除重复 standalone command 文本，保留 compact `DataSourceBadge` command chip。
+- `DataSourceBadge` 增加 `title`，视觉压缩后仍保留 source / route / command / verifiedAt。
+- Ask Me Terminal prompt row 支持横向滚动，Ask Me response 文案缩短。
+- `CodeBlock` 复制反馈改为点击时从 DOM 读取代码，并在剪贴板失败时显示 `Copy failed`。
+- e2e 拆分多页面串联巡检，Phase 25/26 public assets、source reveal、移动无溢出变为单页契约。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes，first screen carries index: no。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：20 passed。
+- `chromium` 主矩阵：107/107 passed。
+- `mobile-chrome` 主矩阵：107/107 passed。
+
+残余风险：
+
+- 未分片长跑在本机曾触发浏览器资源异常；后续应把本地质量门禁固化为 project/shard 执行。
+- MDX 静态导入在 dev server 首次渲染中仍可能有长尾，需要 Phase 33 观察和治理。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

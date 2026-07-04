@@ -157,6 +157,18 @@ RayNode 当前状态：
 - Knowledge entries：16。
 - Public routes：52，包含 `/health.json`。
 
+## 已完成的 Phase 32 切片
+
+- Studio Pulse 完成 compact mode：桌面 2 列、平板 2 列、手机 1 列。
+- 状态卡降低默认密度：更短摘要、更小 icon、更少装饰、更紧凑 badge。
+- 卡片中重复 command 文本已移除，保留 compact `DataSourceBadge` command chip。
+- `DataSourceBadge` 增加 `title`，视觉压缩后仍可追溯 source / route / command。
+- Ask Me Terminal prompt row 改为横向滚动，移动端不再因按钮换行挤压响应区。
+- Ask Me response 文案缩短，保留 Personal OS 和 trace loop 判断。
+- `CodeBlock` 复制反馈修复：点击时从 DOM 读取代码，失败时显示 `Copy failed`。
+- e2e 长串页面巡检拆分为单页契约，source reveal 和 Phase 25/26 public assets 失败时可定位具体页面。
+- implementation commit：`018bab2`。
+
 ## 已完成的 Phase 31 切片
 
 - 首页 RayNode 状态 badge 拆成主状态 `Live on RayNode` 和工程细节 `Next.js standalone / Caddy`，移动端更短、更稳。
@@ -184,11 +196,14 @@ npm run build
 npx playwright test --project=chromium --grep "command index|release evidence|health|command menu traps|photo lightbox traps|project case studies"
 ```
 
-完整回归：
+完整回归建议按项目分片执行：
 
 ```bash
-npm run test:e2e -- --workers=1
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=chromium --workers=1
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=mobile-chrome --workers=1
 ```
+
+说明：Phase 32 本地一次未分片长跑出现过 `ERR_NETWORK_IO_SUSPENDED`、browser launch timeout 和 `newPage` timeout；拆分为 project 后，`chromium` 107/107、`mobile-chrome` 107/107 均通过。后续不要把本机长跑资源异常误判为页面业务失败。
 
 生产主站 smoke：
 
@@ -210,6 +225,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 启动 Phase 32：Content Density & Studio Pulse Restraint。
-2. 优先审查首页中段 Studio Pulse、Ask Me Terminal、精选内容、Personal OS 入口的密度与顺序。
-3. 同步 Feishu / Copilot 当前上下文、Phase 31 结果。
+1. 启动 Phase 33：Content Performance & Test Sharding Discipline。
+2. 把本地质量门禁固化为桌面、移动、生产 smoke、release evidence 的可复现分片。
+3. 审查 MDX 静态导入和 dev server 长尾，但只修稳定复现的真实瓶颈。

@@ -1922,3 +1922,48 @@ GitHub 推送修复：
 
 - 启动 Phase 32：Content Density & Studio Pulse Restraint。
 - Phase 32 不新增一级页面；优先审查首页密度、Studio Pulse 卡片、Ask Me Terminal 和精选内容之间的节奏。
+
+### 第三十二阶段：Content Density & Studio Pulse Restraint
+
+日期：2026-07-04
+
+状态：本地完成，待部署记录。
+
+阶段判断：
+
+- 首页当前不缺组件，缺的是信息节奏的克制。
+- Studio Pulse 的价值是让访客快速理解“现在这个工作室在写什么、做什么、维护什么、听什么”，不是把 Personal OS 变成四张窄控制台卡。
+- source-backed 不是把 source、route、command 全量铺在视觉层；默认层应该安静，完整上下文可以通过 title、链接和详情页追溯。
+
+完成：
+
+- Studio Pulse 桌面改为 2 列紧凑布局，平板保持 2 列，手机 1 列。
+- 状态卡压缩 icon、padding、装饰、摘要行数和 badge 占位，降低中段密度。
+- 移除卡片中重复的 standalone command 文本，只保留 compact `DataSourceBadge`。
+- `DataSourceBadge` 增加 `title`，视觉压缩后仍能保留 source / route / command / verifiedAt。
+- Ask Me Terminal prompt row 改为横向滚动，避免小屏换行挤压响应区。
+- Ask Me 文案缩短，保留 Personal OS、trace loop、Knowledge/Blog/Projects/Lab 的判断。
+- 修复文章 `CodeBlock` 复制反馈：点击时从 DOM 读取代码；失败时显示 `Copy failed`，不再静默。
+- e2e 长串巡检拆成单页契约，Phase 25/26、source reveal、移动无溢出都能精确定位失败 route。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes，first screen carries index: no。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：20 passed。
+- `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=chromium --workers=1`：107 passed。
+- `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=mobile-chrome --workers=1`：107 passed。
+
+实施提交：
+
+- implementation commit：`018bab2`。
+
+下一步：
+
+- 启动 Phase 33：Content Performance & Test Sharding Discipline。
+- 把本地质量门禁从“一次长跑全部项目”改为可复现的 project/shard 入口。
+- 审查 MDX 静态导入和 dev server 首屏长尾，但只修真实瓶颈，不为局部测试抖动做过度架构。
