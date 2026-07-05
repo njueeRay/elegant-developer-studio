@@ -16,7 +16,13 @@
     "raynode:health:full": "node scripts/verify-raynode.mjs --full-routes",
     "raynode:smoke": "PLAYWRIGHT_BASE_URL=https://raynode.me playwright test --project=chromium --grep \"serves\" --workers=1",
     "pretest:e2e": "npm run release:evidence",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:e2e:chromium": "npm run release:evidence && playwright test tests/site-access.spec.ts --project=chromium --workers=1",
+    "test:e2e:mobile": "npm run release:evidence && playwright test tests/site-access.spec.ts --project=mobile-chrome --workers=1",
+    "test:e2e:local": "npm run test:e2e:chromium && npm run test:e2e:mobile",
+    "test:e2e:smoke": "playwright test --project=chromium --grep \"serves|primary surfaces|command menu opens real lab route\" --workers=1",
+    "perf:routes": "node scripts/measure-route-timing.mjs",
+    "perf:routes:raynode": "ROUTE_TIMING_BASE_URL=https://raynode.me node scripts/measure-route-timing.mjs --release-routes"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

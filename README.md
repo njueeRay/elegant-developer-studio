@@ -35,6 +35,34 @@ npm run dev
 
 打开 `http://localhost:3000`。
 
+## 质量门禁
+
+常规本地检查：
+
+```bash
+npm run validate:content
+npm run report:command-index
+npm run release:evidence -- --local-quality-passed
+npm run validate:release-evidence
+npm run lint
+npm run build
+```
+
+E2E 按项目分片执行，避免本地长跑把浏览器资源异常误判为页面缺陷：
+
+```bash
+npm run test:e2e:chromium
+npm run test:e2e:mobile
+```
+
+快速 smoke 与路由耗时观测：
+
+```bash
+npm run test:e2e:smoke
+npm run perf:routes
+npm run perf:routes:raynode
+```
+
 ## 项目文档
 
 - `docs/PRD.md`
@@ -65,6 +93,6 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- Phase 25：Truth Source & Public Trust。
-- 首选切片：主域名事实源、证据一致性、最小 CI、Command Center 焦点契约、真实内容资产。
-- 暂缓：继续扩展新 surface、常驻宠物、大型知识图谱、高强度背景特效。
+- Phase 34：Dev Route Long-Tail Diagnosis。
+- 首选切片：复现并定位 dev server 偶发长尾，优先观察 MDX 静态导入、项目详情页和 release evidence 读取路径。
+- 暂缓：为偶发本机资源异常重写内容架构、继续扩展新 surface、常驻宠物、大型知识图谱、高强度背景特效。

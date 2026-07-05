@@ -48,6 +48,6 @@ jobs:
         run: npm run validate:release-evidence
 
       - name: Chromium smoke e2e
-        run: npx playwright test --project=chromium --grep "serves|primary surfaces|command menu opens real lab route"
+        run: npm run test:e2e:smoke
         env:
           NEXT_PUBLIC_SITE_URL: https://raynode.me
