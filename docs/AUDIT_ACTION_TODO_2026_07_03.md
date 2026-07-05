@@ -838,3 +838,63 @@ Knowledge kind 评估：
 - Phase 33：Content Performance & Test Sharding Discipline。
 - 优先处理本地 dev 长跑里暴露出的测试编排问题：建立稳定的 `test:e2e:chromium`、`test:e2e:mobile` 或 CI shard 入口。
 - 继续审查 MDX 静态导入与 dev server 首次渲染长尾，但不要为测试环境过度架构化。
+
+### Phase 33：Content Performance & Test Sharding Discipline
+
+优先级：高。
+
+状态：本地完成，待 RayNode 部署记录。
+
+锚定 milestone：E2E Shard Scripts & Dev Route Timing Probe。
+
+阶段复盘：
+
+- Phase 32 已经证明“一次长跑全部项目”会把本机浏览器资源异常、dev server 首编译长尾和页面业务缺陷混在一起。
+- 真正要先解决的不是重写内容架构，而是建立可重复、可分片、可观察的质量入口。
+- 当前内容规模仍小，直接重构 `src/lib/content.ts` 的收益不确定；但缺少 route timing probe 会让后续性能讨论没有证据。
+
+完成：
+
+- 新增 `npm run test:e2e:chromium`：生成 release evidence 后只跑桌面 Chromium 主矩阵。
+- 新增 `npm run test:e2e:mobile`：生成 release evidence 后只跑移动 Chrome 主矩阵。
+- 新增 `npm run test:e2e:local`：串行执行桌面和移动分片，作为完整本地回归入口。
+- 新增 `npm run test:e2e:smoke`：复用 CI 的 Chromium smoke 范围。
+- 新增 `scripts/measure-route-timing.mjs`。
+- 新增 `npm run perf:routes`：默认观测本地核心路由。
+- 新增 `npm run perf:routes:raynode`：读取 release evidence 的 public routes，观测生产路由耗时。
+- CI 的 Chromium smoke step 改为 `npm run test:e2e:smoke`，避免本地和 CI 命令漂移。
+- README 新增质量门禁、分片 e2e 和 route timing 命令。
+- implementation commit：`de27bd5`。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run test:e2e:smoke`：50 passed。
+- `npm run test:e2e:chromium`：107 passed。
+- `npm run test:e2e:mobile`：107 passed。
+- `npm run perf:routes`：10 routes，p95 625ms，max 625ms，slow routes 0，failed routes 0。
+- `npm run perf:routes:raynode`：52 routes，p95 817ms，max 1189ms，slow routes 0，failed routes 0。
+- Browser 验证：`/` 页面标题为 `Ray Studio - Elegant Developer Studio`；首页非空；导航与 Command Center 入口可见；console error/warn 0；Command Center 搜索 `lab` 后出现 9 个结果。
+
+发现与后续观察：
+
+- 本地 `test:e2e:chromium` 中 `/projects/anyreader-interface-teardown` 曾出现 29.3s 长尾但通过。
+- 同一路由在 `mobile-chrome` 分片中约 300ms，生产 route timing 中没有慢路由。
+- 当前结论：这是 dev server / 桌面分片偶发长尾，不足以支持立即重构内容加载层。Phase 34 应先做可复现诊断。
+
+验收标准：
+
+- 新 agent 不需要从文档复制长命令，也能执行桌面、移动、smoke、route timing。
+- CI 与本地 smoke 使用同一脚本入口。
+- 性能讨论至少有 route timing 输出，不再只凭感觉说“慢”。
+
+下一阶段建议：
+
+- Phase 34：Dev Route Long-Tail Diagnosis。
+- 针对 `/projects/anyreader-interface-teardown` 和其他 MDX detail route 做重复 timing，判断长尾是否与首编译、MDX 静态导入、图片处理或 Playwright worker 状态相关。
+- 暂不引入服务端搜索、CMS 或内容加载重构，除非长尾能稳定复现。

@@ -171,6 +171,20 @@ RayNode 当前状态：
 - RayNode 已部署 `b767bd9`。
 - 线上验证：`raynode:health` 18/18，`raynode:health:full` 53/53，`raynode:smoke` 48/48，Phase 32 targeted production tests 4/4。
 
+## 已完成的 Phase 33 切片
+
+- 新增 `test:e2e:chromium`、`test:e2e:mobile`、`test:e2e:local`。
+- 新增 `test:e2e:smoke`，CI smoke 复用该脚本。
+- 新增 `scripts/measure-route-timing.mjs`。
+- 新增 `perf:routes` 和 `perf:routes:raynode`。
+- README 已记录质量门禁、e2e 分片和 route timing 入口。
+- 本地 `perf:routes`：10 routes，p95 625ms，max 625ms，0 slow，0 failed。
+- RayNode `perf:routes:raynode`：52 routes，p95 817ms，max 1189ms，0 slow，0 failed。
+- 本地 `test:e2e:chromium`：107/107 passed。
+- 本地 `test:e2e:mobile`：107/107 passed。
+- 观察到 `/projects/anyreader-interface-teardown` 在桌面 dev 分片中曾出现 29.3s 长尾；移动和生产未复现。
+- implementation commit：`de27bd5`。
+
 ## 已完成的 Phase 31 切片
 
 - 首页 RayNode 状态 badge 拆成主状态 `Live on RayNode` 和工程细节 `Next.js standalone / Caddy`，移动端更短、更稳。
@@ -201,8 +215,8 @@ npx playwright test --project=chromium --grep "command index|release evidence|he
 完整回归建议按项目分片执行：
 
 ```bash
-PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=chromium --workers=1
-PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.spec.ts --project=mobile-chrome --workers=1
+npm run test:e2e:chromium
+npm run test:e2e:mobile
 ```
 
 说明：Phase 32 本地一次未分片长跑出现过 `ERR_NETWORK_IO_SUSPENDED`、browser launch timeout 和 `newPage` timeout；拆分为 project 后，`chromium` 107/107、`mobile-chrome` 107/107 均通过。后续不要把本机长跑资源异常误判为页面业务失败。
@@ -211,7 +225,9 @@ PLAYWRIGHT_BASE_URL=http://127.0.0.1:3101 npx playwright test tests/site-access.
 
 ```bash
 npm run raynode:health
+npm run raynode:health:full
 npm run raynode:smoke
+npm run perf:routes:raynode
 ```
 
 ## 当前技术债触发条件
@@ -227,6 +243,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 启动 Phase 33：Content Performance & Test Sharding Discipline。
-2. 把本地质量门禁固化为桌面、移动、生产 smoke、release evidence 的可复现分片。
-3. 审查 MDX 静态导入和 dev server 长尾，但只修稳定复现的真实瓶颈。
+1. 启动 Phase 34：Dev Route Long-Tail Diagnosis。
+2. 对 `/projects/anyreader-interface-teardown` 和其他 detail routes 做重复 dev timing。
+3. 只有在长尾稳定复现后，才审查 MDX 静态导入、图片处理或 Next dev 编译链路。

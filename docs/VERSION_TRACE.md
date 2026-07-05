@@ -1463,6 +1463,43 @@ Production host：`https://raynode.me`
 - 未分片长跑在本机曾触发浏览器资源异常；后续应把本地质量门禁固化为 project/shard 执行。
 - MDX 静态导入在 dev server 首次渲染中仍可能有长尾，需要 Phase 33 观察和治理。
 
+## Unreleased - 第三十三阶段 Content Performance & Test Sharding Discipline
+
+日期：2026-07-06
+Primary implementation commit：`de27bd5`
+Deployment record commit：待记录
+Deployed source commit：待部署
+Production host：`https://raynode.me`
+
+范围：
+
+- 新增 `test:e2e:chromium`、`test:e2e:mobile`、`test:e2e:local`。
+- 新增 `test:e2e:smoke`，CI smoke 复用项目脚本。
+- 新增 `scripts/measure-route-timing.mjs`。
+- 新增 `perf:routes` 和 `perf:routes:raynode`。
+- README 补齐质量门禁、分片 e2e 和 route timing 命令。
+- GitHub Actions Chromium smoke step 改为 `npm run test:e2e:smoke`。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run test:e2e:smoke`：50 passed。
+- `npm run test:e2e:chromium`：107 passed。
+- `npm run test:e2e:mobile`：107 passed。
+- `npm run perf:routes`：10 routes，p95 625ms，max 625ms，0 slow，0 failed。
+- `npm run perf:routes:raynode`：52 routes，p95 817ms，max 1189ms，0 slow，0 failed。
+- Browser rendered check：home page identity、console health、Command Center search `lab` results passed；Browser DOM snapshot blocked by current `incrementalAriaSnapshot` runtime issue.
+
+残余风险：
+
+- 桌面 dev 分片中 `/projects/anyreader-interface-teardown` 曾出现 29.3s 长尾，但移动分片和生产 route timing 未复现。
+- Phase 34 应先做重复 timing 诊断，不直接重构内容加载层。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

@@ -1973,3 +1973,51 @@ GitHub 推送修复：
 - 启动 Phase 33：Content Performance & Test Sharding Discipline。
 - 把本地质量门禁从“一次长跑全部项目”改为可复现的 project/shard 入口。
 - 审查 MDX 静态导入和 dev server 首屏长尾，但只修真实瓶颈，不为局部测试抖动做过度架构。
+
+### 第三十三阶段：Content Performance & Test Sharding Discipline
+
+日期：2026-07-06
+
+状态：本地完成，待部署记录。
+
+阶段判断：
+
+- Phase 32 暴露的问题不是“测试不够多”，而是本地质量入口不够制度化。
+- 本阶段先把分片脚本和 route timing probe 建起来，而不是贸然重构 MDX 内容注册表。
+- 性能问题必须先被观测，才值得进入架构改造。
+
+完成：
+
+- `package.json` 新增 `test:e2e:chromium`、`test:e2e:mobile`、`test:e2e:local`。
+- `package.json` 新增 `test:e2e:smoke`，CI smoke 复用该脚本。
+- 新增 `scripts/measure-route-timing.mjs`。
+- 新增 `perf:routes` 和 `perf:routes:raynode`。
+- README 补齐质量门禁、e2e 分片和 route timing 命令。
+- `.github/workflows/quality.yml` 的 Chromium smoke step 改为 `npm run test:e2e:smoke`。
+- implementation commit：`de27bd5`。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,413 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run test:e2e:smoke`：50 passed。
+- `npm run test:e2e:chromium`：107 passed。
+- `npm run test:e2e:mobile`：107 passed。
+- `npm run perf:routes`：10 routes，p95 625ms，max 625ms，0 slow，0 failed。
+- `npm run perf:routes:raynode`：52 routes，p95 817ms，max 1189ms，0 slow，0 failed。
+- Browser 检查：首页标题、导航、Command Center 入口、console health、Command Center 搜索 `lab` 后结果列表均正常；Browser DOM snapshot 仍受当前插件 `incrementalAriaSnapshot` 问题阻塞，因此以 evaluate + screenshot + Playwright e2e 补足。
+
+后续观察：
+
+- 桌面 Chromium 分片中 `/projects/anyreader-interface-teardown` 曾出现 29.3s dev 长尾。
+- 移动分片未复现，RayNode route timing 未复现。
+- Phase 34 先做长尾复现与定位，不直接重构内容层。
+
+下一步：
+
+- 启动 Phase 34：Dev Route Long-Tail Diagnosis。
+- 为 detail routes 做重复 timing 或专项 profiler，判断是否与 MDX 静态导入、Next dev 编译、图片、Playwright worker 状态有关。

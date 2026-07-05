@@ -947,3 +947,32 @@ GitHub Actions：
 2. 增加明确脚本或文档入口：桌面 e2e、移动 e2e、生产 smoke、release evidence 校验分开执行。
 3. 审查 `src/lib/content.ts` 的 MDX 静态导入策略是否会继续导致 dev server 长尾。
 4. 只在真实瓶颈稳定复现时优化内容加载，不为偶发本机资源异常重写架构。
+
+## 22. 第三十三阶段内容性能与测试分片纪律
+
+本阶段把 Phase 32 的经验固化成可执行质量入口。
+
+完成内容：
+
+- 新增桌面 e2e 分片：`npm run test:e2e:chromium`。
+- 新增移动 e2e 分片：`npm run test:e2e:mobile`。
+- 新增完整本地分片串行入口：`npm run test:e2e:local`。
+- 新增 CI/本地共用 smoke：`npm run test:e2e:smoke`。
+- 新增路由耗时观测脚本：`scripts/measure-route-timing.mjs`。
+- 新增本地核心路由观测：`npm run perf:routes`。
+- 新增生产 release routes 观测：`npm run perf:routes:raynode`。
+- CI smoke 不再硬编码 Playwright 命令，改用项目脚本。
+- README 记录新的质量门禁和分片策略。
+
+阶段判断：
+
+- 测试脚本也是产品架构的一部分。质量入口如果只存在于阶段文档里，新 agent 很容易回到一次长跑全部项目的旧习惯。
+- route timing probe 当前只负责观测，不默认失败。原因是本地 dev 首编译和网络抖动会制造噪音，严格失败应由 `--fail-on-slow` 显式开启。
+- 当前 production route timing 健康，暂不支持马上重构内容加载层。
+
+下一步：
+
+1. Phase 34：Dev Route Long-Tail Diagnosis。
+2. 对 `/projects/anyreader-interface-teardown` 做重复 dev timing，记录是否稳定长尾。
+3. 若长尾稳定复现，再审查 MDX 静态导入、项目详情内容、图片和 Next dev 编译。
+4. 若长尾不稳定，继续保留分片脚本与 timing probe，不做架构性改造。
