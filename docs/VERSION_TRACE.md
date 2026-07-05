@@ -1463,12 +1463,12 @@ Production host：`https://raynode.me`
 - 未分片长跑在本机曾触发浏览器资源异常；后续应把本地质量门禁固化为 project/shard 执行。
 - MDX 静态导入在 dev server 首次渲染中仍可能有长尾，需要 Phase 33 观察和治理。
 
-## Unreleased - 第三十三阶段 Content Performance & Test Sharding Discipline
+## Released - 第三十三阶段 Content Performance & Test Sharding Discipline
 
 日期：2026-07-06
 Primary implementation commit：`de27bd5`
 Deployment record commit：待记录
-Deployed source commit：待部署
+Deployed source commit：`28559a4`
 Production host：`https://raynode.me`
 
 范围：
@@ -1494,6 +1494,12 @@ Production host：`https://raynode.me`
 - `npm run perf:routes`：10 routes，p95 625ms，max 625ms，0 slow，0 failed。
 - `npm run perf:routes:raynode`：52 routes，p95 817ms，max 1189ms，0 slow，0 failed。
 - Browser rendered check：home page identity、console health、Command Center search `lab` results passed；Browser DOM snapshot blocked by current `incrementalAriaSnapshot` runtime issue.
+- `npm run deploy:raynode`：通过，远端源码为 `28559a4`，service active。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production `npm run perf:routes:raynode`：52 routes，p95 798ms，max 917ms，0 slow，0 failed。
+- `https://raynode.me/release-evidence.json`：commit `28559a4`，52 public routes。
 
 残余风险：
 

@@ -843,7 +843,7 @@ Knowledge kind 评估：
 
 优先级：高。
 
-状态：本地完成，待 RayNode 部署记录。
+状态：已完成并部署到 RayNode。
 
 锚定 milestone：E2E Shard Scripts & Dev Route Timing Probe。
 
@@ -880,6 +880,11 @@ Knowledge kind 评估：
 - `npm run perf:routes`：10 routes，p95 625ms，max 625ms，slow routes 0，failed routes 0。
 - `npm run perf:routes:raynode`：52 routes，p95 817ms，max 1189ms，slow routes 0，failed routes 0。
 - Browser 验证：`/` 页面标题为 `Ray Studio - Elegant Developer Studio`；首页非空；导航与 Command Center 入口可见；console error/warn 0；Command Center 搜索 `lab` 后出现 9 个结果。
+- `npm run deploy:raynode`：通过，RayNode 远端源码快进到 `28559a4`，service active。
+- `npm run raynode:health`：18/18 passed，commit `28559a4`。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production `npm run perf:routes:raynode`：52 routes，p95 798ms，max 917ms，slow routes 0，failed routes 0。
 
 发现与后续观察：
 

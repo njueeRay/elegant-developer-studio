@@ -1978,7 +1978,7 @@ GitHub 推送修复：
 
 日期：2026-07-06
 
-状态：本地完成，待部署记录。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -2009,6 +2009,11 @@ GitHub 推送修复：
 - `npm run test:e2e:mobile`：107 passed。
 - `npm run perf:routes`：10 routes，p95 625ms，max 625ms，0 slow，0 failed。
 - `npm run perf:routes:raynode`：52 routes，p95 817ms，max 1189ms，0 slow，0 failed。
+- `npm run deploy:raynode`：通过，部署源码提交 `28559a4`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production `perf:routes:raynode`：52 routes，p95 798ms，max 917ms，0 slow，0 failed。
 - Browser 检查：首页标题、导航、Command Center 入口、console health、Command Center 搜索 `lab` 后结果列表均正常；Browser DOM snapshot 仍受当前插件 `incrementalAriaSnapshot` 问题阻塞，因此以 evaluate + screenshot + Playwright e2e 补足。
 
 后续观察：

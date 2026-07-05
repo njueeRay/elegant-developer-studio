@@ -184,6 +184,8 @@ RayNode 当前状态：
 - 本地 `test:e2e:mobile`：107/107 passed。
 - 观察到 `/projects/anyreader-interface-teardown` 在桌面 dev 分片中曾出现 29.3s 长尾；移动和生产未复现。
 - implementation commit：`de27bd5`。
+- RayNode 已部署 `28559a4`。
+- 线上验证：`raynode:health` 18/18，`raynode:health:full` 53/53，`raynode:smoke` 48/48，production `perf:routes:raynode` p95 798ms / max 917ms / 0 slow / 0 failed。
 
 ## 已完成的 Phase 31 切片
 
