@@ -1101,6 +1101,9 @@ GitHub Actions：
 - Mobile e2e：114 passed。
 - 移动端 collaboration command 测试使用可见首页 trigger，避免把移动键盘快捷键不稳定误判为产品缺陷。
 - `/blog` mobile overflow：通过。
+- RayNode 已部署 `9950eeb`。
+- 线上 health：18/18；线上 full routes：55/55；线上 smoke：50/50。
+- 线上 Content Scale targeted e2e：1 passed。
 
 下一步：
 

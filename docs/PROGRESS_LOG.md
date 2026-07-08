@@ -2176,7 +2176,7 @@ GitHub 推送修复：
 
 日期：2026-07-08
 
-状态：已完成本地实现。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -2204,6 +2204,11 @@ GitHub 推送修复：
 - targeted Chromium e2e：3 passed，覆盖 `/blog`、command index lazy payload、Content Scale Panel。
 - targeted Mobile e2e：2 passed，覆盖 Content Scale Panel 和 `/blog` 无横向溢出。
 - 移动端 collaboration command 测试改为使用首页可见 Command trigger，不再依赖移动端键盘快捷键。
+- RayNode 部署：`9950eeb`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- production targeted Content Scale e2e：1 passed。
 
 下一步：
 

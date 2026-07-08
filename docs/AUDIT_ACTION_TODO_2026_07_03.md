@@ -1051,7 +1051,7 @@ Knowledge kind 评估：
 
 ### Phase 37 完成记录：Content Scale & Evidence Navigation Review
 
-状态：已完成本地实现。
+状态：已完成并部署到 RayNode。
 
 完成项：
 
@@ -1063,6 +1063,9 @@ Knowledge kind 评估：
 - [x] 将 `/blog` 加入移动端无横向溢出审计。
 - [x] 完整 Chromium / Mobile 分片通过：114 / 114。
 - [x] 修正移动端 collaboration command 测试入口，使用可见触发器替代不稳定键盘快捷键。
+- [x] 部署到 RayNode：`9950eeb`。
+- [x] 线上 health / full routes / smoke 通过：18/18、55/55、50/50。
+- [x] 线上 Content Scale targeted e2e 通过：1 passed。
 
 阶段结论：
 

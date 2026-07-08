@@ -4,7 +4,7 @@
 
 ## 当前主线
 
-Phase 37：Content Scale & Evidence Navigation Review 已完成本地实现。
+Phase 37：Content Scale & Evidence Navigation Review 已完成并部署到 RayNode。
 
 当前主线可以转入 Phase 38：Homepage Featured Editorial Policy。Phase 37 的核心结论是：posts 已到 15，下一篇文章会越过 posts > 15 的规模审查线；继续加内容前，公开站点必须先让访客看到内容规模状态、证据导航和命令索引仍然可控。
 
@@ -38,14 +38,14 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`2c52c49`。
-- `/release-evidence.json` 返回部署提交 `2c52c49`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
+- 当前服务器源码提交：`9950eeb`。
+- `/release-evidence.json` 返回部署提交 `9950eeb`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
 - `/health.json` 返回 `status: ok`。
 - `/command-index.json` 返回 112 command items，并包含 `/blog/ursb-personal-site-object-grammar` 与 `/knowledge/personal-site-object-grammar`。
 - `npm run raynode:health`：18/18 passed。
 - `npm run raynode:health:full`：55/55 passed。
 - `npm run raynode:smoke`：50 passed。
-- Phase 36 production targeted interaction test：1 passed。
+- Phase 37 production targeted Content Scale test：1 passed。
 
 ## 当前事实源
 
@@ -108,6 +108,8 @@ RayNode 当前状态：
 - `npm run test:e2e:chromium`：114 passed。
 - `npm run test:e2e:mobile`：114 passed。
 - 移动端 Command Center 协作页测试改为使用可见首页 trigger，不再依赖移动端键盘快捷键。
+- RayNode 已部署 `9950eeb`。
+- 线上验证：`raynode:health` 18/18，`raynode:health:full` 55/55，`raynode:smoke` 50/50，Phase 37 production targeted Content Scale 1 passed。
 - 下一阶段：Phase 38，审查首页 Featured / Latest 的编辑策略，不再默认以最新内容替代最强证据。
 
 ## 已完成的 Phase 26 切片

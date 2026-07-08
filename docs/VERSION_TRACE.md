@@ -1640,10 +1640,11 @@ Production host：`https://raynode.me`
 
 - 本阶段只引入一个外部参考对象；下一阶段应审查内容规模和导航密度，而不是继续批量新增外部拆解。
 
-## Unreleased - 第三十七阶段 Content Scale & Evidence Navigation Review
+## 2026-07-08 - 第三十七阶段 Content Scale & Evidence Navigation Review
 
 日期：2026-07-08
 Primary implementation commit：`bea08f3`
+Deployed source commit：`9950eeb`
 Deployment record commit：待记录
 Production host：`https://raynode.me`
 
@@ -1666,6 +1667,11 @@ Production host：`https://raynode.me`
 - `npm run test:e2e:mobile`：114 passed。
 - targeted Chromium e2e：3 passed。
 - targeted Mobile e2e：2 passed。
+- `npm run deploy:raynode`：部署到 `9950eeb`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- production targeted Content Scale e2e：1 passed。
 
 结论：
 
