@@ -177,6 +177,12 @@ const writingIntents = extractExportLiteral("src/data/writing.ts", "writingInten
 const writingTracks = extractExportLiteral("src/data/writing.ts", "writingTracks", "[", "]");
 const intentToTrack = extractExportLiteral("src/data/writing.ts", "intentToTrack", "{", "}");
 const citationGuides = extractExportLiteral("src/data/writing.ts", "citationGuides", "{", "}");
+const homeEditorialPolicy = extractExportLiteral(
+  "src/data/home-editorial.ts",
+  "homeEditorialPolicy",
+  "{",
+  "}",
+);
 
 const postSlugs = new Set(posts.map((post) => post.slug));
 const projectSlugs = new Set(projects.map((project) => project.slug));
@@ -202,6 +208,79 @@ projects.forEach((project) => routes.add(`/projects/${project.slug}`));
 knowledgeEntries.forEach((entry) => routes.add(`/knowledge/${entry.slug}`));
 
 const errors = [];
+
+const homeSource = read("src/data/home.ts");
+
+if (homeSource.includes("export const highlights")) {
+  errors.push("src/data/home.ts must not define homepage highlights; use src/data/home-editorial.ts");
+}
+
+if (homeEditorialPolicy.schemaVersion !== 1) {
+  errors.push("src/data/home-editorial.ts homeEditorialPolicy.schemaVersion must be 1");
+}
+
+if (!homeEditorialPolicy.principle?.includes("editorial surface")) {
+  errors.push("homeEditorialPolicy.principle must state that the homepage is an editorial surface");
+}
+
+const homeSlots = homeEditorialPolicy.slots ?? {};
+
+[
+  ["featuredEssay", "reasonCode"],
+  ["selectedWork", "reasonCode"],
+  ["latestWriting", "reasonCode"],
+  ["mediaEntry", "reasonCode"],
+  ["knowledgeSignal", "reasonCode"],
+].forEach(([slotName, field]) => {
+  const slot = homeSlots[slotName];
+
+  if (!slot) {
+    errors.push(`homeEditorialPolicy.slots.${slotName} is required`);
+    return;
+  }
+
+  if (!slot[field]?.startsWith("why.here(")) {
+    errors.push(`homeEditorialPolicy.slots.${slotName}.${field} must use why.here(...)`);
+  }
+
+  if (!slot.reason || !slot.selectionRule) {
+    errors.push(`homeEditorialPolicy.slots.${slotName} must include reason and selectionRule`);
+  }
+});
+
+if (!postSlugs.has(homeSlots.featuredEssay?.postSlug)) {
+  errors.push(`homeEditorialPolicy.slots.featuredEssay references missing post "${homeSlots.featuredEssay?.postSlug}"`);
+}
+
+if (!projectSlugs.has(homeSlots.selectedWork?.projectSlug)) {
+  errors.push(
+    `homeEditorialPolicy.slots.selectedWork references missing project "${homeSlots.selectedWork?.projectSlug}"`,
+  );
+}
+
+assertSlugList({
+  owner: "homeEditorialPolicy.slots.latestWriting",
+  field: "postSlugs",
+  values: homeSlots.latestWriting?.postSlugs,
+  allowed: postSlugs,
+  errors,
+});
+
+assertSlugList({
+  owner: "homeEditorialPolicy.slots.knowledgeSignal",
+  field: "entrySlugs",
+  values: homeSlots.knowledgeSignal?.entrySlugs,
+  allowed: knowledgeSlugs,
+  errors,
+});
+
+[
+  ["homeEditorialPolicy.slots.featuredEssay.proofHref", homeSlots.featuredEssay?.proofHref],
+  ["homeEditorialPolicy.slots.selectedWork.proofHref", homeSlots.selectedWork?.proofHref],
+  ["homeEditorialPolicy.slots.latestWriting.proofHref", homeSlots.latestWriting?.proofHref],
+  ["homeEditorialPolicy.slots.mediaEntry.href", homeSlots.mediaEntry?.href],
+  ["homeEditorialPolicy.slots.knowledgeSignal.proofHref", homeSlots.knowledgeSignal?.proofHref],
+].forEach(([owner, href]) => assertRoute({ owner, href, routes, errors }));
 
 posts.forEach((post) => {
   const owner = `post:${post.slug}`;

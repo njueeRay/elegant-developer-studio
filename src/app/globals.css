@@ -626,6 +626,47 @@ kbd {
   font-size: 0.82rem;
 }
 
+.editorial-reason {
+  display: grid;
+  gap: 5px;
+  max-width: 28rem;
+  margin-top: 13px;
+  color: color-mix(in srgb, var(--muted), var(--foreground) 6%);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.editorial-reason code {
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px 7px;
+  overflow-wrap: anywhere;
+  border: 1px solid color-mix(in srgb, var(--rust), transparent 70%);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--rust), transparent 93%);
+  color: color-mix(in srgb, var(--rust), var(--foreground) 16%);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+}
+
+.editorial-reason.compact {
+  margin-top: 0;
+}
+
+.highlight-card .editorial-reason {
+  opacity: 0.68;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.highlight-card:hover .editorial-reason,
+.highlight-card:focus-within .editorial-reason {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
 .highlight-image,
 .paper-ghost {
   grid-column: 2;
@@ -670,6 +711,16 @@ kbd {
   overflow: hidden;
 }
 
+.media-card-actions {
+  position: absolute;
+  bottom: 28px;
+  left: clamp(102px, 9vw, 118px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
 .play-button {
   position: absolute;
   left: clamp(102px, 9vw, 118px);
@@ -680,6 +731,10 @@ kbd {
   border-radius: 10px;
   color: var(--foreground);
   font-size: 0.82rem;
+}
+
+.media-card-actions .play-button {
+  position: static;
 }
 
 .studio-status-panel {
@@ -1150,6 +1205,15 @@ kbd {
   font-size: 0.92rem;
 }
 
+.knowledge-panel li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.knowledge-panel li a:hover {
+  color: var(--foreground);
+}
+
 .lab-list {
   display: grid;
   gap: 12px;
@@ -1196,7 +1260,15 @@ kbd {
 }
 
 .latest-section h2 {
+  margin-bottom: 7px;
   font-size: clamp(1.65rem, 3vw, 2.25rem);
+}
+
+.section-heading p {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
 }
 
 .latest-grid {

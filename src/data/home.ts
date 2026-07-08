@@ -1,16 +1,3 @@
-export type HighlightKind = "writing" | "work" | "media";
-
-export type Highlight = {
-  kind: HighlightKind;
-  eyebrow: string;
-  title: string;
-  description: string;
-  meta: string;
-  href: string;
-  image?: string;
-  tags?: string[];
-};
-
 export type WorkbenchItem = {
   label: string;
   title: string;
@@ -62,41 +49,3 @@ export const workbenchItems: WorkbenchItem[] = [
     status: "queued",
   },
 ];
-
-export const highlights: Highlight[] = [
-  {
-    kind: "writing",
-    eyebrow: "Featured essay",
-    title: "外部证据比作品集叙事更重要",
-    description:
-      "A mature portfolio needs real outside problems, not only a beautiful self-referential system.",
-    meta: "Jul 4, 2026 / 6 min read",
-    href: "/blog/external-proof-over-portfolio-theater",
-  },
-  {
-    kind: "work",
-    eyebrow: "Selected work",
-    title: "Lumen Design System",
-    description:
-      "A lightweight UI kit for products that value clarity, speed, and restraint.",
-    meta: "React / TypeScript / Design Tokens",
-    href: "/projects/lumen",
-    image: "/assets/lumen-design-system.png",
-    tags: ["React", "TypeScript", "Tokens"],
-  },
-  {
-    kind: "media",
-    eyebrow: "Media note",
-    title: "Morning light, notes, coffee",
-    description: "A quiet mix and a small frame from the studio desk.",
-    meta: "Tycho - A Walk / 02:31",
-    href: "/music",
-    image: "/assets/morning-studio-desk.png",
-  },
-];
-
-export const knowledgeItems = [
-  "外部证据优先于自指叙事",
-  "Selection anchors are product state",
-  "Case study diff format",
-] as const;

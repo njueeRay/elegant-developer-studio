@@ -95,6 +95,7 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- Phase 38：Homepage Featured Editorial Policy。
-- 首选切片：审查首页 Featured essay、Selected work、Latest writing 的编辑规则，避免内容增长后首页只展示最新而不是最能证明判断力的对象。
+- Phase 39：Project Evidence Ranking & Case Study Diff Polish。
+- 首选切片：审查项目页证据排序、case study diff、OpenProfile/AnyReader/Lumen 等项目的首页与详情页证明力。
+- 后续队列：Media Trust Layer、Knowledge Graph Thin Layer、Homepage Visual Polish、Post-16 Content Review Gate。
 - 暂缓：继续堆首页模块、常驻宠物、大型知识图谱、高强度背景特效，以及没有真实对象来源的新文章。

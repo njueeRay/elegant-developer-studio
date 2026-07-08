@@ -1,12 +1,12 @@
 # 当前上下文
 
-更新时间：2026-07-08
+更新时间：2026-07-09
 
 ## 当前主线
 
-Phase 37：Content Scale & Evidence Navigation Review 已完成并部署到 RayNode。
+Phase 38：Homepage Featured Editorial Policy 已完成本地实现。
 
-当前主线可以转入 Phase 38：Homepage Featured Editorial Policy。Phase 37 的核心结论是：posts 已到 15，下一篇文章会越过 posts > 15 的规模审查线；继续加内容前，公开站点必须先让访客看到内容规模状态、证据导航和命令索引仍然可控。
+当前主线可以转入 Phase 39：Project Evidence Ranking & Case Study Diff Polish。Phase 38 的核心结论是：首页不是自动内容索引，而是编辑策展面；Featured essay、Selected work、Editorially recent、Media note 和 Knowledge signal 必须来自明确的首页编辑策略，不能继续依赖 `featured: true + date order`。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -17,6 +17,7 @@ Phase 37：Content Scale & Evidence Navigation Review 已完成并部署到 RayN
 - `/command-index.json` 是 Command Center 按需加载的公开索引 payload。
 - `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
 - `src/lib/content-scale.ts` 是内容规模守门事实源，当前服务 `/blog` 的 Content Scale Panel。
+- `src/data/home-editorial.ts` 是首页编辑策略事实源，定义 Featured essay、Selected work、Editorially recent、Media note 和 Knowledge signal。
 - `scripts/measure-route-timing.mjs` 是单轮 route timing 观测脚本。
 - `scripts/diagnose-route-long-tail.mjs` 是重复 route timing 诊断脚本，用于判断 detail route 长尾是否稳定复现。
 - `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
@@ -59,6 +60,7 @@ RayNode 当前状态：
 - `src/lib/command-index.ts`：Command Center 索引构建器。
 - `src/app/command-index.json/route.ts`：Command Center 懒加载 JSON endpoint。
 - `scripts/report-command-index.mjs`：Command index 规模报告。
+- `src/data/home-editorial.ts`：首页编辑策略、why.here 理由和替换规则。
 - `src/data/writing.ts`：Writing tracks、受控 intent 和 citation guide。
 - `src/app/health.json/route.ts`：公开健康端点。
 - `scripts/verify-raynode.mjs`：RayNode health CLI。
@@ -111,6 +113,28 @@ RayNode 当前状态：
 - RayNode 已部署 `9950eeb`。
 - 线上验证：`raynode:health` 18/18，`raynode:health:full` 55/55，`raynode:smoke` 50/50，Phase 37 production targeted Content Scale 1 passed。
 - 下一阶段：Phase 38，审查首页 Featured / Latest 的编辑策略，不再默认以最新内容替代最强证据。
+
+## 已完成的 Phase 38 切片
+
+- 新增 `src/data/home-editorial.ts`，把首页定义为 editorial surface，而不是 latest-content feed。
+- 首页 Featured essay 固定为 `/blog/external-proof-over-portfolio-theater`，选择理由为 `why.here("external-proof")`。
+- 首页 Selected work 固定为 `/projects/openprofile-agent-workflow`，选择理由为 `why.here("openprofile")`。
+- 首页 `Latest from the studio` 改为 `Editorially recent`，只展示策略指定文章，不再自动取最近 featured。
+- 首页 Knowledge signal 使用策略指定 Knowledge 条目，并显示 `why.here("knowledge-signal")`。
+- 媒体卡从含糊 Play/Pause 改成 `Preview cue` + 真实 `/music` 入口。
+- `validate:content` 增加首页编辑策略校验：slot slug、proof route、why.here reason、selectionRule 和旧 `home.ts` highlights 禁止项。
+- e2e 增加 Phase 38 首页编辑槽位测试，覆盖 why-here 理由、OpenProfile 精选作品、Lumen 不再作为首页精选、媒体真实入口。
+- 本地视觉复核：桌面 highlight rail、移动 highlight rail 截图通过，无明显横向溢出或注释压迫。
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，54 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：115 passed。
+- `npm run test:e2e:mobile`：115 passed。
+- 下一阶段：Phase 39，审查项目页证据排序与 case study diff，优先提升 OpenProfile / AnyReader / Lumen 等项目的证明力。
 
 ## 已完成的 Phase 26 切片
 

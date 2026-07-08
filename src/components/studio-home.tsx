@@ -16,15 +16,58 @@ import {
 import { useEffect, useState, type ComponentType } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { StatusPanel } from "@/components/status-panel";
+import type {
+  HomeEditorialMediaSlot,
+  HomeEditorialPostSlot,
+  HomeEditorialProjectSlot,
+} from "@/data/home-editorial";
 import { currentMix } from "@/data/media";
-import {
-  highlights,
-  knowledgeItems,
-  socialLinks,
-  type Highlight,
-  type HighlightKind,
-} from "@/data/home";
+import { socialLinks } from "@/data/home";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
+
+type HighlightKind = "writing" | "work" | "media";
+
+type EditorialPostSlot = HomeEditorialPostSlot & {
+  post: PostMeta;
+};
+
+type EditorialProjectSlot = HomeEditorialProjectSlot & {
+  project: ProjectMeta;
+};
+
+type EditorialLatestWritingSlot = Omit<HomeEditorialPostSlot, "postSlug"> & {
+  postSlugs: readonly string[];
+  posts: PostMeta[];
+};
+
+type EditorialKnowledgeSignal = {
+  kind: "knowledge";
+  eyebrow: string;
+  entrySlugs: readonly string[];
+  entries: Array<{
+    slug: string;
+    title: string;
+    href: string;
+  }>;
+  proofHref: string;
+  reasonCode: string;
+  reason: string;
+  selectionRule: string;
+};
+
+type ResolvedHighlight = {
+  kind: HighlightKind;
+  eyebrow: string;
+  title: string;
+  description: string;
+  meta: string;
+  href: string;
+  image?: string;
+  tags?: readonly string[];
+  reasonCode: string;
+  reason: string;
+  selectionRule: string;
+};
 
 const iconByKind: Record<HighlightKind, ComponentType<{ size?: number }>> = {
   writing: FileText,
@@ -33,14 +76,58 @@ const iconByKind: Record<HighlightKind, ComponentType<{ size?: number }>> = {
 };
 
 export function StudioHome({
-  featuredPosts,
-  featuredProjects,
+  featuredEssay,
+  selectedWork,
+  latestWriting,
+  mediaEntry,
+  knowledgeSignal,
 }: {
-  featuredPosts: PostMeta[];
-  featuredProjects: ProjectMeta[];
+  featuredEssay: EditorialPostSlot;
+  selectedWork: EditorialProjectSlot;
+  latestWriting: EditorialLatestWritingSlot;
+  mediaEntry: HomeEditorialMediaSlot;
+  knowledgeSignal: EditorialKnowledgeSignal;
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isCommandReady, setIsCommandReady] = useState(false);
+  const highlights: ResolvedHighlight[] = [
+    {
+      kind: "writing",
+      eyebrow: featuredEssay.eyebrow,
+      title: featuredEssay.post.title,
+      description: featuredEssay.post.summary,
+      meta: `${featuredEssay.post.readingTime} / ${featuredEssay.post.status}`,
+      href: `/blog/${featuredEssay.post.slug}`,
+      reasonCode: featuredEssay.reasonCode,
+      reason: featuredEssay.reason,
+      selectionRule: featuredEssay.selectionRule,
+    },
+    {
+      kind: "work",
+      eyebrow: selectedWork.eyebrow,
+      title: selectedWork.project.title,
+      description: selectedWork.project.summary,
+      meta: `${selectedWork.project.role} / ${selectedWork.project.status}`,
+      href: `/projects/${selectedWork.project.slug}`,
+      image: selectedWork.project.image,
+      tags: selectedWork.project.stack,
+      reasonCode: selectedWork.reasonCode,
+      reason: selectedWork.reason,
+      selectionRule: selectedWork.selectionRule,
+    },
+    {
+      kind: "media",
+      eyebrow: mediaEntry.eyebrow,
+      title: mediaEntry.title,
+      description: mediaEntry.description,
+      meta: mediaEntry.meta,
+      href: mediaEntry.href,
+      image: mediaEntry.image,
+      reasonCode: mediaEntry.reasonCode,
+      reason: mediaEntry.reason,
+      selectionRule: mediaEntry.selectionRule,
+    },
+  ];
 
   useEffect(() => {
     const animationFrame = window.requestAnimationFrame(() => setIsCommandReady(true));
@@ -102,8 +189,8 @@ export function StudioHome({
       </section>
 
       <StatusPanel
-        post={featuredPosts[0]}
-        project={featuredProjects[0]}
+        post={featuredEssay.post}
+        project={selectedWork.project}
         mix={currentMix}
       />
 
@@ -112,7 +199,6 @@ export function StudioHome({
           <HighlightCard
             key={highlight.title}
             highlight={highlight}
-            featuredProject={featuredProjects[0]}
             isPlaying={isPlaying}
             onTogglePlay={() => setIsPlaying((playing) => !playing)}
           />
@@ -130,13 +216,17 @@ export function StudioHome({
             </p>
           </div>
           <ul>
-            {knowledgeItems.map((item) => (
-              <li key={item}>
+            {knowledgeSignal.entries.map((item) => (
+              <li key={item.slug}>
                 <BookOpenText size={16} />
-                <span>{item}</span>
+                <Link href={item.href}>{item.title}</Link>
               </li>
             ))}
           </ul>
+          <div className="editorial-reason compact" aria-label="Knowledge signal editorial reason">
+            <code>{knowledgeSignal.reasonCode}</code>
+            <span>{knowledgeSignal.reason}</span>
+          </div>
           <Link href="/knowledge" className="text-link">
             Browse knowledge <ArrowRight size={16} />
           </Link>
@@ -211,7 +301,10 @@ export function StudioHome({
 
       <section className="latest-section" id="writing">
         <div className="section-heading">
-          <h2>Latest from the studio</h2>
+          <div>
+            <h2>Editorially recent</h2>
+            <p>{latestWriting.reason}</p>
+          </div>
           <Link href="/blog" className="text-link rust">
             View all writing <ArrowRight size={16} />
           </Link>
@@ -225,7 +318,7 @@ export function StudioHome({
             className="latest-image"
           />
           <div className="latest-list">
-            {featuredPosts.map((post) => (
+            {latestWriting.posts.map((post) => (
               <Link
                 href={`/blog/${post.slug}`}
                 key={post.slug}
@@ -238,6 +331,10 @@ export function StudioHome({
                 <span>{post.readingTime}</span>
               </Link>
             ))}
+            <div className="editorial-reason compact" aria-label="Latest writing editorial reason">
+              <code>{latestWriting.reasonCode}</code>
+              <span>{latestWriting.selectionRule}</span>
+            </div>
           </div>
         </div>
       </section>
@@ -248,34 +345,14 @@ export function StudioHome({
 
 function HighlightCard({
   highlight,
-  featuredProject,
   isPlaying,
   onTogglePlay,
 }: {
-  highlight: Highlight;
-  featuredProject?: ProjectMeta;
+  highlight: ResolvedHighlight;
   isPlaying: boolean;
   onTogglePlay: () => void;
 }) {
   const Icon = iconByKind[highlight.kind];
-  const href = highlight.kind === "work" && featuredProject
-    ? `/projects/${featuredProject.slug}`
-    : highlight.href;
-  const title = highlight.kind === "work" && featuredProject
-    ? featuredProject.title
-    : highlight.title;
-  const description = highlight.kind === "work" && featuredProject
-    ? featuredProject.summary
-    : highlight.description;
-  const meta = highlight.kind === "work" && featuredProject
-    ? `${featuredProject.role} / ${featuredProject.status}`
-    : highlight.meta;
-  const image = highlight.kind === "work" && featuredProject
-    ? featuredProject.image
-    : highlight.image;
-  const tags = highlight.kind === "work" && featuredProject
-    ? featuredProject.stack
-    : highlight.tags;
   const content = (
     <>
       <div className="highlight-icon">
@@ -285,20 +362,24 @@ function HighlightCard({
         <p className={`section-kicker ${highlight.kind === "work" ? "blue" : ""}`}>
           {highlight.eyebrow}
         </p>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        {tags ? (
+        <h2>{highlight.title}</h2>
+        <p>{highlight.description}</p>
+        {highlight.tags ? (
           <div className="tag-row">
-            {tags.map((tag) => (
+            {highlight.tags.map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
           </div>
         ) : null}
-        <small>{meta}</small>
+        <small>{highlight.meta}</small>
+        <div className="editorial-reason" aria-label={`${highlight.title} editorial reason`}>
+          <code>{highlight.reasonCode}</code>
+          <span>{highlight.reason}</span>
+        </div>
       </div>
-      {image ? (
+      {highlight.image ? (
         <Image
-          src={image}
+          src={highlight.image}
           alt=""
           width={360}
           height={270}
@@ -313,26 +394,32 @@ function HighlightCard({
 
   if (highlight.kind === "media") {
     return (
-      <article className="highlight-card media-card" id="media">
+      <article className="highlight-card media-card" id="media" data-testid="home-editorial-media">
         {content}
-        <button
-          type="button"
-          className="play-button"
-          data-testid="home-media-play"
-          onClick={onTogglePlay}
-        >
-          {isPlaying ? <Pause size={15} /> : <Play size={15} />}
-          {isPlaying ? "Pause" : "Play"}
-        </button>
+        <div className="media-card-actions">
+          <button
+            type="button"
+            className="play-button"
+            data-testid="home-media-play"
+            onClick={onTogglePlay}
+          >
+            {isPlaying ? <Pause size={15} /> : <Play size={15} />}
+            {isPlaying ? "Pause preview" : "Preview cue"}
+          </button>
+          <Link href={highlight.href} className="text-link rust">
+            Open mix <ArrowRight size={15} />
+          </Link>
+        </div>
       </article>
     );
   }
 
   return (
     <Link
-      href={href}
+      href={highlight.href}
       className="highlight-card"
       id={highlight.kind === "work" ? "work" : undefined}
+      data-testid={`home-editorial-${highlight.kind}`}
     >
       {content}
     </Link>

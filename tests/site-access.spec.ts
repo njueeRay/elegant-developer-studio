@@ -377,6 +377,32 @@ test.describe("public routes and links", () => {
     );
   });
 
+  test("Phase 38 homepage editorial slots expose why-here reasons", async ({ page }) => {
+    await page.goto("/");
+
+    const featuredEssay = page.getByTestId("home-editorial-writing");
+    const selectedWork = page.getByTestId("home-editorial-work");
+    const mediaEntry = page.getByTestId("home-editorial-media");
+
+    await expect(featuredEssay).toHaveAttribute("href", "/blog/external-proof-over-portfolio-theater");
+    await expect(featuredEssay).toContainText("外部证据比作品集叙事更重要");
+    await expect(featuredEssay).toContainText('why.here("external-proof")');
+
+    await expect(selectedWork).toHaveAttribute("href", "/projects/openprofile-agent-workflow");
+    await expect(selectedWork).toContainText("OpenProfile Agent Workflow");
+    await expect(selectedWork).toContainText('why.here("openprofile")');
+    await expect(page.getByRole("link", { name: /Lumen Design System/ })).toHaveCount(0);
+
+    await expect(mediaEntry).toContainText('why.here("media-breath")');
+    await expect(mediaEntry.getByRole("link", { name: /Open mix/ })).toHaveAttribute("href", "/music");
+
+    await expect(page.getByRole("heading", { name: "Editorially recent" })).toBeVisible();
+    await expect(page.getByLabel("Latest writing editorial reason")).toContainText('why.here("latest-writing")');
+    await expect(page.getByLabel("Knowledge signal editorial reason")).toContainText(
+      'why.here("knowledge-signal")',
+    );
+  });
+
   test("Phase 26 OpenProfile proof links to the real repository", async ({ page }) => {
     await page.goto("/projects/openprofile-agent-workflow");
     await expect(page.getByRole("heading", { name: "OpenProfile Agent Workflow" })).toBeVisible();

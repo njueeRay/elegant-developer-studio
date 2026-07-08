@@ -1682,6 +1682,47 @@ Production host：`https://raynode.me`
 
 - Content Scale Panel 解决了 `/blog` 的公开规模提示，但首页仍按 featured + date 取内容，可能把最新内容误当作最强证据。
 
+## Unreleased - 第三十八阶段 Homepage Featured Editorial Policy
+
+日期：2026-07-09
+Primary implementation commit：待记录
+Deployment record commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 新增 `src/data/home-editorial.ts` 首页编辑策略事实源。
+- `src/app/page.tsx` 解析首页策略 slug，向首页组件传递已解析文章、项目、Knowledge 和媒体槽位。
+- `src/components/studio-home.tsx` 改为消费编辑策略，不再用 `featuredPosts` / `featuredProjects` 推导首页重点对象。
+- 首页重点卡片新增 `why.here(...)` 理由。
+- `Latest from the studio` 改为 `Editorially recent`。
+- 媒体卡新增真实 `/music` 入口。
+- `validate:content` 增加首页编辑策略校验。
+- e2e 增加 Phase 38 首页编辑槽位测试。
+
+验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，54 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：115 passed。
+- `npm run test:e2e:mobile`：115 passed。
+- 本地截图复核：桌面与移动 highlight rail 可接受。
+
+结论：
+
+- 首页已从半自动 featured/latest 逻辑转为显式编辑策略。
+- `featured: true` 不再承担首页选择语义。
+- 下一阶段应提升项目详情页证据排序和 case study diff，而不是继续扩首页模块。
+
+残余风险：
+
+- OpenProfile 图片在移动端 highlight card 内略窄裁切，适合 Phase 42 视觉 polish 处理。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

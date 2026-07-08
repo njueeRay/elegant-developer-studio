@@ -1110,3 +1110,44 @@ GitHub Actions：
 1. Phase 38：Homepage Featured Editorial Policy。
 2. 明确首页 Featured essay / Selected work / Latest writing 的编辑规则。
 3. 避免首页自动变成“最新内容列表”，优先展示最能证明判断力和外部证据的对象。
+
+## 27. 第三十八阶段首页编辑策略
+
+本阶段修正首页最危险的隐性漂移：把首页重点对象从 `featured: true + date order` 中解耦，改为明确的编辑策略。
+
+新增产品表面：
+
+- 首页 `why.here(...)` 编辑理由。
+- `Editorially recent` 写作区块，替代语义不准的 `Latest from the studio`。
+- 媒体卡 `Preview cue` 与真实 `Open mix` 路径。
+- Knowledge signal 使用真实 Knowledge 链接，而不是静态文案列表。
+
+新增事实源：
+
+- `src/data/home-editorial.ts`：首页编辑原则、槽位、slug、proof href、reasonCode、reason、selectionRule。
+
+系统理解：
+
+- 首页是策展面，不是自动内容索引。
+- `featured: true` 只能说明内容有展示价值，不能等同于“首页第一优先级”。
+- 首页槽位必须能回答：为什么是它、证明什么、替换规则是什么、证据入口在哪里。
+
+质量状态：
+
+- `validate:content`：通过，并校验首页编辑策略。
+- `report:command-index`：112 items，estimated gzip 10,708 bytes。
+- `release:evidence` + `validate:release-evidence`：通过，54 public routes。
+- `lint`：通过。
+- `build`：55 routes。
+- smoke e2e：52 passed。
+- Chromium e2e：115 passed。
+- Mobile e2e：115 passed。
+- 本地桌面和移动截图复核：highlight rail 无明显溢出；OpenProfile 图像移动端略窄裁切，记录为后续视觉 polish。
+
+未来推进队列：
+
+1. Phase 39：Project Evidence Ranking & Case Study Diff Polish。审查项目页证据排序、case study diff 和首页 Selected work 对应证明力。
+2. Phase 40：Media Trust Layer。让音乐/照片从“生活质感入口”升级为可信媒体对象，重点处理真实播放状态、照片叙事和媒体来源。
+3. Phase 41：Knowledge Graph Thin Layer。只做轻量局部图谱和关系说明，不做大型知识图谱。
+4. Phase 42：Homepage Visual Polish。处理 OpenProfile 图片移动端裁切、why.here 默认显隐、highlight rail 节奏。
+5. Phase 43：Post-16 Content Review Gate。新增第 16 篇文章前必须复核首页、Command Center、Blog filters 和 Knowledge trails。

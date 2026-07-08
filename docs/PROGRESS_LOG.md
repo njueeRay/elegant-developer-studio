@@ -2214,3 +2214,46 @@ GitHub 推送修复：
 
 - Phase 38：Homepage Featured Editorial Policy。
 - 首页目前按 featured + date 取最新，下一阶段应明确 Featured essay / Selected work / Latest writing 的编辑规则，避免首页随着内容增长变成“最新但不一定最强”的自动列表。
+
+### 第三十八阶段：Homepage Featured Editorial Policy
+
+日期：2026-07-09
+
+状态：已完成本地实现。
+
+阶段判断：
+
+- 首页不是内容索引，而是公开策展面。
+- `featured: true` 已经被大量文章和项目使用，不能继续代表首页优先级。
+- 继续按日期或 featured 自动取内容，会让首页从“判断力展示”滑向“最新内容列表”。
+
+完成：
+
+- 新增 `src/data/home-editorial.ts` 作为首页编辑策略事实源。
+- 首页 Featured essay、Selected work、Editorially recent、Media note、Knowledge signal 均由策略文件指定。
+- 删除 `src/data/home.ts` 中旧 `highlights` 与 `knowledgeItems`，避免双事实源。
+- 首页重点卡片新增 `why.here(...)` 编辑理由。
+- `Latest from the studio` 改为 `Editorially recent`。
+- 媒体卡从含糊 Play/Pause 改为 `Preview cue` + 真实 `/music` 入口。
+- `validate:content` 增加首页编辑策略校验。
+- e2e 增加 Phase 38 首页编辑槽位测试。
+
+已验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，54 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：115 passed。
+- `npm run test:e2e:mobile`：115 passed。
+- targeted Chromium e2e：4 passed，覆盖 Phase 38、首页可达、主导航和旧 external proof 断言。
+- targeted Mobile e2e：3 passed，覆盖 Phase 38、首页移动无横向溢出和 Studio Pulse compact。
+- 本地截图复核：桌面 highlight rail 与移动 highlight rail 可接受；OpenProfile 图片移动端裁切略窄，留给 Phase 42。
+
+下一步：
+
+- Phase 39：Project Evidence Ranking & Case Study Diff Polish。
+- 先审查项目详情页证据排序与 case study diff，再考虑继续增加内容或首页模块。

@@ -493,3 +493,30 @@
 - 项目证据不展示腐烂的测试数量或旧部署 ID。
 - GitHub Actions 至少覆盖 lint、content validation、build 和 Chromium smoke e2e。
 - Command Center 满足基本 modal keyboard focus contract。
+
+## Phase 38-43：Editorial Surface 与证据深化
+
+目标：在内容规模达到 15 posts 后，停止盲目扩张首页模块，转向首页策展规则、项目证据排序、媒体可信层和轻量关系导航。
+
+当前原则：
+
+- 首页是 editorial surface，不是 latest feed。
+- 项目详情页必须优先证明真实工作，而不是展示漂亮包装。
+- 媒体层必须有真实对象状态，不能只提供装饰性质感。
+- Knowledge 关系只做局部路径，不做高噪音大型图谱。
+
+阶段队列：
+
+- Phase 38：Homepage Featured Editorial Policy。已完成本地实现，首页重点对象由 `src/data/home-editorial.ts` 定义。
+- Phase 39：Project Evidence Ranking & Case Study Diff Polish。
+- Phase 40：Media Trust Layer。
+- Phase 41：Knowledge Graph Thin Layer。
+- Phase 42：Homepage Visual Polish。
+- Phase 43：Post-16 Content Review Gate。
+
+验收：
+
+- 首页每个重点槽位都有 slug、proof href、why.here 理由和替换规则。
+- 项目页证据排序能先显示最强证据，而不是按写入顺序展示。
+- 媒体入口有真实路径、状态和来源。
+- 新增第 16 篇文章前，必须复核首页、Blog filters、Command Center、Knowledge trails 和 release evidence。

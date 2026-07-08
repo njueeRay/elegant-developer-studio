@@ -1076,3 +1076,41 @@ Knowledge kind 评估：
 
 - Phase 38：Homepage Featured Editorial Policy。
 - 明确首页 Featured essay、Selected work、Latest writing 的选择规则和证据优先级。
+
+### Phase 38 完成记录：Homepage Featured Editorial Policy
+
+状态：已完成本地实现。
+
+完成项：
+
+- [x] 新增首页编辑事实源：`src/data/home-editorial.ts`。
+- [x] 明确首页不是 latest feed，而是 editorial surface。
+- [x] Featured essay 固定为 `/blog/external-proof-over-portfolio-theater`。
+- [x] Selected work 固定为 `/projects/openprofile-agent-workflow`。
+- [x] `Latest from the studio` 改为 `Editorially recent`，不再自动取最近 featured。
+- [x] 首页重点卡片显示 `why.here(...)` 编辑理由。
+- [x] 媒体卡提供真实 `/music` 入口，避免只有本地状态切换。
+- [x] Knowledge signal 改为策略指定的真实 Knowledge 链接。
+- [x] `validate:content` 增加首页编辑策略校验。
+- [x] e2e 覆盖首页编辑槽位、why-here 理由、OpenProfile 精选和 Lumen 非首页精选。
+- [x] 本地桌面/移动截图复核通过。
+- [x] 完整 Chromium / Mobile 分片通过：115 / 115。
+
+阶段结论：
+
+- 首页的核心风险已从“内容不够”转为“策展规则不清导致叙事漂移”。
+- 当前不应继续增加首页模块，应先提升项目详情页证据排序和 case study diff 的证明力。
+- `featured: true` 以后只表示内容可展示，不承担首页选择语义。
+
+后续可推进 List：
+
+- [ ] Phase 39：Project Evidence Ranking & Case Study Diff Polish。
+  审查 OpenProfile、AnyReader、Lumen、Studio Knowledge Base、Codex Feishu Bridge 的证据排序和 before/after/proof 结构。
+- [ ] Phase 40：Media Trust Layer。
+  让音乐和照片具备更真实的对象状态：当前播放、来源、精选照片理由、相册叙事。
+- [ ] Phase 41：Knowledge Graph Thin Layer。
+  只做局部关系路径和“为什么关联”，避免大型图谱视觉噪音。
+- [ ] Phase 42：Homepage Visual Polish。
+  处理 OpenProfile 图片移动端裁切、why.here 显隐节奏、highlight rail 的视觉平衡。
+- [ ] Phase 43：Post-16 Content Review Gate。
+  新增第 16 篇文章前，强制复核首页、Blog filters、Command Center、Knowledge trails 和 release evidence。
