@@ -2076,3 +2076,45 @@ GitHub 推送修复：
 下一步：
 
 - Phase 35 再处理 dev route long-tail diagnosis。
+
+### 第三十五阶段：Dev Route Long-Tail Diagnosis
+
+日期：2026-07-08
+
+状态：已完成，待部署记录。
+
+阶段判断：
+
+- 上一轮发现的 29.3s AnyReader dev 长尾不能直接推导出内容架构问题。
+- 本阶段先补重复诊断器，用数据判断是否存在稳定长尾。
+- 如果长尾只出现在首轮或偶发资源状态里，重构 MDX 注册表就是过度工程。
+
+完成：
+
+- 新增 `scripts/diagnose-route-long-tail.mjs`。
+- 新增 `npm run perf:routes:long-tail`。
+- 新增 `npm run perf:routes:long-tail:raynode`。
+- 支持默认重点 detail routes、release detail routes、显式 route 列表、轮次、延迟、阈值和 fail-on-slow。
+- 输出 route 级 `first / p50 / p95 / max / warm max / slow / failed`。
+- README 增加 long-tail 诊断命令。
+
+已验证：
+
+- `npm run lint`：通过。
+- `npm run release:evidence -- --local-quality-passed`：通过。
+- `npm run validate:release-evidence`：通过。
+- `npm run perf:routes:long-tail`：10 routes，6 rounds，60 samples，p95 126ms，max 870ms，0 slow，0 failed。
+- `ROUTE_LONG_TAIL_ROUNDS=3 npm run perf:routes:long-tail -- --release-routes`：35 routes，105 samples，p95 146ms，max 235ms，0 slow，0 failed。
+- `ROUTE_LONG_TAIL_ROUNDS=2 npm run perf:routes:long-tail:raynode`：35 routes，70 samples，p95 354ms，max 1351ms，0 slow，0 failed。
+
+结论：
+
+- AnyReader 项目详情本轮没有复现 3s 以上长尾。
+- 本地默认诊断里 AnyReader 首轮 870ms，warm max 61ms，符合冷启动/首编译特征。
+- 生产最大样本 `/blog/agent-handoff-loop` 1351ms，第二轮 276ms，低于阈值。
+- 暂不重构 `src/lib/content.ts`、MDX 静态导入或内容注册表。
+
+下一步：
+
+- Phase 36：External Proof Content Slice。
+- 内容继续向外部证据倾斜，不增加无证据的新 surface。

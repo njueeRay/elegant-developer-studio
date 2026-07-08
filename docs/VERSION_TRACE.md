@@ -1552,6 +1552,42 @@ Production host：`https://raynode.me`
 - 本阶段没有重写文章正文，优先修读后用途和 Lab 组件语义；后续仍需要继续增加外部证据型内容。
 - Dev Route Long-Tail Diagnosis 顺延为 Phase 35。
 
+## Unreleased - 第三十五阶段 Dev Route Long-Tail Diagnosis
+
+日期：2026-07-08
+Primary implementation commit：待记录
+Deployment record commit：待记录
+Deployed source commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 新增 `scripts/diagnose-route-long-tail.mjs`。
+- 新增 `npm run perf:routes:long-tail`。
+- 新增 `npm run perf:routes:long-tail:raynode`。
+- 支持默认重点 detail routes、release detail routes、显式 `--routes=`、轮次、延迟、阈值和 fail-on-slow。
+- README、项目地图、审计 TODO、进度日志和当前上下文记录 Phase 35 判断。
+
+验证：
+
+- `npm run lint`：通过。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run perf:routes:long-tail`：10 routes，6 rounds，60 samples，p95 126ms，max 870ms，0 slow，0 failed。
+- `ROUTE_LONG_TAIL_ROUNDS=3 npm run perf:routes:long-tail -- --release-routes`：35 routes，105 samples，p95 146ms，max 235ms，0 slow，0 failed。
+- `ROUTE_LONG_TAIL_ROUNDS=2 npm run perf:routes:long-tail:raynode`：35 routes，70 samples，p95 354ms，max 1351ms，0 slow，0 failed。
+
+结论：
+
+- AnyReader 项目详情没有稳定长尾；本轮本地默认诊断首轮 870ms，warm max 61ms。
+- 生产最大样本 `/blog/agent-handoff-loop` 为 1351ms，第二轮 276ms，低于 3000ms 阈值。
+- 当前不应重构 `src/lib/content.ts`、MDX 静态导入或内容注册表。
+
+残余风险：
+
+- 诊断脚本使用 HTTP fetch，不覆盖浏览器 hydration 和客户端交互耗时；UI 行为仍由 Playwright 分片负责。
+- 如果未来 `--fail-on-slow` 稳定失败，再进入内容加载架构重审。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

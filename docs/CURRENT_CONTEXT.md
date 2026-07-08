@@ -1,12 +1,12 @@
 # 当前上下文
 
-更新时间：2026-07-04
+更新时间：2026-07-08
 
 ## 当前主线
 
-Phase 31：Visual System Polish Without Adding Surfaces 已完成并部署到 RayNode。
+Phase 35：Dev Route Long-Tail Diagnosis 已完成。
 
-Phase 31 不新增页面，只处理视觉系统里真实影响用户体验的细节：移动端 RayNode 状态 badge、Command Center 小屏高度与滚动、阅读详情页全局 cursor 光场降噪。当前主线可以转入 Phase 32：Content Density & Studio Pulse Restraint。
+当前主线可以转入 Phase 36：External Proof Content Slice。Phase 35 的核心结论是：AnyReader 项目详情和 MDX detail routes 没有稳定长尾，当前不应重构 `src/lib/content.ts`、MDX 静态导入或内容注册表。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -16,6 +16,8 @@ Phase 31 不新增页面，只处理视觉系统里真实影响用户体验的�
 - `src/lib/command-index.ts` 是 Command Center 索引事实源。
 - `/command-index.json` 是 Command Center 按需加载的公开索引 payload。
 - `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
+- `scripts/measure-route-timing.mjs` 是单轮 route timing 观测脚本。
+- `scripts/diagnose-route-long-tail.mjs` 是重复 route timing 诊断脚本，用于判断 detail route 长尾是否稳定复现。
 - `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
 - `/health.json` 是公开轻量健康端点。
 - `scripts/verify-raynode.mjs` 是 RayNode HTTP health 检查脚本。
@@ -58,6 +60,8 @@ RayNode 当前状态：
 - `src/data/writing.ts`：Writing tracks、受控 intent 和 citation guide。
 - `src/app/health.json/route.ts`：公开健康端点。
 - `scripts/verify-raynode.mjs`：RayNode health CLI。
+- `scripts/measure-route-timing.mjs`：单轮 route timing CLI。
+- `scripts/diagnose-route-long-tail.mjs`：重复 route timing CLI。
 - `ops/raynode-runbook.md`：部署、健康检查、回滚和故障定位手册。
 - `ops/raynode-systemd.service`：systemd 模板。
 - `ops/Caddyfile.raynode.example`：Caddy 模板。
@@ -209,6 +213,19 @@ RayNode 当前状态：
 - 线上验证：`raynode:health` 18/18，`raynode:health:full` 53/53，`raynode:smoke` 48/48，production `perf:routes:raynode` p95 878ms / max 1357ms / 0 slow / 0 failed。
 - Production fetch 确认 `/lab`、`/blog/agent-handoff-loop` 和 `/command-index.json` 均包含本阶段新增内容信号。
 
+## 已完成的 Phase 35 切片
+
+- 阶段名：Dev Route Long-Tail Diagnosis。
+- 新增 `scripts/diagnose-route-long-tail.mjs`。
+- 新增 `npm run perf:routes:long-tail`。
+- 新增 `npm run perf:routes:long-tail:raynode`。
+- 诊断默认聚焦 AnyReader、OpenProfile、Lumen、相关博客和 Knowledge 详情路由。
+- 诊断输出 route 级 `first / p50 / p95 / max / warm max / slow / failed`。
+- 本地默认诊断：10 routes，6 rounds，60 samples，p95 126ms，max 870ms，0 slow，0 failed。
+- 本地 release detail 诊断：35 routes，105 samples，p95 146ms，max 235ms，0 slow，0 failed。
+- 生产 release detail 诊断：35 routes，70 samples，p95 354ms，max 1351ms，0 slow，0 failed。
+- 结论：AnyReader 没有稳定长尾；当前不应重构 `src/lib/content.ts`、MDX 静态导入或内容注册表。
+
 ## 已完成的 Phase 31 切片
 
 - 首页 RayNode 状态 badge 拆成主状态 `Live on RayNode` 和工程细节 `Next.js standalone / Caddy`，移动端更短、更稳。
@@ -267,6 +284,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. Phase 35：Dev Route Long-Tail Diagnosis。
-2. 对 `/projects/anyreader-interface-teardown` 和其他 detail routes 做重复 dev timing。
-3. 只有在长尾稳定复现后，才审查 MDX 静态导入、图片处理或 Next dev 编译链路。
+1. Phase 36：External Proof Content Slice。
+2. 继续增加外部证据型文章或项目，但每篇必须有真实对象、问题、取舍和证据入口。
+3. 只有当 `perf:routes:long-tail -- --fail-on-slow` 稳定失败时，才重新审查 MDX 静态导入、图片处理或 Next dev 编译链路。

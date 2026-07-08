@@ -22,7 +22,9 @@
     "test:e2e:local": "npm run test:e2e:chromium && npm run test:e2e:mobile",
     "test:e2e:smoke": "playwright test --project=chromium --grep \"serves|primary surfaces|command menu opens real lab route\" --workers=1",
     "perf:routes": "node scripts/measure-route-timing.mjs",
-    "perf:routes:raynode": "ROUTE_TIMING_BASE_URL=https://raynode.me node scripts/measure-route-timing.mjs --release-routes"
+    "perf:routes:raynode": "ROUTE_TIMING_BASE_URL=https://raynode.me node scripts/measure-route-timing.mjs --release-routes",
+    "perf:routes:long-tail": "node scripts/diagnose-route-long-tail.mjs",
+    "perf:routes:long-tail:raynode": "ROUTE_TIMING_BASE_URL=https://raynode.me node scripts/diagnose-route-long-tail.mjs --release-routes"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

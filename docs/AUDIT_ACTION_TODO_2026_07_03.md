@@ -970,3 +970,47 @@ Knowledge kind 评估：
 - Phase 35：Dev Route Long-Tail Diagnosis。
 - 继续使用 Phase 33 的 timing probe，针对 AnyReader 项目详情与 MDX detail routes 做重复观测。
 - 内容侧继续积累“外部证据型文章”，但不再只写站点自述。
+
+### Phase 35：Dev Route Long-Tail Diagnosis
+
+优先级：中高。
+
+状态：已完成，待部署记录。
+
+锚定 milestone：Repeated Detail Route Timing Probe。
+
+阶段判断：
+
+- Phase 33 观察到 `/projects/anyreader-interface-teardown` 在桌面 dev 分片中出现过 29.3s 长尾，但移动分片和生产 route timing 都未复现。
+- 本阶段不应直接重构内容加载层；必须先建立可重复诊断入口。
+- 目标不是把 dev server 首编译完全消除，而是判断长尾是否稳定、是否集中在某些 route、是否超过可接受阈值。
+
+完成：
+
+- 新增 `scripts/diagnose-route-long-tail.mjs`。
+- 新增 `npm run perf:routes:long-tail`。
+- 新增 `npm run perf:routes:long-tail:raynode`。
+- 支持默认重点路由、release detail routes、显式 `--routes=`、轮次和阈值配置。
+- 输出 route 级 `first / p50 / p95 / max / warm max / slow / failed`。
+- README 增加 long-tail 诊断命令，并把下一阶段改为 Phase 36 外部证据内容切片。
+
+已验证：
+
+- `npm run lint`：通过。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run perf:routes:long-tail`：10 routes，6 rounds，60 samples，p95 126ms，max 870ms，slow 0，failed 0。
+- `ROUTE_LONG_TAIL_ROUNDS=3 npm run perf:routes:long-tail -- --release-routes`：35 routes，105 samples，p95 146ms，max 235ms，slow 0，failed 0。
+- `ROUTE_LONG_TAIL_ROUNDS=2 npm run perf:routes:long-tail:raynode`：35 routes，70 samples，p95 354ms，max 1351ms，slow 0，failed 0。
+
+结论：
+
+- AnyReader 项目详情没有稳定长尾；本地默认诊断中首轮 870ms，warm max 61ms。
+- 生产最大样本 `/blog/agent-handoff-loop` 为 1351ms，第二轮 276ms，仍低于 3000ms 阈值。
+- 当前不应重构 `src/lib/content.ts`、MDX 静态导入或内容注册表。
+
+下一阶段建议：
+
+- Phase 36：External Proof Content Slice。
+- 继续增加外部证据型文章或项目，但每篇必须有真实对象、问题、取舍和证据入口。
+- 如果未来 `perf:routes:long-tail -- --fail-on-slow` 稳定失败，再进入内容加载架构重审。

@@ -1006,3 +1006,30 @@ GitHub Actions：
 1. Phase 35：Dev Route Long-Tail Diagnosis。
 2. 对 AnyReader 项目详情和 MDX detail routes 做重复 timing。
 3. 继续增加外部证据型文章，但每篇必须有真实对象、问题、取舍和证据入口。
+
+## 24. 第三十五阶段 Dev Route Long-Tail Diagnosis
+
+本阶段把 Phase 33 留下的 `/projects/anyreader-interface-teardown` 偶发 29.3s dev 长尾，转化为可重复诊断入口，而不是直接重构内容加载层。
+
+完成内容：
+
+- 新增 `scripts/diagnose-route-long-tail.mjs`。
+- 新增 `npm run perf:routes:long-tail`，默认重复测量 AnyReader、OpenProfile、Lumen、相关博客和 Knowledge 详情路由。
+- 新增 `npm run perf:routes:long-tail:raynode`，对生产 release detail routes 做重复测量。
+- 诊断输出每条路由的 `first / p50 / p95 / max / warm max / slow / failed`。
+- 支持 `ROUTE_LONG_TAIL_ROUNDS`、`ROUTE_LONG_TAIL_DELAY_MS`、`ROUTE_TIMING_THRESHOLD_MS`、`--release-routes`、`--routes=` 和 `--fail-on-slow`。
+- README 增加 long-tail 诊断命令。
+
+阶段判断：
+
+- 当前证据不支持重构 `src/lib/content.ts` 或 MDX 静态导入策略。
+- 默认本地 10 条重点路由、6 轮、60 个样本：max 870ms，slow 0，failed 0；AnyReader 项目首轮 870ms，warm max 61ms。
+- 全部 release detail routes 本地 35 条、3 轮、105 个样本：max 235ms，slow 0，failed 0。
+- 生产 release detail routes 35 条、2 轮、70 个样本：max 1351ms，slow 0，failed 0。
+- 可疑慢样本都表现为 first-hit 或网络首轮成本，不是持续应用慢。
+
+下一步：
+
+1. Phase 36：External Proof Content Slice。
+2. 继续增加外部证据型内容，但只接受有真实对象、问题、取舍和证据入口的文章或项目。
+3. 只有当 `perf:routes:long-tail -- --fail-on-slow` 稳定失败时，才重新讨论内容加载架构。
