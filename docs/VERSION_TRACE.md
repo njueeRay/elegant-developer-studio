@@ -1686,6 +1686,7 @@ Production host：`https://raynode.me`
 
 日期：2026-07-09
 Primary implementation commit：`004c827`
+Deployed source commit：`baececf`
 Deployment record commit：待记录
 Production host：`https://raynode.me`
 
@@ -1712,6 +1713,11 @@ Production host：`https://raynode.me`
 - `npm run test:e2e:chromium`：115 passed。
 - `npm run test:e2e:mobile`：115 passed。
 - 本地截图复核：桌面与移动 highlight rail 可接受。
+- `npm run deploy:raynode`：部署到 `baececf`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- production targeted homepage editorial e2e：1 passed。
 
 结论：
 

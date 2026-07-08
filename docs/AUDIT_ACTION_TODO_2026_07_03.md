@@ -1079,7 +1079,7 @@ Knowledge kind 评估：
 
 ### Phase 38 完成记录：Homepage Featured Editorial Policy
 
-状态：已完成本地实现。
+状态：已完成并部署到 RayNode。
 
 完成项：
 
@@ -1095,6 +1095,9 @@ Knowledge kind 评估：
 - [x] e2e 覆盖首页编辑槽位、why-here 理由、OpenProfile 精选和 Lumen 非首页精选。
 - [x] 本地桌面/移动截图复核通过。
 - [x] 完整 Chromium / Mobile 分片通过：115 / 115。
+- [x] 部署到 RayNode：`baececf`。
+- [x] 线上 health / full routes / smoke 通过：18/18、55/55、50/50。
+- [x] 线上 Phase 38 homepage editorial targeted e2e 通过：1 passed。
 
 阶段结论：
 

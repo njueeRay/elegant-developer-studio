@@ -2219,7 +2219,7 @@ GitHub 推送修复：
 
 日期：2026-07-09
 
-状态：已完成本地实现。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -2252,6 +2252,11 @@ GitHub 推送修复：
 - targeted Chromium e2e：4 passed，覆盖 Phase 38、首页可达、主导航和旧 external proof 断言。
 - targeted Mobile e2e：3 passed，覆盖 Phase 38、首页移动无横向溢出和 Studio Pulse compact。
 - 本地截图复核：桌面 highlight rail 与移动 highlight rail 可接受；OpenProfile 图片移动端裁切略窄，留给 Phase 42。
+- RayNode 部署：`baececf`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- production targeted homepage editorial e2e：1 passed。
 
 下一步：
 

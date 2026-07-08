@@ -4,7 +4,7 @@
 
 ## 当前主线
 
-Phase 38：Homepage Featured Editorial Policy 已完成本地实现。
+Phase 38：Homepage Featured Editorial Policy 已完成并部署到 RayNode。
 
 当前主线可以转入 Phase 39：Project Evidence Ranking & Case Study Diff Polish。Phase 38 的核心结论是：首页不是自动内容索引，而是编辑策展面；Featured essay、Selected work、Editorially recent、Media note 和 Knowledge signal 必须来自明确的首页编辑策略，不能继续依赖 `featured: true + date order`。
 
@@ -39,14 +39,14 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`9950eeb`。
-- `/release-evidence.json` 返回部署提交 `9950eeb`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
+- 当前服务器源码提交：`baececf`。
+- `/release-evidence.json` 返回部署提交 `baececf`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
 - `/health.json` 返回 `status: ok`。
 - `/command-index.json` 返回 112 command items，并包含 `/blog/ursb-personal-site-object-grammar` 与 `/knowledge/personal-site-object-grammar`。
 - `npm run raynode:health`：18/18 passed。
 - `npm run raynode:health:full`：55/55 passed。
 - `npm run raynode:smoke`：50 passed。
-- Phase 37 production targeted Content Scale test：1 passed。
+- Phase 38 production targeted homepage editorial test：1 passed。
 
 ## 当前事实源
 
@@ -134,6 +134,8 @@ RayNode 当前状态：
 - `npm run test:e2e:smoke`：52 passed。
 - `npm run test:e2e:chromium`：115 passed。
 - `npm run test:e2e:mobile`：115 passed。
+- RayNode 已部署 `baececf`。
+- 线上验证：`raynode:health` 18/18，`raynode:health:full` 55/55，`raynode:smoke` 50/50，Phase 38 production targeted homepage editorial 1 passed。
 - 下一阶段：Phase 39，审查项目页证据排序与 case study diff，优先提升 OpenProfile / AnyReader / Lumen 等项目的证明力。
 
 ## 已完成的 Phase 26 切片

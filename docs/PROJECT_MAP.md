@@ -1143,6 +1143,9 @@ GitHub Actions：
 - Chromium e2e：115 passed。
 - Mobile e2e：115 passed。
 - 本地桌面和移动截图复核：highlight rail 无明显溢出；OpenProfile 图像移动端略窄裁切，记录为后续视觉 polish。
+- RayNode 已部署 `baececf`。
+- 线上 health：18/18；线上 full routes：55/55；线上 smoke：50/50。
+- 线上 Phase 38 homepage editorial targeted e2e：1 passed。
 
 未来推进队列：
 
