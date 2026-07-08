@@ -2024,5 +2024,50 @@ GitHub 推送修复：
 
 下一步：
 
-- 启动 Phase 34：Dev Route Long-Tail Diagnosis。
-- 为 detail routes 做重复 timing 或专项 profiler，判断是否与 MDX 静态导入、Next dev 编译、图片、Playwright worker 状态有关。
+- 启动 Phase 34：Intent-Routed Content Quality Polish。
+- 先响应用户对博客和 Lab 文字内容的审查要求；Dev Route Long-Tail Diagnosis 顺延为 Phase 35。
+
+### 第三十四阶段：Intent-Routed Content Quality Polish
+
+日期：2026-07-08
+
+状态：已完成，待部署记录。
+
+阶段判断：
+
+- 本轮不是“随手润色文案”，而是把用户的模糊反馈重构为公开内容的读者动作问题。
+- 使用 `ai-collaboration-prompts` 的 `expert-intent-reconstruction.md` 和 `document-cocreation-protocol.md` 两份 reference。
+- 博客正文已有较强判断力，优先补“读完怎么用”的信号。
+- Lab 组件说明偏内部维护语气，优先补“访客为什么要看”和“下一次怎么复用”的合约。
+
+完成：
+
+- `LabComponent` 增加 `readerValue` 和 `nextUse`。
+- `/lab` 预览卡新增 `Visitor value`，详情面板新增 `next.use`。
+- Lab 列表行从 evidence 摘要切换为 visitor value 摘要。
+- `ComponentPreview` trace 模式新增 `Next use`。
+- Command Center 的 Lab 结果描述改为 visitor-facing value，并把 `nextUse` 纳入关键词。
+- 博客详情页 `Reading quality context` 增加 writing track promise。
+- 博客详情页引用面板改为当前文章级 `read.use("slug")`。
+- e2e 增加 Lab visitor value / next-use 与博客 read.use / promise 断言。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,436 bytes。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：10 passed，覆盖 Lab visitor value / next-use、博客 read.use / promise、移动无溢出和 Command Center Lab 路径。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run test:e2e:smoke`：50 passed。
+- `npm run perf:routes`：10 routes，p95 524ms，max 524ms，0 slow，0 failed。
+- `npm run test:e2e:chromium`：107 passed。
+- `npm run test:e2e:mobile`：107 passed。
+- Browser rendered check：`/lab`、`/blog/agent-handoff-loop`、首页 Command Center 搜索 `visitor value` 均可见且 console error/warn 0。
+- 390px 移动端 `/lab` 和 `/blog/agent-handoff-loop` 均无横向溢出。
+
+下一步：
+
+- 提交并部署到 RayNode。
+- Phase 35 再处理 dev route long-tail diagnosis。

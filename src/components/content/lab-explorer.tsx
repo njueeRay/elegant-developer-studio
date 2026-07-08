@@ -101,7 +101,7 @@ function ComponentPreview({ component }: { component: LabComponent }) {
           <div className="component-preview-card" data-category={component.category}>
             <span>{component.category}</span>
             <strong>{component.name}</strong>
-            <p>{component.signal}</p>
+            <p>{component.readerValue}</p>
             <small>
               {component.status} / {component.shortcut}
             </small>
@@ -118,6 +118,10 @@ function ComponentPreview({ component }: { component: LabComponent }) {
           <div>
             <dt>Reusable for</dt>
             <dd>{component.reusableFor.join(" / ")}</dd>
+          </div>
+          <div>
+            <dt>Next use</dt>
+            <dd>{component.nextUse}</dd>
           </div>
           <div>
             <dt>Evidence</dt>
@@ -241,7 +245,10 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
             <p>{selectedComponent.description}</p>
             <div className="lab-preview-signal">
               <Sparkles size={16} />
-              <strong>{selectedComponent.signal}</strong>
+              <div>
+                <span>Visitor value</span>
+                <strong>{selectedComponent.readerValue}</strong>
+              </div>
             </div>
             <div className="lab-preview-meta">
               <span>
@@ -270,7 +277,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
       <div className="lab-index-strip" aria-label="Lab summary">
         <div>
           <p className="section-kicker blue">Component registry</p>
-          <strong>Reusable surfaces with source, route, proof, and next-use context.</strong>
+          <strong>Reusable surfaces with visitor value, source, route, proof, and next-use context.</strong>
         </div>
         <dl>
           <div>
@@ -311,7 +318,7 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
                     {component.category} / {component.component}
                   </span>
                   <strong>{component.name}</strong>
-                  <small>{component.evidence}</small>
+                  <small>{component.readerValue}</small>
                   <SourceReveal
                     label="source"
                     path={component.source}
@@ -335,6 +342,10 @@ export function LabExplorer({ components, categories, experiments, gates }: LabE
                 <h2>{selectedComponent.component}</h2>
               </div>
               <p>{selectedComponent.description}</p>
+              <div className="lab-next-use">
+                <span>next.use</span>
+                <p>{selectedComponent.nextUse}</p>
+              </div>
               <div className="lab-reuse-list" aria-label="Reusable contexts">
                 {selectedComponent.reusableFor.map((item) => (
                   <span key={item}>{item}</span>

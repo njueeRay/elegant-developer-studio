@@ -11,6 +11,8 @@ export type LabComponent = {
   source: string;
   route: string;
   description: string;
+  readerValue: string;
+  nextUse: string;
   signal: string;
   evidence: string;
   reusableFor: string[];
@@ -42,6 +44,8 @@ export const labComponents: LabComponent[] = [
     route: "/",
     description:
       "A global command surface for routes, content, projects, knowledge, tools, profile signals, and recent actions.",
+    readerValue: "Shows visitors that the site can be operated, not merely browsed.",
+    nextUse: "Use it when a new route, content type, or quick action should become reachable in one keystroke.",
     signal: "Keyboard-first navigation with context ranking and grouped results.",
     evidence: "Verified across home, writing, projects, photos, music, knowledge, uses, and about.",
     reusableFor: ["Navigation", "Search", "Quick actions"],
@@ -58,6 +62,8 @@ export const labComponents: LabComponent[] = [
     route: "/knowledge",
     description:
       "A compact reusable filter toolbar with result count, active state, horizontal mobile behavior, and clear action.",
+    readerValue: "Makes archives feel controlled by the visitor instead of hidden behind page order.",
+    nextUse: "Use it for any list where the filter state should be visible, countable, and reversible.",
     signal: "One filter model now serves writing, projects, photos, knowledge, uses, and Lab.",
     evidence: "Prevents hidden state by pairing every filter with counts and a reset control.",
     reusableFor: ["Archives", "Media", "Component inventory"],
@@ -74,6 +80,8 @@ export const labComponents: LabComponent[] = [
     route: "/",
     description:
       "A Personal OS pulse surface for writing, building, knowledge, media, source traces, and guided prompts.",
+    readerValue: "Gives the homepage a live studio signal without turning the first screen into a dashboard.",
+    nextUse: "Use it when the page needs current context, but the context must stay calm and editorial.",
     signal: "Shows motion and inspectable provenance without turning the homepage into a dashboard.",
     evidence: "Anchors the first screen with current context, source-backed cards, and Ask Me Terminal.",
     reusableFor: ["Home", "About", "Lab quality summary"],
@@ -90,6 +98,8 @@ export const labComponents: LabComponent[] = [
     route: "/lab",
     description:
       "A component zoo for the source-backed personal homepage grammar: pulse cards, guided prompts, object rows, data-source badges, and density guardrails.",
+    readerValue: "Lets experimental personal-OS ideas stay inspectable before they are allowed into the homepage.",
+    nextUse: "Use it as the holding area for playful interactions, density tests, and source-backed modules.",
     signal: "Transfers the strongest ursb.me lesson into a reusable system without copying its 27-card density.",
     evidence: "Pairs style genome, object grammar, Ask Me Terminal, and flaw ledger in one inspectable Lab surface.",
     reusableFor: ["Home", "Lab", "About", "Contact", "Portfolio OS"],
@@ -106,6 +116,8 @@ export const labComponents: LabComponent[] = [
     route: "/knowledge",
     description:
       "A linkable public memory object with type, status, source, signal, related links, tags, and copyable reference.",
+    readerValue: "Turns a private project rule into a public object that can be cited and reopened.",
+    nextUse: "Use it for decisions, patterns, snippets, and lessons that should outlive one blog post.",
     signal: "Turns private project memory into a reusable public trail.",
     evidence: "Feeds Command Center and Feishu trace through stable slugs.",
     reusableFor: ["Knowledge", "Notes", "Decision records"],
@@ -122,6 +134,8 @@ export const labComponents: LabComponent[] = [
     route: "/uses",
     description:
       "A workbench surface for tools, workflows, automation, publishing rhythm, and copyable stack references.",
+    readerValue: "Explains how the studio actually works, not just which logos belong in the stack.",
+    nextUse: "Use it when tools need to be connected to workflow, cadence, and decision criteria.",
     signal: "Explains how the studio works instead of listing logos.",
     evidence: "Uses data model, category filtering, copy feedback, and workflow panels.",
     reusableFor: ["Uses", "Workflow", "Stack pages"],
@@ -138,6 +152,8 @@ export const labComponents: LabComponent[] = [
     route: "/about",
     description:
       "A profile system for principles, timeline focus, capabilities, working agreements, and contact routes.",
+    readerValue: "Makes the person behind the system legible without collapsing into a resume template.",
+    nextUse: "Use it for profile sections that must balance personality, capability, and collaboration rules.",
     signal: "Makes the person inspectable without becoming a resume template.",
     evidence: "Adds principle selection, timeline focus, copy intro, and command routes.",
     reusableFor: ["About", "Contact", "Portfolio OS"],
@@ -154,6 +170,8 @@ export const labComponents: LabComponent[] = [
     route: "/music",
     description:
       "A refined music surface with play state, track selection, progress, volume, current context, and now playing card.",
+    readerValue: "Adds atmosphere through real controls instead of pretending that mood is a background image.",
+    nextUse: "Use it when a media surface should show state, taste, and interaction in a compact frame.",
     signal: "Adds atmosphere with real controls instead of decorative audio furniture.",
     evidence: "Supports play, pause, previous, next, seek, volume, and active track display.",
     reusableFor: ["Music", "Home media", "Now playing"],
@@ -170,6 +188,8 @@ export const labComponents: LabComponent[] = [
     route: "/photos",
     description:
       "A responsive photo archive with featured filtering, tag filtering, image grid, and lightbox browsing.",
+    readerValue: "Lets personal memory become browsable without making photos feel like stock decoration.",
+    nextUse: "Use it for visual archives where tags, featured moments, and focused viewing all matter.",
     signal: "Keeps personal memory visually rich while still searchable.",
     evidence: "FilterBar, featured band, grid, keyboard-safe close, previous, and next states.",
     reusableFor: ["Photos", "Albums", "Project media"],
@@ -186,6 +206,8 @@ export const labComponents: LabComponent[] = [
     route: "/blog/interface-is-a-promise",
     description:
       "A readable code frame with toolbar metadata, language label, and copy feedback for MDX writing.",
+    readerValue: "Lets technical texture appear where it helps comprehension, not as decorative code noise.",
+    nextUse: "Use it whenever code examples should be copied, trusted, and read inside long-form writing.",
     signal: "Lets programmer identity show through useful source material, not fake terminal decoration.",
     evidence: "Rendered inside MDX articles and verified through the content build.",
     reusableFor: ["Blog", "Knowledge", "Lab examples"],
@@ -202,6 +224,8 @@ export const labComponents: LabComponent[] = [
     route: "/collaboration",
     description:
       "A public governance surface for contribution flow, review rules, creative direction, and traceable collaboration.",
+    readerValue: "Shows how feedback becomes structured work instead of disappearing into chat history.",
+    nextUse: "Use it for public collaboration rules, creative intake, and contribution expectations.",
     signal: "Turns loose feedback and creative ideas into a structured intake, review, and backlog system.",
     evidence: "Connected from Contact, Command Center, sitemap, CONTRIBUTING, PR template, and Feishu phase docs.",
     reusableFor: ["Governance", "Creative backlog", "Contribution flow"],
@@ -218,6 +242,8 @@ export const labComponents: LabComponent[] = [
     route: "/lab",
     description:
       "A compact post-command trace that confirms route execution with a code-like command string and contextual metadata.",
+    readerValue: "Makes navigation feel executable while still telling the visitor what actually happened.",
+    nextUse: "Use it after keyboard actions, copy actions, and route transitions that deserve lightweight confirmation.",
     signal: "Makes keyboard navigation feel executable without turning the page into a fake terminal.",
     evidence: "Session-backed trace survives route transition, clears on mismatched routes, and is covered by e2e.",
     reusableFor: ["Command Center", "Navigation feedback", "Developer signature"],
@@ -234,6 +260,8 @@ export const labComponents: LabComponent[] = [
     route: "/knowledge",
     description:
       "A subtle source/ref reveal pattern that links content cards and Lab rows to GitHub source files.",
+    readerValue: "Lets a curious visitor inspect provenance without forcing source paths into the main reading layer.",
+    nextUse: "Use it wherever a visible object should expose its file, ref, or implementation trail on demand.",
     signal: "Turns provenance from decorative text into an inspectable source link.",
     evidence: "Knowledge, project, and Lab source links resolve to GitHub blob URLs.",
     reusableFor: ["Knowledge", "Projects", "Lab", "Case studies"],
@@ -250,6 +278,8 @@ export const labComponents: LabComponent[] = [
     route: "/blog/interface-is-a-promise",
     description:
       "A lightweight reading instrument that tracks the active article section, exposes a code-like focus command, and copies stable section refs.",
+    readerValue: "Gives long-form posts a small interactive signature that helps rather than interrupts reading.",
+    nextUse: "Use it on dense articles, Knowledge details, and case studies that benefit from stable section references.",
     signal: "Adds a playful developer signature to long-form reading without interrupting the prose.",
     evidence: "Uses real TOC ids, IntersectionObserver, copy feedback, mobile bottom chrome, and reduced-motion CSS.",
     reusableFor: ["Blog", "Knowledge detail", "Project case studies", "Reading focus lens"],
@@ -266,6 +296,8 @@ export const labComponents: LabComponent[] = [
     route: "/lab",
     description:
       "An interactive Lab preview surface with preview, trace, and source modes for selected components.",
+    readerValue: "Turns Lab from a list of component names into an inspectable design-system workbench.",
+    nextUse: "Use it when a component needs to show route behavior, provenance, reuse intent, and source access together.",
     signal: "Moves Lab from metadata registry toward inspectable component behavior.",
     evidence: "Preview tabs expose route, reuse targets, evidence, import snippet, and GitHub source link.",
     reusableFor: ["Lab", "Design system", "Component QA"],
@@ -278,19 +310,19 @@ export const labExperiments: LabExperiment[] = [
   {
     step: "01",
     title: "Component registry",
-    description: "Make reusable surfaces searchable, copyable, and traceable from one public page.",
+    description: "Make reusable surfaces searchable, copyable, traceable, and understandable to a first-time visitor.",
     status: "Stable",
   },
   {
     step: "02",
     title: "Preview states",
-    description: "Let a selected component expose source, route, reuse targets, quality proof, and import path.",
+    description: "Let a selected component expose visitor value, source, route, reuse targets, quality proof, and import path.",
     status: "Iterating",
   },
   {
     step: "03",
     title: "ComponentPreview",
-    description: "Render isolated component examples once examples become richer than static metadata.",
+    description: "Render richer component examples when static metadata can no longer explain the interaction contract.",
     status: "Iterating",
   },
   {
@@ -322,7 +354,7 @@ export const labExperiments: LabExperiment[] = [
 export const labQualityGates: LabQualityGate[] = [
   {
     name: "Real usage",
-    detail: "Every component in Lab must have an active route, source file, or explicit planned reason.",
+    detail: "Every component in Lab must have an active route, source file, visitor value, and explicit next-use context.",
     signal: "No empty showcase objects",
   },
   {
@@ -337,7 +369,7 @@ export const labQualityGates: LabQualityGate[] = [
   },
   {
     name: "Useful interaction",
-    detail: "Motion and micro-interactions must reveal state, reduce effort, or support navigation.",
+    detail: "Motion, copy, and micro-interactions must reveal state, reduce effort, or support navigation.",
     signal: "No cute-only behavior",
   },
 ];

@@ -93,6 +93,6 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- Phase 34：Dev Route Long-Tail Diagnosis。
+- Phase 35：Dev Route Long-Tail Diagnosis。
 - 首选切片：复现并定位 dev server 偶发长尾，优先观察 MDX 静态导入、项目详情页和 release evidence 读取路径。
 - 暂缓：为偶发本机资源异常重写内容架构、继续扩展新 surface、常驻宠物、大型知识图谱、高强度背景特效。

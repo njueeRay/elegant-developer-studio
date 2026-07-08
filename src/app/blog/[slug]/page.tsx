@@ -103,10 +103,12 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span>writing.track</span>
               <strong>{writingTrack.label}</strong>
               <p>{writingTrack.description}</p>
+              <small>{writingTrack.promise}</small>
             </div>
             <div>
-              <span>{citationGuide.command}</span>
+              <span>{`read.use("${post.slug}")`}</span>
               <strong>{citationGuide.label}</strong>
+              <p>{citationGuide.command}</p>
               <ul>
                 {citationGuide.items.map((item) => (
                   <li key={item}>{item}</li>

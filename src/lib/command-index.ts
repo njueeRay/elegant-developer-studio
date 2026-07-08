@@ -237,7 +237,7 @@ export function getCommandItems(): CommandItem[] {
     id: `lab-${component.slug}`,
     kind: "lab",
     title: component.name,
-    description: component.description,
+    description: component.readerValue,
     href: `/lab#${component.slug}`,
     meta: component.status,
     keywords: [
@@ -245,6 +245,7 @@ export function getCommandItems(): CommandItem[] {
       component.category,
       component.component,
       component.source,
+      component.nextUse,
       ...component.reusableFor,
     ],
   }));

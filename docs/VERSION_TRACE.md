@@ -1506,6 +1506,46 @@ Production host：`https://raynode.me`
 - 桌面 dev 分片中 `/projects/anyreader-interface-teardown` 曾出现 29.3s 长尾，但移动分片和生产 route timing 未复现。
 - Phase 34 应先做重复 timing 诊断，不直接重构内容加载层。
 
+## Unreleased - 第三十四阶段 Intent-Routed Content Quality Polish
+
+日期：2026-07-08
+Primary implementation commit：待记录
+Deployment record commit：待记录
+Deployed source commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 使用本地 `ai-collaboration-prompts` skill 的 `expert-intent-reconstruction.md` 与 `document-cocreation-protocol.md`。
+- `LabComponent` 新增 `readerValue` 和 `nextUse`。
+- `/lab` 预览卡展示 `Visitor value`，详情面板展示 `next.use`。
+- Lab 列表行和 Command Center Lab 结果改用 visitor-facing value。
+- `ComponentPreview` trace 模式新增 `Next use`。
+- 博客详情页 `Reading quality context` 新增 writing track promise。
+- 博客详情页引用面板显示当前文章级 `read.use("slug")`。
+- e2e 覆盖 Lab visitor value / next-use 和博客 read.use / promise。
+
+验证：
+
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,436 bytes。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：10 passed，覆盖 Lab visitor value / next-use、博客 read.use / promise、移动无溢出和 Command Center Lab 路径。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run test:e2e:smoke`：50 passed。
+- `npm run perf:routes`：10 routes，p95 524ms，max 524ms，0 slow，0 failed。
+- `npm run test:e2e:chromium`：107 passed。
+- `npm run test:e2e:mobile`：107 passed。
+- Browser rendered check：`/lab`、`/blog/agent-handoff-loop`、Command Center 搜索 `visitor value` 均正常，console error/warn 0。
+- 390px 移动端 `/lab` 和 `/blog/agent-handoff-loop` 无横向溢出。
+
+残余风险：
+
+- 本阶段没有重写文章正文，优先修读后用途和 Lab 组件语义；后续仍需要继续增加外部证据型内容。
+- Dev Route Long-Tail Diagnosis 顺延为 Phase 35。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

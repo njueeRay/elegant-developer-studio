@@ -670,6 +670,14 @@ test.describe("core interaction contracts", () => {
     await page.goto("/lab");
 
     await expect(page.getByTestId("component-preview")).toContainText('lab.preview("global-command-menu")');
+    await expect(page.getByLabel("Selected component preview")).toContainText("Visitor value");
+    await expect(page.getByLabel("Selected component preview")).toContainText(
+      "Shows visitors that the site can be operated, not merely browsed.",
+    );
+    await expect(page.getByLabel("Lab component details")).toContainText("next.use");
+    await expect(page.getByLabel("Lab component details")).toContainText(
+      "Use it when a new route, content type, or quick action should become reachable in one keystroke.",
+    );
 
     const componentPreview = page.getByTestId("component-preview");
 
@@ -681,6 +689,7 @@ test.describe("core interaction contracts", () => {
 
     await page.getByRole("tab", { name: "trace" }).click();
     await expect(page.getByTestId("component-preview")).toContainText("Reusable for");
+    await expect(page.getByTestId("component-preview")).toContainText("Next use");
 
     await page.getByRole("tab", { name: "source" }).click();
     await expect(page.getByTestId("source-link-lab-preview-global-command-menu")).toHaveAttribute(
@@ -830,6 +839,12 @@ test.describe("core interaction contracts", () => {
     await page.goto("/blog/chinese-as-product-memory");
 
     await expect(page.getByLabel("Reading quality context")).toContainText("产品判断");
+    await expect(page.getByLabel("Reading quality context")).toContainText(
+      'read.use("chinese-as-product-memory")',
+    );
+    await expect(page.getByLabel("Reading quality context")).toContainText(
+      "帮助后续 PRD、飞书评论、路线图和阶段复盘快速引用判断依据。",
+    );
     await expect(page.getByLabel("Reading quality context")).toContainText("适合引用到哪里");
     await expect(page.getByLabel("Reading quality context")).toContainText("飞书阶段复盘");
 

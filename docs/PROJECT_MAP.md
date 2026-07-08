@@ -972,7 +972,37 @@ GitHub Actions：
 
 下一步：
 
-1. Phase 34：Dev Route Long-Tail Diagnosis。
-2. 对 `/projects/anyreader-interface-teardown` 做重复 dev timing，记录是否稳定长尾。
-3. 若长尾稳定复现，再审查 MDX 静态导入、项目详情内容、图片和 Next dev 编译。
-4. 若长尾不稳定，继续保留分片脚本与 timing probe，不做架构性改造。
+1. Phase 34：Intent-Routed Content Quality Polish。
+2. 先响应用户对博客和 Lab 文字内容的审查要求，把内容从“作者内部描述”推进到“访客可执行导航”。
+3. Dev Route Long-Tail Diagnosis 顺延为 Phase 35。
+
+## 23. 第三十四阶段意图路由内容质量打磨
+
+本阶段把用户对“博客、Lab 内文字内容还可以优化”的模糊反馈，重构为读者动作和内容合约问题。
+
+完成内容：
+
+- 调用本地 `ai-collaboration-prompts` skill，并选取两份 reference：
+  - `expert-intent-reconstruction.md`
+  - `document-cocreation-protocol.md`
+- `LabComponent` 新增 `readerValue` 和 `nextUse`。
+- `/lab` 预览卡展示 `Visitor value`，详情面板展示 `next.use`。
+- Lab 列表行优先展示 visitor-facing value，而不是内部 evidence 摘要。
+- `ComponentPreview` trace 模式新增 `Next use`。
+- Command Center 的 Lab 结果描述改用 `readerValue`，搜索关键词纳入 `nextUse`。
+- 博客详情页 `Reading quality context` 新增 writing track promise。
+- 博客详情页引用面板显示当前文章级 `read.use("slug")`。
+- e2e 覆盖 Lab visitor value / next-use 和博客 read.use / promise。
+
+阶段判断：
+
+- 博客当前不是缺“观点”，而是需要更清楚地告诉读者这些文章可用于飞书阶段复盘、GitHub issue、PR 说明和路线图审查。
+- Lab 当前不是缺“组件”，而是组件说明需要从内部 registry 语言转成访客能理解的设计系统工作台语言。
+- 工程对象仍保留英文命名，例如组件名、import path、route 和 command；中文优先用于项目文档和长期判断。
+- 任何看起来像程序员命令的文案都必须对应真实 slug、route、source 或交互，不能成为假技术装饰。
+
+下一步：
+
+1. Phase 35：Dev Route Long-Tail Diagnosis。
+2. 对 AnyReader 项目详情和 MDX detail routes 做重复 timing。
+3. 继续增加外部证据型文章，但每篇必须有真实对象、问题、取舍和证据入口。

@@ -3693,6 +3693,21 @@ a.source-reveal:hover {
   color: var(--rust-strong);
 }
 
+.lab-preview-signal div {
+  display: grid;
+  gap: 4px;
+}
+
+.lab-preview-signal span,
+.lab-next-use span {
+  color: var(--rust);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .lab-preview-signal strong {
   color: var(--foreground);
   font-size: 0.92rem;
@@ -3915,6 +3930,25 @@ a.source-reveal:hover {
   margin: 16px 0;
   color: var(--muted);
   line-height: 1.65;
+}
+
+.lab-next-use {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--rust), transparent 78%);
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--rust), transparent 93%), transparent 58%),
+    color-mix(in srgb, var(--surface), transparent 18%);
+}
+
+.lab-next-use p {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .lab-reuse-list {
@@ -5928,10 +5962,17 @@ html[data-theme="dark"] .about-notebook {
 }
 
 .article-quality-panel p,
-.article-quality-panel li {
+.article-quality-panel li,
+.article-quality-panel small {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
+}
+
+.article-quality-panel small {
+  display: block;
+  color: color-mix(in srgb, var(--foreground), transparent 16%);
+  font-size: 0.86rem;
 }
 
 .article-quality-panel ul {

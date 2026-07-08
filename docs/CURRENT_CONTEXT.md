@@ -187,6 +187,25 @@ RayNode 当前状态：
 - RayNode 已部署 `28559a4`。
 - 线上验证：`raynode:health` 18/18，`raynode:health:full` 53/53，`raynode:smoke` 48/48，production `perf:routes:raynode` p95 798ms / max 917ms / 0 slow / 0 failed。
 
+## 已完成的 Phase 34 切片
+
+- 阶段名：Intent-Routed Content Quality Polish。
+- 使用本地 `ai-collaboration-prompts` skill。
+- 已读取 reference：
+  - `expert-intent-reconstruction.md`
+  - `document-cocreation-protocol.md`
+- 阶段判断：用户对博客和 Lab 文字内容的反馈，本质是公开内容缺少更明确的读者动作，而不是需要增加更多页面。
+- `LabComponent` 新增 `readerValue` 和 `nextUse`，让每个组件回答“访客为什么要看”和“下一次怎么复用”。
+- `/lab` 页面新增 `Visitor value` 和 `next.use` 可见信号。
+- Command Center 的 Lab 结果描述改用 visitor-facing value，关键词纳入 `nextUse`。
+- 博客详情页 `Reading quality context` 新增 writing track promise，并显示当前文章级 `read.use("slug")`。
+- e2e 已补充 Lab visitor value / next-use 与博客 read.use / promise 断言。
+- 本地已验证：`validate:content`、`report:command-index`、`lint`、`build`、release evidence、smoke、route timing、`test:e2e:chromium` 和 `test:e2e:mobile` 通过。
+- `npm run test:e2e:chromium`：107/107 passed。
+- `npm run test:e2e:mobile`：107/107 passed。
+- `npm run perf:routes`：10 routes，p95 524ms，max 524ms，0 slow，0 failed。
+- Browser rendered check 已验证 `/lab`、`/blog/agent-handoff-loop` 和 Command Center 搜索 `visitor value`；390px 移动端无横向溢出。
+
 ## 已完成的 Phase 31 切片
 
 - 首页 RayNode 状态 badge 拆成主状态 `Live on RayNode` 和工程细节 `Next.js standalone / Caddy`，移动端更短、更稳。
@@ -245,6 +264,7 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 启动 Phase 34：Dev Route Long-Tail Diagnosis。
-2. 对 `/projects/anyreader-interface-teardown` 和其他 detail routes 做重复 dev timing。
-3. 只有在长尾稳定复现后，才审查 MDX 静态导入、图片处理或 Next dev 编译链路。
+1. 完成 Phase 34 提交、RayNode 部署和部署记录回填。
+2. Phase 35：Dev Route Long-Tail Diagnosis。
+3. 对 `/projects/anyreader-interface-teardown` 和其他 detail routes 做重复 dev timing。
+4. 只有在长尾稳定复现后，才审查 MDX 静态导入、图片处理或 Next dev 编译链路。

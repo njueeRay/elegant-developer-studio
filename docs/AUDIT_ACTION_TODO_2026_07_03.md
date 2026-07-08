@@ -900,6 +900,67 @@ Knowledge kind 评估：
 
 下一阶段建议：
 
-- Phase 34：Dev Route Long-Tail Diagnosis。
-- 针对 `/projects/anyreader-interface-teardown` 和其他 MDX detail route 做重复 timing，判断长尾是否与首编译、MDX 静态导入、图片处理或 Playwright worker 状态相关。
+- Phase 34：Intent-Routed Content Quality Polish。
+- 本轮用户明确要求审查博客与 Lab 等文字内容，并调用本地 AI 意图路由 prompt 协作 skill。性能长尾诊断顺延，不应抢占内容质量目标。
+- 针对 `/projects/anyreader-interface-teardown` 和其他 MDX detail route 的重复 timing 保留为 Phase 35 候选，判断长尾是否与首编译、MDX 静态导入、图片处理或 Playwright worker 状态相关。
 - 暂不引入服务端搜索、CMS 或内容加载重构，除非长尾能稳定复现。
+
+### Phase 34：Intent-Routed Content Quality Polish
+
+优先级：高。
+
+状态：已完成，待部署记录。
+
+锚定 milestone：Blog / Lab Content Contract。
+
+阶段判断：
+
+- 用户提出的“博客、Lab 内文字内容还可以优化”不是单纯改文案，而是要求站点的公开内容更像可执行导航。
+- 采用本地 `ai-collaboration-prompts` skill 的两份 reference：
+  - `expert-intent-reconstruction.md`：把模糊表达拆成真实目标、约束、缺口和验收。
+  - `document-cocreation-protocol.md`：判断目标读者、产物类型、信息密度和读者动作。
+- 博客当前强项是观点密度和证据链，短板不是正文弱，而是读后用途还可以更显性。
+- Lab 当前强项是 source、route、status 和 import path，短板是说明仍偏内部工程备忘录，访客需要更快知道“这个组件为什么值得看、下一次该怎么复用”。
+
+完成：
+
+- `LabComponent` 内容合约新增 `readerValue` 和 `nextUse`。
+- `/lab` 选中预览新增 `Visitor value`，组件详情新增 `next.use`。
+- Lab 列表行从展示 evidence 改为展示 visitor-facing value，降低内部证明感。
+- `ComponentPreview` trace 模式新增 `Next use`，让预览不只是 metadata。
+- Command Center 的 Lab 结果描述改用 `readerValue`，搜索关键词纳入 `nextUse`。
+- 博客详情页 `Reading quality context` 新增 writing track promise。
+- 博客详情页引用面板从静态 `read.context(...)` 升级为当前文章级 `read.use("slug")`。
+- e2e 新增 Lab visitor value / next-use、博客 read.use / promise 断言。
+
+已验证：
+
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,436 bytes。
+- `npm run lint`：通过。
+- `npm run build`：通过，53 routes。
+- targeted e2e：10 passed，覆盖 Lab visitor value / next-use、博客 read.use / promise、移动无溢出和 Command Center Lab 路径。
+- `npm run release:evidence -- --local-quality-passed`：通过，52 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run test:e2e:smoke`：50 passed。
+- `npm run perf:routes`：10 routes，p95 524ms，max 524ms，slow routes 0，failed routes 0。
+- `npm run test:e2e:chromium`：107 passed。
+- `npm run test:e2e:mobile`：107 passed。
+- Browser rendered check：
+  - `/lab`：`Visitor value`、`next.use`、Command Center 入口可见；console error/warn 0。
+  - `/blog/agent-handoff-loop`：`read.use("agent-handoff-loop")`、writing track promise、Copy ref 可见；console error/warn 0。
+  - Command Center 搜索 `visitor value` 返回 Lab experiment 结果。
+  - 390px 移动端 `/lab` 和 `/blog/agent-handoff-loop` 无横向溢出。
+
+验收标准：
+
+- Lab 组件不再只是作者内部 registry，而是对访客可理解的设计系统工作台。
+- 博客读后用途可见，读者能判断该文章适合进入飞书复盘、GitHub issue、PR 说明还是路线图审查。
+- Command Center、页面可见文案和 e2e 断言保持一致，避免“内部可见但外部不可达”的错误。
+- 新增内容不破坏桌面和移动端布局。
+
+下一阶段建议：
+
+- Phase 35：Dev Route Long-Tail Diagnosis。
+- 继续使用 Phase 33 的 timing probe，针对 AnyReader 项目详情与 MDX detail routes 做重复观测。
+- 内容侧继续积累“外部证据型文章”，但不再只写站点自述。
