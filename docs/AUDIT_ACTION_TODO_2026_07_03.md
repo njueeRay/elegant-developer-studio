@@ -975,7 +975,7 @@ Knowledge kind 评估：
 
 优先级：中高。
 
-状态：已完成，待部署记录。
+状态：已完成并部署到 RayNode。
 
 锚定 milestone：Repeated Detail Route Timing Probe。
 
@@ -1002,6 +1002,14 @@ Knowledge kind 评估：
 - `npm run perf:routes:long-tail`：10 routes，6 rounds，60 samples，p95 126ms，max 870ms，slow 0，failed 0。
 - `ROUTE_LONG_TAIL_ROUNDS=3 npm run perf:routes:long-tail -- --release-routes`：35 routes，105 samples，p95 146ms，max 235ms，slow 0，failed 0。
 - `ROUTE_LONG_TAIL_ROUNDS=2 npm run perf:routes:long-tail:raynode`：35 routes，70 samples，p95 354ms，max 1351ms，slow 0，failed 0。
+- `npm run build`：通过，53 routes。
+- `npm run report:command-index`：通过，110 items，estimated gzip 10,436 bytes。
+- `npm run test:e2e:smoke`：50 passed。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `bd826a8`。
+- `npm run raynode:health`：18/18 passed，commit `bd826a8`。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- 部署后 `ROUTE_LONG_TAIL_ROUNDS=2 npm run perf:routes:long-tail:raynode`：35 routes，70 samples，p95 335ms，max 948ms，slow 0，failed 0。
 
 结论：
 

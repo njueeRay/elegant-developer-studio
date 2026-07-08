@@ -224,6 +224,9 @@ RayNode 当前状态：
 - 本地默认诊断：10 routes，6 rounds，60 samples，p95 126ms，max 870ms，0 slow，0 failed。
 - 本地 release detail 诊断：35 routes，105 samples，p95 146ms，max 235ms，0 slow，0 failed。
 - 生产 release detail 诊断：35 routes，70 samples，p95 354ms，max 1351ms，0 slow，0 failed。
+- RayNode 已部署 `bd826a8`。
+- 线上验证：`raynode:health` 18/18，`raynode:health:full` 53/53，`raynode:smoke` 48/48。
+- 部署后生产 long-tail：35 routes，70 samples，p95 335ms，max 948ms，0 slow，0 failed。
 - 结论：AnyReader 没有稳定长尾；当前不应重构 `src/lib/content.ts`、MDX 静态导入或内容注册表。
 
 ## 已完成的 Phase 31 切片
