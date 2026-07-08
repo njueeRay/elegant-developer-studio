@@ -56,6 +56,7 @@ const routes = [
 
 const auditedMobileRoutes = [
   "/",
+  "/blog",
   "/blog/chinese-as-product-memory",
   "/blog/ursb-personal-site-object-grammar",
   "/knowledge/public-reachable-before-internal-complete",
@@ -98,6 +99,30 @@ test.describe("public routes and links", () => {
           href: "/lab",
         }),
       ]),
+    );
+  });
+
+  test("blog exposes content scale and evidence navigation guardrails", async ({ page }) => {
+    await page.goto("/blog");
+
+    const scale = page.getByLabel("Content scale and evidence navigation");
+
+    await expect(scale).toContainText('content.scale("watch")');
+    await expect(scale.getByLabel("Content scale metrics")).toContainText("15");
+    await expect(scale.getByLabel("Content scale metrics")).toContainText("17");
+    await expect(scale.getByLabel("Content scale metrics")).toContainText("112");
+    await expect(scale).toContainText("triggers review");
+    await expect(scale.getByRole("link", { name: /External proof essays/ })).toHaveAttribute(
+      "href",
+      "/blog?tag=External+proof",
+    );
+    await expect(scale.getByRole("link", { name: /Object grammar rule/ })).toHaveAttribute(
+      "href",
+      "/knowledge/personal-site-object-grammar",
+    );
+    await expect(scale.getByRole("link", { name: /Command payload/ })).toHaveAttribute(
+      "href",
+      "/command-index.json",
     );
   });
 
@@ -512,7 +537,13 @@ test.describe("core interaction contracts", () => {
     await expect(page.getByRole("heading", { name: "Command Trace" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Studio Companion" })).toBeVisible();
 
-    await page.keyboard.press(process.platform === "darwin" ? "Meta+K" : "Control+K");
+    const isMobile = (page.viewportSize()?.width ?? 1024) < 800;
+    if (isMobile) {
+      await page.goto("/");
+      await page.getByTestId("home-command-trigger").click();
+    } else {
+      await page.keyboard.press(process.platform === "darwin" ? "Meta+K" : "Control+K");
+    }
     await page.getByTestId("global-command-search").fill("source hover");
 
     await expect(page.getByTestId("command-result-creative-source-hover")).toBeVisible();

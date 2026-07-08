@@ -1069,3 +1069,41 @@ GitHub Actions：
 1. Phase 37：Content Scale & Evidence Navigation Review。
 2. posts 已到 15，继续加内容前先审查 Command Center 阈值、首页精选密度和 evidence navigation。
 3. 暂缓大型知识图谱和新首页模块，优先让现有对象更可验证。
+
+## 26. 第三十七阶段内容规模与证据导航审查
+
+本阶段没有继续增加内容，而是把内容增长的守门状态公开化。
+
+新增产品表面：
+
+- `/blog` Content Scale Panel。
+- `content.scale("watch")` 状态。
+- Evidence navigation shortcuts：External proof essays、Object grammar rule、Evidence standard、Command payload。
+
+新增事实源：
+
+- `src/lib/content-scale.ts`：posts、projects、knowledge、command items、featured posts、external proof posts、review trigger。
+
+系统理解：
+
+- posts = 15，下一篇文章会越过 posts > 15 审查线。
+- 当前 Command Center 112 items，仍适合 JSON 懒加载，不需要升级为服务端搜索。
+- 内容增长前更应该审查首页 Featured 策略，而不是继续扩写。
+
+质量状态：
+
+- `validate:content`：通过。
+- `report:command-index`：112 items，estimated gzip 10,708 bytes。
+- `lint`：通过。
+- `build`：55 routes。
+- smoke e2e：52 passed。
+- Chromium e2e：114 passed。
+- Mobile e2e：114 passed。
+- 移动端 collaboration command 测试使用可见首页 trigger，避免把移动键盘快捷键不稳定误判为产品缺陷。
+- `/blog` mobile overflow：通过。
+
+下一步：
+
+1. Phase 38：Homepage Featured Editorial Policy。
+2. 明确首页 Featured essay / Selected work / Latest writing 的编辑规则。
+3. 避免首页自动变成“最新内容列表”，优先展示最能证明判断力和外部证据的对象。

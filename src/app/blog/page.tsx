@@ -3,8 +3,10 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Suspense } from "react";
 import { SiteHeader } from "@/components/site-header";
+import { ContentScalePanel } from "@/components/content/content-scale-panel";
 import { PostExplorer } from "@/components/content/tag-filter";
 import { getAllPostMeta, getAllTags } from "@/lib/content";
+import { getContentScaleStatus } from "@/lib/content-scale";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
@@ -17,6 +19,7 @@ export const metadata: Metadata = createMetadata({
 export default function BlogPage() {
   const posts = getAllPostMeta();
   const tags = getAllTags(posts);
+  const contentScale = getContentScaleStatus();
 
   return (
     <main className="studio-shell content-shell">
@@ -34,6 +37,7 @@ export default function BlogPage() {
           small arguments for calmer software.
         </p>
       </header>
+      <ContentScalePanel status={contentScale} />
       <Suspense fallback={<div className="content-explorer" aria-label="Writing explorer" />}>
         <PostExplorer posts={posts} tags={tags} />
       </Suspense>

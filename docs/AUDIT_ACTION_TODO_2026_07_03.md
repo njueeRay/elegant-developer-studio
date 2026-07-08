@@ -1048,3 +1048,28 @@ Knowledge kind 评估：
 
 - Phase 37：Content Scale & Evidence Navigation Review。
 - 在继续新增文章前，先审查 Command Center 阈值、首页精选策略、Knowledge Reference links 和外部证据导航。
+
+### Phase 37 完成记录：Content Scale & Evidence Navigation Review
+
+状态：已完成本地实现。
+
+完成项：
+
+- [x] 建立内容规模事实源：`src/lib/content-scale.ts`。
+- [x] 在 `/blog` 增加公开 Content Scale Panel。
+- [x] 显示当前规模：15 posts / 17 knowledge / 112 command items。
+- [x] 明确下一篇文章会触发 posts > 15 规模审查。
+- [x] 增加证据导航入口：External proof essays、Object grammar rule、Evidence standard、Command payload。
+- [x] 将 `/blog` 加入移动端无横向溢出审计。
+- [x] 完整 Chromium / Mobile 分片通过：114 / 114。
+- [x] 修正移动端 collaboration command 测试入口，使用可见触发器替代不稳定键盘快捷键。
+
+阶段结论：
+
+- 当前不需要更重的搜索基础设施；Command Center 懒加载 JSON 仍然成立。
+- 更大的风险是首页精选和内容增长策略不清楚：继续按最新 featured 取内容，会把“最新”误认为“最值得展示”。
+
+下一阶段建议：
+
+- Phase 38：Homepage Featured Editorial Policy。
+- 明确首页 Featured essay、Selected work、Latest writing 的选择规则和证据优先级。

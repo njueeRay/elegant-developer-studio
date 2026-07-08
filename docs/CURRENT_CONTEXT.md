@@ -4,9 +4,9 @@
 
 ## 当前主线
 
-Phase 36：External Proof Content Slice 已完成并部署到 RayNode。
+Phase 37：Content Scale & Evidence Navigation Review 已完成本地实现。
 
-当前主线可以转入 Phase 37：Content Scale & Evidence Navigation Review。Phase 36 的核心结论是：`ursb.me` 值得借鉴的不是模块数量，而是把身份、项目、内容、状态、工具和证据组织成可探索对象；Ray Studio 现在应该继续增强对象边界和证据入口，而不是扩大首页密度。
+当前主线可以转入 Phase 38：Homepage Featured Editorial Policy。Phase 37 的核心结论是：posts 已到 15，下一篇文章会越过 posts > 15 的规模审查线；继续加内容前，公开站点必须先让访客看到内容规模状态、证据导航和命令索引仍然可控。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -16,6 +16,7 @@ Phase 36：External Proof Content Slice 已完成并部署到 RayNode。
 - `src/lib/command-index.ts` 是 Command Center 索引事实源。
 - `/command-index.json` 是 Command Center 按需加载的公开索引 payload。
 - `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
+- `src/lib/content-scale.ts` 是内容规模守门事实源，当前服务 `/blog` 的 Content Scale Panel。
 - `scripts/measure-route-timing.mjs` 是单轮 route timing 观测脚本。
 - `scripts/diagnose-route-long-tail.mjs` 是重复 route timing 诊断脚本，用于判断 detail route 长尾是否稳定复现。
 - `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
@@ -92,6 +93,22 @@ RayNode 当前状态：
 - RayNode 已部署 `2c52c49`。
 - 线上验证：`raynode:health` 18/18，`raynode:health:full` 55/55，`raynode:smoke` 50/50，Phase 36 production targeted interaction 1 passed。
 - 下一阶段：Phase 37，先审查内容规模和 evidence navigation，再继续批量加文章。
+
+## 已完成的 Phase 37 切片
+
+- 新增 `src/lib/content-scale.ts`，集中计算 posts、projects、knowledge、command items、featured posts、external proof posts 和 scale review gate。
+- 新增 `/blog` 的 `ContentScalePanel`，公开显示 `content.scale("watch")`、15 posts、17 knowledge、112 command items 和下一篇文章触发审查。
+- `/blog` 新增 Evidence navigation shortcuts：External proof essays、Object grammar rule、Evidence standard、Command payload。
+- `/blog` 被加入移动无横向溢出审计。
+- `npm run validate:content`：通过。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：114 passed。
+- `npm run test:e2e:mobile`：114 passed。
+- 移动端 Command Center 协作页测试改为使用可见首页 trigger，不再依赖移动端键盘快捷键。
+- 下一阶段：Phase 38，审查首页 Featured / Latest 的编辑策略，不再默认以最新内容替代最强证据。
 
 ## 已完成的 Phase 26 切片
 
@@ -309,6 +326,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. Phase 37：Content Scale & Evidence Navigation Review。
-2. 先复核 posts 已到 15 后的 Command Center 阈值、首页精选密度和外部证据导航，不要立刻继续批量加文章。
+1. Phase 38：Homepage Featured Editorial Policy。
+2. 明确首页 Featured essay、Selected work、Latest writing 的编辑规则，不要让最新内容自动替代最强证据。
 3. 只有当 `perf:routes:long-tail -- --fail-on-slow` 稳定失败时，才重新审查 MDX 静态导入、图片处理或 Next dev 编译链路。

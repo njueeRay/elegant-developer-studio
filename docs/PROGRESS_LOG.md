@@ -2171,3 +2171,41 @@ GitHub 推送修复：
 
 - Phase 37：Content Scale & Evidence Navigation Review。
 - posts 已到 15，下一次继续增加文章前应先复核 Command Center 阈值、首页精选密度和外部证据导航。
+
+### 第三十七阶段：Content Scale & Evidence Navigation Review
+
+日期：2026-07-08
+
+状态：已完成本地实现。
+
+阶段判断：
+
+- posts 已到 15，下一篇文章会越过既有的 posts > 15 审查线。
+- 当前不该继续新增文章，而应该先把内容规模、命令索引状态和证据导航公开给访客与未来协作者。
+- 搜索基础设施仍不需要升级：Command Center 112 items、懒加载 JSON、首屏不携带完整 index，当前规模仍可由可见筛选和明确路径承担。
+
+完成：
+
+- 新增 `src/lib/content-scale.ts` 作为内容规模事实源。
+- 新增 `ContentScalePanel` 并接入 `/blog`。
+- 面板公开显示 15 posts、17 knowledge、112 command items 和 “next essay triggers review”。
+- 面板提供 External proof essays、Object grammar rule、Evidence standard、Command payload 四个证据导航入口。
+- `/blog` 加入移动无横向溢出审计。
+
+已验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：114 passed。
+- `npm run test:e2e:mobile`：114 passed。
+- targeted Chromium e2e：3 passed，覆盖 `/blog`、command index lazy payload、Content Scale Panel。
+- targeted Mobile e2e：2 passed，覆盖 Content Scale Panel 和 `/blog` 无横向溢出。
+- 移动端 collaboration command 测试改为使用首页可见 Command trigger，不再依赖移动端键盘快捷键。
+
+下一步：
+
+- Phase 38：Homepage Featured Editorial Policy。
+- 首页目前按 featured + date 取最新，下一阶段应明确 Featured essay / Selected work / Latest writing 的编辑规则，避免首页随着内容增长变成“最新但不一定最强”的自动列表。

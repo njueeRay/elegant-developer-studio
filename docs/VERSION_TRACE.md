@@ -1640,6 +1640,42 @@ Production host：`https://raynode.me`
 
 - 本阶段只引入一个外部参考对象；下一阶段应审查内容规模和导航密度，而不是继续批量新增外部拆解。
 
+## Unreleased - 第三十七阶段 Content Scale & Evidence Navigation Review
+
+日期：2026-07-08
+Primary implementation commit：待记录
+Deployment record commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 新增 `src/lib/content-scale.ts`。
+- 新增 `src/components/content/content-scale-panel.tsx`。
+- `/blog` 增加 Content Scale Panel，公开显示 posts、knowledge、command items 和下一篇文章触发审查。
+- `/blog` 增加 External proof essays、Object grammar rule、Evidence standard、Command payload 证据导航入口。
+- `/blog` 加入移动无横向溢出审计。
+
+验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：114 passed。
+- `npm run test:e2e:mobile`：114 passed。
+- targeted Chromium e2e：3 passed。
+- targeted Mobile e2e：2 passed。
+
+结论：
+
+- 当前不需要升级 Command Center 搜索基础设施；112 items 的懒加载 JSON 仍可接受。
+- 下一篇文章会触发 posts > 15 审查线，因此下一阶段应先明确首页精选策略。
+
+残余风险：
+
+- Content Scale Panel 解决了 `/blog` 的公开规模提示，但首页仍按 featured + date 取内容，可能把最新内容误当作最强证据。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

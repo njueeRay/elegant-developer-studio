@@ -95,6 +95,6 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- Phase 37：Content Scale & Evidence Navigation Review。
-- 首选切片：新增内容前先复核 Command Center 规模阈值、外部证据入口、Knowledge 详情 Reference links 和首页精选密度。
+- Phase 38：Homepage Featured Editorial Policy。
+- 首选切片：审查首页 Featured essay、Selected work、Latest writing 的编辑规则，避免内容增长后首页只展示最新而不是最能证明判断力的对象。
 - 暂缓：继续堆首页模块、常驻宠物、大型知识图谱、高强度背景特效，以及没有真实对象来源的新文章。
