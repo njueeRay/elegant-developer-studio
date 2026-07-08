@@ -1601,6 +1601,7 @@ Production host：`https://raynode.me`
 日期：2026-07-08
 Primary implementation commit：`fbaa0b4`
 Deployment record commit：待记录
+Deployed source commit：`2c52c49`
 Production host：`https://raynode.me`
 
 范围：
@@ -1622,6 +1623,12 @@ Production host：`https://raynode.me`
 - `npm run test:e2e:chromium`：110 passed。
 - `npm run test:e2e:mobile`：112 passed。
 - targeted e2e：Phase 36 外部参考内容、Knowledge backlinks 和 Knowledge detail trails 通过。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `2c52c49`。
+- `npm run raynode:health`：18/18 passed，commit `2c52c49`。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- Production targeted e2e：Phase 36 external reference content，1 passed。
+- Production fetch：`/release-evidence.json` 为 15 posts / 5 projects / 17 knowledge entries / 54 public routes；`/command-index.json` 为 112 items。
 
 结论：
 

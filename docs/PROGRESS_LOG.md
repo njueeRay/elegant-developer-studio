@@ -2131,7 +2131,7 @@ GitHub 推送修复：
 
 日期：2026-07-08
 
-状态：已完成本地实现。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -2160,6 +2160,12 @@ GitHub 推送修复：
 - `npm run test:e2e:mobile`：112 passed。
 - targeted e2e：Phase 36 外部参考内容、Knowledge backlinks 和 Knowledge detail trails 通过。
 - 移动无溢出审计新增 `/blog/ursb-personal-site-object-grammar` 和 `/knowledge/personal-site-object-grammar`；修复文章 inline code 长路由在移动端撑宽页面的问题。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `2c52c49`。
+- `npm run raynode:health`：18/18 passed，commit `2c52c49`。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- Production targeted e2e：Phase 36 external reference content，1 passed。
+- Production fetch：`/release-evidence.json` 返回 15 posts / 5 projects / 17 knowledge entries / 54 public routes；`/command-index.json` 返回 112 items，包含新 Blog 与 Knowledge。
 
 下一步：
 

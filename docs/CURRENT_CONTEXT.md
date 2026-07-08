@@ -4,7 +4,7 @@
 
 ## 当前主线
 
-Phase 36：External Proof Content Slice 已完成本地实现。
+Phase 36：External Proof Content Slice 已完成并部署到 RayNode。
 
 当前主线可以转入 Phase 37：Content Scale & Evidence Navigation Review。Phase 36 的核心结论是：`ursb.me` 值得借鉴的不是模块数量，而是把身份、项目、内容、状态、工具和证据组织成可探索对象；Ray Studio 现在应该继续增强对象边界和证据入口，而不是扩大首页密度。
 
@@ -37,14 +37,14 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`f86b134`。
-- `/release-evidence.json` 返回部署提交 `f86b134`，内容规模为 14 posts / 5 projects / 16 knowledge entries / 52 public routes。
+- 当前服务器源码提交：`2c52c49`。
+- `/release-evidence.json` 返回部署提交 `2c52c49`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
 - `/health.json` 返回 `status: ok`。
-- `/command-index.json` 返回 110 command items。
+- `/command-index.json` 返回 112 command items，并包含 `/blog/ursb-personal-site-object-grammar` 与 `/knowledge/personal-site-object-grammar`。
 - `npm run raynode:health`：18/18 passed。
-- `npm run raynode:health:full`：53/53 passed。
-- 生产公开路由可访问性测试通过：48 passed。
-- Phase 31 production targeted interaction tests：2 passed。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- Phase 36 production targeted interaction test：1 passed。
 
 ## 当前事实源
 
@@ -89,6 +89,8 @@ RayNode 当前状态：
 - `npm run test:e2e:chromium`：110 passed。
 - `npm run test:e2e:mobile`：112 passed。
 - 移动审计已覆盖 `/blog/ursb-personal-site-object-grammar` 和 `/knowledge/personal-site-object-grammar`；新增文章 inline code 溢出已修复。
+- RayNode 已部署 `2c52c49`。
+- 线上验证：`raynode:health` 18/18，`raynode:health:full` 55/55，`raynode:smoke` 50/50，Phase 36 production targeted interaction 1 passed。
 - 下一阶段：Phase 37，先审查内容规模和 evidence navigation，再继续批量加文章。
 
 ## 已完成的 Phase 26 切片

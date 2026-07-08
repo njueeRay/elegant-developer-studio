@@ -1025,7 +1025,7 @@ Knowledge kind 评估：
 
 ### Phase 36 完成记录：External Proof Content Slice
 
-状态：已完成本地实现。
+状态：已完成并部署到 RayNode。
 
 完成项：
 
@@ -1036,6 +1036,7 @@ Knowledge kind 评估：
 - [x] 为 Knowledge 详情增加 `Reference links`，使外部参考在详情页公开可达。
 - [x] 增加 e2e，验证博客详情、Knowledge 详情和外部链接都能被用户真实访问。
 - [x] 将新增 Blog 和 Knowledge 详情加入移动端无溢出审计，并修复文章 inline code 长路由撑宽页面的问题。
+- [x] 部署到 RayNode，并完成线上 health、full routes、smoke 和 Phase 36 targeted interaction 验证。
 
 阶段结论：
 

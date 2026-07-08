@@ -1060,6 +1060,9 @@ GitHub Actions：
 - Chromium e2e：110 passed。
 - Mobile e2e：112 passed。
 - 移动无溢出审计覆盖新增 Blog 和 Knowledge 详情；文章 inline code 长路由已允许断行。
+- RayNode 部署：`2c52c49`。
+- 线上 health：18/18；线上 full routes：55/55；线上 smoke：50/50。
+- 线上 Phase 36 targeted interaction：1 passed。
 
 下一步：
 
