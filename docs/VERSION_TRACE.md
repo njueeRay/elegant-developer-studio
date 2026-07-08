@@ -1685,7 +1685,7 @@ Production host：`https://raynode.me`
 ## Unreleased - 第三十八阶段 Homepage Featured Editorial Policy
 
 日期：2026-07-09
-Primary implementation commit：待记录
+Primary implementation commit：`004c827`
 Deployment record commit：待记录
 Production host：`https://raynode.me`
 
