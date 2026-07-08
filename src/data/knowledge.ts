@@ -28,6 +28,40 @@ export type KnowledgeEntry = {
 
 export const knowledgeEntries: KnowledgeEntry[] = [
   {
+    slug: "personal-site-object-grammar",
+    kind: "Pattern",
+    title: "个人站对象语法",
+    summary:
+      "高级个人主页不是堆模块，而是把身份、项目、内容、状态、工具和证据组织成可探索对象。",
+    signal: "用于判断一个新模块是有对象边界，还是只是增加首页装饰和信息密度。",
+    protects:
+      "它防止 Ray Studio 把外部优秀个人主页误读成组件清单。每个新增表面都必须说明对象是什么、来源在哪里、当前状态如何、下一步去哪里、能否被公开验证。",
+    citation:
+      "当规划 Blog、Knowledge、Uses、About、Lab、Photos、Music 或 Personal OS 扩展时引用这条规则。先补对象边界，再补视觉表现。",
+    status: "Evergreen",
+    tags: ["中文", "Homepage", "Personal OS", "IA"],
+    source: "Phase 36 ursb.me external reference review",
+    related: [
+      { label: "ursb.me", href: "https://ursb.me" },
+      { label: "拆解文章", href: "/blog/ursb-personal-site-object-grammar" },
+      { label: "Personal OS Zoo", href: "/lab#personal-os-zoo-title" },
+    ],
+    relatedPostSlugs: ["ursb-personal-site-object-grammar", "homepage-density-case-study"],
+    relatedProjectSlugs: ["studio-knowledge-base", "lumen"],
+    backlinks: [
+      {
+        label: "ursb.me 的个人主页对象语法",
+        href: "/blog/ursb-personal-site-object-grammar#object-grammar-not-density",
+        context: "把外部个人主页参考转译为对象边界，而不是模块扩张。",
+      },
+      {
+        label: "Studio Knowledge Base",
+        href: "/projects/studio-knowledge-base",
+        context: "Knowledge 负责把外部参考沉淀成可复用判断。",
+      },
+    ],
+  },
+  {
     slug: "truth-source-before-polish",
     kind: "Decision",
     title: "事实源先于视觉打磨",

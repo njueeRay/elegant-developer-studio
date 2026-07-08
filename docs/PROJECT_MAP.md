@@ -1033,3 +1033,36 @@ GitHub Actions：
 1. Phase 36：External Proof Content Slice。
 2. 继续增加外部证据型内容，但只接受有真实对象、问题、取舍和证据入口的文章或项目。
 3. 只有当 `perf:routes:long-tail -- --fail-on-slow` 稳定失败时，才重新讨论内容加载架构。
+
+## 25. 第三十六阶段外部参考内容切片
+
+本阶段把 `ursb.me` 从“值得参考的网站”转化为站内可访问、可引用、可追踪的内容资产。
+
+新增产品表面：
+
+- `/blog/ursb-personal-site-object-grammar`：中文外部参考拆解文章。
+- `/knowledge/personal-site-object-grammar`：个人站对象语法规则。
+- Knowledge 详情 `Reference links`：显示 Knowledge 条目的外部参考和内部关联入口。
+
+系统理解：
+
+- 个人主页的高级感不来自模块数量，而来自对象边界。
+- Blog、Projects、Knowledge、Uses、About、Lab、Photos、Music 都必须逐步回答“对象是什么、来源是什么、状态是什么、下一步是什么、证据在哪里”。
+- `ursb.me` 可作为对象语法参考，但不能成为 Ray Studio 扩张首页密度的理由。
+
+质量状态：
+
+- 内容关系校验通过：15 posts / 5 projects / 17 knowledge entries。
+- Command Center 索引：112 items，仍适合 JSON 按需加载。
+- release evidence：54 public routes。
+- build：55 routes。
+- smoke e2e：52 passed。
+- Chromium e2e：110 passed。
+- Mobile e2e：112 passed。
+- 移动无溢出审计覆盖新增 Blog 和 Knowledge 详情；文章 inline code 长路由已允许断行。
+
+下一步：
+
+1. Phase 37：Content Scale & Evidence Navigation Review。
+2. posts 已到 15，继续加内容前先审查 Command Center 阈值、首页精选密度和 evidence navigation。
+3. 暂缓大型知识图谱和新首页模块，优先让现有对象更可验证。

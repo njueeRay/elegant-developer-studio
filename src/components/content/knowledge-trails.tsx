@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpenText, Boxes, GitBranch, Link2 } from "lucide-react";
+import { ArrowRight, BookOpenText, Boxes, ExternalLink, GitBranch, Link2 } from "lucide-react";
 import Link from "next/link";
 import type { KnowledgeEntry } from "@/data/knowledge";
 import type { PostMeta, ProjectMeta } from "@/lib/content";
@@ -50,6 +50,15 @@ export function KnowledgeTrails({ entry, posts, projects }: KnowledgeTrailsProps
     meta: "Backlink",
   }));
 
+  const referenceLinks = entry.related.map((link) => ({
+    title: link.label,
+    summary: link.href.startsWith("http")
+      ? "External reference used by this knowledge entry."
+      : "Internal route connected to this knowledge entry.",
+    href: link.href,
+    meta: link.href.startsWith("http") ? "External reference" : "Internal reference",
+  }));
+
   return (
     <section className="knowledge-trails" aria-label="Knowledge trails">
       <div className="knowledge-trails-head">
@@ -62,6 +71,7 @@ export function KnowledgeTrails({ entry, posts, projects }: KnowledgeTrailsProps
       <div className="knowledge-trail-lanes">
         <TrailLane label="Related writing" icon={BookOpenText} items={relatedWriting} />
         <TrailLane label="Project evidence" icon={Boxes} items={projectEvidence} />
+        <TrailLane label="Reference links" icon={ExternalLink} items={referenceLinks} />
         <TrailLane label="Backlinks" icon={Link2} items={backlinks} />
       </div>
     </section>
@@ -81,14 +91,34 @@ function TrailLane({ label, items, icon: Icon }: TrailLaneProps) {
       </div>
       <div className="knowledge-trail-links">
         {items.map((item) => (
-          <Link href={item.href} className="knowledge-trail-link" key={item.href}>
-            <span>{item.meta}</span>
-            <strong>{item.title}</strong>
-            <small>{item.summary}</small>
-            <ArrowRight size={17} aria-hidden="true" />
-          </Link>
+          <TrailLink item={item} key={`${item.href}-${item.title}`} />
         ))}
       </div>
     </div>
+  );
+}
+
+function TrailLink({ item }: { item: TrailItem }) {
+  const content = (
+    <>
+      <span>{item.meta}</span>
+      <strong>{item.title}</strong>
+      <small>{item.summary}</small>
+      <ArrowRight size={17} aria-hidden="true" />
+    </>
+  );
+
+  if (item.href.startsWith("http")) {
+    return (
+      <a href={item.href} className="knowledge-trail-link">
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={item.href} className="knowledge-trail-link">
+      {content}
+    </Link>
   );
 }

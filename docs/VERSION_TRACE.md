@@ -1596,6 +1596,43 @@ Production host：`https://raynode.me`
 - 诊断脚本使用 HTTP fetch，不覆盖浏览器 hydration 和客户端交互耗时；UI 行为仍由 Playwright 分片负责。
 - 如果未来 `--fail-on-slow` 稳定失败，再进入内容加载架构重审。
 
+## Unreleased - 第三十六阶段 External Proof Content Slice
+
+日期：2026-07-08
+Primary implementation commit：待记录
+Deployment record commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- 新增 `/blog/ursb-personal-site-object-grammar`。
+- 新增 `/knowledge/personal-site-object-grammar`。
+- `KnowledgeTrails` 新增 `Reference links`，使 Knowledge 详情页能直接暴露外部参考入口。
+- `src/lib/content.ts`、`src/data/knowledge.ts`、`tests/site-access.spec.ts` 接入新内容和公共可达断言。
+
+验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，54 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：110 passed。
+- `npm run test:e2e:mobile`：112 passed。
+- targeted e2e：Phase 36 外部参考内容、Knowledge backlinks 和 Knowledge detail trails 通过。
+
+结论：
+
+- `ursb.me` 应被吸收为个人站对象语法，而不是首页模块扩张理由。
+- Knowledge 详情页必须展示外部 Reference links，否则外部证据会变成内部作者知道、外部用户不一定能打开的隐藏事实。
+- 文章正文 inline code 必须允许断行；否则长路由或长 slug 会在移动端撑宽阅读页。
+
+残余风险：
+
+- 本阶段只引入一个外部参考对象；下一阶段应审查内容规模和导航密度，而不是继续批量新增外部拆解。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

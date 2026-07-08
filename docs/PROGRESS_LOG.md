@@ -2126,3 +2126,42 @@ GitHub 推送修复：
 
 - Phase 36：External Proof Content Slice。
 - 内容继续向外部证据倾斜，不增加无证据的新 surface。
+
+### 第三十六阶段：External Proof Content Slice
+
+日期：2026-07-08
+
+状态：已完成本地实现。
+
+阶段判断：
+
+- `ursb.me` 的参考价值不是“模块更多”，而是它把项目、文章、笔记、照片、运动、音乐、设备、软件栈、阅读、咨询等都组织成有状态、有来源、有去处的对象。
+- Ray Studio 不应复制它的体量，而应吸收对象语法：每个新增表面都要说明对象是什么、来源在哪里、状态如何、下一步去哪里、能否被公开验证。
+- Knowledge 详情页必须显示外部参考入口；只在内部 backlinks 里提到外部对象不够。
+
+完成：
+
+- 新增中文文章 `/blog/ursb-personal-site-object-grammar`。
+- 新增 Knowledge 规则 `/knowledge/personal-site-object-grammar`。
+- `KnowledgeTrails` 新增 `Reference links` 轨道，详情页可直接打开外部参考 `https://ursb.me`。
+- 新文章接入 `src/lib/content.ts`、博客列表、相关阅读、Knowledge 反链、Command Center 和 release evidence。
+- e2e 增加 Phase 36 公共可达断言，覆盖博客详情、Knowledge 详情和外部参考链接。
+
+已验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，54 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：110 passed。
+- `npm run test:e2e:mobile`：112 passed。
+- targeted e2e：Phase 36 外部参考内容、Knowledge backlinks 和 Knowledge detail trails 通过。
+- 移动无溢出审计新增 `/blog/ursb-personal-site-object-grammar` 和 `/knowledge/personal-site-object-grammar`；修复文章 inline code 长路由在移动端撑宽页面的问题。
+
+下一步：
+
+- Phase 37：Content Scale & Evidence Navigation Review。
+- posts 已到 15，下一次继续增加文章前应先复核 Command Center 阈值、首页精选密度和外部证据导航。

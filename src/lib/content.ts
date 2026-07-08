@@ -41,6 +41,9 @@ import OpenProfileInfrastructureContent, {
 import CaseStudyDiffContent, {
   meta as caseStudyDiffMeta,
 } from "@/content/posts/case-study-diff-as-portfolio-format.mdx";
+import UrsbObjectGrammarContent, {
+  meta as ursbObjectGrammarMeta,
+} from "@/content/posts/ursb-personal-site-object-grammar.mdx";
 import OpenProfileContent, {
   meta as openProfileMeta,
 } from "@/content/projects/openprofile-agent-workflow.mdx";
@@ -129,6 +132,11 @@ export type Project = ProjectMeta & {
 };
 
 const posts: Post[] = [
+  {
+    ...(ursbObjectGrammarMeta as PostMeta),
+    kind: "post" as const,
+    Content: UrsbObjectGrammarContent,
+  },
   {
     ...(externalProofMeta as PostMeta),
     kind: "post" as const,

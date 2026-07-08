@@ -1022,3 +1022,28 @@ Knowledge kind 评估：
 - Phase 36：External Proof Content Slice。
 - 继续增加外部证据型文章或项目，但每篇必须有真实对象、问题、取舍和证据入口。
 - 如果未来 `perf:routes:long-tail -- --fail-on-slow` 稳定失败，再进入内容加载架构重审。
+
+### Phase 36 完成记录：External Proof Content Slice
+
+状态：已完成本地实现。
+
+完成项：
+
+- [x] 选择一个高价值外部参考对象：`https://ursb.me`。
+- [x] 输出中文拆解文章：`/blog/ursb-personal-site-object-grammar`。
+- [x] 输出可复用 Knowledge：`/knowledge/personal-site-object-grammar`。
+- [x] 将新文章接入内容注册表、相关内容、Knowledge 反链和 Command Center。
+- [x] 为 Knowledge 详情增加 `Reference links`，使外部参考在详情页公开可达。
+- [x] 增加 e2e，验证博客详情、Knowledge 详情和外部链接都能被用户真实访问。
+- [x] 将新增 Blog 和 Knowledge 详情加入移动端无溢出审计，并修复文章 inline code 长路由撑宽页面的问题。
+
+阶段结论：
+
+- 不应把 `ursb.me` 误读成“首页模块越多越高级”。
+- 正确吸收方式是建立个人站对象语法：身份、项目、文章、状态、工具、生活记录和证据都必须有边界与路径。
+- Ray Studio 下一阶段的主要风险不是内容太少，而是 posts 已到 15 后继续增加内容会触发 Command Center 和首页精选密度审查。
+
+下一阶段建议：
+
+- Phase 37：Content Scale & Evidence Navigation Review。
+- 在继续新增文章前，先审查 Command Center 阈值、首页精选策略、Knowledge Reference links 和外部证据导航。

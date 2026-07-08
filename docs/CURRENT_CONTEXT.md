@@ -4,9 +4,9 @@
 
 ## 当前主线
 
-Phase 35：Dev Route Long-Tail Diagnosis 已完成。
+Phase 36：External Proof Content Slice 已完成本地实现。
 
-当前主线可以转入 Phase 36：External Proof Content Slice。Phase 35 的核心结论是：AnyReader 项目详情和 MDX detail routes 没有稳定长尾，当前不应重构 `src/lib/content.ts`、MDX 静态导入或内容注册表。
+当前主线可以转入 Phase 37：Content Scale & Evidence Navigation Review。Phase 36 的核心结论是：`ursb.me` 值得借鉴的不是模块数量，而是把身份、项目、内容、状态、工具和证据组织成可探索对象；Ray Studio 现在应该继续增强对象边界和证据入口，而不是扩大首页密度。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -19,6 +19,7 @@ Phase 35：Dev Route Long-Tail Diagnosis 已完成。
 - `scripts/measure-route-timing.mjs` 是单轮 route timing 观测脚本。
 - `scripts/diagnose-route-long-tail.mjs` 是重复 route timing 诊断脚本，用于判断 detail route 长尾是否稳定复现。
 - `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
+- `src/components/content/knowledge-trails.tsx` 是 Knowledge 详情关系轨道事实源，当前包含 Related writing、Project evidence、Reference links 和 Backlinks。
 - `/health.json` 是公开轻量健康端点。
 - `scripts/verify-raynode.mjs` 是 RayNode HTTP health 检查脚本。
 - `AmbientCursorField` 在首页等探索页保留 cursor 光场，在 `/blog/[slug]` 和 `/knowledge/[slug]` 自动进入 reading surface，避免与 Reading Focus Lens 抢注意力。
@@ -70,6 +71,25 @@ RayNode 当前状态：
 - `docs/ROADMAP.md`：阶段路线。
 - `docs/PROGRESS_LOG.md`：阶段进度。
 - `docs/VERSION_TRACE.md`：提交、部署和验证追溯。
+
+## 已完成的 Phase 36 切片
+
+- 新增中文外部参考文章 `/blog/ursb-personal-site-object-grammar`。
+- 新增 Knowledge 规则 `/knowledge/personal-site-object-grammar`。
+- `KnowledgeTrails` 新增 `Reference links` 轨道，Knowledge 详情页可以直接暴露外部参考入口。
+- 新文章接入 `src/lib/content.ts`、博客列表、相关阅读、Knowledge 反链、Command Center 和 release evidence。
+- e2e 增加 Phase 36 公共可达断言，覆盖博客详情、Knowledge 详情和外部参考链接。
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，112 items，estimated gzip 10,708 bytes。
+- `npm run release:evidence -- --local-quality-passed`：通过，54 public routes。
+- `npm run validate:release-evidence`：通过。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- `npm run test:e2e:smoke`：52 passed。
+- `npm run test:e2e:chromium`：110 passed。
+- `npm run test:e2e:mobile`：112 passed。
+- 移动审计已覆盖 `/blog/ursb-personal-site-object-grammar` 和 `/knowledge/personal-site-object-grammar`；新增文章 inline code 溢出已修复。
+- 下一阶段：Phase 37，先审查内容规模和 evidence navigation，再继续批量加文章。
 
 ## 已完成的 Phase 26 切片
 
@@ -287,6 +307,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. Phase 36：External Proof Content Slice。
-2. 继续增加外部证据型文章或项目，但每篇必须有真实对象、问题、取舍和证据入口。
+1. Phase 37：Content Scale & Evidence Navigation Review。
+2. 先复核 posts 已到 15 后的 Command Center 阈值、首页精选密度和外部证据导航，不要立刻继续批量加文章。
 3. 只有当 `perf:routes:long-tail -- --fail-on-slow` 稳定失败时，才重新审查 MDX 静态导入、图片处理或 Next dev 编译链路。

@@ -12,6 +12,7 @@ const routes = [
   "/blog/designing-command-surfaces",
   "/blog/homepage-density-case-study",
   "/blog/external-proof-over-portfolio-theater",
+  "/blog/ursb-personal-site-object-grammar",
   "/blog/anyreader-deep-reading-interface-teardown",
   "/blog/openprofile-as-agentic-profile-infrastructure",
   "/blog/case-study-diff-as-portfolio-format",
@@ -37,6 +38,7 @@ const routes = [
   "/knowledge/evidence-without-precision-theater",
   "/knowledge/external-proof-over-self-reference",
   "/knowledge/project-evidence-minimum-standard",
+  "/knowledge/personal-site-object-grammar",
   "/knowledge/socratic-reading-surfaces",
   "/knowledge/selection-anchors-are-product-state",
   "/knowledge/agent-team-as-product-surface",
@@ -55,7 +57,9 @@ const routes = [
 const auditedMobileRoutes = [
   "/",
   "/blog/chinese-as-product-memory",
+  "/blog/ursb-personal-site-object-grammar",
   "/knowledge/public-reachable-before-internal-complete",
+  "/knowledge/personal-site-object-grammar",
   "/uses",
   "/about",
   "/lab",
@@ -650,10 +654,33 @@ test.describe("core interaction contracts", () => {
 
     await expect(releaseEvidence).toBeVisible();
     await expect(releaseEvidence).toContainText("release-evidence.json");
-    await expect(releaseEvidence).toContainText("14 posts");
+    await expect(releaseEvidence).toContainText("15 posts");
     await expect(releaseEvidence).toContainText("5 projects");
-    await expect(releaseEvidence).toContainText("16 knowledge entries");
+    await expect(releaseEvidence).toContainText("17 knowledge entries");
     await expect(releaseEvidence).toHaveAttribute("href", "/release-evidence.json");
+  });
+
+  test("Phase 36 external reference content is publicly reachable", async ({ page }) => {
+    await page.goto("/blog/ursb-personal-site-object-grammar");
+
+    await expect(page.getByRole("heading", { name: "ursb.me 的个人主页对象语法" })).toBeVisible();
+    await expect(page.getByLabel("Reading quality context")).toContainText(
+      'read.use("ursb-personal-site-object-grammar")',
+    );
+    await expect(page.getByLabel("Related reading")).toContainText("个人站对象语法");
+    await expect(page.getByLabel("Related reading").getByRole("link", { name: /个人站对象语法/ })).toHaveAttribute(
+      "href",
+      "/knowledge/personal-site-object-grammar",
+    );
+
+    await page.goto("/knowledge/personal-site-object-grammar");
+
+    await expect(page.getByRole("heading", { name: "个人站对象语法" })).toBeVisible();
+    await expect(page.getByLabel("Reference links").getByRole("link", { name: /ursb.me/ })).toHaveAttribute(
+      "href",
+      "https://ursb.me",
+    );
+    await expect(page.getByText("用于判断一个新模块是有对象边界，还是只是增加首页装饰和信息密度。")).toBeVisible();
   });
 
   test("reading focus copy emits a command echo", async ({ page }) => {

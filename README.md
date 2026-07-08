@@ -95,6 +95,6 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- Phase 36：External Proof Content Slice。
-- 首选切片：继续增加外部证据型文章或项目，但每篇必须有真实对象、问题、取舍和证据入口。
-- 暂缓：为偶发本机资源异常重写内容架构、继续扩展新 surface、常驻宠物、大型知识图谱、高强度背景特效。
+- Phase 37：Content Scale & Evidence Navigation Review。
+- 首选切片：新增内容前先复核 Command Center 规模阈值、外部证据入口、Knowledge 详情 Reference links 和首页精选密度。
+- 暂缓：继续堆首页模块、常驻宠物、大型知识图谱、高强度背景特效，以及没有真实对象来源的新文章。
