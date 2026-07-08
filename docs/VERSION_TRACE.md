@@ -1599,7 +1599,7 @@ Production host：`https://raynode.me`
 ## Unreleased - 第三十六阶段 External Proof Content Slice
 
 日期：2026-07-08
-Primary implementation commit：待记录
+Primary implementation commit：`fbaa0b4`
 Deployment record commit：待记录
 Production host：`https://raynode.me`
 
