@@ -909,7 +909,7 @@ Knowledge kind 评估：
 
 优先级：高。
 
-状态：已完成，待部署记录。
+状态：已完成并部署到 RayNode。
 
 锚定 milestone：Blog / Lab Content Contract。
 
@@ -951,6 +951,12 @@ Knowledge kind 评估：
   - `/blog/agent-handoff-loop`：`read.use("agent-handoff-loop")`、writing track promise、Copy ref 可见；console error/warn 0。
   - Command Center 搜索 `visitor value` 返回 Lab experiment 结果。
   - 390px 移动端 `/lab` 和 `/blog/agent-handoff-loop` 无横向溢出。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `1e94875`。
+- `npm run raynode:health`：18/18 passed，commit `1e94875`。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production `npm run perf:routes:raynode`：52 routes，p95 878ms，max 1357ms，slow routes 0，failed routes 0。
+- Production fetch：`/lab` 包含 `Visitor value` 和 `next.use`；`/blog/agent-handoff-loop` 包含 `read.use`；`/command-index.json` 包含 Lab visitor value 与 next-use 关键词。
 
 验收标准：
 

@@ -205,6 +205,9 @@ RayNode 当前状态：
 - `npm run test:e2e:mobile`：107/107 passed。
 - `npm run perf:routes`：10 routes，p95 524ms，max 524ms，0 slow，0 failed。
 - Browser rendered check 已验证 `/lab`、`/blog/agent-handoff-loop` 和 Command Center 搜索 `visitor value`；390px 移动端无横向溢出。
+- RayNode 已部署 `1e94875`。
+- 线上验证：`raynode:health` 18/18，`raynode:health:full` 53/53，`raynode:smoke` 48/48，production `perf:routes:raynode` p95 878ms / max 1357ms / 0 slow / 0 failed。
+- Production fetch 确认 `/lab`、`/blog/agent-handoff-loop` 和 `/command-index.json` 均包含本阶段新增内容信号。
 
 ## 已完成的 Phase 31 切片
 
@@ -264,7 +267,6 @@ Command Center index 已经从 root layout 移出。当前规模适合按需加�
 
 ## 下一步建议
 
-1. 完成 Phase 34 提交、RayNode 部署和部署记录回填。
-2. Phase 35：Dev Route Long-Tail Diagnosis。
-3. 对 `/projects/anyreader-interface-teardown` 和其他 detail routes 做重复 dev timing。
-4. 只有在长尾稳定复现后，才审查 MDX 静态导入、图片处理或 Next dev 编译链路。
+1. Phase 35：Dev Route Long-Tail Diagnosis。
+2. 对 `/projects/anyreader-interface-teardown` 和其他 detail routes 做重复 dev timing。
+3. 只有在长尾稳定复现后，才审查 MDX 静态导入、图片处理或 Next dev 编译链路。

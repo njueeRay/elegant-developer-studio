@@ -2031,7 +2031,7 @@ GitHub 推送修复：
 
 日期：2026-07-08
 
-状态：已完成，待部署记录。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -2066,8 +2066,13 @@ GitHub 推送修复：
 - `npm run test:e2e:mobile`：107 passed。
 - Browser rendered check：`/lab`、`/blog/agent-handoff-loop`、首页 Command Center 搜索 `visitor value` 均可见且 console error/warn 0。
 - 390px 移动端 `/lab` 和 `/blog/agent-handoff-loop` 均无横向溢出。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `1e94875`。
+- `npm run raynode:health`：18/18 passed。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production `npm run perf:routes:raynode`：52 routes，p95 878ms，max 1357ms，0 slow，0 failed。
+- Production fetch：`/lab`、`/blog/agent-handoff-loop`、`/command-index.json` 均包含本阶段新增内容信号。
 
 下一步：
 
-- 提交并部署到 RayNode。
 - Phase 35 再处理 dev route long-tail diagnosis。

@@ -1506,12 +1506,12 @@ Production host：`https://raynode.me`
 - 桌面 dev 分片中 `/projects/anyreader-interface-teardown` 曾出现 29.3s 长尾，但移动分片和生产 route timing 未复现。
 - Phase 34 应先做重复 timing 诊断，不直接重构内容加载层。
 
-## Unreleased - 第三十四阶段 Intent-Routed Content Quality Polish
+## Released - 第三十四阶段 Intent-Routed Content Quality Polish
 
 日期：2026-07-08
-Primary implementation commit：待记录
+Primary implementation commit：`1e94875`
 Deployment record commit：待记录
-Deployed source commit：待记录
+Deployed source commit：`1e94875`
 Production host：`https://raynode.me`
 
 范围：
@@ -1540,6 +1540,12 @@ Production host：`https://raynode.me`
 - `npm run test:e2e:mobile`：107 passed。
 - Browser rendered check：`/lab`、`/blog/agent-handoff-loop`、Command Center 搜索 `visitor value` 均正常，console error/warn 0。
 - 390px 移动端 `/lab` 和 `/blog/agent-handoff-loop` 无横向溢出。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `1e94875`。
+- `npm run raynode:health`：18/18 passed，commit `1e94875`。
+- `npm run raynode:health:full`：53/53 passed。
+- `npm run raynode:smoke`：48 passed。
+- production `npm run perf:routes:raynode`：52 routes，p95 878ms，max 1357ms，0 slow，0 failed。
+- Production fetch：`/lab` 包含 `Visitor value` 和 `next.use`；`/blog/agent-handoff-loop` 包含 `read.use`；`/command-index.json` 包含 Lab visitor value 与 next-use 关键词。
 
 残余风险：
 
