@@ -31,6 +31,7 @@
 当前审计行动入口：
 
 - `docs/AUDIT_ACTION_TODO_2026_07_03.md`：基于 `CLAUDE_CODE_PERSONAL_HOMEPAGE_AUDIT_2026_07_03.md` 形成的 P0-P3 行动清单。
+- `docs/HOMEPAGE_DEVELOPMENT_STATE_REVIEW_2026_07_09.md`：当前个人主页开发状态总审查、问题清单、媒体层判断和 Phase 39-45 路线。
 - RayNode 部署已恢复；当前最优先事项不是继续扩新表面，而是统一站点事实源、修复假状态和腐烂证据。
 
 已实现：
@@ -69,6 +70,8 @@
 - 第二十七阶段证据自动化与发布纪律：新增 release evidence 生成/校验、RayNode 一键部署脚本和项目页生成证据卡。
 - 第二十八阶段内容发现规模化：Command Center 索引从 root layout 移出，改为 `/command-index.json` 按需加载，并新增规模报告。
 - 第二十九阶段阅读质量层：新增 writing tracks、受控 intent、文章引用语境、RelatedReading 路径理由和内容质量校验。
+- 第三十八阶段首页编辑策略：新增 `src/data/home-editorial.ts`，首页重点对象改为明确策展，并建立 `why.here(...)` 理由。
+- 2026-07-09 总审查：新增 `docs/HOMEPAGE_DEVELOPMENT_STATE_REVIEW_2026_07_09.md`，明确媒体层、项目证据、Post-16 内容门禁和装饰性交互的后续优先级。
 - 生成项目/媒体素材。
 - PRD、路线图、IA、设计系统、版本追溯、QA、飞书知识库。
 

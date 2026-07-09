@@ -72,6 +72,7 @@ RayNode 当前状态：
 - `docs/AUDIT_ACTION_TODO_2026_07_03.md`：Phase 25 P0-P3 执行队列。
 - `docs/PROJECT_MAP.md`：产品表面、阶段、目录和质量门禁地图。
 - `docs/ROADMAP.md`：阶段路线。
+- `docs/HOMEPAGE_DEVELOPMENT_STATE_REVIEW_2026_07_09.md`：当前个人主页状态总审查、问题清单、媒体层判断和 Phase 39-45 路线。
 - `docs/PROGRESS_LOG.md`：阶段进度。
 - `docs/VERSION_TRACE.md`：提交、部署和验证追溯。
 
