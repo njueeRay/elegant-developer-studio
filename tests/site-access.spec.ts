@@ -110,7 +110,7 @@ test.describe("public routes and links", () => {
     await expect(scale).toContainText('content.scale("watch")');
     await expect(scale.getByLabel("Content scale metrics")).toContainText("15");
     await expect(scale.getByLabel("Content scale metrics")).toContainText("17");
-    await expect(scale.getByLabel("Content scale metrics")).toContainText("112");
+    await expect(scale.getByLabel("Content scale metrics")).toContainText("120");
     await expect(scale).toContainText("triggers review");
     await expect(scale.getByRole("link", { name: /External proof essays/ })).toHaveAttribute(
       "href",
@@ -395,6 +395,7 @@ test.describe("public routes and links", () => {
 
     await expect(mediaEntry).toContainText('why.here("media-breath")');
     await expect(mediaEntry.getByRole("link", { name: /Open mix/ })).toHaveAttribute("href", "/music");
+    await expect(mediaEntry.getByRole("link", { name: /Browse photos/ })).toHaveAttribute("href", "/photos");
 
     await expect(page.getByRole("heading", { name: "Editorially recent" })).toBeVisible();
     await expect(page.getByLabel("Latest writing editorial reason")).toContainText('why.here("latest-writing")');
@@ -414,6 +415,21 @@ test.describe("public routes and links", () => {
       "href",
       "https://github.com/njueeRay/OpenProfile",
     );
+  });
+
+  test("Phase 39 selected work exposes ranked inspectable evidence", async ({ page }) => {
+    await page.goto("/projects/openprofile-agent-workflow");
+
+    await expect(page.getByLabel("Selected work proof")).toContainText('why.here("openprofile")');
+    await expect(page.getByLabel("Selected work proof").getByRole("link", { name: /Inspect ranked evidence/ })).toHaveAttribute(
+      "href",
+      "#project-evidence-title",
+    );
+
+    const firstEvidence = page.locator(".project-evidence-card").first();
+    await expect(firstEvidence).toContainText("Proof #1 / Primary");
+    await expect(firstEvidence).toContainText("Public repository");
+    await expect(firstEvidence).toContainText("complete workflow can be inspected");
   });
 
   test("Phase 26 AnyReader proof links to the live product", async ({ page }) => {
@@ -1028,6 +1044,22 @@ test.describe("core interaction contracts", () => {
       .toBe(true);
   });
 
+  test("Phase 40 media routes disclose source and mock boundaries", async ({ page }) => {
+    await page.goto("/photos");
+    await expect(page.getByRole("heading", { name: /Visual notes/ })).toBeVisible();
+    await expect(page.locator(".photo-feature-card").first()).toContainText("Generated / Atmospheric");
+
+    await page.locator(".photo-feature-card").first().click();
+    await expect(page.getByRole("dialog", { name: "Photo viewer" })).toContainText("Source: GPT image generated studio preview");
+    await expect(page.getByRole("dialog", { name: "Photo viewer" })).toContainText("anchors the homepage's warm studio tone");
+    await page.keyboard.press("Escape");
+
+    await page.goto("/music");
+    await expect(page.getByText(/Mock playback state/)).toBeVisible();
+    await expect(page.getByLabel("Music trust boundary")).toContainText("Homepage preview cue");
+    await expect(page.getByLabel("Music trust boundary")).toContainText("prototype data");
+  });
+
   test("music controls update the active track", async ({ page }) => {
     await page.goto("/music");
 
@@ -1036,6 +1068,14 @@ test.describe("core interaction contracts", () => {
 
     await expect(page.getByRole("button", { name: "Pause track" })).toBeVisible();
     await expect(page.getByRole("button", { name: /Quiet refactor/ })).toHaveClass(/active/);
+  });
+
+  test("Phase 41 knowledge detail exposes a thin relation map", async ({ page }) => {
+    await page.goto("/knowledge/personal-site-object-grammar");
+
+    await expect(page.getByLabel("Knowledge relation map")).toContainText('knowledge.graph("thin")');
+    await expect(page.getByLabel("Knowledge relation map")).toContainText("Most related paths");
+    await expect(page.getByLabel("Knowledge trails")).toContainText("Turns this knowledge entry into inspectable project evidence");
   });
 });
 

@@ -27,9 +27,9 @@ function read(path) {
   return readFileSync(join(root, path), "utf8");
 }
 
-function evaluateObjectLiteral(source, label) {
+function evaluateObjectLiteral(source, label, context = Object.create(null)) {
   try {
-    return vm.runInNewContext(`(${source})`, Object.create(null), {
+    return vm.runInNewContext(`(${source})`, context, {
       timeout: 1000,
       displayErrors: true,
     });
@@ -183,6 +183,16 @@ const homeEditorialPolicy = extractExportLiteral(
   "{",
   "}",
 );
+const photos = extractExportLiteral("src/data/media.ts", "photos", "[", "]");
+const tracks = extractExportLiteral("src/data/media.ts", "tracks", "[", "]");
+const mediaSource = read("src/data/media.ts");
+const currentMixBlock = extractBalanced(
+  mediaSource,
+  mediaSource.indexOf("{", mediaSource.indexOf("export const currentMix")),
+  "{",
+  "}",
+);
+const currentMix = evaluateObjectLiteral(currentMixBlock, "src/data/media.ts:currentMix", { tracks });
 
 const postSlugs = new Set(posts.map((post) => post.slug));
 const projectSlugs = new Set(projects.map((project) => project.slug));
@@ -200,6 +210,10 @@ const evidenceTypes = new Set([
   "metric",
   "decision",
 ]);
+const evidenceRoles = new Set(["Primary", "Supporting", "Context"]);
+const photoOrigins = new Set(["Generated", "Unsplash", "Personal", "Reference"]);
+const memoryStrengths = new Set(["Personal", "Atmospheric", "Reference"]);
+const trackSourceStates = new Set(["Mock", "Local", "External"]);
 const staleEvidencePattern =
   /\b(?:dpl_[a-z0-9]+|elegant-developer-studio-[a-z0-9-]+\.vercel\.app)\b/i;
 
@@ -279,6 +293,8 @@ assertSlugList({
   ["homeEditorialPolicy.slots.selectedWork.proofHref", homeSlots.selectedWork?.proofHref],
   ["homeEditorialPolicy.slots.latestWriting.proofHref", homeSlots.latestWriting?.proofHref],
   ["homeEditorialPolicy.slots.mediaEntry.href", homeSlots.mediaEntry?.href],
+  ["homeEditorialPolicy.slots.mediaEntry.photoHref", homeSlots.mediaEntry?.photoHref],
+  ["homeEditorialPolicy.slots.mediaEntry.musicHref", homeSlots.mediaEntry?.musicHref],
   ["homeEditorialPolicy.slots.knowledgeSignal.proofHref", homeSlots.knowledgeSignal?.proofHref],
 ].forEach(([owner, href]) => assertRoute({ owner, href, routes, errors }));
 
@@ -358,17 +374,31 @@ projects.forEach((project) => {
   if (!Array.isArray(project.evidencePack) || project.evidencePack.length === 0) {
     errors.push(`project:${project.slug}.evidencePack must be a non-empty array`);
   } else {
+    const priorities = new Set();
+
     project.evidencePack.forEach((item, index) => {
       const owner = `project:${project.slug}.evidencePack[${index}]`;
 
-      ["type", "label", "detail", "href", "source"].forEach((field) => {
+      ["type", "proofRole", "label", "detail", "why", "href", "source"].forEach((field) => {
         if (typeof item[field] !== "string" || !item[field].trim()) {
           errors.push(`${owner}.${field} must be a non-empty string`);
         }
       });
 
+      if (!Number.isInteger(item.priority) || item.priority < 1) {
+        errors.push(`${owner}.priority must be a positive integer`);
+      } else if (priorities.has(item.priority)) {
+        errors.push(`${owner}.priority must be unique within the project evidence pack`);
+      } else {
+        priorities.add(item.priority);
+      }
+
       if (typeof item.type === "string" && !evidenceTypes.has(item.type)) {
         errors.push(`${owner}.type must be one of ${Array.from(evidenceTypes).join(", ")}`);
+      }
+
+      if (typeof item.proofRole === "string" && !evidenceRoles.has(item.proofRole)) {
+        errors.push(`${owner}.proofRole must be one of ${Array.from(evidenceRoles).join(", ")}`);
       }
 
       assertRoute({ owner: `${owner}.href`, href: item.href, routes, errors });
@@ -398,6 +428,44 @@ projects.forEach((project) => {
         }
       });
     });
+  }
+});
+
+photos.forEach((photo) => {
+  const owner = `photo:${photo.slug}`;
+
+  ["slug", "title", "sourceLabel", "whyPreserved"].forEach((field) => {
+    if (typeof photo[field] !== "string" || !photo[field].trim()) {
+      errors.push(`${owner}.${field} must be a non-empty string`);
+    }
+  });
+
+  if (!photoOrigins.has(photo.origin)) {
+    errors.push(`${owner}.origin must be one of ${Array.from(photoOrigins).join(", ")}`);
+  }
+
+  if (!memoryStrengths.has(photo.memoryStrength)) {
+    errors.push(`${owner}.memoryStrength must be one of ${Array.from(memoryStrengths).join(", ")}`);
+  }
+});
+
+tracks.forEach((track) => {
+  const owner = `track:${track.slug}`;
+
+  ["slug", "title", "usage", "whyQueued"].forEach((field) => {
+    if (typeof track[field] !== "string" || !track[field].trim()) {
+      errors.push(`${owner}.${field} must be a non-empty string`);
+    }
+  });
+
+  if (!trackSourceStates.has(track.sourceState)) {
+    errors.push(`${owner}.sourceState must be one of ${Array.from(trackSourceStates).join(", ")}`);
+  }
+});
+
+["purpose", "playbackState", "trustBoundary"].forEach((field) => {
+  if (typeof currentMix[field] !== "string" || !currentMix[field].trim()) {
+    errors.push(`currentMix.${field} must be a non-empty string`);
   }
 });
 

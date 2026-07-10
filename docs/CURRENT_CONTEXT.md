@@ -1,12 +1,12 @@
 # 当前上下文
 
-更新时间：2026-07-09
+更新时间：2026-07-10
 
 ## 当前主线
 
-Phase 38：Homepage Featured Editorial Policy 已完成并部署到 RayNode。
+Phase 39-41：Project Evidence Ranking、Media Trust Layer、Knowledge Graph Thin Layer 已完成并提交，等待 RayNode 部署确认。
 
-当前主线可以转入 Phase 39：Project Evidence Ranking & Case Study Diff Polish。Phase 38 的核心结论是：首页不是自动内容索引，而是编辑策展面；Featured essay、Selected work、Editorially recent、Media note 和 Knowledge signal 必须来自明确的首页编辑策略，不能继续依赖 `featured: true + date order`。
+当前主线可以转入 Phase 42：Homepage Visual Polish。Phase 39-41 的核心结论是：个人主页的“高级感”不能只来自视觉氛围，必须让项目证据、媒体素材和 Knowledge 关系都可排序、可解释、可点击、可验证。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -18,6 +18,9 @@ Phase 38：Homepage Featured Editorial Policy 已完成并部署到 RayNode。
 - `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
 - `src/lib/content-scale.ts` 是内容规模守门事实源，当前服务 `/blog` 的 Content Scale Panel。
 - `src/data/home-editorial.ts` 是首页编辑策略事实源，定义 Featured essay、Selected work、Editorially recent、Media note 和 Knowledge signal。
+- `ProjectMeta.evidencePack` 已具备 `priority`、`proofRole` 和 `why`，项目证据必须说明强度、角色和保留理由。
+- `src/data/media.ts` 已具备媒体 trust 字段：照片来源、memory strength、保留理由；音乐 mock 状态、usage 和 trust boundary。
+- `src/components/content/knowledge-trails.tsx` 已具备 `knowledge.graph("thin")` 局部关系图层，Knowledge 详情必须说明关联理由。
 - `scripts/measure-route-timing.mjs` 是单轮 route timing 观测脚本。
 - `scripts/diagnose-route-long-tail.mjs` 是重复 route timing 诊断脚本，用于判断 detail route 长尾是否稳定复现。
 - `src/data/writing.ts` 是写作线、intent 词表、intent → track 映射和引用语境事实源。
@@ -42,11 +45,12 @@ RayNode 当前状态：
 - 当前服务器源码提交：`baececf`。
 - `/release-evidence.json` 返回部署提交 `baececf`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
 - `/health.json` 返回 `status: ok`。
-- `/command-index.json` 返回 112 command items，并包含 `/blog/ursb-personal-site-object-grammar` 与 `/knowledge/personal-site-object-grammar`。
+- `/command-index.json` 当前线上仍为 112 command items；Phase 39-41 本地变更后预期为 120 command items，需部署后复核。
 - `npm run raynode:health`：18/18 passed。
 - `npm run raynode:health:full`：55/55 passed。
 - `npm run raynode:smoke`：50 passed。
 - Phase 38 production targeted homepage editorial test：1 passed。
+- Phase 39-41 尚未部署到 RayNode；本地 targeted 与完整 Chromium / Mobile 已通过。
 
 ## 当前事实源
 
@@ -61,6 +65,9 @@ RayNode 当前状态：
 - `src/app/command-index.json/route.ts`：Command Center 懒加载 JSON endpoint。
 - `scripts/report-command-index.mjs`：Command index 规模报告。
 - `src/data/home-editorial.ts`：首页编辑策略、why.here 理由和替换规则。
+- `src/data/media.ts`：照片、音乐、mix 的来源、状态和媒体 trust boundary。
+- `src/components/content/project-evidence-pack.tsx`：项目证据排序与证据卡展示。
+- `src/components/content/knowledge-trails.tsx`：Knowledge 详情关联路径和薄图层。
 - `src/data/writing.ts`：Writing tracks、受控 intent 和 citation guide。
 - `src/app/health.json/route.ts`：公开健康端点。
 - `scripts/verify-raynode.mjs`：RayNode health CLI。
@@ -75,6 +82,22 @@ RayNode 当前状态：
 - `docs/HOMEPAGE_DEVELOPMENT_STATE_REVIEW_2026_07_09.md`：当前个人主页状态总审查、问题清单、媒体层判断和 Phase 39-45 路线。
 - `docs/PROGRESS_LOG.md`：阶段进度。
 - `docs/VERSION_TRACE.md`：提交、部署和验证追溯。
+
+## 已完成的 Phase 39-41 切片
+
+- Phase 39：项目 evidencePack 增加 `priority`、`proofRole`、`why`，五个项目完成证据排序；OpenProfile 项目详情新增 Selected work proof；e2e 覆盖 OpenProfile ranked evidence。
+- Phase 40：首页 Media 卡升级为 Music + Photos 双入口；照片页显示 source / memory strength / why preserved；音乐页显示 mock playback、track usage 和 trust boundary；Command Center 纳入所有 photo 对象和 track 对象。
+- Phase 41：Knowledge 详情新增 `knowledge.graph("thin")` 关系薄图层，显示 3-5 条最相关路径和关联理由；移动端关系图层使用单列防溢出。
+- `validate:content`：通过，新增 evidence priority / proofRole / why、media trust 字段和 currentMix boundary 校验。
+- `report:command-index`：通过，120 items，estimated gzip 11,584 bytes，first screen carries index: no。
+- `lint`：通过。
+- `build`：通过，55 routes。
+- targeted Chromium e2e：4 passed，覆盖 Phase 38、Phase 39、Phase 40、Phase 41。
+- targeted Mobile e2e：3 passed，覆盖 Phase 40、Phase 41 和 mobile command center。
+- 完整 Chromium e2e：118 passed。
+- 完整 Mobile e2e：118 passed。
+- Primary implementation commit：`d611234`。
+- 下一阶段：Phase 42，首页视觉 polish，优先处理 OpenProfile 图像裁切、Media 卡双入口视觉节奏、why.here 文案显隐和移动端细节。
 
 ## 已完成的 Phase 36 切片
 

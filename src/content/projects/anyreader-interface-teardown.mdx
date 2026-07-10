@@ -16,9 +16,13 @@ export const meta = {
   evidencePack: [
     {
       type: "deployment",
+      priority: 1,
+      proofRole: "Primary",
       label: "Cloud reading surface",
       detail:
         "The public AnyReader app is reachable and gives the product promise a live surface beyond screenshots and README copy.",
+      why:
+        "It anchors the teardown in a real product surface that visitors can open before reading the critique.",
       href: "https://app.exnju.top",
       source: "AnyReader",
       route: "/projects/anyreader-interface-teardown",
@@ -27,9 +31,13 @@ export const meta = {
     },
     {
       type: "source",
+      priority: 2,
+      proofRole: "Supporting",
       label: "Public source repo",
       detail:
         "The UI repository exposes the React/Vite reader, domain model, Markdown rendering, local workspace plugin, and product README.",
+      why:
+        "It lets the interface claims be checked against implementation details instead of screenshots.",
       href: "https://github.com/TeaFishMeow/any-reader-ui",
       source: "GitHub",
       route: "/knowledge/socratic-reading-surfaces",
@@ -38,9 +46,13 @@ export const meta = {
     },
     {
       type: "document",
+      priority: 3,
+      proofRole: "Context",
       label: "Local codebase research",
       detail:
         "The local research report distinguishes implemented frontend behavior from cloud/backend capabilities that require external services.",
+      why:
+        "It records the boundary judgment behind the teardown and keeps future recommendations honest.",
       href: "https://github.com/TeaFishMeow/any-reader-ui/blob/main/docs/codebase-research.zh-CN.md",
       source: "Local + GitHub",
       route: "/blog/anyreader-deep-reading-interface-teardown",

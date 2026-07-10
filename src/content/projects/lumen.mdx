@@ -16,9 +16,13 @@ export const meta = {
   evidencePack: [
     {
       type: "source",
+      priority: 3,
+      proofRole: "Context",
       label: "Component source",
       detail:
         "Reusable interaction surfaces live in `src/components`, with project-wide visual language in `src/app/globals.css`.",
+      why:
+        "The source explains how the visual system is built, but it is strongest after the live surface and tests prove it works.",
       href: "https://github.com/njueeRay/elegant-developer-studio/tree/main/src/components",
       source: "GitHub",
       route: "/lab",
@@ -28,9 +32,13 @@ export const meta = {
     },
     {
       type: "deployment",
+      priority: 1,
+      proofRole: "Primary",
       label: "Production surface",
       detail:
         "The self-hosted RayNode surface renders the design language across writing, projects, knowledge, uses, lab, contact, photos, and music.",
+      why:
+        "The design system is only credible if it survives the deployed site across real routes and content types.",
       href: "https://raynode.me",
       source: "RayNode",
       route: "/",
@@ -39,9 +47,13 @@ export const meta = {
     },
     {
       type: "test",
+      priority: 2,
+      proofRole: "Supporting",
       label: "Regression suite",
       detail:
         "Playwright covers public routes, navigation, command flows, source links, copy feedback, filters, and mobile overflow.",
+      why:
+        "The suite keeps interaction polish from silently regressing while the homepage keeps evolving.",
       href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/tests/site-access.spec.ts",
       source: "Playwright",
       route: "/lab#personal-os-zoo-title",

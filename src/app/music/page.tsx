@@ -26,10 +26,11 @@ export default function MusicPage() {
         <p className="section-kicker rust">Music</p>
         <h1>A quiet studio mix for writing, refactoring, and design review.</h1>
         <p>{currentMix.description}</p>
+        <p>{currentMix.purpose}</p>
         <div className="media-header-facts" aria-label="Music collection facts">
           <span>
             <Radio size={15} />
-            Mock playback state
+            {currentMix.playbackState}
           </span>
           <span>
             <ListMusic size={15} />

@@ -100,8 +100,11 @@ export type ProjectMeta = {
   impact: string[];
   evidencePack: Array<{
     type: "source" | "deployment" | "document" | "test" | "screenshot" | "metric" | "decision";
+    priority: number;
+    proofRole: "Primary" | "Supporting" | "Context";
     label: string;
     detail: string;
+    why: string;
     href: string;
     source: string;
     route?: string;

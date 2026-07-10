@@ -62,6 +62,8 @@ type ResolvedHighlight = {
   description: string;
   meta: string;
   href: string;
+  photoHref?: string;
+  musicHref?: string;
   image?: string;
   tags?: readonly string[];
   reasonCode: string;
@@ -122,6 +124,8 @@ export function StudioHome({
       description: mediaEntry.description,
       meta: mediaEntry.meta,
       href: mediaEntry.href,
+      photoHref: mediaEntry.photoHref,
+      musicHref: mediaEntry.musicHref,
       image: mediaEntry.image,
       reasonCode: mediaEntry.reasonCode,
       reason: mediaEntry.reason,
@@ -406,9 +410,14 @@ function HighlightCard({
             {isPlaying ? <Pause size={15} /> : <Play size={15} />}
             {isPlaying ? "Pause preview" : "Preview cue"}
           </button>
-          <Link href={highlight.href} className="text-link rust">
+          <Link href={highlight.musicHref ?? highlight.href} className="text-link rust">
             Open mix <ArrowRight size={15} />
           </Link>
+          {highlight.photoHref ? (
+            <Link href={highlight.photoHref} className="text-link">
+              Browse photos <ArrowRight size={15} />
+            </Link>
+          ) : null}
         </div>
       </article>
     );

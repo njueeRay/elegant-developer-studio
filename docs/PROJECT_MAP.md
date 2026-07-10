@@ -1157,3 +1157,50 @@ GitHub Actions：
 3. Phase 41：Knowledge Graph Thin Layer。只做轻量局部图谱和关系说明，不做大型知识图谱。
 4. Phase 42：Homepage Visual Polish。处理 OpenProfile 图片移动端裁切、why.here 默认显隐、highlight rail 节奏。
 5. Phase 43：Post-16 Content Review Gate。新增第 16 篇文章前必须复核首页、Command Center、Blog filters 和 Knowledge trails。
+
+## 28. 第三十九至四十一阶段证据、媒体和知识薄图层
+
+本阶段一次性完成三个相邻的小阶段，但没有扩张页面数量；它把现有对象补成更可信、更可解释、更可访问的系统。
+
+新增产品表面：
+
+- `/projects/openprofile-agent-workflow` Selected work proof 面板。
+- Project Evidence Pack 的 `Proof #N / proofRole` 排序展示。
+- 首页 Media 卡的 Music + Photos 双入口。
+- `/photos` source / memory strength / why preserved。
+- `/music` mock playback boundary / track usage / trust note。
+- Knowledge detail 的 `knowledge.graph("thin")` 局部关系图层。
+
+新增事实源与约束：
+
+- `ProjectMeta.evidencePack.priority`：证据强度排序。
+- `ProjectMeta.evidencePack.proofRole`：Primary / Supporting / Context。
+- `ProjectMeta.evidencePack.why`：为什么这条证据值得保留。
+- `Photo.origin`、`Photo.sourceLabel`、`Photo.memoryStrength`、`Photo.whyPreserved`。
+- `Track.sourceState`、`Track.usage`、`Track.whyQueued`。
+- `Mix.purpose`、`Mix.playbackState`、`Mix.trustBoundary`。
+- `validate:content` 负责拒绝缺少上述字段的项目证据和媒体对象。
+
+系统理解：
+
+- 作品集项目的可信度不来自漂亮项目卡，而来自最强证据能否排在最前、能否被打开、能否解释为什么强。
+- 媒体层可以使用参考图和 mock 音乐，但必须清楚标注来源和状态，否则会变成伪个人资产。
+- Knowledge 不需要大型图谱；当前更需要局部关系和关系理由。
+- Command Center 是对象索引，不是只放页面入口；照片和 track 都应该能被搜索到。
+
+质量状态：
+
+- `validate:content`：通过。
+- `report:command-index`：120 items，estimated gzip 11,584 bytes，first screen carries index: no。
+- `lint`：通过。
+- `build`：55 routes。
+- targeted Chromium e2e：4 passed。
+- targeted Mobile e2e：3 passed。
+- 完整 Chromium e2e：118 passed。
+- 完整 Mobile e2e：118 passed。
+
+下一步：
+
+1. Phase 42：Homepage Visual Polish。
+2. 处理 OpenProfile 图片移动端裁切、Media 双入口布局、why.here 信息显隐和 highlight rail 视觉节奏。
+3. 暂缓新增大型组件，直到当前首页第一屏更稳定。

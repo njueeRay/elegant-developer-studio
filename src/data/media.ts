@@ -8,6 +8,11 @@ export type Photo = {
   alt: string;
   tags: string[];
   mood: string;
+  origin: "Generated" | "Unsplash" | "Personal" | "Reference";
+  sourceLabel: string;
+  sourceHref?: string;
+  memoryStrength: "Personal" | "Atmospheric" | "Reference";
+  whyPreserved: string;
   featured: boolean;
   story: string;
   aspect: "wide" | "portrait" | "square";
@@ -22,6 +27,9 @@ export type Track = {
   cover: string;
   mood: string;
   context: string;
+  sourceState: "Mock" | "Local" | "External";
+  usage: string;
+  whyQueued: string;
   tags: string[];
 };
 
@@ -32,6 +40,9 @@ export type Mix = {
   cover: string;
   tracks: Track[];
   context: string;
+  purpose: string;
+  playbackState: string;
+  trustBoundary: string;
 };
 
 export const photos: Photo[] = [
@@ -45,6 +56,11 @@ export const photos: Photo[] = [
     alt: "Notebook, coffee, and keyboard on a warm studio desk.",
     tags: ["Studio", "Writing", "Warmth"],
     mood: "Quiet focus",
+    origin: "Generated",
+    sourceLabel: "GPT image generated studio preview",
+    memoryStrength: "Atmospheric",
+    whyPreserved:
+      "It anchors the homepage's warm studio tone without pretending to be a personal documentary photo.",
     featured: true,
     story:
       "The desk before the day becomes loud: notes open, keyboard ready, coffee still warm.",
@@ -61,6 +77,12 @@ export const photos: Photo[] = [
     alt: "A laptop with code on screen in a dim workspace.",
     tags: ["Code", "Night", "Tools"],
     mood: "Debugging calm",
+    origin: "Unsplash",
+    sourceLabel: "Unsplash reference photo",
+    sourceHref: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    memoryStrength: "Reference",
+    whyPreserved:
+      "It keeps a credible code-window texture for the media layer while real desk photography is still absent.",
     featured: false,
     story:
       "A small reminder that code can feel tactile when the surrounding system is quiet enough.",
@@ -76,6 +98,11 @@ export const photos: Photo[] = [
     alt: "Design system screens and interface cards arranged on a studio wall.",
     tags: ["Design", "System", "Review"],
     mood: "System thinking",
+    origin: "Generated",
+    sourceLabel: "Generated Lumen design-system asset",
+    memoryStrength: "Atmospheric",
+    whyPreserved:
+      "It records the design-system mood board that shaped the current homepage language.",
     featured: true,
     story:
       "A visual checkpoint for component language: enough structure to repeat, enough warmth to read.",
@@ -92,6 +119,12 @@ export const photos: Photo[] = [
     alt: "A bright creative workspace with tables and soft daylight.",
     tags: ["Prototype", "Space", "Light"],
     mood: "Open loop",
+    origin: "Unsplash",
+    sourceLabel: "Unsplash reference photo",
+    sourceHref: "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
+    memoryStrength: "Reference",
+    whyPreserved:
+      "It stands in for the collaborative prototype-room feeling until a real workshop album exists.",
     featured: false,
     story:
       "The kind of room where a fuzzy product idea becomes a diagram, then a component, then a habit.",
@@ -108,6 +141,12 @@ export const photos: Photo[] = [
     alt: "Music equipment in a warm room prepared for listening.",
     tags: ["Music", "Evening", "Focus"],
     mood: "Low tempo",
+    origin: "Unsplash",
+    sourceLabel: "Unsplash reference photo",
+    sourceHref: "https://images.unsplash.com/photo-1511379938547-c1f69419868d",
+    memoryStrength: "Reference",
+    whyPreserved:
+      "It gives the music route a warm listening cue without claiming real playback metadata.",
     featured: false,
     story:
       "A small listening ritual for the part of the day when implementation starts to slow down.",
@@ -124,6 +163,12 @@ export const photos: Photo[] = [
     alt: "Warm architectural light and shadows near a quiet interior.",
     tags: ["Observation", "Texture", "Travel"],
     mood: "Collected",
+    origin: "Unsplash",
+    sourceLabel: "Unsplash reference photo",
+    sourceHref: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    memoryStrength: "Reference",
+    whyPreserved:
+      "It preserves the visual rule that interface ideas can start as light, rhythm, and edges.",
     featured: false,
     story:
       "Not every reference starts in software. Some of the best interface decisions begin as light, rhythm, and edges.",
@@ -141,6 +186,10 @@ export const tracks: Track[] = [
     cover: "/assets/morning-studio-desk.png",
     mood: "Warm",
     context: "Writing draft",
+    sourceState: "Mock",
+    usage: "Homepage preview cue and first writing-state track.",
+    whyQueued:
+      "It establishes the player contract before real audio licensing or local files are introduced.",
     tags: ["Focus", "Warm", "Loop"],
   },
   {
@@ -153,6 +202,10 @@ export const tracks: Track[] = [
       "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=82",
     mood: "Precise",
     context: "Code review",
+    sourceState: "Mock",
+    usage: "Refactor and review mode in the track list.",
+    whyQueued:
+      "It marks the sharper work state that should later map to a real instrumental reference.",
     tags: ["Code", "Review", "Deep work"],
   },
   {
@@ -165,6 +218,10 @@ export const tracks: Track[] = [
       "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=82",
     mood: "Dim",
     context: "Debugging",
+    sourceState: "Mock",
+    usage: "Late debugging mood for player state transitions.",
+    whyQueued:
+      "It gives the mini player a second atmosphere without implying a real streamed asset.",
     tags: ["Night", "Debug", "Ambient"],
   },
   {
@@ -176,6 +233,10 @@ export const tracks: Track[] = [
     cover: "/assets/lumen-design-system.png",
     mood: "Clear",
     context: "Design system pass",
+    sourceState: "Mock",
+    usage: "Design-system review track and Lumen visual bridge.",
+    whyQueued:
+      "It connects the music layer to the visual system without overloading the homepage.",
     tags: ["Design", "Tokens", "System"],
   },
 ];
@@ -188,6 +249,12 @@ export const currentMix: Mix = {
   cover: "/assets/morning-studio-desk.png",
   tracks,
   context: "Now playing in the studio",
+  purpose:
+    "A compact mood layer for writing, refactoring, and review; it is intentionally secondary to essays and projects.",
+  playbackState:
+    "Mock playback state: controls are interactive, but no real audio file is loaded in this phase.",
+  trustBoundary:
+    "Track titles, covers, and progress are prototype data until a licensed or local audio source is added.",
 };
 
 export function formatDuration(seconds: number) {

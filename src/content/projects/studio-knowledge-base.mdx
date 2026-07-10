@@ -16,9 +16,13 @@ export const meta = {
   evidencePack: [
     {
       type: "document",
+      priority: 1,
+      proofRole: "Primary",
       label: "Feishu knowledge base",
       detail:
         "The public working memory layer is synced into a Feishu Wiki so project planning can be read and commented on outside the local repo.",
+      why:
+        "It proves the documentation system is not only local Markdown; it has a cloud-readable review surface.",
       href: "https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb",
       source: "Feishu",
       route: "/knowledge",
@@ -27,9 +31,13 @@ export const meta = {
     },
     {
       type: "source",
+      priority: 3,
+      proofRole: "Context",
       label: "Sync map",
       detail:
         "`docs/FEISHU_SYNC.md` records every Wiki node, doc token, source file, and repeated sync protocol.",
+      why:
+        "It documents how the bridge stays maintainable after the first upload succeeds.",
       href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/FEISHU_SYNC.md",
       source: "GitHub",
       route: "/projects/studio-knowledge-base",
@@ -39,9 +47,13 @@ export const meta = {
     },
     {
       type: "document",
+      priority: 2,
+      proofRole: "Supporting",
       label: "Version trace",
       detail:
         "`docs/VERSION_TRACE.md` records phase commits, deployments, validation commands, and Feishu pages.",
+      why:
+        "It gives the knowledge base a historical audit trail instead of a static document dump.",
       href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/VERSION_TRACE.md",
       source: "GitHub",
       route: "/projects/studio-knowledge-base",

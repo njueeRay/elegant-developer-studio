@@ -272,17 +272,24 @@ const items = [
     meta: capability.label,
     keywords: ["about", "capability", capability.label],
   })),
-  ...photos
-    .filter((photo) => photo.featured)
-    .map((photo) => ({
-      id: `photo-${photo.slug}`,
-      kind: "photo",
-      title: photo.title,
-      description: photo.story,
-      href: "/photos",
-      meta: photo.mood,
-      keywords: photo.tags,
-    })),
+  ...photos.map((photo) => ({
+    id: `photo-${photo.slug}`,
+    kind: "photo",
+    title: photo.title,
+    description: `${photo.story} ${photo.whyPreserved}`,
+    href: "/photos",
+    meta: `${photo.origin} / ${photo.memoryStrength}`,
+    keywords: [...photo.tags, photo.origin, photo.memoryStrength, photo.sourceLabel],
+  })),
+  ...tracks.map((track) => ({
+    id: `music-track-${track.slug}`,
+    kind: "music",
+    title: track.title,
+    description: track.usage,
+    href: "/music",
+    meta: `Track / ${track.sourceState}`,
+    keywords: [...track.tags, track.context, track.mood, track.sourceState],
+  })),
   ...creativeIdeas.map((idea) => ({
     id: `creative-${idea.slug}`,
     kind: "collaboration",

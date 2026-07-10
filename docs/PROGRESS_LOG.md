@@ -2262,3 +2262,60 @@ GitHub 推送修复：
 
 - Phase 39：Project Evidence Ranking & Case Study Diff Polish。
 - 先审查项目详情页证据排序与 case study diff，再考虑继续增加内容或首页模块。
+
+### 第三十九至四十一阶段：Evidence Ranking / Media Trust / Knowledge Thin Graph
+
+日期：2026-07-10
+
+状态：本地实现完成并提交，等待 RayNode 部署。
+
+阶段判断：
+
+- Phase 39 的关键不是增加项目数量，而是让项目详情页回答“哪条证据最硬、为什么它排第一”。
+- Phase 40 的关键不是新增 `/media`，而是让 Photos 和 Music 从隐藏二级页面变成首页可达、来源清楚、状态清楚的媒体对象。
+- Phase 41 的关键不是做大型知识图谱，而是让 Knowledge detail 能解释 3-5 条最相关路径为什么相关。
+
+完成：
+
+- `ProjectMeta.evidencePack` 新增 `priority`、`proofRole`、`why`。
+- 五个项目的 evidencePack 均完成证据优先级与证明角色标注。
+- `ProjectEvidencePack` 按 `priority` 排序并显示 `Proof #N / Primary|Supporting|Context`。
+- OpenProfile 项目详情新增 `Selected work proof` 面板，直接解释 `why.here("openprofile")`。
+- 首页 Media 卡新增 `Browse photos`，与 `Open mix` 形成 Music + Photos 双入口。
+- `src/data/media.ts` 新增照片来源、memory strength、why preserved，以及 track usage、mock source state、mix trust boundary。
+- `/photos` 卡片和灯箱显示来源与保留理由。
+- `/music` 显示 mock playback boundary、track usage 和 trust note。
+- Command Center 纳入所有 photo 条目和 track 条目，command items 从 112 增至 120。
+- Knowledge 详情新增 `knowledge.graph("thin")`，显示最相关路径与关系理由。
+- `validate:content` 新增 evidence priority / proofRole / why、media trust 和 currentMix boundary 校验。
+- e2e 增加 Phase 39、Phase 40、Phase 41 断言。
+
+已验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，120 items，estimated gzip 11,584 bytes，first screen carries index: no。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- targeted Chromium e2e：`Phase 39|Phase 40|Phase 41|homepage editorial slots`，4 passed。
+- targeted Mobile e2e：`Phase 40|Phase 41|mobile command center`，3 passed。
+- `npm run test:e2e:chromium`：118 passed。
+- `npm run test:e2e:mobile`：118 passed。
+- Primary implementation commit：`d611234`。
+
+当前结论：
+
+- 项目页现在具备最低限度的证据排序能力，OpenProfile 作为首页 Selected work 的理由可在详情页被用户直接看到。
+- Media 不再是空载资产：首页能进入 Photos 和 Music，媒体页会说明素材来源和 mock 边界。
+- Knowledge detail 的关系说明比大图谱更适合当前信息规模；它提高可理解性，不制造视觉债务。
+
+残余风险：
+
+- Phase 39 尚未深度重写 caseStudyDiff 文案，只强化了可点击证据和证据排序；后续可继续做“diff specificity polish”。
+- Phase 40 仍然是媒体 trust layer，不是真实个人相册或真实音频系统；未来应逐步替换参考图和 mock track。
+- Command index 达到 120 items，接近既定观察线；新增第 16 篇文章或更多媒体对象前必须重新评估搜索规模。
+
+下一步：
+
+- Phase 42：Homepage Visual Polish。
+- 优先处理 OpenProfile 图片移动端裁切、Media 卡双入口视觉节奏、why.here 文案显隐、highlight rail 卡片高度和移动端首屏观感。
+- 暂缓新增大型组件、宠物、常驻复杂背景和大型知识图谱。

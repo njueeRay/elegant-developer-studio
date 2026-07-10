@@ -16,9 +16,13 @@ export const meta = {
   evidencePack: [
     {
       type: "source",
+      priority: 1,
+      proofRole: "Primary",
       label: "Public repository",
       detail:
         "The repo exposes the profile workflow, agent files, docs, CI configuration, changelog, and reusable setup instructions.",
+      why:
+        "This is the hardest proof because the complete workflow can be inspected, forked, and compared against the case study claims.",
       href: "https://github.com/njueeRay/OpenProfile",
       source: "GitHub",
       route: "/projects/openprofile-agent-workflow",
@@ -27,9 +31,13 @@ export const meta = {
     },
     {
       type: "document",
+      priority: 2,
+      proofRole: "Supporting",
       label: "Agent workflow docs",
       detail:
         "The workflow documentation defines the Brain, PM, Dev, Researcher, Code Reviewer, and Profile Designer roles as a reusable operating model.",
+      why:
+        "It proves the project is an operating model, not only a polished profile surface.",
       href: "https://github.com/njueeRay/OpenProfile/blob/main/docs/agent-workflow.md",
       source: "GitHub",
       route: "/knowledge/agent-team-as-product-surface",
@@ -38,9 +46,13 @@ export const meta = {
     },
     {
       type: "decision",
+      priority: 3,
+      proofRole: "Context",
       label: "Open source strategy",
       detail:
         "The strategy document draws a hard boundary between a static profile generator and a workflow template with persistent context.",
+      why:
+        "It explains the product boundary and prevents the repo from being mistaken for a generic README generator.",
       href: "https://github.com/njueeRay/OpenProfile/blob/main/docs/open-source-strategy.md",
       source: "GitHub",
       route: "/blog/openprofile-as-agentic-profile-infrastructure",

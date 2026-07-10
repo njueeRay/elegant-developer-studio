@@ -1105,15 +1105,46 @@ Knowledge kind 评估：
 - 当前不应继续增加首页模块，应先提升项目详情页证据排序和 case study diff 的证明力。
 - `featured: true` 以后只表示内容可展示，不承担首页选择语义。
 
+### Phase 39-41 完成记录：Evidence Ranking / Media Trust / Knowledge Thin Graph
+
+状态：本地完成并提交，等待 RayNode 部署。
+
+完成项：
+
+- [x] Phase 39：为五个项目的 `evidencePack` 增加 `priority`、`proofRole`、`why`。
+- [x] Phase 39：项目证据卡按优先级排序，显示 `Proof #N / Primary|Supporting|Context`。
+- [x] Phase 39：OpenProfile 详情页新增 `Selected work proof`，把首页 `why.here("openprofile")` 落到详情页。
+- [x] Phase 39：`validate:content` 拦截缺少证据排序、证明角色和保留理由的项目证据。
+- [x] Phase 40：首页 Media 卡新增 `Open mix` 与 `Browse photos` 双入口。
+- [x] Phase 40：照片数据补充 `origin`、`sourceLabel`、`memoryStrength`、`whyPreserved`。
+- [x] Phase 40：音乐数据补充 `sourceState`、`usage`、`whyQueued`、`trustBoundary`。
+- [x] Phase 40：Photos / Music 页面显示来源、保留理由和 mock playback 边界。
+- [x] Phase 40：Command Center 纳入全部 photo 对象和 track 对象。
+- [x] Phase 41：Knowledge 详情新增 `knowledge.graph("thin")` 最相关路径。
+- [x] Phase 41：Knowledge trails 每个链接显示关联理由。
+- [x] Phase 41：移动端关系图层使用单列布局防溢出。
+- [x] targeted Chromium e2e：Phase 39 / 40 / 41 通过。
+- [x] targeted Mobile e2e：Phase 40 / 41 / mobile command center 通过。
+- [x] 完整 Chromium e2e：118 passed。
+- [x] 完整 Mobile e2e：118 passed。
+- [x] Primary implementation commit：`d611234`。
+
+阶段结论：
+
+- 项目页的可信度显著提高，但 caseStudyDiff 仍可继续深化成更具体的变更记录。
+- Media 已经从“内部知道有页面”转为首页可达，但素材仍处于 reference / mock 阶段。
+- Knowledge 的薄图层是正确方向；当前不需要大型图谱。
+- Command index 到达 120 items，是后续内容扩张前必须重新观察的边界。
+
 后续可推进 List：
 
-- [ ] Phase 39：Project Evidence Ranking & Case Study Diff Polish。
-  审查 OpenProfile、AnyReader、Lumen、Studio Knowledge Base、Codex Feishu Bridge 的证据排序和 before/after/proof 结构。
-- [ ] Phase 40：Media Trust Layer。
-  让音乐和照片具备更真实的对象状态：当前播放、来源、精选照片理由、相册叙事。
-- [ ] Phase 41：Knowledge Graph Thin Layer。
-  只做局部关系路径和“为什么关联”，避免大型图谱视觉噪音。
 - [ ] Phase 42：Homepage Visual Polish。
-  处理 OpenProfile 图片移动端裁切、why.here 显隐节奏、highlight rail 的视觉平衡。
+  处理 OpenProfile 图片移动端裁切、Media 双入口视觉节奏、why.here 显隐、highlight rail 高度和移动端首屏观感。
 - [ ] Phase 43：Post-16 Content Review Gate。
   新增第 16 篇文章前，强制复核首页、Blog filters、Command Center、Knowledge trails 和 release evidence。
+- [ ] Phase 44：Case Study Diff Specificity Polish。
+  将每个项目的 before / after / proof 改写得更像产品变更记录，而不是项目简介补充。
+- [ ] Phase 45：Real Media Replacement Plan。
+  规划如何用真实个人照片、真实本地音频或明确授权素材逐步替换 Generated / Unsplash / Mock。
+- [ ] Phase 46：Command Index Threshold Review。
+  如果 command items 超过 120 后继续增长，评估是否需要分片、服务端搜索或按需拉取二级索引。

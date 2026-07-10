@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Code2, ExternalLink, GitCompareArrows } from "lucide-react";
 import { ProjectEvidencePack } from "@/components/content/project-evidence-pack";
 import { SiteHeader } from "@/components/site-header";
+import { homeEditorialPolicy } from "@/data/home-editorial";
 import { getAllProjects, getProject } from "@/lib/content";
 import { createMetadata } from "@/lib/metadata";
 
@@ -41,6 +42,10 @@ export default async function ProjectPage({ params }: PageProps) {
   }
 
   const Content = project.Content;
+  const selectedWork =
+    homeEditorialPolicy.slots.selectedWork.projectSlug === project.slug
+      ? homeEditorialPolicy.slots.selectedWork
+      : null;
 
   return (
     <main className="studio-shell content-shell project-detail-shell">
@@ -91,6 +96,20 @@ export default async function ProjectPage({ params }: PageProps) {
         <div className="article-content project-prose">
           <Content />
         </div>
+        {selectedWork ? (
+          <section className="selected-work-proof" aria-label="Selected work proof">
+            <div>
+              <p className="section-kicker blue">{selectedWork.eyebrow}</p>
+              <h2>Why this project is selected</h2>
+            </div>
+            <code>{selectedWork.reasonCode}</code>
+            <p>{selectedWork.reason}</p>
+            <small>{selectedWork.selectionRule}</small>
+            <Link href="#project-evidence-title" className="text-link blue">
+              Inspect ranked evidence <ExternalLink size={15} />
+            </Link>
+          </section>
+        ) : null}
         <ProjectEvidencePack projectSlug={project.slug} evidencePack={project.evidencePack} />
         <section className="case-study-diff" aria-labelledby="case-study-diff-title">
           <div className="case-study-diff-heading">

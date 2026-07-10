@@ -73,7 +73,7 @@ export function ProjectEvidencePack({ projectSlug, evidencePack }: ProjectEviden
 
   const evidenceCards = useMemo(() => {
     if (!releaseEvidence) {
-      return evidencePack;
+      return [...evidencePack].sort((a, b) => a.priority - b.priority);
     }
 
     const passedRequiredGates = releaseEvidence.qualityGates.filter(
@@ -81,11 +81,15 @@ export function ProjectEvidencePack({ projectSlug, evidencePack }: ProjectEviden
     ).length;
     const releaseEvidenceCard: ProjectMeta["evidencePack"][number] = {
       type: "deployment",
+      priority: 99,
+      proofRole: "Context",
       label: "Generated release evidence",
       detail:
         `Generated deployment facts for commit ${releaseEvidence.commitSha}: ` +
         `${releaseEvidence.contentCounts.posts} posts, ${releaseEvidence.contentCounts.projects} projects, ` +
         `${releaseEvidence.contentCounts.knowledge} knowledge entries, and ${releaseEvidence.routesCount} public routes.`,
+      why:
+        "This runtime evidence confirms the project surface is still buildable and route-audited after release.",
       href: "/release-evidence.json",
       source: "release-evidence.json",
       route: `/projects/${projectSlug}`,
@@ -95,7 +99,7 @@ export function ProjectEvidencePack({ projectSlug, evidencePack }: ProjectEviden
       verifiedAt: releaseEvidence.builtAt.slice(0, 10),
     };
 
-    return [...evidencePack, releaseEvidenceCard];
+    return [...evidencePack, releaseEvidenceCard].sort((a, b) => a.priority - b.priority);
   }, [evidencePack, projectSlug, releaseEvidence]);
 
   return (
@@ -108,9 +112,10 @@ export function ProjectEvidencePack({ projectSlug, evidencePack }: ProjectEviden
         </div>
       </div>
       <div className="project-evidence-grid">
-        {evidenceCards.map((item) => (
+        {evidenceCards.map((item, index) => (
           <a
             className={`project-evidence-card evidence-${item.type}`}
+            data-priority={item.priority}
             data-testid={toTestId(projectSlug, item.label)}
             href={item.href}
             key={item.label}
@@ -125,9 +130,12 @@ export function ProjectEvidencePack({ projectSlug, evidencePack }: ProjectEviden
               });
             }}
           >
-            <span className="project-evidence-type">{item.type}</span>
+            <span className="project-evidence-type">
+              Proof #{index + 1} / {item.proofRole}
+            </span>
             <strong>{item.label}</strong>
             <p>{item.detail}</p>
+            <p className="project-evidence-why">{item.why}</p>
             <DataSourceBadge
               source={item.source}
               command={item.verifiedBy}

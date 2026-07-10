@@ -154,9 +154,9 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
           {highlights.map((photo, index) => (
             <button
               key={photo.slug}
-            type="button"
-            className="photo-feature-card"
-            onClick={() => openLightbox(filteredPhotos.indexOf(photo))}
+              type="button"
+              className="photo-feature-card"
+              onClick={() => openLightbox(filteredPhotos.indexOf(photo))}
             >
               <Image
                 src={photo.image}
@@ -170,6 +170,7 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
               <span>
                 <small>{photo.mood}</small>
                 <strong>{photo.title}</strong>
+                <em>{photo.origin} / {photo.memoryStrength}</em>
               </span>
             </button>
           ))}
@@ -199,6 +200,7 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
                   <MapPin size={13} />
                   {photo.location}
                 </small>
+                <em>{photo.origin} / {photo.memoryStrength}</em>
               </span>
               <Expand size={17} />
             </span>
@@ -253,8 +255,19 @@ export function PhotoGrid({ photos }: { photos: Photo[] }) {
                 <small>
                   {activePhoto.location} / {activePhoto.camera}
                 </small>
+                <small>
+                  Source: {activePhoto.sourceLabel} / Memory: {activePhoto.memoryStrength}
+                </small>
               </span>
-              <p>{activePhoto.story}</p>
+              <div>
+                <p>{activePhoto.story}</p>
+                <p>{activePhoto.whyPreserved}</p>
+                {activePhoto.sourceHref ? (
+                  <a href={activePhoto.sourceHref} rel="noreferrer" target="_blank">
+                    Open source
+                  </a>
+                ) : null}
+              </div>
             </figcaption>
           </figure>
           <button

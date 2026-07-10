@@ -21,6 +21,7 @@
 - `Knowledge` 信息架构，替代早期 `Notes` 概念。
 - `/blog`、`/blog/[slug]`、`/projects`、`/projects/[slug]`。
 - `/photos`、`/music`、照片灯箱和迷你播放器。
+- 项目证据排序、媒体来源说明和 Knowledge 局部关系图层。
 - 全站 `Cmd K` Command Center，支持键盘选择、最近访问、分组、高亮、上下文排序和空状态建议。
 - `/knowledge`、`/uses`、`/about`、`/lab`、`/contact`、`/collaboration`。
 - GitHub Issue Forms、`CONTRIBUTING.md` 和 PR 模板。
@@ -95,7 +96,7 @@ docs                产品、路线图、IA、追溯和阶段文档
 
 ## 下一阶段
 
-- Phase 39：Project Evidence Ranking & Case Study Diff Polish。
-- 首选切片：审查项目页证据排序、case study diff、OpenProfile/AnyReader/Lumen 等项目的首页与详情页证明力。
-- 后续队列：Media Trust Layer、Knowledge Graph Thin Layer、Homepage Visual Polish、Post-16 Content Review Gate。
-- 暂缓：继续堆首页模块、常驻宠物、大型知识图谱、高强度背景特效，以及没有真实对象来源的新文章。
+- Phase 42：Homepage Visual Polish。
+- 首选切片：OpenProfile 图片移动端裁切、Media 双入口视觉节奏、why.here 显隐、highlight rail 高度和移动端首屏观感。
+- 后续队列：Post-16 Content Review Gate、Case Study Diff Specificity Polish、Real Media Replacement Plan、Command Index Threshold Review。
+- 暂缓：继续堆首页模块、常驻复杂宠物、大型知识图谱、高强度背景特效，以及没有真实对象来源的新文章。

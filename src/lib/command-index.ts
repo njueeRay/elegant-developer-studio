@@ -7,7 +7,7 @@ import {
 import { creativeIdeas } from "@/data/collaboration";
 import { knowledgeEntries } from "@/data/knowledge";
 import { labComponents, labExperiments } from "@/data/lab";
-import { currentMix, photos } from "@/data/media";
+import { currentMix, photos, tracks } from "@/data/media";
 import { useTools, useWorkflows } from "@/data/uses";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
 
@@ -291,16 +291,25 @@ export function getCommandItems(): CommandItem[] {
   ];
 
   const photoItems = photos
-    .filter((photo) => photo.featured)
     .map<CommandItem>((photo) => ({
       id: `photo-${photo.slug}`,
       kind: "photo",
       title: photo.title,
-      description: photo.story,
+      description: `${photo.story} ${photo.whyPreserved}`,
       href: "/photos",
-      meta: photo.mood,
-      keywords: photo.tags,
+      meta: `${photo.origin} / ${photo.memoryStrength}`,
+      keywords: [...photo.tags, photo.origin, photo.memoryStrength, photo.sourceLabel],
     }));
+
+  const trackItems = tracks.map<CommandItem>((track) => ({
+    id: `music-track-${track.slug}`,
+    kind: "music",
+    title: track.title,
+    description: track.usage,
+    href: "/music",
+    meta: `Track / ${track.sourceState}`,
+    keywords: [...track.tags, track.context, track.mood, track.sourceState],
+  }));
 
   const creativeItems = creativeIdeas.map<CommandItem>((idea) => ({
     id: `creative-${idea.slug}`,
@@ -324,6 +333,7 @@ export function getCommandItems(): CommandItem[] {
     ...labExperimentItems,
     ...aboutItems,
     ...photoItems,
+    ...trackItems,
     ...creativeItems,
   ];
 }

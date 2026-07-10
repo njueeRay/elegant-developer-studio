@@ -25,6 +25,8 @@ export type HomeEditorialMediaSlot = {
   description: string;
   meta: string;
   href: string;
+  photoHref: string;
+  musicHref: string;
   image: string;
   reasonCode: string;
   reason: string;
@@ -82,6 +84,8 @@ export const homeEditorialPolicy = {
       description: "A quiet mix and a small frame from the studio desk.",
       meta: "Tycho - A Walk / 02:31",
       href: "/music",
+      photoHref: "/photos",
+      musicHref: "/music",
       image: "/assets/morning-studio-desk.png",
       reasonCode: 'why.here("media-breath")',
       reason:

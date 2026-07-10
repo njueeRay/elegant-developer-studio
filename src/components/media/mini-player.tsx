@@ -82,6 +82,12 @@ export function MiniPlayer({ mix }: { mix: Mix }) {
           <div className="player-context">
             <span>{currentTrack.context}</span>
             <span>{currentTrack.mood}</span>
+            <span>{currentTrack.sourceState}</span>
+          </div>
+          <div className="player-trust-note" aria-label="Music trust boundary">
+            <strong>{currentTrack.usage}</strong>
+            <span>{currentTrack.whyQueued}</span>
+            <small>{mix.trustBoundary}</small>
           </div>
         </div>
         <div className="player-controls">
@@ -137,7 +143,7 @@ export function MiniPlayer({ mix }: { mix: Mix }) {
             <span className="track-index">{String(index + 1).padStart(2, "0")}</span>
             <span>
               <strong>{track.title}</strong>
-              <small>{track.context}</small>
+              <small>{track.context} / {track.sourceState}</small>
             </span>
             <span>{formatDuration(track.duration)}</span>
           </button>

@@ -1729,6 +1729,46 @@ Production host：`https://raynode.me`
 
 - OpenProfile 图片在移动端 highlight card 内略窄裁切，适合 Phase 42 视觉 polish 处理。
 
+## Unreleased - 第三十九至四十一阶段 Evidence Ranking / Media Trust / Knowledge Thin Graph
+
+日期：2026-07-10
+Primary implementation commit：`d611234`
+Deployed source commit：待部署
+Deployment record commit：待记录
+Production host：`https://raynode.me`
+
+范围：
+
+- Phase 39：`ProjectMeta.evidencePack` 增加 `priority`、`proofRole`、`why`；五个项目补齐证据排序；`ProjectEvidencePack` 按优先级显示 `Proof #N`；OpenProfile 项目详情新增 Selected work proof。
+- Phase 40：首页 Media 卡新增 Photos + Music 双入口；照片和音乐数据新增来源、状态、保留理由和 mock boundary；Photos / Music 页面显示 trust 信息；Command Center 纳入 photo 与 track 对象。
+- Phase 41：Knowledge 详情新增 `knowledge.graph("thin")` 局部关系层，展示最相关路径与关系理由。
+- `scripts/validate-content-relations.mjs` 扩展 evidence priority、media trust 和 mix boundary 校验。
+- `scripts/report-command-index.mjs` 同步媒体对象索引规模统计。
+- `tests/site-access.spec.ts` 增加 Phase 39、Phase 40、Phase 41 浏览器断言。
+
+验证：
+
+- `npm run validate:content`：通过，15 posts / 5 projects / 17 knowledge entries。
+- `npm run report:command-index`：通过，120 items，estimated gzip 11,584 bytes，first screen carries index: no。
+- `npm run lint`：通过。
+- `npm run build`：通过，55 routes。
+- targeted Chromium e2e：`Phase 39|Phase 40|Phase 41|homepage editorial slots`，4 passed。
+- targeted Mobile e2e：`Phase 40|Phase 41|mobile command center stays inside the viewport`，3 passed。
+- `npm run test:e2e:chromium`：118 passed。
+- `npm run test:e2e:mobile`：118 passed。
+
+结论：
+
+- 项目证据从“有证据卡”升级为“有强度排序和角色解释”。
+- Media 从隐藏二级页面升级为首页可达的可信对象层，但仍清楚声明 mock 和参考素材边界。
+- Knowledge 关系层采用薄图谱，不做大型 star map，当前规模下更适合阅读和移动端。
+
+残余风险：
+
+- `/command-index.json` 已达到 120 items，继续增加内容前要重新评估懒加载 JSON 是否仍足够。
+- CaseStudyDiff 文案仍可继续提升具体性，尤其是每张 diff 卡的 before/after/proof 可以更像产品变更记录。
+- Photos 仍包含 Generated / Unsplash 参考图；未来如果要更个人化，应逐步替换为真实个人照片并保留来源字段。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02

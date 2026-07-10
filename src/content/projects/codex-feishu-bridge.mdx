@@ -16,9 +16,13 @@ export const meta = {
   evidencePack: [
     {
       type: "document",
+      priority: 1,
+      proofRole: "Primary",
       label: "Feishu Wiki surface",
       detail:
         "The cloud-readable knowledge base gives project maps, decisions, progress logs, and phase reviews a commentable surface outside the local repo.",
+      why:
+        "It proves the bridge has a real cloud endpoint for human review, not only local planning files.",
       href: "https://scnlb1lk96sb.feishu.cn/wiki/UYrLwuB1AieALIk9VKOcnLzqnwb",
       source: "Feishu",
       route: "/knowledge",
@@ -27,9 +31,13 @@ export const meta = {
     },
     {
       type: "source",
+      priority: 3,
+      proofRole: "Context",
       label: "Local sync protocol",
       detail:
         "`docs/FEISHU_SYNC.md` records which local documents map to Feishu nodes and how the sync loop should be maintained.",
+      why:
+        "It captures the repeatable maintenance rule behind the bridge, which is essential for future agents.",
       href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/FEISHU_SYNC.md",
       source: "GitHub",
       route: "/projects/studio-knowledge-base",
@@ -38,9 +46,13 @@ export const meta = {
     },
     {
       type: "decision",
+      priority: 2,
+      proofRole: "Supporting",
       label: "Handoff contract",
       detail:
         "The bridge treats chat as exploration and repository Markdown as the durable fact source for future agents.",
+      why:
+        "It explains the governance decision that makes the bridge durable rather than merely convenient.",
       href: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/PROJECT_MAP.md",
       source: "GitHub",
       route: "/projects/codex-feishu-bridge",

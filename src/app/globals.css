@@ -737,6 +737,10 @@ kbd {
   position: static;
 }
 
+.media-card-actions .text-link {
+  min-height: 34px;
+}
+
 .studio-status-panel {
   position: relative;
   z-index: 1;
@@ -2585,6 +2589,70 @@ a.source-reveal:hover {
   line-height: 1.05;
 }
 
+.knowledge-relation-map {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.26fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--rust), transparent 72%);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 12% 10%, color-mix(in srgb, var(--rust), transparent 86%), transparent 18rem),
+    color-mix(in srgb, var(--surface), transparent 8%);
+}
+
+.knowledge-relation-map > div:first-child {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.knowledge-relation-map span,
+.knowledge-relation-card span {
+  color: var(--rust);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.knowledge-relation-map strong {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.knowledge-relation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
+}
+
+.knowledge-relation-card {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface-strong), transparent 10%);
+  color: inherit;
+  text-decoration: none;
+}
+
+.knowledge-relation-card strong {
+  overflow-wrap: anywhere;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+}
+
+.knowledge-relation-card small {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .knowledge-trail-lanes {
   display: grid;
   gap: 16px;
@@ -2660,9 +2728,13 @@ a.source-reveal:hover {
   line-height: 1.58;
 }
 
+.knowledge-trail-reason {
+  color: color-mix(in srgb, var(--foreground), transparent 28%) !important;
+}
+
 .knowledge-trail-link svg {
   grid-column: 2;
-  grid-row: 1 / span 3;
+  grid-row: 1 / span 4;
   justify-self: end;
   color: var(--rust);
   transition: transform 180ms ease;
@@ -6550,6 +6622,46 @@ html[data-theme="dark"] .about-notebook {
   max-width: 760px;
 }
 
+.selected-work-proof {
+  display: grid;
+  gap: 12px;
+  max-width: 760px;
+  margin-top: 42px;
+  padding: 20px;
+  border: 1px solid color-mix(in srgb, var(--blue), transparent 72%);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--blue), transparent 86%), transparent 18rem),
+    color-mix(in srgb, var(--surface), transparent 6%);
+  box-shadow: 0 18px 48px rgba(38, 72, 108, 0.08);
+}
+
+.selected-work-proof h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.selected-work-proof code {
+  width: fit-content;
+  padding: 6px 9px;
+  border: 1px solid color-mix(in srgb, var(--blue), transparent 68%);
+  border-radius: 8px;
+  color: var(--blue);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.selected-work-proof p,
+.selected-work-proof small {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .project-evidence-pack {
   max-width: 980px;
   margin-top: 54px;
@@ -6658,6 +6770,12 @@ html[data-theme="dark"] .about-notebook {
   color: var(--muted);
   font-size: 0.93rem;
   line-height: 1.62;
+}
+
+.project-evidence-why {
+  padding-left: 10px;
+  border-left: 2px solid color-mix(in srgb, var(--blue), transparent 62%);
+  color: color-mix(in srgb, var(--foreground), transparent 22%) !important;
 }
 
 .project-evidence-object {
@@ -7057,6 +7175,16 @@ html[data-theme="dark"] .about-notebook {
   font-size: 0.72rem;
 }
 
+.photo-feature-card em,
+.photo-tile-meta em {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.66);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  font-style: normal;
+}
+
 .photo-feature-card strong,
 .photo-tile-meta strong {
   display: block;
@@ -7126,10 +7254,19 @@ html[data-theme="dark"] .about-notebook {
 }
 
 .photo-lightbox figcaption small,
-.photo-lightbox figcaption p {
+.photo-lightbox figcaption p,
+.photo-lightbox figcaption a {
   margin: 4px 0 0;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.55;
+}
+
+.photo-lightbox figcaption a {
+  display: inline-flex;
+  width: fit-content;
+  color: white;
+  font-weight: 650;
+  text-decoration: none;
 }
 
 .lightbox-close,
@@ -7241,6 +7378,32 @@ html[data-theme="dark"] .about-notebook {
   color: var(--muted);
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.72rem;
+}
+
+.player-trust-note {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface-strong), transparent 14%);
+}
+
+.player-trust-note strong,
+.player-trust-note span,
+.player-trust-note small {
+  line-height: 1.55;
+}
+
+.player-trust-note strong {
+  font-size: 0.88rem;
+}
+
+.player-trust-note span,
+.player-trust-note small {
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 .player-controls {
@@ -7420,6 +7583,11 @@ html[data-theme="dark"] .about-notebook {
   }
 
   .knowledge-trail-lane {
+    grid-template-columns: 1fr;
+  }
+
+  .knowledge-relation-map,
+  .knowledge-relation-grid {
     grid-template-columns: 1fr;
   }
 
