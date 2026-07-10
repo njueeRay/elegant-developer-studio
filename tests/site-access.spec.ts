@@ -112,6 +112,8 @@ test.describe("public routes and links", () => {
     await expect(scale.getByLabel("Content scale metrics")).toContainText("17");
     await expect(scale.getByLabel("Content scale metrics")).toContainText("120");
     await expect(scale).toContainText("triggers review");
+    await expect(scale).toContainText("Post-16 content review is armed.");
+    await expect(scale).toContainText("external object, project evidence, or a durable Knowledge rule");
     await expect(scale.getByRole("link", { name: /External proof essays/ })).toHaveAttribute(
       "href",
       "/blog?tag=External+proof",
@@ -404,6 +406,23 @@ test.describe("public routes and links", () => {
     );
   });
 
+  test("Phase 42 homepage preserves visual hierarchy across media and selected work", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/");
+
+    const workImage = page.locator(".highlight-image-work");
+    await expect(workImage).toHaveCSS("object-fit", "contain");
+
+    const mediaCard = page.getByTestId("home-editorial-media");
+    const mediaActions = mediaCard.locator(".media-card-actions");
+    const image = mediaCard.locator(".highlight-image");
+    const geometry = await Promise.all([mediaActions.boundingBox(), image.boundingBox()]);
+
+    expect(geometry[0]).not.toBeNull();
+    expect(geometry[1]).not.toBeNull();
+    expect(geometry[0]!.y).toBeGreaterThanOrEqual(geometry[1]!.y + geometry[1]!.height - 1);
+  });
+
   test("Phase 26 OpenProfile proof links to the real repository", async ({ page }) => {
     await page.goto("/projects/openprofile-agent-workflow");
     await expect(page.getByRole("heading", { name: "OpenProfile Agent Workflow" })).toBeVisible();
@@ -430,6 +449,23 @@ test.describe("public routes and links", () => {
     await expect(firstEvidence).toContainText("Proof #1 / Primary");
     await expect(firstEvidence).toContainText("Public repository");
     await expect(firstEvidence).toContainText("complete workflow can be inspected");
+  });
+
+  test("Phase 44 case study diffs expose change constraints and inspectable proof", async ({ page }) => {
+    for (const slug of [
+      "openprofile-agent-workflow",
+      "anyreader-interface-teardown",
+      "lumen",
+      "studio-knowledge-base",
+      "codex-feishu-bridge",
+    ]) {
+      await page.goto(`/projects/${slug}`);
+      const firstDiff = page.getByTestId(`case-study-diff-${slug}-1`);
+
+      await expect(firstDiff).toContainText("Change 01");
+      await expect(firstDiff).toContainText("Constraint");
+      await expect(firstDiff.getByRole("link", { name: "Open evidence" })).toHaveAttribute("href", /^https?:/);
+    }
   });
 
   test("Phase 26 AnyReader proof links to the live product", async ({ page }) => {

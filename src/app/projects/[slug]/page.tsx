@@ -120,11 +120,23 @@ export default async function ProjectPage({ params }: PageProps) {
             </div>
           </div>
           <div className="case-study-diff-grid">
-            {project.caseStudyDiff.map((item) => (
-              <article className="case-study-diff-card" key={item.before}>
+            {project.caseStudyDiff.map((item, index) => (
+              <article
+                className="case-study-diff-card"
+                data-testid={`case-study-diff-${project.slug}-${index + 1}`}
+                key={item.title}
+              >
+                <header>
+                  <span>Change {String(index + 1).padStart(2, "0")}</span>
+                  <h3>{item.title}</h3>
+                </header>
                 <div>
                   <span>Before</span>
                   <p>{item.before}</p>
+                </div>
+                <div>
+                  <span>Constraint</span>
+                  <p>{item.constraint}</p>
                 </div>
                 <div>
                   <span>After</span>

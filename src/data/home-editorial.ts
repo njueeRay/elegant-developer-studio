@@ -35,7 +35,7 @@ export type HomeEditorialMediaSlot = {
 
 export const homeEditorialPolicy = {
   schemaVersion: 1,
-  updated: "2026-07-09",
+  updated: "2026-07-10",
   principle:
     "The homepage is an editorial surface, not an automatic latest-content feed.",
   reviewTrigger:
@@ -48,7 +48,7 @@ export const homeEditorialPolicy = {
       proofHref: "/knowledge/external-proof-over-self-reference",
       reasonCode: 'why.here("external-proof")',
       reason:
-        "Strongest current argument against portfolio theater; it explains why the studio values public evidence over self-description.",
+        "It makes the studio's public-evidence standard explicit before any self-description.",
       selectionRule:
         "Keep until another essay makes a stronger public argument with external proof and durable Knowledge trails.",
     },
@@ -59,7 +59,7 @@ export const homeEditorialPolicy = {
       proofHref: "/projects/openprofile-agent-workflow",
       reasonCode: 'why.here("openprofile")',
       reason:
-        "Best current proof that the studio can turn a public developer surface into an agent-maintained product system.",
+        "Public source and a repeatable agent workflow make this the strongest current proof.",
       selectionRule:
         "Prefer work with public source, clear before/after evidence, and a reusable system insight over prettier but self-contained UI.",
     },
@@ -89,7 +89,7 @@ export const homeEditorialPolicy = {
       image: "/assets/morning-studio-desk.png",
       reasonCode: 'why.here("media-breath")',
       reason:
-        "Adds personal texture and rest between proof-heavy modules without turning the homepage into a media archive.",
+        "A deliberate pause between proof-heavy routes, with two real media paths.",
       selectionRule:
         "Keep media as a single breathable entry until photos or music have stronger narrative evidence.",
     },

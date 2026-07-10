@@ -1,4 +1,5 @@
 import { knowledgeEntries } from "@/data/knowledge";
+import { postAdmissionPolicy } from "@/data/content-admission";
 import { getCommandItems } from "@/lib/command-index";
 import { getAllPostMeta, getAllProjectMeta } from "@/lib/content";
 
@@ -15,6 +16,8 @@ export type ContentScaleStatus = {
   nextPostTriggersReview: boolean;
   postReviewTrigger: number;
   knowledgeReviewTrigger: number;
+  postAdmissionGateArmed: boolean;
+  postAdmissionGateName: string;
 };
 
 export function getContentScaleStatus(): ContentScaleStatus {
@@ -32,5 +35,7 @@ export function getContentScaleStatus(): ContentScaleStatus {
     nextPostTriggersReview: posts.length >= POST_REVIEW_TRIGGER,
     postReviewTrigger: POST_REVIEW_TRIGGER,
     knowledgeReviewTrigger: KNOWLEDGE_REVIEW_TRIGGER,
+    postAdmissionGateArmed: posts.length >= postAdmissionPolicy.baselineCount,
+    postAdmissionGateName: postAdmissionPolicy.gateName,
   };
 }

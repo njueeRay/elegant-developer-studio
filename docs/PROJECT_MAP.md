@@ -1207,3 +1207,30 @@ GitHub Actions：
 1. Phase 42：Homepage Visual Polish。
 2. 处理 OpenProfile 图片移动端裁切、Media 双入口布局、why.here 信息显隐和 highlight rail 视觉节奏。
 3. 暂缓新增大型组件，直到当前首页第一屏更稳定。
+
+## 29. 第四十二至四十五阶段：视觉收束、内容门禁与真实媒体计划
+
+本阶段不新增页面数量。它的目标是把现有表面从“已经可用”推进到“扩展时不会失控”。
+
+新增事实源：
+
+- `src/data/content-admission.ts`：固定 15 篇文章基线与 Post-16 准入契约。
+- `docs/PHASE43_POST_16_CONTENT_REVIEW.md`：内容规模复核与新增文章操作顺序。
+- `docs/PHASE45_REAL_MEDIA_REPLACEMENT.md`：真实照片与音频的替换条件、资产登记与回归清单。
+
+系统变化：
+
+- 首页 highlight rail 收紧 why.here 说明，媒体操作不再覆盖图片；OpenProfile 标识保持完整比例。
+- `/blog` 明确显示 Post-16 content review 已启用；新增文章若不登记外部对象、项目证据或 Knowledge rule，将被 `validate:content` 拒绝。
+- 五个项目的 Case Study Diff 统一使用 `Change / Before / Constraint / After / Proof`，避免把项目简介伪装成变更记录。
+- Media 仍保持 Generated / Unsplash / Mock 的诚实状态，真实素材进入受控替换计划，而不是先改文案假装真实。
+
+质量门：
+
+- `validate:content` 校验文章准入、Case Study Diff 完整性与可访问证据链接。
+- Playwright 校验移动端媒体操作不覆盖图片、OpenProfile 使用完整比例、五个项目 Diff 均有约束与证据。
+
+下一步：
+
+1. Phase 46：Command Index Threshold Review。
+2. 未获得真实个人媒体资产前，不扩展媒体组件或伪造播放能力。

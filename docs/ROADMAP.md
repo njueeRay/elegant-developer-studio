@@ -513,6 +513,9 @@
 - Phase 41：Knowledge Graph Thin Layer。
 - Phase 42：Homepage Visual Polish。
 - Phase 43：Post-16 Content Review Gate。
+- Phase 44：Case Study Diff Specificity Polish。
+- Phase 45：Real Media Replacement Plan。
+- Phase 46：Command Index Threshold Review。
 
 验收：
 

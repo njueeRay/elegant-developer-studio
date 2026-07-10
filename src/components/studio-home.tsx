@@ -387,7 +387,7 @@ function HighlightCard({
           alt=""
           width={360}
           height={270}
-          className="highlight-image"
+          className={`highlight-image ${highlight.kind === "work" ? "highlight-image-work" : ""}`}
         />
       ) : (
         <div className="paper-ghost" aria-hidden="true" />

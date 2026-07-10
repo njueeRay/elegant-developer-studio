@@ -4,9 +4,9 @@
 
 ## 当前主线
 
-Phase 39-41：Project Evidence Ranking、Media Trust Layer、Knowledge Graph Thin Layer 已完成并部署到 RayNode。
+Phase 42-45：Homepage Visual Polish、Post-16 Content Review Gate、Case Study Diff Specificity、Real Media Replacement Plan 已完成本地实现与验证，等待本轮 RayNode 部署记录。
 
-当前主线可以转入 Phase 42：Homepage Visual Polish。Phase 39-41 的核心结论是：个人主页的“高级感”不能只来自视觉氛围，必须让项目证据、媒体素材和 Knowledge 关系都可排序、可解释、可点击、可验证。
+当前主线转入 Phase 46：Command Index Threshold Review。Phase 42-45 的核心结论是：视觉收束、内容扩张、项目叙事和个人媒体都必须有明确准入与事实边界，不能靠继续堆页面或素材解决。
 
 - `public/release-evidence.json` 由脚本生成，不提交进 Git。
 - `ProjectEvidencePack` 渐进读取运行时 release evidence。
@@ -18,8 +18,11 @@ Phase 39-41：Project Evidence Ranking、Media Trust Layer、Knowledge Graph Thi
 - `scripts/report-command-index.mjs` 输出 command item count、kind 分布和 payload 估算。
 - `src/lib/content-scale.ts` 是内容规模守门事实源，当前服务 `/blog` 的 Content Scale Panel。
 - `src/data/home-editorial.ts` 是首页编辑策略事实源，定义 Featured essay、Selected work、Editorially recent、Media note 和 Knowledge signal。
+- `src/data/content-admission.ts` 是 Post-16 内容准入事实源，固定当前 15 篇文章基线并要求未来文章登记可公开证据基础。
 - `ProjectMeta.evidencePack` 已具备 `priority`、`proofRole` 和 `why`，项目证据必须说明强度、角色和保留理由。
+- `ProjectMeta.caseStudyDiff` 具备 `title`、`before`、`constraint`、`after`、`proof` 和 evidence link，项目页以变更记录而非简介补充展示它。
 - `src/data/media.ts` 已具备媒体 trust 字段：照片来源、memory strength、保留理由；音乐 mock 状态、usage 和 trust boundary。
+- `docs/PHASE45_REAL_MEDIA_REPLACEMENT.md` 约束真实照片/音频替换，不允许用 reference 或 mock 素材伪造个人媒体层。
 - `src/components/content/knowledge-trails.tsx` 已具备 `knowledge.graph("thin")` 局部关系图层，Knowledge 详情必须说明关联理由。
 - `scripts/measure-route-timing.mjs` 是单轮 route timing 观测脚本。
 - `scripts/diagnose-route-long-tail.mjs` 是重复 route timing 诊断脚本，用于判断 detail route 长尾是否稳定复现。

@@ -2324,3 +2324,30 @@ GitHub 推送修复：
 - Phase 42：Homepage Visual Polish。
 - 优先处理 OpenProfile 图片移动端裁切、Media 卡双入口视觉节奏、why.here 文案显隐、highlight rail 卡片高度和移动端首屏观感。
 - 暂缓新增大型组件、宠物、常驻复杂背景和大型知识图谱。
+
+### 第四十二至四十五阶段：Visual Polish / Content Gate / Case Study Diff / Real Media Plan
+
+日期：2026-07-10
+
+状态：本地实现与验证完成，待部署记录。
+
+完成：
+
+- Phase 42：Highlight rail 统一卡片节奏；OpenProfile 按 3:1 比例完整显示；媒体操作区从图片覆盖改为图片下方的正常流；首页编辑理由改为更短的解释，不再像说明书。
+- Phase 43：新增 `src/data/content-admission.ts`；以当前 15 篇文章作为不可漂移基线，新增文章必须登记外部对象、项目证据或 Knowledge 规则，内容校验会拒绝绕过门禁的文章。
+- Phase 44：`caseStudyDiff` 新增 title 和 constraint；五个项目所有 Diff 现在都有 Change、Before、Constraint、After 与可点击 Proof。
+- Phase 45：新增中文真实媒体替换计划，定义资产登记、真实照片优先、音频许可/播放边界、三步替换和部署回归。
+
+本地验证：
+
+- `validate:content`：15 posts / 5 projects / 17 knowledge entries 通过。
+- `report:command-index`：120 items、gzip 11,584 bytes、首屏不携带索引。
+- `lint` 与 `build`：通过，55 routes。
+- targeted Chromium：Phase 42、Phase 43 Blog gate、Phase 44，4 passed。
+- targeted Mobile：对应阶段与全部移动无横向溢出路由，14 passed。
+- 手工截图：桌面与移动首页 highlight rail、移动端 OpenProfile 完整标识均通过。
+
+下一步：
+
+- 部署到 RayNode 后，执行 health、full routes、smoke、production targeted e2e。
+- Phase 46：只在 command index 超过 120 或新增对象造成检索退化时启动。

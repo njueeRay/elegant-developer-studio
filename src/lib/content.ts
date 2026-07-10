@@ -116,7 +116,9 @@ export type ProjectMeta = {
     verifiedAt?: string;
   }>;
   caseStudyDiff: Array<{
+    title: string;
     before: string;
+    constraint: string;
     after: string;
     proof: string;
     evidenceHref?: string;

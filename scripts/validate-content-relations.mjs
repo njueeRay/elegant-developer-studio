@@ -177,6 +177,24 @@ const writingIntents = extractExportLiteral("src/data/writing.ts", "writingInten
 const writingTracks = extractExportLiteral("src/data/writing.ts", "writingTracks", "[", "]");
 const intentToTrack = extractExportLiteral("src/data/writing.ts", "intentToTrack", "{", "}");
 const citationGuides = extractExportLiteral("src/data/writing.ts", "citationGuides", "{", "}");
+const baselinePostSlugs = extractExportLiteral(
+  "src/data/content-admission.ts",
+  "baselinePostSlugs",
+  "[",
+  "]",
+);
+const postAdmissionPolicy = extractExportLiteral(
+  "src/data/content-admission.ts",
+  "postAdmissionPolicy",
+  "{",
+  "}",
+);
+const postAdmissions = extractExportLiteral(
+  "src/data/content-admission.ts",
+  "postAdmissions",
+  "{",
+  "}",
+);
 const homeEditorialPolicy = extractExportLiteral(
   "src/data/home-editorial.ts",
   "homeEditorialPolicy",
@@ -214,6 +232,7 @@ const evidenceRoles = new Set(["Primary", "Supporting", "Context"]);
 const photoOrigins = new Set(["Generated", "Unsplash", "Personal", "Reference"]);
 const memoryStrengths = new Set(["Personal", "Atmospheric", "Reference"]);
 const trackSourceStates = new Set(["Mock", "Local", "External"]);
+const admissionBases = new Set(["External object", "Project evidence", "Knowledge rule"]);
 const staleEvidencePattern =
   /\b(?:dpl_[a-z0-9]+|elegant-developer-studio-[a-z0-9-]+\.vercel\.app)\b/i;
 
@@ -350,6 +369,62 @@ posts.forEach((post) => {
   });
 });
 
+const baselinePostSet = new Set(baselinePostSlugs);
+
+if (baselinePostSlugs.length !== postAdmissionPolicy.baselineCount) {
+  errors.push("postAdmissionPolicy.baselineCount must match baselinePostSlugs length");
+}
+
+if (baselinePostSet.size !== baselinePostSlugs.length) {
+  errors.push("baselinePostSlugs must not contain duplicates");
+}
+
+baselinePostSlugs.forEach((slug) => {
+  if (!postSlugs.has(slug)) {
+    errors.push(`baselinePostSlugs references missing post \"${slug}\"`);
+  }
+});
+
+posts
+  .filter((post) => !baselinePostSet.has(post.slug))
+  .forEach((post) => {
+    const admission = postAdmissions[post.slug];
+    const owner = `post admission:${post.slug}`;
+
+    if (!admission) {
+      errors.push(`${owner} is required after the Post-16 baseline`);
+      return;
+    }
+
+    if (!admissionBases.has(admission.basis)) {
+      errors.push(`${owner}.basis must be External object, Project evidence, or Knowledge rule`);
+    }
+
+    if (typeof admission.reason !== "string" || !admission.reason.trim()) {
+      errors.push(`${owner}.reason must be a non-empty string`);
+    }
+
+    if (typeof admission.evidenceHref !== "string" || !admission.evidenceHref.trim()) {
+      errors.push(`${owner}.evidenceHref must be a non-empty string`);
+    } else {
+      assertRoute({ owner: `${owner}.evidenceHref`, href: admission.evidenceHref, routes, errors });
+    }
+
+    if (admission.basis === "Project evidence" && !post.relatedProjectSlugs.length) {
+      errors.push(`${owner} needs a related project trail for Project evidence`);
+    }
+
+    if (admission.basis === "Knowledge rule" && !post.relatedKnowledgeSlugs.length) {
+      errors.push(`${owner} needs a related Knowledge trail for Knowledge rule`);
+    }
+  });
+
+Object.keys(postAdmissions).forEach((slug) => {
+  if (!postSlugs.has(slug) || baselinePostSet.has(slug)) {
+    errors.push(`postAdmissions must only contain posts added after the baseline: \"${slug}\"`);
+  }
+});
+
 if (writingTracks.length !== 4) {
   errors.push("src/data/writing.ts must define exactly 4 long-term writing tracks");
 }
@@ -370,6 +445,26 @@ writingTracks.forEach((track) => {
 
 projects.forEach((project) => {
   assertRoute({ owner: `project:${project.slug}.href`, href: project.href, routes, errors });
+
+  if (!Array.isArray(project.caseStudyDiff) || project.caseStudyDiff.length === 0) {
+    errors.push(`project:${project.slug}.caseStudyDiff must be a non-empty array`);
+  } else {
+    project.caseStudyDiff.forEach((item, index) => {
+      const owner = `project:${project.slug}.caseStudyDiff[${index}]`;
+
+      ["title", "before", "constraint", "after", "proof"].forEach((field) => {
+        if (typeof item[field] !== "string" || !item[field].trim()) {
+          errors.push(`${owner}.${field} must be a non-empty string`);
+        }
+      });
+
+      if (typeof item.evidenceHref !== "string" || !item.evidenceHref.trim()) {
+        errors.push(`${owner}.evidenceHref must be a non-empty inspectable link`);
+      } else {
+        assertRoute({ owner: `${owner}.evidenceHref`, href: item.evidenceHref, routes, errors });
+      }
+    });
+  }
 
   if (!Array.isArray(project.evidencePack) || project.evidencePack.length === 0) {
     errors.push(`project:${project.slug}.evidencePack must be a non-empty array`);

@@ -64,13 +64,17 @@ export const meta = {
   ],
   caseStudyDiff: [
     {
+      title: "Name the durable source of project memory",
       before: "Project memory lived in chat history and scattered local files.",
+      constraint: "Local Markdown had to remain authoritative while cloud documents stayed commentable and easy to review.",
       after: "Repository Markdown became the fact source, with Feishu as the commentable cloud layer.",
       proof: "Project map, progress log, version trace, and sync protocol are updated every phase.",
       evidenceHref: "https://github.com/njueeRay/elegant-developer-studio/tree/main/docs",
     },
     {
+      title: "Turn phase history into an auditable release trail",
       before: "Phase progress was difficult to audit after deployment.",
+      constraint: "A phase record must connect implementation, validation, deployment, and cloud documentation without relying on chat memory.",
       after: "Each phase links commits, Vercel deployment, GitHub issue comments, and Feishu pages.",
       proof: "Phase 11 records production e2e, deployment id, issue comments, and wiki node tokens.",
       evidenceHref: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/VERSION_TRACE.md",

@@ -1141,13 +1141,13 @@ Knowledge kind 评估：
 
 后续可推进 List：
 
-- [ ] Phase 42：Homepage Visual Polish。
-  处理 OpenProfile 图片移动端裁切、Media 双入口视觉节奏、why.here 显隐、highlight rail 高度和移动端首屏观感。
-- [ ] Phase 43：Post-16 Content Review Gate。
-  新增第 16 篇文章前，强制复核首页、Blog filters、Command Center、Knowledge trails 和 release evidence。
-- [ ] Phase 44：Case Study Diff Specificity Polish。
-  将每个项目的 before / after / proof 改写得更像产品变更记录，而不是项目简介补充。
-- [ ] Phase 45：Real Media Replacement Plan。
-  规划如何用真实个人照片、真实本地音频或明确授权素材逐步替换 Generated / Unsplash / Mock。
+- [x] Phase 42：Homepage Visual Polish。
+  OpenProfile 改用 3:1 完整标识比例；媒体操作移出图片覆盖区；首页 why.here 文案收紧，桌面与移动截图复核通过。
+- [x] Phase 43：Post-16 Content Review Gate。
+  `src/data/content-admission.ts` 固定 15 篇文章基线；后续文章必须登记 External object、Project evidence 或 Knowledge rule，`validate:content` 会拒绝未准入内容。
+- [x] Phase 44：Case Study Diff Specificity Polish。
+  五个项目的每条 Diff 补齐 Change title、Constraint、Before、After 与可点击 Proof；内容校验拒绝不完整变更记录。
+- [x] Phase 45：Real Media Replacement Plan。
+  新增 `docs/PHASE45_REAL_MEDIA_REPLACEMENT.md`，定义真实资产登记、三步替换、播放边界和回归清单；当前没有伪造真实媒体状态。
 - [ ] Phase 46：Command Index Threshold Review。
   如果 command items 超过 120 后继续增长，评估是否需要分片、服务端搜索或按需拉取二级索引。

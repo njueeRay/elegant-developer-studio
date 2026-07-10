@@ -62,13 +62,17 @@ export const meta = {
   ],
   caseStudyDiff: [
     {
+      title: "Turn profile upkeep into an operating loop",
       before: "A developer profile is usually a one-time Markdown artifact that becomes stale.",
+      constraint: "The workflow had to stay forkable and understandable without becoming a hosted profile builder.",
       after: "OpenProfile turns the profile into a maintained system with agents, docs, CI, decisions, releases, and a live showcase.",
       proof: "The public repository includes agent definitions, workflow docs, design decisions, CI checks, and release history.",
       evidenceHref: "https://github.com/njueeRay/OpenProfile",
     },
     {
+      title: "Persist agent context outside the chat window",
       before: "AI help was an ad hoc chat layer with no stable project memory.",
+      constraint: "A future agent must be able to resume work without relying on a prior conversation transcript.",
       after: "Agent roles and handoff protocol are encoded as repo files so future sessions can resume from explicit context.",
       proof: "The agent workflow doc specifies session open, session close, DoD, and required documentation updates.",
       evidenceHref: "https://github.com/njueeRay/OpenProfile/blob/main/docs/agent-workflow.md",

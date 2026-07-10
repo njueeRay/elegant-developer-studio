@@ -39,6 +39,12 @@ export function ContentScalePanel({ status }: ContentScalePanelProps) {
         <ScaleLink href="/knowledge/project-evidence-minimum-standard" label="Evidence standard" />
         <ScaleLink href="/command-index.json" label="Command payload" />
       </div>
+      {status.postAdmissionGateArmed ? (
+        <p className="content-scale-gate">
+          <strong>{status.postAdmissionGateName} is armed.</strong> The next essay needs an external
+          object, project evidence, or a durable Knowledge rule before release.
+        </p>
+      ) : null}
     </section>
   );
 }

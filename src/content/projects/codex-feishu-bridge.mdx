@@ -62,13 +62,17 @@ export const meta = {
   ],
   caseStudyDiff: [
     {
+      title: "Give operating state a named home",
       before: "Project state was distributed across chat, local files, and memory.",
+      constraint: "The loop had to remain light enough for agent work while leaving a readable, commentable trail for human review.",
       after: "Current state, decisions, and phase progress have named documents and a Feishu cloud mirror.",
       proof: "A new agent can start from PROJECT_MAP, ROADMAP, CURRENT_CONTEXT, and FEISHU_SYNC.",
       evidenceHref: "https://github.com/njueeRay/elegant-developer-studio/tree/main/docs",
     },
     {
+      title: "Convert audit output into owned work",
       before: "Audit findings could remain a one-off report.",
+      constraint: "Findings need priorities and phase ownership, otherwise they become documentation theater.",
       after: "Audit findings become a prioritized todo with P0-P3 ownership and roadmap linkage.",
       proof: "The 2026-07-03 audit now points to a concrete Phase 25 execution queue.",
       evidenceHref: "https://github.com/njueeRay/elegant-developer-studio/blob/main/docs/AUDIT_ACTION_TODO_2026_07_03.md",

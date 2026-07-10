@@ -588,6 +588,7 @@ kbd {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: min(100%, 1440px);
   margin: 0 auto;
+  align-items: stretch;
   border-bottom: 1px solid var(--border);
 }
 
@@ -596,7 +597,7 @@ kbd {
   display: grid;
   grid-template-columns: 58px minmax(0, 1fr);
   gap: 22px;
-  min-height: 248px;
+  min-height: 276px;
   padding: 34px clamp(22px, 3vw, 38px);
   border-right: 1px solid var(--border);
   text-decoration: none;
@@ -655,7 +656,7 @@ kbd {
 }
 
 .highlight-card .editorial-reason {
-  opacity: 0.68;
+  opacity: 0.82;
   transition:
     opacity 180ms ease,
     transform 180ms ease;
@@ -677,6 +678,15 @@ kbd {
   border-radius: 10px;
   object-fit: cover;
   box-shadow: 0 16px 34px rgba(39, 29, 20, 0.12);
+}
+
+.highlight-image-work {
+  width: min(100%, 220px);
+  aspect-ratio: 3 / 1;
+  padding: 0;
+  background: color-mix(in srgb, var(--foreground), transparent 94%);
+  object-fit: contain;
+  object-position: center;
 }
 
 .paper-ghost {
@@ -712,9 +722,10 @@ kbd {
 }
 
 .media-card-actions {
-  position: absolute;
-  bottom: 28px;
-  left: clamp(102px, 9vw, 118px);
+  grid-column: 2;
+  grid-row: 3;
+  position: static;
+  margin-top: -4px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -1894,6 +1905,17 @@ a.source-reveal:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.content-scale-gate {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.content-scale-gate strong {
+  color: var(--foreground);
 }
 
 .content-scale-link {
@@ -6856,17 +6878,30 @@ html[data-theme="dark"] .about-notebook {
   gap: 16px;
 }
 
-.case-study-diff article {
+.case-study-diff-card {
   display: grid;
   gap: 14px;
   padding: 18px;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--surface);
-  box-shadow: 0 16px 44px rgba(47, 35, 20, 0.07);
+  box-shadow: 0 8px 24px rgba(47, 35, 20, 0.06);
 }
 
-.case-study-diff span {
+.case-study-diff-card header {
+  display: grid;
+  gap: 5px;
+}
+
+.case-study-diff-card h3 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.case-study-diff-card span {
   display: block;
   margin-bottom: 6px;
   color: var(--rust);
@@ -6877,20 +6912,20 @@ html[data-theme="dark"] .about-notebook {
   text-transform: uppercase;
 }
 
-.case-study-diff p,
-.case-study-diff strong {
+.case-study-diff-card p,
+.case-study-diff-card strong {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
 }
 
-.case-study-diff strong {
+.case-study-diff-card strong {
   display: block;
   color: var(--foreground);
   font-weight: 600;
 }
 
-.case-study-diff footer a {
+.case-study-diff-card footer a {
   display: inline-flex;
   width: fit-content;
   margin-top: 10px;
@@ -6900,7 +6935,7 @@ html[data-theme="dark"] .about-notebook {
   text-decoration: none;
 }
 
-.case-study-diff footer a:hover {
+.case-study-diff-card footer a:hover {
   color: var(--rust);
 }
 
@@ -7781,14 +7816,21 @@ html[data-theme="dark"] .about-notebook {
   .highlight-image,
   .paper-ghost {
     width: min(100%, 210px);
+    aspect-ratio: 16 / 10;
+  }
+
+  .highlight-image-work {
+    width: min(100%, 220px);
   }
 
   .card-arrow {
     right: 4px;
   }
 
-  .play-button {
-    left: 72px;
+  .media-card-actions {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 2px;
   }
 
   .knowledge-panel,
