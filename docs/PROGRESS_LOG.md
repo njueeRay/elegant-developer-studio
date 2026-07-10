@@ -2329,7 +2329,7 @@ GitHub 推送修复：
 
 日期：2026-07-10
 
-状态：本地实现与验证完成，待部署记录。
+状态：已完成并部署到 RayNode，运行时源码为 `5cf4d18`。
 
 完成：
 
@@ -2346,6 +2346,8 @@ GitHub 推送修复：
 - targeted Chromium：Phase 42、Phase 43 Blog gate、Phase 44，4 passed。
 - targeted Mobile：对应阶段与全部移动无横向溢出路由，14 passed。
 - 手工截图：桌面与移动首页 highlight rail、移动端 OpenProfile 完整标识均通过。
+- 生产 health / full routes：18/18、55/55，release evidence 为 `5cf4d18`。
+- 生产 targeted e2e：4 passed；生产 smoke：51 passed。
 
 下一步：
 

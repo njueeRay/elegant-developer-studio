@@ -1229,6 +1229,7 @@ GitHub Actions：
 
 - `validate:content` 校验文章准入、Case Study Diff 完整性与可访问证据链接。
 - Playwright 校验移动端媒体操作不覆盖图片、OpenProfile 使用完整比例、五个项目 Diff 均有约束与证据。
+- RayNode release evidence：`5cf4d18`，55/55 public routes 与 production smoke 51/51 通过。
 
 下一步：
 

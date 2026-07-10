@@ -4,7 +4,7 @@
 
 ## 当前主线
 
-Phase 42-45：Homepage Visual Polish、Post-16 Content Review Gate、Case Study Diff Specificity、Real Media Replacement Plan 已完成本地实现与验证，等待本轮 RayNode 部署记录。
+Phase 42-45：Homepage Visual Polish、Post-16 Content Review Gate、Case Study Diff Specificity、Real Media Replacement Plan 已完成并部署到 RayNode。
 
 当前主线转入 Phase 46：Command Index Threshold Review。Phase 42-45 的核心结论是：视觉收束、内容扩张、项目叙事和个人媒体都必须有明确准入与事实边界，不能靠继续堆页面或素材解决。
 
@@ -23,6 +23,7 @@ Phase 42-45：Homepage Visual Polish、Post-16 Content Review Gate、Case Study 
 - `ProjectMeta.caseStudyDiff` 具备 `title`、`before`、`constraint`、`after`、`proof` 和 evidence link，项目页以变更记录而非简介补充展示它。
 - `src/data/media.ts` 已具备媒体 trust 字段：照片来源、memory strength、保留理由；音乐 mock 状态、usage 和 trust boundary。
 - `docs/PHASE45_REAL_MEDIA_REPLACEMENT.md` 约束真实照片/音频替换，不允许用 reference 或 mock 素材伪造个人媒体层。
+- 当前生产 release evidence：`5cf4d18`，15 posts / 5 projects / 17 knowledge / 54 public routes / 120 command items。
 - `src/components/content/knowledge-trails.tsx` 已具备 `knowledge.graph("thin")` 局部关系图层，Knowledge 详情必须说明关联理由。
 - `scripts/measure-route-timing.mjs` 是单轮 route timing 观测脚本。
 - `scripts/diagnose-route-long-tail.mjs` 是重复 route timing 诊断脚本，用于判断 detail route 长尾是否稳定复现。

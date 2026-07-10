@@ -1774,6 +1774,34 @@ Production host：`https://raynode.me`
 - CaseStudyDiff 文案仍可继续提升具体性，尤其是每张 diff 卡的 before/after/proof 可以更像产品变更记录。
 - Photos 仍包含 Generated / Unsplash 参考图；未来如果要更个人化，应逐步替换为真实个人照片并保留来源字段。
 
+## Unreleased - 第四十二至四十五阶段 Visual Polish / Content Gate / Case Study Diff / Real Media Plan
+
+日期：2026-07-10
+Primary implementation commit：`5cf4d18`
+Deployed source commit：`5cf4d18`
+Deployment record commit：待本记录提交后回填
+Production host：`https://raynode.me`
+
+范围：
+
+- Phase 42：首页 Highlight rail 收紧编辑理由；OpenProfile 标识使用完整 3:1 显示；Media 操作区移出图片覆盖层。
+- Phase 43：新增 `content-admission.ts`，固定 15 篇文章基线；后续文章必须登记 External object、Project evidence 或 Knowledge rule。
+- Phase 44：所有项目 Case Study Diff 统一补齐 title、constraint、before、after、proof 与 evidence link。
+- Phase 45：新增真实媒体替换计划，定义资产登记、真实照片优先、音频许可/播放边界与上线回归。
+
+验证：
+
+- `validate:content`：15 posts / 5 projects / 17 knowledge entries 通过。
+- `report:command-index`：120 items，estimated gzip 11,584 bytes，首屏不携带索引。
+- `lint` 与 `build`：通过，55 routes。
+- 本地 Chromium / Mobile e2e：120 / 120 passed。
+- RayNode health / full routes：18/18、55/55，release evidence commit `5cf4d18`。
+- Production targeted e2e：4 passed；production smoke：51 passed。
+
+结论：
+
+- 视觉细节、内容规模、项目叙事和媒体真实性现在都具有明确边界；下一步不是再扩展页面，而是只在 command index 超过 120 或搜索体验退化时启动 Phase 46。
+
 ## Unreleased - 第二十四阶段项目证据对象升级
 
 日期：2026-07-02
