@@ -96,7 +96,7 @@ RayNode 当前状态：
 - targeted Mobile e2e：3 passed，覆盖 Phase 40、Phase 41 和 mobile command center。
 - 完整 Chromium e2e：118 passed。
 - 完整 Mobile e2e：118 passed。
-- Primary implementation commit：`d611234`。
+- Primary implementation commit：`54357ca`。
 - 下一阶段：Phase 42，首页视觉 polish，优先处理 OpenProfile 图像裁切、Media 卡双入口视觉节奏、why.here 文案显隐和移动端细节。
 
 ## 已完成的 Phase 36 切片

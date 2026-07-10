@@ -1127,7 +1127,7 @@ Knowledge kind 评估：
 - [x] targeted Mobile e2e：Phase 40 / 41 / mobile command center 通过。
 - [x] 完整 Chromium e2e：118 passed。
 - [x] 完整 Mobile e2e：118 passed。
-- [x] Primary implementation commit：`d611234`。
+- [x] Primary implementation commit：`54357ca`。
 
 阶段结论：
 

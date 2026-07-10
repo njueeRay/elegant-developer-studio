@@ -1732,7 +1732,7 @@ Production host：`https://raynode.me`
 ## Unreleased - 第三十九至四十一阶段 Evidence Ranking / Media Trust / Knowledge Thin Graph
 
 日期：2026-07-10
-Primary implementation commit：`d611234`
+Primary implementation commit：`54357ca`
 Deployed source commit：待部署
 Deployment record commit：待记录
 Production host：`https://raynode.me`
