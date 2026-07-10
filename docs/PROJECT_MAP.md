@@ -1198,6 +1198,9 @@ GitHub Actions：
 - targeted Mobile e2e：3 passed。
 - 完整 Chromium e2e：118 passed。
 - 完整 Mobile e2e：118 passed。
+- RayNode 部署：`d129772`。
+- 线上 health：18/18；线上 full routes：55/55；线上 smoke：50/50。
+- 线上 Phase 38-41 targeted e2e：4 passed。
 
 下一步：
 

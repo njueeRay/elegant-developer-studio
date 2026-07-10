@@ -4,7 +4,7 @@
 
 ## 当前主线
 
-Phase 39-41：Project Evidence Ranking、Media Trust Layer、Knowledge Graph Thin Layer 已完成并提交，等待 RayNode 部署确认。
+Phase 39-41：Project Evidence Ranking、Media Trust Layer、Knowledge Graph Thin Layer 已完成并部署到 RayNode。
 
 当前主线可以转入 Phase 42：Homepage Visual Polish。Phase 39-41 的核心结论是：个人主页的“高级感”不能只来自视觉氛围，必须让项目证据、媒体素材和 Knowledge 关系都可排序、可解释、可点击、可验证。
 
@@ -42,15 +42,14 @@ RayNode 当前状态：
 - `elegant-developer-studio` systemd service 为 active。
 - Caddy 为 active。
 - `https://raynode.me/` 返回 200。
-- 当前服务器源码提交：`baececf`。
-- `/release-evidence.json` 返回部署提交 `baececf`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
+- 当前服务器源码提交：`d129772`。
+- `/release-evidence.json` 返回部署提交 `d129772`，内容规模为 15 posts / 5 projects / 17 knowledge entries / 54 public routes。
 - `/health.json` 返回 `status: ok`。
-- `/command-index.json` 当前线上仍为 112 command items；Phase 39-41 本地变更后预期为 120 command items，需部署后复核。
+- `/command-index.json` 返回 120 command items。
 - `npm run raynode:health`：18/18 passed。
 - `npm run raynode:health:full`：55/55 passed。
 - `npm run raynode:smoke`：50 passed。
-- Phase 38 production targeted homepage editorial test：1 passed。
-- Phase 39-41 尚未部署到 RayNode；本地 targeted 与完整 Chromium / Mobile 已通过。
+- Phase 39-41 production targeted e2e：4 passed。
 
 ## 当前事实源
 
@@ -97,6 +96,7 @@ RayNode 当前状态：
 - 完整 Chromium e2e：118 passed。
 - 完整 Mobile e2e：118 passed。
 - Primary implementation commit：`54357ca`。
+- Deployed source commit：`d129772`。
 - 下一阶段：Phase 42，首页视觉 polish，优先处理 OpenProfile 图像裁切、Media 卡双入口视觉节奏、why.here 文案显隐和移动端细节。
 
 ## 已完成的 Phase 36 切片

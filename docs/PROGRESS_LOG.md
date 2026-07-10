@@ -2267,7 +2267,7 @@ GitHub 推送修复：
 
 日期：2026-07-10
 
-状态：本地实现完成并提交，等待 RayNode 部署。
+状态：已完成并部署到 RayNode。
 
 阶段判断：
 
@@ -2301,6 +2301,11 @@ GitHub 推送修复：
 - `npm run test:e2e:chromium`：118 passed。
 - `npm run test:e2e:mobile`：118 passed。
 - Primary implementation commit：`54357ca`。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `d129772`。
+- `npm run raynode:health`：18/18 passed，commit `d129772`，commandItems 120。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- Production targeted e2e：Phase 38 / 39 / 40 / 41，4 passed。
 
 当前结论：
 

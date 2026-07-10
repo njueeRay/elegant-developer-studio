@@ -1733,7 +1733,7 @@ Production host：`https://raynode.me`
 
 日期：2026-07-10
 Primary implementation commit：`54357ca`
-Deployed source commit：待部署
+Deployed source commit：`d129772`
 Deployment record commit：待记录
 Production host：`https://raynode.me`
 
@@ -1756,6 +1756,11 @@ Production host：`https://raynode.me`
 - targeted Mobile e2e：`Phase 40|Phase 41|mobile command center stays inside the viewport`，3 passed。
 - `npm run test:e2e:chromium`：118 passed。
 - `npm run test:e2e:mobile`：118 passed。
+- `npm run deploy:raynode`：通过，远端源码与运行产物均为 `d129772`。
+- `npm run raynode:health`：18/18 passed，commit `d129772`，commandItems 120。
+- `npm run raynode:health:full`：55/55 passed。
+- `npm run raynode:smoke`：50 passed。
+- Production targeted e2e：Phase 38 / 39 / 40 / 41，4 passed。
 
 结论：
 

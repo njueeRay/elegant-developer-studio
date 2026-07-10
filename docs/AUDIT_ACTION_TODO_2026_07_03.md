@@ -1107,7 +1107,7 @@ Knowledge kind 评估：
 
 ### Phase 39-41 完成记录：Evidence Ranking / Media Trust / Knowledge Thin Graph
 
-状态：本地完成并提交，等待 RayNode 部署。
+状态：已完成并部署到 RayNode。
 
 完成项：
 
@@ -1128,6 +1128,9 @@ Knowledge kind 评估：
 - [x] 完整 Chromium e2e：118 passed。
 - [x] 完整 Mobile e2e：118 passed。
 - [x] Primary implementation commit：`54357ca`。
+- [x] RayNode 部署：`d129772`。
+- [x] 线上 health / full routes / smoke：18/18、55/55、50/50。
+- [x] 线上 Phase 38-41 targeted e2e：4 passed。
 
 阶段结论：
 
