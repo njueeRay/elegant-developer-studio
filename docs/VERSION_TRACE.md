@@ -1779,7 +1779,7 @@ Production host：`https://raynode.me`
 日期：2026-07-10
 Primary implementation commit：`5cf4d18`
 Deployed source commit：`5cf4d18`
-Deployment record commit：待本记录提交后回填
+Deployment record commit：`f906a21`
 Production host：`https://raynode.me`
 
 范围：
